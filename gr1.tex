@@ -1161,12 +1161,12 @@ a no response by showing that no solution exists.}
       \end{exparts}  
      \end{answer}
   \item 
-    Prove that, where \( a,b,\ldots,e \) are real numbers
-    and \( a\neq 0 \), if
+    Prove that, where \( a,b,c,d,e \) are real numbers
+    with \( a\neq 0 \), if this linear equation
     \begin{equation*}
        ax+by=c
     \end{equation*}
-    has the same solution set as
+    has the same solution set as this one 
     \begin{equation*}
        ax+dy=e
     \end{equation*}
@@ -1174,12 +1174,19 @@ a no response by showing that no solution exists.}
     What if \( a=0 \)?
     \begin{answer}
       If \( a\neq 0 \) then the solution set of the first equation is
-      \( \set{(x,y)\suchthat x=(c-by)/a} \).
+      this.
+      \begin{equation*}
+        \set{(x,y)\in\Re^2\suchthat 
+             \text{$x=(c-by)/a=(c/a)-(b/a)\cdot y$}}
+        \tag{$*$} 
+      \end{equation*}
+      Thus, given~$y$ we can compute the associated~$x$.
       Taking $y=0$ gives the solution $(c/a,0)$, and since the second
-      equation is supposed to have the same solution set, substituting into
+      equation $ax+dy=e$ is supposed to have the same solution set, 
+      substituting into
       it gives that $a(c/a)+d\cdot 0=e$, so $c=e$.
-      Then taking $y=1$ in $x=(c-by)/a$ gives that $a((c-b)/a)+d\cdot 1=e$,
-      which gives that $b=d$.
+      Taking $y=1$ in ($*$) gives $a((c-b)/a)+d\cdot 1=e$,
+      and so $b=d$.
       Hence they are the same equation.
 
       When \( a=0 \) the equations can be different and still have the 
@@ -1571,13 +1578,14 @@ a no response by showing that no solution exists.}
        $C$ over $A$, and the number preferring $B$ over $C$.
        Because 20 votes were cast, 
        $a+b+\cdots+f=20$.
-       Subtracting the sum of the three above equations from the 
-       prior equation gives $b+c+f=3$, and because each preference order got at 
-       least one vote (and vote totals are natural numbers),
-       that means $b=c=f=1$. 
+       Subtracting the sum of the three above equations from twice the 
+       prior equation gives $b+c+f=3$.
+       We've specified that each preference order got at 
+       least one vote, so that means $b=c=f=1$. 
 
        From the above three equations the complete solution is then 
-       $a=6$, $b=1$, $c=1$, $d=7$, $e=4$, and~$f=1$.
+       $a=6$, $b=1$, $c=1$, $d=7$, $e=4$, and~$f=1$,
+       as we can find with Gauss's Method.
        The number of commissioners voting for $B$ as their first choice 
        is therefore $c+d=1+7=8$.
 
@@ -1587,8 +1595,8 @@ a no response by showing that no solution exists.}
 
        The seemingly paradoxical nature of the commissioner's preferences
        ($A$ is preferred to $B$, and $B$ is preferred to $C$, and $C$ is 
-       preferred to $A$), an example of ``non-transitive dominance'', is not
-       uncommon when individual choices are pooled.
+       preferred to $A$), an example of ``non-transitive dominance'', is
+       common when individual choices are pooled.
      \end{answer}
   \puzzle \item   
      \cite{Monthly63p93}
@@ -4192,7 +4200,8 @@ of Gauss's Method itself in the rest of this chapter.
     Express the solution set using vectors.
     Identify the particular solution and the solution set of the
     homogeneous system.
-    (These systems also appear in \nearbyexercise{exer:SolveInMatrixNotation}.)
+    % (These systems also appear in 
+    % Exercise~2.\nearbyexercise{exer:SolveInMatrixNotation}.)
     \begin{exparts*}
       \partsitem \( \begin{linsys}[t]{2}
                   3x  &+  &6y  &=  &18  \\

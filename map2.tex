@@ -2248,12 +2248,22 @@ point and the map is an isomorphism between the domain and the range.
                       c  &d
                    \end{mat} \suchthat b,c,d\in\Re }
           \end{equation*}
-          Thus, the nullity is three.
-        \partsitem The range space is 
-          $\rangespace{h}=\set{r+sx^2\suchthat r,s\in\Re}$.
-          Thus, the rank is two.
-        \partsitem The range space is the trivial subspace of \( \Re^4 \) 
-          so the rank is zero.
+          Thus the nullity is three.
+        \partsitem The null space
+          \begin{equation*}
+            \nullspace{h}
+             =\set{\begin{mat}
+                     a  &b  \\
+                     c  &d
+                   \end{mat} \suchthat a+b+c=0,\,d=0}
+             =\set{\begin{mat}
+                     -b-c  &b  \\
+                      c  &0
+                   \end{mat} \suchthat b,c\in\Re }
+          \end{equation*}
+          is a dimension~$2$ space, so the nullity is two.
+        \partsitem Every vector in the domain is mapped to the zero
+          vector so the nullspace is $\nullspace{h}=\Re^3$.
       \end{exparts}  
     \end{answer}
   \recommended \item 

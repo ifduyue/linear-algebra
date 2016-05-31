@@ -303,12 +303,19 @@
 \end{ans}
 \begin{ans}{One.I.1.28}
       If \( a\neq 0 \) then the solution set of the first equation is
-      \( \set{(x,y)\suchthat x=(c-by)/a} \).
+      this.
+      \begin{equation*}
+        \set{(x,y)\in\Re^2\suchthat
+             \text{$x=(c-by)/a=(c/a)-(b/a)\cdot y$}}
+        \tag{$*$}
+      \end{equation*}
+      Thus, given~$y$ we can compute the associated~$x$.
       Taking $y=0$ gives the solution $(c/a,0)$, and since the second
-      equation is supposed to have the same solution set, substituting into
+      equation $ax+dy=e$ is supposed to have the same solution set,
+      substituting into
       it gives that $a(c/a)+d\cdot 0=e$, so $c=e$.
-      Then taking $y=1$ in $x=(c-by)/a$ gives that $a((c-b)/a)+d\cdot 1=e$,
-      which gives that $b=d$.
+      Taking $y=1$ in ($*$) gives $a((c-b)/a)+d\cdot 1=e$,
+      and so $b=d$.
       Hence they are the same equation.
 
       When \( a=0 \) the equations can be different and still have the
@@ -629,13 +636,14 @@
        $C$ over $A$, and the number preferring $B$ over $C$.
        Because 20 votes were cast,
        $a+b+\cdots+f=20$.
-       Subtracting the sum of the three above equations from the
-       prior equation gives $b+c+f=3$, and because each preference order got at
-       least one vote (and vote totals are natural numbers),
-       that means $b=c=f=1$.
+       Subtracting the sum of the three above equations from twice the
+       prior equation gives $b+c+f=3$.
+       We've specified that each preference order got at
+       least one vote, so that means $b=c=f=1$.
 
        From the above three equations the complete solution is then
-       $a=6$, $b=1$, $c=1$, $d=7$, $e=4$, and~$f=1$.
+       $a=6$, $b=1$, $c=1$, $d=7$, $e=4$, and~$f=1$,
+       as we can find with Gauss's Method.
        The number of commissioners voting for $B$ as their first choice
        is therefore $c+d=1+7=8$.
 
@@ -645,8 +653,8 @@
 
        The seemingly paradoxical nature of the commissioner's preferences
        ($A$ is preferred to $B$, and $B$ is preferred to $C$, and $C$ is
-       preferred to $A$), an example of ``non-transitive dominance'', is not
-       uncommon when individual choices are pooled.
+       preferred to $A$), an example of ``non-transitive dominance'', is
+       common when individual choices are pooled.
      
 \end{ans}
 \begin{ans}{One.I.1.39}
@@ -3032,14 +3040,14 @@
             \grstep[-3\rho_1+\rho_3]{-2\rho_1+\rho_2}
             \begin{amat}{3}
               1 &1  &-1 &3 \\
-              0 &-3 &-1 &1 \\
+              0 &-3 &1  &-5 \\
               0 &-2  &5  &-9
             \end{amat}                             \\
           \begin{aligned}
             &\grstep{-(2/3)\rho_2+\rho_3}
             \begin{amat}{3}
               1 &1  &-1    &3 \\
-              0 &-3 &-1    &1 \\
+              0 &-3 &1     &-5 \\
               0 &0  &13/3  &-17/3
             \end{amat}
             \grstep[(3/13)\rho_3]{-(1/3)\rho_2}
@@ -13457,12 +13465,22 @@ sage: solve(system, x,y)
                       c  &d
                    \end{mat} \suchthat b,c,d\in\Re }
           \end{equation*}
-          Thus, the nullity is three.
-        \partsitem The range space is
-          $\rangespace{h}=\set{r+sx^2\suchthat r,s\in\Re}$.
-          Thus, the rank is two.
-        \partsitem The range space is the trivial subspace of \( \Re^4 \)
-          so the rank is zero.
+          Thus the nullity is three.
+        \partsitem The null space
+          \begin{equation*}
+            \nullspace{h}
+             =\set{\begin{mat}
+                     a  &b  \\
+                     c  &d
+                   \end{mat} \suchthat a+b+c=0,\,d=0}
+             =\set{\begin{mat}
+                     -b-c  &b  \\
+                      c  &0
+                   \end{mat} \suchthat b,c\in\Re }
+          \end{equation*}
+          is a dimension~$2$ space, so the nullity is two.
+        \partsitem Every vector in the domain is mapped to the zero
+          vector so the nullspace is $\nullspace{h}=\Re^3$.
       \end{exparts}
     
 \end{ans}
