@@ -253,8 +253,8 @@ where experts have worked hard to counter what can go wrong.
     Consider this system (\cite{Rice}).
     \begin{equation*}
       \begin{linsys}{2}
-        0.000\,3x  &+  &1.556y  &=  &1.569 \\
-        0.345\,4x  &-  &2.346y  &=  &1.018
+        0.000\,3x  &+  &1.556y  &=  &1.559 \\
+        0.345\,4x  &-  &2.346y  &=  &1.108
       \end{linsys}
     \end{equation*}
     \begin{exparts*}
@@ -264,17 +264,18 @@ where experts have worked hard to counter what can go wrong.
     \end{exparts*}
     \begin{answer}
       \begin{exparts}
-        \partsitem The fully accurate solution is that $x=10$ and $y=0$.
+        \partsitem The fully accurate solution is that $x=10$ and $y=1$.
         \partsitem The four-digit reduction
           \begin{equation*}
             \grstep{-(.3454/.0003)\rho_1+\rho_2}
             \begin{amat}{2}
               .0003  &1.556  &1.569  \\
-              0      &1789   &-1805
+              0      &-1794   &-1805
             \end{amat}
           \end{equation*}
-          gives the conclusion that $x=10460$ and~$y=-1.009$. 
-          Of course, this is wildly different than the correct answer.
+          gives the conclusion that~$y=1.006$, which is not bad,
+          and that $x=12.21$. 
+          Of course, this is twenty percent different than the correct answer.
       \end{exparts}
     \end{answer}
   \item 

@@ -4571,10 +4571,14 @@ sage: solve(system, x,y)
            It does seem reasonable in this case, unless cars are stuck at
            an intersection for a long time.
         \partsitem
-           We can label the flow in this way.
-           \begin{center}
-             \includegraphics{ch1.44}
-           \end{center}
+           We can label the flow in this way:
+           let $i_1$ be the number of cars traversing the part of the circle
+           going from North Avenue to Main,
+           let $i_2$ be the number of cars between
+           Main and Pier,
+           and let $i_3$ be the number of cars traversing the circle between
+           Pier and North.
+
            Because $50$ cars leave via Main while $25$~cars enter,
            $i_1-25=i_2$.
            Similarly Pier's in/out balance means that $i_2=i_3$ and

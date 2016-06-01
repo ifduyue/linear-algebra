@@ -386,7 +386,7 @@ For instance, the exercises analyze some networks of streets.
     \begin{center}
       \includegraphics{ch1.43}
      \end{center}
-     This is the traffic volume, in units of cars per five minutes.    
+     This is the traffic volume, in units of cars per ten minutes.    
      \begin{center}
        \begin{tabular}{r|ccc}
         \multicolumn{1}{c}{\ } % get rid of vert bar
@@ -429,10 +429,14 @@ For instance, the exercises analyze some networks of streets.
            It does seem reasonable in this case, unless cars are stuck at
            an intersection for a long time.
         \partsitem
-           We can label the flow in this way.
-           \begin{center}
-             \includegraphics{ch1.44}
-           \end{center}
+           We can label the flow in this way:
+           let $i_1$ be the number of cars traversing the part of the circle 
+           going from North Avenue to Main,
+           let $i_2$ be the number of cars between
+           Main and Pier,
+           and let $i_3$ be the number of cars traversing the circle between
+           Pier and North.
+
            Because $50$ cars leave via Main while $25$~cars enter, 
            $i_1-25=i_2$.
            Similarly Pier's in/out balance means that $i_2=i_3$ and
@@ -446,7 +450,7 @@ For instance, the exercises analyze some networks of streets.
              \end{linsys}
            \end{equation*}
         \partsitem 
-           The row operations $\rho_1+\rho_2$ and $rho_2+\rho_3$ lead
+           The row operations $\rho_1+\rho_2$ and $\rho_2+\rho_3$ lead
            to the conclusion that there are infinitely many solutions.
            With $i_3$ as the parameter,
            \begin{equation*}
@@ -456,7 +460,7 @@ For instance, the exercises analyze some networks of streets.
            might restrict $i_3$ to be a natural number.
         \partsitem
            If we picture an initially-empty circle with the given input/output
-           behavior, we can superimpose a $z_3$-many cars circling endlessly
+           behavior, we can superimpose $i_3$-many cars circling endlessly
            to get a new solution.
         \partsitem
            A suitable restatement might be:~the number of cars entering the 
