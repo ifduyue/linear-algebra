@@ -444,6 +444,14 @@ Chapter Three makes precise this idea of vector space correspondence.
 For now we shall just leave it as an intuition.
 \end{example}
 
+In general we write
+\( \polyspace_n \) for the
+vector space of polynomials of degree~$n$ or less 
+\( \set{a_0+a_1x+a_2x^2+\cdots+a_nx^n\suchthat a_0,\ldots,a_n\in\Re} \),
+under the operations of the usual polynomial addition and scalar 
+multiplication.\index{vector space!of polynomials}
+We will often use these spaces as examples.
+
 \begin{example} \label{ex:MatSpaceTwoByTwo}
 The set \( \matspace_{\nbym{2}{2}} \) of \( \nbym{2}{2} \) matrices with
 real number entries is a vector space under the natural 
@@ -478,6 +486,14 @@ entry-by-entry operations.
 As in the prior example, we can think of this space as
 ``the same'' as \( \Re^4 \).
 \end{example}
+
+We write
+\( \matspace_{\nbym{n}{m}} \) for the
+vector space of $\nbym{n}{m}$ matrices
+under the natural operations of matrix addition and scalar 
+multiplication.\index{vector space!of matrices}
+As with the polynomial spaces, 
+we will often use these as examples.
 
 \begin{example}   \label{ex:FcnsNToRIsVecSp}
 The set \( \set{f\suchthat \map{f}{\N}{\Re} } \) of all
@@ -2178,12 +2194,13 @@ its trivial subspace.
 \end{example}
 
 %<*ProperSubspace>
-Any vector space has a trivial subspace \( \set{\zero\,} \).
+Any vector space has a trivial subspace 
+\( \set{\zero\,} \).\index{subspace!trivial}%
+\index{trivial subspace}. 
 At the opposite extreme, any vector space has itself for a subspace.
-These two are the \definend{improper}\index{subspace!improper}%
-\index{improper subspace} subspaces.
-Other subspaces are \definend{proper}\index{subspace!proper}%
-\index{proper subspace}. 
+A subspace that is not the entire space is a 
+\definend{proper}\index{subspace!proper}%
+\index{proper subspace} subspace.
 %</ProperSubspace>
 
 \begin{example}  \label{ex:LinSubspPolyThree}
@@ -3200,15 +3217,15 @@ The next section studies spanning sets that are minimal.
     that is an element of 
     a vector space $V$, the set $\set{r\cdot\vec{v}\suchthat r\in\Re}$
     is a subspace of $V$.
-    (This is of course, simply the span\index{span!of a singleton} 
+    (This is simply the span\index{span!of a singleton} 
     of the singleton set $\set{\vec{v}}$.)
-    Must any such subspace be a proper subspace, or can it be improper?
+    Must any such subspace be a proper subspace?
     \begin{answer}
       It can be improper.
-      If \( \vec{v}=\zero \) then this is a trivial subspace.
-      At the opposite extreme,
+      For instance,
       if the vector space is \( \Re^1 \) and \( \vec{v}\neq\zero\, \)
-      then the subspace is all of $\Re^1$.  
+      then the subspace $\set{r\cdot\vec{v}\suchthat r\in\Re}$
+      is all of $\Re^1$.  
     \end{answer}
   \item 
     An example following the definition of a vector space shows that the

@@ -36,14 +36,14 @@ that's what happened here.
   \end{linsys}
 \end{equation*}
 That is, the vector of data that we collected is not in the subspace
-where theory has it.
+where ideally it would be.
 \begin{equation*}
   \colvec{16 \\ 34 \\ 51}\not\in
     \set{ m\colvec{30 \\ 60 \\ 90}  \suchthat m\in\Re}
 \end{equation*}
 However, we have to do something so we look for the~$m$ that most nearly works.
 An orthogonal projection of the data vector into the line subspace
-gives this best guess.
+gives a best guess, the vector in the subspace closest to the data vector.
 \begin{equation*}
   \frac{ \colvec[r]{16 \\ 34 \\ 51}\dotprod\colvec[r]{30 \\ 60 \\ 90} }{
            \colvec[r]{30 \\ 60 \\ 90}\dotprod\colvec[r]{30 \\ 60 \\ 90} }
