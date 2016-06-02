@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{../linalgjh}
+
+\setlength{\parindent}{0em}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\linewidth]{\textbf{Homework, MA~213}\hspace*{4in}\textbf{Due: 2014-Nov-17}}
+
+\vspace*{3ex}
+\textit{You may work with others to figure out how to do questions, 
+and you are welcome to look for answers in the book, online, by talking
+to someone who had the course before, etc.
+However, you must write 
+the answers on your own.
+You must also show your work (you may, of course, 
+quote any result from the book).}
+
+\begin{enumerate}
+\item
+  Find the determinant.
+  \begin{enumerate}
+    \item 
+      $\begin{vmat}
+         1 &4 \\
+         2 &8
+       \end{vmat}$
+    \item
+      $
+      \begin{vmat}
+        2 &1 &1 \\
+        1 &1 &0 \\
+        6 &4 &1
+      \end{vmat}$ 
+  \end{enumerate}
+
+\item
+  Consider the linear transformation $\map{t}{\Re^3}{\Re^3}$
+  represented with respect to the 
+  standard bases by this matrix.
+  \begin{equation*}
+    \begin{mat}
+      1 &0 &-1 \\
+      3 &1 &1 \\
+     -1 &0 &3
+    \end{mat}
+  \end{equation*}
+  \begin{enumerate}
+    \item Compute the determinant of the matrix.
+    \item Find the size of the box defined by these vectors.
+      \begin{equation*}
+        \colvec{1 \\ -1 \\ 2}
+        \quad
+        \colvec{2 \\ 0 \\ -1}
+        \quad
+        \colvec{1 \\ 1 \\ 0}
+      \end{equation*}
+    Wht is its orientation?
+  \item Find the image under $t$ of the vectors in the prior item and 
+    find the size of the box that they define.
+  \end{enumerate}
+
+\item Consider this transformation of~$\Re^3$.
+  \begin{equation*}
+    t(\colvec{x \\ y \\ z})=\colvec{x-z \\ z \\ 2y}
+  \end{equation*}
+  Consider also these two bases.
+  \begin{equation*}
+    B=\sequence{\colvec{1 \\ 2 \\ 3}, 
+                \colvec{0 \\ 1 \\ 0}, 
+                \colvec{0 \\ 0 \\ 1}}
+    \qquad
+    D=\sequence{\colvec{1 \\ 0 \\ 0},
+                \colvec{1 \\ 1 \\ 0},
+                \colvec{1 \\ 0 \\ 1}}
+  \end{equation*}
+  We will represent the transformation using two similar matrices.
+  \begin{enumerate}
+  \item Draw the arrow diagram.
+  \item Compute $T=\rep{t}{B,B}$.
+  \item Compute $\hat{T}=\rep{t}{D,D}$.
+  \item Compute the matrices for other two sides of the arrow square.
+  \end{enumerate}
+\end{enumerate}
+\end{document}

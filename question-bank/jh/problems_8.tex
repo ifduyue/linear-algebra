@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{../linalgjh}
+
+\setlength{\parindent}{0em}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\linewidth]{\textbf{Homework, MA~213}\hspace*{4in}\textbf{Due: 2014-Nov-17}}
+
+\vspace*{3ex}
+\textit{You may work with others to figure out how to do questions, 
+and you are welcome to look for answers in the book, online, by talking
+to someone who had the course before, etc.
+However, you must write 
+the answers on your own.
+You must also show your work (you may, of course, 
+quote any result from the book).}
+
+\begin{enumerate}
+\item
+  For each space find the matrix changing a vector representation with 
+  respect to $B$ to one with respect to~$D$.
+  \begin{enumerate}
+  \item $V=\Re^3$, $B=\stdbasis_3$, 
+      $D=\sequence{\colvec{1 \\ 2 \\ 3},
+                   \colvec{1 \\ 1 \\ 1},
+                   \colvec{0 \\ 1 \\ -1}}$
+  \item $V=\Re^3$,  
+      $B=\sequence{\colvec{1 \\ 2 \\ 3},
+                   \colvec{1 \\ 1 \\ 1},
+                   \colvec{0 \\ 1 \\ -1}}$,
+      $D=\stdbasis_3$
+  \item $V=\polyspace_2$,
+    $B=\sequence{x^2, x^2+x, x^2+x+1}$,
+    $D=\sequence{2, -x, x^2}$
+  \end{enumerate}
+
+\item Find the $P$ and~$Q$ to express $H$ via $PHQ$ as a block partial identity
+  matrix.
+  \begin{equation*}
+    H=
+    \begin{mat}
+      2 &1  &1  \\
+      3 &-1 &0  \\
+      1 &3  &2 
+    \end{mat}
+  \end{equation*}
+
+\item Project the vector to the line.
+  \begin{equation*}
+    \vec{v}=\colvec{3 \\ 2}
+    \qquad
+    L=\set{c\colvec{1 \\ -1}\suchthat c\in\Re}
+  \end{equation*}
+
+\item Express this nonsingular matrix as a product of elementary reduction
+  matrices.
+  \begin{equation*}
+    \begin{mat}
+      1 &2  &0 \\
+      2 &-1 &0 \\
+      3 &1 &2
+    \end{mat}
+  \end{equation*}
+\end{enumerate}
+\end{document}

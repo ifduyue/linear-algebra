@@ -1,0 +1,508 @@
+\documentclass[11pt]{examjh}
+\usepackage{../linalgjh}
+\examhead{MA 213 Hef{}feron, \yearsemester}{Final Exam}
+\printanswers
+% \noprintanswers
+\begin{document}
+\begin{questions}
+\question
+  Represent the linear map $\map{d/dx}{\polyspace_4}{\polyspace_3}$
+  with respect to $B=\sequence{1,x,x^2,x^3,x^4}$ 
+  and~$D=\sequence{1,1+x,1+x+x^2,1+x+x^2+x^3}$.
+\begin{solution}[2.5in]
+The effect of the map on each element of the domain basis~$B$
+\begin{equation*}
+  1\mapsto 0
+  \quad
+  x\mapsto 1
+  \quad
+  x^2\mapsto 2x
+  \quad
+  x^3\mapsto 3x^2
+  \quad
+  x^4\mapsto 4x^3
+\end{equation*}
+represented with respect to the codomain basis~$D$
+\begin{multline*}
+  \rep{0}{D}=\colvec{0 \\ 0 \\ 0 \\ 0}
+  \quad
+  \rep{1}{D}=\colvec{1 \\ 0 \\ 0 \\ 0}
+  \quad
+  \rep{2x}{D}=\colvec{-2 \\ 2 \\ 0 \\ 0}
+  \\
+  \rep{3x^2}{D}=\colvec{0 \\ -3 \\ 3 \\ 0}
+  \quad
+  \rep{4x^3}{D}=\colvec{0 \\ 0 \\ -4 \\ 4}
+\end{multline*}
+give this matrix.
+\begin{equation*}
+  \rep{d/dx}{B,D}=
+  \begin{mat}
+    0 &1 &-2 &0  &0  \\
+    0 &0 &2  &-3 &0  \\
+    0 &0 &0  &3  &-4 \\
+    0 &0 &0  &0  &4
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+
+
+\question For this subspace of $\polyspace_3$
+\begin{equation*}
+  S=\set{f(x)=ax^3+bx^2+cx+d\suchthat
+          \text{$f(1)=0$ and $f(2)=0$}}
+\end{equation*}
+find a basis.
+What is the dimension of of $\polyspace_3$ and of~$S$? 
+\begin{solution}[2in]
+That $f(1)=0$ gives $a+b+c+d=0$ and that
+$f(2)=0$ gives $8a+4b+2c+d=0$.
+Gauss's Method
+\begin{equation*}
+  \begin{linsys}{4}
+    a &+ &b  &+ &c  &+ &d &= &0 \\
+   8a &+ &4b &+ &2c &+ &d &= &0
+  \end{linsys}
+  \grstep{-8\rho_1+\rho_2}
+  \begin{linsys}{4}
+    a &+ &b  &+ &c  &+ &d  &= &0 \\
+      & &-4b &- &6c &- &7d &= &0
+  \end{linsys}
+\end{equation*}
+followed by parametrizing gets a basis.
+\begin{equation*}
+  \set{\colvec{3/4 \\ -7/4 \\ 1 \\ 0}c+\colvec{1/2 \\ -3/2 \\ 0 \\ 1}d 
+      \suchthat c,d\in\Re}
+  \qquad
+  \sequence{(3/4)x^3-(7/4)x^2+x,
+            (1/2)x^3-(3/2)x^2+1}
+\end{equation*}
+The dimension of~$\polyspace_3$ is~$4$, while the dimension of~$S$ is~$2$.
+\end{solution}
+
+
+
+\question
+  Find the determinant.
+  \begin{equation*}
+    \begin{vmat}
+      1 &0 &2  &0  \\
+      2 &1 &1  &1  \\
+      0 &-1 &1 &-1 \\
+      2 &2  &1 &0
+    \end{vmat}
+  \end{equation*}
+\begin{solution}[1.5in]
+  \begin{equation*}
+    \grstep[-2\rho_1+\rho_4]{-2\rho_1+\rho_2}
+    \grstep[-2\rho_2+\rho_4]{\rho_2+\rho_3}
+    \grstep{(3/2)\rho_3+\rho_4}
+    \begin{mat}
+      1 &0 &2  &0  \\
+      0 &1 &-3 &1  \\
+      0 &0 &-2 &0  \\
+      0 &0 &0 &-2
+    \end{mat}
+  \end{equation*}
+  The determinant is $+4$.
+\end{solution}
+
+
+\question
+Find the inverse of this matrix, or state ``does not exist.''.
+\begin{equation*}
+  \begin{mat}
+    2 &1 \\
+    4 &-1
+  \end{mat}
+\end{equation*}
+\begin{solution}[0.75in]
+  \begin{equation*}
+    \frac{1}{-6}\cdot
+    \begin{mat}
+      -1 &-1 \\
+      -4 &2
+    \end{mat}
+  \end{equation*}
+\end{solution}
+
+
+\question
+Decide if this set is linearly independent.
+If so then show that, and if not then exhibit a dependence.
+Is it a basis for $\matspace_{\nbyn{2}}$?
+\begin{equation*}
+  \set{
+    \begin{mat}
+      1 &0 \\
+      0 &3
+    \end{mat},
+    \begin{mat}
+      3 &1 \\
+      4 &1
+    \end{mat},
+    \begin{mat}
+      2 &2 \\
+      1 &1
+    \end{mat}
+  }
+\end{equation*}
+\begin{solution}[2in]
+If you can't find the answer by eye, equations derived from the upper left, 
+upper right, lower left, and lower right give this system.
+\begin{equation*}
+  \begin{linsys}{3}
+    c_1  &+  &3c_2 &+ &2c_3  &=  &0 \\
+         &   &c_2  &+ &2c_3  &=  &0 \\
+         &   &4c_2 &+ &c_3   &=  &0 \\
+    3c_1 &+  &c_2  &+ &c_3   &=  &0   
+  \end{linsys}
+  \grstep{-3\rho_1+\rho_4}
+  \grstep[8\rho_2+\rho_4]{-4\rho_2+\rho_3}
+  \grstep{(11/7)\rho_4+\rho_4}
+  \begin{linsys}{3}
+    c_1  &+  &3c_2 &+ &2c_3  &=  &0 \\
+         &   &c_2  &+ &2c_3  &=  &0 \\
+         &   &     &  &-7c_3 &=  &0 \\
+         &   &     &   &0    &=  &0   
+  \end{linsys}
+\end{equation*}
+So the set is linearly independent. 
+It is, however, not a basis because it only has three elements. 
+\end{solution}
+
+\question
+Solve this system using Gauss-Jordan reduction.
+Parametrize the solution set.
+\begin{equation*}
+  \begin{linsys}{3}
+    -x &+ &2y &  &   &= &1   \\
+     x &- &y  &+ &2z &= &-1  \\
+    2x &- &y  &+ &6z &= &-2 
+  \end{linsys}
+\end{equation*}
+\begin{solution}[2in]
+The Gauss-Jordan reduction
+  \begin{equation*}
+    \grstep[2\rho_1+\rho_3]{\rho_1+\rho_2}
+    \grstep{-3\rho_2+\rho_3}
+    \grstep{-\rho_1}
+    \grstep{2\rho_2+\rho_1}
+    \begin{linsys}{3}
+       x &  &   &+ &4z &= &-1   \\
+         &  &y  &+ &2z &= &0  \\
+         &  &   &  &0  &= &0 
+    \end{linsys}
+  \end{equation*}
+leads to the parameterization.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}\suchthat \text{$x+4z=-1$ and $y+2z=0$}}
+  =\set{\colvec{-1 \\ 0 \\ 0}+\colvec{-4 \\ -2 \\ 1}z \suchthat z\in\Re}
+\end{equation*}
+\end{solution}
+
+
+\question
+Find all eigenvalues and eigenvectors of this matrix.
+\begin{equation*}
+  \begin{mat}
+    1 &2 \\
+    2 &4
+  \end{mat}
+\end{equation*}
+\begin{solution}[2.5in]
+  Setting 
+  \begin{equation*}
+    \begin{vmat}
+      1-x &2 \\
+      2  &4-x
+    \end{vmat}
+    =x^2-5x
+  \end{equation*}
+  to zero gives the two eigenvalues $\lambda_1=0$ and~$\lambda_2=5$.
+
+  The eigenvalues associated with $\lambda_1=0$ are the 
+  nonzero solutions of
+  \begin{equation*}
+    \begin{mat}
+      1-0  &2 \\
+      2    &4-0 
+    \end{mat}
+    \colvec{x \\ y}=\colvec{0 \\ 0}
+  \end{equation*}
+  which are the vectors in this set.
+  \begin{equation*}
+    V_0=\set{\colvec{-2 \\ 1}y \suchthat y\neq 0}
+  \end{equation*}
+  The eigenvectors for $\lambda_2=5$ are the nonzero solutions of
+  \begin{equation*}
+    \begin{mat}
+      1-5  &2 \\
+      2    &4-5 
+    \end{mat}
+    \colvec{x \\ y}=\colvec{0 \\ 0}
+  \end{equation*}
+  namely these.
+  \begin{equation*}
+    V_5=\set{\colvec{1 \\ 1/2}y \suchthat y\neq 0}
+  \end{equation*}
+\end{solution}
+
+
+
+\question
+Find the projection of the vector onto the line.
+\begin{equation*}
+  \vec{v}=\colvec{1 \\ 2 \\ -2}
+  \qquad
+  \ell=\set{t\colvec{2  \\ 1  \\ 0}\suchthat t\in\Re}
+\end{equation*}
+\begin{solution}[1in]
+\begin{equation*}
+  \frac{\colvec{1 \\ 2 \\ -2}\dotprod\colvec{2  \\ 1  \\ 0}}{\colvec{2  \\ 1  \\ 0}\dotprod \colvec{2  \\ 1  \\ 0}}\cdot \colvec{2  \\ 1  \\ 0}
+  =\frac{4}{5}\cdot \colvec{2  \\ 1  \\ 0}    
+\end{equation*}
+\end{solution}
+
+
+\question
+Let $T$ represent $\map{t}{\Re^2}{\Re^2}$ with respect to $B,B$.
+\begin{equation*}
+  T=
+  \begin{mat}
+    1 &-1 \\ 
+    2 &1
+  \end{mat}
+  \qquad
+  B=\sequence{\colvec{1 \\ 0},\colvec{1 \\ 1}},\,
+  D=\sequence{\colvec{2 \\ 0},\colvec{0 \\ -2}}
+\end{equation*}
+We will convert to the matrix representing~$t$ with resepct to $D,D$.
+\begin{parts}
+\part Draw the arrow diagram.
+\begin{solution}[1in]
+\begin{equation*}
+  \begin{CD}
+    \Re^2_{\wrt{B}}                   @>t>T>        \Re^2_{\wrt{B}}       \\
+    @V{\scriptstyle\identity} VV              @V{\scriptstyle\identity} VV \\
+    \Re^2_{\wrt{D}}                   @>t>\hat{T}>        \Re^2_{\wrt{D}}
+  \end{CD}
+\end{equation*}  
+\end{solution}
+\part Give the matrix that represents the left and right
+  sides of that diagram, in the
+  direction that we traverse the diagram to make the conversion.
+\begin{solution}[2in]
+For the right side we find the effect of the identity map
+\begin{equation*}
+  \colvec{1 \\ 0}\mapsunder{\identity}\colvec{1 \\ 0}
+  \qquad
+  \colvec{1 \\ 1}\mapsunder{\identity}\colvec{1 \\ 1}
+\end{equation*}
+and represent with respect to~$D$
+\begin{equation*}
+  \rep{\colvec{1 \\ 0}}{D}=\colvec{1/2 \\ 0}
+  \qquad
+  \rep{\colvec{1 \\ 1}}{D}=\colvec{1/2 \\ -1/2}
+\end{equation*}
+so we have this on the right.
+\begin{equation*}
+  \rep{\identity}{B,D}=
+  \begin{mat}
+    1/2 &1/2 \\
+    0   &-1/2
+  \end{mat}
+\end{equation*}
+
+For the matrix on the left we can either compute it directly, as in the
+prior paragraph, or we can take the inverse. 
+\begin{equation*}
+  \rep{\identity}{D,B}=
+  \frac{1}{(-1/4)}\cdot
+  \begin{mat}
+    -1/2 &-1/2 \\
+    0   &1/2
+  \end{mat}
+  =
+  \begin{mat}
+    2 &2 \\
+    0 &-2
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part Find $\rep{t}{D,D}$.
+\begin{solution}[1in]
+As with the prior item we can either compute it directly from the definitions,
+or compute it using matrix operations.
+\begin{equation*}
+  \begin{mat}
+    2 &2 \\
+    0 &-2
+  \end{mat}
+  \begin{mat}
+    1 &-1 \\ 
+    2 &1
+  \end{mat}
+  \frac{-1}{4}\cdot
+  \begin{mat}
+    -1/2 &-1/2 \\
+    0   &1/2
+  \end{mat}
+  =
+  \begin{mat}
+    3 &3  \\
+   -2 &-1
+  \end{mat}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+
+\question
+Let $T$ represent a map $\map{t}{\Re^2}{\Re^2}$
+with respect to the standard bases. 
+\begin{equation*}
+  T=
+  \begin{mat}
+    2 &-1 \\
+    6 &-3
+  \end{mat}
+\end{equation*}
+Find the range space and null space of~$t$.
+\begin{solution}[2in]
+Because these are the standard bases, all vectors represent themselves.
+Let
+\begin{equation*}
+  \begin{mat}
+    2 &-1 \\
+    6 &-3
+  \end{mat}
+  \colvec{x \\ y}
+  =\colvec{a \\ b}  
+\end{equation*}
+and do the Gauss-Jordan reduction. 
+\begin{equation*}
+  \begin{amat}{2}
+    2 &-1 &a \\
+    6 &-3 &b   
+  \end{amat}
+  \grstep{-3\rho_1+\rho_2}
+  \grstep{(1/2)\rho_1}
+  \begin{amat}{2}
+    1 &-1/2 &(1/2)a \\
+    0 &0    &-3a+b   
+  \end{amat}
+\end{equation*}
+The range space is this
+\begin{equation*}
+  \rangespace{t}=
+  \set{\colvec{a \\ b}\suchthat -3a+b=0}
+  =\set{\colvec{1/3 \\ 1}b\suchthat b\in\Re}   
+\end{equation*}
+and the null space is this.
+\begin{equation*}
+  \nullspace{t}=
+  \set{\colvec{x \\ y}\suchthat x-(1/2)y=0}
+  =\set{\colvec{1/2 \\ 1}y\suchthat y\in\Re}
+\end{equation*}
+\end{solution}
+\end{questions}
+\end{document}
+
+
+
+sage: load "../lab/gauss_method.sage"
+/usr/lib/sagemath/local/lib/python2.7/site-packages/sage/misc/sage_extension.py:371: DeprecationWarning: Use %runfile instead of load.
+See http://trac.sagemath.org/12719 for details.
+  line = f(line, line_number)
+sage: m = matrix(QQ, [[1,0,2,0], [2,1,1,1], [0,-1,1,-1], [2,2,1,0]])
+sage: det(m)
+4
+sage: gauss_method(m)
+[ 1  0  2  0]
+[ 2  1  1  1]
+[ 0 -1  1 -1]
+[ 2  2  1  0]
+ take -2 times row 1 plus row 2
+ take -2 times row 1 plus row 4
+[ 1  0  2  0]
+[ 0  1 -3  1]
+[ 0 -1  1 -1]
+[ 0  2 -3  0]
+ take 1 times row 2 plus row 3
+ take -2 times row 2 plus row 4
+[ 1  0  2  0]
+[ 0  1 -3  1]
+[ 0  0 -2  0]
+[ 0  0  3 -2]
+ take 3/2 times row 3 plus row 4
+[ 1  0  2  0]
+[ 0  1 -3  1]
+[ 0  0 -2  0]
+[ 0  0  0 -2]
+
+
+sage: m = matrix(QQ, [[-1,2,0,1], [1,-1,2,-1], [2,-1,6,-2]])
+sage: gauss_jordan(m)
+[-1  2  0  1]
+[ 1 -1  2 -1]
+[ 2 -1  6 -2]
+ take 1 times row 1 plus row 2
+ take 2 times row 1 plus row 3
+[-1  2  0  1]
+[ 0  1  2  0]
+[ 0  3  6  0]
+ take -3 times row 2 plus row 3
+[-1  2  0  1]
+[ 0  1  2  0]
+[ 0  0  0  0]
+ take -1 times row 1
+[ 1 -2  0 -1]
+[ 0  1  2  0]
+[ 0  0  0  0]
+ take 2 times row 2 plus row 1
+[ 1  0  4 -1]
+[ 0  1  2  0]
+[ 0  0  0  0]
+
+sage: m = matrix(QQ, [[1,1,1,1,0], [8,4,2,1,0]])
+sage: m
+[1 1 1 1 0]
+[8 4 2 1 0]
+sage: gauss_method(m)
+[1 1 1 1 0]
+[8 4 2 1 0]
+ take -8 times row 1 plus row 2
+[ 1  1  1  1  0]
+[ 0 -4 -6 -7  0]
+sage: var('a,b,c,d')
+(a, b, c, d)
+sage: eqns=[a+b+c+d==0, 8*a+4*b+2*c+d==0]
+sage: solve(eqns, a, b,c,d)
+[[a == 3/4*r1 + 1/2*r2, b == -7/4*r1 - 3/2*r2, c == r2, d == r1]]
+
+
+sage: P=matrix(QQ, [[-1/2,-1/2], [0,1/2]])
+sage: P
+[-1/2 -1/2]
+[   0  1/2]
+sage: T=matrix(QQ, [[1,-1], [2,1]])
+sage: T
+[ 1 -1]
+[ 2  1]
+sage: P*T*P^(-1)
+[ 3  3]
+[-2 -1]
+
+sage: m2=matrix(QQ, [[2,-1], [6,-3]])
+sage: gauss_jordan(m2)
+[ 2 -1]
+[ 6 -3]
+ take -3 times row 1 plus row 2
+[ 2 -1]
+[ 0  0]
+ take 1/2 times row 1
+[   1 -1/2]
+[   0    0]
