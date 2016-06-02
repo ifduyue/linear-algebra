@@ -182,7 +182,7 @@ That is, the power $k$ is at most the dimension of $V$.
 
 \begin{example}
 The derivative map $a+bx+cx^2+dx^3\xmapsunder{d/dx} b+2cx+3dx^2$
-on $\polyspace_3$ has this chain of range spaces
+on $\polyspace_3$ has this chain of range spaces.
 \begin{equation*}
   \rangespace{t^0}=\polyspace_3
     \:\supset\:\rangespace{t^1}=\polyspace_2
@@ -192,8 +192,8 @@ on $\polyspace_3$ has this chain of range spaces
     % =\rangespace{t^5}=\set{\zero}=
     % \,=\,\cdots
 \end{equation*}
-(all later elements of the chain are the trivial space). 
-And it has this chain of null spaces
+All later elements of the chain are the trivial space. 
+It has this chain of null spaces.
 \begin{equation*}
   \nullspace{t^0}=\set{\zero}
   \:\subset\: \nullspace{t^1}=\polyspace_0
@@ -201,29 +201,29 @@ And it has this chain of null spaces
   \:\subset\:\nullspace{t^3}=\polyspace_2
   \:\subset\:\nullspace{t^4}=\polyspace_3
 \end{equation*}
-(later elements are the entire space).
+Later elements are the entire space.
 \end{example}
 
 \begin{example} \label{exam:PolyRankFalls}
 Let \( \map{t}{\polyspace_2}{\polyspace_2} \) be the map
-\( c_0+c_1x+c_2x^2 \mapsto 2c_0+c_2x. \)
+\( d_0+d_1x+d_2x^2 \mapsto 2d_0+d_2x. \)
 As the lemma describes, on
 iteration the range space shrinks
 \begin{equation*}
   \rangespace{t^0}=\polyspace_2
     \quad
-  \rangespace{t}=\set{a+bx\suchthat a,b\in\C}
+  \rangespace{t}=\set{a_0+a_1x\suchthat a_0,a_1\in\C}
     \quad
-  \rangespace{t^2}=\set{a\suchthat a\in\C}
+  \rangespace{t^2}=\set{a_0\suchthat a_0\in\C}
 \end{equation*}
-and then stabilizes $\rangespace{t^2}=\rangespace{t^3}=\cdots$
-while the null space grows
+and then stabilizes, so that $\rangespace{t^2}=\rangespace{t^3}=\cdots$.
+The null space grows
 \begin{equation*}
   \nullspace{t^0}=\set{0}
     \quad
-  \nullspace{t}=\set{cx\suchthat c\in\C}
+  \nullspace{t}=\set{b_1x\suchthat b_1\in\C}
     \quad
-  \nullspace{t^2}=\set{cx+d\suchthat c,d\in\C}
+  \nullspace{t^2}=\set{b_1x+b_2x^2\suchthat b_1,b_2\in\C}
 \end{equation*}
 and then stabilizes $\nullspace{t^2}=\nullspace{t^3}=\cdots$.
 \end{example}
@@ -322,7 +322,7 @@ This must happen by the $n$-th iterate.
            \begin{equation*}
              a+bx+cx^2\mapsunder{t_0^2}cx^2
            \end{equation*}
-           and any higher power is the same map.
+           and any higher iterate is the same map.
            Thus, while $\rangespace{t_0}$ is the space of 
            quadratic polynomials
            with no linear term $\set{p+rx^2\suchthat p,r\in \C}$,
@@ -330,13 +330,14 @@ This must happen by the $n$-th iterate.
            $\rangespace{t_0^2}$ is the space of purely-quadratic polynomials
            $\set{rx^2\suchthat r\in \C}$, 
            this is where the chain stabilizes
-           $\genrangespace{t_0}=\set{rx^2\suchthat n\in \C}$. 
+           $\genrangespace{t_0}=\set{rx^2\suchthat n\in \C}$.
+ 
            As for null spaces, 
-           $\nullspace{t_0}$ is the space of purely-linear quadratic 
-           polynomials $\set{qx\suchthat q\in \C}$, and
-           $\nullspace{t_0^2}$ is the space of quadratic polynomials
-           with no $x^2$ term $\set{p+qx\suchthat p,q\in \C}$, and
-           this is the end $\gennullspace{t_0}=\nullspace{t_0^2}$. 
+           $\nullspace{t_0}$ is the space of constant 
+           polynomials $\set{p\suchthat p\in \C}$, and
+           $\nullspace{t_0^2}$ is the space of linear polynomials
+           $\set{p+qx\suchthat p,q\in \C}$. 
+           This is the end, $\gennullspace{t_0}=\nullspace{t_0^2}$. 
          \partsitem The second power
            \begin{equation*}
              \colvec{a \\ b}

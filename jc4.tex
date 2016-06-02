@@ -373,18 +373,18 @@ the determinant of the matrix times the identity.
 \tag*{($*$)}
 \end{equation*}
 The left side of~($*$) is 
-$c_nIx^n+c_{n-1}Ix^{n-1}+\dots+c_1Ix+c_0I$.
+$c_nIx^n+c_{n-1}Ix^{n-1}+\cdots+c_1Ix+c_0I$.
 For the right side,
 the entries of \( \adj (C) \) are polynomials, each of degree
 at most \( n-1 \) since the minors of a matrix drop a row and column.
 As suggested before the proof, rewrite it as a polynomial with
 matrix coefficients:
-\( \adj (C)=C_{n-1}x^{n-1}+\dots+C_1x+C_0 \)
+\( \adj (C)=C_{n-1}x^{n-1}+\cdots+C_1x+C_0 \)
 where each \( C_i \) is a matrix of scalars.
 Now this is the right side of~($*$).
 \begin{equation*}
-  [(C_{n-1}T)x^{n-1}+\dots+(C_1T)x+C_0T]  
-   -[C_{n-1}x^n-C_{n-2}x^{n-1}-\dots-C_0x]
+  [(C_{n-1}T)x^{n-1}+\cdots+(C_1T)x+C_0T]  
+   -[C_{n-1}x^n+C_{n-2}x^{n-1}+\cdots+C_0x]
 \end{equation*}
 Equate the left and right side of ($*$)'s
 coefficients of \( x^n \), of $x^{n-1}$, etc.
@@ -414,7 +414,7 @@ both sides of the second equation by \( T^{n-1} \), etc.
 \end{align*}
 Add.
 The left is 
-\( c_nT^n+c_{n-1}T^{n-1}+\dots+c_0I \). 
+\( c_nT^n+c_{n-1}T^{n-1}+\cdots+c_0I \). 
 The right telescopes;
 for instance $-C_{n-1}T^n$ from the first line combines with the 
 $C_{n-1}T^n$ half of the second line. 
