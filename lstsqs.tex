@@ -1084,6 +1084,25 @@ sage: p.save('bridges.pdf')
 %     \begin{answer}
 %       The $\nbyn{2}$ shows how the larger cases hold.
 %     \end{answer}
+\item Suppose that $W$ is a subspace of $\Re^n$ for some~$n$ and suppose that
+  $\vec{v}$ is not an element of~$W$.
+  Let the orthogonal projection of $\vec{v}$ into $W$ be the vector
+  $\proj{\vec{v}}{W}=\vec{p}$.
+  Show that $\vec{p}$ is the element of~$W$ that is closest to~$\vec{v}$.
+  \begin{answer}
+    For any $\vec{w}\in W$, the vectors $\vec{v}-\vec{p}$ and
+    $\vec{p}-\vec{w}$ are orthogonal.
+    So the Pythagorean Theorem applies to the triangle with those vectors as
+    sides, and with $\vec{v}-\vec{w}$ as hypoteneuse.
+    Therefore $\vec{v}-\vec{w}$ is at least as long as $\vec{v}-\vec{p}$.
+  \end{answer}
+
+   
+
+
+
+
+
 \end{exercises}
 %\par\noindent\announcecomputercode %
 %\begin{computercode}

@@ -823,7 +823,8 @@
   % renew definition of exercise formatting (perhaps undone in Chapter)
   \setcounter{theorem}{0}  % hack to make exercise numbering correct
   \renewcommand{\exercise@makelabel}{} % 
-  % JH testing 2012-Oct-05 \renewcommand{\exercise@deflabel}[1]{\textbf{\arabic{##1}}}
+  % JH testing 2012-Oct-05 
+  % \renewcommand{\exercise@deflabel}[1]{\textbf{\arabic{##1}}}
   \renewcommand{\exercise@deflabel}[1]{\hyperdef{exercise}{\Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}.\Currentlabel}{}\hyperref{./jhanswer.pdf}{ans}{\Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}.\Currentlabel}{\textbf{\Currentlabel}}%
   % \typeout{!!! in Topic next exercise defed \Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}.\Currentlabel !!!!}
   }

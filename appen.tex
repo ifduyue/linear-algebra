@@ -1,5 +1,5 @@
 \makeatletter
-\newcommand{\appendsection}[1]{\vspace{3ex plus .25ex minus .15 ex}\noindent{\addcontentsline{toc}{subsection}{#1}\large\textbf{#1}}\vspace{.5ex plus .1 ex minus .05 ex}\nopagebreak[4]\par\noindent\trim@spaces}
+\newcommand{\appendsection}[1]{\vspace{2.75ex plus .15ex minus .05ex}\noindent{\addcontentsline{toc}{subsection}{#1}\large\textbf{#1}}\vspace{.5ex plus .05ex minus .05ex}\nopagebreak[4]\par\noindent\trim@spaces}
 \makeatother
 
 \markboth{}{}
@@ -242,17 +242,17 @@ shows there are infinitely many primes without giving a formula naming them.
 % giving an example is better, and an
 % exhaustive list of all instances is ideal.
 
-Finally, after answering
+Finally, after
 ``Are there any?''\ %\spacefactor=1000 
-affirmatively we often ask ``How many?''
+we often ask ``How many?''
 That is, the question of uniqueness often arises in conjunction
 with the question of existence.
 Sometimes the two arguments are simpler if separated so note that just as
-proving something exists does not show it is unique,
-neither does proving something is unique show that it exists.
-(For instance, we can easily show that
-the natural number halfway between three and four
-is unique, even thouge no such number exists.)
+proving something exists does not show that it is unique,
+neither does proving that something is unique show that it exists.
+% (For instance, we can easily show that
+% the natural number halfway between three and four
+% is unique, even thouge no such number exists.)
 
 
 
@@ -263,7 +263,13 @@ is unique, even thouge no such number exists.)
 
 
 
-\appendsection{Techniques of Proof}\index{proof techniques|(}
+\appendsection{Techniques of Proof}
+\index{proof techniques|(}%
+We have many ways to prove mathematical statements.
+Here we will outline two techniques that we use often, and that
+might not come naturally, even to a person with a technical 
+turn of mind.
+ 
 
 \startword{Induction}
 \index{induction, mathematical}
@@ -272,9 +278,7 @@ Many proofs are iterative,
 it then follows for \( 1 \) and from there to \( 2 \) \ldots''.
 These are proofs by 
 \definend{mathematical induction}.\index{mathematical induction}\index{induction}
-This technique is often not obvious to a person who has not seen it before, 
-even to a person with a mathematical turn of mind.
-So we will see two examples.
+We will see two examples.
 
 We will first prove that \( 1+2+3+\dots+n=n(n+1)/2 \). 
 That formula has a natural number variable $n$
@@ -284,11 +288,11 @@ first that $1=1(2)/2$, second that $1+2=2(3)/2$, etc.
 Our induction proofs involve statements with one free natural number 
 variable.
 
-Each proof has two steps. 
+Each such proof has two steps. 
 In the \definend{base step}\index{base step, of induction proof}
 we show that the statement holds for
 some intial number $i\in \N$. 
-Often this step is a routine, and short, verification.
+Often this step is a routine verification.
 The second step, 
 the \definend{inductive step},\index{inductive step, of induction proof}
 is more subtle; we will show that this implication holds:
@@ -296,14 +300,13 @@ is more subtle; we will show that this implication holds:
   \begin{tabular}{l}
     \text{If the statement holds from $n=i$ up to and including~$n=k$} 
      \\
-    \text{then the statement holds also in the $n=k+1$ case}
+    \text{\ then the statement holds also in the $n=k+1$ case}
   \end{tabular}
   \tag{$*$}
 \end{equation*}
 (the first line is the 
 \definend{inductive hypothesis}\index{induction!inductive hypothesis}\index{inductive hypothesis}).
-The Principle of Mathematical Induction
-is that completing both steps proves that the statement is
+Completing both steps proves that the statement is
 true for all natural numbers greater than or equal to $i$.
 
 For the sum of the initial $n$~numbers statement  
@@ -428,6 +431,8 @@ That's a contradiction, so a rational number with a square of
 
 
 \appendsection{Sets, Functions, and Relations}
+The material here forms the backdrop, the vocabulary,
+for all of the development that we do.
 
 \startword{Sets}
 \index{sets}
