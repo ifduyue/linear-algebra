@@ -754,12 +754,12 @@ def normal_curve(upper_limit):
                              0, upper_limit)    
     print "area is", area[0]
 \end{lstlisting}
-Bring in the file with a \Sagecmd{runfile} command
+Bring in the file with a \Sagecmd{load} command
 and then you can use the commands defined there.
 % sageoutput is a problem: http://ask.sagemath.org/question/25360/sagetexs-sage-file-gives-runfile-is-not-defined/
 % Briefly, runfile won't work and load gives a "discouraged" message
 \begin{lstlisting}[style=python]
-sage: runfile("sage_normal.sage")
+sage: load("sage_normal.sage")
 sage: normal_curve(1.0)   
 \end{lstlisting}
 

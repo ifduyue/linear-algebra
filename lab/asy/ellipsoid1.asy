@@ -1,7 +1,7 @@
 // ellipsoid1.asy
 usepackage("../../conc");
 import settings;
-// settings.render=-30;
+// settings.render=-30;  // -30 takes a very long time
 // settings.maxtile=(10,10);
 settings.outformat="pdf";
 settings.prc=false;
@@ -34,7 +34,8 @@ int meshnumber=20;
 
 // Draw the ellipsoid
 surface s=surface(f,(0,0),(2pi,pi),meshnumber,meshnumber,Spline);
-pen ellipsoid_color=rgb(1.0,0.85,0.4);
+// pen ellipsoid_color=rgb(1.0,0.85,0.4);
+pen ellipsoid_color=rgb(0.9725,0.0,0.941);  // f80018
 draw(slide*rot*s,material(ellipsoid_color,specularpen=0.2*ellipsoid_color,diffusepen=0.5*red,emissivepen=.35*red,opacity=0.65));
 pen vec_pen=linecap(0)
              +linewidth(.5pt);
@@ -49,8 +50,9 @@ draw(slide*w,vec_pen+red,Arrow3(DefaultHead2,VECTORHEADSIZE,FillDraw));
 // Draw the unit sphere, with the tangent plane
 transform3 P_transform=rotate(15,(1,1,0));  // applied to v, and tangent plane  
 draw(shift((1,0,0))*P_transform*shift(-a,0,0)*surface(tplane),material(tplane_color,specularpen=0.2*green,ambientpen=.7*green,emissivepen=.25*green,opacity=0.05));
-pen sphere_color=rgb(0.4,0.4,1.0);
-draw(scale(1,1,1)*unitsphere,material(sphere_color,specularpen=0.2*lightblue,ambientpen=.8*lightblue,emissivepen=.25*sphere_color,opacity=0.05));
+// pen sphere_color=rgb(0.4,0.4,1.0); 
+pen sphere_color=rgb(0.8549,0.8941,0.9882);  // DAE4FC
+draw(scale(1,1,1)*unitsphere,material(sphere_color,specularpen=0.05*lightblue,ambientpen=.3*sphere_color,emissivepen=.05*sphere_color,opacity=0.05));
 label("\scriptsize $P$",(shift((1.35,0.0,0.5))*P_transform*(0,0.7,1.2)));
 path3 v=(0,0,0)--P_transform*(1,0,0);
 label(Label("\scriptsize $\vec{v}$",Relative(0.4)),v);

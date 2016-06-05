@@ -1,17 +1,33 @@
-book/slides/README
+slides/README
 
 These are classroom slides for use with Jim Hefferon's _Linear Algebra_.
 
 They are coupled to the text.  For instance, one_i.pdf covers Chapter One,
-Section I.  There are a few supplemental slides that cover a bit extra; these
-have a "_a" extension.  For instance, three_ii_a.pdf focuses on the action of 
-transformations of the plane.
+Section I.  Note that through some deep LaTeX magic the text of the theorems,
+lemmas, etc., are taken from the book's source.  So there is guaranteed to 
+be no inconsistency between, say, a definition in the book and the one in 
+these slides.  On the other hand, all the examples and computations are 
+different in the slides than in the book so students see twice as many of 
+these. 
 
-For the latest version, the LaTeX source, and other goodies, see
-http://joshua.smcvt.edu/linearalgebra.
+A few supplemental slides that cover a bit extra; these have a filename 
+with an "_a" extension.  For instance, three_ii_a.pdf elaborates on the 
+geometric action of transformations of the plane, with some pictures 
+that my students find helpful.
 
-NOTE
+There are also variants that that include all the proofs; for these the
+filenames end in "_allproofs".
 
+Personally, I use the versions that omit some proofs in favor of examples.
+I also use the supplemental slides; I do these after the relevant section,
+except that I do five_ii_a.pdf before five_ii.pdf 
+
+For the latest version of these files, including the LaTeX source and 
+other goodies, see http://joshua.smcvt.edu/linearalgebra.
+
+NOTES
+2016-Jun-05 JH  Revised for new book version.  Upgrade a subspace graphics
+  to asymptote node version 5.0.
 2015-Jan-03 JH  Extensive revision, with many examples added.  Also included
   some optional ones with "_a" extension.
 2012-Jun-18 Jim Hefferon  I have not yet tested these in class.  No doubt

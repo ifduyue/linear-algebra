@@ -6,7 +6,7 @@ settings.render=0;   // for png: -10;  // fewer jaggies but very slow
 // settings.maxtile=(10,10);
 settings.outformat="pdf";
 
-import node;
+import node;  // node 5.0
 
 // parameters to lay out the nodes
 real level_gap=2.65cm;
@@ -22,26 +22,57 @@ real mag=0.75;
 real margin=4pt;
 
 pen edgepen=fontsize(8pt)+linewidth(0.4pt)+lightblue;
-draw_t style1=FillDrawer(white,white);  // node boxes with no edge
-defaultnodestyle=nodestyle(xmargin=2pt, ymargin=1pt, drawfn=style1);
 
-// node rthree=box("$\Re^3$",(0pt,dimthree),margin,style1,mag);
-node rthree=box("$\spanof{\,\set{\colvec{1 \\ 0 \\ 0},\colvec{0 \\ 1 \\ 0},\colvec{0 \\ 0 \\ 1}}\,}$",(0pt,dimthree),margin,style1,mag);
-// node xyplane=box("$xy$-plane",(-3.4*horiz_gap,dimtwo),margin,style1,mag);
-node xyplane=box("$\spanof{\,\set{\colvec{1 \\ 0 \\ 0},\colvec{0 \\ 1 \\ 0}}\,}$",(-3.4*horiz_gap,dimtwo),margin,style1,mag);
-// node pone=box("$\set{\colvec{x \\ y \\ z}\suchthat x+y+z=0}$",(-1.7*horiz_gap,dimtwo),margin,style1,mag);
-node pone=box("$\spanof{\,\set{\colvec{-1 \\ 1 \\ 0},\colvec{-1 \\ 0 \\ 1}}\,}$",(-1.7*horiz_gap,dimtwo),margin,style1,mag);
-// node ptwo=box("$\set{\colvec{x \\ y \\ z}\suchthat x+2z=0}$",(0.1*horiz_gap,dimtwo),margin,style1,mag);
-node ptwo=box("$\spanof{\,\set{\colvec{0 \\ 1 \\ 0},\colvec{-2 \\ 0 \\ 1}}\,}$",(0.1*horiz_gap,dimtwo),margin,style1,mag);
-node pthree=box("\ldots",(1.1*horiz_gap,dimtwo),margin,style1,mag);
-// node yaxis=box("$y$-axis",(-4.3*horiz_gap,dimone),margin,style1,mag);
-node yaxis=box("$\spanof{\,\set{\colvec{0 \\ 1 \\ 0}}\,}$",(-4.3*horiz_gap,dimone),margin,style1,mag);
-node lone=box("$\spanof{\,\set{\colvec{-2 \\ -1 \\ 1}}\,}$",(-2.2*horiz_gap,dimone),margin,style1,mag);
-// node ltwo=box("$\set{\colvec{x \\ y \\ z}\suchthat \text{$y=2x$ and $z=0$}}$",(0.2*horiz_gap,dimone),margin,style1,mag);
-node ltwo=box("$\spanof{\,\set{\colvec{1/2 \\ 1 \\ 0}}\,}$",(0.2*horiz_gap,dimone),margin,style1,mag);
-node lthree=box("\ldots",(1.1*horiz_gap,dimone),margin,style1,mag);
-// node triv=box("trivial subspace $\set{\colvec{0 \\ 0 \\ 0}}$",(0,dimzero),margin,style1,mag);
-node triv=box("$\spanof{\,\set{}\,}$",(0,dimzero),margin,style1,mag);
+
+// define style
+defaultnodestyle=nodestyle(xmargin=4pt, ymargin=2pt, drawfn=FillDrawer(white,white));
+defaultdrawstyle=drawstyle(p=fontsize(8pt)+fontcommand("\ttfamily"), arrow=Arrow(6));
+
+// from node 4.0
+// draw_t style1=FillDrawer(white,white);  // node boxes with no edge
+// defaultnodestyle=nodestyle(xmargin=2pt, ymargin=1pt, drawfn=style1);
+
+// // node rthree=box("$\Re^3$",(0pt,dimthree),margin,style1,mag);
+// node rthree=box("$\spanof{\,\set{\colvec{1 \\ 0 \\ 0},\colvec{0 \\ 1 \\ 0},\colvec{0 \\ 0 \\ 1}}\,}$",(0pt,dimthree),margin,style1,mag);
+// // node xyplane=box("$xy$-plane",(-3.4*horiz_gap,dimtwo),margin,style1,mag);
+// node xyplane=box("$\spanof{\,\set{\colvec{1 \\ 0 \\ 0},\colvec{0 \\ 1 \\ 0}}\,}$",(-3.4*horiz_gap,dimtwo),margin,style1,mag);
+// // node pone=box("$\set{\colvec{x \\ y \\ z}\suchthat x+y+z=0}$",(-1.7*horiz_gap,dimtwo),margin,style1,mag);
+// node pone=box("$\spanof{\,\set{\colvec{-1 \\ 1 \\ 0},\colvec{-1 \\ 0 \\ 1}}\,}$",(-1.7*horiz_gap,dimtwo),margin,style1,mag);
+// // node ptwo=box("$\set{\colvec{x \\ y \\ z}\suchthat x+2z=0}$",(0.1*horiz_gap,dimtwo),margin,style1,mag);
+// node ptwo=box("$\spanof{\,\set{\colvec{0 \\ 1 \\ 0},\colvec{-2 \\ 0 \\ 1}}\,}$",(0.1*horiz_gap,dimtwo),margin,style1,mag);
+// node pthree=box("\ldots",(1.1*horiz_gap,dimtwo),margin,style1,mag);
+// // node yaxis=box("$y$-axis",(-4.3*horiz_gap,dimone),margin,style1,mag);
+// node yaxis=box("$\spanof{\,\set{\colvec{0 \\ 1 \\ 0}}\,}$",(-4.3*horiz_gap,dimone),margin,style1,mag);
+// node lone=box("$\spanof{\,\set{\colvec{-2 \\ -1 \\ 1}}\,}$",(-2.2*horiz_gap,dimone),margin,style1,mag);
+// // node ltwo=box("$\set{\colvec{x \\ y \\ z}\suchthat \text{$y=2x$ and $z=0$}}$",(0.2*horiz_gap,dimone),margin,style1,mag);
+// node ltwo=box("$\spanof{\,\set{\colvec{1/2 \\ 1 \\ 0}}\,}$",(0.2*horiz_gap,dimone),margin,style1,mag);
+// node lthree=box("\ldots",(1.4*horiz_gap,dimone),margin,style1,mag);
+// // node triv=box("trivial subspace $\set{\colvec{0 \\ 0 \\ 0}}$",(0,dimzero),margin,style1,mag);
+// node triv=box("$\spanof{\,\set{}\,}$",(0,dimzero),margin,style1,mag);
+
+
+node rthree=nbox("$\spanof{\,\set{\colvec{1 \\ 0 \\ 0},\colvec{0 \\ 1 \\ 0},\colvec{0 \\ 0 \\ 1}}\,}$");
+node xyplane=nbox("$\spanof{\,\set{\colvec{1 \\ 0 \\ 0},\colvec{0 \\ 1 \\ 0}}\,}$");
+node pone=nbox("$\spanof{\,\set{\colvec{-1 \\ 1 \\ 0},\colvec{-1 \\ 0 \\ 1}}\,}$");
+node ptwo=nbox("$\spanof{\,\set{\colvec{0 \\ 1 \\ 0},\colvec{-2 \\ 0 \\ 1}}\,}$");
+node pthree=nbox("\ldots");
+node yaxis=nbox("$\spanof{\,\set{\colvec{0 \\ 1 \\ 0}}\,}$");
+node lone=nbox("$\spanof{\,\set{\colvec{-2 \\ -1 \\ 1}}\,}$");
+node ltwo=nbox("$\spanof{\,\set{\colvec{1/2 \\ 1 \\ 0}}\,}$");
+node lthree=nbox("\ldots");
+node triv=nbox("$\spanof{\,\set{}\,}$");
+
+// layout
+rthree.pos=(0pt,dimthree);
+xyplane.pos=(-3.4*horiz_gap,dimtwo);
+pone.pos=(-1.7*horiz_gap,dimtwo);
+ptwo.pos=(0.1*horiz_gap,dimtwo);
+pthree.pos=(1.1*horiz_gap,dimtwo);
+yaxis.pos=(-4.3*horiz_gap,dimone);
+lone.pos=(-2.2*horiz_gap,dimone);
+ltwo.pos=(0.2*horiz_gap,dimone);
+lthree.pos=(1.4*horiz_gap,dimone);
+triv.pos=(0,dimzero);
 
 // draw the nodes
 draw(rthree,xyplane,pone,ptwo,pthree,yaxis,lone,ltwo,lthree,triv);

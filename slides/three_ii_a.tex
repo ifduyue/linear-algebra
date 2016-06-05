@@ -79,24 +79,23 @@ nonzero vector element of the domain line.
 \end{frame}
 \begin{frame}
 \ex
-The line~$y=2x$ in the plane is
+Consider the line~$y=2x$ in the plane 
 \begin{equation*}
   \set{r\cdot\colvec{1 \\ 2}\suchthat r\in\Re}
 \end{equation*}
-and suppose that $\map{t}{\Re^2}{\Re^2}$ is this.
+and this transformation $\map{t}{\Re^2}{\Re^2}$ of the plane.
 \begin{equation*}
   \colvec{x \\ y}
   \mapsto
   \colvec{x+3y \\ 2x+4y}
 \end{equation*}
-Then for instance
+The map's effect on any vector in the line is easy to compute.
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{7 \\ 10}
 \end{equation*}
-The 
-scalar multiplication property in the definition of linear map 
-imposes a simple
-uniformity on $t$'s action on lines through the origin:~it 
+The scalar multiplication property in the definition of linear map 
+$t(r\cdot\vec{v})=r\cdot t(\vec{v})$
+imposes a uniformity on $t$'s action:~it 
 has twice the effect on $2\vec{v}$, three times the
 effect on $3\vec{v}$, etc.
 \begin{equation*}
@@ -106,16 +105,17 @@ effect on $3\vec{v}$, etc.
   \qquad
   \colvec{r \\ 2r}\mapsunder{t}\colvec{7r \\ 10r}
 \end{equation*}
-The action of $t$ on any $r\vec{v}$
-is determined by its action
-on the nonzero $\vec{v}$.
+In short: the action of $t$ on any  nonzero $\vec{v}$
+determines its action on any other vector $r\vec{v}$
+in the line $\spanof{\vec{v}}$.
 \end{frame}
 
 
 \begin{frame}
   \frametitle{Pick one, any one}
 Every plane vector is in some line through the origin
-so to understand what $\map{t}{\Re^2}{\Re^2}$ does to plane elements it suffices to 
+so to understand what $\map{t}{\Re^2}{\Re^2}$ does 
+to plane elements it suffices to 
 understand what it does to lines through the origin. 
 \pause
 By the prior slide, to understand what $t$ does to a line through the 
@@ -146,7 +146,7 @@ The map
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{2x \\ y}
 \end{equation*}
-doubles the first coordinates while keeping the second coordinate constant.
+doubles the first coordinate while keeping the second coordinate constant.
 This shows the transformation of the upper half circle.
 \begin{equation*}
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_dialatex1.pdf}}
@@ -166,7 +166,7 @@ The transformation of the upper half circle
 shows why we used the colors.
 In the domain they are, taken counterclockwise, red, orange, yellow,
 green, blue, indigo, violet.
-In the codomain they go the opposite way. 
+In the codomain, again taken counterclockwise, they do the opposite. 
 \begin{equation*}
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_reversex1.pdf}}
   \quad\rightarrow\quad
@@ -181,7 +181,7 @@ Here we dilate both $x$ and~$y$.
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{-x \\ 3y}
 \end{equation*}
-Here also the color order reverses, in addition to the stretching 
+Again the color order reverses, in addition to the stretching 
 along the $y$~axis.
 \begin{equation*}
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_diagmap1.pdf}}
@@ -241,8 +241,9 @@ the red input vector, in addition to dilation.
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_otherskew2.pdf}}
 \end{equation*}
 Observe that the rotation is not even.  
-A red vector is rotated quite a bit but a green vector, along the
-$y$~axis, is not rotated much at all. 
+A red vector is rotated quite a bit but a green vector, near the
+$y$~axis, is not rotated much.
+And right on the $y$-axis the vector is not rotated at all. 
 \end{frame}
 
 
@@ -282,7 +283,7 @@ The map may project the input vector to a line that is not an axis.
 \begin{equation*} 
   \colvec{x \\ y} \mapsto \colvec{x \\ 2x}
 \end{equation*}
-Still, the two-dimensional input is sent to an output that is one-dimensional.
+The two-dimensional input is sent to an output that is one-dimensional.
 \begin{equation*}
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_otherprojection1.pdf}}
   \quad\rightarrow\quad

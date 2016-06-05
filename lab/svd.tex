@@ -58,7 +58,7 @@ and describe where the transformation maps those elements.
 A natural set that contains one nonzero element from each line through the
 origin is the upper half unit circle.
 \begin{sageoutput}
-runfile("plot_action.sage")
+load("plot_action.sage")
 p = plot_circle_action(1,0,0,1) 
 p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
 p.save("graphics/svd000.pdf")
@@ -81,7 +81,7 @@ graph came from  using a routine that draws the effect of a transformation
 on the unit circle
 and then specifying the identity transformation.
 % \begin{sageoutput}
-% runfile("plot_action.sage")
+% load("plot_action.sage")
 % p = plot_circle_action(1,0,0,1)  # identity matrix
 % p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
 % p.save("graphics/svd000.pdf")
@@ -108,7 +108,7 @@ that doubles the $x$~component of input vectors.
 It shows before and after, the upper half circle domain
 and the output codomain.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
 q.set_axes_range(-2, 2, -1, 2) 
 q.save("graphics/svd001a.pdf")
@@ -139,7 +139,7 @@ the effect of the transformation
 that triples the $y$~component and multiplies the 
 $x$~component by $-1$. 
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
 q.set_axes_range(-2, 2, -4, 4) 
 q.save("graphics/svd002a.pdf")
@@ -177,7 +177,7 @@ The next transformation is a skew.
 The output's first component is affected
 by the input vector's distance from the $y$-axis.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
 q.set_axes_range(-2, 3, -1, 2) 
 q.save("graphics/svd003a.pdf")
@@ -205,7 +205,7 @@ In this case the output's
 second component is affected by the input's distance from 
 the $x$-axis.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
 q.set_axes_range(-2, 2, -2, 2) 
 q.save("graphics/svd004a.pdf")
@@ -231,7 +231,7 @@ p.save("graphics/svd004b.pdf")
 And here is a generic transformation.
 It changes orientation also.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
 q.set_axes_range(-2, 4, -3, 6) 
 q.save("graphics/svd005a.pdf")
@@ -314,7 +314,7 @@ So consider again the generic matrix.
 Here is its action again, this time shown
 on a full circle.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_circle_action(1,0,0,1,full_circle=True) 
 q.set_axes_range(-2, 2, -5, 6) 
 q.save("graphics/svd101a.pdf")
@@ -355,7 +355,7 @@ The singular values are the diagonal entries of~$\Sigma$.
 \Sage{} will plot the effect of the transformation
 on the basis vectors for the domain so we can compare those with the
 basis vectors for the codomain.
-\begin{sageoutput}[d,0,2;d,6,10]
+\begin{sageoutput}[d,0,2;d,6,9]
 M = matrix(RDF, [[1, 2], [3, 4]])
 U,Sigma,V = M.SVD()
 beta_1 = vector(RDF, [U[0][0], U[1][0]])
@@ -365,15 +365,16 @@ delta_2 = vector(RDF, [V[0][1], V[1][1]])
 plot.options['axes_pad'] = 0.05
 plot.options['fontsize'] = 7
 plot.options['aspect_ratio'] = 1
+s = 2  # uniform arrowsize
 C = circle((0,0), 1)
-P = C + plot(beta_1) + plot(beta_2)
+P = C + plot(beta_1,arrowsize=s) + plot(beta_2,arrowsize=s)
 P.save("graphics/svd102a.pdf",figsize=2)
 image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
-Q = C + plot(beta_1*M, width=3, color=image_color) 
-Q = Q + plot(delta_1,width=1.4, color='blue') 
-Q = Q + plot(beta_2*M,width=3, color=image_color) 
-Q = Q + plot(delta_2,width=1.4, color='blue')
-Q.save("graphics/svd102b.pdf")
+Q = C + plot(beta_1*M, width=3,color=image_color,arrowsize=s) 
+Q = Q + plot(delta_1,width=1.4,color='blue',arrowsize=s) 
+Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s) 
+Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
+Q.save("graphics/svd102b.pdf",figsize=4.467)
 \end{sageoutput}
 \begin{sagesilent}
 M = matrix(RDF, [[1, 2], [3, 4]])
@@ -388,20 +389,21 @@ plot.options['aspect_ratio'] = 1
 arrowsize = 2
 C = circle((0,0), 1)
 P = C + plot(beta_1,arrowsize=arrowsize) + plot(beta_2,arrowsize=arrowsize)
-P.save("graphics/svd102a.pdf", figsize=2, axes_pad=0.05)
+P.save("graphics/svd102a.pdf", figsize=1, axes_pad=0.05)
 image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
 Q = C + plot(beta_1*M, width=3, arrowsize=arrowsize, color=image_color) 
 Q = Q + plot(delta_1,width=1.4, arrowsize=arrowsize,color='blue') 
 Q = Q + plot(beta_2*M,width=3, arrowsize=arrowsize,color=image_color) 
 Q = Q + plot(delta_2,width=1.4, arrowsize=arrowsize,color='blue')
-Q.save("graphics/svd102b.pdf", figsize=4.467, axes_pad=0.05)
+Q.save("graphics/svd102b.pdf", figsize=2.2335, axes_pad=0.05)
 \end{sagesilent}
+% was: Q.save("graphics/svd102b.pdf", figsize=4.467, axes_pad=0.05)
 In the picture below the domain's 
 blue $\vec{\beta}$'s on the left map to the codomain's light red 
 $t(\vec{\beta})$'s on the right.
 Also on the right, in blue, are the $\vec{\delta}$'s.
-The red $t(\vec{\beta}_1)$ does look to be about $5.5$ times $\vec{\delta}_1$,
-and $t(\vec{\beta}_2)$ does look something like $0.4$ times~$\vec{\delta}_2$. 
+The red $t(\vec{\beta}_1)$ does look about $5.5$ times $\vec{\delta}_1$,
+and $t(\vec{\beta}_2)$ looks about $0.4$ times~$\vec{\delta}_2$. 
 \begin{equation*}
   % \setlength{\fboxsep}{0in} % used to set box heights by eye; surrounded each picture env with a fbox
   \setlength{\unitlength}{1in}
@@ -779,7 +781,7 @@ This image is $\nbyn{512}$ so that will sum the terms associated
 with the first $51$ singular 
 values.
 \begin{lstlisting}
-sage: runfile("img_squeeze.sage")                                 
+sage: load("img_squeeze.sage")                                 
 sage: img_squeeze("Lenna.png", "Lenna_squeezed.png", 0.10)
 \end{lstlisting}
 Below is the squeezed image.

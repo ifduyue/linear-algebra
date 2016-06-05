@@ -74,24 +74,23 @@ nonzero vector element of the domain line.
 \end{frame}
 \begin{frame}
 \ex
-The line~$y=2x$ in the plane is
+Consider the line~$y=2x$ in the plane 
 \begin{equation*}
   \set{r\cdot\colvec{1 \\ 2}\suchthat r\in\Re}
 \end{equation*}
-and suppose that $\map{t}{\Re^2}{\Re^2}$ is this.
+and this transformation $\map{t}{\Re^2}{\Re^2}$ of the plane.
 \begin{equation*}
   \colvec{x \\ y}
   \mapsto
   \colvec{x+3y \\ 2x+4y}
 \end{equation*}
-Then for instance
+The map's effect on any vector in the line is easy to compute.
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{7 \\ 10}
 \end{equation*}
-The 
-scalar multiplication property in the definition of linear map 
-imposes a simple
-uniformity on $t$'s action on lines through the origin:~it 
+The scalar multiplication property in the definition of linear map 
+$t(r\cdot\vec{v})=r\cdot t(\vec{v})$
+imposes a uniformity on $t$'s action:~it 
 has twice the effect on $2\vec{v}$, three times the
 effect on $3\vec{v}$, etc.
 \begin{equation*}
@@ -101,26 +100,27 @@ effect on $3\vec{v}$, etc.
   \qquad
   \colvec{r \\ 2r}\mapsunder{t}\colvec{7r \\ 10r}
 \end{equation*}
-The action of $t$ on any $r\vec{v}$
-is determined by its action
-on the nonzero $\vec{v}$.
+In short: the action of $t$ on any  nonzero $\vec{v}$
+determines its action on any other vector $r\vec{v}$
+in the line $\spanof{\vec{v}}$.
 \end{frame}
 
 
 \begin{frame}
   \frametitle{Pick one, any one}
 Every plane vector is in some line through the origin
-so to understand what $\map{t}{\Re^2}{\Re^2}$ does to plane elements it suffices to 
+so to understand what $\map{t}{\Re^2}{\Re^2}$ does to 
+plane elements it suffices to 
 understand what it does to lines through the origin. 
 By the prior slide, to understand what $t$ does to a line through the 
 origin it suffices to understand what it does to a single nonzero
 vector in that line.
 
+\pause
 So one way to understand a transformation's action is to take
 a set containing one nonzero vector from each line through the origin,
 and describe where the transformation maps the elements of that set.
 
-\pause
 A natural set with one nonzero element from each line through the
 origin is the upper half unit circle (we will explain the colors below).
 \begin{equation*}
@@ -129,7 +129,7 @@ origin is the upper half unit circle (we will explain the colors below).
          \suchthat 
          0\leq t<\pi}
   \qquad
-  \vcenteredhbox{\includegraphics[scale=.75]{graphics/five_ii_a_unithalfcircle.pdf}}  
+  \vcenteredhbox{\includegraphics[scale=0.75]{graphics/five_ii_a_unithalfcircle.pdf}}  
 \end{equation*}  
 \end{frame}
 
@@ -144,19 +144,24 @@ This plane transformation.
 \begin{equation*} 
   \colvec{x \\ y} \mapsto \colvec{2x \\ 2x+2y}
 \end{equation*}
-is a skew
+is a skew.
 \begin{equation*}
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/five_ii_a_skew1.pdf}}
   \quad\rightarrow\quad
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/five_ii_a_skew2.pdf}}
 \end{equation*}
-As we move through the unit half circle the vectors have varying dilations,
-and are turned through varying angles.  
+\pause
+As we move through the unit half circle on the left, the 
+transformation has varying effects on the vectors.
+The dilation vary,
+that is, different vectors get their length multiplied by different factors, 
+and they are turned through varying angles.
+The next slide gives examples.  
 \end{frame}
 \begin{frame}
-The red vector
-is dilated by a factor of $2\sqrt{2}$ and rotated counterclockwise through
-an angle of $\pi/4\approx0.78$~radians.
+The prior slide's vector from the left shown in red
+is dilated by a factor of $2\sqrt{2}$ and rotated counterclockwise 
+by $\pi/4\approx0.78$~radians.
 \begin{equation*}
   \colvec{1 \\ 0}\mapsto \colvec{2 \\ 2}
   \qquad
@@ -173,10 +178,10 @@ by about $0.48$~radians.
 \end{frame}
 
 \begin{frame}
-Here the horizontal axis is the angle of 
-a vectors in the upper half unit circle,
-and the vertical axis is
-the angle that vector is rotated through.  
+On the graph below the horizontal axis is the angle of 
+a vectors from the upper half unit circle,
+while the vertical axis is
+the angle through which that vector is rotated.  
 \begin{equation*}
   \colvec{x \\ y}\mapsto \colvec{2x \\ 2x+2y}
   \qquad
@@ -188,8 +193,8 @@ by some green vector.
 
 
 \begin{frame}{Definition}
-A vector that is rotated through an angle of $0$~radians, or of $\pi$~radians,
-is an \alert{eigenvector}.
+A vector that is rotated through an angle of $0$~radians or of $\pi$~radians,
+while being dialated by a nonzero factor, is an \alert{eigenvector}.
 The factor by which it is dilated is the \alert{eigenvalue}.    
 \end{frame}
 
@@ -199,9 +204,16 @@ The factor by which it is dilated is the \alert{eigenvalue}.
 % diagonal
 \begin{frame}
 \ex
-This diagonal plane transformation
+The plane transformation
 \begin{equation*} 
   \colvec{x \\ y} \mapsto \colvec{-x \\ 2y}
+\end{equation*}
+represented with respect to the standard bases by a diagonal matrix
+\begin{equation*}
+  \begin{mat}
+    -1  &0  \\
+     0  &2
+  \end{mat}
 \end{equation*}
 has this simple action on the upper half unit circle.
 \begin{equation*}
@@ -211,14 +223,15 @@ has this simple action on the upper half unit circle.
 \end{equation*}
 \end{frame}
 \begin{frame}
-Here is the
-plot of the vectors in the upper half unit circle
-against the angle they are rotated through.  
+This
+plots the angle of each vector in the upper half unit circle
+against the angle through which it is rotated.  
 \begin{equation*}
   \colvec{x \\ y}\mapsto \colvec{-x \\ 2y}
   \qquad
   \vcenteredhbox{\includegraphics{graphics/five_ii_a_diagonal3.pdf}}
 \end{equation*}
+One vector gets zero rotation, the vector with $x=0$.
 \end{frame}
 
 
@@ -239,14 +252,15 @@ has this action on the upper half unit circle.
 \end{equation*}
 \end{frame}
 \begin{frame}
-Again we
-plot the vectors in the upper half unit circle
-against the angle they are rotated through.  
+Plotting the angle of each vector in the upper half unit circle
+against the angle through which it is rotated  
 \begin{equation*}
   \colvec{x \\ y}\mapsto \colvec{x+2y \\ 3x+4y}
   \qquad
   \vcenteredhbox{\includegraphics{graphics/five_ii_a_generic3.pdf}}
 \end{equation*}
+gives that one vector gets a rotation of $0$~radians, while another
+gets a rotation of $\pi$~radians.
 \end{frame}
 
 

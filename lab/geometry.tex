@@ -110,7 +110,7 @@ $\map{t}{\Re^2}{\Re^2}$
 by applying them to
 the unit square.
 \begin{sageoutput}
-runfile("plot_action.sage")
+load("plot_action.sage")
 p = plot_square_action(1,0,0,1)  # identity matrix
 p.set_axes_range(-0.25, 1.5, -0.25, 1.5) 
 p.save("graphics/geo100.pdf")
@@ -159,7 +159,7 @@ so it plots the unit square unchanged.
 That routine gives
 these pictures of the effect of the generic matrix.
 \begin{sageoutput}
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-6, 6, -1, 6) 
 q.save("graphics/geo101a.pdf")
@@ -195,7 +195,7 @@ This transformation doubles the $x$~components of all
 vectors.\footnote{In the rest of this section we'll omit the fiddly
 lines that load the script file, set the axis ranges, etc.} 
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 4) 
 q.save("graphics/geo102a.pdf")
@@ -231,7 +231,7 @@ For instance, tripling the $x$~coordinate gives you a similar shape with
 three times the area of the starting one.
 What about if you take $-1$~times the $x$-coordinate?
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 4) 
 q.save("graphics/geo103a.pdf")
@@ -275,7 +275,7 @@ The next transformation combines action in two axes,
 tripling the $y$~components and multiplying 
 $x$~components by $-1$. 
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 4) 
 q.save("graphics/geo104a.pdf")
@@ -302,7 +302,7 @@ the orientation, so the new shape has an oriented area of~$-3$.
 
 What if we change the orientation twice?
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -4, 2) 
 q.save("graphics/geo105a.pdf")
@@ -330,7 +330,7 @@ Thus the new shape has an oriented area of~$6$.
 
 We next show the effect of putting in off-diagonal entries.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 4) 
 q.save("graphics/geo106a.pdf")
@@ -372,7 +372,7 @@ Putting a nonzero value in the other off-diagonal entry of the matrix,
 the upper right, has the same effect except that it skews parallel
 to the $y$-axis.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -3, 2) 
 q.save("graphics/geo107a.pdf")
@@ -424,7 +424,7 @@ determinant of the matrix.
 
 For instance, this matrix is singular, so it has determinant~$0$.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 6) 
 q.save("graphics/geo200a.pdf")
@@ -731,7 +731,7 @@ the geometric effect of the generic transformation.
   \end{mat}
 \end{equation*}
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 6) 
 q.save("graphics/geo300a.pdf")
@@ -776,7 +776,7 @@ and finally~$LDU$.
 
 The first matrix is a skew parallel to the $x$-axis.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 4) 
 q.save("graphics/geo301a.pdf")
@@ -801,7 +801,7 @@ p.save("graphics/geo301b.pdf")
 \noindent
 The second matrix rescales and changes the orientation.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -3, 2) 
 q.save("graphics/geo302a.pdf")
@@ -826,7 +826,7 @@ p.save("graphics/geo302b.pdf")
 \noindent
 Finally, the third matrix is a skew parallel to the $y$-axis.
 \begin{sageoutput}[d,0,4;d,5,7]
-runfile("plot_action.sage")
+load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-4, 4, -1, 4) 
 q.save("graphics/geo303a.pdf")
@@ -882,7 +882,7 @@ D = matrix(QQ, [[1, 0], [0, -2]])
 U = matrix(QQ, [[1, 2], [0, 1]])
 LD = L*D
 LDU = LD*U  
-runfile("plot_action.sage")
+load("plot_action.sage")
 p = plot_square_action(1,0,0,1) 
 p.set_axes_range(-4, 4, -2, 6) 
 p.save("graphics/geo304a.pdf")
