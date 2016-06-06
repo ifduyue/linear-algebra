@@ -19,7 +19,7 @@ There are also variants that that include all the proofs; for these the
 filenames end in "_allproofs".
 
 Personally, I use the versions that omit some proofs in favor of examples.
-I also use the supplemental slides; I do these after the relevant section,
+I also use the supplemental slides.  I do these after the relevant section,
 except that I do five_ii_a.pdf before five_ii.pdf 
 
 For the latest version of these files, including the LaTeX source and 

@@ -32,6 +32,26 @@
     
 \end{ans}
 \begin{ans}{One.I.1.18}
+      If a system has a contradictory equation then it has no solution.
+      Otherwise, if there are any variables that are not leading a row
+      then it has infinitely many solution.
+      In the final case, where there is no contradictory equation and
+      every variable leads some row, it has a unique solution.
+      \begin{exparts}
+        \partsitem Unique solution
+        \partsitem Infinitely many solutions
+        \partsitem Infinitely many solutions
+        \partsitem No solution
+        \partsitem Infinitely many solutions
+        \partsitem Infinitely many solutions
+        \partsitem No solution
+        \partsitem Infinitely many solutions
+        \partsitem No solution
+        \partsitem Unique solution
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{One.I.1.19}
       \begin{exparts}
        \partsitem Gaussian reduction
         \begin{equation*}
@@ -116,7 +136,127 @@
       \end{exparts}
     
 \end{ans}
-\begin{ans}{One.I.1.19}
+\begin{ans}{One.I.1.20}
+      \begin{exparts}
+       \partsitem
+         % sage: M = matrix(RDF, [[1,1,1], [1,-1,0], [0,1,2]])
+         % sage: v = vector(RDF, [5,0,7])
+         % sage: M_prime = M.augment(v)
+         % sage: gauss_method(M_prime)
+         % [ 1.0  1.0  1.0  5.0]
+         % [ 1.0 -1.0  0.0  0.0]
+         % [ 0.0  1.0  2.0  7.0]
+         %  take -1.0 times row 1 plus row 2
+         % [ 1.0  1.0  1.0  5.0]
+         % [ 0.0 -2.0 -1.0 -5.0]
+         % [ 0.0  1.0  2.0  7.0]
+         %  take 0.5 times row 2 plus row 3
+         % [ 1.0  1.0  1.0  5.0]
+         % [ 0.0 -2.0 -1.0 -5.0]
+         % [ 0.0  0.0  1.5  4.5]
+         Gauss's Method
+         \begin{align*}
+          \begin{linsys}{3}
+             x  &+  &y   &+  &z   &=  &5  \\
+             x  &-  &y   &   &    &=  &0  \\
+                &   &y   &+  &2z  &=  &7
+          \end{linsys}
+          &\grstep{-\rho_1+\rho_2}
+          \begin{linsys}{3}
+             x  &+  &y   &+  &z   &=  &5  \\
+             0  &   &-2y  &-   &1    &=  &-5  \\
+                &   &y   &+  &2z  &=  &7
+          \end{linsys}                                     \\
+          &\grstep{(3/2)\rho_2+\rho_3}
+          \begin{linsys}{3}
+             x  &+  &y   &+  &z   &=  &5  \\
+             0  &   &-2y  &-   &1    &=  &-5  \\
+                &   &    &+  &(3/2)z  &=  &7/2
+          \end{linsys}
+         \end{align*}
+         followed by back-substitution gives $x=1$, $y=1$, and $z=3$.
+       \partsitem
+         % sage: M = matrix(QQ, [[3,0,1], [1,-1,3], [1,2,-5]])
+         % sage: v = vector(RDF, [7,4,-1])
+         % sage: v = vector(QQ, [7,4,-1])
+         % sage: M_prime = M.augment(v)
+         % sage: gauss_method(M_prime)
+         % [ 3  0  1  7]
+         % [ 1 -1  3  4]
+         % [ 1  2 -5 -1]
+         %  take -1/3 times row 1 plus row 2
+         %  take -1/3 times row 1 plus row 3
+         % [    3     0     1     7]
+         % [    0    -1   8/3   5/3]
+         % [    0     2 -16/3 -10/3]
+         %  take 2 times row 2 plus row 3
+         % [  3   0   1   7]
+         % [  0  -1 8/3 5/3]
+         % [  0   0   0   0]
+         Here Gauss's Method
+         \begin{align*}
+           \begin{linsys}{3}
+               3x  &  &    &+  &z   &=  &7  \\
+                x  &-  &y   &+   &3z    &=  &4  \\
+                x   &+  &2y   &-  &5z  &=  &-1
+           \end{linsys}
+           &\grstep[-(1/3)\rho_1+\rho_3]{-(1/3)\rho_1+\rho_2}
+           \begin{linsys}{3}
+               3x  &  &    &+  &z        &=  &7  \\
+                   &  &-y   &+ &(8/3)z   &=  &5/3  \\
+                   &  &2y   &- &(16/3)z  &=  &-(10/3)
+           \end{linsys}                                      \\
+           &\grstep{2\rho_2+\rho_3}
+           \begin{linsys}{3}
+               3x  &  &    &+  &z        &=  &7  \\
+                   &  &-y   &+ &(8/3)z   &=  &5/3  \\
+                   &  &     &  &0        &=  &0
+           \end{linsys}
+       \end{align*}
+       finds that the variable~$z$ does not lead a row.
+       There are infinitely many solutions.
+       \partsitem
+         % sage: M = matrix(QQ, [[1,3,1], [-1,-1,0], [-1,1,2]])
+         % sage: v = vector(QQ, [0,2,8])
+         % sage: M_prime = M.augment(v)
+         % sage: gauss_method(M_prime)
+         % [ 1  3  1  0]
+         % [-1 -1  0  2]
+         % [-1  1  2  8]
+         %  take 1 times row 1 plus row 2
+         %  take 1 times row 1 plus row 3
+         % [1 3 1 0]
+         % [0 2 1 2]
+         % [0 4 3 8]
+         %  take -2 times row 2 plus row 3
+         % [1 3 1 0]
+         % [0 2 1 2]
+         % [0 0 1 4]
+         The steps
+         \begin{equation*}
+           \begin{linsys}{3}
+              x   &+  &3y   &+  &z   &=  &0  \\
+              -x  &-  &y   &   &    &=  &2  \\
+              -x   &+  &y   &+  &2z  &=  &8
+           \end{linsys}
+           \grstep[\rho_1+\rho_3]{\rho_1+\rho_2}
+           \begin{linsys}{3}
+              x   &+  &3y   &+  &z   &=  &0  \\
+                  &   &2y   &+  &z   &=  &2  \\
+                  &   &4y   &+  &3z  &=  &8
+           \end{linsys}
+           \grstep{-2\rho_2+\rho_3}
+           \begin{linsys}{3}
+              x   &+  &3y   &+  &z   &=  &0  \\
+                  &   &2y   &+  &z   &=  &2  \\
+                  &   &     &   &z   &=  &4
+           \end{linsys}
+         \end{equation*}
+         give $(x,y,z)=(-1,-1,4)$.
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{One.I.1.21}
       \begin{exparts}
         \partsitem From $x=1-3y$ we get that $2(1-3y)+y=-3$, giving $y=1$.
         \partsitem From $x=1-3y$ we get that $2(1-3y)+2y=0$, leading to
@@ -126,7 +266,7 @@
       substituting back into all the equations.
     
 \end{ans}
-\begin{ans}{One.I.1.20}
+\begin{ans}{One.I.1.22}
       Do the reduction
       \begin{equation*}
         \grstep{-3\rho_1+\rho_2}
@@ -140,7 +280,7 @@
       It never has a unique solution.
     
 \end{ans}
-\begin{ans}{One.I.1.21}
+\begin{ans}{One.I.1.23}
       Let \( x=\sin\alpha \), \( y=\cos\beta \), and \( z=\tan\gamma \):
       \begin{equation*}
         \begin{linsys}{3}
@@ -159,7 +299,7 @@
       Note that no \( \alpha \) satisfies that requirement.
       
 \end{ans}
-\begin{ans}{One.I.1.22}
+\begin{ans}{One.I.1.24}
       \begin{exparts}
        \partsitem Gauss's Method
          \begin{equation*}
@@ -200,7 +340,7 @@
       \end{exparts}
       
 \end{ans}
-\begin{ans}{One.I.1.23}
+\begin{ans}{One.I.1.25}
       This system with more unknowns than equations
       \begin{equation*}
         \begin{linsys}{3}
@@ -211,7 +351,7 @@
       has no solution.
       
 \end{ans}
-\begin{ans}{One.I.1.24}
+\begin{ans}{One.I.1.26}
       Yes.
       For example, the fact that we can have the same reaction
       in two different flasks shows that twice any solution is another,
@@ -219,7 +359,7 @@
       at least one nonzero solution).
     
 \end{ans}
-\begin{ans}{One.I.1.25}
+\begin{ans}{One.I.1.27}
       Because \( f(1)=2 \), \( f(-1)=6 \), and \( f(2)=3 \) we get
       a linear system.
       \begin{equation*}
@@ -247,7 +387,7 @@
       shows that the solution is \( f(x)=1x^2-2x+3 \).
       
 \end{ans}
-\begin{ans}{One.I.1.26}
+\begin{ans}{One.I.1.28}
      Here $S_0=\set{(1,1)}$
      \begin{equation*}
          \begin{linsys}{2}
@@ -276,7 +416,7 @@
      \end{equation*}
    
 \end{ans}
-\begin{ans}{One.I.1.27}
+\begin{ans}{One.I.1.29}
        \begin{exparts}
         \partsitem Yes, by inspection the given equation results from
           \( -\rho_1+\rho_2 \).
@@ -301,7 +441,7 @@
       \end{exparts}
      
 \end{ans}
-\begin{ans}{One.I.1.28}
+\begin{ans}{One.I.1.30}
       If \( a\neq 0 \) then the solution set of the first equation is
       this.
       \begin{equation*}
@@ -323,7 +463,7 @@
       \( 0x+3y=6 \) and \( 0x+6y=12 \).
      
 \end{ans}
-\begin{ans}{One.I.1.29}
+\begin{ans}{One.I.1.31}
       We take three cases: that $a\neq 0$, that $a=0$ and
       $c\neq 0$, and that both $a=0$ and $c=0$.
 
@@ -379,7 +519,7 @@
       Note that \( a=0 \) and \( c=0 \) gives that \( ad-bc=0 \).
     
 \end{ans}
-\begin{ans}{One.I.1.30}
+\begin{ans}{One.I.1.32}
       Recall that if a pair of lines share two distinct points then
       they are the same line.
       That's because two points determine a line, so these
@@ -391,7 +531,7 @@
       share at least two points (which makes them the same line).
     
 \end{ans}
-\begin{ans}{One.I.1.31}
+\begin{ans}{One.I.1.33}
      For the reduction operation of multiplying $\rho_i$ by a nonzero
      real number $k$, we have that \( (s_1,\ldots,s_n) \) satisfies
      this system
@@ -502,7 +642,7 @@
      as required.
    
 \end{ans}
-\begin{ans}{One.I.1.32}
+\begin{ans}{One.I.1.34}
       Yes, this one-equation system:
       \begin{equation*}
          0x+0y=0
@@ -510,7 +650,7 @@
       is satisfied by every \( (x,y)\in\Re^2 \).
     
 \end{ans}
-\begin{ans}{One.I.1.33}
+\begin{ans}{One.I.1.35}
       Yes.
       This sequence of operations swaps rows \( i \) and \( j \)
       \begin{equation*}
@@ -522,7 +662,7 @@
       so the row-swap operation is redundant in the presence of the other two.
      
 \end{ans}
-\begin{ans}{One.I.1.34}
+\begin{ans}{One.I.1.36}
       Reverse a row swap $\rho_i\leftrightarrow\rho_j$ by swapping
       back $\rho_j\leftrightarrow\rho_i$.
       Reverse the $k\rho_i$ step of multiplying  \( k\neq 0  \)
@@ -557,7 +697,7 @@
        and so the result wouldn't hold.)
     
 \end{ans}
-\begin{ans}{One.I.1.35}
+\begin{ans}{One.I.1.37}
       Let \( p \), \( n \), and \( d \) be the number of
       pennies, nickels, and dimes.
       For variables that are real numbers, this system
@@ -580,7 +720,7 @@
       is the only solution using natural numbers.
     
 \end{ans}
-\begin{ans}{One.I.1.36}
+\begin{ans}{One.I.1.38}
       Solving the system
       \begin{equation*}
         \begin{linsys}{2}
@@ -594,7 +734,7 @@
       Thus the second item, 21, is the correct answer.
      
 \end{ans}
-\begin{ans}{One.I.1.37}
+\begin{ans}{One.I.1.39}
         \answerasgiven
         A comparison of the units and hundreds columns of this
         addition shows that there must be a carry from the tens column.
@@ -614,7 +754,7 @@
         was \( 47474+5272=52746 \).
       
 \end{ans}
-\begin{ans}{One.I.1.38}
+\begin{ans}{One.I.1.40}
        \answerasgiven{}
        \textit{Some additional material was added from \cite{joriki}.}
        Eight commissioners voted for $B$.
@@ -657,7 +797,7 @@
        common when individual choices are pooled.
      
 \end{ans}
-\begin{ans}{One.I.1.39}
+\begin{ans}{One.I.1.41}
        \answerasgiven
        \textit{We have not used ``dependent'' yet;
        it means here that Gauss's
@@ -21898,7 +22038,7 @@ sage: p.save('bridges.pdf')
 \begin{ans}{9}
     For any $\vec{w}\in W$, the vectors $\vec{v}-\vec{p}$ and
     $\vec{p}-\vec{w}$ are orthogonal.
-    So the Pythagorean Theorem applies to the triangle with those vectors as
+    So the Triangle Inequality applies to the triangle with those vectors as
     sides, and with $\vec{v}-\vec{w}$ as hypoteneuse.
     Therefore $\vec{v}-\vec{w}$ is at least as long as $\vec{v}-\vec{p}$.
   
