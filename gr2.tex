@@ -530,6 +530,42 @@ namely by any particular solution.
           has no solution.
       \end{exparts}  
     \end{answer}
+  \item Give a vector description of each.
+    \begin{exparts}
+      \item the plane subset of~$\Re^3$ with equation $x-2y+z=4$
+      \item the plane in~$\Re^3$ with equation $2x+y+4z=-1$
+      \item the hyperplane subset of~$\Re^4$ with equation $x+y+z+w=10$
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \item Think of $x-2y+z=4$ as a one-equation linear system and
+          parametrize with the variables $y$ and~$z$ to get
+          $x=4+2y-z$.
+          That gives this vector description of the plane.
+          \begin{equation*}
+            \set{\colvec{x \\ y \\ z}=\colvec{4 \\ 0 \\ 0}
+                                       +\colvec{2 \\ 1 \\ 0}\cdot y
+                                       +\colvec{-1 \\ 0 \\ 1}\cdot z
+                             \suchthat y,z\in\Re}
+          \end{equation*}
+        \item Parametrizing gives $x=-(1/2)-(1/2)y-2z$,
+          so this is the vector description.
+          \begin{equation*}
+            \colvec{x \\ y \\ z}=\colvec{-1/2 \\ 0 \\ 0}
+                                       +\colvec{-1/2 \\ 1 \\ 0}\cdot y
+                                       +\colvec{-2 \\ 0 \\ 1}\cdot z
+          \end{equation*}
+        \item Here 
+          $x=10-y-z-w$ and so we get a vector description with three
+          parameters.
+          \begin{equation*}
+            \colvec{x \\ y \\ z \\ w}=\colvec{10 \\ 0 \\ 0 \\ 0}
+                                       +\colvec{-1 \\ 1 \\ 0 \\ 0}\cdot y
+                                       +\colvec{-1 \\ 0 \\ 1 \\ 0}\cdot z
+                                       +\colvec{-1 \\ 0 \\ 0 \\ 1}\cdot w
+          \end{equation*}
+      \end{exparts}
+    \end{answer}
   \item 
     Describe the plane that contains this point and line.
     \begin{equation*}
@@ -616,11 +652,11 @@ namely by any particular solution.
     Intersect each pair, if possible.
     \begin{exparts}
       \partsitem \( \set{\colvec[r]{1 \\ 1 \\ 2}+t\colvec[r]{0 \\ 1 \\ 1}
-                     \suchthat t\in\Re} \),
+                     \suchthat t\in\Re} \),\,
             \( \set{\colvec[r]{1 \\ 3 \\ -2}+s\colvec[r]{0 \\ 1 \\ 2}
                      \suchthat s\in\Re} \)
       \partsitem \( \set{\colvec[r]{2 \\ 0 \\ 1}+t\colvec[r]{1 \\ 1 \\ -1}
-                     \suchthat t\in\Re} \),
+                     \suchthat t\in\Re} \),\,
             \( \set{s\colvec[r]{0 \\ 1 \\ 2}
                      +w\colvec[r]{0 \\ 4 \\ 1}
                      \suchthat s,w\in\Re} \)
@@ -770,7 +806,7 @@ namely by any particular solution.
         We shall later define it to be a set with one element\Dash an
         ``origin''.  
       \end{answer}
-  \puzzle \recommended \item   
+  \puzzle \item   
     \cite{MathMag57p173}
     A person traveling eastward at a rate of
     \( 3 \) miles per hour finds that the wind appears to blow directly
@@ -1100,7 +1136,7 @@ between two nonzero vectors \( \vec{u},\vec{v}\in\Re^n \) is
   \arccos(\,\frac{\vec{u}\dotprod\vec{v}}{
                   \absval{\vec{u}\,}\,\absval{\vec{v}\,} }\,)
 \end{equation*}
-(if either is the zero vector, we take the angle to be right).
+(if either is the zero vector then we take the angle to be a right angle).
 %</df:Angle>
 \end{definition}
 
@@ -1241,14 +1277,14 @@ Not every vector in each is orthogonal to all vectors in the other.
   \recommended \item
     \begin{exparts}
       \partsitem  Find the angle between the diagonal of the unit square in
-        \( \Re^2 \) and one of the axes.
+        \( \Re^2 \) and any one of the axes.
       \partsitem  Find the angle between the diagonal of the unit cube in
         \( \Re^3 \) and one of the axes.
       \partsitem  Find the angle between the diagonal of the unit cube in
         \( \Re^n \) and one of the axes.
       \partsitem  What is the limit, as \( n \) goes to \( \infty \),
         of the angle between the diagonal of the unit cube in \( \Re^n \)
-        and one of the axes?
+        and any one of the axes?
     \end{exparts}
     \begin{answer}
       \begin{exparts}
@@ -1279,7 +1315,7 @@ Not every vector in each is orthogonal to all vectors in the other.
       each \( u_i \) is zero.
       So only \( \zero\in\Re^n \) is perpendicular to itself.  
     \end{answer}
-  \recommended \item \label{exer:AlgPropsDotProd}  
+  \item \label{exer:AlgPropsDotProd}  
     Describe the algebraic properties of dot product.
     \begin{exparts}
       \partsitem Is it right-distributive over addition:
@@ -1610,7 +1646,7 @@ Not every vector in each is orthogonal to all vectors in the other.
        That's because, in the formula for the angle, the denominator is never
        negative.  
      \end{answer}
-  \recommended \item 
+  \item 
     Generalize to \( \Re^n \) the converse of the Pythagorean
     Theorem, that
     if \( \vec{u} \) and \( \vec{v} \) are
@@ -1783,7 +1819,7 @@ Not every vector in each is orthogonal to all vectors in the other.
       \end{align*}  
       as required.
     \end{answer}
-  \recommended \item 
+  \item 
     The \definend{geometric mean}\index{mean!geometric} 
     of two positive reals \( x, y \) is \( \sqrt{xy} \).
     It is analogous to the \definend{arithmetic mean}\index{mean!arithmetic} 
