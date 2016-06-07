@@ -715,7 +715,7 @@ partitions the collection of vector spaces.
         \end{split}
       \end{multline*}      
     \end{answer}
-  \item Verify that this map is an isomorphism: 
+  \recommended \item Verify that this map is an isomorphism: 
     $\map{h}{\Re^4}{\matspace_{\nbyn{2}}}$ given by
     \begin{equation*}
       \colvec{a \\ b \\ c \\ d}
@@ -803,9 +803,9 @@ partitions the collection of vector spaces.
       \end{align*}      
     \end{answer}
   \recommended \item 
-   Decide whether each map is an isomorphism
-   (if it is an isomorphism then prove it and if it isn't then
-   state a condition that it fails to satisfy).
+   Decide whether each map is an isomorphism.
+   If it is an isomorphism then prove it and if it isn't then
+   state a condition that it fails to satisfy.
     \begin{exparts}
       \partsitem \( \map{f}{\matspace_{\nbyn{2}}}{\Re} \) given by
         \begin{equation*}
@@ -1210,7 +1210,7 @@ partitions the collection of vector spaces.
       (Incidentally, any such map $a\mapsto ka$ is an isomorphism,
       as is easy to check.)
      \end{answer}
-  \recommended \item 
+  \item 
     These prove that isomorphism is an equivalence relation.
     \begin{exparts}
       \partsitem Show that the identity map $\map{\mbox{id}}{V}{V}$ is an 
@@ -2218,7 +2218,7 @@ See \nearbyexercise{exer:FcnWellDef}.
 
 \begin{corollary} \label{co:FiniteDimensionalIsoToReN}
 %<*co:FiniteDimensionalIsoToReN>
-A finite-dimensional vector space is isomorphic to one and only one
+Each finite-dimensional vector space is isomorphic to one and only one
 of the $\Re^n$.
 %</co:FiniteDimensionalIsoToReN>
 \end{corollary}
@@ -2425,6 +2425,26 @@ Any finite-dimensional vector space is actually
          \partsitem Yes, both have dimension \( 2k \).      
       \end{exparts}    
     \end{answer}
+  \item Which of these spaces are isomorphic to each other?
+    \begin{exparts*}
+      \partsitem $\Re^3$
+      \partsitem $\matspace_{\nbyn{2}}$
+      \partsitem $\polyspace_3$
+      \partsitem $\Re^4$
+      \partsitem $\polyspace_2$
+    \end{exparts*}
+    \begin{answer}
+      Just find the dimension of each space, for instance by finding a basis,
+      and then spaces with the same dimension are isomorphic.
+      This lists the dimension of each space.
+      \begin{exparts*}
+        \partsitem $3$
+        \partsitem $4$
+        \partsitem $4$
+        \partsitem $4$
+        \partsitem $3$
+      \end{exparts*}
+    \end{answer}
   \recommended \item 
     Consider the isomorphism
     \( \map{\rep{\cdot}{B}}{\polyspace_1}{\Re^2} \) 
@@ -2442,6 +2462,58 @@ Any finite-dimensional vector space is actually
         \partsitem \( \colvec[r]{-1 \\ 1} \)
       \end{exparts*}  
      \end{answer}
+  \item For which $n$ is the space isomorphic to~$\Re^n$?
+    \begin{exparts}
+      \partsitem $\polyspace_4$
+      \partsitem $\polyspace_1$
+      \partsitem $\matspace_{\nbym{2}{3}}$
+      \partsitem the plane $2x-y+z=0$ subset of~$\Re^3$
+      \partsitem the vector space of linear combinations of
+         three letters $\set{ax+by+cz\suchthat a,b,c\in\Re}$
+    \end{exparts}
+    \begin{answer}
+      For each, the simplest thing is to find the dimension of the space
+      by finding a basis.
+      For each basis given below, We will omit the verification that it
+      is a basis.
+      \begin{exparts}
+        \partsitem It is isomorphic to $\Re^5$. 
+          One basis for $\polyspace_4$
+          is $\set{x^4,x^3,x^2,x,1}$ so the space has dimension~$5$.
+        \partsitem It is isomorphic to $\Re^2$ since one basis for the
+          space $\polyspace_1=\set{a+bx\suchthat a,b\in\Re}$ is 
+          $\set{1,x}$.
+        \partsitem It is isomorphic to $\Re^6$.
+          One basis has these six matrices.
+          \begin{equation*}
+            \begin{mat}
+              1 &0 &0 \\
+              0 &0 &0
+            \end{mat},\; 
+            \begin{mat}
+              0 &1 &0 \\
+              0 &0 &0
+            \end{mat},\;
+            \cdots\;
+            \begin{mat}
+              0 &0 &0 \\
+              0 &0 &1
+            \end{mat}
+          \end{equation*}
+        \partsitem It is a plane so it is isomorphic to~$\Re^2$.
+          For a more extensive answer, parametrizing the plane gives 
+          this vector description
+          \begin{equation*}
+            \set{\colvec{x \\ y \\ z}=\colvec{1/2 \\ 1 \\ 0}y
+                                      +\colvec{-1/2 \\ 0 \\ 1}z
+                   \suchthat  y,z\in\Re}
+          \end{equation*}
+          and so it has a basis consisting of those two vectors.
+        \partsitem It is isomorphic to $\Re^3$.
+          One basis is the set of linear combinations
+          $\set{x,y,z}$, that is, $\set{x+0y+0z, 0x+y+0z,0x+0y+z}$.
+      \end{exparts}
+    \end{answer}
   \recommended \item
     Show that if \( m\neq n \) then \( \Re^m\not\isomorphicto\Re^n \).
      \begin{answer}

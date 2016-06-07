@@ -829,7 +829,7 @@ is more fruitful and more central to progress.
             =r\vec{v} \).
       \end{exparts}  
      \end{answer}
-  \recommended \item
+  \item
     Consider the vector space \( \Re^+ \) where vector addition
     and scalar multiplication are not the ones inherited from $\Re$
     but rather are these:
@@ -849,8 +849,8 @@ is more fruitful and more central to progress.
       the exponential map, so it is a correspondence,
       and therefore it is an isomorphism.  
      \end{answer}
-  \recommended \item 
-     Consider this transformation of \( \Re^2 \).
+  \item 
+     Consider this transformation of the plane \( \Re^2 \).
      \begin{equation*}
        \colvec{x \\ y} \mapsto \colvec{x/2 \\ y/3}
      \end{equation*}
@@ -1022,7 +1022,7 @@ is more fruitful and more central to progress.
       \end{multline*}
       where $\vec{u}_1,\vec{u}_2\in U$ and scalars $c_1,c_2$ 
     \end{answer}
-  \recommended \item
+  \item
     Where \( \map{f}{V}{W} \) is linear, suppose that
     \( f(\vec{v}_1)=\vec{w}_1 \), \ldots, \( f(\vec{v}_n)=\vec{w}_n \)
     for some vectors \( \vec{w}_1 \), \ldots, \( \vec{w}_n \) from \( W \).
@@ -2313,6 +2313,51 @@ point and the map is an isomorphism between the domain and the range.
       \end{equation*}
       for \( k\leq n \).  
     \end{answer}
+  \item For the map $\map{h}{\Re^3}{\Re^2}$ given by
+      \begin{equation*}
+        \colvec{x \\  y \\ z}
+          \mapsto
+          \colvec{x+y \\ x+z}
+      \end{equation*}
+      find the range space, rank, null space, and nullity.
+      \begin{answer}
+        To see that the range space is all of~$\Re^2$ note that for any
+        $u,v\in\Re$ this system has a solution.
+        \begin{equation*}
+          \begin{linsys}{3}
+            x &+ &y &  &  &= &u  \\
+            x &  &  &+ &z &= &v
+          \end{linsys}
+          \grstep{-\rho_1+\rho_2}
+          \begin{linsys}{3}
+            x &+ &y  &  &  &= &u  \\
+              &  &-y &+ &z &= &-u+v
+          \end{linsys}
+        \end{equation*}
+        (In fact, because there is a free variable, $z$, it has infinitely 
+        many solutions.)
+        Thus the rank, the dimension of the range space, is~$2$.
+
+        Since the rank plus the nullity equals the dimension of the domain,
+        we know that the nullity is~$1$.
+        Finding the null space verifies that:
+        \begin{equation*}
+          \begin{linsys}{3}
+            x &+ &y &  &  &= &0  \\
+            x &  &  &+ &z &= &0
+          \end{linsys}
+          \grstep{-\rho_1+\rho_2}
+          \begin{linsys}{3}
+            x &+ &y  &  &  &= &0  \\
+              &  &-y &+ &z &= &0
+          \end{linsys}
+        \end{equation*}
+        the nullspace is this set
+        \begin{equation*}
+          \set{\colvec{-1 \\ 1 \\ 1}\cdot z\suchthat z \in \Re}
+        \end{equation*}
+        which is one-dimensional.
+      \end{answer}
   \item  \label{exer:CondTwoProjMap}
     \nearbyexample{ex:RThreeHomoRTwo} restates the first condition in the
     definition of homomorphism as `the shadow of a sum is the sum of the
@@ -2604,7 +2649,7 @@ point and the map is an isomorphism between the domain and the range.
             &=\spanof{h(S)}
           \end{align*}   
      \end{answer}
-  \recommended \item \label{exer:Cosets}   
+  \item \label{exer:Cosets}   
     \begin{exparts}
     \partsitem Prove that for any linear map \( \map{h}{V}{W} \) and any
       \( \vec{w}\in W \), the set \( h^{-1}(\vec{w}) \) has the form

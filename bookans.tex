@@ -12909,6 +12909,19 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.I.2.10}
+      Just find the dimension of each space, for instance by finding a basis,
+      and then spaces with the same dimension are isomorphic.
+      This lists the dimension of each space.
+      \begin{exparts*}
+        \partsitem $3$
+        \partsitem $4$
+        \partsitem $4$
+        \partsitem $4$
+        \partsitem $3$
+      \end{exparts*}
+    
+\end{ans}
+\begin{ans}{Three.I.2.11}
       \begin{exparts*}
         \partsitem \( \rep{3-2x}{B}=\colvec[r]{5 \\ -2} \)
         \partsitem \( \colvec[r]{0 \\ 2} \)
@@ -12916,25 +12929,69 @@ sage: solve(system, x,y)
       \end{exparts*}
      
 \end{ans}
-\begin{ans}{Three.I.2.11}
-       They have different dimensions.
-     
-\end{ans}
 \begin{ans}{Three.I.2.12}
-      Yes, both are \( mn \)-dimensional.
+      For each, the simplest thing is to find the dimension of the space
+      by finding a basis.
+      For each basis given below, We will omit the verification that it
+      is a basis.
+      \begin{exparts}
+        \partsitem It is isomorphic to $\Re^5$.
+          One basis for $\polyspace_4$
+          is $\set{x^4,x^3,x^2,x,1}$ so the space has dimension~$5$.
+        \partsitem It is isomorphic to $\Re^2$ since one basis for the
+          space $\polyspace_1=\set{a+bx\suchthat a,b\in\Re}$ is
+          $\set{1,x}$.
+        \partsitem It is isomorphic to $\Re^6$.
+          One basis has these six matrices.
+          \begin{equation*}
+            \begin{mat}
+              1 &0 &0 \\
+              0 &0 &0
+            \end{mat},\;
+            \begin{mat}
+              0 &1 &0 \\
+              0 &0 &0
+            \end{mat},\;
+            \cdots\;
+            \begin{mat}
+              0 &0 &0 \\
+              0 &0 &1
+            \end{mat}
+          \end{equation*}
+        \partsitem It is a plane so it is isomorphic to~$\Re^2$.
+          For a more extensive answer, parametrizing the plane gives
+          this vector description
+          \begin{equation*}
+            \set{\colvec{x \\ y \\ z}=\colvec{1/2 \\ 1 \\ 0}y
+                                      +\colvec{-1/2 \\ 0 \\ 1}z
+                   \suchthat  y,z\in\Re}
+          \end{equation*}
+          and so it has a basis consisting of those two vectors.
+        \partsitem It is isomorphic to $\Re^3$.
+          One basis is the set of linear combinations
+          $\set{x,y,z}$, that is, $\set{x+0y+0z, 0x+y+0z,0x+0y+z}$.
+      \end{exparts}
     
 \end{ans}
 \begin{ans}{Three.I.2.13}
+       They have different dimensions.
+     
+\end{ans}
+\begin{ans}{Three.I.2.14}
+      Yes, both are \( mn \)-dimensional.
+    
+\end{ans}
+\begin{ans}{Three.I.2.15}
       Yes, any two (nondegenerate) planes are both two-dimensional
       vector spaces.
     
 \end{ans}
-\begin{ans}{Three.I.2.14}
+\begin{ans}{Three.I.2.16}
         There are many answers, one is the set of \( \polyspace_k \)
         (taking \( \polyspace_{-1} \) to be the trivial vector space).
      
 \end{ans}
-\begin{ans}{Three.I.2.15}
+\begin{ans}{Three.I.2.17}
       False  (except when \( n=0 \)).
       For instance,
       if \( \map{f}{V}{\Re^n} \) is an isomorphism then multiplying by any
@@ -12943,7 +13000,7 @@ sage: solve(system, x,y)
       possible is $\zero_V\mapsto 0_W$.)
     
 \end{ans}
-\begin{ans}{Three.I.2.16}
+\begin{ans}{Three.I.2.18}
       No.
       A proper subspace has a strictly lower dimension than it's superspace;
       if $U$ is a proper subspace of $V$ then any linearly independent subset
@@ -12951,7 +13008,7 @@ sage: solve(system, x,y)
       be a basis for $V$, and $U$ wouldn't be proper.
     
 \end{ans}
-\begin{ans}{Three.I.2.17}
+\begin{ans}{Three.I.2.19}
       Where \( B=\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n} \), the
       inverse is this.
       \begin{equation*}
@@ -12960,11 +13017,11 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.I.2.18}
+\begin{ans}{Three.I.2.20}
       All three spaces have dimension equal to the rank of the matrix.
     
 \end{ans}
-\begin{ans}{Three.I.2.19}
+\begin{ans}{Three.I.2.21}
         We must show that if \( \vec{a}=\vec{b} \) then
         \( f(\vec{a})=f(\vec{b}) \).
         So suppose that
@@ -12983,11 +13040,11 @@ sage: solve(system, x,y)
         and so the function is well-defined.
      
 \end{ans}
-\begin{ans}{Three.I.2.20}
+\begin{ans}{Three.I.2.22}
        Yes, because a zero-dimensional space is a trivial space.
      
 \end{ans}
-\begin{ans}{Three.I.2.21}
+\begin{ans}{Three.I.2.23}
       \begin{exparts}
         \partsitem No, this collection has no spaces of odd dimension.
         \partsitem Yes, because $\polyspace_{k}\isomorphicto\Re^{k+1}$.
@@ -12996,7 +13053,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.I.2.22}
+\begin{ans}{Three.I.2.24}
        One direction is easy:~if the two are isomorphic via \( f \)
        then for any basis \( B\subseteq V \),
        the set \( D=f(B) \) is also a basis (this is shown in
@@ -13024,7 +13081,7 @@ sage: solve(system, x,y)
        and the scalar multiplication calculation is similar.
      
 \end{ans}
-\begin{ans}{Three.I.2.23}
+\begin{ans}{Three.I.2.25}
        \begin{exparts}
         \partsitem Pulling the definition back from
           \( \Re^4 \) to \( \polyspace_3 \)
@@ -13039,7 +13096,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.I.2.24}
+\begin{ans}{Three.I.2.26}
       Yes.
 
       First, \( \hat{f} \) is well-defined because every member of \( V \)
@@ -13072,7 +13129,7 @@ sage: solve(system, x,y)
       Preservation of scalar multiplication is similar.
     
 \end{ans}
-\begin{ans}{Three.I.2.25}
+\begin{ans}{Three.I.2.27}
       Because \( V_1\intersection V_2=\set{\zero_V} \) and \( f \) is
       one-to-one we have that \( f(V_1)\intersection f(V_2)=\set{\zero_U} \).
       To finish, count the dimensions:
@@ -13080,7 +13137,7 @@ sage: solve(system, x,y)
       as required.
     
 \end{ans}
-\begin{ans}{Three.I.2.26}
+\begin{ans}{Three.I.2.28}
       Rational numbers have many representations, e.g.,
       \( 1/2=3/6 \), and the numerators can vary among
       representations.
@@ -13988,10 +14045,49 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.II.2.27}
+        To see that the range space is all of~$\Re^2$ note that for any
+        $u,v\in\Re$ this system has a solution.
+        \begin{equation*}
+          \begin{linsys}{3}
+            x &+ &y &  &  &= &u  \\
+            x &  &  &+ &z &= &v
+          \end{linsys}
+          \grstep{-\rho_1+\rho_2}
+          \begin{linsys}{3}
+            x &+ &y  &  &  &= &u  \\
+              &  &-y &+ &z &= &-u+v
+          \end{linsys}
+        \end{equation*}
+        (In fact, because there is a free variable, $z$, it has infinitely
+        many solutions.)
+        Thus the rank, the dimension of the range space, is~$2$.
+
+        Since the rank plus the nullity equals the dimension of the domain,
+        we know that the nullity is~$1$.
+        Finding the null space verifies that:
+        \begin{equation*}
+          \begin{linsys}{3}
+            x &+ &y &  &  &= &0  \\
+            x &  &  &+ &z &= &0
+          \end{linsys}
+          \grstep{-\rho_1+\rho_2}
+          \begin{linsys}{3}
+            x &+ &y  &  &  &= &0  \\
+              &  &-y &+ &z &= &0
+          \end{linsys}
+        \end{equation*}
+        the nullspace is this set
+        \begin{equation*}
+          \set{\colvec{-1 \\ 1 \\ 1}\cdot z\suchthat z \in \Re}
+        \end{equation*}
+        which is one-dimensional.
+      
+\end{ans}
+\begin{ans}{Three.II.2.28}
       The shadow of a scalar multiple is the scalar multiple of the shadow.
     
 \end{ans}
-\begin{ans}{Three.II.2.28}
+\begin{ans}{Three.II.2.29}
       \begin{exparts}
         \partsitem Setting $a_0+(a_0+a_1)x+(a_2+a_3)x^3=0+0x+0x^2+0x^3$
            gives $a_0=0$ and $a_0+a_1=0$ and $a_2+a_3=0$, so the null space is
@@ -14007,14 +14103,14 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.II.2.29}
+\begin{ans}{Three.II.2.30}
       All inverse images are lines with slope $-2$.
       \begin{center}
         \includegraphics{ch3.74}
      \end{center}
     
 \end{ans}
-\begin{ans}{Three.II.2.30}
+\begin{ans}{Three.II.2.31}
       These are the inverses.
       \begin{exparts}
         \partsitem \( a_0+a_1x+a_2x^2+a_3x^3\mapsto
@@ -14030,7 +14126,7 @@ sage: solve(system, x,y)
       So this map is actually self-inverse.
      
 \end{ans}
-\begin{ans}{Three.II.2.31}
+\begin{ans}{Three.II.2.32}
        For any vector space $V$, the null space
        \begin{equation*}
          \set{\vec{v}\in V\suchthat 2\vec{v}=\zero}
@@ -14045,7 +14141,7 @@ sage: solve(system, x,y)
        (Thus, this transformation is actually an automorphism.)
     
 \end{ans}
-\begin{ans}{Three.II.2.32}
+\begin{ans}{Three.II.2.33}
       Because the rank plus the nullity equals the dimension of the domain
       (here, five), and the rank is at most three,
       the possible pairs are:~\( (3,2) \), \( (2,3) \),
@@ -14054,13 +14150,13 @@ sage: solve(system, x,y)
       possible is easy.
     
 \end{ans}
-\begin{ans}{Three.II.2.33}
+\begin{ans}{Three.II.2.34}
       No (unless \( \polyspace_n \) is trivial), because the two polynomials
       \( f_0(x)=0 \) and \( f_1(x)=1 \) have the same derivative; a map must be
       one-to-one to have an inverse.
     
 \end{ans}
-\begin{ans}{Three.II.2.34}
+\begin{ans}{Three.II.2.35}
       The null space is this.
       \begin{multline*}
         \set{a_0+a_1x+\dots+a_nx^n\suchthat
@@ -14073,7 +14169,7 @@ sage: solve(system, x,y)
       Thus the nullity is \( n \).
      
 \end{ans}
-\begin{ans}{Three.II.2.35}
+\begin{ans}{Three.II.2.36}
       \begin{exparts}
         \partsitem One direction is obvious:~if the homomorphism
           is onto then its range is the codomain and so its
@@ -14099,7 +14195,7 @@ sage: solve(system, x,y)
       \end{exparts}
    
 \end{ans}
-\begin{ans}{Three.II.2.36}
+\begin{ans}{Three.II.2.37}
       We are proving that \( \map{h}{V}{W} \) is one-to-one if and only
       if for every linearly independent subset \( S \) of \( V \) the subset
       \( h(S)=\set{h(\vec{s})\suchthat \vec{s}\in S} \) of \( W \) is linearly
@@ -14155,7 +14251,7 @@ sage: solve(system, x,y)
       and so not all sets have independence preserved.
     
 \end{ans}
-\begin{ans}{Three.II.2.37}
+\begin{ans}{Three.II.2.38}
       (We use the notation from \nearbytheorem{th:HomoDetActOnBasis}.)
       Fix a basis $\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n}$ for $V$
       and a basis
@@ -14181,7 +14277,7 @@ sage: solve(system, x,y)
       Thus the map is onto.
     
 \end{ans}
-\begin{ans}{Three.II.2.38}
+\begin{ans}{Three.II.2.39}
       Yes.
       For the transformation of \( \Re^2 \) given by
       \begin{equation*}
@@ -14196,7 +14292,7 @@ sage: solve(system, x,y)
       We will see more of this in the fifth chapter.
     
 \end{ans}
-\begin{ans}{Three.II.2.39}
+\begin{ans}{Three.II.2.40}
         This is a simple calculation.
           \begin{align*}
             h(\spanof{S})
@@ -14210,7 +14306,7 @@ sage: solve(system, x,y)
           \end{align*}
      
 \end{ans}
-\begin{ans}{Three.II.2.40}
+\begin{ans}{Three.II.2.41}
       \begin{exparts}
         \partsitem
           We will show the sets are equal
@@ -14275,7 +14371,7 @@ sage: solve(system, x,y)
       \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.II.2.41}
+\begin{ans}{Three.II.2.42}
       Because the rank of \( t \) is one, the range space of \( t \)
       is a one-dimensional set.
       Taking $\sequence{h(\vec{v})}$ as a basis (for some appropriate
@@ -14298,7 +14394,7 @@ sage: solve(system, x,y)
       to get the desired conclusion.
     
 \end{ans}
-\begin{ans}{Three.II.2.42}
+\begin{ans}{Three.II.2.43}
       By assumption, \( h \) is not the zero map
       and so a vector \( \vec{v}\in V \) exists that is not in the null space.
       Note that \( \sequence{h(\vec{v})} \) is a basis for \( \Re \),
@@ -14322,7 +14418,7 @@ sage: solve(system, x,y)
       \( h \) to both sides would give a contradiction.
     
 \end{ans}
-\begin{ans}{Three.II.2.43}
+\begin{ans}{Three.II.2.44}
       Fix a basis \( \sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \)
       for \( V \).
       We shall prove that this map
@@ -14381,7 +14477,7 @@ sage: solve(system, x,y)
       so \( \Phi(r_1h_1+r_2h_2)=r_1\Phi(h_1)+r_2\Phi(h_2) \).
     
 \end{ans}
-\begin{ans}{Three.II.2.44}
+\begin{ans}{Three.II.2.45}
       Let \( \map{h}{V}{W} \) be linear and fix a basis
       \( \sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) for \( V \).
       Consider these \( n \) maps from \( V \) to \( W \)
@@ -14399,7 +14495,7 @@ sage: solve(system, x,y)
       \( h_i(r\vec{v}+s\vec{u})=rc_i+sd_i=rh_i(\vec{v})+sh_i(\vec{u}) \).
     
 \end{ans}
-\begin{ans}{Three.II.2.45}
+\begin{ans}{Three.II.2.46}
      Either yes (trivially) or no (nearly trivially).
 
      If we take \( V \) `is homomorphic to' \( W \) to mean there is a
@@ -14417,7 +14513,7 @@ sage: solve(system, x,y)
      so the relation is not reflexive.\appendrefs{equivalence relations}
    
 \end{ans}
-\begin{ans}{Three.II.2.46}
+\begin{ans}{Three.II.2.47}
       That they form the chains is obvious.
       For the rest, we show here that
       \( \rangespace{t^{j+1}}=\rangespace{t^{j}} \)
