@@ -1,0 +1,69 @@
+\documentclass[11pt,spaceforname]{../../jh/examjh}
+\usepackage{../../../linalgjh}
+\examhead{2007.1.Test1}{Questions}
+\begin{document}
+\begin{questions}
+\question
+Determine the coefficients $c_1$, $c_2$, and~$c_3$ for the cubic
+polynomial~$p$ defined by the equation $p(x)=c_1x+c_2x^2+c_3x^3$
+if the graph of~$p$ passes through the points $(-1,4)$, $(1,0)$,
+and~$2,6$.
+Proceed by obtaining a linear system of equations for the coefficients,
+reformulating this system as a single matrix equation, and solving
+the matrix equation by row-reduction.
+
+
+\question
+A linear system of equations is equivalent to the single matrix equation
+$A\vec{x}=\vec{b}$.
+Suppose that
+\begin{equation*} 
+  [A|\vec{b}]_\text{\textit{rref}}=
+  \begin{amat}{5}
+    1 &2 &0 &0 &3 &6 \\
+    0 &0 &1 &0 &4 &7 \\
+    0 &0 &0 &1 &5 &8 \\
+    0 &0 &0 &0 &0 &0
+  \end{amat}.
+\end{equation*}
+  \begin{parts}
+    \item Determine all solutions of the linear system in vector form.
+    \item Find all solutions of the equation $A\vec{x}=\vec{0}$.
+  \end{parts}
+
+
+\question
+Suppose that $\map{f}{\Re^2}{\Re^2}$ is linear,
+$f(\colvec{1 \\ 2})=\colvec{3 \\ 1}$, 
+and $f(\colvec{1 \\ 4})=\colvec{1 \\ 3}$.
+Determine the $\nbyn{2}$ matrix~$A$ corresponding to $f$ in two 
+different ways.
+\begin{parts}
+  \item Use linearity to find $f(\colvec{1 \\ 0})$ and $f(\colvec{0 \\ 1})$
+    and from this find~$A$.
+  \item Convert the pair of given vector equations to a single matrix 
+    equation for $A$ and solve it.
+\end{parts}
+
+
+
+\question
+The equation $2x+y=0$ describes a line $L$ through the origin in $\Re^2$.
+Find the matrix that corresponds to reflection across~$L$ and use it to
+find the relected image of an arbitrary point $(r,s)$.
+
+
+
+\question
+Explain each of the following assertions.
+\begin{parts}
+\item Suppose that $\vec{u}$, $\vec{v}$, and~$\vec{w}$ are three vectors
+in $\Re^2$ and no pair of them is collinear.
+There are always infinitely many different linear combinations of these
+three vectors that sum to the zero vector.
+
+\item Projection onto a line in $\Re^3$ is not an invertible 
+transformation.  
+\end{parts}
+\end{questions}
+\end{document}

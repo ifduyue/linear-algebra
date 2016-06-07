@@ -1,4 +1,7 @@
 question-bank/usna/README 
 	
 David Joyner from USNA shared these materials from Fred Davis (now retired).  
-They are in the public domain.  No LaTeX source is available.
+They are in the public domain.  
+
+In general, no LaTeX source is available.  In the /tests subdirectory I have
+added a sample source, to show how to type the .pdf out as a test. 
