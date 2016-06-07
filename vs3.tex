@@ -380,7 +380,7 @@ restrict our attention to spaces with bases having only finitely many elements.
 That will start in the next subsection.
 
 \begin{exercises}
-  \item Decide if each is a basis for $\polyspace_2$.
+  \recommended \item Decide if each is a basis for $\polyspace_2$.
     \begin{exparts*}
       \partsitem $\sequence{x^2-x+1, 2x+1, 2x-1}$
       \partsitem $\sequence{x+x^2, x-x^2}$
@@ -1274,7 +1274,7 @@ That will start in the next subsection.
            $m_{i,j}$ and $m_{j,i}$ are one.) 
       \end{exparts}  
     \end{answer}
-  \recommended \item  
+  \item  
      We can show that every basis for $\Re^3$ contains the same
      number of vectors.
      \begin{exparts}
@@ -1679,13 +1679,18 @@ The whole space has a basis with three members,
 the plane subspaces have bases with two members,
 the line subspaces have bases with one member,
 and the trivial subspace has a basis with zero members.
-We could not in that section show that these are 
+
+In that section we could not show that these are 
 \( \Re^3 \)'s only subspaces.
 We can show it now.
 The prior corollary proves that 
+There are no, say, five-dimensional subspaces of three-space.
+Further, by nearbydefinition{df:Dimension} the dimension of every space
+is a whole number so there are no subspaces of $\Re^3$
+that are somehow $1.5$-dimensional, between lines and planes.  
+Thus the list of subspaces that we gave is exhaustive;
 the only subspaces of \( \Re^3 \) are either three-\hbox{},
 two-\hbox{}, one-\hbox{}, or zero-dimensional.
-There are no subspaces somehow, say, between lines and planes.
 \end{example}
 
 
@@ -1994,11 +1999,11 @@ that the two senses of `minimal' are equivalent.
       \end{mat}
     \end{equation*}
     subject to each condition.
-    \begin{exparts*}
+    \begin{exparts}
       \item $a, b, c, d\in\Re$ 
       \item $a-b+2c=0$ and~$d\in\Re$
       \item $a+b+c=0$, $a+b-c=0$, and~$d\in\Re$
-    \end{exparts*}
+    \end{exparts}
     \begin{answer}
      \begin{exparts}
       \partsitem As in the prior exercise, the space $\matspace_{\nbyn{2}}$ 
@@ -2206,6 +2211,30 @@ that the two senses of `minimal' are equivalent.
        The form of these vectors makes linear independence easy to show
        (look at the equation of fourth components, then at the equation of 
        third components, etc.).  
+    \end{answer}
+  \item Decide if each is a basis for $\polyspace_{2}$.
+    \begin{exparts*}
+      \partsitem $\set{1,x^2,x^2-x}$
+      \partsitem $\set{x^2+x,x^2-x}$
+      \partsitem $\set{2x^2+x+1,2x+1,2}$
+      \partsitem $\set{3x^2,-1,3x,x^2-x}$
+    \end{exparts*}
+    \begin{answer}
+      By the results of this section, because $\polyspace_2$ has dimension~$3$,
+      to show that a linearly independent set is a basis we need only observe
+      that it has three members. 
+      To show a set is not a basis we need
+      only observe that it does not have three members (in this case
+      we don't have to worry about linear independence). 
+      \begin{exparts}
+        \partsitem  This is a basis; it is linearly independent by inspection
+           (the first element has no quadratic or linear term, the second has
+           a quadratic but no linear term, and the third has a linear term)
+           and it has three elements.
+        \partsitem This is not a basis as it has only two elements.
+        \partsitem This three-element set is a basis.
+        \partsitem This is not a basis as it has four elements.
+      \end{exparts}
     \end{answer}
   \item 
      Refer to \nearbyexample{ex:RefSubSpDiagram}.
@@ -4028,7 +4057,7 @@ Where there are \( r \) independent equations, the general solution involves
       the minimum of \( m \) and \( n \), because the row rank equals the
       column rank.
      \end{answer}
-  \recommended \item
+  \item
     Show that the rank of a matrix equals the rank of its transpose.
     \begin{answer}
       Because the rows of a matrix \( A \) are the columns
@@ -4179,7 +4208,7 @@ Where there are \( r \) independent equations, the general solution involves
       Instead of the row spaces being the same, the row space of $B$
       would be a subspace (possibly equal to) the row space of $A$.
     \end{answer}
-  \recommended \item
+  \item
     What is the relationship between \( \rank(A) \) and \( \rank(-A) \)?
     Between \( \rank(A) \) and \( \rank(kA) \)?
     What, if any, is the relationship between \( \rank(A) \), \( \rank(B) \),
@@ -5479,7 +5508,7 @@ at the end of the Chapter Five.
       One example is to take the space to be $\Re^3$, and to take the
       subspaces to be the $xy$-plane, the $xz$-plane, and the $yz$-plane.
     \end{answer}
-  \recommended \item 
+  \item 
     Prove that if \( V=W_1\directsum\dots\directsum W_k \) then
     \( W_i\intersection W_j \) is trivial whenever \( i\neq j \).
     This shows that the first half of the proof of 
@@ -5846,7 +5875,7 @@ at the end of the Chapter Five.
 %           But this is one of the prior items in this problem.
 %       \end{exparts}  
 %      \end{answer}
-  \recommended \item 
+  \item 
     Consider \nearbycorollary{cor:DirSumDimsAdd}.
     Does it work both ways\Dash that is,
     supposing that \( V=W_1+\dots+ W_k \),
