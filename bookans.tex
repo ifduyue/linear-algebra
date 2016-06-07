@@ -3669,6 +3669,59 @@
     
 \end{ans}
 \begin{ans}{One.III.1.16}
+     \begin{exparts}
+       \partsitem  This is an equivalence.
+
+          We can write $M_1\sim M_2$ if they are related.
+          The $\sim$~relation is reflexive because any matrix has the
+          same $1,1$ entry as itself.
+          The relation is symmetric because if $M_1$ has the same $1,1$
+          entry as~$M_2$ then clearly also $M_2$ has the same $1,1$ entry
+          as~$M_1$.
+          Finally, the relation is transitive because if $M_1\sim M_2$ so they
+          have the same $1,1$ entry as each other,
+          and $M_2\sim M_3$ so they have the
+          same as each other, then all three have the same~$1,1$ entry,
+          and $M_1\sim M_3$.
+       \partsitem  This is an equivalence.
+          Write $M_1\sim M_2$ if they are related.
+
+          This relation is reflexive because any matrix has the
+          same sum of entries as itself.
+          The $\sim$~relation is symmetric because if $M_1$ has the same
+          sum of
+          entries as~$M_2$, then also $M_2$ has the same sum of entries
+          as~$M_1$.
+          Finally, the relation is transitive because if $M_1\sim M_2$ so their
+          entry sum is the same,
+          and $M_2\sim M_3$ so they have the
+          same entry sum as each other, then all three have the same entry sum,
+          and $M_1\sim M_3$.
+       \partsitem
+          This is not an equivalence because it is not transitive.
+          The first and second matrix below are related by their $1,1$ entries,
+          and the second and third are related by their $2,2$~entries.
+          But the first and third are not related.
+          \begin{equation*}
+            \begin{mat}
+              1 &0 \\
+              0 &0
+            \end{mat}
+            \quad
+            \begin{mat}
+              1 &0 \\
+              0 &-1
+            \end{mat}
+            \quad
+            \begin{mat}
+              0 &0 \\
+              0 &-1
+            \end{mat}
+          \end{equation*}
+     \end{exparts}
+   
+\end{ans}
+\begin{ans}{One.III.1.17}
       It is an equivalence relation.
       To prove that we must check that the relation
       is reflexive, symmetric, and transitive.
@@ -3683,7 +3736,7 @@
       $A$ has the same as $C$.
     
 \end{ans}
-\begin{ans}{One.III.1.17}
+\begin{ans}{One.III.1.18}
     \begin{exparts}
       \partsitem For instance,
         \begin{equation*}
@@ -3739,7 +3792,7 @@
     \end{exparts}
    
 \end{ans}
-\begin{ans}{One.III.1.18}
+\begin{ans}{One.III.1.19}
     To be an equivalence, each relation must be reflexive, symmetric, and
     transitive.
     \begin{exparts}
@@ -3758,7 +3811,7 @@
     \end{exparts}
   
 \end{ans}
-\begin{ans}{One.III.1.19}
+\begin{ans}{One.III.1.20}
     For each we must check the three conditions of reflexivity, symmetry, and
     transitivity.
     \begin{exparts}
@@ -3798,7 +3851,7 @@
     \end{exparts}
   
 \end{ans}
-\begin{ans}{One.III.1.20}
+\begin{ans}{One.III.1.21}
       \begin{exparts}
         \item This relation is not reflexive.
           For instance, any matrix with an upper-left entry of~$1$ is not
@@ -3957,6 +4010,221 @@
      
 \end{ans}
 \begin{ans}{One.III.2.11}
+      Perform Gauss-Jordan reduction on each.
+      Two matrices are row-equivalent if and only if they have the same
+      reduced echelon form.
+      Here is the reduced form for each.
+      % sage: M = matrix(QQ, [[1,3], [2,4]])
+      % sage: gauss_jordan(M)
+      % [1 3]
+      % [2 4]
+      %  take -2 times row 1 plus row 2
+      % [ 1  3]
+      % [ 0 -2]
+      %  take -1/2 times row 2
+      % [1 3]
+      % [0 1]
+      %  take -3 times row 2 plus row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[1,5], [2,10]])
+      % sage: gauss_jordan(M)
+      % [ 1  5]
+      % [ 2 10]
+      %  take -2 times row 1 plus row 2
+      % [1 5]
+      % [0 0]
+      % sage: M = matrix(QQ, [[1,-1], [3,0]])
+      % sage: gauss_jordan(M)
+      % [ 1 -1]
+      % [ 3  0]
+      %  take -3 times row 1 plus row 2
+      % [ 1 -1]
+      % [ 0  3]
+      %  take 1/3 times row 2
+      % [ 1 -1]
+      % [ 0  1]
+      %  take 1 times row 2 plus row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[2,6], [4,10]])
+      % sage: gauss_jordan(M)
+      % [ 2  6]
+      % [ 4 10]
+      %  take -2 times row 1 plus row 2
+      % [ 2  6]
+      % [ 0 -2]
+      %  take 1/2 times row 1
+      %  take -1/2 times row 2
+      % [1 3]
+      % [0 1]
+      %  take -3 times row 2 plus row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[0,1], [-1,0]])
+      % sage: gauss_jordan(M)
+      % [ 0  1]
+      % [-1  0]
+      %  swap row 1 with row 2
+      % [-1  0]
+      % [ 0  1]
+      %  take -1 times row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[3,3], [2,2]])
+      % sage: gauss_jordan(M)
+      % [3 3]
+      % [2 2]
+      %  take -2/3 times row 1 plus row 2
+      % [3 3]
+      % [0 0]
+      %  take 1/3 times row 1
+      % [1 1]
+      % [0 0]
+      \begin{exparts*}
+        \partsitem
+          \(\begin{mat}
+              1  &0  \\
+              0  &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+              1  &5  \\
+              0  &0
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &0  \\
+             0   &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &0  \\
+             0   &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &0  \\
+             0   &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &1  \\
+             0   &0
+            \end{mat} \)
+      \end{exparts*}
+    
+\end{ans}
+\begin{ans}{One.III.2.12}
+     For each you can just perform some row operations on the starting
+     matrix.
+     \begin{exparts}
+       \partsitem
+         Multiplying the first row by~$3$ gives this.
+         \begin{equation*}
+           \begin{mat}
+             3 &9  \\
+             4 &-1
+           \end{mat}
+         \end{equation*}
+         (There is no sense to this particular choice of row operation; it is
+         just the first thing that came to mind.)
+         Two other row operations are a row swap $\rho_1\leftrightarrow\rho_2$
+         and adding $\rho_1+\rho_2$.
+         \begin{equation*}
+           \begin{mat}
+             4 &-1  \\
+             1 &3
+           \end{mat}
+           \quad
+           \begin{mat}
+             1 &3  \\
+             5 &2
+           \end{mat}
+         \end{equation*}
+       \partsitem Doing the same three arbitrary row operations gives these
+         three.
+         \begin{equation*}
+          \begin{mat}
+           0 &3 &6 \\
+           1 &1 &1  \\
+           2 &3 &4
+          \end{mat}
+          \quad
+          \begin{mat}
+           1 &1 &1  \\
+           0 &1 &2 \\
+           2 &3 &4
+          \end{mat}
+          \quad
+          \begin{mat}
+           0 &1 &2 \\
+           1 &2 &3  \\
+           2 &3 &4
+          \end{mat}
+          \quad
+         \end{equation*}
+     \end{exparts}
+   
+\end{ans}
+\begin{ans}{One.III.2.13}
+      The Gaussian reduction is routine.
+      % sage: load("gauss_method.sage")
+      % sage: M = matrix (QQ, [[1,2,1], [3,-1,0], [0,4,0]])
+      % sage: gauss_method(M)
+      % [ 1  2  1]
+      % [ 3 -1  0]
+      % [ 0  4  0]
+      %  take -3 times row 1 plus row 2
+      % [ 1  2  1]
+      % [ 0 -7 -3]
+      % [ 0  4  0]
+      %  take 4/7 times row 2 plus row 3
+      % [    1     2     1]
+      % [    0    -7    -3]
+      % [    0     0 -12/7]
+      \begin{equation*}
+        \begin{mat}
+          1 &2   &1 \\
+          3 &-1  &0 \\
+          0 &4   &0
+        \end{mat}
+        \grstep{-3\rho_1+\rho_2}
+        \begin{mat}
+          1 &2   &1 \\
+          0 &-7  &-3 \\
+          0 &4   &0
+        \end{mat}
+        \grstep{(4/7)\rho_2+\rho_3}
+        \begin{mat}
+          1 &2   &1 \\
+          0 &-7  &-3 \\
+          0 &0   &-12/7
+        \end{mat}
+      \end{equation*}
+      Denoting those matrices $A$, $D$, and~$B$ respectively, we have this.
+      \begin{align*}
+        \begin{mat}
+          \alpha_1 \\
+          \alpha_2 \\
+          \alpha_3
+        \end{mat}
+        &\grstep{-3\rho_1+\rho_2}
+        \begin{mat}
+          \delta_1=\alpha_1 \\
+          \delta_2=-3\alpha_1+\alpha_2 \\
+          \delta_3=\alpha_3
+        \end{mat}                                   \\
+        & \grstep{(4/7)\rho_2+\rho_3}
+        \begin{mat}
+          \beta_1=\alpha_1  \\
+          \beta_2=-3\alpha_1+\alpha_2 \\
+          \beta_3=-(12/7)\alpha_1+(4/7)\alpha_2+\alpha_3
+        \end{mat}
+      \end{align*}
+    
+\end{ans}
+\begin{ans}{One.III.2.14}
        First, the only matrix row equivalent to the matrix of all
        \( 0 \)'s is itself (since row operations have no effect).
 
@@ -4007,7 +4275,7 @@
        of the above classes.)
      
 \end{ans}
-\begin{ans}{One.III.2.12}
+\begin{ans}{One.III.2.15}
       \begin{exparts}
         \partsitem They have the form
           \begin{equation*}
@@ -4037,7 +4305,7 @@
       \end{exparts}
     
 \end{ans}
-\begin{ans}{One.III.2.13}
+\begin{ans}{One.III.2.16}
        Infinitely many.
        For instance, in
        \begin{equation*}
@@ -4049,12 +4317,12 @@
        each $k\in\Re$ gives a different class.
     
 \end{ans}
-\begin{ans}{One.III.2.14}
+\begin{ans}{One.III.2.17}
       No.
       Row operations do not change the size of a matrix.
     
 \end{ans}
-\begin{ans}{One.III.2.15}
+\begin{ans}{One.III.2.18}
      \begin{exparts}
       \partsitem A row operation on a matrix of zeros has no effect.
         Thus each such matrix is alone in its row equivalence class.
@@ -4063,7 +4331,7 @@
      \end{exparts}
     
 \end{ans}
-\begin{ans}{One.III.2.16}
+\begin{ans}{One.III.2.19}
       Here are two.
       \begin{equation*}
         \begin{mat}[r]
@@ -4078,7 +4346,7 @@
       \end{equation*}
      
 \end{ans}
-\begin{ans}{One.III.2.17}
+\begin{ans}{One.III.2.20}
       Any two \( \nbyn{n} \) nonsingular matrices have
       the same reduced echelon
       form, namely the matrix with all \( 0 \)'s except for \( 1 \)'s down
@@ -4108,14 +4376,14 @@
       \end{equation*}
     
 \end{ans}
-\begin{ans}{One.III.2.18}
+\begin{ans}{One.III.2.21}
       Since there is one and only one reduced echelon form matrix in each
       class, we can just list the possible reduced echelon form matrices.
 
       For that list, see the answer for \nearbyexercise{exer:PossRedEchFrms}.
     
 \end{ans}
-\begin{ans}{One.III.2.19}
+\begin{ans}{One.III.2.22}
           \begin{exparts}
            \partsitem If there is a linear relationship where $c_0$ is not zero
              then we can subtract $c_0\vec{\beta}_0$ from both sides and divide
@@ -4153,7 +4421,7 @@
          \end{exparts}
       
 \end{ans}
-\begin{ans}{One.III.2.20}
+\begin{ans}{One.III.2.23}
      We know that $4s+c+10d=8.45$ and that $3s+c+7d=6.30$, and we'd like to
      know what $s+c+d$ is.
      Fortunately, $s+c+d$ is a linear combination of $4s+c+10d$ and $3s+c+7d$.
@@ -4180,7 +4448,7 @@
      The price paid is \$$2.00$.
    
 \end{ans}
-\begin{ans}{One.III.2.21}
+\begin{ans}{One.III.2.24}
      \begin{enumerate}
         \item An easy answer is this.
           \begin{equation*}
@@ -4219,13 +4487,13 @@
      \end{enumerate}
     
 \end{ans}
-\begin{ans}{One.III.2.22}
+\begin{ans}{One.III.2.25}
       Define linear systems to be equivalent if their augmented
       matrices are row equivalent.
       The proof that equivalent systems have the same solution set is easy.
     
 \end{ans}
-\begin{ans}{One.III.2.23}
+\begin{ans}{One.III.2.26}
       \begin{exparts}
         \partsitem The three possible row swaps are easy,
           as are the three possible rescalings.

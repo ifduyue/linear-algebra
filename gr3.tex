@@ -1065,6 +1065,69 @@ class.
          \end{mat}
       \end{equation*}  
     \end{answer}
+ \item Decide whether each relation is an equivalence on the set of 
+   $\nbyn{2}$ matrices.
+   \begin{exparts}
+     \partsitem two matrices are related if they have the same entry
+       in the first row and first column
+     \partsitem two matrices are related if their four entries sum to the 
+       same total
+     \partsitem two matrices are related if they have the same entry
+       in the first row and first column, or the same entry in the 
+       second row and second column
+   \end{exparts}
+   \begin{answer}
+     \begin{exparts}
+       \partsitem  This is an equivalence.
+        
+          We can write $M_1\sim M_2$ if they are related.
+          The $\sim$~relation is reflexive because any matrix has the 
+          same $1,1$ entry as itself.
+          The relation is symmetric because if $M_1$ has the same $1,1$
+          entry as~$M_2$ then clearly also $M_2$ has the same $1,1$ entry
+          as~$M_1$.
+          Finally, the relation is transitive because if $M_1\sim M_2$ so they
+          have the same $1,1$ entry as each other, 
+          and $M_2\sim M_3$ so they have the 
+          same as each other, then all three have the same~$1,1$ entry, 
+          and $M_1\sim M_3$. 
+       \partsitem  This is an equivalence.
+          Write $M_1\sim M_2$ if they are related.
+
+          This relation is reflexive because any matrix has the 
+          same sum of entries as itself.
+          The $\sim$~relation is symmetric because if $M_1$ has the same
+          sum of 
+          entries as~$M_2$, then also $M_2$ has the same sum of entries
+          as~$M_1$.
+          Finally, the relation is transitive because if $M_1\sim M_2$ so their
+          entry sum is the same, 
+          and $M_2\sim M_3$ so they have the 
+          same entry sum as each other, then all three have the same entry sum, 
+          and $M_1\sim M_3$. 
+       \partsitem
+          This is not an equivalence because it is not transitive.
+          The first and second matrix below are related by their $1,1$ entries,
+          and the second and third are related by their $2,2$~entries.
+          But the first and third are not related.
+          \begin{equation*}
+            \begin{mat}
+              1 &0 \\
+              0 &0
+            \end{mat}
+            \quad
+            \begin{mat}
+              1 &0 \\
+              0 &-1
+            \end{mat}
+            \quad
+            \begin{mat}
+              0 &0 \\
+              0 &-1
+            \end{mat}
+          \end{equation*}
+     \end{exparts}
+   \end{answer}
  \item \cite{Cleary}
     Consider the following relationship on the set of $\nbyn{2}$ matrices:  
     we say that $A$ is \textit{sum-what like} $B$ if the sum of all of 
@@ -1557,8 +1620,8 @@ That is, Gauss's Method has made $x_5$'s row in some way independent
 of $x_1$'s row.
 
 The following result makes this intuition precise.
-What Gauss's Method eliminates is linear
-relationships among the rows.
+We sometimes refer to Gauss's Method as Gaussian elimination.
+What it eliminates is linear relationships among the rows.
 
 \begin{lemma}      \label{le:EchFormNoLinCombo}
 %<*lm:EchFormNoLinCombo>
@@ -1626,6 +1689,9 @@ $r_{k+2,\ell_{k+1}}$, \ldots, $r_{m,\ell_{k+1}}$ are all~$0$.
 Thus $c_{k+1}=0$, because $r_{k+1,\ell_{k+1}}\neq 0$ as it is the leading entry.
 %</pf:EchFormNoLinCombo2>
 \end{proof}
+
+With that, we are ready to show that the end product of Gauss-Jordan reduction
+is unique.
 
 \begin{theorem}
 \label{th:ReducedEchelonFormIsUnique}
@@ -2057,6 +2123,276 @@ and the class of matrices row equivalent to this
        \end{exparts}  
      \end{answer}
   \item 
+    Which of these matrices are row equivalent to each other?
+    \begin{exparts*}
+      \partsitem
+         \(\begin{mat}
+             1 &3 \\
+             2 &4
+           \end{mat}\)
+      \partsitem
+         \(\begin{mat}
+             1 &5 \\
+             2 &10
+           \end{mat}\)
+      \partsitem
+         \(\begin{mat}
+             1 &-1 \\
+             3 &0
+           \end{mat}\)
+      \partsitem
+         \(\begin{mat}
+             2 &6 \\
+             4 &10
+           \end{mat}\)
+      \partsitem
+         \(\begin{mat}
+             0  &1 \\
+             -1 &0
+           \end{mat}\)
+      \partsitem
+         \(\begin{mat}
+             3 &3 \\
+             2 &2
+           \end{mat}\)
+    \end{exparts*}
+    \begin{answer}
+      Perform Gauss-Jordan reduction on each.
+      Two matrices are row-equivalent if and only if they have the same
+      reduced echelon form.
+      Here is the reduced form for each. 
+      % sage: M = matrix(QQ, [[1,3], [2,4]])
+      % sage: gauss_jordan(M)
+      % [1 3]
+      % [2 4]
+      %  take -2 times row 1 plus row 2
+      % [ 1  3]
+      % [ 0 -2]
+      %  take -1/2 times row 2
+      % [1 3]
+      % [0 1]
+      %  take -3 times row 2 plus row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[1,5], [2,10]])
+      % sage: gauss_jordan(M)
+      % [ 1  5]
+      % [ 2 10]
+      %  take -2 times row 1 plus row 2
+      % [1 5]
+      % [0 0]
+      % sage: M = matrix(QQ, [[1,-1], [3,0]])
+      % sage: gauss_jordan(M)
+      % [ 1 -1]
+      % [ 3  0]
+      %  take -3 times row 1 plus row 2
+      % [ 1 -1]
+      % [ 0  3]
+      %  take 1/3 times row 2
+      % [ 1 -1]
+      % [ 0  1]
+      %  take 1 times row 2 plus row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[2,6], [4,10]])
+      % sage: gauss_jordan(M)
+      % [ 2  6]
+      % [ 4 10]
+      %  take -2 times row 1 plus row 2
+      % [ 2  6]
+      % [ 0 -2]
+      %  take 1/2 times row 1
+      %  take -1/2 times row 2
+      % [1 3]
+      % [0 1]
+      %  take -3 times row 2 plus row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[0,1], [-1,0]])
+      % sage: gauss_jordan(M)
+      % [ 0  1]
+      % [-1  0]
+      %  swap row 1 with row 2
+      % [-1  0]
+      % [ 0  1]
+      %  take -1 times row 1
+      % [1 0]
+      % [0 1]
+      % sage: M = matrix(QQ, [[3,3], [2,2]])
+      % sage: gauss_jordan(M)
+      % [3 3]
+      % [2 2]
+      %  take -2/3 times row 1 plus row 2
+      % [3 3]
+      % [0 0]
+      %  take 1/3 times row 1
+      % [1 1]
+      % [0 0]
+      \begin{exparts*}
+        \partsitem
+          \(\begin{mat}
+              1  &0  \\
+              0  &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+              1  &5  \\
+              0  &0
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &0  \\
+             0   &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &0  \\
+             0   &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &0  \\
+             0   &1
+            \end{mat} \)
+        \partsitem
+          \(\begin{mat}
+             1   &1  \\
+             0   &0
+            \end{mat} \)
+      \end{exparts*}
+    \end{answer}
+ \item Produce three other matrices row equivalent to the given one.
+   \begin{exparts*}
+     \partsitem 
+       \(\begin{mat}
+           1 &3 \\
+           4 &-1
+         \end{mat}\)
+     \partsitem
+       \(\begin{mat}
+           0 &1 &2 \\
+           1 &1 &1  \\
+           2 &3 &4
+         \end{mat}\)
+   \end{exparts*}
+   \begin{answer}
+     For each you can just perform some row operations on the starting
+     matrix.
+     \begin{exparts}
+       \partsitem
+         Multiplying the first row by~$3$ gives this.
+         \begin{equation*}
+           \begin{mat}
+             3 &9  \\
+             4 &-1
+           \end{mat}
+         \end{equation*}
+         (There is no sense to this particular choice of row operation; it is 
+         just the first thing that came to mind.)
+         Two other row operations are a row swap $\rho_1\leftrightarrow\rho_2$ 
+         and adding $\rho_1+\rho_2$.
+         \begin{equation*}
+           \begin{mat}
+             4 &-1  \\
+             1 &3
+           \end{mat}
+           \quad
+           \begin{mat}
+             1 &3  \\
+             5 &2
+           \end{mat}
+         \end{equation*}
+       \partsitem Doing the same three arbitrary row operations gives these
+         three.
+         \begin{equation*}
+          \begin{mat} 
+           0 &3 &6 \\
+           1 &1 &1  \\
+           2 &3 &4  
+          \end{mat}
+          \quad         
+          \begin{mat} 
+           1 &1 &1  \\
+           0 &1 &2 \\
+           2 &3 &4  
+          \end{mat}
+          \quad         
+          \begin{mat} 
+           0 &1 &2 \\
+           1 &2 &3  \\
+           2 &3 &4  
+          \end{mat}
+          \quad         
+         \end{equation*}
+     \end{exparts}
+   \end{answer}
+  \recommended \item Perform Gauss's Method on this matrix.
+    Express each row of the final matrix as a linear combination of 
+    the rows of the starting matrix.
+    \begin{equation*}
+      \begin{mat}
+        1 &2   &1 \\
+        3 &-1  &0 \\
+        0 &4   &0
+      \end{mat}
+    \end{equation*}
+    \begin{answer}
+      The Gaussian reduction is routine.
+      % sage: load("gauss_method.sage")
+      % sage: M = matrix (QQ, [[1,2,1], [3,-1,0], [0,4,0]])
+      % sage: gauss_method(M)
+      % [ 1  2  1]
+      % [ 3 -1  0]
+      % [ 0  4  0]
+      %  take -3 times row 1 plus row 2
+      % [ 1  2  1]
+      % [ 0 -7 -3]
+      % [ 0  4  0]
+      %  take 4/7 times row 2 plus row 3
+      % [    1     2     1]
+      % [    0    -7    -3]
+      % [    0     0 -12/7]
+      \begin{equation*}
+        \begin{mat}
+          1 &2   &1 \\
+          3 &-1  &0 \\
+          0 &4   &0
+        \end{mat}
+        \grstep{-3\rho_1+\rho_2}    
+        \begin{mat}
+          1 &2   &1 \\
+          0 &-7  &-3 \\
+          0 &4   &0
+        \end{mat}
+        \grstep{(4/7)\rho_2+\rho_3}    
+        \begin{mat}
+          1 &2   &1 \\
+          0 &-7  &-3 \\
+          0 &0   &-12/7
+        \end{mat}
+      \end{equation*}
+      Denoting those matrices $A$, $D$, and~$B$ respectively, we have this.
+      \begin{align*}
+        \begin{mat}
+          \alpha_1 \\
+          \alpha_2 \\
+          \alpha_3
+        \end{mat}
+        &\grstep{-3\rho_1+\rho_2}    
+        \begin{mat}
+          \delta_1=\alpha_1 \\
+          \delta_2=-3\alpha_1+\alpha_2 \\
+          \delta_3=\alpha_3
+        \end{mat}                                   \\
+        & \grstep{(4/7)\rho_2+\rho_3}
+        \begin{mat}
+          \beta_1=\alpha_1  \\
+          \beta_2=-3\alpha_1+\alpha_2 \\
+          \beta_3=-(12/7)\alpha_1+(4/7)\alpha_2+\alpha_3
+        \end{mat}
+      \end{align*}
+    \end{answer}
+  \item 
      Describe the matrices in each of the classes represented in
      \nearbyexample{ex:RowEqClassTwoTwoMats}.
      \begin{answer}
@@ -2377,7 +2713,7 @@ and the class of matrices row equivalent to this
   %    The second row of the first matrix is not a linear combination of the
   %    rows of the second matrix.  
   %  \end{answer}
-  \recommended \item 
+  \item 
    The Linear Combination Lemma says which equations can be gotten from
    Gaussian reduction of a given linear system.
    \begin{enumerate}
@@ -2437,7 +2773,7 @@ and the class of matrices row equivalent to this
       matrices are row equivalent.
       The proof that equivalent systems have the same solution set is easy.  
     \end{answer}
-  \recommended \item 
+  \item 
     In this matrix
     \begin{equation*}
       \begin{mat}[r]
