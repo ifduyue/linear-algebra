@@ -581,6 +581,34 @@ for any matrix there is an associated linear map.
         \partsitem \(  \colvec[r]{0 \\ 0 \\ 0}  \)
       \end{exparts*}  
     \end{answer}
+  \item Multiply this matrix by each vector or state ``note defined.''
+    \begin{equation*}
+      \begin{mat}
+        3  &1  \\
+        2  &4
+      \end{mat}
+    \end{equation*}
+    \begin{exparts*}
+      \partsitem $\colvec{1 \\ 2  \\ 1}$
+      \partsitem $\colvec{0 \\ -1}$
+      \partsitem $\colvec{0 \\ 0 \\ 0}$
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem This is not defined.
+        \partsitem This is defined.
+          \begin{equation*}
+            \begin{mat}
+              3  &1  \\
+              2  &4
+            \end{mat}
+            \colvec{0 \\ -1}
+            =
+            \colvec{-1 \\ -4}
+          \end{equation*}
+       \partsitem Not defined.
+      \end{exparts}
+    \end{answer}
   \item 
     Perform, if possible, each matrix-vector multiplication.
     \begin{exparts*}
@@ -609,8 +637,9 @@ for any matrix there is an associated linear map.
         \partsitem Not defined.
       \end{exparts*}
     \end{answer}
-  \recommended \item  
-    Solve this matrix equation.
+  \item  
+    This matrix equation expresses a linear system.
+    Solve it.
     \begin{equation*}
       \begin{mat}[r]
         2  &1  &1  \\
@@ -688,6 +717,70 @@ for any matrix there is an associated linear map.
               =-2-3x-2x^3 \),
       as above.  
     \end{answer}
+  \item Let $\map{h}{\Re^2}{\matspace_{\nbyn{2}}}$ be the linear transformation
+   with this action.
+   \begin{equation*}
+     \colvec{1 \\ 0}\mapsto
+     \begin{mat}
+       1  &2  \\
+       0  &1
+     \end{mat}
+     \qquad
+     \colvec{0 \\ 1}\mapsto
+     \begin{mat}
+       0  &-1  \\
+       1  &0
+     \end{mat}
+   \end{equation*}
+   What is its effect on the general vector with entries $x$ and~$y$?
+   \begin{answer}
+     Fix this natural basis for $\matspace_{\nbyn{2}}$.
+     \begin{equation*}
+       D=\sequence{
+       \begin{mat}
+          1 &0  \\
+          0 &0
+       \end{mat},
+       \begin{mat}
+          0 &1  \\
+          0 &0
+       \end{mat},
+       \begin{mat}
+          0 &0  \\
+          1 &0
+       \end{mat},
+       \begin{mat}
+          0 &0  \\
+          0 &1
+       \end{mat}}
+     \end{equation*}
+     The representation of the map~$h$ with respect to $E_2,D$ is this.
+     \begin{equation*}
+       \rep{h}{E_2,D}=
+       \begin{mat}
+         1  &0  \\
+         2  &-1  \\
+         0  &1  \\
+         1  &0
+       \end{mat}
+     \end{equation*}
+     Since the general vector is represented with respect to~$E_2$ by itself, 
+     and similarly every matrix is represented with respect to~$D$ by itself, 
+     we have this for the effect of the map.
+     \begin{equation*}
+       \rep{h(\colvec{x \\ y})}{D}
+       =
+       \begin{mat}
+         1  &0  \\
+         2  &-1  \\
+         0  &1  \\
+         1  &0
+       \end{mat}
+       \colvec{x \\ y}
+       =
+       \colvec{x \\ 2x-y \\ y \\ x}
+     \end{equation*}
+   \end{answer}
   \recommended \item  
     Assume that \( \map{h}{\Re^2}{\Re^3} \) is determined by 
     this action.
@@ -2308,7 +2401,46 @@ And, we shall see how to find the matrix that represents a map's inverse.
 
 
 \begin{exercises}
-\recommended \item
+  \item For each matrix, state the dimension of the domain and codomain
+    of any map that it represents.
+    \begin{exparts*}
+      \partsitem 
+        $\begin{mat}
+          2  &1  \\
+          3  &4
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}
+          1 &1 &-3 \\ 
+          2 &5 &0
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}
+           1 &3 \\
+           1 &4 \\
+           1 &-1
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}
+           0 &0 &0 \\
+           0 &0 &0
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}
+           1 &-1 &4 &5 \\
+           0 &0  &0 &0
+        \end{mat}$
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem domain: $2$, codomain: $2$
+        \partsitem domain: $3$, codomain: $2$
+        \partsitem domain: $2$, codomain: $3$
+        \partsitem domain: $3$, codomain: $2$
+        \partsitem domain: $4$, codomain: $2$
+      \end{exparts}
+    \end{answer}
+  \recommended \item
    Let $h$ be the linear map defined by this matrix on the domain~$\polyspace_1$
    and codomain~$\Re^2$
    with respect to the given bases.
@@ -2583,6 +2715,50 @@ And, we shall see how to find the matrix that represents a map's inverse.
        particular~$1+2x$ 
        is the image of a vector in the domain.
      \end{answer}
+  \item Find the map that this matrix represents with respect to $B,B$.
+    \begin{equation*}
+      \begin{mat}
+        2  &1  \\
+        -1 &0
+      \end{mat}
+      \qquad
+      B=\sequence{\colvec{1 \\ 0},\colvec{1 \\ 1}}
+    \end{equation*}
+    \begin{answer}
+        Where $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$ we
+          can find $\rep{\vec{v}}{B}$ by eye, where $\vec{v}$ is the general 
+          vector, with entries $x$ and~$y$.
+          \begin{equation*}
+            \colvec{x \\ y}=a\cdot\colvec{1 \\ 0}+b\cdot\colvec{1 \\ 1}
+            \quad\text{gives}\quad  
+            b=y, a=x-y
+          \end{equation*}
+          Thus the representation of general vector with respect to~$B$ is
+          this.
+          \begin{equation*}
+            \rep{\colvec{x \\ y}}{B}=\colvec{x-y \\ y}
+          \end{equation*}
+          Compute the effect of the map with matrix-vector 
+          multiplication.
+          \begin{equation*}
+            \begin{mat}
+              2  &1  \\
+             -1 &0
+            \end{mat}_B
+            \colvec{x-y \\ y}_B
+            =
+            \colvec{2(x-y)+y \\ -(x-y)}_B     
+            =
+            \colvec{2x+y \\ -x+y}_B     
+          \end{equation*}
+          Finish by converting back to the standard vector representation.
+          \begin{equation*}
+            \colvec{2x+y \\ -x+y}_B     
+            =
+            (2x+y)\cdot\colvec{1 \\ 0}+(-x+y)\cdot\colvec{1 \\ 1}
+            =\colvec{x+2y \\ -x+y}      
+          \end{equation*}
+    \end{answer}
   \item 
     \nearbyexample{ex:NonSMatHasNonSMap} gives a matrix that is
     nonsingular and is therefore associated with maps that are nonsingular.
@@ -2809,27 +2985,15 @@ And, we shall see how to find the matrix that represents a map's inverse.
             The map is one-to-one.
        \end{exparts}
      \end{answer}
-  \item Use the method from the prior exercise on each.
-    \begin{exparts}
-      \partsitem
-        $\begin{mat}
+  \item Use the method from the prior exercise on this matrix.
+    \begin{equation*}
+        \begin{mat}
           1 &0 &-1 \\
           2 &1 &0  \\
           2 &2 &2
-        \end{mat}$
-      \partsitem Verify that the map represented by this matrix
-        is an isomorphism.
-        \begin{equation*}
-          \begin{mat}
-            2  &1  &0  \\
-            3  &1  &1  \\
-            7  &2  &1
-          \end{mat}
-        \end{equation*}
-    \end{exparts}
+        \end{mat}
+    \end{equation*}
     \begin{answer}
-      \begin{exparts}
-        \partsitem
           Here is the Gauss-Jordan reduction.
           \begin{align*}
             \begin{amat}{3}
@@ -2867,9 +3031,21 @@ And, we shall see how to find the matrix that represents a map's inverse.
             \nullspace{h}=\set{\colvec{z \\ -2z \\ z}\suchthat z\in\Re}
           \end{equation*}
           The nullity is~$1$.
-          Because the nullity is not~$0$ the map is not one-to-one.
-        \partsitem  Here, (i)~the domain and codomain are each of dimension~$3$.
-           To show (ii) and~(iii), that the map is an isomorphism, 
+          Because the nullity is not~$0$ the map is not one-to-one.      
+    \end{answer}
+  \item Verify that the map represented by this matrix
+        is an isomorphism.
+        \begin{equation*}
+          \begin{mat}
+            2  &1  &0  \\
+            3  &1  &1  \\
+            7  &2  &1
+          \end{mat}
+        \end{equation*}
+    \begin{answer}
+       For any map represented by this matrix, the domain and codomain are 
+       each of dimension~$3$.
+           To show that the map is an isomorphism, 
            we must show it is both onto and one-to-one.
            For that we don't need to augment the matrix with $a$, $b$, 
            and~$c$; this calculation
@@ -2892,7 +3068,6 @@ And, we shall see how to find the matrix that represents a map's inverse.
              \end{multline*}
           gives that for each codomain vector there is one and only one 
           associated domain vector.
-      \end{exparts}
     \end{answer}
   \item This is an alternative proof of 
     \nearbylemma{le:NonsingMatIffNonsingMap}.
@@ -2980,7 +3155,7 @@ And, we shall see how to find the matrix that represents a map's inverse.
       No, the range spaces may differ.
       \nearbyexample{ex:CngBasesChgMap} shows this.
     \end{answer}
-  \recommended \item 
+  \item 
     Let \( V \) be an \( n \)-dimensional space with bases \( B \) and
     \( D \).
     Consider a map that sends, for \( \vec{v}\in V\), 

@@ -14545,6 +14545,23 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.III.1.13}
+      \begin{exparts}
+        \partsitem This is not defined.
+        \partsitem This is defined.
+          \begin{equation*}
+            \begin{mat}
+              3  &1  \\
+              2  &4
+            \end{mat}
+            \colvec{0 \\ -1}
+            =
+            \colvec{-1 \\ -4}
+          \end{equation*}
+       \partsitem Not defined.
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.III.1.14}
       \begin{exparts*}
         \partsitem $\colvec{2\cdot 4 +1\cdot 2 \\
                             3\cdot 4-(1/2)\cdot 2}
@@ -14554,7 +14571,7 @@ sage: solve(system, x,y)
       \end{exparts*}
     
 \end{ans}
-\begin{ans}{Three.III.1.14}
+\begin{ans}{Three.III.1.15}
       Matrix-vector multiplication gives rise to a linear system.
       \begin{equation*}
         \begin{linsys}{3}
@@ -14566,7 +14583,7 @@ sage: solve(system, x,y)
       Gaussian reduction shows that \( z=1 \), \( y=1 \), and \( x=3 \).
     
 \end{ans}
-\begin{ans}{Three.III.1.15}
+\begin{ans}{Three.III.1.16}
       Here are two ways to get the answer.
 
       First, obviously $1-3x+2x^2=1\cdot 1-3\cdot x+2\cdot x^2$, and so we can
@@ -14614,7 +14631,56 @@ sage: solve(system, x,y)
       as above.
     
 \end{ans}
-\begin{ans}{Three.III.1.16}
+\begin{ans}{Three.III.1.17}
+     Fix this natural basis for $\matspace_{\nbyn{2}}$.
+     \begin{equation*}
+       D=\sequence{
+       \begin{mat}
+          1 &0  \\
+          0 &0
+       \end{mat},
+       \begin{mat}
+          0 &1  \\
+          0 &0
+       \end{mat},
+       \begin{mat}
+          0 &0  \\
+          1 &0
+       \end{mat},
+       \begin{mat}
+          0 &0  \\
+          0 &1
+       \end{mat}}
+     \end{equation*}
+     The representation of the map~$h$ with respect to $E_2,D$ is this.
+     \begin{equation*}
+       \rep{h}{E_2,D}=
+       \begin{mat}
+         1  &0  \\
+         2  &-1  \\
+         0  &1  \\
+         1  &0
+       \end{mat}
+     \end{equation*}
+     Since the general vector is represented with respect to~$E_2$ by itself,
+     and similarly every matrix is represented with respect to~$D$ by itself,
+     we have this for the effect of the map.
+     \begin{equation*}
+       \rep{h(\colvec{x \\ y})}{D}
+       =
+       \begin{mat}
+         1  &0  \\
+         2  &-1  \\
+         0  &1  \\
+         1  &0
+       \end{mat}
+       \colvec{x \\ y}
+       =
+       \colvec{x \\ 2x-y \\ y \\ x}
+     \end{equation*}
+   
+\end{ans}
+\begin{ans}{Three.III.1.18}
       Again, as recalled in the subsection,
       with respect to $\stdbasis_i$, a column vector represents itself.
       \begin{exparts}
@@ -14664,7 +14730,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.17}
+\begin{ans}{Three.III.1.19}
       The action of the map on the domain's basis vectors is this.
       \begin{equation*}
           \colvec{1 \\ 1 \\ 1}\mapsto\colvec{2 \\ 2}
@@ -14691,7 +14757,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.III.1.18}
+\begin{ans}{Three.III.1.20}
       \begin{exparts*}
         \partsitem
         We must first find the image of each vector from the domain's basis,
@@ -14740,7 +14806,7 @@ sage: solve(system, x,y)
       \end{exparts*}
     
 \end{ans}
-\begin{ans}{Three.III.1.19}
+\begin{ans}{Three.III.1.21}
       For each, we must find the image of each of the domain's basis vectors,
       represent each image with respect to the codomain's basis,
       and then adjoin those representations to get the matrix.
@@ -14878,7 +14944,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.20}
+\begin{ans}{Three.III.1.22}
       Where the space is \( n \)-dimensional,
       \begin{equation*}
         \rep{\text{id}}{B,B}=
@@ -14892,7 +14958,7 @@ sage: solve(system, x,y)
       is the $\nbyn{n}$ identity matrix.
     
 \end{ans}
-\begin{ans}{Three.III.1.21}
+\begin{ans}{Three.III.1.23}
       Taking this as the natural basis
       \begin{equation*}
         B=\sequence{\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3,\vec{\beta}_4}
@@ -14934,7 +15000,7 @@ sage: solve(system, x,y)
       \end{equation*}
      
 \end{ans}
-\begin{ans}{Three.III.1.22}
+\begin{ans}{Three.III.1.24}
        \begin{exparts}
          \partsitem With respect to the basis of the codomain, the images of
            the members of the basis of the domain are represented as
@@ -14974,7 +15040,7 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.III.1.23}
+\begin{ans}{Three.III.1.25}
       \begin{exparts}
         \partsitem The picture of $\map{d_s}{\Re^2}{\Re^2}$ is this.
           \begin{center}  \small
@@ -15027,7 +15093,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.24}
+\begin{ans}{Three.III.1.26}
       Call the map \( \map{t}{\Re^2}{\Re^2} \).
       \begin{exparts}
         \partsitem To represent this map with respect to the standard bases, we
@@ -15163,7 +15229,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.25}
+\begin{ans}{Three.III.1.27}
       \begin{exparts}
         \partsitem The images of the members of the domain's basis are
           \begin{equation*}
@@ -15201,7 +15267,7 @@ sage: solve(system, x,y)
         \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.III.1.26}
+\begin{ans}{Three.III.1.28}
       The product
       \begin{equation*}
         \begin{mat}
@@ -15217,7 +15283,7 @@ sage: solve(system, x,y)
       gives the \( i \)-th column of the matrix.
     
 \end{ans}
-\begin{ans}{Three.III.1.27}
+\begin{ans}{Three.III.1.29}
       \begin{exparts}
         \partsitem The images of the basis vectors for the domain are
          \( \cos x\mapsunder{d/dx}-\sin x \) and
@@ -15262,7 +15328,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.28}
+\begin{ans}{Three.III.1.30}
       \begin{exparts}
         \partsitem It is the set of vectors of the codomain represented with
           respect to the codomain's basis in this way.
@@ -15316,7 +15382,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.29}
+\begin{ans}{Three.III.1.31}
       Yes, for two reasons.
 
       First, the two maps $h$ and $\hat{h}$ need not have the same domain
@@ -15366,7 +15432,7 @@ sage: solve(system, x,y)
       (that is, reflection about the line $y=x$).
     
 \end{ans}
-\begin{ans}{Three.III.1.30}
+\begin{ans}{Three.III.1.32}
       We mimic \nearbyexample{ex:TypLinMapRepByMat}, just replacing the
       numbers with letters.
 
@@ -15405,7 +15471,7 @@ sage: solve(system, x,y)
       and so $h(\vec{v})$ is represented as required.
     
 \end{ans}
-\begin{ans}{Three.III.1.31}
+\begin{ans}{Three.III.1.33}
       \begin{exparts}
         \partsitem The picture is this.
           \begin{center}  \small
@@ -15481,7 +15547,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.1.32}
+\begin{ans}{Three.III.1.34}
       \begin{exparts}
         \partsitem
           Write the basis \( B_U \) as
@@ -15560,6 +15626,16 @@ sage: solve(system, x,y)
 \end{ans}
 \subsection{Three.III.2: Any Matrix Represents a Linear Map}
 \begin{ans}{Three.III.2.12}
+      \begin{exparts}
+        \partsitem domain: $2$, codomain: $2$
+        \partsitem domain: $3$, codomain: $2$
+        \partsitem domain: $2$, codomain: $3$
+        \partsitem domain: $3$, codomain: $2$
+        \partsitem domain: $4$, codomain: $2$
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.III.2.13}
      With respect to $B$ the vector's representation is this.
      \begin{equation*}
        \rep{2x-1}{B}=\colvec{-1 \\ 3}
@@ -15584,7 +15660,7 @@ sage: solve(system, x,y)
      \end{equation*}
    
 \end{ans}
-\begin{ans}{Three.III.2.13}
+\begin{ans}{Three.III.2.14}
      As described in the subsection, with respect to the standard bases,
      representations are transparent,
      and so, for instance, the first matrix describes this map.
@@ -15632,7 +15708,7 @@ sage: solve(system, x,y)
      \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.14}
+\begin{ans}{Three.III.2.15}
       \begin{exparts}
         \partsitem The first member of the basis
           \begin{equation*}
@@ -15680,7 +15756,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.15}
+\begin{ans}{Three.III.2.16}
       A general member of the domain, represented with respect to the
       domain's basis as
       \begin{equation*}
@@ -15702,7 +15778,7 @@ sage: solve(system, x,y)
       is projection onto the first component.
     
 \end{ans}
-\begin{ans}{Three.III.2.16}
+\begin{ans}{Three.III.2.17}
        Denote the given basis of
        $\polyspace_2$
        by $B$.
@@ -15765,7 +15841,43 @@ sage: solve(system, x,y)
        is the image of a vector in the domain.
      
 \end{ans}
-\begin{ans}{Three.III.2.17}
+\begin{ans}{Three.III.2.18}
+        Where $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$ we
+          can find $\rep{\vec{v}}{B}$ by eye, where $\vec{v}$ is the general
+          vector, with entries $x$ and~$y$.
+          \begin{equation*}
+            \colvec{x \\ y}=a\cdot\colvec{1 \\ 0}+b\cdot\colvec{1 \\ 1}
+            \quad\text{gives}\quad
+            b=y, a=x-y
+          \end{equation*}
+          Thus the representation of general vector with respect to~$B$ is
+          this.
+          \begin{equation*}
+            \rep{\colvec{x \\ y}}{B}=\colvec{x-y \\ y}
+          \end{equation*}
+          Compute the effect of the map with matrix-vector
+          multiplication.
+          \begin{equation*}
+            \begin{mat}
+              2  &1  \\
+             -1 &0
+            \end{mat}_B
+            \colvec{x-y \\ y}_B
+            =
+            \colvec{2(x-y)+y \\ -(x-y)}_B
+            =
+            \colvec{2x+y \\ -x+y}_B
+          \end{equation*}
+          Finish by converting back to the standard vector representation.
+          \begin{equation*}
+            \colvec{2x+y \\ -x+y}_B
+            =
+            (2x+y)\cdot\colvec{1 \\ 0}+(-x+y)\cdot\colvec{1 \\ 1}
+            =\colvec{x+2y \\ -x+y}
+          \end{equation*}
+    
+\end{ans}
+\begin{ans}{Three.III.2.19}
       Let the matrix be $G$, and suppose that it represents $\map{g}{V}{W}$
       with respect to bases $B$ and $D$.
       Because $G$ has two columns, $V$ is two-dimensional.
@@ -15810,7 +15922,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.18}
+\begin{ans}{Three.III.2.20}
        \begin{exparts}
          \partsitem
            (i)~The dimension of the domain space is the number of columns~$m=2$.
@@ -15947,9 +16059,7 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.III.2.19}
-      \begin{exparts}
-        \partsitem
+\begin{ans}{Three.III.2.21}
           Here is the Gauss-Jordan reduction.
           \begin{align*}
             \begin{amat}{3}
@@ -15988,8 +16098,12 @@ sage: solve(system, x,y)
           \end{equation*}
           The nullity is~$1$.
           Because the nullity is not~$0$ the map is not one-to-one.
-        \partsitem  Here, (i)~the domain and codomain are each of dimension~$3$.
-           To show (ii) and~(iii), that the map is an isomorphism,
+    
+\end{ans}
+\begin{ans}{Three.III.2.22}
+       For any map represented by this matrix, the domain and codomain are
+       each of dimension~$3$.
+           To show that the map is an isomorphism,
            we must show it is both onto and one-to-one.
            For that we don't need to augment the matrix with $a$, $b$,
            and~$c$; this calculation
@@ -16012,10 +16126,9 @@ sage: solve(system, x,y)
              \end{multline*}
           gives that for each codomain vector there is one and only one
           associated domain vector.
-      \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.20}
+\begin{ans}{Three.III.2.23}
       \begin{exparts}
         \partsitem
           The defined map $h$ is onto if and only if
@@ -16068,12 +16181,12 @@ sage: solve(system, x,y)
        \end{exparts}
       
 \end{ans}
-\begin{ans}{Three.III.2.21}
+\begin{ans}{Three.III.2.24}
       No, the range spaces may differ.
       \nearbyexample{ex:CngBasesChgMap} shows this.
     
 \end{ans}
-\begin{ans}{Three.III.2.22}
+\begin{ans}{Three.III.2.25}
       Recall that the representation map
       \begin{equation*}
         V\mapsunder{\text{Rep}_{B}}\Re^n
@@ -16091,7 +16204,7 @@ sage: solve(system, x,y)
       is an isomorphism.
     
 \end{ans}
-\begin{ans}{Three.III.2.23}
+\begin{ans}{Three.III.2.26}
       Yes.
       Consider
       \begin{equation*}
@@ -16114,11 +16227,11 @@ sage: solve(system, x,y)
       \( B_i=D_i \)\Dash then the map represented by $H$ is the identity.
     
 \end{ans}
-\begin{ans}{Three.III.2.24}
+\begin{ans}{Three.III.2.27}
       This is immediate from \nearbylemma{le:NonsingMatIffNonsingMap}.
     
 \end{ans}
-\begin{ans}{Three.III.2.25}
+\begin{ans}{Three.III.2.28}
       The first map
       \begin{equation*}
         \colvec{x \\ y}=\colvec{x \\ y}_{\stdbasis_2}
@@ -16153,7 +16266,7 @@ sage: solve(system, x,y)
       (this is a \definend{skew}.)
      
 \end{ans}
-\begin{ans}{Three.III.2.26}
+\begin{ans}{Three.III.2.29}
        \begin{exparts}
          \partsitem  This is immediate from
            \nearbytheorem{th:RankMatEqRankMap}.
@@ -16194,7 +16307,7 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.III.2.27}
+\begin{ans}{Three.III.2.30}
       \begin{exparts}
         \partsitem Recall that the representation map
           $\map{\mbox{Rep}_{B}}{V}{\Re^n}$ is linear (it is actually
@@ -16238,7 +16351,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.28}
+\begin{ans}{Three.III.2.31}
        See the following section.
     
 \end{ans}
