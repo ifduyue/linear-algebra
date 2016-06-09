@@ -505,7 +505,7 @@ The ship will never be in range.
       and every vector is in it, hence every vector is the projection only
       of itself.
     \end{answer}
-  \recommended \item 
+  \item 
     Show that the projection of \( \vec{v}\, \) into the line spanned by
     \( \vec{s}\, \) has length equal to the absolute value of the number
     \( \vec{v}\dotprod\vec{s}\, \) divided by the length of the vector
@@ -563,10 +563,10 @@ The ship will never be in range.
                 -(\vec{v}\dotprod\vec{s}\,)^2}{\vec{s}\dotprod\vec{s}}
       \end{align*}  
     \end{answer}
-  \item \label{exer:ProjMinimizesDist}
+  \item 
     Find the scalar \( c \) such that the point \( (cs_1,cs_2) \)
     is a minimum distance from the point \( (v_1,v_2) \)
-    by using calculus (i.e., consider the distance function, set the
+    by using Calculus (i.e., consider the distance function, set the
     first derivative equal to zero, and solve). 
     Generalize to \( \Re^n \).
     \begin{answer}
@@ -595,7 +595,19 @@ The ship will never be in range.
       Consider $d_n(c)=(cs_1-v_1)^2+\dots+(cs_n-v_n)^2$, take the derivative,
       etc. 
     \end{answer}
-  \recommended \item
+  \recommended \item \label{exer:ProjMinimizesDist}
+    Let $\vec{p}$ be the orthogonal projection of 
+    $\vec{v}\in\Re^n$ onto a line~$\ell$.
+    Show that $\vec{p}$ is the point in the line closest to~$\vec{v}$.
+    \begin{answer}
+      Suppose $\vec{w}\in\ell$.
+      Because this is orthogonal projection, 
+      the two vectors $\vec{v}-\vec{p}$ and $\vec{p}-\vec{w}$ are at 
+      a right angle.
+      The Triangle Inequality applies and the hypotenuse $\vec{v}-\vec{w}$
+      is therefore at least as long as $\vec{v}-\vec{p}$. 
+    \end{answer}
+  \item
     Prove that the orthogonal projection of a vector into a line is shorter
     than the vector.
     \begin{answer}
@@ -631,7 +643,7 @@ The ship will never be in range.
        \( (\vec{v}\dotprod c\vec{s}/c\vec{s}\dotprod c\vec{s}\,)\cdot c\vec{s}=
           (\vec{v}\dotprod \vec{s}/\vec{s}\dotprod \vec{s}\,)\cdot \vec{s} \).
     \end{answer}
-  \recommended \item
+  \item
     Consider the function mapping the plane to itself that takes 
     a vector to its projection into the line \( y=x \).
     These two each show that the map is linear, the first one in a way that
@@ -1066,8 +1078,78 @@ some computations.
 
 
 \begin{exercises}
-  \item 
-    Perform the Gram-Schmidt process on each of these bases
+  \item Normalize the lengths of these vectors.
+    \begin{exparts*}
+      \partsitem $\colvec{1 \\ 2}$
+      \partsitem $\colvec{-1 \\ 3 \\ 0}$
+      \partsitem $\colvec{1 \\ -1}$
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem $\colvec{1/\sqrt{5} \\ 2/\sqrt{5}}
+             =\frac{1}{\sqrt{5}}\cdot\colvec{1 \\ 2}$
+        \partsitem $\frac{1}{\sqrt{10}}\cdot\colvec{-1 \\ 3 \\ 0}$
+        \partsitem $\frac{1}{\sqrt{2}}\cdot\colvec{1 \\ -1}$
+      \end{exparts}
+    \end{answer}
+  \recommended \item Perform Gram-Schmidt on this basis for~$\Re^2$.
+    \begin{equation*}
+      \sequence{\colvec{1 \\ 1}, \colvec{-1 \\ 2}}
+    \end{equation*}
+    Check that the resulting vectors are orthogonal.
+    \begin{answer}
+      Call the given basis $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$.
+      First, $\vec{\kappa}_1=\vec{\beta}_1$.
+      For the other, $\vec{\kappa}_2=\vec{\beta}_2-\proj{\vec{\beta}_2}{\spanof{\vec{\kappa}_1}}$.
+      \begin{equation*}
+        \vec{\kappa}_2=
+        \colvec{-1 \\ 2}-\frac{\colvec{-1 \\ 2}\dotprod\colvec{1 \\ 1}}{\colvec{1 \\ 1}\dotprod\colvec{1 \\ 1}}\cdot\colvec{1 \\ 1}
+        =\colvec{-3/2 \\ 3/2}
+      \end{equation*}
+      To check that they are orthogonal, just note that their dot product is 
+      zero.
+    \end{answer}
+  \recommended \item 
+    Perform the Gram-Schmidt process on this basis for $\Re^3$.
+    \begin{equation*}
+      \sequence{
+                         \colvec{1 \\ 2 \\ 3},
+                         \colvec{2 \\ 1 \\ -3},
+                         \colvec{3 \\ 3 \\ 3}
+                         }  
+    \end{equation*}
+    \begin{answer}
+      Call the given basis 
+      $B=\sequence{\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3}$.
+      First, $\vec{\kappa}_1=\vec{\beta}_1$.
+
+      Next,
+      $\vec{\kappa}_2
+          =\vec{\beta}_2-\proj{\vec{\beta}_2}{\spanof{\vec{\kappa}_1}}$.
+      \begin{equation*}
+        \vec{\kappa}_2=
+        \colvec{2 \\ 1 \\ -3}-\frac{\colvec{2 \\ 1 \\ -3}\dotprod\colvec{1 \\ 2 \\ 3}}{\colvec{1 \\ 2 \\ 3}\dotprod\colvec{1 \\ 2 \\ 3}}\cdot\colvec{1 \\ 2 \\ 3}
+        =\colvec{33/14 \\ 24/14 \\ -27/14}
+      \end{equation*}
+
+      For the third, this is the formula
+      \begin{equation*}
+         \vec{\kappa}_3
+          =\vec{\beta}_3
+           -\proj{\vec{\beta}_3}{\spanof{\vec{\kappa}_1}}
+           -\proj{\vec{\beta}_3}{\spanof{\vec{\kappa}_2}}    
+      \end{equation*} 
+      and here is the calculation.
+      \begin{equation*}
+        \colvec{3 \\ 3 \\ 3}
+        -\frac{\colvec{3 \\ 3 \\ 3}\dotprod\colvec{1 \\ 2 \\ 3}}{\colvec{1 \\ 2 \\ 3}\dotprod\colvec{1 \\ 2 \\ 3}}\cdot\colvec{1 \\ 2 \\ 3}
+        -\frac{\colvec{3 \\ 3 \\ 3}\dotprod\colvec{33/14 \\ 24/14 \\ -27/14}}{\colvec{33/14 \\ 24/14 \\ -27/14}\dotprod\colvec{33/14 \\ 24/14 \\ -27/14}}\cdot\colvec{33/14 \\ 24/14 \\ -27/14}
+       =\colvec{9/19 \\ -9/19 \\ 3/19}
+      \end{equation*}
+      % 1 - 18/14-(0/14)/(1274/196) times \colvec{3 \\ 3 \\ 3}
+    \end{answer}
+  \recommended \item 
+    Perform Gram-Schmidt on each of these bases
     for $\Re^2$.
     \begin{exparts*}
       \partsitem \( \sequence{
@@ -1163,7 +1245,7 @@ some computations.
               }
       \end{equation*}
     \end{answer}
-  \recommended \item 
+  \item 
     Perform the Gram-Schmidt process on each of these bases
     for $\Re^3$.
     \begin{exparts*}
@@ -2638,7 +2720,7 @@ Note, as a check, that this result is indeed in $P$.
            \end{equation*}
        \end{exparts}
      \end{answer}
-\recommended \item 
+  \recommended \item 
      Find \( M^\perp \).
      \begin{exparts*}
        \partsitem \( M=\set{\colvec{x \\ y}\suchthat x+y=0 } \)
@@ -2758,6 +2840,80 @@ Note, as a check, that this result is indeed in $P$.
             \end{equation*}
        \end{exparts}
      \end{answer}
+  \recommended \item Find the orthogonal projection of the vector into 
+    the subspace.
+    \begin{equation*}
+      \colvec{1 \\ 2 \\ 0} 
+      \quad
+      S=\spanof{\set{\colvec{0 \\ 2 \\ 0},\colvec{1 \\ -1 \\ 1}}}
+    \end{equation*}
+    \begin{answer}
+      Where
+      \begin{equation*}
+        A=
+        \begin{mat}
+          0 &1 \\
+          2 &-1 \\
+          0 &1
+        \end{mat}
+      \end{equation*}
+      straightforward, although tedious, calculation gives this.
+      % sage: A = matrix(QQ, [[0,1], [1,0], [0,-1]])
+      % sage: A*(A.transpose()*A).inverse()*A.transpose()
+      % [ 1/2    0 -1/2]
+      % [   0    1    0]
+      % [-1/2    0  1/2]
+      \begin{equation*}
+        A\bigl(\trans{A}A\bigr)^{-1}\trans{A}=
+        \begin{mat}
+          1/2 &0 &-1/2 \\
+           0  &1 &0    \\
+         -1/2 &0 &1/2
+        \end{mat}
+      \end{equation*}
+      When applied to the vector we get the projection.
+      \begin{equation*}
+        \begin{mat}
+          1/2 &0 &-1/2 \\
+           0  &1 &0    \\
+         -1/2 &0 &1/2
+        \end{mat}
+        \colvec{1 \\ 2 \\ 0}
+        =
+        \colvec{1/2 \\ 2 \\ -1/2}        
+      \end{equation*}
+    \end{answer}
+  \recommended \item With the same subspace as in the prior problem, find the 
+    orthogonal projection of this vector.
+    \begin{equation*}
+      \colvec{1 \\ 2 \\ -1}
+    \end{equation*}
+    \begin{answer}
+      Using the matrix calculation from the prior answer, this 
+      \begin{equation*}
+        \begin{mat}
+          1/2 &0 &-1/2 \\
+           0  &1 &0    \\
+         -1/2 &0 &1/2
+        \end{mat}
+        \colvec{1 \\ 2 \\ -1}
+        =
+        \colvec{1 \\ 2 \\ -1}        
+      \end{equation*}
+      shows the vector is in the subspace~$S$.
+    \end{answer}
+  \recommended \item \label{exer:ProjMinimizesDistSubspace}
+    Let $\vec{p}$ be the orthogonal projection of 
+    $\vec{v}\in\Re^n$ onto a subspace~$S$.
+    Show that $\vec{p}$ is the point in the subspace closest to~$\vec{v}$.
+    \begin{answer}
+      Suppose $\vec{w}\in S$.
+      Because this is orthogonal projection, 
+      the two vectors $\vec{v}-\vec{p}$ and $\vec{p}-\vec{w}$ are at 
+      a right angle.
+      The Triangle Inequality applies and the hypotenuse $\vec{v}-\vec{w}$
+      is therefore at least as long as $\vec{v}-\vec{p}$. 
+    \end{answer}
   \item 
     This subsection shows how to project orthogonally in two ways,
     the method of \nearbyexample{ex:OrthProjOne} 
@@ -2870,7 +3026,7 @@ Note, as a check, that this result is indeed in $P$.
           \end{equation*}
       \end{exparts}
     \end{answer}
-  \recommended \item 
+  \item 
     We have three ways to find the orthogonal projection of a 
     vector into a line, the \nearbydefinition{def:ProjIntoLine} way from
     the first subsection of this section, the  
@@ -3175,7 +3331,7 @@ Note, as a check, that this result is indeed in $P$.
        For all $\vec{v}$ the map $p$ gives $p(\vec{v})=\vec{m}$ if and only
        if $\vec{v}-p(\vec{v})=\vec{n}$, as required.
      \end{answer}
-  \recommended \item \label{exer:PerpOnBasisImplPerp} 
+  \item \label{exer:PerpOnBasisImplPerp} 
     Show that if a vector is perpendicular to every vector in a set then
     it is perpendicular to every vector in the span of that set.
     \begin{answer}
@@ -3202,7 +3358,7 @@ Note, as a check, that this result is indeed in $P$.
       \nearbylemma{le:OrthoProjWellDefd} that the space is the direct sum 
       of the two.
     \end{answer}
-  \recommended \item
+  \item
     Suppose that \( \vec{v}_1,\vec{v}_2\in\Re^n \) are such that for all
     complements \( M,N\subseteq\Re^n \), the projections of \( \vec{v}_1 \)
     and \( \vec{v}_2 \) into \( M \) along \( N \) are equal.

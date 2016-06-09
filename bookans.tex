@@ -15636,6 +15636,20 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.III.2.13}
+      For each we just have to decide if the matrix is nonsingular, perhaps by
+      doing Gauss's Method.
+      (In truth, we can do each of these by eye.)
+      \begin{exparts}
+        \partsitem This matrix is nonsingular,
+          since the second row is not a multiple of the first,
+          so the map is nonsingular.
+        \partsitem The matrix is singular so the map is singular.
+        \partsitem Nonsingular.
+        \partsitem Singular.
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.III.2.14}
      With respect to $B$ the vector's representation is this.
      \begin{equation*}
        \rep{2x-1}{B}=\colvec{-1 \\ 3}
@@ -15660,7 +15674,7 @@ sage: solve(system, x,y)
      \end{equation*}
    
 \end{ans}
-\begin{ans}{Three.III.2.14}
+\begin{ans}{Three.III.2.15}
      As described in the subsection, with respect to the standard bases,
      representations are transparent,
      and so, for instance, the first matrix describes this map.
@@ -15708,7 +15722,7 @@ sage: solve(system, x,y)
      \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.15}
+\begin{ans}{Three.III.2.16}
       \begin{exparts}
         \partsitem The first member of the basis
           \begin{equation*}
@@ -15756,7 +15770,44 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.16}
+\begin{ans}{Three.III.2.17}
+      Since, with respect to the standard basis~$E_2$, a matrix is represented
+      by itself, we just need to do the matrix-vector multiplication.
+      \begin{exparts}
+        \partsitem We have this.
+          \begin{equation*}
+            \rep{h(\colvec{2 \\ 3})}{E_2}=
+            \begin{mat}
+              1  &3  \\
+              2  &4
+             \end{mat}_{E_2,E_2}
+             \rep{\colvec{2 \\ 3}}{E_2}=
+            \begin{mat}
+              1  &3  \\
+              2  &4
+             \end{mat}_{E_2,E_2}
+             \colvec{2 \\ 3}_{E_2}=
+             \colvec{11 \\ 16}_{E_2}=
+             \colvec{11 \\ 16}
+          \end{equation*}
+        \partsitem
+           $\begin{mat}
+              1  &3  \\
+              2  &4
+             \end{mat}
+             \colvec{0 \\ 1}=
+             \colvec{3 \\ 4}$
+        \partsitem
+           $\begin{mat}
+              1  &3  \\
+              2  &4
+             \end{mat}
+             \colvec{-1 \\ 1}=
+             \colvec{2 \\ 2}$
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.III.2.18}
       A general member of the domain, represented with respect to the
       domain's basis as
       \begin{equation*}
@@ -15778,7 +15829,7 @@ sage: solve(system, x,y)
       is projection onto the first component.
     
 \end{ans}
-\begin{ans}{Three.III.2.17}
+\begin{ans}{Three.III.2.19}
        Denote the given basis of
        $\polyspace_2$
        by $B$.
@@ -15841,7 +15892,7 @@ sage: solve(system, x,y)
        is the image of a vector in the domain.
      
 \end{ans}
-\begin{ans}{Three.III.2.18}
+\begin{ans}{Three.III.2.20}
         Where $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$ we
           can find $\rep{\vec{v}}{B}$ by eye, where $\vec{v}$ is the general
           vector, with entries $x$ and~$y$.
@@ -15877,7 +15928,7 @@ sage: solve(system, x,y)
           \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.III.2.19}
+\begin{ans}{Three.III.2.21}
       Let the matrix be $G$, and suppose that it represents $\map{g}{V}{W}$
       with respect to bases $B$ and $D$.
       Because $G$ has two columns, $V$ is two-dimensional.
@@ -15922,7 +15973,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.20}
+\begin{ans}{Three.III.2.22}
        \begin{exparts}
          \partsitem
            (i)~The dimension of the domain space is the number of columns~$m=2$.
@@ -16059,7 +16110,7 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.III.2.21}
+\begin{ans}{Three.III.2.23}
           Here is the Gauss-Jordan reduction.
           \begin{align*}
             \begin{amat}{3}
@@ -16100,7 +16151,7 @@ sage: solve(system, x,y)
           Because the nullity is not~$0$ the map is not one-to-one.
     
 \end{ans}
-\begin{ans}{Three.III.2.22}
+\begin{ans}{Three.III.2.24}
        For any map represented by this matrix, the domain and codomain are
        each of dimension~$3$.
            To show that the map is an isomorphism,
@@ -16128,7 +16179,7 @@ sage: solve(system, x,y)
           associated domain vector.
     
 \end{ans}
-\begin{ans}{Three.III.2.23}
+\begin{ans}{Three.III.2.25}
       \begin{exparts}
         \partsitem
           The defined map $h$ is onto if and only if
@@ -16181,12 +16232,12 @@ sage: solve(system, x,y)
        \end{exparts}
       
 \end{ans}
-\begin{ans}{Three.III.2.24}
+\begin{ans}{Three.III.2.26}
       No, the range spaces may differ.
       \nearbyexample{ex:CngBasesChgMap} shows this.
     
 \end{ans}
-\begin{ans}{Three.III.2.25}
+\begin{ans}{Three.III.2.27}
       Recall that the representation map
       \begin{equation*}
         V\mapsunder{\text{Rep}_{B}}\Re^n
@@ -16204,7 +16255,7 @@ sage: solve(system, x,y)
       is an isomorphism.
     
 \end{ans}
-\begin{ans}{Three.III.2.26}
+\begin{ans}{Three.III.2.28}
       Yes.
       Consider
       \begin{equation*}
@@ -16227,11 +16278,11 @@ sage: solve(system, x,y)
       \( B_i=D_i \)\Dash then the map represented by $H$ is the identity.
     
 \end{ans}
-\begin{ans}{Three.III.2.27}
+\begin{ans}{Three.III.2.29}
       This is immediate from \nearbylemma{le:NonsingMatIffNonsingMap}.
     
 \end{ans}
-\begin{ans}{Three.III.2.28}
+\begin{ans}{Three.III.2.30}
       The first map
       \begin{equation*}
         \colvec{x \\ y}=\colvec{x \\ y}_{\stdbasis_2}
@@ -16266,7 +16317,7 @@ sage: solve(system, x,y)
       (this is a \definend{skew}.)
      
 \end{ans}
-\begin{ans}{Three.III.2.29}
+\begin{ans}{Three.III.2.31}
        \begin{exparts}
          \partsitem  This is immediate from
            \nearbytheorem{th:RankMatEqRankMap}.
@@ -16307,7 +16358,7 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.III.2.30}
+\begin{ans}{Three.III.2.32}
       \begin{exparts}
         \partsitem Recall that the representation map
           $\map{\mbox{Rep}_{B}}{V}{\Re^n}$ is linear (it is actually
@@ -16351,7 +16402,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.III.2.31}
+\begin{ans}{Three.III.2.33}
        See the following section.
     
 \end{ans}
@@ -16380,6 +16431,17 @@ sage: solve(system, x,y)
    
 \end{ans}
 \begin{ans}{Three.IV.1.9}
+     The bases don't matter.
+     The only thing that matters is getting the dimensions right.
+     \begin{equation*}
+       \begin{mat}
+         0 &0 &0 &0 \\
+         0 &0 &0 &0
+       \end{mat}
+     \end{equation*}
+   
+\end{ans}
+\begin{ans}{Three.IV.1.10}
       Represent the domain vector $\vec{v}\in V$ and the maps
       $\map{g,h}{V}{W}$ with respect to bases $B,D$ in the usual way.
       \begin{exparts}
@@ -16421,7 +16483,7 @@ sage: solve(system, x,y)
      \end{exparts}
    
 \end{ans}
-\begin{ans}{Three.IV.1.10}
+\begin{ans}{Three.IV.1.11}
       First, each of these properties
       is easy to check in an entry-by-entry way.
       For example, writing
@@ -16489,7 +16551,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.1.11}
+\begin{ans}{Three.IV.1.12}
       For any \( V,W \) with bases \( B,D \),
       the (appropriately-sized) zero matrix represents this map.
       \begin{equation*}
@@ -16522,7 +16584,7 @@ sage: solve(system, x,y)
       These maps are easily seen to be unequal.
      
 \end{ans}
-\begin{ans}{Three.IV.1.12}
+\begin{ans}{Three.IV.1.13}
       Fix bases \( B \) and \( D \) for \( V \) and \( W \), and consider
       \( \map{\mbox{Rep}_{B,D}}{\linmaps{V}{W}}{\matspace_{\nbym{m}{n}}} \)
       associating each linear map with the matrix representing that map
@@ -16534,7 +16596,7 @@ sage: solve(system, x,y)
       \nearbytheorem{th:MatOpsRepMapOps}.
     
 \end{ans}
-\begin{ans}{Three.IV.1.13}
+\begin{ans}{Three.IV.1.14}
       Fix bases and represent the transformations with
       \( \nbyn{2} \) matrices.
       The space of matrices \( \matspace_{\nbyn{2}} \) has dimension four,
@@ -16545,7 +16607,7 @@ sage: solve(system, x,y)
       dependence.)
     
 \end{ans}
-\begin{ans}{Three.IV.1.14}
+\begin{ans}{Three.IV.1.15}
       That the trace of a sum is the sum of the traces holds
       because both \( \text{trace}(H+G) \) and
       \( \text{trace}(H)+\text{trace}(G) \) are the sum of
@@ -16556,7 +16618,7 @@ sage: solve(system, x,y)
       $\Re$.
     
 \end{ans}
-\begin{ans}{Three.IV.1.15}
+\begin{ans}{Three.IV.1.16}
       \begin{exparts}
         \partsitem The \( i,j \) entry of \( \trans{(G+H)} \) is
           \( g_{j,i}+h_{j,i} \).
@@ -16567,7 +16629,7 @@ sage: solve(system, x,y)
       \end{exparts}
    
 \end{ans}
-\begin{ans}{Three.IV.1.16}
+\begin{ans}{Three.IV.1.17}
       \begin{exparts}
         \partsitem For \( H+\trans{H} \), the \( i,j \) entry
           is \( h_{i,j}+h_{j,i} \) and
@@ -16587,7 +16649,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.1.17}
+\begin{ans}{Three.IV.1.18}
       \begin{exparts}
         \partsitem Scalar multiplication leaves the rank of a matrix unchanged
           except that multiplication by zero leaves the matrix
@@ -17447,6 +17509,27 @@ sage: solve(system, x,y)
 \subsection{Three.IV.3: Mechanics of Matrix Multiplication}
 \begin{ans}{Three.IV.3.24}
       \begin{exparts}
+        \partsitem
+          $\begin{mat}
+             3 &4 \\
+             1 &2
+           \end{mat}$
+        \partsitem
+          $\begin{mat}
+             2 &4 \\
+             1 &3
+           \end{mat}$
+        \partsitem
+          $\begin{mat}
+             1 &2 &3 \\
+             7 &8 &9 \\
+             4 &5 &6
+           \end{mat}$
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.IV.3.25}
+      \begin{exparts}
         \partsitem The second matrix has its first row multiplied
           by \( 3 \).
           \begin{equation*}
@@ -17491,7 +17574,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.3.25}
+\begin{ans}{Three.IV.3.26}
       \begin{exparts}
         \partsitem The second matrix has its first row multiplied
           by \( 3 \) and
@@ -17514,7 +17597,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.3.26}
+\begin{ans}{Three.IV.3.27}
       \begin{exparts}
         \partsitem This matrix swaps row one and row three.
           \begin{equation*}
@@ -17554,7 +17637,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.3.27}
+\begin{ans}{Three.IV.3.28}
       Multiply by $C_{1,2}(-2)$, then by~$C_{1,3}(-7)$, and then by~$C_{2,3}(-3)$,
       paying attention to the right-to-left order.
       \begin{multline*}
@@ -17587,7 +17670,7 @@ sage: solve(system, x,y)
       \end{multline*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.28}
+\begin{ans}{Three.IV.3.29}
       The product is the identity matrix (recall that
       $\cos^2\theta+\sin^2\theta =1$).
       An explanation is that the given matrix represents, with respect to
@@ -17597,7 +17680,7 @@ sage: solve(system, x,y)
       The two cancel.
      
 \end{ans}
-\begin{ans}{Three.IV.3.29}
+\begin{ans}{Three.IV.3.30}
       \begin{exparts}
         \partsitem The adjacency matrix is this
           (e.g, the first row shows that there is only one connection
@@ -17621,12 +17704,12 @@ sage: solve(system, x,y)
       \end{exparts}
    
 \end{ans}
-\begin{ans}{Three.IV.3.30}
+\begin{ans}{Three.IV.3.31}
       The pay due each person appears in the matrix product of the two
       arrays.
     
 \end{ans}
-\begin{ans}{Three.IV.3.31}
+\begin{ans}{Three.IV.3.32}
     The Gauss-Jordan reduction is routine.
     \begin{equation*}
         \begin{mat}
@@ -17722,7 +17805,7 @@ sage: solve(system, x,y)
     \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.32}
+\begin{ans}{Three.IV.3.33}
       One way to produce this matrix from the identity is to use
       the column operations
       of first multiplying the second column by three, and then adding the
@@ -17766,7 +17849,7 @@ sage: solve(system, x,y)
       same matrix product.
     
 \end{ans}
-\begin{ans}{Three.IV.3.33}
+\begin{ans}{Three.IV.3.34}
       The set of diagonal matrices is nonempty as the zero matrix is
       diagonal.
       Clearly it is closed under scalar multiples and sums.
@@ -17788,7 +17871,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.34}
+\begin{ans}{Three.IV.3.35}
       No.
       In \( \polyspace_1 \), with respect to the unequal bases
       \( B=\sequence{1,x} \) and \( D=\sequence{1+x,1-x} \),
@@ -17802,7 +17885,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.35}
+\begin{ans}{Three.IV.3.36}
       For any scalar \( r \) and square matrix \( H \) we have
       \( (rI)H=r(IH)=rH=r(HI)=(Hr)I=H(rI) \).
 
@@ -17842,7 +17925,7 @@ sage: solve(system, x,y)
       The argument for the upper right entry~$b$ is similar.
     
 \end{ans}
-\begin{ans}{Three.IV.3.36}
+\begin{ans}{Three.IV.3.37}
       It is false; these two don't commute.
       \begin{equation*}
          \begin{mat}[r]
@@ -17857,7 +17940,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.37}
+\begin{ans}{Three.IV.3.38}
       A permutation matrix has a single one in each row and column, and
       all its other entries are zeroes.
       Fix such a matrix.
@@ -17872,7 +17955,7 @@ sage: solve(system, x,y)
       \( i \)-th one, which is one.
     
 \end{ans}
-\begin{ans}{Three.IV.3.38}
+\begin{ans}{Three.IV.3.39}
       The generalization is to go from the first and second rows to the
       $i_1$-th and $i_2$-th rows.
       Row~$i$ of \( GH \) is made up of the dot products of
@@ -17881,7 +17964,7 @@ sage: solve(system, x,y)
       rows \( i_1 \) and \( i_2 \) of \( GH \).
     
 \end{ans}
-\begin{ans}{Three.IV.3.39}
+\begin{ans}{Three.IV.3.40}
       If the product of two diagonal matrices is defined\Dash if
       both are $\nbyn{n}$\Dash then
       the product of the diagonals is the diagonal
@@ -17890,7 +17973,7 @@ sage: solve(system, x,y)
       \( g_{i,i}h_{i,i} \).
     
 \end{ans}
-\begin{ans}{Three.IV.3.40}
+\begin{ans}{Three.IV.3.41}
       The \( i \)-th row of \( GH \) is made up of the dot products of
       the \( i \)-th row of \( G \) with the columns of \( H \).
       The dot product of a zero row with a column is zero.
@@ -17900,7 +17983,7 @@ sage: solve(system, x,y)
       The proof is easy.
     
 \end{ans}
-\begin{ans}{Three.IV.3.41}
+\begin{ans}{Three.IV.3.42}
       Perhaps the easiest way is to show that each \( \nbym{n}{m} \) matrix
       is a linear combination of unit matrices in one and only one way:
       \begin{equation*}
@@ -17925,7 +18008,7 @@ sage: solve(system, x,y)
       etc.
     
 \end{ans}
-\begin{ans}{Three.IV.3.42}
+\begin{ans}{Three.IV.3.43}
       Call that matrix \( F \).
       We have
       \begin{equation*}
@@ -17970,7 +18053,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.43}
+\begin{ans}{Three.IV.3.44}
      \textit{Chapter Five gives a less computational reason\Dash the
      trace of a matrix is the second coefficient in its characteristic
      polynomial\Dash but for now we can use indices.}
@@ -17993,7 +18076,7 @@ sage: solve(system, x,y)
      and the two are equal.
     
 \end{ans}
-\begin{ans}{Three.IV.3.44}
+\begin{ans}{Three.IV.3.45}
       A matrix is upper triangular if and only if its $i,j$ entry is zero
       whenever \( i>j \).
       Thus, if \( G,H \) are upper triangular then \( h_{i,j} \) and
@@ -18008,7 +18091,7 @@ sage: solve(system, x,y)
       (A similar argument works for lower triangular matrices.)
    
 \end{ans}
-\begin{ans}{Three.IV.3.45}
+\begin{ans}{Three.IV.3.46}
      The sum along the \( i \)-th row of the product is this.
      \begin{align*}
        p_{i,1}+\cdots+p_{i,n}
@@ -18025,7 +18108,7 @@ sage: solve(system, x,y)
      \end{align*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.46}
+\begin{ans}{Three.IV.3.47}
       Matrices representing (say, with respect to
       \( \stdbasis_2,\stdbasis_2\subset\Re^2 \)) the maps that send
       \begin{equation*}
@@ -18042,7 +18125,7 @@ sage: solve(system, x,y)
       will do.
     
 \end{ans}
-\begin{ans}{Three.IV.3.47}
+\begin{ans}{Three.IV.3.48}
       \begin{exparts}
         \partsitem Each entry \(p_{i,j}=g_{i,1}h_{1,j}+\dots+g_{1,r}h_{r,1}  \)
           takes \( r \) multiplications and there are \( m\cdot n \) entries.
@@ -18098,7 +18181,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.3.48}
+\begin{ans}{Three.IV.3.49}
       \answerasgiven
       No, it does not.
       Let \( A \) and \( B \) represent, with respect to the standard bases,
@@ -18116,7 +18199,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.IV.3.49}
+\begin{ans}{Three.IV.3.50}
       \answerasgiven
       \begin{exparts}
         \partsitem Obvious.
@@ -18144,7 +18227,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.IV.3.50}
+\begin{ans}{Three.IV.3.51}
       \answerasgiven
       Let \( \sequence{\vec{z}_1,\dots,\vec{z}_k} \) be a basis for
       \( \rangespace{A}\intersection\nullspace{A} \)
@@ -19006,6 +19089,21 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.V.1.8}
+     If the matrix is nonsingular then it can be a change of basis matrix.
+     For all of these matrices we can check that by eye.
+     \begin{exparts}
+       \partsitem This is nonsingular since the second row is not a multiple
+          of the first.
+       \partsitem This is nonsingular.
+       \partsitem This matrix is singular, since to be nonsingular a matrix
+          must be square.
+       \partsitem This matrix is singular since twice the first row plus
+          the second row equals the third row.
+       \partsitem Nonsingular.
+     \end{exparts}
+   
+\end{ans}
+\begin{ans}{Three.V.1.9}
       Concatenate
       $\rep{\identity(\vec{\beta}_1)}{D}=\rep{\vec{\beta}_1}{D}$
       and $\rep{\identity(\vec{\beta}_2)}{D}=\rep{\vec{\beta}_2}{D}$
@@ -19031,7 +19129,7 @@ sage: solve(system, x,y)
       \end{exparts*}
     
 \end{ans}
-\begin{ans}{Three.V.1.9}
+\begin{ans}{Three.V.1.10}
       The vectors
       $\rep{\identity(\vec{\beta}_1)}{D}=\rep{\vec{\beta}_1}{D}$,
       $\rep{\identity(\vec{\beta}_2)}{D}=\rep{\vec{\beta}_2}{D}$,
@@ -19059,7 +19157,7 @@ sage: solve(system, x,y)
       $1=0\cdot x^2+1\cdot 1+0\cdot x$.
      
 \end{ans}
-\begin{ans}{Three.V.1.10}
+\begin{ans}{Three.V.1.11}
        One way to go is to find
        $\rep{\vec{\delta}_1}{B}$ and $\rep{\vec{\delta}_2}{B}$,
        and then concatenate them into the columns of the desired
@@ -19087,7 +19185,7 @@ sage: solve(system, x,y)
       \end{exparts*}
     
 \end{ans}
-\begin{ans}{Three.V.1.11}
+\begin{ans}{Three.V.1.12}
        A matrix changes bases if and only if it is nonsingular.
        \begin{exparts}
         \partsitem This matrix is nonsingular and so changes bases.
@@ -19155,7 +19253,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.V.1.12}
+\begin{ans}{Three.V.1.13}
       \begin{exparts}
         \partsitem
           Start by computing the effect of the identity function
@@ -19231,7 +19329,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.V.1.13}
+\begin{ans}{Three.V.1.14}
       This question has many different solutions.
       One way to proceed is to make up any basis $B$ for any space,
       and then compute the appropriate $D$ (necessarily for the same space,
@@ -19250,7 +19348,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.V.1.14}
+\begin{ans}{Three.V.1.15}
       Checking that \( B=\sequence{2\sin(x)+\cos(x),3\cos(x)} \) is a basis
       is routine.
       Call the natural basis $D$.
@@ -19293,7 +19391,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.V.1.15}
+\begin{ans}{Three.V.1.16}
       We start by taking
       the inverse of the matrix, that is, by deciding what is the inverse to
       the map of interest.
@@ -19338,15 +19436,15 @@ sage: solve(system, x,y)
       (Of course, it does this to any basis.)
     
 \end{ans}
-\begin{ans}{Three.V.1.16}
+\begin{ans}{Three.V.1.17}
        The appropriately-sized identity matrix.
      
 \end{ans}
-\begin{ans}{Three.V.1.17}
+\begin{ans}{Three.V.1.18}
        Each is true if and only if the matrix is nonsingular.
     
 \end{ans}
-\begin{ans}{Three.V.1.18}
+\begin{ans}{Three.V.1.19}
       What remains is to show that
       left multiplication by a reduction matrix represents a
       change from another basis to \( B=\basis{\beta}{n} \).
@@ -19389,7 +19487,7 @@ sage: solve(system, x,y)
       are all bases.)
     
 \end{ans}
-\begin{ans}{Three.V.1.19}
+\begin{ans}{Three.V.1.20}
        Taking $H$ as a change of basis matrix
        $H=\rep{\identity}{B,\stdbasis_n}$,
        its columns are
@@ -19407,7 +19505,7 @@ sage: solve(system, x,y)
        That is, the basis is the one composed of the columns of \( H \).
     
 \end{ans}
-\begin{ans}{Three.V.1.20}
+\begin{ans}{Three.V.1.21}
       \begin{exparts}
         \partsitem We can change the starting vector representation
           to the ending one through a sequence of row operations.
@@ -19478,11 +19576,11 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.V.1.21}
+\begin{ans}{Three.V.1.22}
       This is the topic of the next subsection.
     
 \end{ans}
-\begin{ans}{Three.V.1.22}
+\begin{ans}{Three.V.1.23}
       A change of basis matrix is nonsingular and thus
       has rank equal to the number of its columns.
       Therefore its set of columns is a linearly independent subset of size
@@ -19493,7 +19591,7 @@ sage: solve(system, x,y)
       convert to `if and only if' parts).
     
 \end{ans}
-\begin{ans}{Three.V.1.23}
+\begin{ans}{Three.V.1.24}
       In response to the first half of the question,
       there are infinitely many such matrices.
       One of them  represents with respect to
@@ -19574,7 +19672,19 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.V.2.11}
-      We need only decide what the rank of each is.
+      Group the matrices into classes characterized by the condition that
+      all matrices in the same class are the same size and the same rank.
+      \begin{exparts}
+        \partsitem $\nbyn{3}$, rank~$2$
+        \partsitem $\nbyn{2}$, rank~$1$
+        \partsitem $\nbym{2}{3}$, rank~$2$
+        \partsitem $\nbyn{3}$, rank~$2$
+        \partsitem $\nbyn{3}$, rank~$1$
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.V.2.12}
+      We need only compute the rank of each.
       \begin{exparts*}
         \partsitem \( \begin{mat}[r]
                    1  &0  &0  \\
@@ -19588,7 +19698,7 @@ sage: solve(system, x,y)
       \end{exparts*}
     
 \end{ans}
-\begin{ans}{Three.V.2.12}
+\begin{ans}{Three.V.2.13}
       Recall the diagram
       and the formula.
       \begin{equation*}
@@ -19775,12 +19885,12 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.V.2.13}
+\begin{ans}{Three.V.2.14}
       Where \( H \) and \( \hat{H} \) are \( \nbym{m}{n} \), the
       matrix \( P \) is \( \nbyn{m} \) while \( Q \) is \( \nbyn{n} \).
     
 \end{ans}
-\begin{ans}{Three.V.2.14}
+\begin{ans}{Three.V.2.15}
       \begin{exparts}
         \partsitem
           For the equation $\hat{H}=PHQ$ this is the arrow diagram.
@@ -19845,7 +19955,45 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.V.2.15}
+\begin{ans}{Three.V.2.16}
+          For the equation $\hat{T}=PTQ$ this is the arrow diagram.
+          \begin{equation*}
+            \begin{CD}
+              V_{\wrt{B}}                   @>t>T>        W_{\wrt{D}}       \\
+              @V{\text{\scriptsize$\identity$}} VV      @V{\text{\scriptsize$\identity$}} VV \\
+              V_{\wrt{\hat{B}}}             @>t>\hat{T}>   W_{\wrt{\hat{D}}}
+            \end{CD}
+          \end{equation*}
+          These are the calculations for $P=\rep{\identity}{\hat{B},B}$
+          (done by eye).
+          \begin{equation*}
+            \rep{\identity(\colvec{1 \\ 0})}{B}=\colvec{1 \\ 0}
+            \quad
+            \rep{\identity(\colvec{0 \\ 1})}{B}=\colvec{-1 \\ 1}
+          \end{equation*}
+          So we get this.
+          \begin{equation*}
+            P=\begin{mat}
+              1 &-1 \\
+              0 &1
+             \end{mat}
+          \end{equation*}
+          These calcuations give $Q=\rep{\identity}{D,\hat{D}}$.
+          \begin{equation*}
+            \rep{\identity(\colvec{0 \\ 1})}{\hat{D}}=\colvec{0 \\ 1}
+            \quad
+            \rep{\identity(\colvec{-1 \\ 0})}{\hat{D}}=\colvec{-1 \\ -1}
+          \end{equation*}
+          Concatenate them to make the other matrix.
+          \begin{equation*}
+            Q=\begin{mat}
+              0 &-1 \\
+              1 &-1
+             \end{mat}
+          \end{equation*}
+    
+\end{ans}
+\begin{ans}{Three.V.2.17}
       Gauss's Method gives this.
       \begin{equation*}
           \begin{mat}
@@ -19932,19 +20080,19 @@ sage: solve(system, x,y)
       \end{align*}
     
 \end{ans}
-\begin{ans}{Three.V.2.16}
+\begin{ans}{Three.V.2.18}
         Any \( \nbyn{n} \) matrix is nonsingular if and only if it has
         rank \( n \), that is, by  \nearbytheorem{th:CanonFormForMatEquiv},
         if and only if it is matrix equivalent to
         the $\nbyn{n}$ matrix whose diagonal is all ones.
     
 \end{ans}
-\begin{ans}{Three.V.2.17}
+\begin{ans}{Three.V.2.19}
       If \( PAQ=I \) then \( QPAQ=Q \), so \( QPA=I \), and so
       \( QP=A^{-1} \).
     
 \end{ans}
-\begin{ans}{Three.V.2.18}
+\begin{ans}{Three.V.2.20}
       By the definition following  \nearbyexample{ex:DiagizedMat}, a matrix
       $M$ is diagonalizable if it represents $M=\rep{t}{B,D}$
       a transformation with the property that there is some basis
@@ -19958,18 +20106,18 @@ sage: solve(system, x,y)
       $\hat{B}$ and $\hat{D}$ so that they are equal.
     
 \end{ans}
-\begin{ans}{Three.V.2.19}
+\begin{ans}{Three.V.2.21}
       Yes.
       Row rank equals column rank, so the rank of the transpose equals
       the rank of the matrix.
       Same-sized matrices with equal ranks are matrix equivalent.
     
 \end{ans}
-\begin{ans}{Three.V.2.20}
+\begin{ans}{Three.V.2.22}
       Only a zero matrix has rank zero.
     
 \end{ans}
-\begin{ans}{Three.V.2.21}
+\begin{ans}{Three.V.2.23}
       For reflexivity, to show that any matrix is matrix equivalent to
       itself,
       take \( P \) and \( Q \) to be identity matrices.
@@ -19986,7 +20134,7 @@ sage: solve(system, x,y)
       matrix equivalent to \( H_3 \).
      
 \end{ans}
-\begin{ans}{Three.V.2.22}
+\begin{ans}{Three.V.2.24}
       By \nearbytheorem{th:CanonFormForMatEquiv}, a zero matrix is alone
       in its class because it is the only \( \nbym{m}{n} \) of rank zero.
       No other matrix is alone in its class;
@@ -19994,14 +20142,14 @@ sage: solve(system, x,y)
       has the same rank as that matrix.
     
 \end{ans}
-\begin{ans}{Three.V.2.23}
+\begin{ans}{Three.V.2.25}
       There are two matrix equivalence classes of \( \nbyn{1} \)
       matrices\Dash those of rank zero and those of rank one.
       The  \( \nbyn{3} \) matrices fall into four matrix equivalence
       classes.
     
 \end{ans}
-\begin{ans}{Three.V.2.24}
+\begin{ans}{Three.V.2.26}
       For \( \nbym{m}{n} \) matrices there are classes for each possible
       rank: where \( k \)  is the minimum of \( m \) and \( n \) there are
       classes for the matrices of rank \( 0 \), \( 1 \), \ldots, \( k \).
@@ -20010,7 +20158,7 @@ sage: solve(system, x,y)
       many classes.)
     
 \end{ans}
-\begin{ans}{Three.V.2.25}
+\begin{ans}{Three.V.2.27}
       They are closed under nonzero scalar multiplication since
       a nonzero scalar multiple of a matrix has the same rank as does the
       matrix.
@@ -20018,7 +20166,7 @@ sage: solve(system, x,y)
       for instance, \( H+(-H) \) has rank zero.
     
 \end{ans}
-\begin{ans}{Three.V.2.26}
+\begin{ans}{Three.V.2.28}
       \begin{exparts}
         \partsitem We have
           \begin{equation*}
@@ -20118,7 +20266,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.V.2.27}
+\begin{ans}{Three.V.2.29}
        \begin{exparts}
          \partsitem The adapted form of the arrow diagram is this.
            \begin{equation*}
@@ -20146,7 +20294,7 @@ sage: solve(system, x,y)
        \end{exparts}
       
 \end{ans}
-\begin{ans}{Three.V.2.28}
+\begin{ans}{Three.V.2.30}
       \begin{exparts}
         \partsitem Here is the arrow diagram, and a version of that diagram
           for inverse functions.
@@ -20208,7 +20356,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.V.2.29}
+\begin{ans}{Three.V.2.31}
       \begin{exparts}
         \partsitem The
           arrow diagram suggests the definition.
@@ -20565,6 +20713,15 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.VI.1.17}
+      Suppose $\vec{w}\in\ell$.
+      Because this is orthogonal projection,
+      the two vectors $\vec{v}-\vec{p}$ and $\vec{p}-\vec{w}$ are at
+      a right angle.
+      The Triangle Inequality applies and the hypotenuse $\vec{v}-\vec{w}$
+      is therefore at least as long as $\vec{v}-\vec{p}$.
+    
+\end{ans}
+\begin{ans}{Three.VI.1.18}
       The Cauchy-Schwarz inequality
       $\absval{\vec{v}\dotprod\vec{s}\,}
          \leq\norm{\vec{v}\,}\cdot\norm{\vec{s}\,}$
@@ -20585,14 +20742,14 @@ sage: solve(system, x,y)
       That is, \( \norm{\vec{v}\,} \) is larger than or equal to the fraction.
     
 \end{ans}
-\begin{ans}{Three.VI.1.18}
+\begin{ans}{Three.VI.1.19}
        Write \( c\vec{s} \) for \( \vec{q} \), and
        calculate:
        \( (\vec{v}\dotprod c\vec{s}/c\vec{s}\dotprod c\vec{s}\,)\cdot c\vec{s}=
           (\vec{v}\dotprod \vec{s}/\vec{s}\dotprod \vec{s}\,)\cdot \vec{s} \).
     
 \end{ans}
-\begin{ans}{Three.VI.1.19}
+\begin{ans}{Three.VI.1.20}
       \begin{exparts}
         \partsitem Fixing
           \begin{equation*}
@@ -20621,7 +20778,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.1.20}
+\begin{ans}{Three.VI.1.21}
       The sequence need not settle down.
       With
       \begin{equation*}
@@ -20647,6 +20804,59 @@ sage: solve(system, x,y)
 \end{ans}
 \subsection{Three.VI.2: Gram-Schmidt Orthogonalization}
 \begin{ans}{Three.VI.2.10}
+      \begin{exparts}
+        \partsitem $\colvec{1/\sqrt{5} \\ 2/\sqrt{5}}
+             =\frac{1}{\sqrt{5}}\cdot\colvec{1 \\ 2}$
+        \partsitem $\frac{1}{\sqrt{10}}\cdot\colvec{-1 \\ 3 \\ 0}$
+        \partsitem $\frac{1}{\sqrt{2}}\cdot\colvec{1 \\ -1}$
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{Three.VI.2.11}
+      Call the given basis $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$.
+      First, $\vec{\kappa}_1=\vec{\beta}_1$.
+      For the other, $\vec{\kappa}_2=\vec{\beta}_2-\proj{\vec{\beta}_2}{\spanof{\vec{\kappa}_1}}$.
+      \begin{equation*}
+        \vec{\kappa}_2=
+        \colvec{-1 \\ 2}-\frac{\colvec{-1 \\ 2}\dotprod\colvec{1 \\ 1}}{\colvec{1 \\ 1}\dotprod\colvec{1 \\ 1}}\cdot\colvec{1 \\ 1}
+        =\colvec{-3/2 \\ 3/2}
+      \end{equation*}
+      To check that they are orthogonal, just note that their dot product is
+      zero.
+    
+\end{ans}
+\begin{ans}{Three.VI.2.12}
+      Call the given basis
+      $B=\sequence{\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3}$.
+      First, $\vec{\kappa}_1=\vec{\beta}_1$.
+
+      Next,
+      $\vec{\kappa}_2
+          =\vec{\beta}_2-\proj{\vec{\beta}_2}{\spanof{\vec{\kappa}_1}}$.
+      \begin{equation*}
+        \vec{\kappa}_2=
+        \colvec{2 \\ 1 \\ -3}-\frac{\colvec{2 \\ 1 \\ -3}\dotprod\colvec{1 \\ 2 \\ 3}}{\colvec{1 \\ 2 \\ 3}\dotprod\colvec{1 \\ 2 \\ 3}}\cdot\colvec{1 \\ 2 \\ 3}
+        =\colvec{33/14 \\ 24/14 \\ -27/14}
+      \end{equation*}
+
+      For the third, this is the formula
+      \begin{equation*}
+         \vec{\kappa}_3
+          =\vec{\beta}_3
+           -\proj{\vec{\beta}_3}{\spanof{\vec{\kappa}_1}}
+           -\proj{\vec{\beta}_3}{\spanof{\vec{\kappa}_2}}
+      \end{equation*}
+      and here is the calculation.
+      \begin{equation*}
+        \colvec{3 \\ 3 \\ 3}
+        -\frac{\colvec{3 \\ 3 \\ 3}\dotprod\colvec{1 \\ 2 \\ 3}}{\colvec{1 \\ 2 \\ 3}\dotprod\colvec{1 \\ 2 \\ 3}}\cdot\colvec{1 \\ 2 \\ 3}
+        -\frac{\colvec{3 \\ 3 \\ 3}\dotprod\colvec{33/14 \\ 24/14 \\ -27/14}}{\colvec{33/14 \\ 24/14 \\ -27/14}\dotprod\colvec{33/14 \\ 24/14 \\ -27/14}}\cdot\colvec{33/14 \\ 24/14 \\ -27/14}
+       =\colvec{9/19 \\ -9/19 \\ 3/19}
+      \end{equation*}
+      % 1 - 18/14-(0/14)/(1274/196) times \colvec{3 \\ 3 \\ 3}
+    
+\end{ans}
+\begin{ans}{Three.VI.2.13}
       \begin{exparts}
        \partsitem
         \begin{align*}
@@ -20726,7 +20936,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.VI.2.11}
+\begin{ans}{Three.VI.2.14}
       \begin{exparts}
        \partsitem The first basis vector is unchanged.
         \begin{equation*}
@@ -20836,7 +21046,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.2.12}
+\begin{ans}{Three.VI.2.15}
          We can parametrize the given space can in this way.
          \begin{equation*}
            \set{\colvec{x \\ y \\ z} \suchthat x=y-z}
@@ -20877,7 +21087,7 @@ sage: solve(system, x,y)
          \end{equation*}
        
 \end{ans}
-\begin{ans}{Three.VI.2.13}
+\begin{ans}{Three.VI.2.16}
        Reducing the linear system
        \begin{equation*}
          \begin{linsys}{4}
@@ -20934,7 +21144,7 @@ sage: solve(system, x,y)
        \end{equation*}
      
 \end{ans}
-\begin{ans}{Three.VI.2.14}
+\begin{ans}{Three.VI.2.17}
        A linearly independent subset of $\Re^n$ is a basis for its
        own span.
        Apply \nearbytheorem{th:GramSchmidt}.
@@ -20979,18 +21189,18 @@ sage: solve(system, x,y)
        phrase obviates these concerns.
      
 \end{ans}
-\begin{ans}{Three.VI.2.15}
+\begin{ans}{Three.VI.2.18}
       If that set is not linearly independent, then we get a zero vector.
       Otherwise (if our set is linearly independent but does not span the
       space), we are doing Gram-Schmidt on a set that is a basis for a
       subspace and so we get an orthogonal basis for a subspace.
     
 \end{ans}
-\begin{ans}{Three.VI.2.16}
+\begin{ans}{Three.VI.2.19}
        The process leaves the basis unchanged.
      
 \end{ans}
-\begin{ans}{Three.VI.2.17}
+\begin{ans}{Three.VI.2.20}
        \begin{exparts}
          \partsitem The argument is as in the $i=3$ case of the proof
            of \nearbytheorem{th:GramSchmidt}.
@@ -21080,7 +21290,7 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.VI.2.18}
+\begin{ans}{Three.VI.2.21}
        One way to proceed is to find a third vector so that the three together
        make a basis for $\Re^3$, e.g.,
        \begin{equation*}
@@ -21137,7 +21347,7 @@ sage: solve(system, x,y)
        including the two vectors given in the question.
      
 \end{ans}
-\begin{ans}{Three.VI.2.19}
+\begin{ans}{Three.VI.2.22}
       \begin{exparts}
         \partsitem We can do the representation by eye.
           \begin{equation*}
@@ -21197,7 +21407,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.2.20}
+\begin{ans}{Three.VI.2.23}
       First, $\norm{\vec{v}\,}^2=4^2+3^2+2^2+1^2=50$.
       \begin{exparts*}
         \partsitem $c_1=4$
@@ -21276,13 +21486,13 @@ sage: solve(system, x,y)
       members of an orthonormal set.
     
 \end{ans}
-\begin{ans}{Three.VI.2.21}
+\begin{ans}{Three.VI.2.24}
       It is true, except for the zero vector.
       Every vector in \( \Re^n \) except the zero vector is in a basis, and
       that basis can be orthogonalized.
      
 \end{ans}
-\begin{ans}{Three.VI.2.22}
+\begin{ans}{Three.VI.2.25}
       The $\nbyn{3}$ case gives the idea.
       The set
       \begin{equation*}
@@ -21335,7 +21545,7 @@ sage: solve(system, x,y)
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Three.VI.2.23}
+\begin{ans}{Three.VI.2.26}
       If the set is empty then the summation on the left side is the
       linear combination of the empty set of vectors,
       which by definition adds to the zero vector.
@@ -21343,7 +21553,7 @@ sage: solve(system, x,y)
       `if \ldots then \ldots' implication is vacuously true.
     
 \end{ans}
-\begin{ans}{Three.VI.2.24}
+\begin{ans}{Three.VI.2.27}
       \begin{exparts}
         \partsitem Part of the induction argument proving
           \nearbytheorem{th:GramSchmidt} checks that
@@ -21364,7 +21574,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.2.25}
+\begin{ans}{Three.VI.2.28}
       For the inductive step, we assume that for all $j$ in~$[1..i]$,
       these three conditions are true of each $\vec{\kappa}_j$:
       (i)~each $\vec{\kappa}_j$ is nonzero,
@@ -21618,6 +21828,67 @@ sage: solve(system, x,y)
      
 \end{ans}
 \begin{ans}{Three.VI.3.12}
+      Where
+      \begin{equation*}
+        A=
+        \begin{mat}
+          0 &1 \\
+          2 &-1 \\
+          0 &1
+        \end{mat}
+      \end{equation*}
+      straightforward, although tedious, calculation gives this.
+      % sage: A = matrix(QQ, [[0,1], [1,0], [0,-1]])
+      % sage: A*(A.transpose()*A).inverse()*A.transpose()
+      % [ 1/2    0 -1/2]
+      % [   0    1    0]
+      % [-1/2    0  1/2]
+      \begin{equation*}
+        A\bigl(\trans{A}A\bigr)^{-1}\trans{A}=
+        \begin{mat}
+          1/2 &0 &-1/2 \\
+           0  &1 &0    \\
+         -1/2 &0 &1/2
+        \end{mat}
+      \end{equation*}
+      When applied to the vector we get the projection.
+      \begin{equation*}
+        \begin{mat}
+          1/2 &0 &-1/2 \\
+           0  &1 &0    \\
+         -1/2 &0 &1/2
+        \end{mat}
+        \colvec{1 \\ 2 \\ 0}
+        =
+        \colvec{1/2 \\ 2 \\ -1/2}
+      \end{equation*}
+    
+\end{ans}
+\begin{ans}{Three.VI.3.13}
+      Using the matrix calculation from the prior answer, this
+      \begin{equation*}
+        \begin{mat}
+          1/2 &0 &-1/2 \\
+           0  &1 &0    \\
+         -1/2 &0 &1/2
+        \end{mat}
+        \colvec{1 \\ 2 \\ -1}
+        =
+        \colvec{1 \\ 2 \\ -1}
+      \end{equation*}
+      shows the vector is in the subspace~$S$.
+    
+\end{ans}
+\begin{ans}{Three.VI.3.14}
+      Suppose $\vec{w}\in S$.
+      Because this is orthogonal projection,
+      the two vectors $\vec{v}-\vec{p}$ and $\vec{p}-\vec{w}$ are at
+      a right angle.
+      The Triangle Inequality applies and the hypotenuse $\vec{v}-\vec{w}$
+      is therefore at least as long as $\vec{v}-\vec{p}$.
+    
+\end{ans}
+\begin{ans}{Three.VI.3.15}
       \begin{exparts}
         \partsitem Parametrizing the equation leads to this basis for
           $P$.
@@ -21710,7 +21981,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.3.13}
+\begin{ans}{Three.VI.3.16}
        \begin{exparts}
          \partsitem Parametrizing gives this.
            \begin{equation*}
@@ -21928,21 +22199,21 @@ sage: solve(system, x,y)
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Three.VI.3.14}
+\begin{ans}{Three.VI.3.17}
       No, a decomposition of vectors $\vec{v}=\vec{m}+\vec{n}$ into
       $\vec{m}\in M$ and $\vec{n}\in N$ does not depend on the bases
       chosen for the subspaces, as we showed
       in the Direct Sum subsection.
     
 \end{ans}
-\begin{ans}{Three.VI.3.15}
+\begin{ans}{Three.VI.3.18}
       The orthogonal projection of a vector into a subspace is a member of
       that subspace.
       Since a trivial subspace has only one member, $\zero$, the projection of
       any vector must equal $\zero$.
     
 \end{ans}
-\begin{ans}{Three.VI.3.16}
+\begin{ans}{Three.VI.3.19}
       The projection into $M$ along
       $N$ of a $\vec{v}\in M$ is $\vec{v}$.
       Decomposing
@@ -21951,7 +22222,7 @@ sage: solve(system, x,y)
       projection of $\vec{m}=\vec{v}$.
     
 \end{ans}
-\begin{ans}{Three.VI.3.17}
+\begin{ans}{Three.VI.3.20}
       The proof of \nearbylemma{le:OrthoProjWellDefd} shows that
       each vector $\vec{v}\in\Re^n$
       is the sum of its orthogonal projections
@@ -21971,14 +22242,14 @@ sage: solve(system, x,y)
       $\vec{\kappa}_i\dotprod\vec{\kappa}_i=1$.
     
 \end{ans}
-\begin{ans}{Three.VI.3.18}
+\begin{ans}{Three.VI.3.21}
        If $V=M\directsum N$ then every vector decomposes uniquely as
        $\vec{v}=\vec{m}+\vec{n}$.
        For all $\vec{v}$ the map $p$ gives $p(\vec{v})=\vec{m}$ if and only
        if $\vec{v}-p(\vec{v})=\vec{n}$, as required.
      
 \end{ans}
-\begin{ans}{Three.VI.3.19}
+\begin{ans}{Three.VI.3.22}
       Let $\vec{v}$ be perpendicular to every $\vec{w}\in S$.
       Then
       $\vec{v}\dotprod(c_1\vec{w}_1+\dots+c_n\vec{w}_n)
@@ -21989,17 +22260,17 @@ sage: solve(system, x,y)
        =c_1\cdot 0+\dots+c_n\cdot 0=0$.
     
 \end{ans}
-\begin{ans}{Three.VI.3.20}
+\begin{ans}{Three.VI.3.23}
       True; the only vector orthogonal to itself is the zero vector.
     
 \end{ans}
-\begin{ans}{Three.VI.3.21}
+\begin{ans}{Three.VI.3.24}
       This is immediate from the statement in
       \nearbylemma{le:OrthoProjWellDefd} that the space is the direct sum
       of the two.
     
 \end{ans}
-\begin{ans}{Three.VI.3.22}
+\begin{ans}{Three.VI.3.25}
       The two must be equal, even only under the seemingly weaker
       condition that they yield the same result on all orthogonal projections.
       Consider the subspace $M$ spanned by the set
@@ -22010,7 +22281,7 @@ sage: solve(system, x,y)
       For their projections into $M$ to be equal, they must be equal.
     
 \end{ans}
-\begin{ans}{Three.VI.3.23}
+\begin{ans}{Three.VI.3.26}
       \begin{exparts}
         \partsitem
           We will show that the sets are mutually inclusive,
@@ -22075,7 +22346,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.3.24}
+\begin{ans}{Three.VI.3.27}
       \begin{exparts}
         \partsitem The representation of
           \begin{equation*}
@@ -22179,7 +22450,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.3.25}
+\begin{ans}{Three.VI.3.28}
       \begin{exparts}
         \partsitem First note that if a vector $\vec{v}$ is already in the
           line then the orthogonal projection gives $\vec{v}$ itself.
@@ -22241,7 +22512,7 @@ sage: solve(system, x,y)
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Three.VI.3.26}
+\begin{ans}{Three.VI.3.29}
       For any matrix $M$ we have that $\trans{(M^{-1})}=(\trans{M})^{-1}$,
       and for any two matrices $M$, $N$ we have that
       $\trans{MN}=\trans{N}\trans{M}$ (provided, of course,

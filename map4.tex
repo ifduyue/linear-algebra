@@ -186,14 +186,14 @@ This is \nearbyexercise{exer:CorrspMapMatOps}.
 \end{proof}
 
 \begin{remark}
-These two operations on matrices are simple.
-But we did not define them in this way because they are simple.
-We defined them in
+These two operations on matrices are simple,
+but we did not define them in this way because they are simple.
+We defined them
 this way because they represent function addition
 and function scalar multiplication. 
 That is, our program is to define matrix operations by referencing function
 operations.
-Simplicity is a pleasant bonus.
+Simplicity is a bonus.
 
 % We can express this program in another way.
 % Recall Theorem~III.\ref{th:MatMultRepsFuncAppl},
@@ -251,7 +251,7 @@ no matter what domain and codomain bases we use.
 
 \begin{exercises}
   \recommended \item
-    Perform the indicated operations, if defined.
+    Perform the indicated operations, if defined, or state ``not defined.''
     \begin{exparts}
       \partsitem \( \begin{mat}[r]
                  5  &-1  &2  \\
@@ -314,6 +314,18 @@ no matter what domain and codomain bases we use.
                  \end{mat}  \)
         \partsitem Not defined.
       \end{exparts*}  
+   \end{answer}
+  \item Give the matrix representing the zero map from $\Re^4$ to $\Re^2$,
+   with respect to the standard bases.
+   \begin{answer}
+     The bases don't matter.  
+     The only thing that matters is getting the dimensions right.
+     \begin{equation*}
+       \begin{mat}
+         0 &0 &0 &0 \\
+         0 &0 &0 &0
+       \end{mat}
+     \end{equation*}
    \end{answer}
   \item \label{exer:CorrspMapMatOps}
     Prove \nearbytheorem{th:MatOpsRepMapOps}.
@@ -1285,7 +1297,7 @@ explore this operation.
         -4  &1   \\
        \end{mat}
     \end{equation*}
-    compute or state `not defined'.
+    compute or state ``not defined''.
     \begin{exparts*}
       \partsitem \( AB \)
       \partsitem \( (AB)C \)
@@ -1951,7 +1963,7 @@ explore this operation.
       $G$ commutes with $H$ and $H$ commutes with $J$, but $G$ does not
       commute with $J$.    
     \end{answer}
-  \recommended \item \label{exer:ZeroDivisor}
+  \item \label{exer:ZeroDivisor}
     \textit{(We will use this exercise in the Matrix Inverses exercises.)}
     Here is another property of matrix multiplication that might be
     puzzling at first sight.
@@ -3236,6 +3248,60 @@ clearer idea then we will go with it.
 
 \begin{exercises}
   \recommended \item
+    Predict the result of each product with a permutation matrix
+    and then check by multiplying it out.
+    \begin{exparts*}
+      \partsitem 
+        $\begin{mat}
+           0 &1 \\
+           1 &0
+        \end{mat}
+        \begin{mat}
+           1 &2 \\
+           3 &4
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}
+          1 &2  \\
+          3 &4
+        \end{mat}
+        \begin{mat}
+          0 &1 \\
+          1 &0
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}
+           1 &0 &0 \\
+           0 &0 &1 \\
+           0 &1 &0
+        \end{mat}
+        \begin{mat}
+           1 &2 &3 \\
+           4 &5 &6 \\
+           7 &8 &9
+        \end{mat}$
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem 
+          $\begin{mat}
+             3 &4 \\
+             1 &2
+           \end{mat}$
+        \partsitem 
+          $\begin{mat}
+             2 &4 \\
+             1 &3
+           \end{mat}$
+        \partsitem 
+          $\begin{mat}
+             1 &2 &3 \\
+             7 &8 &9 \\
+             4 &5 &6    
+           \end{mat}$
+      \end{exparts}
+    \end{answer}
+  \recommended \item
     Predict the result of each multiplication by an elementary
     reduction matrix, and then check by multiplying it out.
     \begin{exparts*}
@@ -3472,7 +3538,7 @@ clearer idea then we will go with it.
       radians.
       The two cancel.  
      \end{answer}
-  \recommended \item 
+  \item 
     The need to take linear combinations of rows and columns in tables of 
     numbers arises often in practice.
     For instance, this is a map of part of Vermont and New York.
@@ -3978,7 +4044,7 @@ clearer idea then we will go with it.
      \end{align*}
      and the two are equal.  
     \end{answer}
-  \recommended \item
+  \item
     A square matrix is 
     \definend{upper triangular}\index{triangular matrix}%
     \index{matrix!triangular} 
@@ -5680,8 +5746,8 @@ real number one can be interesting and useful.
       \nearbyexercise{exer:PermTimesTransEqId}.  
     \end{answer}
   \item 
-    \textit{The first two parts of this question appeared as
-    \nearbyexercise{exer:TranspAndMult}.}
+    % \textit{The first two parts of this question appeared as
+    % \nearbyexercise{exer:TranspAndMult}.}
     \begin{exparts}
       \partsitem Show that \( \trans{(GH)}=\trans{H}\trans{G} \).
       \partsitem A square matrix is {\em symmetric\/} if each 
@@ -5705,8 +5771,8 @@ real number one can be interesting and useful.
       \end{exparts}  
     \end{answer}
   \recommended \item
-    \textit{The items starting this question appeared as
-    \nearbyexercise{exer:ZeroDivisor}.}
+    % \textit{The items starting this question appeared as
+    % \nearbyexercise{exer:ZeroDivisor}.}
     \begin{exparts}
       \partsitem Prove that the composition of the projections
         \( \map{\pi_x,\pi_y}{\Re^3}{\Re^3} \) is the zero map despite that

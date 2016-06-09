@@ -396,6 +396,50 @@ with respect to some pair of bases.
         \end{mat}
       \end{equation*}
     \end{answer}
+ \item Which of these matrices could be used to change bases?
+   \begin{exparts*}
+     \partsitem 
+       $\begin{mat}
+          1 &2 \\
+          3 &4 
+        \end{mat}$
+     \partsitem 
+       $\begin{mat}
+          0 &-1  \\
+          1 &-1
+        \end{mat}$
+     \partsitem 
+       $\begin{mat}
+          2 &3 &-1 \\
+          0 &1 &0
+        \end{mat}$
+     \partsitem 
+       $\begin{mat}
+          2 &3 &-1 \\
+          0 &1 &0  \\
+          4 &7 &-2
+        \end{mat}$
+     \partsitem 
+       $\begin{mat}
+          0 &2 &0 \\
+          0 &0 &6 \\
+          1 &0 &0
+        \end{mat}$
+   \end{exparts*}
+   \begin{answer}
+     If the matrix is nonsingular then it can be a change of basis matrix. 
+     For all of these matrices we can check that by eye.
+     \begin{exparts}
+       \partsitem This is nonsingular since the second row is not a multiple
+          of the first.
+       \partsitem This is nonsingular.
+       \partsitem This matrix is singular, since to be nonsingular a matrix
+          must be square.
+       \partsitem This matrix is singular since twice the first row plus
+          the second row equals the third row.
+       \partsitem Nonsingular.
+     \end{exparts}
+   \end{answer}
   \recommended \item \label{exer:ChngeBasMatsRTwo}
     Find the change of basis matrix for \( B,D\subseteq\Re^2 \).
     \begin{exparts*}
@@ -885,7 +929,7 @@ with respect to some pair of bases.
        \end{equation*}
        That is, the basis is the one composed of the columns of \( H \).  
     \end{answer}
-  \recommended \item \label{exer:AnyNonZeroRepChgTOAnyOther}
+  \item \label{exer:AnyNonZeroRepChgTOAnyOther}
     \begin{exparts}
       \partsitem  In \( \polyspace_3 \) with basis
         \( B=\sequence{1+x,1-x,x^2+x^3,x^2-x^3} \) we have this
@@ -1002,7 +1046,7 @@ with respect to some pair of bases.
       (that is, all of the `if \ldots then~\ldots' parts of the prior sentence
       convert to `if and only if' parts).
     \end{answer}
-  \recommended \item 
+  \item 
     Find a matrix having this effect.
     \begin{equation*}
       \colvec[r]{1 \\ 3}
@@ -1621,7 +1665,7 @@ Thus we can view any linear map as a projection.
 
 \begin{exercises}
   \recommended \item 
-    Decide if these matrices are matrix equivalent.
+    Decide if these are matrix equivalent.
     \begin{exparts}
       \partsitem \( \begin{mat}[r]
                  1  &3  &0  \\
@@ -1655,6 +1699,53 @@ Thus we can view any linear map as a projection.
         \partsitem No, they have different ranks.
       \end{exparts}  
     \end{answer}
+  \item Which of these are matrix equivalent to each other?
+    \begin{exparts*}
+      \partsitem 
+         $\begin{mat}
+            1 &2 &3 \\
+            4 &5 &6 \\
+            7 &8 &9
+         \end{mat}$
+      \partsitem 
+         $\begin{mat}
+           1 &3 \\
+          -1 &-3
+         \end{mat}$
+      \partsitem 
+         $\begin{mat}
+            -5 &1 &0 \\
+            -1 &0 &1
+         \end{mat}$
+      \partsitem 
+         $\begin{mat}
+            0 &-1 \\
+            0 &5
+         \end{mat}$
+      \partsitem 
+         $\begin{mat}
+            1 &0 &1 \\
+            2 &0 &2 \\
+            1 &3 &1
+         \end{mat}$
+      \partsitem 
+         $\begin{mat}
+            3  &1   &0 \\
+            9  &3   &0 \\
+            -3 &-1  &0
+         \end{mat}$
+    \end{exparts*}
+    \begin{answer}
+      Group the matrices into classes characterized by the condition that 
+      all matrices in the same class are the same size and the same rank.
+      \begin{exparts}
+        \partsitem $\nbyn{3}$, rank~$2$
+        \partsitem $\nbyn{2}$, rank~$1$
+        \partsitem $\nbym{2}{3}$, rank~$2$
+        \partsitem $\nbyn{3}$, rank~$2$
+        \partsitem $\nbyn{3}$, rank~$1$
+      \end{exparts}
+    \end{answer}
   \recommended \item
     Find the canonical representative of the matrix equivalence class of
     each matrix.
@@ -1670,7 +1761,7 @@ Thus we can view any linear map as a projection.
                \end{mat} \)
     \end{exparts*}
     \begin{answer}
-      We need only decide what the rank of each is.
+      We need only compute the rank of each.
       \begin{exparts*}
         \partsitem \( \begin{mat}[r]
                    1  &0  &0  \\
@@ -2013,8 +2104,52 @@ Thus we can view any linear map as a projection.
           \end{equation*}      
       \end{exparts}
     \end{answer}
-
-
+  \recommended \item Find the change of basis matrices that will convert the 
+   representation of a $\map{t}{\Re^2}{\Re^2}$
+   with respect to $B,D$ to one with respect to $\hat{B},\hat{D}$.
+   \begin{equation*}
+     B=\sequence{\colvec{1 \\ 0}, \colvec{1 \\ 1}}\quad
+     D=\sequence{\colvec{0 \\ 1}, \colvec{-1 \\ 0}}\quad
+     \hat{B}=E_2\quad
+     \hat{D}=\sequence{\colvec{1 \\ -1}, \colvec{0 \\ 1}}
+   \end{equation*}
+    \begin{answer}
+          For the equation $\hat{T}=PTQ$ this is the arrow diagram.
+          \begin{equation*}
+            \begin{CD}
+              V_{\wrt{B}}                   @>t>T>        W_{\wrt{D}}       \\
+              @V{\text{\scriptsize$\identity$}} VV      @V{\text{\scriptsize$\identity$}} VV \\
+              V_{\wrt{\hat{B}}}             @>t>\hat{T}>   W_{\wrt{\hat{D}}}
+            \end{CD}
+          \end{equation*}
+          These are the calculations for $P=\rep{\identity}{\hat{B},B}$
+          (done by eye).
+          \begin{equation*}
+            \rep{\identity(\colvec{1 \\ 0})}{B}=\colvec{1 \\ 0}
+            \quad
+            \rep{\identity(\colvec{0 \\ 1})}{B}=\colvec{-1 \\ 1}
+          \end{equation*}
+          So we get this.
+          \begin{equation*}
+            P=\begin{mat}
+              1 &-1 \\
+              0 &1  
+             \end{mat}
+          \end{equation*}
+          These calcuations give $Q=\rep{\identity}{D,\hat{D}}$.
+          \begin{equation*}
+            \rep{\identity(\colvec{0 \\ 1})}{\hat{D}}=\colvec{0 \\ 1}
+            \quad
+            \rep{\identity(\colvec{-1 \\ 0})}{\hat{D}}=\colvec{-1 \\ -1}
+          \end{equation*}
+          Concatenate them to make the other matrix.
+          \begin{equation*}
+            Q=\begin{mat}
+              0 &-1 \\
+              1 &-1  
+             \end{mat}
+          \end{equation*}
+    \end{answer}
   \recommended \item Find the $P$ and~$Q$ to express $H$ via $PHQ$ 
     as a block partial identity matrix.
     \begin{equation*}
@@ -2120,7 +2255,7 @@ Thus we can view any linear map as a projection.
         if and only if it is matrix equivalent to 
         the $\nbyn{n}$ matrix whose diagonal is all ones.  
     \end{answer}
-  \recommended \item
+  \item
     Show that, where \( A \) is a nonsingular square matrix, if
     \( P \) and \( Q \) are nonsingular square matrices such that \( PAQ=I \)
     then \( QP=A^{-1} \).
@@ -2128,7 +2263,7 @@ Thus we can view any linear map as a projection.
       If \( PAQ=I \) then \( QPAQ=Q \), so \( QPA=I \), and so
       \( QP=A^{-1} \).  
     \end{answer}
-  \recommended \item
+  \item
     Why does \nearbytheorem{th:CanonFormForMatEquiv} not show that every matrix
     is diagonalizable (see \nearbyexample{ex:DiagizedMat})?
     \begin{answer}
@@ -2442,7 +2577,7 @@ Thus we can view any linear map as a projection.
           \end{equation*}
       \end{exparts}  
     \end{answer}
-  \recommended \item
+  \item
     Square matrices are \definend{similar} if they represent the same
     transformation, but each with respect to the same ending as starting
     basis.
@@ -2454,7 +2589,7 @@ Thus we can view any linear map as a projection.
       \partsitem Show that similarity is an equivalence relation.
       \partsitem Show that if \( T \) is similar to \( \hat{T} \) then
         \( T^2 \) is similar to \( \hat{T}^2 \), the cubes are similar, etc.
-        \textit{Contrast with the prior exercise.}
+        % \textit{Contrast with the prior exercise.}
       \partsitem Prove that there are matrix equivalent matrices 
         that are not similar.
     \end{exparts}
