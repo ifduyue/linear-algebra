@@ -301,7 +301,7 @@ We are asking only that the
 zero-ness of the determinant formula be unchanged, not focusing on the
 its sign or magnitude.
 
-So in this exploration out plan 
+So in this exploration our plan 
 got modified in some inessential ways and is now:~we will look for 
 $\nbyn{n}$ determinant
 functions that remain unchanged
@@ -476,7 +476,7 @@ write it as a function of the rows
         \partsitem \( A=\begin{mat}[r]
                       1  &2  \\
                       2  &3
-                   \end{mat} \)
+                   \end{mat} \), 
                \(  B=\begin{mat}[r]
                       1  &2  \\
                       0  &-1
@@ -485,7 +485,7 @@ write it as a function of the rows
                       3  &1  &0  \\
                       0  &0  &1  \\
                       0  &1  &2
-                   \end{mat} \)
+                   \end{mat} \),
               \(   B=\begin{mat}[r]
                       3  &1  &0  \\
                       0  &1  &2  \\
@@ -495,7 +495,7 @@ write it as a function of the rows
                       1  &-1 &3  \\
                       2  &2  &-6 \\
                       1  &0  &4
-                   \end{mat} \)
+                   \end{mat} \),
               \(   B=\begin{mat}[r]
                       1  &-1 &3  \\
                       1  &1  &-3 \\
@@ -510,6 +510,69 @@ write it as a function of the rows
          \partsitem \( \det(B)=(1/2)\cdot \det(A) \) via \( (1/2)\rho_2 \)
        \end{exparts}   
      \end{answer}
+  \recommended \item Find the determinant of this $\nbyn{4}$ matrix 
+    by following the plan:
+    perform Gauss's Method and 
+    look for the determinant to remain unchanged
+    on a row combination, to change sign on
+    a row swap, to rescale on the rescaling of a row,
+    and such that the determinant of the echelon form matrix is the
+    product down its diagonal.
+    \begin{equation*}
+      \begin{mat}
+        1 &2 &0  &2 \\
+        2 &4 &1  &0 \\
+        0 &0 &-1 &3 \\
+        3 &-1 &1 &4
+      \end{mat}
+    \end{equation*}
+    \begin{answer}
+      Gauss's Method does this.
+      % sage: m = matrix(QQ, [[1,2,0,2], [2,4,1,0], [0,0,-1,3], [3,-1,1,4]])
+      % sage: gauss_method(m)
+      % [ 1  2  0  2]
+      % [ 2  4  1  0]
+      % [ 0  0 -1  3]
+      % [ 3 -1  1  4]
+      %  take -2 times row 1 plus row 2
+      %  take -3 times row 1 plus row 4
+      % [ 1  2  0  2]
+      % [ 0  0  1 -4]
+      % [ 0  0 -1  3]
+      % [ 0 -7  1 -2]
+      %  swap row 2 with row 4
+      % [ 1  2  0  2]
+      % [ 0 -7  1 -2]
+      % [ 0  0 -1  3]
+      % [ 0  0  1 -4]
+      %  take 1 times row 3 plus row 4
+      % [ 1  2  0  2]
+      % [ 0 -7  1 -2]
+      % [ 0  0 -1  3]
+      % [ 0  0  0 -1]
+      \begin{equation*}
+        \begin{mat}
+          1 &2 &0  &2 \\
+          2 &4 &1  &0 \\
+          0 &0 &-1 &3 \\
+          3 &-1 &1 &4
+        \end{mat}
+        \grstep[-3\rho_1+\rho_4]{-2\rho_1+\rho_2}
+        \grstep{\rho_2\leftrightarrow\rho_4}
+        \grstep{\rho_3+\rho_4}      
+        \begin{mat}
+          1 &2 &0  &2 \\
+          0 &-7 &1  &-2 \\
+          0 &0 &-1 &3 \\
+          0 &0 &0 &-1
+        \end{mat}
+      \end{equation*}
+      The echelon form matrix has a product down the diagonal of 
+       $1\cdot(-7)\cdot(-1)\cdot(-1)=-7$.
+      In the course of Gauss's Method no rows got rescaled but there was 
+      a row swap, so to get the determinant we change the sign,
+      giving $+7$.
+    \end{answer}
   \item 
      Show this.
       \begin{equation*}
@@ -681,10 +744,11 @@ write it as a function of the rows
        in contains the familiar expression for the slope), 
        and note that \( (x_1,y_1) \)  and \( (x_2,y_2) \) satisfy it. 
      \end{answer}
-  \recommended \item
-    Many people know this mnemonic for the determinant of a \( \nbyn{3} \)
-    matrix: first repeat the first two columns and then sum the products on the
-    forward diagonals and subtract the products on the backward diagonals.
+  \item
+    Many people have learned, perhaps in Calculus, 
+    this mnemonic for the determinant of a \( \nbyn{3} \)
+    matrix: first repeat the first two columns, then sum the products on the
+    forward diagonals, and then subtract the products on the backward diagonals.
     That is, first write
     \begin{equation*}
         \begin{pmat}{ccc|cc}
@@ -902,11 +966,12 @@ write it as a function of the rows
       It does also hold for \( \nbyn{3} \) matrices; the 
       computation is routine.  
     \end{answer}
-  \recommended \item 
+  \item 
     Is the determinant function linear \Dash  is
     \( \det(x\cdot T+y\cdot S)=x\cdot \det(T)+y\cdot \det(S) \)?
     \begin{answer}
       No.
+      We illustrate with the $\nbyn{2}$ determinant.
       Recall that constants come out one row at a time.
       \begin{equation*}
          \det(
