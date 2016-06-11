@@ -333,25 +333,6 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
 
 \begin{exercises}
   \item 
-    Find the volume of the region defined by the vectors.
-    \begin{exparts}
-      \partsitem $\sequence{\colvec[r]{1 \\ 3},\colvec[r]{-1 \\ 4}}$
-      \partsitem $\sequence{\colvec[r]{2 \\ 1 \\ 0},\colvec[r]{3 \\ -2 \\ 4},
-                              \colvec[r]{8 \\ -3 \\ 8}}$
-      \partsitem $\sequence{\colvec[r]{1 \\ 2 \\ 0 \\ 1},
-                             \colvec[r]{2 \\ 2 \\ 2 \\ 2},
-                             \colvec[r]{-1 \\ 3 \\ 0 \\ 5},
-                             \colvec[r]{0 \\ 1 \\ 0 \\ 7}}$
-    \end{exparts}
-    \begin{answer}
-      For each, find the determinant and take the absolute value.
-      \begin{exparts*}
-        \partsitem $7$
-        \partsitem $0$
-        \partsitem $58$
-      \end{exparts*}
-    \end{answer}
-  \recommended \item 
     Is
     \begin{equation*}
       \colvec[r]{4 \\ 1 \\ 2}
@@ -376,6 +357,62 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       \( c_3=11/57 \), \( c_2=-40/57 \) and \( c_1=99/57 \).
       Because \( c_1>1 \), the vector is not in the box.  
     \end{answer}
+  \recommended \item 
+    Find the volume of the region defined by the vectors.
+    \begin{exparts}
+      \partsitem $\sequence{\colvec[r]{1 \\ 3},\colvec[r]{-1 \\ 4}}$
+      \partsitem $\sequence{\colvec[r]{2 \\ 1 \\ 0},\colvec[r]{3 \\ -2 \\ 4},
+                              \colvec[r]{8 \\ -3 \\ 8}}$
+      \partsitem $\sequence{\colvec[r]{1 \\ 2 \\ 0 \\ 1},
+                             \colvec[r]{2 \\ 2 \\ 2 \\ 2},
+                             \colvec[r]{-1 \\ 3 \\ 0 \\ 5},
+                             \colvec[r]{0 \\ 1 \\ 0 \\ 7}}$
+    \end{exparts}
+    \begin{answer}
+      For each, find the determinant and take the absolute value.
+      \begin{exparts*}
+        \partsitem $7$
+        \partsitem $0$
+        \partsitem $58$
+      \end{exparts*}
+    \end{answer}
+  \recommended \item 
+    Why doesn't this picture contradict
+    \nearbytheorem{th:MatChVolByDetMat}?
+    \begin{center}
+      \begin{tabular}{ccc}
+        \includegraphics{ch4.43}
+        &\raisebox{12pt}{\( \grstep{\bigl(\begin{smallmatrix}
+                                        2  &1 \\
+                                        0  &1
+                                     \end{smallmatrix}\bigr)} \)}
+        &\includegraphics{ch4.44}                                 \\
+        area is $2$
+        &determinant is $2$
+        &area is $5$
+      \end{tabular}
+    \end{center}
+    \begin{answer}
+      We have drawn that picture to mislead.
+      The picture on the left is not the box formed by two vectors.
+      If we slide it to the origin then it becomes the box formed by
+      this sequence.
+      \begin{equation*}
+        \sequence{
+          \colvec[r]{0 \\ 1},
+          \colvec[r]{2 \\ 0}
+       }
+      \end{equation*}
+      Then the image under the action of the matrix is the box formed
+      by this sequence.
+      \begin{equation*}
+        \sequence{
+          \colvec[r]{1 \\ 1},
+          \colvec[r]{4 \\ 0}
+         }
+      \end{equation*}
+      which has an area of $4$.
+     \end{answer}
   \recommended \item 
     Find the volume of this region.
     \begin{center}
@@ -547,44 +584,7 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       are in the interval $[0..1]$, while for a 
       span the coefficients are free to range over all of $\Re$. 
     \end{answer}
-  \recommended \item 
-    Why doesn't this picture contradict
-    \nearbytheorem{th:MatChVolByDetMat}?
-    \begin{center}
-      \begin{tabular}{ccc}
-        \includegraphics{ch4.43}
-        &\raisebox{12pt}{\( \grstep{\bigl(\begin{smallmatrix}
-                                        2  &1 \\
-                                        0  &1
-                                     \end{smallmatrix}\bigr)} \)}
-        &\includegraphics{ch4.44}                                 \\
-        area is $2$
-        &determinant is $2$
-        &area is $5$
-      \end{tabular}
-    \end{center}
-    \begin{answer}
-      We have drawn that picture to mislead.
-      The picture on the left is not the box formed by two vectors.
-      If we slide it to the origin then it becomes the box formed by
-      this sequence.
-      \begin{equation*}
-        \sequence{
-          \colvec[r]{0 \\ 1},
-          \colvec[r]{2 \\ 0}
-       }
-      \end{equation*}
-      Then the image under the action of the matrix is the box formed
-      by this sequence.
-      \begin{equation*}
-        \sequence{
-          \colvec[r]{1 \\ 1},
-          \colvec[r]{4 \\ 0}
-         }
-      \end{equation*}
-      which has an area of $4$.
-     \end{answer}
-  \recommended \item 
+  \item 
     Does \( \deter{TS}=\deter{ST} \)?
     \( \deter{T(SP)}=\deter{(TS)P} \)?
     \begin{answer}
@@ -648,7 +648,7 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       is \( 1 \) so it preserves areas, but the vector \( T\vec{e}_1 \)
       has length \( 2 \).  
     \end{answer}
-  \recommended \item
+  \item
     What is the volume of a parallelepiped in \( \Re^3 \) bounded by a
     linearly dependent set?
     \begin{answer}
@@ -657,8 +657,8 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
   \recommended \item
     Find the area of the triangle in \( \Re^3 \) with endpoints
     \( (1,2,1) \), \( (3,-1,4) \), and \( (2,2,2) \).
-    (Area, not volume.
-    The triangle defines a plane\Dash what is the area of the triangle in that
+    (This asks for area, not volume.
+    The triangle defines a plane; what is the area of the triangle in that
     plane?)
     \begin{answer}
       Two of the three sides of the triangle are formed by these vectors.
@@ -710,7 +710,7 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
         =-12/\sqrt{19}
       \end{equation*} 
     \end{answer}
-  \recommended \item \label{exer:DetProdEqProdDetsFcn}
+  \item \label{exer:DetProdEqProdDetsFcn}
     An alternate proof of \nearbytheorem{th:MatChVolByDetMat} uses 
     the definition of determinant functions.
     \begin{exparts}
@@ -827,7 +827,7 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       Where the sides of the box are \( c \) times longer, the box
       has \( c^3 \) times as many cubic units of volume.  
     \end{answer}
-  \recommended \item 
+  \item 
     We say that matrices $H$ and $G$ are 
     \definend{similar}\index{similar}\index{matrix!similar} 
     if there is a nonsingular matrix $P$ such that $H=P^{-1}GP$
