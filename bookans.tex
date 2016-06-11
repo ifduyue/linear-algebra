@@ -25521,10 +25521,10 @@ octave:6> gplot z
       Call the matrix~$M$.
       \begin{center}
         \begin{tabular}{r|cccccc}
-          permutation
+          \textit{permutation}
             &$\phi_1$ &$\phi_2$ &$\phi_3$ &$\phi_4$ &$\phi_5$ &$\phi_6$  \\
           \hline
-          term
+          \textit{term}
            &$1\cdot 5\cdot 9$
            &$1\cdot 6\cdot 8$
            &$2\cdot 4\cdot 9$
@@ -25541,10 +25541,10 @@ octave:6> gplot z
       while if the number of swaps is odd then the determinant is~$-1$
       \begin{center}
         \begin{tabular}{r|cccccc}
-          permutation
+          \textit{permutation}
             &$\phi_1$ &$\phi_2$ &$\phi_3$ &$\phi_4$ &$\phi_5$ &$\phi_6$  \\
           \hline
-          number of swaps &$0$
+          \textit{number of swaps} &$0$
                           &$1$
                           &$1$
                           &$2$
@@ -26940,20 +26940,91 @@ octave:6> gplot z
     
 \end{ans}
 \begin{ans}{Four.III.1.12}
+      % sage: M = matrix(QQ, [[1,0,2], [-1,1,3], [0,2,-1]])
+      % sage: M.adjoint()
+      % [-7  4 -2]
+      % [-1 -1 -5]
+      % [-2 -2  1]
+      {\renewcommand{\arraystretch}{1.2}
+      \begin{equation*}
+        \adj(T)=
+        \begin{mat}
+          \begin{vmatrix}
+            1 &3 \\
+            2 &-1
+          \end{vmatrix}
+          &-\begin{vmatrix}
+            0 &2 \\
+            2 &-1
+          \end{vmatrix}
+          &\begin{vmatrix}
+             0 &2 \\
+              1 &3
+           \end{vmatrix}                  \\
+          -\begin{vmatrix}
+             -1 &3 \\
+             0 &-1
+           \end{vmatrix}
+          &\begin{vmatrix}
+            1 &2 \\
+            0 &-1
+           \end{vmatrix}
+          &-\begin{vmatrix}
+            1 &2 \\
+            -1 &3
+           \end{vmatrix}                  \\
+          \begin{vmatrix}
+            -1 &1 \\
+            0 &2
+          \end{vmatrix}
+          &-\begin{vmatrix}
+            1  &0 \\
+            0 &2
+           \end{vmatrix}
+          &\begin{vmatrix}
+            1 &0 \\
+            -1 &1
+           \end{vmatrix}
+        \end{mat}
+        =
+        \begin{mat}
+          -7 &4 &-2 \\
+          -1  &-1 &-5 \\
+          -2 &-2 &1
+        \end{mat}
+      \end{equation*}}
+    
+\end{ans}
+\begin{ans}{Four.III.1.13}
+      \begin{equation*}
+        \begin{vmat}[r]
+          1  &2  &3  \\
+          4  &5  &6  \\
+          7  &8  &9
+        \end{vmat}=
+        1\cdot(+1)\cdot
+          \begin{vmatrix}
+            5 &6 \\
+            8 &9
+          \end{vmatrix}
+        +2\cdot(-1)\cdot
+          \begin{vmatrix}
+            4 &6 \\
+            7 &9
+          \end{vmatrix}
+        +3\cdot(+1)\cdot
+          \begin{vmatrix}
+            4 &5 \\
+            7 &8
+          \end{vmatrix}
+      \end{equation*}
+      The formula for $\nbyn{2}$ matrices gives
+      $1\cdot (-3)-2\cdot (-6)+3\cdot(-3)=0$.
+    
+\end{ans}
+\begin{ans}{Four.III.1.14}
       \begin{exparts}
-         \partsitem \( 3\cdot(+1)\begin{vmat}[r]
-                          2  &2  \\
-                          3  &0
-                       \end{vmat}
-                 +0\cdot (-1)\begin{vmat}[r]
-                          1  &2  \\
-                         -1  &0
-                       \end{vmat}
-                 +1\cdot (+1)\begin{vmat}[r]
-                          1  &2  \\
-                         -1  &3
-                       \end{vmat} =-13 \)
-         \partsitem \( 1\cdot (-1)\begin{vmat}[r]
+         \partsitem         \partsitem \( 1\cdot (-1)\begin{vmat}[r]
                           0  &1  \\
                           3  &0
                        \end{vmat}
@@ -26980,7 +27051,7 @@ octave:6> gplot z
        \end{exparts}
      
 \end{ans}
-\begin{ans}{Four.III.1.13}
+\begin{ans}{Four.III.1.15}
       This is $\adj(T)$.
       \begin{align*}
          \begin{mat}
@@ -27025,7 +27096,7 @@ octave:6> gplot z
       \end{align*}
     
 \end{ans}
-\begin{ans}{Four.III.1.14}
+\begin{ans}{Four.III.1.16}
       \begin{exparts}
         \partsitem This is the adjoint.
           \begin{align*}
@@ -27163,7 +27234,7 @@ octave:6> gplot z
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Four.III.1.15}
+\begin{ans}{Four.III.1.17}
       \begin{exparts}
         \partsitem $(1/3)\cdot
            \begin{mat}[r]
@@ -27202,7 +27273,7 @@ octave:6> gplot z
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Four.III.1.16}
+\begin{ans}{Four.III.1.18}
       $\begin{mat}
         T_{1,1}  &T_{2,1}  &T_{3,1}  &T_{4,1}  \\
         T_{1,2}  &T_{2,2}  &T_{3,2}  &T_{4,2}  \\
@@ -27218,7 +27289,7 @@ octave:6> gplot z
       \end{mat}$
     
 \end{ans}
-\begin{ans}{Four.III.1.17}
+\begin{ans}{Four.III.1.19}
        The determinant
        \begin{equation*}
          \begin{vmat}
@@ -27231,7 +27302,7 @@ octave:6> gplot z
        (note the two $\nbyn{1}$ minors).
      
 \end{ans}
-\begin{ans}{Four.III.1.18}
+\begin{ans}{Four.III.1.20}
       The determinant of
       \begin{equation*}
         \begin{mat}
@@ -27258,7 +27329,7 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Four.III.1.19}
+\begin{ans}{Four.III.1.21}
       \begin{exparts}
         \partsitem
           $\begin{mat}
@@ -27292,7 +27363,7 @@ octave:6> gplot z
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Four.III.1.20}
+\begin{ans}{Four.III.1.22}
       No.
       Here is a determinant whose value
       \begin{equation*}
@@ -27320,7 +27391,7 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Four.III.1.21}
+\begin{ans}{Four.III.1.23}
       Consider this diagonal matrix.
       \begin{equation*}
         D=
@@ -27356,14 +27427,14 @@ octave:6> gplot z
       a slicker way to derive this conclusion.
     
 \end{ans}
-\begin{ans}{Four.III.1.22}
+\begin{ans}{Four.III.1.24}
       Just note that if $S=\trans{T}$ then the cofactor
       $S_{j,i}$ equals the cofactor $T_{i,j}$ because $(-1)^{j+i}=(-1)^{i+j}$
       and because the minors are the transposes of each other (and the
       determinant of a transpose equals the determinant of the matrix).
     
 \end{ans}
-\begin{ans}{Four.III.1.23}
+\begin{ans}{Four.III.1.25}
       It is false; here is an example.
       \begin{equation*}
          T=\begin{mat}[r]
@@ -27386,7 +27457,7 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Four.III.1.24}
+\begin{ans}{Four.III.1.26}
       \begin{exparts}
         \partsitem An example
           \begin{equation*}
@@ -27481,7 +27552,7 @@ octave:6> gplot z
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Four.III.1.25}
+\begin{ans}{Four.III.1.27}
       We will show that each determinant can be expanded along
       row~\( i \).
       The argument for column~$j$ is similar.
@@ -27528,7 +27599,7 @@ octave:6> gplot z
                 =(-1)^{i+j}\deter{T_{i,j}} \).
     
 \end{ans}
-\begin{ans}{Four.III.1.26}
+\begin{ans}{Four.III.1.28}
       This is obvious for the \( \nbyn{1} \) base case.
 
       For the inductive case,
@@ -27547,7 +27618,7 @@ octave:6> gplot z
       gives \( \deter{(\trans{T})_{i,j}}=\deter{T_{i,j}} \).
     
 \end{ans}
-\begin{ans}{Four.III.1.27}
+\begin{ans}{Four.III.1.29}
       \answerasgiven %
       Denoting the above determinant by \( D_n \), it is seen that
       \( D_2=1 \), \( D_3=2 \).
