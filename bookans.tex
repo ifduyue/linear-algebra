@@ -30368,6 +30368,216 @@ octave:6> gplot z
      
 \end{ans}
 \begin{ans}{Five.II.3.29}
+     \begin{exparts}
+      \partsitem
+      Computing the eigenvalues gives $\lambda_1=3$, $\lambda_2=0$,
+      and $\lambda_3=-4$.
+      Thus the diagonalzation of the matrix is this.
+      \begin{equation*}
+        \begin{mat}
+          3 &0 &0 \\
+          0 &0 &0 \\
+          0 &0 &-4
+        \end{mat}
+      \end{equation*}
+     \partsitem
+      Get an eigenvector associated with each eigenvalue, and use them
+      to make a basis.
+
+      For $\lambda_1=3$ we solve this system.
+      \begin{equation*}
+        \begin{mat}
+          1-3  &2    &1 \\
+          6    &-1-3 &0 \\
+         -1    &-2   &-1-3
+        \end{mat}
+        \colvec{x \\ y \\ z}
+        =\colvec{0 \\ 0 \\ 0}
+      \end{equation*}
+      Gauss's Method suffices.
+      % sage: M = matrix(QQ, [[-2,2,1,0], [6,-4,0,0], [-1,-2,-4,0]])
+      % sage: gauss_method(M)
+      % [-2  2  1  0]
+      % [ 6 -4  0  0]
+      % [-1 -2 -4  0]
+      % take 3 times row 1 plus row 2
+      % take -1/2 times row 1 plus row 3
+      % [  -2    2    1    0]
+      % [   0    2    3    0]
+      % [   0   -3 -9/2    0]
+      % take 3/2 times row 2 plus row 3
+      % [-2  2  1  0]
+      % [ 0  2  3  0]
+      % [ 0  0  0  0]
+      \begin{equation*}
+        \begin{amat}{3}
+          -2 &2  &1  &0  \\
+           6 &-4 &0  &0  \\
+          -1 &-2 &-4 &0
+        \end{amat}
+        \grstep[-(1/2)\rho_1+\rho_3]{3\rho_1+\rho_2}
+        \grstep{(3/2)\rho_1+\rho_3}
+        \begin{amat}{3}
+          -2 &2 &1   &0  \\
+           0 &2 &3   &0  \\
+           0 &0 &0   &0
+        \end{amat}
+      \end{equation*}
+      Parametrizing gives the solution space.
+      \begin{equation*}
+        S_1=\set{\colvec{-1 \\ -3/2 \\ 1}\cdot z \suchthat z\in\C}
+      \end{equation*}
+
+      This is the $\lambda_2=0$ system.
+      \begin{equation*}
+        \begin{mat}
+          1    &2    &1 \\
+          6    &-1 &0 \\
+         -1    &-2   &-1
+        \end{mat}
+        \colvec{x \\ y \\ z}
+        =\colvec{0 \\ 0 \\ 0}
+      \end{equation*}
+      Gauss's Method
+      % sage: M = matrix(QQ, [[1,2,1,0], [6,-1,0,0], [-1,-2,-1,0]])
+      % sage: gauss_method(M)
+      % [ 1  2  1  0]
+      % [ 6 -1  0  0]
+      % [-1 -2 -1  0]
+      % take -6 times row 1 plus row 2
+      % take 1 times row 1 plus row 3
+      % [  1   2   1   0]
+      % [  0 -13  -6   0]
+      % [  0   0   0   0]
+      \begin{equation*}
+        \begin{amat}{3}
+           1 &2  &1  &0  \\
+           6 &-1 &0  &0  \\
+          -1 &-2 &-1 &0
+        \end{amat}
+        \grstep[\rho_1+\rho_3]{-6\rho_1+\rho_2}
+        \begin{amat}{3}
+           1 &2 &1   &0  \\
+           0 &-13 &-6   &0  \\
+           0 &0 &0   &0
+        \end{amat}
+      \end{equation*}
+      followed by parametrizing gives the solution space.
+      \begin{equation*}
+        S_2=\set{\colvec{-1/13 \\ -6/13 \\ 1}\cdot z \suchthat z\in\C}
+      \end{equation*}
+
+      The $\lambda_3=-4$ system works the same way.
+      \begin{equation*}
+        \begin{mat}
+          1-(-4)    &2    &1 \\
+          6    &-1-(-4) &0 \\
+         -1    &-2   &-1-(-4)
+        \end{mat}
+        \colvec{x \\ y \\ z}
+        =\colvec{0 \\ 0 \\ 0}
+      \end{equation*}
+      Gauss's Method
+      % sage: M = matrix(QQ, [[5,2,1,0], [6,3,0,0], [-1,-2,3,0]])
+      % sage: gauss_method(M)
+      % [ 5  2  1  0]
+      % [ 6  3  0  0]
+      % [-1 -2  3  0]
+      % take -6/5 times row 1 plus row 2
+      % take 1/5 times row 1 plus row 3
+      % [   5    2    1    0]
+      % [   0  3/5 -6/5    0]
+      % [   0 -8/5 16/5    0]
+      % take 8/3 times row 2 plus row 3
+      % [   5    2    1    0]
+      % [   0  3/5 -6/5    0]
+      % [   0    0    0    0]
+      \begin{equation*}
+        \begin{amat}{3}
+           5 &2  &1  &0  \\
+           6 &3 &0  &0  \\
+          -1 &-2 &3 &0
+        \end{amat}
+        \grstep[(1/5)\rho_1+\rho_3]{-(6/5)\rho_1+\rho_2}
+        \grstep{(8/3)\rho_2+\rho_3}
+        \begin{amat}{3}
+           5 &2 &1   &0  \\
+           0 &3/5 &-6/5   &0  \\
+           0 &0 &0   &0
+        \end{amat}
+      \end{equation*}
+      and parametrizing gives this.
+      \begin{equation*}
+        S_3=\set{\colvec{-1 \\ 2 \\ 1}\cdot z \suchthat z\in\C}
+      \end{equation*}
+
+      Thus the matrix will have that diagonal form when it represents
+      of the same transformation but with respect to $D,D$ for this $D$.
+      \begin{equation*}
+        D=\sequence{\colvec{-1 \\ -3/2 \\ 1},
+                    \colvec{-1/13 \\ -6/13 \\ 1},
+                    \colvec{-1 \\ 2 \\ 1}}
+      \end{equation*}
+     \partsitem
+     % sage: M = matrix(QQ, [[1,2,1], [6,-1,0], [-1,-2,-1]])
+     % sage: M.eigenvalues()
+     % [3, 0, -4]
+     % sage: P = matrix(QQ, [[-1,-1/13,-1], [-3/2,-6/13,2], [1,1,1]])
+     % sage: P.inverse()*M*P
+     % [ 3  0  0]
+     % [ 0  0  0]
+     % [ 0  0 -4]
+     % sage: P.inverse()
+     % [-16/21   -2/7  -4/21]
+     % [ 13/12      0  13/12]
+     % [ -9/28    2/7   3/28]
+       Call the matrix~$T$.
+       Taking the domain and codomain spaces as $\Re^3$,
+       and taking the matrix to be $T=\rep{t}{E_3,E_3}$ gives this diagram.
+       \begin{equation*}
+       \begin{CD}
+          \Re^3_{\wrt{E_3}}            @>t>T>      \Re^3_{\wrt{E_3}}       \\
+          @V{\scriptstyle\identity} VV           @V{\scriptstyle\identity} VV \\
+          \Re^3_{\wrt{B}}             @>t>D>  \Re^3_{\wrt{B}}
+        \end{CD}
+        \end{equation*}
+        Reading off the diagram we have $D=P^{-1}MP$ where
+        $P=\rep{\identity}{E_3,B}$.
+        To represent each vector in $B$ with respect to~$E_3$ is easy
+        because with respect to the standard basis each vector represents
+        itself.
+        \begin{multline*}
+          \rep{\colvec{-1 \\ -3/2 \\ 1}}{E_3}=\colvec{-1 \\ -3/2 \\ 1}
+          \quad
+          \rep{\colvec{-1/13 \\ -6/13 \\ 1}}{E_3}=\colvec{-1/13 \\ -6/13 \\ 1}
+          \\
+          \rep{\colvec{-1 \\ 2 \\ 1}}{E_3}=\colvec{-1 \\ 2 \\ 1}
+        \end{multline*}
+        Thus the matrix just concatenates the three basis vectors.
+        \begin{equation*}
+          P=
+          \begin{mat}
+            -1   &-1/13 &-1 \\
+            -3/2 &-6/13 &2  \\
+            1    &1     &1
+          \end{mat}
+         \quad\text{and so}\quad
+         P^{-1}
+         \begin{mat}
+           -16/21 &-2/7 &-4/21 \\
+           13/12  &0    &13/12 \\
+           -9/28  &2/7  &3/28
+         \end{mat}
+        \end{equation*}
+
+
+
+
+
+     \end{exparts}
+    
+\end{ans}
+\begin{ans}{Five.II.3.30}
       Just expand the determinant of $T-xI$.
       \begin{equation*}
         \begin{vmatrix}
@@ -30379,12 +30589,12 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Five.II.3.30}
+\begin{ans}{Five.II.3.31}
       Any two representations of that transformation are similar, and
       similar matrices have the same characteristic polynomial.
     
 \end{ans}
-\begin{ans}{Five.II.3.31}
+\begin{ans}{Five.II.3.32}
       It is not true.
       All of the eigenvalues of this matrix are $0$.
       \begin{equation*}
@@ -30395,7 +30605,7 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Five.II.3.32}
+\begin{ans}{Five.II.3.33}
       \begin{exparts}
         \partsitem Use \( \lambda=1 \) and the identity map.
         \partsitem Yes, use the transformation that multiplies all
@@ -30403,12 +30613,12 @@ octave:6> gplot z
       \end{exparts}
      
 \end{ans}
-\begin{ans}{Five.II.3.33}
+\begin{ans}{Five.II.3.34}
       If $t(\vec{v})=\lambda\cdot\vec{v}$ then
       $\vec{v}\mapsto\zero$ under the map $t-\lambda\cdot\identity$.
     
 \end{ans}
-\begin{ans}{Five.II.3.34}
+\begin{ans}{Five.II.3.35}
       The characteristic equation
       \begin{equation*}
         0=
@@ -30423,7 +30633,7 @@ octave:6> gplot z
       (under the $a+b=c+d$ condition) is routine.
     
 \end{ans}
-\begin{ans}{Five.II.3.35}
+\begin{ans}{Five.II.3.36}
       Consider an eigenspace $V_{\lambda}$.
       Any $\vec{w}\in V_{\lambda}$ is the image
       $\vec{w}=\lambda\cdot\vec{v}$ of some $\vec{v}\in V_{\lambda}$
@@ -30434,7 +30644,7 @@ octave:6> gplot z
       and so $1/\lambda$ is an eigenvalue of $t^{-1}$.
     
 \end{ans}
-\begin{ans}{Five.II.3.36}
+\begin{ans}{Five.II.3.37}
       \begin{exparts}
         \partsitem We have
           $(cT+dI)\vec{v}=cT\vec{v}+dI\vec{v}=c\lambda\vec{v}+d\vec{v}
@@ -30445,7 +30655,7 @@ octave:6> gplot z
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Five.II.3.37}
+\begin{ans}{Five.II.3.38}
       The scalar $\lambda$ is an eigenvalue if and only if the transformation
       $t-\lambda \identity$ is singular.
       A transformation is singular if and only if it is not an isomorphism
@@ -30453,7 +30663,7 @@ octave:6> gplot z
       nonsingular).
     
 \end{ans}
-\begin{ans}{Five.II.3.38}
+\begin{ans}{Five.II.3.39}
       \begin{exparts}
         \partsitem Where the eigenvalue $\lambda$ is associated with the
           eigenvector $\vec{x}$ then
@@ -30465,7 +30675,7 @@ octave:6> gplot z
       \end{exparts}
     
 \end{ans}
-\begin{ans}{Five.II.3.39}
+\begin{ans}{Five.II.3.40}
       No.
       These are two same-sized, equal rank, matrices
       with different eigenvalues.
@@ -30482,12 +30692,12 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Five.II.3.40}
+\begin{ans}{Five.II.3.41}
       The characteristic polynomial has an odd power and so
       has at least one real root.
     
 \end{ans}
-\begin{ans}{Five.II.3.41}
+\begin{ans}{Five.II.3.42}
       The characteristic polynomial $x^3+5x^2+6x$ has distinct roots
       \( \lambda_1=0 \), \( \lambda_2=-2 \), and \( \lambda_3=-3 \).
       Thus the matrix can be diagonalized into this form.
@@ -30500,7 +30710,7 @@ octave:6> gplot z
       \end{equation*}
     
 \end{ans}
-\begin{ans}{Five.II.3.42}
+\begin{ans}{Five.II.3.43}
       We must show that it is one-to-one and onto, and that it respects the
       operations of matrix addition and scalar multiplication.
 
@@ -30519,7 +30729,7 @@ octave:6> gplot z
       similar:~$t_P(cT)=P(c\cdot T)P^{-1}=c\cdot (PTP^{-1})=c\cdot t_P(T)$.
     
 \end{ans}
-\begin{ans}{Five.II.3.43}
+\begin{ans}{Five.II.3.44}
       \answerasgiven %
       If the argument of the characteristic function of \( A \) is set equal to
       \( c \), adding the first \( (n-1) \) rows (columns) to the
