@@ -3064,6 +3064,29 @@ In the next section we study matrices that cannot be diagonalized.
 
 
 \begin{exercises}
+  \item This matrix has two eigenvalues $\lambda_1=3$, $\lambda_2=-4$.
+    \begin{equation*}
+      \begin{mat}
+        4  &1 \\
+        -8 &-5
+      \end{mat}
+    \end{equation*}
+    Give two different diagonal form matrices with which it is similar.
+    \begin{answer}
+      We can permute the columns, by permuting the basis with which the
+      representation is done.
+      \begin{equation*}
+        \begin{mat} 
+          3 &0 \\ 
+          0 &-4
+        \end{mat}
+        \qquad
+        \begin{mat} 
+          -4 &0 \\ 
+          0 &3
+        \end{mat}
+      \end{equation*}
+    \end{answer}
   \item 
     For each, find the characteristic polynomial and the eigenvalues.
     \begin{exparts*}
@@ -3110,9 +3133,9 @@ In the next section we study matrices that cannot be diagonalized.
        \end{exparts}  
      \end{answer}
   \recommended \item
-    For each matrix, find the characteristic equation, and the
+    For each matrix, find the characteristic equation and the
     eigenvalues and associated eigenvectors.
-    \begin{exparts}
+    \begin{exparts*}
       \partsitem \( \begin{mat}[r]
                   3  &0  \\
                   8  &-1
@@ -3121,7 +3144,7 @@ In the next section we study matrices that cannot be diagonalized.
                   3  &2  \\
                  -1  &0
             \end{mat}  \)
-    \end{exparts}
+    \end{exparts*}
     \begin{answer}
        \begin{exparts}
          \partsitem The characteristic equation is \( (3-x)(-1-x)=0 \).
