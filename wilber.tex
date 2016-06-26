@@ -1,0 +1,310 @@
+% Chapter 5, Topic _Linear Algebra_ Jim Hefferon
+%  http://joshua.smcvt.edu/linearalgebra
+%  2016-Jun-17
+% \documentclass{article}
+% \usepackage{graphicx}
+% \usepackage{amsmath}
+
+% \newcommand{\definend}[1]{\textit{#1}}
+\topic{Coupled Oscillators}
+\index{Coupled Oscillators|(}
+% \begin{document}
+
+This is a \definend{Wilberforce pendulum}.\index{Wilberforce pendulum}
+Hanging on the spring is a mass, or bob.
+Push it up a bit and release and it will oscillate up and down.
+\begin{center}
+  \includegraphics{asy/wilber000.pdf}
+\end{center}
+But then, if the device is properly adjusted, something fascinating happens.
+After a few seconds, in addition to going up
+and down, the mass begins to rotate,
+to spin about the axis of the spring.
+This yaw increases until the mass's motion  
+becomes almost entirely rotary, with very little up and down.
+Perhaps ten seconds later the motion returns to a combination.
+Then, after some more time, order reappears.
+Amazingly, now
+the motion is almost entirely vertical.
+This continues, with the device trading off
+periods of pure vertical motion with periods of pure rotational motion,
+interspersed with mixtures. 
+(Searching online for ``wilberforce pendulum video'' will return 
+some excellent demonstrations.) 
+
+Each pure motion state is a \definend{normal mode} of oscillation.
+We will analyze this device's behavior when it is in a normal mode. 
+It is all about the eigenvalues.
+
+\begin{center}
+  \includegraphics{asy/wilber001.pdf}
+\end{center}
+
+Write~$x(t)$ for the vertical motion over time and 
+$\theta(t)$ for the rotational motion.
+Fix the coordinate system so that in rest position $x=0$ and~$\theta=0$, 
+so that positive $x$'s are up, and so that positive $\theta$'s
+are counterclockwise when vewed from above.
+
+We start by modelling the motion of a mass on a 
+spring constrained to have no twist.
+This is simpler because there is only one motion, one degree of freedom.
+Put the mass in rest position and 
+push it up to compress the spring.
+Hooke's Law is that for small distances
+the restoring force is 
+proportional to the distance, $F=-k\cdot x$.
+The constant~$k$ is the
+\definend{stiffness} of the spring.
+
+Newton's Law is that a force is proportional to the 
+associated acceleration $F=m\cdot d^2\,x(t)/dt$.
+The constant of proportionality, $m$, is the \definend{mass}
+of the object.
+Combining Hooke's Law with Newton's 
+gives the differential equation expressing the 
+mass's motion $m\cdot d^2\,x(t)/dt=-k\cdot x(t)$.
+We prefer the from with the variables all on one side.
+\begin{equation*}
+  m\cdot \frac{d^2\,x(t)}{dt}+k\cdot x(t)=0
+  \tag{$*$}
+\end{equation*}
+
+Our physical intuition is that over time the bob oscillates.
+It started high so 
+the graph should look like this.
+\begin{center}
+  \includegraphics{asy/wilber003.pdf}
+\end{center}
+Of course, this looks like a cosine graph and we recognize 
+that the differential equation of motion~($*$) is satisfied by
+$x(t)=\cos \omega t$, where $\omega=\sqrt{m/k}$,
+since $dx/dt=\omega\cdot \sin \omega t$
+and $d^2x/dt^2=-\omega^2\cdot \cos \omega t$.
+Here, $\omega$ is the \definend{angular frequency}.
+It governs the period of the oscillation since if $\omega=1$ then the
+period is~$2\pi$, while if $\omega=2$ then the period is~$\pi$, etc.
+
+We can give a more general solution of~($*$).
+For a general amplitude we put a factor~$A$ in front
+$x(t)=A\cdot \cos wt$.
+And we can allow a phase shift, 
+so we are not required to start the clock when the
+mass is high, with 
+$x(t)=A\cos (wt+\phi)$.
+This is the equation of \definend{simple harmonic motion}.
+
+Now back to consideration of the coupled pair of motions, 
+vertical and rotational.
+These two interact because a spring that is twisted will 
+lengthen or shorten just a bit.
+For instance, it could work as here, or could be reversed depending on the
+spring.  
+\begin{center}
+  \includegraphics{asy/wilber002.pdf}
+\end{center}
+Likewise, a spring that is stretched or compressed from its rest
+position will twist slightly.
+The interaction of the two produces \definend{coupled oscillations}.
+
+To see how the interaction can produce the dramatic behavior that
+we see in a normal mode
+imagine that the mass is twisting in the direction that will 
+will make the spring longer.
+If the spring's vertical motion at that moment is that it is getting shorter, 
+then  
+superimposing the shortening on the lengthening
+could result in the two almost cancelling.
+The bob ends up not moving vertically much at all, just twisting.
+If the device is properly adjusted this could last for a number of seconds.
+
+``Properly adjusted'' means that  
+the period of the pure vertical motion is the same as, 
+or close to, the period of the pure rotational motion.
+With that, the cancellation will go on for some time so 
+we will see the bob halt its vertical motion for seconds. 
+
+The interaction between the motions can also produce the other normal mode 
+behavior, where the bob moves mostly vertically without much twist,
+if the spring's motion produces a twist that opposes the bob's twist.
+The bob will not rotate, almost, so its motion is almost entirely vertical.
+
+To get the equations of motion in this two degrees of freedom case,
+we make the same assumption as we did for the one degree case,
+that for small displacements the restoring force is
+proportional to the displacement. 
+But now we take that assumption both for
+the vertical motion and for the rotation.
+Let the constant of proportionality in the rotational motion be~$\kappa$.
+Similarly we also use Newton's Law that force is proportional to 
+acceleration for the rotational motion as well, and take
+the constant of proportionality to be~$I$. 
+
+Most crucially, we add a coupling between the two
+motions, which we take to be proportional to each, with constant of 
+proportionality~$\epsilon/2$.
+
+That gives a system of two differential equations,
+the first for vertical motion, the second
+for rotation.
+These equations describe the behavior of the coupled system at any time~$t$.
+\begin{equation*}
+  \begin{split}
+  m\cdot\frac{d^2\,x(t)}{dt^2}
+      +k\cdot x(t)+\frac{\epsilon}{2}\cdot \theta(t) 
+      &=0  \\
+  I\cdot\frac{d^2\,\theta(t)}{dt^2}
+      +\kappa\cdot \theta(t)+\frac{\epsilon}{2}\cdot x(t)  
+      &=0
+  \end{split}
+  \tag{$**$}
+\end{equation*}
+We will use those to analyze the
+system's behavior at times when it is in a normal mode, when
+its motion is almost entirely up and down 
+or almost entirely rotational.
+
+First consider the uncoupled motions, as given by the equations without the
+$\epsilon$ terms.
+Without those terms these describe simple harmonic functions,
+and we write~$\omega_x^2$ for~$k/m$, and $\omega_\theta^2$ for $\kappa/I$.
+We have argued above that to observe the stand-still behavior we should 
+adjust the device so that the periods are the same $\omega_x^2=\omega_\theta^2$. 
+Write~$\omega_0$ for that number.
+
+Now consider the coupled motions $x(t)$ and~$\theta(t)$.
+By the same principle, to observe the stand-still behavior we want them in 
+in sync, for instance so that the rotation is at its
+peak when the stretch is at its peak.
+That is, in a normal mode the oscillations have the same
+angular frequency~$\omega$.
+As to phase shift, as we also discussed there are two
+cases: when the twist imparted by the spring's motion is in the same direction
+as the twist given by the rotational oscillation and when they are opposed.
+In either case to get a normal mode the peaks should coincide so the
+phase shifts are $\phi$ and $\phi+\pi$~radians.
+We will work through the first case, leaving the second is an exercise.
+\begin{equation*}
+  x(t) = A_1\cos(\omega t+\phi)  
+  \qquad
+  \theta(t) = A_2\cos(\omega t+\phi)  
+\end{equation*}
+We want to find which $\omega$'s are possible.
+
+Take the second derivatives 
+\begin{equation*}
+  \frac{d^2\,x(t)}{dt}=-A_1\omega^2\cos(\omega t+\phi)
+  \qquad
+  \frac{d^2\,\theta(t)}{dt}=-A_2\omega^2\cos(\omega t+\phi)
+\end{equation*}
+and plug into the equations of motion~($**$).
+\begin{align*}
+  m\cdot(-A_1\omega^2\cos(\omega t+\phi))
+      +k\cdot (A_1\cos(\omega t+\phi))
+      +\frac{\epsilon}{2}\cdot (A_2\cos(\omega t+\phi)) 
+      &=0  \\
+  I\cdot(-A_2\omega^2\cos(\omega t+\phi))
+      +\kappa\cdot (A_2\cos(\omega t+\phi))
+      +\frac{\epsilon}{2}\cdot (A_1\cos(\omega t+\phi))  
+      &=0  
+\end{align*}
+Factor out $\cos(\omega t+\phi)$ and divide through by~$m$.
+\begin{align*}
+  \big(\frac{k}{m}-\omega^2\big)\cdot A_1 
+      +\frac{\epsilon}{2m}\cdot A_2 
+      &=0  \\
+  \big(\frac{\kappa}{I}-\omega^2\big)\cdot A_2
+      +\frac{\epsilon}{2m}\cdot A_1  
+      &=0  
+\end{align*}
+We are assuming that $k/m=\omega_{x}^2$ and
+replace $\kappa/I=\omega_{\theta}^2$ are equal, and writing $\omega_0^2$
+for that number.
+Make the substitution and restate it as a matrix equation.
+\begin{equation*}
+  \begin{pmatrix}
+    \omega_0^2-\omega^2    &\epsilon/2m  \\
+    \epsilon/2I &\omega_0^2-\omega^2 
+  \end{pmatrix}
+  \begin{pmatrix}
+    A_1 \\
+    A_2
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    0 \\
+    0
+  \end{pmatrix}
+\end{equation*}
+Obviously this system has the trivial solution~$A_1=0$, $A_2=0$,
+for the case where the mass is at rest.
+We want to know for which frequencies~$\omega$ this system has a nontrivial
+solution. 
+\begin{equation*}
+  \begin{pmatrix}
+    \omega_0^2    &\epsilon/2m  \\
+    \epsilon/2I  &\omega_0^2 
+  \end{pmatrix}
+  \begin{pmatrix}
+    A_1 \\
+    A_2
+  \end{pmatrix}
+  =
+  \omega^2
+  \begin{pmatrix}
+    A_1 \\
+    A_2
+  \end{pmatrix}
+\end{equation*}
+The normal mode angular frequencies~$\omega$ are the eigenvalues of the matrix.
+
+To calculate it
+take the determinant and set it to zero.
+\begin{equation*}
+  \begin{vmatrix}
+    \omega_0^2-\omega^2    &\epsilon/2m  \\
+    \epsilon/2I           &\omega_0^2-\omega^2     
+  \end{vmatrix}=0
+  \quad\Longrightarrow\quad
+  \omega^4-(2\omega_0^2)\,\omega^2
+      +(\omega_0^4 -\frac{\epsilon^2}{4mI})=0
+\end{equation*}
+That equation is quadratic in~$\omega^2$.  
+Apply the formula to solve quadratic equations, $(-b\pm\sqrt{b^2-4ac})/2a$.
+\begin{equation*}   % \rule[-.3\baselineskip]{0pt}{\baselineskip}
+  \omega^2 
+  =\frac{2\omega_0^2
+       \pm\sqrt{\smash[b]{\strut} 4\omega_0^4
+                -4(\omega_0^4-\epsilon^2/4mI)}}{2}
+  =\omega_0^2\pm\frac{\epsilon}{2\sqrt{mI}}
+\end{equation*}
+The value $\epsilon/\sqrt{mI}=\epsilon/\sqrt{\kappa k}$ is often written
+$\omega_B$ so that
+$
+  \omega^2 =\omega_0^2\pm\omega_B/2
+$
+This is the \definend{beat frequency}, the difference
+between the two normal mode frequencies.
+
+\begin{exercises}
+\item Use the formula for the cosine of a sum to give an even more
+  general formula for simple harmonic motion.
+  \begin{answer}
+    The angle sum formula for the cosine function is 
+    $\cos(\alpha+\beta)=cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$.
+    Expand $A\cos(\omega t+\phi)$ to
+    $A\cdot[cos(\omega t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.
+    Then $\cos(\phi)$ and $\sin(\phi)$ do not vary with~$t$ so we get
+    the general solution $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
+  \end{answer}
+\item Find the values of $\omega$ in the case where the phase shift 
+  is $\phi+\pi$.
+\item Buld a Wilberforce pendulum out of a Slinky Jr and a soup can.
+  You can drill holes in the can for bolts, either two or four of them,
+  that you can use to adjust
+  the moment of inertia of the can so the periods of vertical and rotational 
+  motion coincide.
+\end{exercises}
+\index{Coupled Oscillators|)}
+\endinput
+% \end{document}
