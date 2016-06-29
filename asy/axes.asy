@@ -26,11 +26,19 @@ material m_yz=
 pen p=linewidth(0.4)+squarecap+miterjoin+black+opacity(0.2);
 defaultpen(p);
 
-// From https://kuler.adobe.com/Lollapalooza-color-theme-3446379/edit/?copy=true
-pen darkcolor = rgb(0/255,  38/255,  53/255);
-pen lightcolor  = rgb(217/255,  121/255,  37/255);
-pen bgcolor     = rgb(171/255, 26/255, 37/255);
-pen flourishcolor  = rgb(116/255, 6/255,   17/255);
+// From version 2 of the book
+// // From https://kuler.adobe.com/Lollapalooza-color-theme-3446379/edit/?copy=true
+// pen darkcolor = rgb(0/255,  38/255,  53/255);
+// pen lightcolor  = rgb(217/255,  121/255,  37/255);
+// pen bgcolor     = rgb(171/255, 26/255, 37/255);
+// pen flourishcolor  = rgb(116/255, 6/255,   17/255);
+
+// From version 3 of the book, 2016
+// // From https://color.adobe.com/Ice-cream-chill-color-theme-6611012/edit/?copy=true&base=2&rule=Custom&selected=4&name=Copy%20of%20Ice%20cream%20chill&mode=rgb&rgbvalues=0.611765,0.329412,0.290196,0.705882,0.745098,0.572549,0.992157,0.894118,0.733333,0.788235,0.803922,0.733333,0.886275,0.67451,0.435294&swatchOrder=0,1,2,3,4
+pen darkcolor = rgb(226/255, 172/255, 111/255);
+pen lightcolor  = rgb(180/255,  190/255,  146/255);
+pen boldcolor     = rgb(156/255,  84/255,  74/255);
+pen flourishcolor  = rgb(253/255, 228/255,   187/255);
 
 real XLIMIT_POS=1;
 real XLIMIT_NEG=-1*XLIMIT_POS;
@@ -133,7 +141,7 @@ face[] faces;
 // pen[] p={red,green,blue,black};
 // latticeshade(faces.push(floor_q1),floor_q1,new pen[][] {{INSIDE_SHADE,OUTSIDE_SHADE},{OUTSIDE_SHADE,OUTSIDE_SHADE}});
 
-filldraw(faces.push(xy),project(xy),fillpen=bgcolor,drawpen=p);
+filldraw(faces.push(xy),project(xy),fillpen=boldcolor,drawpen=p);
 filldraw(faces.push(xz),project(xz),fillpen=lightcolor,drawpen=p);
 filldraw(faces.push(yz),project(yz),fillpen=darkcolor,drawpen=p);
 add(pic,faces);

@@ -1,12 +1,21 @@
 % Commands for the graphics for the book's cover
+
+\usepackage{xcolor}
+% For version 2 of book
 % From https://kuler.adobe.com/Lollapalooza-color-theme-3446379/edit/?copy=true by gabrielsssantiago
 % Permission: GS says scheme is Crative Commons 
-\usepackage{xcolor}
-  \definecolor{coverdarkcolor}{HTML}{002635}  % 
-  \definecolor{coverboldcolor}{HTML}{5C5B5A}  % 
-  \definecolor{coverlightcolor}{HTML}{013440} % 
-  \definecolor{coverbgcolor}{HTML}{AB1A25}  %  
-  \definecolor{coverflourishcolor}{HTML}{AB1A25}  %
+%   \definecolor{coverdarkcolor}{HTML}{002635}  % 
+%   \definecolor{coverboldcolor}{HTML}{5C5B5A}  % 
+%   \definecolor{coverlightcolor}{HTML}{013440} % 
+%   \definecolor{coverbgcolor}{HTML}{AB1A25}  %  
+%   \definecolor{coverflourishcolor}{HTML}{AB1A25}  %
+  % Cover for version 3, 2016:
+  % % From https://color.adobe.com/Ice-cream-chill-color-theme-6611012/edit/?copy=true&base=2&rule=Custom&selected=3&name=Copy%20of%20Ice%20cream%20chill&mode=rgb&rgbvalues=0.611765,0.329412,0.290196,0.705882,0.745098,0.572549,0.992157,0.894118,0.733333,0.788235,0.803922,0.733333,0.886275,0.67451,0.435294&swatchOrder=0,1,2,3,4
+  \definecolor{coverdarkcolor}{HTML}{B4BE92}  % 
+  \definecolor{coverboldcolor}{HTML}{9C544A}  % 
+  \definecolor{coverlightcolor}{HTML}{E2AC6F} % 
+  \definecolor{coverbgcolor}{HTML}{C9CDBB}  %  
+  \definecolor{coverflourishcolor}{HTML}{FDE4BB}  %
 
 \usepackage{graphics}
 
@@ -16,13 +25,13 @@
   % \put(0,0){\line(1,1){2}}
   \put(-0.3,-2.5){{\color{black}\fontsize{50pt}{8pt}{\fontfamily{ugq}\selectfont LINEAR ALGEBRA}}}
   \thicklines
-  \put(-0.26,-2.75){\color{coverbgcolor}\rule{5.78in}{4pt}}
+  \put(-0.26,-2.725){\color{coverbgcolor}\rule{5.78in}{2.5pt}}
   % \put(3.75,-3.025){{\color{coverlightcolor}\fontsize{20pt}{8pt}{\fontfamily{ugq}\selectfont Jim Hef{}feron}}}
-  \put(5.5,-3.025){\makebox[0pt][r]{\color{coverlightcolor}\fontsize{20pt}{8pt}{\fontfamily{ugq}\selectfont Jim Hef{}feron}}}
+  \put(5.5,-3.025){\makebox[0pt][r]{\color{coverdarkcolor}\fontsize{20pt}{8pt}{\fontfamily{ugq}\selectfont Jim Hef{}feron}}}
   \put(5.5,-1.85){\makebox[0pt][r]{\color{coverlightcolor}\fontsize{20pt}{8pt}{
 \fontfamily{ugq}\selectfont #1}}}
   \put(-0.0,-6.9){\includegraphics{asy/shadow.pdf}}
   \put(0,-6.5){\includegraphics{asy/axes.pdf}}
-  \put(2.32,-6.4){{\color{coverlightcolor}\large \texttt{http://joshua.smcvt.edu/linearalgebra}}}
+  \put(2.32,-6.4){{\color{coverbgcolor}\large \texttt{http://joshua.smcvt.edu/linearalgebra}}}
 \end{picture}
 }

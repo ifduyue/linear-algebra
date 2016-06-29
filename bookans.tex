@@ -34149,9 +34149,121 @@ sage: T64_years/age_of_universe
 \begin{ans}{1}
     The angle sum formula for the cosine function is
     $\cos(\alpha+\beta)=cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$.
-    Expand $A\cos(\omega t+\phi)$ to
-    $A\cdot[cos(\omega t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.
-    Then $\cos(\phi)$ and $\sin(\phi)$ do not vary with~$t$ so we get
-    the general solution $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
+    Expand $A\cos(\omega t+\phi)$ to $A\cdot[cos(\omega
+    t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.  Then $\cos(\phi)$ and
+    $\sin(\phi)$ do not vary with~$t$ so we get the general solution
+    $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
+  
+\end{ans}
+\begin{ans}{2}
+    We will do the first root; the second is similar.
+    We have this equation.
+    \begin{equation*}
+      \begin{mat}
+        \omega_0^2-\omega^2  &\epsilon/2m \\
+        \epsilon/2I         &\omega_0^2-\omega^2
+      \end{mat}
+      \colvec{A_1 \\ A_2}
+      =\colvec{0 \\ 0}
+    \end{equation*}
+    Plug in the first root~$\omega^2=\omega_0^2+\epsilon/2\sqrt{mI}$.
+    The two equations are redundant so we just consider the first.
+    \begin{equation*}
+      -(\epsilon/2\sqrt{mI})\cdot A_1+(\epsilon/2m)\cdot A_2=0
+    \end{equation*}
+    That's a line through the origin in the plane, so to specify it we
+    need only find the ratio between the first and second variables.
+    \begin{equation*}
+      \frac{A_2}{A_1}=\frac{(\epsilon/2\sqrt{mI})}{(\epsilon/2m)}
+                     =\sqrt{\frac{m}{I}}
+    \end{equation*}
+    So this is the space of eigenvectors associated with the first eigenvalue.
+    \begin{equation*}
+      \set{\colvec{A_1 \\ \sqrt{m/I}\cdot A_1}\suchthat A_1\in\C}
+    \end{equation*}
+  
+\end{ans}
+\begin{ans}{3}
+    Observe that $\cos(\omega t+(\phi+\pi))=-\cos(\omega t+\phi)$.
+    Take the derivatives
+    \begin{equation*}
+      \frac{d\,x(t)}{dt}=-\omega\cdot\sin(\omega t+\phi)
+      \qquad
+      \frac{d^2\,x(t)}{dt^2}=-\omega^2\cdot\cos(\omega t+\phi)
+    \end{equation*}
+    and
+    \begin{equation*}
+      \frac{d\,\theta(t)}{dt}=\omega\cdot\sin(\omega t+\phi)
+      \qquad
+      \frac{d^2\,\theta(t)}{dt^2}=\omega^2\cdot\cos(\omega t+\phi)
+    \end{equation*}
+    and plug into the equations of motion~($**$).
+    \begin{align*}
+      mA_1\cdot(-\omega^2\cos(\omega t+\phi))
+          +kA_1\cdot (\cos(\omega t+\phi))
+          +\frac{\epsilon}{2}A_2\cdot (-\cos(\omega t+\phi))
+          &=0  \\
+      IA_2\cdot(\omega^2\cos(\omega t+\phi))
+          +\kappa A_2\cdot (-\cos(\omega t+\phi))
+          +\frac{\epsilon}{2}A_1\cdot (\cos(\omega t+\phi))
+          &=0
+    \end{align*}
+    Factor out $\cos(\omega t+\phi)$
+    \begin{align*}
+     \big(m(-\omega^2)\big)\cdot A_1
+         +kA_1
+         -\frac{\epsilon}{2}\cdot A_2
+         &=0  \\
+     \big(I\omega^2\big)\cdot A_2
+         -\kappa A_2
+         +\frac{\epsilon}{2}\cdot A_1
+         &=0
+   \end{align*}
+    and divide through by~$m$ and~$I$.
+    \begin{align*}
+     \big(\frac{k}{m}-\omega^2\big)\cdot A_1
+         -\frac{\epsilon}{2m}\cdot A_2
+         &=0  \\
+     \frac{\epsilon}{2I}\cdot A_1
+     -\big(\frac{\kappa}{I}-\omega^2\big)\cdot A_2
+         &=0
+   \end{align*}
+   We are assuming that $k/m=\omega_{x}^2$ and
+   $\kappa/I=\omega_{\theta}^2$ are equal, and writing $\omega_0^2$
+   for that number.
+   Make the substitution and restate it as a matrix equation.
+   \begin{equation*}
+     \begin{mat}
+       \omega_0^2-\omega^2    &-\epsilon/2m  \\
+       \epsilon/2I &\omega_0^2-\omega^2
+     \end{mat}
+     \colvec{
+       A_1 \\
+       A_2}
+     =
+     \colvec{
+       0 \\
+       0}
+   \end{equation*}
+   We want the frequencies~$\omega$ for which this system has a nontrivial
+   solution.
+   \begin{equation*}
+      \begin{vmatrix}
+       \omega_0^2-\omega^2    &-\epsilon/2m  \\
+       \epsilon/2I           &\omega^2-\omega_0^2
+      \end{vmatrix}
+      =0
+    \end{equation*}
+    This is the same determinant as we did in the Topic body
+    except that the second column is multiplied by $-1$.
+    Multiplying a row or column by a scalar multiplies the entire determinant
+    by that scalar.
+    So this determinant is the negative of the one in the Topic body.
+    But we are setting it to zero so that doesn't matter.
+    The roots are the same as in the Topic body.
+  
+\end{ans}
+\begin{ans}{4}
+    See \cite{Mewes}.
   
 \end{ans}

@@ -22,8 +22,8 @@ and down, the mass begins to rotate,
 to spin about the axis of the spring.
 This yaw increases until the mass's motion  
 becomes almost entirely rotary, with very little up and down.
-Perhaps ten seconds later the motion returns to a combination.
-Then, after some more time, order reappears.
+Perhaps five seconds later the motion evolves back to a combination.
+After some more time, order reappears.
 Amazingly, now
 the motion is almost entirely vertical.
 This continues, with the device trading off
@@ -98,39 +98,40 @@ Now back to consideration of the coupled pair of motions,
 vertical and rotational.
 These two interact because a spring that is twisted will 
 lengthen or shorten just a bit.
-For instance, it could work as here, or could be reversed depending on the
+For instance, it could work as here or could be reversed, depending on the
 spring.  
 \begin{center}
   \includegraphics{asy/wilber002.pdf}
 \end{center}
-Likewise, a spring that is stretched or compressed from its rest
+And, a spring that is stretched or compressed from its rest
 position will twist slightly.
 The interaction of the two produces \definend{coupled oscillations}.
 
 To see how the interaction can produce the dramatic behavior that
 we see in a normal mode
-imagine that the mass is twisting in the direction that will 
+imagine that the mass is rotating in the direction that will 
 will make the spring longer.
-If the spring's vertical motion at that moment is that it is getting shorter, 
-then  
-superimposing the shortening on the lengthening
-could result in the two almost cancelling.
+If at the same moment the vertical motion is that the spring 
+is getting shorter, 
+then superimposing the two
+could result in their almost cancelling.
 The bob ends up not moving vertically much at all, just twisting.
-If the device is properly adjusted this could last for a number of seconds.
+With a properly adjusted device this could last for a number of seconds.
 
 ``Properly adjusted'' means that  
 the period of the pure vertical motion is the same as, 
 or close to, the period of the pure rotational motion.
-With that, the cancellation will go on for some time so 
-we will see the bob halt its vertical motion for seconds. 
+With that, the cancellation will go on for some time. 
 
 The interaction between the motions can also produce the other normal mode 
-behavior, where the bob moves mostly vertically without much twist,
-if the spring's motion produces a twist that opposes the bob's twist.
-The bob will not rotate, almost, so its motion is almost entirely vertical.
+behavior, where the bob moves mostly vertically without much rotation,
+if the spring's motion~$x(t)$ 
+produces a twist that opposes the bob's twist~$\theta(t)$.
+The bob will stop rotating, almost, so that
+its motion is almost entirely vertical.
 
 To get the equations of motion in this two degrees of freedom case,
-we make the same assumption as we did for the one degree case,
+we make the same assumption as in the one degree case,
 that for small displacements the restoring force is
 proportional to the displacement. 
 But now we take that assumption both for
@@ -145,7 +146,7 @@ motions, which we take to be proportional to each, with constant of
 proportionality~$\epsilon/2$.
 
 That gives a system of two differential equations,
-the first for vertical motion, the second
+the first for vertical motion and the second
 for rotation.
 These equations describe the behavior of the coupled system at any time~$t$.
 \begin{equation*}
@@ -159,10 +160,8 @@ These equations describe the behavior of the coupled system at any time~$t$.
   \end{split}
   \tag{$**$}
 \end{equation*}
-We will use those to analyze the
-system's behavior at times when it is in a normal mode, when
-its motion is almost entirely up and down 
-or almost entirely rotational.
+We will use them to analyze the
+system's behavior at times when it is in a normal mode.
 
 First consider the uncoupled motions, as given by the equations without the
 $\epsilon$ terms.
@@ -181,16 +180,16 @@ angular frequency~$\omega$.
 As to phase shift, as we also discussed there are two
 cases: when the twist imparted by the spring's motion is in the same direction
 as the twist given by the rotational oscillation and when they are opposed.
-In either case to get a normal mode the peaks should coincide so the
-phase shifts are $\phi$ and $\phi+\pi$~radians.
-We will work through the first case, leaving the second is an exercise.
-\begin{equation*}
-  x(t) = A_1\cos(\omega t+\phi)  
-  \qquad
-  \theta(t) = A_2\cos(\omega t+\phi)  
-\end{equation*}
-We want to find which $\omega$'s are possible.
+In either case to get a normal mode the peaks must coincide.
+\begin{align*}
+  x(t) &= A_1\cos(\omega t+\phi)  
+       &x(t) &= A_1\cos(\omega t+\phi)   \\  
+  \theta(t) &= A_2\cos(\omega t+\phi)  
+       &\theta(t) &= A_2\cos(\omega t+(\phi+\pi))    
+\end{align*}
+We will work through the left-hand case, leaving the other as an exercise.
 
+We want to find which $\omega$'s are possible.
 Take the second derivatives 
 \begin{equation*}
   \frac{d^2\,x(t)}{dt}=-A_1\omega^2\cos(\omega t+\phi)
@@ -222,39 +221,37 @@ replace $\kappa/I=\omega_{\theta}^2$ are equal, and writing $\omega_0^2$
 for that number.
 Make the substitution and restate it as a matrix equation.
 \begin{equation*}
-  \begin{pmatrix}
+  \begin{mat}
     \omega_0^2-\omega^2    &\epsilon/2m  \\
     \epsilon/2I &\omega_0^2-\omega^2 
-  \end{pmatrix}
-  \begin{pmatrix}
+  \end{mat}
+  \colvec{
     A_1 \\
-    A_2
-  \end{pmatrix}
+    A_2}
   =
-  \begin{pmatrix}
+  \begin{mat}
     0 \\
     0
-  \end{pmatrix}
+  \end{mat}
 \end{equation*}
 Obviously this system has the trivial solution~$A_1=0$, $A_2=0$,
 for the case where the mass is at rest.
 We want to know for which frequencies~$\omega$ this system has a nontrivial
 solution. 
 \begin{equation*}
-  \begin{pmatrix}
+  \begin{mat}
     \omega_0^2    &\epsilon/2m  \\
-    \epsilon/2I  &\omega_0^2 
-  \end{pmatrix}
-  \begin{pmatrix}
+    \epsilon/2I &\omega_0^2
+  \end{mat}
+  \colvec{
     A_1 \\
-    A_2
-  \end{pmatrix}
+    A_2}
   =
   \omega^2
-  \begin{pmatrix}
+  \begin{mat}
     A_1 \\
     A_2
-  \end{pmatrix}
+  \end{mat}
 \end{equation*}
 The normal mode angular frequencies~$\omega$ are the eigenvalues of the matrix.
 
@@ -263,47 +260,163 @@ take the determinant and set it to zero.
 \begin{equation*}
   \begin{vmatrix}
     \omega_0^2-\omega^2    &\epsilon/2m  \\
-    \epsilon/2I           &\omega_0^2-\omega^2     
-  \end{vmatrix}=0
-  \quad\Longrightarrow\quad
-  \omega^4-(2\omega_0^2)\,\omega^2
-      +(\omega_0^4 -\frac{\epsilon^2}{4mI})=0
+    \epsilon/2I &\omega_0^2-\omega^2
+  \end{vmatrix}=0 \quad\Longrightarrow\quad
+  \omega^4-(2\omega_0^2)\,\omega^2 +(\omega_0^4
+  -\frac{\epsilon^2}{4mI})=0
 \end{equation*}
 That equation is quadratic in~$\omega^2$.  
 Apply the formula to solve quadratic equations, $(-b\pm\sqrt{b^2-4ac})/2a$.
 \begin{equation*}   % \rule[-.3\baselineskip]{0pt}{\baselineskip}
   \omega^2 
   =\frac{2\omega_0^2
-       \pm\sqrt{\smash[b]{\strut} 4\omega_0^4
-                -4(\omega_0^4-\epsilon^2/4mI)}}{2}
+    \pm\sqrt{\smash[b]{\strut} 4\omega_0^4
+      -4(\omega_0^4-\epsilon^2/4mI)}}{2}
   =\omega_0^2\pm\frac{\epsilon}{2\sqrt{mI}}
 \end{equation*}
 The value $\epsilon/\sqrt{mI}=\epsilon/\sqrt{\kappa k}$ is often written
 $\omega_B$ so that
 $
-  \omega^2 =\omega_0^2\pm\omega_B/2
+\omega^2 =\omega_0^2\pm\omega_B/2
 $
 This is the \definend{beat frequency}, the difference
 between the two normal mode frequencies.
+
+Although the argument is beyond our scope, the formula for the motion of the
+pendulum is a linear combination of the motions for the normal modes.
+Thus, the entire motion is determined by the eigenvalues
+of the above matrix.
+See \cite{BergMarshall}.
 
 \begin{exercises}
 \item Use the formula for the cosine of a sum to give an even more
   general formula for simple harmonic motion.
   \begin{answer}
-    The angle sum formula for the cosine function is 
+    The angle sum formula for the cosine function is
     $\cos(\alpha+\beta)=cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$.
-    Expand $A\cos(\omega t+\phi)$ to
-    $A\cdot[cos(\omega t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.
-    Then $\cos(\phi)$ and $\sin(\phi)$ do not vary with~$t$ so we get
-    the general solution $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
+    Expand $A\cos(\omega t+\phi)$ to $A\cdot[cos(\omega
+    t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.  Then $\cos(\phi)$ and
+    $\sin(\phi)$ do not vary with~$t$ so we get the general solution
+    $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
   \end{answer}
-\item Find the values of $\omega$ in the case where the phase shift 
-  is $\phi+\pi$.
+\item Find the eigenvectors associated with the eigenvalues.
+  \begin{answer}
+    We will do the first root; the second is similar.  
+    We have this equation.
+    \begin{equation*}
+      \begin{mat}
+        \omega_0^2-\omega^2  &\epsilon/2m \\
+        \epsilon/2I         &\omega_0^2-\omega^2
+      \end{mat}
+      \colvec{A_1 \\ A_2}
+      =\colvec{0 \\ 0}
+    \end{equation*}
+    Plug in the first root~$\omega^2=\omega_0^2+\epsilon/2\sqrt{mI}$.
+    The two equations are redundant so we just consider the first.
+    \begin{equation*}
+      -(\epsilon/2\sqrt{mI})\cdot A_1+(\epsilon/2m)\cdot A_2=0
+    \end{equation*}
+    That's a line through the origin in the plane, so to specify it we
+    need only find the ratio between the first and second variables.
+    \begin{equation*}
+      \frac{A_2}{A_1}=\frac{(\epsilon/2\sqrt{mI})}{(\epsilon/2m)}
+                     =\sqrt{\frac{m}{I}}
+    \end{equation*}
+    So this is the space of eigenvectors associated with the first eigenvalue.
+    \begin{equation*}
+      \set{\colvec{A_1 \\ \sqrt{m/I}\cdot A_1}\suchthat A_1\in\C}
+    \end{equation*}
+  \end{answer}
+\item Find the values of $\omega$ in the case where 
+  $x(t)=A_1\cos(\omega t+\phi)$
+  and $\theta(t)=A_2\cos(\omega t+(\phi+\pi))$.
+  \begin{answer}
+    Observe that $\cos(\omega t+(\phi+\pi))=-\cos(\omega t+\phi)$.
+    Take the derivatives 
+    \begin{equation*}
+      \frac{d\,x(t)}{dt}=-\omega\cdot\sin(\omega t+\phi)
+      \qquad
+      \frac{d^2\,x(t)}{dt^2}=-\omega^2\cdot\cos(\omega t+\phi)
+    \end{equation*}
+    and 
+    \begin{equation*}
+      \frac{d\,\theta(t)}{dt}=\omega\cdot\sin(\omega t+\phi)
+      \qquad
+      \frac{d^2\,\theta(t)}{dt^2}=\omega^2\cdot\cos(\omega t+\phi)
+    \end{equation*}
+    and plug into the equations of motion~($**$).
+    \begin{align*}
+      mA_1\cdot(-\omega^2\cos(\omega t+\phi))
+          +kA_1\cdot (\cos(\omega t+\phi))
+          +\frac{\epsilon}{2}A_2\cdot (-\cos(\omega t+\phi)) 
+          &=0  \\
+      IA_2\cdot(\omega^2\cos(\omega t+\phi))
+          +\kappa A_2\cdot (-\cos(\omega t+\phi))
+          +\frac{\epsilon}{2}A_1\cdot (\cos(\omega t+\phi))  
+          &=0  
+    \end{align*}
+    Factor out $\cos(\omega t+\phi)$ 
+    \begin{align*}
+     \big(m(-\omega^2)\big)\cdot A_1
+         +kA_1 
+         -\frac{\epsilon}{2}\cdot A_2 
+         &=0  \\
+     \big(I\omega^2\big)\cdot A_2
+         -\kappa A_2
+         +\frac{\epsilon}{2}\cdot A_1  
+         &=0  
+   \end{align*}
+    and divide through by~$m$ and~$I$.
+    \begin{align*}
+     \big(\frac{k}{m}-\omega^2\big)\cdot A_1 
+         -\frac{\epsilon}{2m}\cdot A_2 
+         &=0  \\
+     \frac{\epsilon}{2I}\cdot A_1  
+     -\big(\frac{\kappa}{I}-\omega^2\big)\cdot A_2
+         &=0  
+   \end{align*}
+   We are assuming that $k/m=\omega_{x}^2$ and
+   $\kappa/I=\omega_{\theta}^2$ are equal, and writing $\omega_0^2$
+   for that number.
+   Make the substitution and restate it as a matrix equation.
+   \begin{equation*}
+     \begin{mat}
+       \omega_0^2-\omega^2    &-\epsilon/2m  \\
+       \epsilon/2I &\omega_0^2-\omega^2 
+     \end{mat}
+     \colvec{
+       A_1 \\
+       A_2}
+     =
+     \colvec{
+       0 \\
+       0}
+   \end{equation*}
+   We want the frequencies~$\omega$ for which this system has a nontrivial
+   solution. 
+   \begin{equation*}
+      \begin{vmatrix}
+       \omega_0^2-\omega^2    &-\epsilon/2m  \\
+       \epsilon/2I           &\omega^2-\omega_0^2 
+      \end{vmatrix}
+      =0
+    \end{equation*}
+    This is the same determinant as we did in the Topic body
+    except that the second column is multiplied by $-1$.
+    Multiplying a row or column by a scalar multiplies the entire determinant
+    by that scalar.
+    So this determinant is the negative of the one in the Topic body.
+    But we are setting it to zero so that doesn't matter.
+    The roots are the same as in the Topic body. 
+  \end{answer}
 \item Buld a Wilberforce pendulum out of a Slinky Jr and a soup can.
   You can drill holes in the can for bolts, either two or four of them,
   that you can use to adjust
   the moment of inertia of the can so the periods of vertical and rotational 
   motion coincide.
+  \begin{answer}
+    See \cite{Mewes}.
+  \end{answer}
 \end{exercises}
 \index{Coupled Oscillators|)}
 \endinput
