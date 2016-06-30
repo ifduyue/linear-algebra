@@ -1,5 +1,11 @@
-This is _Linear Algebra_ by Jim Hefferon.  The release date is 2012.
-You are free to use this material.
+This is _Linear Algebra_ by Jim Hefferon.  The release date is 2016.
+You are free to use this material, either under the GNU Free Documentation
+license or under a Creative Commons Share Alike license.
+
+Please note that you can buy a hardcopy of this book on Amazon, at a cost that
+is less than it would take for me to run it off from the PDF at a local copy 
+shop.  (Make sure that you are getting the latest date as there are old versions
+also for sale.  The newer version costs the same, and is better.)
 
 For more information, see 1st_readme.pdf, or the web site
   http://joshua.smcvt.edu/linearalgebra 
@@ -16,19 +22,18 @@ COMPILING
 
 Why?
 
-Sigh.  OK.  Here is what I just did on a fresh Linux Mint 
-box  (2013-Nov-06, Linux Mint 12, equivalent to Ubuntu 12.04).
+Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
 
 0) Install the Debian TeX Live (that is, the packages from the archive).
   (I'd rather go with TeX LIve from tug.org but I had to get Sage also and 
   it required me to get the Debian packages and .. I didn't want to end
   in dependency hell.)
 
-  Also install asymptote.
+  Also install Asymptote.
 
-1) Clone the linear-algebra mercurial archive.  
+1) Clone the linear-algebra archive.  
   cd ~/Documents
-  hg clone https://jim.hefferon@code.google.com/p/linear-algebra/ 
+  git clone https://gitlab.com/jim.hefferon/linear-algebra.git
 
 2) Install the luximono font.
 
@@ -77,10 +82,10 @@ box  (2013-Nov-06, Linux Mint 12, equivalent to Ubuntu 12.04).
 (if it fails with something about ul9r8r then see the note in instruction 2). 
 
 At the end, you'll have book.pdf and jhanswer.pdf.  Put them
-in the same directory.  You could have skipped the compiling, you know.
+in the same directory.  You could have just skipped the compiling, you know.
 
 If you want projector slides, cd slides and run make_slides.sh.  This can take 
-some time, maybe twenty minutes.
+some time, maybe ten minutes.
 
 Jim
 jhefferon@smcvt.edu
