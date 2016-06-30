@@ -4,12 +4,11 @@ The PDF of the _Linear Algebra_, and of the answer book, the beamer slides, and 
 
 # Summary
 
-What sets this book apart is its developmental approach. It does not assume students are mathematically sophisticated, so it includes lots of examples, lots of motivation, and clear exposition. But it also assumes that the goal is to make the students more sophisticated, so everything is proved, it works to nudge readers by pointing out the advantages of a more advanced viewpoint, and in particular, it does vector spaces and linear maps as early as practical.
+What sets this book apart is its developmental approach. It does not assume students are mathematically sophisticated so it includes lots of examples, lots of motivation, and clear exposition. But it does assume that the goal is to make the students more sophisticated so everything is proved, it works to nudge readers by pointing out the advantages of a more advanced viewpoint, and in particular it does vector spaces and linear maps as early as practical.
 
 In addition to the main text, every chapter ends with a few Topics that illustrate applications or extensions of the material in that chapter. These are suitable for independent reading, for group work, or for a one-day presentation as a break.
 
-There are many exercise in each section. The answer book contains a completely-worked solution for every exercise, including the proofs.    
-It is set up so that if you click on the question then you are taken to the answer and if you click on the answer you come back to the question.
+There are many exercise in each section. The answer book contains a completely-worked solution for every exercise, including the proofs. It is set up so that if you click on the question then you are taken to the answer and if you click on the answer you come back to the question.
 
 Besides the answer book, there are beamer slides for classroom use. These are keyed to the text, including that they use the same wording and numbering for theorems, definitions, etc.
 
