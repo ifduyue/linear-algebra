@@ -9,7 +9,7 @@ unitsize(0.1cm);
 
 // cd junk is needed for relative import 
 // cd("../../../asy/");
-// import jh;
+import jh;
 // cd("");
 
 pair coilpoint(real lambda, real r, real t)
@@ -181,7 +181,7 @@ draw(p,point(yaw_lengthen,0.65)--point(yaw_lengthen,0),arrow=EndArrow);
 label(p,"\scriptsize spring lengthens",point(yaw_lengthen,0.75),align=W);
 path yaw_shorten = shift(0,-20)*subpath(yaw,1,4);
 draw(p,yaw_shorten,arrow=None);
-label(p,"\scriptsize spring shortens",point(yaw_shorten,3.25),align=E);
+label(p,"\scriptsize spring shortens",point(yaw_shorten,3.25)+(1,0),align=E);
 
 // vert action
 // path vert = shift(-5,0)*cylinder_left;

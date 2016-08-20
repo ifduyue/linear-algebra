@@ -141,12 +141,12 @@ General:
      subtle error in Three.II.2.31.
   Chris Atkinson  Correction to partition example in appendix, typo in 
      Three.3.2.6.
-  Dan Drake Very helpful discussion of a better example of the need for
+  Dan Drake  Very helpful discussion of a better example of the need for
      the set/multiset distinction in the definition of linear independence.
   Darren Wick  Many corrections to slides.
 
 2015-Jan-06
-  Gario Gjorgjevski Typo in Schur's Triangularization Lemma.
+  Gario Gjorgjevski  Typo in Schur's Triangularization Lemma.
 
 2015-Jan-14
   Arthur Kock  Unclear exercise in Isomorphism section.
@@ -157,9 +157,13 @@ General:
   Deann Leoni  Corrected answer to exercise in vs2.
   Vinícius dos Santos Oliveira  Typo.
   Jeff Herlitz  Correction to answer in One.III.
-  Eric P.Morrill  Comment on Exercise in One.I.
+  Eric P. Morrill  Comment on Exercise in One.I.
   Karl-Dieter Crisman  Large number of corrections, including to mathematical 
     material, not only typos, and a number of very helpful suggestions.
   Joe Zyburt  Two errors in nullspace chains in Nilpotence section.
   Darij Grinberg  Corrections around Cayley-Hamilton.
   Fred Davis, via David Joyner, many questions with answers for question bank.
+  William Karstens for much help with the Topic on Coupled Pendula.
+
+2016-Aug-20
+  Christelle Vincent  Add slides that use handout option

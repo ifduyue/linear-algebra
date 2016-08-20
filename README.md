@@ -10,7 +10,7 @@ In addition to the main text, every chapter ends with a few Topics that illustra
 
 There are many exercise in each section. The answer book contains a completely-worked solution for every exercise, including the proofs. The book and answer PDFs are set up so that if you click on the question then you are taken to the answer and if you click on the answer you come back to the question.
 
-Besides the answer book, there are beamer slides for classroom use. These are keyed to the text, including that they use the same wording and numbering for theorems, definitions, etc.  (The version of the slides that I use sometimes passes over proofs in preference to illustrative examples; there is also a version with all the proofs.)
+Besides the answer book, there are beamer slides for classroom use. These are keyed to the text, including that they use the same wording and numbering for theorems, definitions, etc.  (The version of the slides that I use passes over some proofs to instead do illustrative examples; there is also a version with all the proofs.)
 
 And, there is a lab manual for computer work, using *Sage*. It introduces students to doing linear algebra on a computer and also introduces some important applications that are difficult by hand but easy on a machine.
 

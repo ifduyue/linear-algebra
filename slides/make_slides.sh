@@ -184,6 +184,22 @@ do
    eval $result
 done
 
+
+# ------- create handout versions of the slides, without \pause's
+cmd="pdflatex filename"  # will substitute for "filename"
+
+for i in ${beamer_files[@]}
+do
+   fn_without_ext=${i:0:(-4)}
+   handout_fn=${fn_without_ext}_handout.tex
+   awk -f handout.awk $i > ${handout_fn}
+   result=${cmd//filename/${handout_fn}}
+   echo $i
+   echo $result
+   eval $result
+   rm ${handout_fn}   # clear out so *.tex wont find on next run
+done
+
 # create .zip files
 # Make .zip fo slides without all proofs
 rm slides.zip
@@ -191,6 +207,9 @@ find . -iregex "./[^a].*_.*[^[_allproofs]\.pdf" -print | zip slides -@
 # Make .zip of slides with all proofs
 rm slides_allproofs.zip
 find . -iregex "./[^a].*_.*_allproofs\.pdf" -print | zip slides_allproofs -@
+# Make .zip of slides for handout, without any \pause's
+rm slides_handout.zip
+find . -iregex "./[^a].*_.*_handout\.pdf" -print | zip slides_handout -@
 
 echo " -- Done --"
 exit
