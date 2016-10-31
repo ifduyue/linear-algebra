@@ -47,10 +47,10 @@ p.save("graphics/three_ii_a_skew2.pdf")
 
 #   \colvec{x \\ y} \mapsto \colvec{x \\ 2x+y}
 q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 3, -1, 2) 
+q.set_axes_range(-2, 3, -2, 2.25) 
 q.save("graphics/three_ii_a_changeskew1.pdf")
 p = plot_circle_action(1,2,0,1) 
-p.set_axes_range(-2, 3, -1, 2) 
+p.set_axes_range(-2, 3, -2, 2.25) 
 p.save("graphics/three_ii_a_changeskew2.pdf")
 
 #  \colvec{x \\ y} \mapsto \colvec{x \\ (1/2)x+y} 

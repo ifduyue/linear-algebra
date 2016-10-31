@@ -55,27 +55,27 @@
 \section{Transformations of $\Re^2$}
 %..........
 \begin{frame}{Lines go to lines}
-Consider a real space transformation
-$\map{t}{\Re^n}{\Re^n}$.
-A defining property of linear maps is that 
-$t(r\cdot\vec{v})=r\cdot t(\vec{v})$.
-
 In a real space $\Re^n$ a line through the origin is a set 
-$\set{r\cdot \vec{v}\suchthat r\in\Re}$. 
-So $t$'s action 
+$\set{r\cdot \vec{v}\suchthat r\in\Re}$ of multiples of a 
+nonzero vector. 
+
+Consider a transformation
+$\map{t}{\Re^n}{\Re^n}$.
+% A defining property of linear maps is that 
+% $t(r\cdot\vec{v})=r\cdot t(\vec{v})$.
+It is linear and so $t$'s action 
 \begin{equation*}
   r\cdot\vec{v}\mapsunder{t} r\cdot t(\vec{v})
 \end{equation*}
-is to send members of the line $\set{r\cdot \vec{v}\suchthat r\in\Re}$
+sends members of the line $\set{r\cdot \vec{v}\suchthat r\in\Re}$
 in the domain to members of the line
 $\set{s\cdot t(\vec{v})\suchthat s\in\Re}$
 in the codomain. 
 
-Thus, lines through the origin 
-transform to lines through the origin.
+Thus, under a transformation, lines through the origin 
+map to lines through the origin.
 Further, the action of~$t$ is determined by its effect $t(\vec{v})$
-on any
-nonzero vector element of the domain line.
+on any nonzero element of the domain line.
 \end{frame}
 \begin{frame}
 \ex
@@ -83,7 +83,7 @@ Consider the line~$y=2x$ in the plane
 \begin{equation*}
   \set{r\cdot\colvec{1 \\ 2}\suchthat r\in\Re}
 \end{equation*}
-and this transformation $\map{t}{\Re^2}{\Re^2}$ of the plane.
+and this transformation.
 \begin{equation*}
   \colvec{x \\ y}
   \mapsto
@@ -93,9 +93,9 @@ The map's effect on any vector in the line is easy to compute.
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{7 \\ 10}
 \end{equation*}
-The scalar multiplication property in the definition of linear map 
+The linear map property 
 $t(r\cdot\vec{v})=r\cdot t(\vec{v})$
-imposes a uniformity on $t$'s action:~it 
+imposes a uniformity on $t$'s action:~$t$ 
 has twice the effect on $2\vec{v}$, three times the
 effect on $3\vec{v}$, etc.
 \begin{equation*}
@@ -189,7 +189,7 @@ along the $y$~axis.
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_diagmap2.pdf}}
 \end{equation*}
 The two dilations 
-combine independently in that the first entry of the output uses 
+combine independently in that the first coordinate of the output uses 
 only~$x$ and the second coordinate of the output uses only~$y$. 
 \end{frame}
 
@@ -225,8 +225,9 @@ We can flip which output coordinate is affected by both $x$ and~$y$.
   \quad\rightarrow\quad
   \vcenteredhbox{\includegraphics[scale=.75]{graphics/three_ii_a_changeskew2.pdf}}
 \end{equation*}
-We see clear rotation in the output vectors, for instance of 
-the red input vector, in addition to dilation. 
+In addition to dilation 
+we see clear rotation, for instance of 
+the red input vector. 
 \end{frame}
 
 

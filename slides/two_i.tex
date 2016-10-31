@@ -676,30 +676,133 @@ and so $M$ is closed under linear combinations.
 
 % ..........
 \begin{frame}
-Each of the above examples of subspaces parametrizes the description.
+Each of the above subspace examples  
+parametrizes the description.
+For instance, with the prior example's 
+$\set{a+ax+ax^2\suchthat a\in\Re}$ we brought out the
+parameter by restating it as $\set{(1+x+x^2)a\suchthat a\in\Re}$.
+% That's a key to understanding vector spaces.
 
 \ex
-This set is a plane inside of $\Re^3$.
+This subset of $\Re^3$ is a plane.
 \begin{equation*}
   P=\set{\colvec{x  \\ y  \\ z}\suchthat 2x-y+z=0}
 \end{equation*}
 We could
 verify that it is a subspace by checking that it is closed under 
-linear combination as above.
+linear combination, as above.
+However, that's easier if we first parametrize.
 \pause
-That's easier if we first parametrize the one-equation linear system
-$2x-y+z=0$ using the free variables $y$ and~$z$.
+Solve the one-equation linear system
+$2x-y+z=0$ to express the leading variable~$x$
+in terms of the free variables $y$ and~$z$.
 \begin{equation*}
   P=\set{\colvec{(1/2)y-(1/2)z  \\ y  \\ z}\suchthat y,z\in\Re}  
    =\set{\colvec{1/2 \\ 1 \\ 0}y+\colvec{-1/2 \\ 0 \\ 1 }z\suchthat y,z\in\Re}  
 \end{equation*}
-\pause
-Now we've described each member of $P$ as a linear combination of those two.
-Verifying that $P$ is closed then involves taking a linear combination of 
-linear combinations, which gives a linear combination.
+\end{frame}
+\begin{frame}
+\noindent With the parametrized description
+\begin{equation*}
+  P=\set{y\colvec{1/2 \\ 1 \\ 0}+z\colvec{-1/2 \\ 0 \\ 1 }\suchthat y,z\in\Re}  
+  \tag{$*$}
+\end{equation*}
+showing the subspace is closed under linear combinations is straightforward
+(here, $r_1,r_2\in\R$).
+\begin{multline*}
+  r_1\cdot\big(y_1\colvec{1/2 \\ 1 \\ 0}+z_1\colvec{-1/2 \\ 0 \\ 1 }\big)
+  +r_2\cdot\big(y_2\colvec{1/2 \\ 1 \\ 0}+z_2\colvec{-1/2 \\ 0 \\ 1 }\big)
+     \\
+  =(r_1y_1+r_2y_2)\cdot\colvec{1/2 \\ 1 \\ 0}
+     +(r_1z_1+r_2z_2)\cdot\colvec{-1/2 \\ 0 \\ 1 }
+\end{multline*}
+Line~($*$)
+describes each member of $P$ as a linear combination of the two vectors.
+Verifying that $P$ is closed then just involves taking a linear combination of 
+linear combinations.
+Of course, that gives a linear combination.
 \end{frame}
 
 
+
+\begin{frame}
+\ex To show that this is a subspace of the space of 
+two by two matrices $\matspace_{\nbyn{2}}$
+\begin{equation*}
+  Q = 
+  \set{
+    \begin{mat}
+      a &b \\
+      c &d
+    \end{mat}
+    \suchthat 
+      \text{$a-b=0$ and $b-c=0$}}
+\end{equation*}
+treat that as a two-equation linear system and parametrize.
+You get leading variables $a$ and~$b$, and free variables $c$ and~$d$.
+\begin{equation*}
+  Q = 
+  \set{
+    \begin{mat}
+      c &c \\
+      c &d
+    \end{mat}
+    \suchthat 
+      c,d\in\Re}
+  = 
+  \set{
+    c
+    \begin{mat}
+      1 &1 \\
+      1 &0
+    \end{mat}
+    +d
+    \begin{mat}
+      0 &0 \\
+      0 &1
+    \end{mat}
+    \suchthat 
+      c,d\in\Re}
+\end{equation*}
+\pause
+To show $Q$ is a subspace, use the lemma's clause~(2) by finding that a
+linear combination of such matrices is such a matrix.
+\begin{multline*}
+    r_1\cdot\big(c_1
+    \begin{mat}
+      1 &1 \\
+      1 &0
+    \end{mat}
+    +d_1
+    \begin{mat}
+      0 &0 \\
+      0 &1
+    \end{mat}
+    \big)
+    +r_2\cdot\big(c_2
+    \begin{mat}
+      1 &1 \\
+      1 &0
+    \end{mat}
+    +d_2
+    \begin{mat}
+      0 &0 \\
+      0 &1
+    \end{mat}
+    \big)
+                                       \\
+    =(r_1c_1+r_2c_2)\cdot
+    \begin{mat}
+      1 &1 \\
+      1 &0
+    \end{mat}
+    +(r_1d_1+r_2d_2))
+    \begin{mat}
+      0 &0 \\
+      0 &1
+    \end{mat}
+\end{multline*}
+\end{frame}
 
 
 % ..........

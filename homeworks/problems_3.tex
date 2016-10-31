@@ -5,7 +5,7 @@
 \setlength{\parindent}{0em}
 \pagestyle{empty}
 \begin{document}\thispagestyle{empty}
-\makebox[\linewidth]{\textbf{Homework, MA~213}\hspace*{4in}\textbf{Due: 2014-Sep-29}}
+\makebox[\linewidth]{\textbf{Homework, MA~213}\hspace*{4in}\textbf{Due: 2014-Oct-19}}
 
 \vspace*{3ex}
 \textit{You may work with others to figure out how to do questions, 
@@ -17,11 +17,15 @@ You must also show your work (you may, of course,
 quote any result from the book).}
 
 \begin{enumerate}
+
+\item Give two different bases for $\Re^3$.
+  Verify that each is a basis.
+
 \item
 Find a basis for each space.
 Verify that it is a basis.
   \begin{enumerate}
-  \item The subspace $M=\set{a+bx+cx^2+dx^3\suchthat a-2b+c-d=0}$ 
+  \item The subspace $M=\set{a+bx+cx^2+dx^3\suchthat a+b+c-d=0}$ 
    of $\polyspace_3$.
   \item This subspace of $\matspace_{\nbyn{2}}$.
     \begin{equation*}
@@ -30,16 +34,19 @@ Verify that it is a basis.
           a  &b  \\
           c  &d
         \end{mat}
-        \suchthat a-c=0}
+        \suchthat a-d=0}
+    \end{equation*}
+  \item
+    This subspace of $\R^3$.
+    \begin{equation*}
+      \set{\colvec{x \\ y   \z}\suchthat x+2y=0}
     \end{equation*}
   \end{enumerate}
 
-\item Give two different bases for $\Re^3$.
-  Verify that each is a basis.
 
 \item Represent the vector with respect to each of the two bases.
   \begin{equation*}
-    \vec{v}=\colvec{3  \\ -1}
+    \vec{v}=\colvec{1  \\ 4}
     \quad
     B_1=\sequence{\colvec{1  \\ -1}, \colvec{1  \\ 1}},\;
     B_2=\sequence{\colvec{1 \\ 2}, \colvec{1 \\ 3}}
