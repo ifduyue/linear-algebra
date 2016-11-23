@@ -3877,7 +3877,7 @@
     
 \end{ans}
 \subsection{One.III.2: The Linear Combination Lemma}
-\begin{ans}{One.III.2.10}
+\begin{ans}{One.III.2.11}
       Bring each to reduced echelon form and compare.
       \begin{exparts}
         \partsitem The first gives
@@ -4009,7 +4009,7 @@
        \end{exparts}
      
 \end{ans}
-\begin{ans}{One.III.2.11}
+\begin{ans}{One.III.2.12}
       Perform Gauss-Jordan reduction on each.
       Two matrices are row-equivalent if and only if they have the same
       reduced echelon form.
@@ -4115,7 +4115,7 @@
       \end{exparts*}
     
 \end{ans}
-\begin{ans}{One.III.2.12}
+\begin{ans}{One.III.2.13}
      For each you can just perform some row operations on the starting
      matrix.
      \begin{exparts}
@@ -4167,7 +4167,7 @@
      \end{exparts}
    
 \end{ans}
-\begin{ans}{One.III.2.13}
+\begin{ans}{One.III.2.14}
       The Gaussian reduction is routine.
       % sage: load("gauss_method.sage")
       % sage: M = matrix (QQ, [[1,2,1], [3,-1,0], [0,4,0]])
@@ -4224,7 +4224,7 @@
       \end{align*}
     
 \end{ans}
-\begin{ans}{One.III.2.14}
+\begin{ans}{One.III.2.15}
        First, the only matrix row equivalent to the matrix of all
        \( 0 \)'s is itself (since row operations have no effect).
 
@@ -4275,7 +4275,7 @@
        of the above classes.)
      
 \end{ans}
-\begin{ans}{One.III.2.15}
+\begin{ans}{One.III.2.16}
       \begin{exparts}
         \partsitem They have the form
           \begin{equation*}
@@ -4305,7 +4305,7 @@
       \end{exparts}
     
 \end{ans}
-\begin{ans}{One.III.2.16}
+\begin{ans}{One.III.2.17}
        Infinitely many.
        For instance, in
        \begin{equation*}
@@ -4317,12 +4317,12 @@
        each $k\in\Re$ gives a different class.
     
 \end{ans}
-\begin{ans}{One.III.2.17}
+\begin{ans}{One.III.2.18}
       No.
       Row operations do not change the size of a matrix.
     
 \end{ans}
-\begin{ans}{One.III.2.18}
+\begin{ans}{One.III.2.19}
      \begin{exparts}
       \partsitem A row operation on a matrix of zeros has no effect.
         Thus each such matrix is alone in its row equivalence class.
@@ -4331,7 +4331,7 @@
      \end{exparts}
     
 \end{ans}
-\begin{ans}{One.III.2.19}
+\begin{ans}{One.III.2.20}
       Here are two.
       \begin{equation*}
         \begin{mat}[r]
@@ -4346,7 +4346,7 @@
       \end{equation*}
      
 \end{ans}
-\begin{ans}{One.III.2.20}
+\begin{ans}{One.III.2.21}
       Any two \( \nbyn{n} \) nonsingular matrices have
       the same reduced echelon
       form, namely the matrix with all \( 0 \)'s except for \( 1 \)'s down
@@ -4376,14 +4376,14 @@
       \end{equation*}
     
 \end{ans}
-\begin{ans}{One.III.2.21}
+\begin{ans}{One.III.2.22}
       Since there is one and only one reduced echelon form matrix in each
       class, we can just list the possible reduced echelon form matrices.
 
       For that list, see the answer for \nearbyexercise{exer:PossRedEchFrms}.
     
 \end{ans}
-\begin{ans}{One.III.2.22}
+\begin{ans}{One.III.2.23}
           \begin{exparts}
            \partsitem If there is a linear relationship where $c_0$ is not zero
              then we can subtract $c_0\vec{\beta}_0$ from both sides and divide
@@ -4421,7 +4421,7 @@
          \end{exparts}
       
 \end{ans}
-\begin{ans}{One.III.2.23}
+\begin{ans}{One.III.2.24}
      We know that $4s+c+10d=8.45$ and that $3s+c+7d=6.30$, and we'd like to
      know what $s+c+d$ is.
      Fortunately, $s+c+d$ is a linear combination of $4s+c+10d$ and $3s+c+7d$.
@@ -4448,7 +4448,7 @@
      The price paid is \$$2.00$.
    
 \end{ans}
-\begin{ans}{One.III.2.24}
+\begin{ans}{One.III.2.25}
      \begin{enumerate}
         \item An easy answer is this.
           \begin{equation*}
@@ -4487,13 +4487,13 @@
      \end{enumerate}
     
 \end{ans}
-\begin{ans}{One.III.2.25}
+\begin{ans}{One.III.2.26}
       Define linear systems to be equivalent if their augmented
       matrices are row equivalent.
       The proof that equivalent systems have the same solution set is easy.
     
 \end{ans}
-\begin{ans}{One.III.2.26}
+\begin{ans}{One.III.2.27}
       \begin{exparts}
         \partsitem The three possible row swaps are easy,
           as are the three possible rescalings.
@@ -11226,17 +11226,18 @@ sage: solve(system, x,y)
 \end{ans}
 \begin{ans}{4}
       \begin{exparts}
-        \partsitem We can rewrite the two as $-c\leq a-b$ and $-c\leq b-a$.
-          Either $a-b$ or $b-a$ is nonpositive and so $-c\leq-\absval{a-b}$,
-          as required.
-        \partsitem This is immediate from the supposition that $0\leq a+b-c$.
-        \partsitem A trivial example starts with the zero-voter election and
-          adds any one voter.
+        % \partsitem We can rewrite the two as $-c\leq a-b$ and $-c\leq b-a$.
+        %   Either $a-b$ or $b-a$ is nonpositive and so $-c\leq-\absval{a-b}$,
+        %   as required.
+        % \partsitem This is immediate from the supposition that $0\leq a+b-c$.
+        \partsitem A trivial example starts with the zero-voter election,
+          which has a trivial majority cycle, and adds any one voter.
           A more interesting example takes the Political Science mock
-          election and add two $T>D>R$ voters
-          (they can be added one at a time, to satisfy the
-          ``addition of one more voter'' criteria in the question).
-          The additional voters have positive spin, which is the
+          election and adds two $T>D>R$ voters
+          (to satisfy the
+          ``addition of one more voter'' criteria in the question
+          we can add them one at a time).
+          The new voters have positive spin, which is the
           spin of the votes remaining after cancellation in the original mock
           election.
           This is the resulting table of voters and next to it is
@@ -11360,11 +11361,14 @@ sage: solve(system, x,y)
 %          \endpspicture
        \tag*{}\end{equation*}
        The majority cycle has indeed disappeared.
+      \partsitem Reverse the prior exercise.
+         That is, add a voter to the result of the prior exercise that
+         cancels the one who made the cycle disappear.
       \partsitem One such condition is that, after cancellation,
          all three be nonnegative or all three be nonpositive,
          and:~$\absval{c}<\absval{a+b}$ and $\absval{b}<\absval{a+c}$
          and $\absval{a}<\absval{b+c}$.
-          That follows from this diagram.
+         That follows from this diagram.
          \begin{equation*}
            \votinggraphic{27}  %\votecycle{a}{a}{-a}{4}
            +
@@ -22842,114 +22846,88 @@ sage: p.save('bridges.pdf')
 \end{ans}
 \topic{Geometry of Linear Maps}
 \begin{ans}{1}
-      \begin{exparts}
-        \partsitem  To represent $H$, recall that rotation counterclockwise by
-          $\theta$~radians is represented with respect to the standard basis
-          in this way.
-          \begin{equation*}
-            \rep{h}{\stdbasis_2,\stdbasis_2}
-            =\begin{mat}
-              \cos\theta  &-\sin\theta  \\
-              \sin\theta  &\cos\theta
-             \end{mat}
-          \end{equation*}
-          A clockwise angle is the negative of a counterclockwise
-          one.
-          \begin{equation*}
-            \rep{h}{\stdbasis_2,\stdbasis_2}
-            =\begin{mat}
-              \cos(-\pi/4)  &-\sin(-\pi/4)  \\
-              \sin(-\pi/4)  &\cos(-\pi/4)
-            \end{mat}
-            =\begin{mat}[r]
-              \sqrt{2}/2  &\sqrt{2}/2  \\
-              -\sqrt{2}/2 &\sqrt{2}/2
-            \end{mat}
-          \end{equation*}
-          This Gauss-Jordan reduction
-          \begin{equation*}
-            \grstep{\rho_1+\rho_2}
-            \begin{mat}[r]
-              \sqrt{2}/2  &\sqrt{2}/2  \\
-              0           &\sqrt{2}
-            \end{mat}
-            \grstep[(1/\sqrt{2})\rho_2]{(2/\sqrt{2})\rho_1}
-            \begin{mat}[r]
-              1  &1  \\
-              0  &1
-            \end{mat}
-            \grstep{-\rho_2+\rho_1}
-            \begin{mat}[r]
-              1  &0  \\
-              0  &1
-            \end{mat}
-          \end{equation*}
-          produces the identity matrix
-          so there is no need for column-swapping operations
-          to end with a partial-identity.
-        \partsitem In matrix multiplication the reduction is
-          \begin{equation*}
-            \begin{mat}[r]
-              1  &-1 \\
-              0  &1
-            \end{mat}
-            \begin{mat}[r]
-              2/\sqrt{2}  &0         \\
-              0           &1/\sqrt{2}
-            \end{mat}
-            \begin{mat}[r]
-              1  &0 \\
-              1  &1
-            \end{mat}
-            H
-            =I
-          \end{equation*}
-          (note that composition of the Gaussian operations is
-          from right to left).
-        \partsitem  Taking inverses
-          \begin{equation*}
-            H
-            =
-            \underbrace{
-              \begin{mat}[r]
-                1  &0 \\
-                -1  &1
-              \end{mat}
-              \begin{mat}[r]
-                \sqrt{2}/2  &0         \\
-                0           &\sqrt{2}
-              \end{mat}
-              \begin{mat}[r]
-                1  &1 \\
-                0  &1
-              \end{mat}
-             }_P
-            I
-          \end{equation*}
-          gives the desired factorization of $H$ (here, the partial
-          identity is $I$, and $Q$ is trivial, that is, it is also an identity
-          matrix).
-        \partsitem Reading the composition from right to left (and ignoring the
-          identity matrices as trivial) gives that $H$ has the same
-          effect as first performing this skew
-          \begin{center}
-            \includegraphics{ch3.95}
-         \end{center}
-         followed by a dilation that multiplies all first components by
-         $\sqrt{2}/2$ (this is a ``shrink'' in that $\sqrt{2}/2\approx0.707$)
-         and all second components by $\sqrt{2}$,
-         followed by another skew.
-          \begin{center}
-            \includegraphics{ch3.96}
-         \end{center}
-         For instance, the effect of $H$ on the unit vector whose angle with
-         the $x$-axis is $\pi/6$ is this.
-          \begin{center}
-            \includegraphics{ch3.97}
-         \end{center}
-         Verifying that the resulting vector has unit length and forms an
-         angle of $-\pi/12$ with the $x$-axis is routine.
-      \end{exparts}
+      This Gaussian reduction
+      \begin{multline*}
+        \grstep[-\rho_1+\rho_3]{-3\rho_1+\rho_2}
+        \begin{mat}[r]
+          1  &2  &1  \\
+          0  &0  &-3 \\
+          0  &0  &1
+        \end{mat}
+        \grstep{(1/3)\rho_2+\rho_3}
+        \begin{mat}[r]
+          1  &2  &1  \\
+          0  &0  &-3 \\
+          0  &0  &0
+        \end{mat}                                     \\
+        \grstep{(-1/3)\rho_2}
+        \begin{mat}[r]
+          1  &2  &1  \\
+          0  &0  &1 \\
+          0  &0  &0
+        \end{mat}
+        \grstep{-\rho_2+\rho_1}
+        \begin{mat}[r]
+          1  &2  &0  \\
+          0  &0  &1 \\
+          0  &0  &0
+        \end{mat}
+      \end{multline*}
+      gives the reduced echelon form of the matrix.
+      Now the two column operations of taking $-2$ times the first column
+      and adding it to the second, and then of swapping columns two and three
+      produce this partial identity.
+      \begin{equation*}
+        B=\begin{mat}[r]
+          1  &0  &0  \\
+          0  &1  &0  \\
+          0  &0  &0
+        \end{mat}
+      \end{equation*}
+      All of that translates into matrix terms as:~where
+      \begin{equation*}
+        P=
+        \begin{mat}[r]
+          1  &-1    &0  \\
+          0  &1     &0  \\
+          0  &0     &1
+        \end{mat}
+        \begin{mat}[r]
+          1  &0    &0  \\
+          0  &-1/3 &0  \\
+          0  &0    &1
+        \end{mat}
+        \begin{mat}[r]
+          1  &0    &0  \\
+          0  &1    &0  \\
+          0  &1/3  &1
+        \end{mat}
+        \begin{mat}[r]
+          1  &0  &0  \\
+          0  &1  &0  \\
+         -1  &0  &1
+        \end{mat}
+        \begin{mat}[r]
+          1  &0  &0  \\
+         -3  &1  &0  \\
+          0  &0  &1
+        \end{mat}
+      \end{equation*}
+      and
+      \begin{equation*}
+        Q=
+        \begin{mat}[r]
+          1  &-2    &0  \\
+          0  &1     &0  \\
+          0  &0     &1
+        \end{mat}
+        \begin{mat}[r]
+          0  &1     &0  \\
+          1  &0     &0  \\
+          0  &0     &1
+        \end{mat}
+      \end{equation*}
+      the given matrix factors as $PBQ$.
     
 \end{ans}
 \begin{ans}{2}
@@ -23035,97 +23013,159 @@ sage: p.save('bridges.pdf')
     
 \end{ans}
 \begin{ans}{3}
-      This Gaussian reduction
-      \begin{multline*}
-        \grstep[-\rho_1+\rho_3]{-3\rho_1+\rho_2}
-        \begin{mat}[r]
-          1  &2  &1  \\
-          0  &0  &-3 \\
-          0  &0  &1
-        \end{mat}
-        \grstep{(1/3)\rho_2+\rho_3}
-        \begin{mat}[r]
-          1  &2  &1  \\
-          0  &0  &-3 \\
-          0  &0  &0
-        \end{mat}                                     \\
-        \grstep{(-1/3)\rho_2}
-        \begin{mat}[r]
-          1  &2  &1  \\
-          0  &0  &1 \\
-          0  &0  &0
-        \end{mat}
-        \grstep{-\rho_2+\rho_1}
-        \begin{mat}[r]
-          1  &2  &0  \\
-          0  &0  &1 \\
-          0  &0  &0
-        \end{mat}
-      \end{multline*}
-      gives the reduced echelon form of the matrix.
-      Now the two column operations of taking $-2$ times the first column
-      and adding it to the second, and then of swapping columns two and three
-      produce this partial identity.
-      \begin{equation*}
-        B=\begin{mat}[r]
-          1  &0  &0  \\
-          0  &1  &0  \\
-          0  &0  &0
-        \end{mat}
-      \end{equation*}
-      All of that translates into matrix terms as:~where
-      \begin{equation*}
-        P=
-        \begin{mat}[r]
-          1  &-1    &0  \\
-          0  &1     &0  \\
-          0  &0     &1
-        \end{mat}
-        \begin{mat}[r]
-          1  &0    &0  \\
-          0  &-1/3 &0  \\
-          0  &0    &1
-        \end{mat}
-        \begin{mat}[r]
-          1  &0    &0  \\
-          0  &1    &0  \\
-          0  &1/3  &1
-        \end{mat}
-        \begin{mat}[r]
-          1  &0  &0  \\
-          0  &1  &0  \\
-         -1  &0  &1
-        \end{mat}
-        \begin{mat}[r]
-          1  &0  &0  \\
-         -3  &1  &0  \\
-          0  &0  &1
-        \end{mat}
-      \end{equation*}
-      and
-      \begin{equation*}
-        Q=
-        \begin{mat}[r]
-          1  &-2    &0  \\
-          0  &1     &0  \\
-          0  &0     &1
-        \end{mat}
-        \begin{mat}[r]
-          0  &1     &0  \\
-          1  &0     &0  \\
-          0  &0     &1
-        \end{mat}
-      \end{equation*}
-      the given matrix factors as $PBQ$.
+      \begin{exparts}
+        \partsitem  Recall that rotation counterclockwise by
+          $\theta$~radians is represented with respect to the standard basis
+          in this way.
+          \begin{equation*}
+            \rep{t_{\pi/4}}{\stdbasis_2,\stdbasis_2}
+            =\begin{mat}
+              \cos\theta  &-\sin\theta  \\
+              \sin\theta  &\cos\theta
+             \end{mat}
+          \end{equation*}
+          A clockwise angle is the negative of a counterclockwise
+          one.
+          \begin{equation*}
+            \rep{t_{-pi/4}}{\stdbasis_2,\stdbasis_2}
+            =\begin{mat}
+              \cos(-\pi/4)  &-\sin(-\pi/4)  \\
+              \sin(-\pi/4)  &\cos(-\pi/4)
+            \end{mat}
+            =\begin{mat}[r]
+              \sqrt{2}/2  &\sqrt{2}/2  \\
+              -\sqrt{2}/2 &\sqrt{2}/2
+            \end{mat}
+          \end{equation*}
+        \partsitem
+          This Gauss-Jordan reduction
+          \begin{equation*}
+            \grstep{\rho_1+\rho_2}
+            \begin{mat}[r]
+              \sqrt{2}/2  &\sqrt{2}/2  \\
+              0           &\sqrt{2}
+            \end{mat}
+            \grstep[(1/\sqrt{2})\rho_2]{(2/\sqrt{2})\rho_1}
+            \begin{mat}[r]
+              1  &1  \\
+              0  &1
+            \end{mat}
+            \grstep{-\rho_2+\rho_1}
+            \begin{mat}[r]
+              1  &0  \\
+              0  &1
+            \end{mat}
+          \end{equation*}
+          produces the identity matrix.
+          Thus we do not need column-swapping operations
+          to end with a partial-identity.
+        \partsitem In matrix multiplication the reduction is
+          \begin{equation*}
+            \begin{mat}[r]
+              1  &-1 \\
+              0  &1
+            \end{mat}
+            \begin{mat}[r]
+              2/\sqrt{2}  &0         \\
+              0           &1/\sqrt{2}
+            \end{mat}
+            \begin{mat}[r]
+              1  &0 \\
+              1  &1
+            \end{mat}
+            H
+            =I
+          \end{equation*}
+          (note that composition of the Gaussian operations is
+          from right to left).
+        \partsitem  Taking inverses
+          \begin{equation*}
+            H
+            =
+            \underbrace{
+              \begin{mat}[r]
+                1  &0 \\
+                -1  &1
+              \end{mat}
+              \begin{mat}[r]
+                \sqrt{2}/2  &0         \\
+                0           &\sqrt{2}
+              \end{mat}
+              \begin{mat}[r]
+                1  &1 \\
+                0  &1
+              \end{mat}
+             }_P
+            I
+          \end{equation*}
+          gives the desired factorization of $H$.
+          The partial
+          identity is $I$.
+          % , and $Q$ is trivial, that is, it is also an identity
+          % matrix.
+        \partsitem Reading the composition from right to left (and ignoring the
+          identity matrices as trivial) gives that $H$ has the same
+          effect as first performing this skew
+          \begin{center}
+            \includegraphics{ch3.95}
+         \end{center}
+         followed by a dilation that multiplies all first components by
+         $\sqrt{2}/2$ (this is a shrink in that $\sqrt{2}/2\approx0.707$
+         is less than $1$)
+         and all second components by $\sqrt{2}$,
+         followed by another skew.
+          \begin{center}
+            \includegraphics{ch3.96}
+         \end{center}
+         For an example we start with the unit vector whose angle with
+         the $x$-axis is $\pi/6$ and apply the components of $H$ in turn.
+          \begin{center}
+            \includegraphics{ch3.97}
+         \end{center}
+         We can easily verify that the resulting vector has unit length
+         and forms an angle with the $x$-axis of $-\pi/12$, which is indeed
+         a rotation clockwose of $\pi/4$ radians
+         since $(\pi/6)-(\pi/4)=-\pi/12$.
+      \end{exparts}
     
 \end{ans}
 \begin{ans}{4}
       Represent it with respect to the
-      standard bases $\stdbasis_1,\stdbasis_1$, then the
-      only entry in the resulting $\nbyn{1}$ matrix is the scalar $k$.
+      standard bases $\stdbasis_1,\stdbasis_1$.
+      That produces a $\nbyn{1}$ matrix.
+      The only entry is the scalar~$k$.
     
 \end{ans}
 \begin{ans}{5}
+      \begin{exparts}
+        \partsitem A line is a subset of $\Re^n$ of the form
+          $\set{\vec{v}=\vec{u}+t\cdot\vec{w}\suchthat t\in\Re}$.
+          The image of a point on that line is
+          $h(\vec{v})=h(\vec{u}+t\cdot\vec{w})=h(\vec{u})+t\cdot h(\vec{w})$,
+          and the set of such vectors, as $t$ ranges over the reals, is
+          a line (albeit, degenerate if $h(\vec{w})=\zero$).
+        \partsitem This is an obvious extension of the prior argument.
+        \partsitem If the point~$B$ is between the points~$A$ and~$C$ then the
+          line from $A$ to $C$ has $B$ in it.
+          That is, there is a $t\in (0\,..\,1)$ such that
+          $\vec{b}=\vec{a}+t\cdot (\vec{c}-\vec{a})$ (where $B$ is the
+          endpoint of $\vec{b}$, etc.).
+          Now, as in the argument of the first item, linearity shows that
+          $h(\vec{b})=h(\vec{a})+t\cdot h(\vec{c}-\vec{a})$.
+      \end{exparts}
+    
+\end{ans}
+\begin{ans}{6}
+      The two are inverse.
+      For instance, for a fixed $x\in\Re$,
+      if $f^\prime (x)=k$ (with $k\neq 0$) then
+      $(f^{-1})^\prime (x)=1/k$.
+      \begin{center}
+        \includegraphics{ch3.98}
+     \end{center}
+    
+\end{ans}
+\begin{ans}{7}
       We can show this by induction on the number of components in the
       vector.
       In the $n=1$ base case the only permutation is the trivial one,
@@ -23157,35 +23197,6 @@ sage: p.save('bridges.pdf')
       give the map~$p$.
       Now, the inductive hypothesis gives that $\hat{p}$ is achievable as
       a composition of swaps.
-    
-\end{ans}
-\begin{ans}{6}
-      \begin{exparts}
-        \partsitem A line is a subset of $\Re^n$ of the form
-          $\set{\vec{v}=\vec{u}+t\cdot\vec{w}\suchthat t\in\Re}$.
-          The image of a point on that line is
-          $h(\vec{v})=h(\vec{u}+t\cdot\vec{w})=h(\vec{u})+t\cdot h(\vec{w})$,
-          and the set of such vectors, as $t$ ranges over the reals, is
-          a line (albeit, degenerate if $h(\vec{w})=\zero$).
-        \partsitem This is an obvious extension of the prior argument.
-        \partsitem If the point~$B$ is between the points~$A$ and~$C$ then the
-          line from $A$ to $C$ has $B$ in it.
-          That is, there is a $t\in (0\,..\,1)$ such that
-          $\vec{b}=\vec{a}+t\cdot (\vec{c}-\vec{a})$ (where $B$ is the
-          endpoint of $\vec{b}$, etc.).
-          Now, as in the argument of the first item, linearity shows that
-          $h(\vec{b})=h(\vec{a})+t\cdot h(\vec{c}-\vec{a})$.
-      \end{exparts}
-    
-\end{ans}
-\begin{ans}{7}
-      The two are inverse.
-      For instance, for a fixed $x\in\Re$,
-      if $f^\prime (x)=k$ (with $k\neq 0$) then
-      $(f^{-1})^\prime (x)=1/k$.
-      \begin{center}
-        \includegraphics{ch3.98}
-     \end{center}
     
 \end{ans}
 \topic{Magic Squares}

@@ -2125,7 +2125,7 @@ We use matrices to do Gauss's Method in essentially the same
 way that we did it for systems of equations:
 where a row's
 \definend{leading entry}\index{echelon form!leading entry}%
-\index{leading!entry}. % 
+\index{leading!entry} % 
 is its first nonzero entry (if it has one),
 we perform row operations to arrive at 
 \definend{matrix echelon form},\index{echelon form!matrix}%
@@ -2420,11 +2420,10 @@ is a particular solution of the system.
 \end{example}
 
 Before the exercises, we will consider what we have accomplished  
-and what we have yet to do.
+and what we will do in the remainder of the chapter.
 
 So far we have done the mechanics of Gauss's Method.
-We 
-have not stopped to consider any of the interesting questions
+We have not stopped to consider any of the questions
 that arise,
 except for proving \nearbytheorem{th:GaussMethod}\Dash which 
 justifies the method by showing that it gives 
@@ -2436,10 +2435,13 @@ a particular solution vector added to an unrestricted linear combination of
 some other vectors?
 We've noted that the solution sets we described in this way 
 have infinitely many solutions
-so an answer to this question
+so answering this question
 would tell us about the size of solution sets.
+The following subsection shows that the answer is ``yes.''
+This chapter's second section then
+uses that answer to describe the geometry of solution sets.
 
-Many questions arise from our observation that we can do Gauss's Method in 
+Other questions arise from the observation that we can do Gauss's Method in 
 more than one way (for instance, when swapping rows we may have a choice of 
 more than one row).
 \nearbytheorem{th:GaussMethod} says that we must get the same solution set
@@ -2450,18 +2452,12 @@ Must those be the same variables, that is, is it impossible to
 solve a problem
 one way to get $y$ and~$w$ free and solve it another way to get $y$ and~$z$ 
 free?
+The third section of this chapter answers ``yes,'' that  
+from any starting linear system,
+all derived echelon form versions 
+have the same free variables. 
 
-In the rest of this chapter we will answer these questions.
-The answer to each is `yes'.
-In the next subsection 
-we do the first one: we will prove that we can always describe solution sets
-in that way. 
-Then, in this chapter's second section, 
-we will use that understanding to describe the geometry of solution sets.
-In this chapter's final section,
-we will settle the questions about the parameters. 
-
-When we are done, we will not only have a 
+Thus, by the end of the chapter we will not only have a 
 solid grounding in the practice of Gauss's Method but 
 we will also have a solid grounding in the theory.
 We will know exactly what can and cannot happen in a reduction.

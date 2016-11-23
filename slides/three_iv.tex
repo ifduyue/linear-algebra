@@ -506,7 +506,7 @@ Square matrices of the same size have a defined product.
   \end{mat}
 \end{equation*}
 This reflects the fact that we can compose two
-functions from a space to itself $\map{f,g}{V}{V}$.
+functions from a space to itself $\map{g,h}{V}{V}$.
 \end{frame}
 
 
@@ -571,10 +571,10 @@ Fix these bases.
       0 &4
     \end{mat}}
 \end{gather*}
-Suppose that $\map{f}{\Re^2}{\polyspace_2}$ and
+Suppose that $\map{h}{\Re^2}{\polyspace_2}$ and
 $\map{g}{\polyspace_2}{\matspace_{\nbyn{2}}}$ have these actions.
 \begin{equation*}
-  \colvec{a \\ b}\mapsunder{f} ax^2+(a+b)
+  \colvec{a \\ b}\mapsunder{h} ax^2+(a+b)
   \qquad
   px^2+qx+r\mapsunder{g}
   \begin{mat}
@@ -584,7 +584,7 @@ $\map{g}{\polyspace_2}{\matspace_{\nbyn{2}}}$ have these actions.
 \end{equation*}
 Then the composition does this.
 \begin{equation*}
-  \colvec{a \\ b}\mapsunder{f}ax^2+(a+b)\mapsunder{g}
+  \colvec{a \\ b}\mapsunder{h}ax^2+(a+b)\mapsunder{g}
   \begin{mat}
     a &a \\
     0 &a+b
@@ -592,7 +592,7 @@ Then the composition does this.
 \end{equation*}
 Here is the same statement in the other notation.
 \begin{equation*}
-  \composed{g}{f}\,(\colvec{a \\ b})=  
+  \composed{g}{h}\,(\colvec{a \\ b})=  
   \begin{mat}
     a &a \\
     0 &a+b
@@ -601,19 +601,19 @@ Here is the same statement in the other notation.
 \end{frame}
 \begin{frame}
 So far in this example we have given the maps above the arrows, $f$, $g$, 
-and $\composed{g}{f}$. 
+and $\composed{g}{h}$. 
 \centergraphic{../ch3.20}
 We next compute the matrices representing those maps, and we will
-finish by checking that the product of $H$ and~$G$ is the matrix 
+finish by checking that the product of $G$ and~$H$ is the matrix 
 representing $\composed{g}{h}$.
 
 \pause
-First, find $H=\rep{f}{B,D}$: compute the action of $h$
+First, find $H=\rep{h}{B,D}$: compute the action of $h$
 on the domain basis vectors,
 \begin{equation*}
-  \colvec{1 \\ 1}\mapsunder{f}x^2+2
+  \colvec{1 \\ 1}\mapsunder{h}x^2+2
   \quad
-  \colvec{1 \\ -1}\mapsunder{f}x^2
+  \colvec{1 \\ -1}\mapsunder{h}x^2
 \end{equation*}
 represent the results with respect to $D$, and make the matrix.
 \begin{equation*}
@@ -662,7 +662,7 @@ and represent those with respect to its codomain basis.
 \end{equation*}
 
 \pause
-Next, $\composed{g}{f}$ has this action.
+Next, $\composed{g}{h}$ has this action.
 \begin{equation*}
   \colvec{1 \\ 1}\mapsto
   \begin{mat}
@@ -1267,7 +1267,7 @@ can be expressed as this product; note that the order is right-to-left.
 
 \begin{frame}
 \ex
-To can bring this augmented matrix to echelon form with matrix multiplication
+You can bring this augmented matrix to echelon form with matrix multiplication.
 \begin{equation*}
   \begin{amat}{3}
     1  &-1  &2  &4 \\
@@ -1277,7 +1277,7 @@ To can bring this augmented matrix to echelon form with matrix multiplication
 \end{equation*}
 \end{frame}
 \begin{frame}
-first perform $-2\rho_1+\rho_2$ via left multiplication by $C_{1,2}(-2)$.
+First perform $-2\rho_1+\rho_2$ via left multiplication by $C_{1,2}(-2)$.
 \begin{equation*}
   \begin{mat}
     1  &0  &0  \\

@@ -36,8 +36,8 @@ from $-2\rho_1+\rho_2$ followed by $2\rho_2+\rho_1$
 echelon form so the second one is extra work 
 but it is nonetheless a legal row operation).
 
-The fact that echelon form 
-is not unique raises questions.
+In this chapter's first section we noted that
+this raises questions.
 Will any two echelon form versions of a linear system have the same number of
 free variables?
 If yes, 
@@ -45,8 +45,8 @@ will the two have exactly the same free variables?
 In this section we will 
 give a way to decide if one linear system 
 can be derived from another by row operations.
-The answers to both questions, both `yes',
-will follow from this.
+The answers to both questions, both ``yes,''
+will follow.
 
 
 
@@ -1794,22 +1794,44 @@ So \( B=C \).
 %</pf:ReducedEchelonFormIsUnique4>
 \end{proof}
 
-That result answers the two questions from this section's introduction:~do 
+We have asked whether 
 any two echelon form versions of a linear system 
 have the same number of free variables, and if so are they
 exactly the same variables?
+With the prior result we can answer both questions ``yes.''
+There is no linear system such
+that, say, we could apply Gauss's Method 
+one way and get $y$ and $z$ free but apply it another way 
+and get $y$ and $w$ free.
+
+Before the proof, 
+recall the distinction between free variables and parameters.
+This system
+\begin{equation*}
+  \begin{linsys}{3}
+    x &+ &y &  &  &= &1 \\ 
+      &  &y &+ &z &= &2  
+  \end{linsys}
+\end{equation*}
+has one free variable,~$z$, because it is the only variable not leading a row.
+We have the habit of parametrizing using the free variable $y=2-z$, $x=-1+z$,
+but we could also parametrize using another variable, such as 
+$z=2-y$, $x=1-y$. 
+So the set of parameters is not unique, it is the set of free variables 
+that is unique.
+
+\begin{corollary}
+If from a starting linear systems we derive by Gauss's Method two 
+different echelon form systems, then the two have the same free variables.
+\end{corollary}
+
+\begin{proof}
+The prior result says that the reduced echelon form is unique.
 We get from any echelon form version to the reduced echelon form by 
 eliminating up,
 so any echelon form version of a system has the same free variables as the
-reduced echelon form, 
-and therefore uniqueness of reduced echelon form gives 
-that the same variables 
-are free in all echelon form version of a system.
-Thus both questions are answered ``yes.''
-There is no linear system and no combination of row operations such
-that, say, we could solve the system 
-one way and get $y$ and $z$ free but solve it
-another way and get $y$ and $w$ free.
+reduced echelon form version. 
+\end{proof}
 
 We close with a recap.
 In Gauss's Method we start with a matrix and then

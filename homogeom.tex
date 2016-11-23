@@ -314,222 +314,12 @@ The Chain Rule multiplies the matrices.
 
 \begin{exercises}
   \item 
-    Let $\map{h}{\Re^2}{\Re^2}$ be the transformation that rotates
-    vectors clockwise by $\pi/4$~radians.
-    \begin{exparts}
-      \partsitem Find the matrix $H$ representing 
-         $h$ with respect to the standard bases.
-         Use Gauss's Method to reduce $H$ to the identity.
-      \partsitem Translate the row reduction to a matrix equation
-        $T_jT_{j-1}\cdots T_1H=I$
-        (the prior item shows both that $H$ is similar to $I$, and that
-        we need no column operations to derive $I$ from $H$).
-      \partsitem Solve this matrix equation for $H$.
-      \partsitem Sketch how
-        $H$ is a 
-        combination of dilations, flips, skews, and projections
-        (the identity is a trivial projection). 
-    \end{exparts}
-    \begin{answer}
-      \begin{exparts}
-        \partsitem  To represent $H$, recall that rotation counterclockwise by 
-          $\theta$~radians is represented with respect to the standard basis
-          in this way.
-          \begin{equation*}
-            \rep{h}{\stdbasis_2,\stdbasis_2}
-            =\begin{mat}
-              \cos\theta  &-\sin\theta  \\
-              \sin\theta  &\cos\theta
-             \end{mat}
-          \end{equation*}
-          A clockwise angle is the negative of a counterclockwise
-          one.  
-          \begin{equation*}
-            \rep{h}{\stdbasis_2,\stdbasis_2}
-            =\begin{mat}
-              \cos(-\pi/4)  &-\sin(-\pi/4)  \\
-              \sin(-\pi/4)  &\cos(-\pi/4)
-            \end{mat}
-            =\begin{mat}[r]
-              \sqrt{2}/2  &\sqrt{2}/2  \\
-              -\sqrt{2}/2 &\sqrt{2}/2
-            \end{mat}
-          \end{equation*}
-          This Gauss-Jordan reduction
-          \begin{equation*}
-            \grstep{\rho_1+\rho_2}
-            \begin{mat}[r]
-              \sqrt{2}/2  &\sqrt{2}/2  \\
-              0           &\sqrt{2}
-            \end{mat}
-            \grstep[(1/\sqrt{2})\rho_2]{(2/\sqrt{2})\rho_1}
-            \begin{mat}[r]
-              1  &1  \\
-              0  &1
-            \end{mat}
-            \grstep{-\rho_2+\rho_1}
-            \begin{mat}[r]
-              1  &0  \\
-              0  &1
-            \end{mat}
-          \end{equation*}
-          produces the identity matrix 
-          so there is no need for column-swapping operations
-          to end with a partial-identity.
-        \partsitem In matrix multiplication the reduction is
-          \begin{equation*}
-            \begin{mat}[r]
-              1  &-1 \\
-              0  &1
-            \end{mat}
-            \begin{mat}[r]
-              2/\sqrt{2}  &0         \\
-              0           &1/\sqrt{2}
-            \end{mat}
-            \begin{mat}[r]
-              1  &0 \\
-              1  &1
-            \end{mat}
-            H
-            =I
-          \end{equation*}
-          (note that composition of the Gaussian operations is 
-          from right to left).
-        \partsitem  Taking inverses 
-          \begin{equation*}
-            H
-            =
-            \underbrace{
-              \begin{mat}[r]
-                1  &0 \\
-                -1  &1
-              \end{mat}
-              \begin{mat}[r]
-                \sqrt{2}/2  &0         \\
-                0           &\sqrt{2}
-              \end{mat}
-              \begin{mat}[r]
-                1  &1 \\
-                0  &1
-              \end{mat}
-             }_P
-            I
-          \end{equation*}
-          gives the desired factorization of $H$ (here, the partial
-          identity is $I$, and $Q$ is trivial, that is, it is also an identity
-          matrix).
-        \partsitem Reading the composition from right to left (and ignoring the
-          identity matrices as trivial) gives that $H$ has the same
-          effect as first performing this skew 
-          \begin{center}
-            \includegraphics{ch3.95}
-         \end{center}
-         followed by a dilation that multiplies all first components by 
-         $\sqrt{2}/2$ (this is a ``shrink'' in that $\sqrt{2}/2\approx0.707$) 
-         and all second components by $\sqrt{2}$,
-         followed by another skew. 
-          \begin{center}
-            \includegraphics{ch3.96}
-         \end{center}
-         For instance, the effect of $H$ on the unit vector whose angle with
-         the $x$-axis is $\pi/6$ is this.
-          \begin{center}
-            \includegraphics{ch3.97}
-         \end{center}
-         Verifying that the resulting vector has unit length and forms an
-         angle of $-\pi/12$ with the $x$-axis is routine. 
-      \end{exparts}
-    \end{answer}
-  \item 
-    What combination of dilations, flips, skews, and projections
-    produces a rotation counterclockwise by $2\pi/3$ radians?
-    \begin{answer}
-      We will first represent the map with a matrix $H$,
-      perform the row operations and, if needed, column operations
-      to reduce it to a partial-identity matrix.
-      We will then translate that into a factorization $H=PBQ$.
-      Substituting into the general matrix
-          \begin{equation*}
-            \rep{r_\theta}{\stdbasis_2,\stdbasis_2}
-            \begin{mat}
-              \cos\theta  &-\sin\theta  \\
-              \sin\theta  &\cos\theta
-            \end{mat}
-          \end{equation*}
-          gives this representation.
-          \begin{equation*}
-            \rep{r_{2\pi/3}}{\stdbasis_2,\stdbasis_2}
-            \begin{mat}[r]
-              -1/2        &-\sqrt{3}/2  \\
-              \sqrt{3}/2  &-1/2
-            \end{mat}
-          \end{equation*}
-          Gauss's Method is routine.
-          \begin{equation*}
-            \grstep{\sqrt{3}\rho_1+\rho_2}
-            \begin{mat}[r]
-              -1/2        &-\sqrt{3}/2  \\
-               0          &-2
-            \end{mat}
-            \grstep[(-1/2)\rho_2]{-2\rho_1}
-            \begin{mat}[r]
-               1          &\sqrt{3}    \\
-               0          &1
-            \end{mat}
-            \grstep{-\sqrt{3}\rho_2+\rho_1}
-            \begin{mat}[r]
-               1          &0   \\
-               0          &1
-            \end{mat}
-          \end{equation*}
-          That translates to a matrix equation in this way.
-          \begin{equation*}
-            \begin{mat}[r]
-              1  &-\sqrt{3}  \\
-              0  &1
-            \end{mat}
-            \begin{mat}[r]
-              -2  &0    \\
-               0  &-1/2
-            \end{mat}
-            \begin{mat}[r]
-               1         &0  \\
-               \sqrt{3}  &1
-            \end{mat}
-            \begin{mat}[r]
-              -1/2        &-\sqrt{3}/2  \\
-              \sqrt{3}/2  &-1/2
-            \end{mat}
-            =I
-          \end{equation*}
-          Taking inverses to solve for $H$ yields this factorization.
-          \begin{equation*}
-            \begin{mat}[r]
-              -1/2        &-\sqrt{3}/2  \\
-              \sqrt{3}/2  &-1/2
-            \end{mat}
-            =
-            \begin{mat}[r]
-                1         &0  \\
-               -\sqrt{3}  &1
-            \end{mat}
-            \begin{mat}[r]
-              -1/2  &0    \\
-               0    &-2
-            \end{mat}
-            \begin{mat}[r]
-              1  &\sqrt{3}  \\
-              0  &1
-            \end{mat}
-            I
-          \end{equation*}
-    \end{answer}
-  \item 
-    What combination of dilations, flips, skews, and projections
-    produces the map $\map{h}{\Re^3}{\Re^3}$ 
-    represented with respect to the standard bases by this matrix?
+    Use the $H=PBQ$ decomposition to find
+    the combination of dilations, flips, skews, and projections
+    that produces the map $\map{h}{\Re^3}{\Re^3}$ 
+    represented with respect to the standard bases by this matrix.
     \begin{equation*}
-      \begin{mat}[r]
+      H=\begin{mat}[r]
         1  &2  &1  \\
         3  &6  &0  \\
         1  &2  &2
@@ -619,64 +409,234 @@ The Chain Rule multiplies the matrices.
       \end{equation*}
       the given matrix factors as $PBQ$.
     \end{answer}
+  \item 
+    What combination of dilations, flips, skews, and projections
+    produces a rotation counterclockwise by $2\pi/3$ radians?
+    \begin{answer}
+      We will first represent the map with a matrix $H$,
+      perform the row operations and, if needed, column operations
+      to reduce it to a partial-identity matrix.
+      We will then translate that into a factorization $H=PBQ$.
+      Substituting into the general matrix
+          \begin{equation*}
+            \rep{r_\theta}{\stdbasis_2,\stdbasis_2}
+            \begin{mat}
+              \cos\theta  &-\sin\theta  \\
+              \sin\theta  &\cos\theta
+            \end{mat}
+          \end{equation*}
+          gives this representation.
+          \begin{equation*}
+            \rep{r_{2\pi/3}}{\stdbasis_2,\stdbasis_2}
+            \begin{mat}[r]
+              -1/2        &-\sqrt{3}/2  \\
+              \sqrt{3}/2  &-1/2
+            \end{mat}
+          \end{equation*}
+          Gauss's Method is routine.
+          \begin{equation*}
+            \grstep{\sqrt{3}\rho_1+\rho_2}
+            \begin{mat}[r]
+              -1/2        &-\sqrt{3}/2  \\
+               0          &-2
+            \end{mat}
+            \grstep[(-1/2)\rho_2]{-2\rho_1}
+            \begin{mat}[r]
+               1          &\sqrt{3}    \\
+               0          &1
+            \end{mat}
+            \grstep{-\sqrt{3}\rho_2+\rho_1}
+            \begin{mat}[r]
+               1          &0   \\
+               0          &1
+            \end{mat}
+          \end{equation*}
+          That translates to a matrix equation in this way.
+          \begin{equation*}
+            \begin{mat}[r]
+              1  &-\sqrt{3}  \\
+              0  &1
+            \end{mat}
+            \begin{mat}[r]
+              -2  &0    \\
+               0  &-1/2
+            \end{mat}
+            \begin{mat}[r]
+               1         &0  \\
+               \sqrt{3}  &1
+            \end{mat}
+            \begin{mat}[r]
+              -1/2        &-\sqrt{3}/2  \\
+              \sqrt{3}/2  &-1/2
+            \end{mat}
+            =I
+          \end{equation*}
+          Taking inverses to solve for $H$ yields this factorization.
+          \begin{equation*}
+            \begin{mat}[r]
+              -1/2        &-\sqrt{3}/2  \\
+              \sqrt{3}/2  &-1/2
+            \end{mat}
+            =
+            \begin{mat}[r]
+                1         &0  \\
+               -\sqrt{3}  &1
+            \end{mat}
+            \begin{mat}[r]
+              -1/2  &0    \\
+               0    &-2
+            \end{mat}
+            \begin{mat}[r]
+              1  &\sqrt{3}  \\
+              0  &1
+            \end{mat}
+            I
+          \end{equation*}
+    \end{answer}
+  \item 
+    If a map is nonsingular then to get from its representation to
+    the identity matrix we do not need any column operations,
+    so that in $H=PBQ$ the matrix $Q$ is the identity.
+    An example of a nonsingular map is 
+    the transformation $\map{t_{-\pi/4}}{\Re^2}{\Re^2}$ that rotates
+    vectors clockwise by $\pi/4$~radians.
+    \begin{exparts}
+      \partsitem Find the matrix $H$ representing 
+         this map with respect to the standard bases.
+      \partsitem Use Gauss-Jordan to reduce $H$ to the identity,
+        without column operations.
+      \partsitem
+        Translate that to a matrix equation
+        $T_jT_{j-1}\cdots T_1H=I$.
+      \partsitem Solve the matrix equation for $H$.
+      \partsitem Describe $H$ as a 
+        combination of dilations, flips, skews, and projections
+        (the identity is a trivial projection). 
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem  Recall that rotation counterclockwise by 
+          $\theta$~radians is represented with respect to the standard basis
+          in this way.
+          \begin{equation*}
+            \rep{t_{\pi/4}}{\stdbasis_2,\stdbasis_2}
+            =\begin{mat}
+              \cos\theta  &-\sin\theta  \\
+              \sin\theta  &\cos\theta
+             \end{mat}
+          \end{equation*}
+          A clockwise angle is the negative of a counterclockwise
+          one.  
+          \begin{equation*}
+            \rep{t_{-pi/4}}{\stdbasis_2,\stdbasis_2}
+            =\begin{mat}
+              \cos(-\pi/4)  &-\sin(-\pi/4)  \\
+              \sin(-\pi/4)  &\cos(-\pi/4)
+            \end{mat}
+            =\begin{mat}[r]
+              \sqrt{2}/2  &\sqrt{2}/2  \\
+              -\sqrt{2}/2 &\sqrt{2}/2
+            \end{mat}
+          \end{equation*}
+        \partsitem
+          This Gauss-Jordan reduction
+          \begin{equation*}
+            \grstep{\rho_1+\rho_2}
+            \begin{mat}[r]
+              \sqrt{2}/2  &\sqrt{2}/2  \\
+              0           &\sqrt{2}
+            \end{mat}
+            \grstep[(1/\sqrt{2})\rho_2]{(2/\sqrt{2})\rho_1}
+            \begin{mat}[r]
+              1  &1  \\
+              0  &1
+            \end{mat}
+            \grstep{-\rho_2+\rho_1}
+            \begin{mat}[r]
+              1  &0  \\
+              0  &1
+            \end{mat}
+          \end{equation*}
+          produces the identity matrix. 
+          Thus we do not need column-swapping operations
+          to end with a partial-identity.
+        \partsitem In matrix multiplication the reduction is
+          \begin{equation*}
+            \begin{mat}[r]
+              1  &-1 \\
+              0  &1
+            \end{mat}
+            \begin{mat}[r]
+              2/\sqrt{2}  &0         \\
+              0           &1/\sqrt{2}
+            \end{mat}
+            \begin{mat}[r]
+              1  &0 \\
+              1  &1
+            \end{mat}
+            H
+            =I
+          \end{equation*}
+          (note that composition of the Gaussian operations is 
+          from right to left).
+        \partsitem  Taking inverses 
+          \begin{equation*}
+            H
+            =
+            \underbrace{
+              \begin{mat}[r]
+                1  &0 \\
+                -1  &1
+              \end{mat}
+              \begin{mat}[r]
+                \sqrt{2}/2  &0         \\
+                0           &\sqrt{2}
+              \end{mat}
+              \begin{mat}[r]
+                1  &1 \\
+                0  &1
+              \end{mat}
+             }_P
+            I
+          \end{equation*}
+          gives the desired factorization of $H$. 
+          The partial
+          identity is $I$.
+          % , and $Q$ is trivial, that is, it is also an identity
+          % matrix.
+        \partsitem Reading the composition from right to left (and ignoring the
+          identity matrices as trivial) gives that $H$ has the same
+          effect as first performing this skew 
+          \begin{center}
+            \includegraphics{ch3.95}
+         \end{center}
+         followed by a dilation that multiplies all first components by 
+         $\sqrt{2}/2$ (this is a shrink in that $\sqrt{2}/2\approx0.707$ 
+         is less than $1$) 
+         and all second components by $\sqrt{2}$,
+         followed by another skew. 
+          \begin{center}
+            \includegraphics{ch3.96}
+         \end{center}
+         For an example we start with the unit vector whose angle with
+         the $x$-axis is $\pi/6$ and apply the components of $H$ in turn.
+          \begin{center}
+            \includegraphics{ch3.97}
+         \end{center}
+         We can easily verify that the resulting vector has unit length 
+         and forms an angle with the $x$-axis of $-\pi/12$, which is indeed
+         a rotation clockwose of $\pi/4$ radians 
+         since $(\pi/6)-(\pi/4)=-\pi/12$. 
+      \end{exparts}
+    \end{answer}
   \item \label{exer:RToRIsScalMult} 
-    Show that any linear transformation of $\Re^1$ is the map
+    Show that any linear transformation of $\Re^1$ is a map $h_k$
     that multiplies by a scalar $x\mapsto kx$.
     \begin{answer}
       Represent it with respect to the 
-      standard bases $\stdbasis_1,\stdbasis_1$, then the
-      only entry in the resulting $\nbyn{1}$ matrix is the scalar $k$.
-    \end{answer}
-  \item \label{exer:PermIsCompSwaps}
-    Show that for any permutation  
-    (that is, reordering) $p$ of the numbers
-    $1$, \ldots, $n$, the map 
-    \begin{equation*}
-      \colvec{x_1 \\ x_2 \\ \vdots\\ x_n}
-      \mapsto
-      \colvec{x_{p(1)} \\ x_{p(2)} \\ \vdots \\ x_{p(n)}}
-    \end{equation*}
-    can be done with a composition of maps, 
-    each of which only swaps a single pair of coordinates.
-    \textit{Hint:} you can use induction on $n$.
-    (\textit{Remark:}~in the fourth chapter we will show this and we will also 
-    show that the parity of the number of swaps used is determined by $p$.
-    That is, although a particular
-    permutation could be expressed in two different ways
-    with two different numbers of swaps, either both ways use an even number of
-    swaps, or both use an odd number.)
-    \begin{answer}
-      We can show this by induction on the number of components in the 
-      vector.
-      In the $n=1$ base case the only permutation is the trivial one,
-      and the map
-      \begin{equation*}
-        \colvec{x_1}
-        \mapsto
-        \colvec{x_1}
-      \end{equation*}
-      is expressible as a composition of swaps\Dash as zero swaps.
-      For the inductive step we assume that the map induced by 
-      any permutation of fewer than
-      $n$ numbers can be expressed with swaps only, and we consider the map
-      induced by a 
-      permutation $p$ of $n$ numbers.
-      \begin{equation*}
-        \colvec{x_1 \\ x_2 \\ \vdots \\ x_n}
-        \mapsto
-        \colvec{x_{p(1)} \\ x_{p(2)} \\ \vdots \\ x_{p(n)}}
-      \end{equation*}
-      Consider the number~$i$ such that $p(i)=n$.
-      The map      
-      \begin{equation*}
-        \colvec{x_1      \\ x_2      \\ \vdots \\ x_i      \\ \vdots \\ x_n}
-        \mapsunder{\hat{p}}
-        \colvec{x_{p(1)} \\ x_{p(2)} \\ \vdots \\ x_{p(n)} \\ \vdots  \\ x_{n}}
-      \end{equation*}
-      will, when followed by the swap of the $i$-th and $n$-th components, 
-      give the map~$p$.
-      Now, the inductive hypothesis gives that $\hat{p}$ is achievable as 
-      a composition of swaps.
+      standard bases $\stdbasis_1,\stdbasis_1$. 
+      That produces a $\nbyn{1}$ matrix.
+      The only entry is the scalar~$k$.
     \end{answer}
   \item \label{exer:ImageLinSurIsLinSur} 
     Show that linear maps preserve the linear structures of a space.
@@ -726,6 +686,56 @@ The Chain Rule multiplies the matrices.
       \begin{center}
         \includegraphics{ch3.98}
      \end{center}
+    \end{answer}
+  \item \label{exer:PermIsCompSwaps}
+    Show that any permutation, any reordering, $p$ of the numbers
+    $1$, \ldots, $n$, the map 
+    \begin{equation*}
+      \colvec{x_1 \\ x_2 \\ \vdots\\ x_n}
+      \mapsto
+      \colvec{x_{p(1)} \\ x_{p(2)} \\ \vdots \\ x_{p(n)}}
+    \end{equation*}
+    can be done with a composition of maps, 
+    each of which only swaps a single pair of coordinates.
+    \textit{Hint:} you can use induction on $n$.
+    (\textit{Remark:}~in the fourth chapter we will show this and we will also 
+    show that the parity of the number of swaps used is determined by $p$.
+    That is, although a particular
+    permutation could be expressed in two different ways
+    with two different numbers of swaps, either both ways use an even number of
+    swaps, or both use an odd number.)
+    \begin{answer}
+      We can show this by induction on the number of components in the 
+      vector.
+      In the $n=1$ base case the only permutation is the trivial one,
+      and the map
+      \begin{equation*}
+        \colvec{x_1}
+        \mapsto
+        \colvec{x_1}
+      \end{equation*}
+      is expressible as a composition of swaps\Dash as zero swaps.
+      For the inductive step we assume that the map induced by 
+      any permutation of fewer than
+      $n$ numbers can be expressed with swaps only, and we consider the map
+      induced by a 
+      permutation $p$ of $n$ numbers.
+      \begin{equation*}
+        \colvec{x_1 \\ x_2 \\ \vdots \\ x_n}
+        \mapsto
+        \colvec{x_{p(1)} \\ x_{p(2)} \\ \vdots \\ x_{p(n)}}
+      \end{equation*}
+      Consider the number~$i$ such that $p(i)=n$.
+      The map      
+      \begin{equation*}
+        \colvec{x_1      \\ x_2      \\ \vdots \\ x_i      \\ \vdots \\ x_n}
+        \mapsunder{\hat{p}}
+        \colvec{x_{p(1)} \\ x_{p(2)} \\ \vdots \\ x_{p(n)} \\ \vdots  \\ x_{n}}
+      \end{equation*}
+      will, when followed by the swap of the $i$-th and $n$-th components, 
+      give the map~$p$.
+      Now, the inductive hypothesis gives that $\hat{p}$ is achievable as 
+      a composition of swaps.
     \end{answer}
 \end{exercises}
 \index{Geometry of Linear Maps|)}
