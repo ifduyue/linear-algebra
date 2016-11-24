@@ -11165,7 +11165,7 @@ sage: solve(system, x,y)
        \smallskip
        All three come from the same side of the table (the left),
        as the result from this Topic says must happen.
-       Tallying the election can now proceed, using the canceled numbers
+       Now we can tally, using the canceled numbers
        \begin{equation*}
          % \psset{xunit=4pt,yunit=4pt,runit=4pt}
          3\cdot \votinggraphic{31}
@@ -14656,9 +14656,9 @@ sage: solve(system, x,y)
           0 &1
        \end{mat}}
      \end{equation*}
-     The representation of the map~$h$ with respect to $E_2,D$ is this.
+     The representation of the map~$h$ with respect to $\stdbasis_2,D$ is this.
      \begin{equation*}
-       \rep{h}{E_2,D}=
+       \rep{h}{\stdbasis_2,D}=
        \begin{mat}
          1  &0  \\
          2  &-1  \\
@@ -14666,7 +14666,8 @@ sage: solve(system, x,y)
          1  &0
        \end{mat}
      \end{equation*}
-     Since the general vector is represented with respect to~$E_2$ by itself,
+     Since the general vector is represented with respect to~$\stdbasis_2$
+     by itself,
      and similarly every matrix is represented with respect to~$D$ by itself,
      we have this for the effect of the map.
      \begin{equation*}
@@ -15775,25 +15776,23 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.III.2.17}
-      Since, with respect to the standard basis~$E_2$, a matrix is represented
+      Since, with respect to the standard basis~$\stdbasis_2$,
+      a matrix is represented
       by itself, we just need to do the matrix-vector multiplication.
       \begin{exparts}
-        \partsitem We have this.
-          \begin{equation*}
-            \rep{h(\colvec{2 \\ 3})}{E_2}=
-            \begin{mat}
+        \partsitem
+          \begin{align*}
+            \rep{h(\colvec{2 \\ 3})}{\stdbasis_2}
+             &=\rep{h}{\stdbasis_2,\stdbasis_2}\;
+             \rep{\colvec{2 \\ 3}}{\stdbasis_2}        \\
+             &=\begin{mat}
               1  &3  \\
               2  &4
-             \end{mat}_{E_2,E_2}
-             \rep{\colvec{2 \\ 3}}{E_2}=
-            \begin{mat}
-              1  &3  \\
-              2  &4
-             \end{mat}_{E_2,E_2}
-             \colvec{2 \\ 3}_{E_2}=
-             \colvec{11 \\ 16}_{E_2}=
+             \end{mat}_{\stdbasis_2,\stdbasis_2}
+             \colvec{2 \\ 3}_{\stdbasis_2}                 \\
+             &=\colvec{11 \\ 16}_{\stdbasis_2}=
              \colvec{11 \\ 16}
-          \end{equation*}
+          \end{align*}
         \partsitem
            $\begin{mat}
               1  &3  \\
@@ -15935,17 +15934,18 @@ sage: solve(system, x,y)
 \begin{ans}{Three.III.2.21}
       Let the matrix be $G$, and suppose that it represents $\map{g}{V}{W}$
       with respect to bases $B$ and $D$.
-      Because $G$ has two columns, $V$ is two-dimensional.
-      Because $G$ has two rows, $W$ is two-dimensional.
-      The action of $g$ on a general member of the domain is this.
+      Because $G$ has two columns, the domain $V$ is two-dimensional.
+      Because $G$ has two rows, the codomain $W$ is two-dimensional.
+      The action of $g$ on a representation $\rep{\vec{v}}{B,D}$
+      of a general member of the domain is this.
       \begin{equation*}
         \colvec{x \\ y}_B
          \;\mapsto\;
         \colvec{x+2y \\ 3x+6y}_D
       \end{equation*}
       \begin{exparts}
-        \partsitem The only representation of the zero vector in the codomain
-           is
+        \partsitem No matter what is the codomain's basis~$D$,
+           the only representation of the zero vector $\zero_{W}$ is
            \begin{equation*}
              \rep{\zero}{D}=\colvec[r]{0 \\ 0}_D
            \end{equation*}
@@ -15955,9 +15955,10 @@ sage: solve(system, x,y)
              \set{\colvec{x \\ y}_B\suchthat \text{$x+2y=0$ and $3x+6y=0$}}
              =\set{y\cdot\colvec[r]{-1/2 \\ 1}_D\suchthat y\in\Re}
            \end{equation*}
-         \partsitem The representation map $\map{\mbox{Rep}_D}{W}{\Re^2}$
+         \partsitem The nullity is~$1$.
+           The representation map $\map{\mbox{Rep}_D}{W}{\Re^2}$
            and its inverse
-           are isomorphisms, and so preserve the dimension of subspaces.
+           are isomorphisms and so preserve the dimension of subspaces.
            The subspace of $\Re^2$ that is in the prior item is
            one-dimensional.
            Therefore, the image of that subspace under the inverse of the
@@ -15965,10 +15966,11 @@ sage: solve(system, x,y)
            is also one-dimensional.
          \partsitem The set of representations of members of the range space is
            this.
-           \begin{equation*}
+           \begin{align*}
              \set{\colvec{x+2y \\ 3x+6y}_D\suchthat x,y\in\Re}
-             =\set{k\cdot\colvec[r]{1 \\ 3}_D\suchthat k\in\Re}
-           \end{equation*}
+             &=\set{x\cdot\colvec{1 \\ 3}_D+y\cdot\colvec{2 \\ 6}_D\suchthat x,y\in\Re}  \\
+             &=\set{k\cdot\colvec[r]{1 \\ 3}_D\suchthat k\in\Re}
+           \end{align*}
          \partsitem Of course, \nearbytheorem{th:RankMatEqRankMap} gives that
            the rank of the map equals the rank of the matrix, which is one.
            Alternatively, the same argument that we used above for the
@@ -16604,7 +16606,7 @@ sage: solve(system, x,y)
       Fix bases and represent the transformations with
       \( \nbyn{2} \) matrices.
       The space of matrices \( \matspace_{\nbyn{2}} \) has dimension four,
-      and hence the above six-element set is linearly dependent.
+      and hence the any six-element set is linearly dependent.
       By the prior exercise that extends to a dependence of maps.
       (The misleading part is only that there are six transformations, not
       five, so that we have more than we need to give the existence of the
@@ -20171,10 +20173,31 @@ sage: solve(system, x,y)
     
 \end{ans}
 \begin{ans}{Three.V.2.28}
+        Here is the picture.
+        \begin{equation*}
+          \begin{CD}
+            \Re^2_{\wrt{\stdbasis_2}}         @>t>T>     \Re^2_{\wrt{\stdbasis_2}}    \\
+            @V\text{\scriptsize$\identity$} VV   @V\text{\scriptsize$\identity$} VV \\
+           \Re^2_{\wrt{B}}        @>t>\hat{T}>  \Re^2_{\wrt{B}}
+          \end{CD}
+        \end{equation*}
+        There are two ways to move from the lower left to the lower right.
+        The first is direct, using $\hat{T}=\rep{t}{B,B}$.
+        The second moves up, then over, then down, using
+        $\rep{\identity}{\stdbasis_2,B}
+                          \cdot T
+                          \cdot \rep{\identity}{B,\stdbasis_2}$
+        (remember that they get written right-to-left, so the ``up''
+        matrix is on the right, in order to have that when
+        applied to a $\rep{\vec{v}}{B}$ the matrix applied first is
+        $\rep{\identity}{B,\stdbasis_2}$).
+        We write $S$ for $\rep{\identity}{B,\stdbasis_2}$;
+        of the two, we choose this one because it is easier to calculate.
+        So we have $\hat{T}=S^{-1}TS$.
       \begin{exparts}
         \partsitem We have
           \begin{equation*}
-            \rep{\identity}{B,\stdbasis_2}=
+            \rep{\identity}{B,\stdbasis_2}=S=
             \begin{mat}[r]
               1  &-1  \\
               2  &-1
@@ -20182,7 +20205,8 @@ sage: solve(system, x,y)
           \end{equation*}
           and
           \begin{equation*}
-            \rep{\identity}{\stdbasis_2,B}=\rep{\identity}{B,\stdbasis_2}^{-1}=
+            \rep{\identity}{\stdbasis_2,B}
+            =\rep{\identity}{B,\stdbasis_2}^{-1}=S^{-1}
             \begin{mat}[r]
               1  &-1  \\
               2  &-1
@@ -20197,16 +20221,16 @@ sage: solve(system, x,y)
             \rep{t}{B,B}
             =
             \begin{mat}[r]
-              1  &-1  \\
-              2  &-1
+              -1  &1  \\
+              -2  &1
             \end{mat}
             \begin{mat}[r]
               1  &1  \\
               3  &-1
             \end{mat}
             \begin{mat}[r]
-              -1  &1  \\
-              -2  &1
+              1  &-1  \\
+              2  &-1
             \end{mat}
             =\begin{mat}[r]
               -2  &0   \\
@@ -20244,29 +20268,18 @@ sage: solve(system, x,y)
             -2\cdot\colvec[r]{1 \\ 2}-11\cdot\colvec[r]{-1 \\ -1}
                =\colvec[r]{9 \\ 7}
           \end{equation*}
-       \partsitem We have
+       \partsitem As in the first item of this question
           \begin{equation*}
-            \begin{CD}
-              \Re^2_{\wrt{\stdbasis_2}}         @>t>T>     \Re^2_{\wrt{\stdbasis_2}}    \\
-              @V\text{\scriptsize$\identity$} VV   @V\text{\scriptsize$\identity$} VV \\
-              \Re^2_{\wrt{B}}        @>t>\hat{T}>  \Re^2_{\wrt{B}}
-            \end{CD}
-        \qquad
-            \rep{t}{B,B}=\rep{\identity}{\stdbasis_2,B}
-                          \cdot T
-                          \cdot \rep{\identity}{B,\stdbasis_2}
-          \end{equation*}
-          and, as in the first item of this question
-          \begin{equation*}
-            \rep{\identity}{B,\stdbasis_2}
+            S=\rep{\identity}{B,\stdbasis_2}
             =\begin{pmat}{c|c|c}
               \vec{\beta}_1 &\;\cdots\; &\vec{\beta}_n
             \end{pmat}
             \qquad
-            \rep{\identity}{\stdbasis_2,B}=\rep{\identity}{B,\stdbasis_2}^{-1}
+            \rep{\identity}{\stdbasis_2,B}=S^{-1}=
+             \rep{\identity}{B,\stdbasis_2}^{-1}
           \end{equation*}
-          so, writing $Q$ for the matrix whose columns are the basis vectors,
-          we have that $\rep{t}{B,B}=Q^{-1}TQ$.
+          so, writing $S$ for the matrix whose columns are the basis vectors,
+          we have that $\rep{t}{B,B}=\hat{T}=S^{-1}TS$.
       \end{exparts}
     
 \end{ans}
@@ -30560,25 +30573,26 @@ octave:6> gplot z
      % [ -9/28    2/7   3/28]
        Call the matrix~$T$.
        Taking the domain and codomain spaces as $\Re^3$,
-       and taking the matrix to be $T=\rep{t}{E_3,E_3}$ gives this diagram.
+       and taking the matrix to be $T=\rep{t}{\stdbasis_3,\stdbasis_3}$
+       gives this diagram.
        \begin{equation*}
        \begin{CD}
-          \Re^3_{\wrt{E_3}}            @>t>T>      \Re^3_{\wrt{E_3}}       \\
+          \Re^3_{\wrt{\stdbasis_3}}            @>t>T>      \Re^3_{\wrt{\stdbasis_3}}       \\
           @V{\scriptstyle\identity} VV           @V{\scriptstyle\identity} VV \\
           \Re^3_{\wrt{B}}             @>t>D>  \Re^3_{\wrt{B}}
         \end{CD}
         \end{equation*}
         Reading off the diagram we have $D=P^{-1}MP$ where
-        $P=\rep{\identity}{E_3,B}$.
+        $P=\rep{\identity}{\stdbasis_3,B}$.
         To represent each vector in $B$ with respect to~$E_3$ is easy
         because with respect to the standard basis each vector represents
         itself.
         \begin{multline*}
-          \rep{\colvec{-1 \\ -3/2 \\ 1}}{E_3}=\colvec{-1 \\ -3/2 \\ 1}
+          \rep{\colvec{-1 \\ -3/2 \\ 1}}{\stdbasis_3}=\colvec{-1 \\ -3/2 \\ 1}
           \quad
-          \rep{\colvec{-1/13 \\ -6/13 \\ 1}}{E_3}=\colvec{-1/13 \\ -6/13 \\ 1}
+          \rep{\colvec{-1/13 \\ -6/13 \\ 1}}{\stdbasis_3}=\colvec{-1/13 \\ -6/13 \\ 1}
           \\
-          \rep{\colvec{-1 \\ 2 \\ 1}}{E_3}=\colvec{-1 \\ 2 \\ 1}
+          \rep{\colvec{-1 \\ 2 \\ 1}}{\stdbasis_3}=\colvec{-1 \\ 2 \\ 1}
         \end{multline*}
         Thus the matrix just concatenates the three basis vectors.
         \begin{equation*}

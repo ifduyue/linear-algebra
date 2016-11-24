@@ -754,9 +754,9 @@ for any matrix there is an associated linear map.
           0 &1
        \end{mat}}
      \end{equation*}
-     The representation of the map~$h$ with respect to $E_2,D$ is this.
+     The representation of the map~$h$ with respect to $\stdbasis_2,D$ is this.
      \begin{equation*}
-       \rep{h}{E_2,D}=
+       \rep{h}{\stdbasis_2,D}=
        \begin{mat}
          1  &0  \\
          2  &-1  \\
@@ -764,7 +764,8 @@ for any matrix there is an associated linear map.
          1  &0
        \end{mat}
      \end{equation*}
-     Since the general vector is represented with respect to~$E_2$ by itself, 
+     Since the general vector is represented with respect to~$\stdbasis_2$ 
+     by itself, 
      and similarly every matrix is represented with respect to~$D$ by itself, 
      we have this for the effect of the map.
      \begin{equation*}
@@ -2576,8 +2577,8 @@ And, we shall see how to find the matrix that represents a map's inverse.
      \end{exparts}  
     \end{answer}
   \recommended \item  
-    Consider this matrix, representing a transformation of $\Re^2$, 
-    and these bases for that space.
+    Consider this matrix, representing a 
+    transformation of $\Re^2$ with respect to the bases.
     \begin{equation*}
       \frac{1}{2}\cdot
       \begin{mat}[r]
@@ -2645,8 +2646,8 @@ And, we shall see how to find the matrix that represents a map's inverse.
           \end{equation*}
       \end{exparts}
     \end{answer}
-  \item Conside a homomorphism  $\map{h}{\Re^2}{\Re^2}$ represented with 
-    respect to the standard bases $E_2,E_2$ by this matrix.
+  \item Consider a homomorphism  $\map{h}{\Re^2}{\Re^2}$ represented with 
+    respect to the standard bases $\stdbasis_2,\stdbasis_2$ by this matrix.
     \begin{equation*}
       \begin{mat}
         1  &3  \\
@@ -2660,25 +2661,23 @@ And, we shall see how to find the matrix that represents a map's inverse.
       \partsitem $\colvec{-1 \\ 1}$
     \end{exparts*}
     \begin{answer}
-      Since, with respect to the standard basis~$E_2$, a matrix is represented 
+      Since, with respect to the standard basis~$\stdbasis_2$, 
+      a matrix is represented 
       by itself, we just need to do the matrix-vector multiplication.
       \begin{exparts}
-        \partsitem We have this.
-          \begin{equation*}
-            \rep{h(\colvec{2 \\ 3})}{E_2}=
-            \begin{mat}
+        \partsitem 
+          \begin{align*}
+            \rep{h(\colvec{2 \\ 3})}{\stdbasis_2}       
+             &=\rep{h}{\stdbasis_2,\stdbasis_2}\;
+             \rep{\colvec{2 \\ 3}}{\stdbasis_2}        \\
+             &=\begin{mat}
               1  &3  \\
               2  &4
-             \end{mat}_{E_2,E_2}
-             \rep{\colvec{2 \\ 3}}{E_2}=
-            \begin{mat}
-              1  &3  \\
-              2  &4
-             \end{mat}_{E_2,E_2}
-             \colvec{2 \\ 3}_{E_2}=
-             \colvec{11 \\ 16}_{E_2}=
+             \end{mat}_{\stdbasis_2,\stdbasis_2}
+             \colvec{2 \\ 3}_{\stdbasis_2}                 \\
+             &=\colvec{11 \\ 16}_{\stdbasis_2}=
              \colvec{11 \\ 16}
-          \end{equation*}
+          \end{align*}
         \partsitem
            $\begin{mat}
               1  &3  \\
@@ -2847,31 +2846,37 @@ And, we shall see how to find the matrix that represents a map's inverse.
     \end{answer}
   \item 
     \nearbyexample{ex:NonSMatHasNonSMap} gives a matrix that is
-    nonsingular and is therefore associated with maps that are nonsingular.
+    singular and is therefore associated with maps that are singular.
+    We cannot state the
+    action of the associated map~$g$ on domain elements~$\vec{v}\in V$, 
+    because do not know  the domain~$V$ or codomain~$W$ 
+    or the starting and ending bases $B$ and~$D$.
+    But we can compute what happens to the representations $\rep{\vec{v}}{B,D}$.
     \begin{exparts}
       \partsitem Find the set of column vectors representing the members of
-        the null space of any map represented by this matrix.
-      \partsitem Find the nullity of any such map.
+        the null space of any map~$g$ represented by this matrix.
+      \partsitem Find the nullity of any such map~$g$.
       \partsitem Find the set of column vectors representing the members of
-        the range space of any map represented by this matrix.
-      \partsitem Find the rank of any such map.
+        the range space of any map~$g$ represented by the matrix.
+      \partsitem Find the rank of any such map~$g$.
       \partsitem Check that rank plus nullity equals the dimension of the
         domain.
     \end{exparts}
     \begin{answer}
       Let the matrix be $G$, and suppose that it represents $\map{g}{V}{W}$ 
       with respect to bases $B$ and $D$.
-      Because $G$ has two columns, $V$ is two-dimensional.
-      Because $G$ has two rows, $W$ is two-dimensional.
-      The action of $g$ on a general member of the domain is this.
+      Because $G$ has two columns, the domain $V$ is two-dimensional.
+      Because $G$ has two rows, the codomain $W$ is two-dimensional.
+      The action of $g$ on a representation $\rep{\vec{v}}{B,D}$ 
+      of a general member of the domain is this.
       \begin{equation*}
         \colvec{x \\ y}_B 
          \;\mapsto\; 
         \colvec{x+2y \\ 3x+6y}_D
       \end{equation*}
       \begin{exparts}
-        \partsitem The only representation of the zero vector in the codomain
-           is 
+        \partsitem No matter what is the codomain's basis~$D$,
+           the only representation of the zero vector $\zero_{W}$ is  
            \begin{equation*}
              \rep{\zero}{D}=\colvec[r]{0 \\ 0}_D
            \end{equation*}
@@ -2881,9 +2886,10 @@ And, we shall see how to find the matrix that represents a map's inverse.
              \set{\colvec{x \\ y}_B\suchthat \text{$x+2y=0$ and $3x+6y=0$}}
              =\set{y\cdot\colvec[r]{-1/2 \\ 1}_D\suchthat y\in\Re}
            \end{equation*}
-         \partsitem The representation map $\map{\mbox{Rep}_D}{W}{\Re^2}$
+         \partsitem The nullity is~$1$.
+           The representation map $\map{\mbox{Rep}_D}{W}{\Re^2}$
            and its inverse
-           are isomorphisms, and so preserve the dimension of subspaces.
+           are isomorphisms and so preserve the dimension of subspaces.
            The subspace of $\Re^2$ that is in the prior item is
            one-dimensional.
            Therefore, the image of that subspace under the inverse of the
@@ -2891,10 +2897,11 @@ And, we shall see how to find the matrix that represents a map's inverse.
            is also one-dimensional.
          \partsitem The set of representations of members of the range space is
            this.
-           \begin{equation*}
+           \begin{align*}
              \set{\colvec{x+2y \\ 3x+6y}_D\suchthat x,y\in\Re}
-             =\set{k\cdot\colvec[r]{1 \\ 3}_D\suchthat k\in\Re}
-           \end{equation*}
+             &=\set{x\cdot\colvec{1 \\ 3}_D+y\cdot\colvec{2 \\ 6}_D\suchthat x,y\in\Re}  \\
+             &=\set{k\cdot\colvec[r]{1 \\ 3}_D\suchthat k\in\Re}
+           \end{align*}
          \partsitem Of course, \nearbytheorem{th:RankMatEqRankMap} gives that
            the rank of the map equals the rank of the matrix, which is one.
            Alternatively, the same argument that we used above for the 

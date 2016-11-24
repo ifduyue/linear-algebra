@@ -299,7 +299,7 @@ opposite preference orders and are left with one set
 of preference lists for each of the three rows.
 Consider the first row's remaining preference lists.
 They could be from the first row's left or right 
-(or neither, since the lists could have canceled exactly).
+(or between, since the lists could have canceled exactly).
 We shall write
 \begin{equation*}
   \votinggraphic{27}
@@ -310,7 +310,7 @@ if the cancellation was perfect.
 Similiarly we have integers $b$ and $c$ for the second and third rows,
 which can each be positive, negative, or zero.
 
-Then the election is determined by the sum of these three.
+Then the election is determined by this sum.
 \begin{equation*}
   \votinggraphic{27}  %\votecycle{a}{a}{-a}{4} 
   +  
@@ -322,12 +322,12 @@ Then the election is determined by the sum of these three.
   \hspace{.30in}\hbox{}
 \end{equation*}
 A voting paradox occurs when the three numbers in the total cycle on the right,
-% $-a+b+c$ and $a-b+c$ and $a+b-c$, 
+$-a+b+c$ and $a-b+c$ and $a+b-c$, 
 are all nonnegative or all nonpositive.
 We will prove this occurs only when either all 
 three of $a$, $b$, and~$c$ are nonnegative or all three are nonpositive.
 
-Suppose that the total cycle is nonnegative; the other case is similar.
+Let the total cycle numbers be nonnegative; the other case is similar.
 \begin{equation*}
   \begin{linsys}{3}
     -a &+ &b &+ &c &\geq &0 \\
@@ -335,9 +335,9 @@ Suppose that the total cycle is nonnegative; the other case is similar.
      a &+ &b &- &c &\geq &0 
   \end{linsys}
 \end{equation*}
-Adding the first two rows shows that $c\geq 0$.
-Adding the first and third rows gives $b\geq 0$.
-And the sum of the second and third shows $a\geq 0$.
+Add the first two rows to see that $c\geq 0$.
+Add the first and third rows for $b\geq 0$.
+And, the second and third rows together give $a\geq 0$.
 Thus if the total cycle is nonnegative then in each row the remaining
 preference lists are from the table's left.
 That ends the proof.
@@ -349,7 +349,7 @@ It is not sufficient; see
 
 Voting theory and associated topics are the subject of current research.
 There are many intriguing results, notably 
-the one produced by K~Arrow \cite{Arrow} who won the Nobel Prize in part for
+those produced by K~Arrow \cite{Arrow} who won the Nobel Prize in part for
 this work, showing that no voting system is entirely fair
 (for a reasonable definition of ``fair'').
 Some good introductory articles are \cite{Gardner70}, 
@@ -540,7 +540,7 @@ for his kind and illuminating discussions.)}
        \smallskip
        All three come from the same side of the table (the left), 
        as the result from this Topic says must happen.
-       Tallying the election can now proceed, using the canceled numbers 
+       Now we can tally, using the canceled numbers 
        \begin{equation*}
          % \psset{xunit=4pt,yunit=4pt,runit=4pt} 
          3\cdot \votinggraphic{31}
@@ -609,7 +609,7 @@ for his kind and illuminating discussions.)}
       %   to show that $\absval{a-b}\leq c$.
       % \partsitem Also show that $c\leq a+b$, and hence that
       %   $\absval{a-b}\leq c\leq a+b$. 
-      \partsitem Give an example of a vote where there is a majority cycle,
+      \partsitem Give an example of a vote where there is a majority cycle
         and addition of one more voter with the same spin causes the cycle to
         go away.
       \partsitem Can the opposite happen; can addition of one voter with 

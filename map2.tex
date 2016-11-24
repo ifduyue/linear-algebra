@@ -2654,10 +2654,13 @@ point and the map is an isomorphism between the domain and the range.
     \partsitem Prove that for any linear map \( \map{h}{V}{W} \) and any
       \( \vec{w}\in W \), the set \( h^{-1}(\vec{w}) \) has the form
       \begin{equation*}
-        \set{\vec{v}+\vec{n}\suchthat \vec{n}\in\nullspace{h} }
+        h^{-1}(\vec{w})=
+        \set{\vec{v}+\vec{n}\suchthat \text{$\vec{v},\vec{n}\in V$
+                                            and $\vec{n}\in\nullspace{h}$
+                                            and $h(\vec{v})=\vec{w}$}}
       \end{equation*}
-      for \( \vec{v}\in V \) with \( h(\vec{v})=\vec{w} \)
-      (if \( h \) is not onto then this set may be empty).
+      (if \( h \) is not onto and $\vec{w}$ is not in the range of $h$
+      then this set is empty since its third condition cannot be satisfied).
       Such a set is a \definend{coset}\index{coset} of \( \nullspace{h} \)
       and we denote it as \( \vec{v}+\nullspace{h} \).
     \partsitem Consider the map \( \map{t}{\Re^2}{\Re^2} \) given by

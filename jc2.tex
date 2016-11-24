@@ -3969,25 +3969,26 @@ In the next section we study matrices that cannot be diagonalized.
      % [ -9/28    2/7   3/28]
        Call the matrix~$T$.
        Taking the domain and codomain spaces as $\Re^3$,
-       and taking the matrix to be $T=\rep{t}{E_3,E_3}$ gives this diagram.
+       and taking the matrix to be $T=\rep{t}{\stdbasis_3,\stdbasis_3}$ 
+       gives this diagram.
        \begin{equation*}
        \begin{CD}
-          \Re^3_{\wrt{E_3}}            @>t>T>      \Re^3_{\wrt{E_3}}       \\
+          \Re^3_{\wrt{\stdbasis_3}}            @>t>T>      \Re^3_{\wrt{\stdbasis_3}}       \\
           @V{\scriptstyle\identity} VV           @V{\scriptstyle\identity} VV \\
           \Re^3_{\wrt{B}}             @>t>D>  \Re^3_{\wrt{B}}
         \end{CD}
         \end{equation*}
         Reading off the diagram we have $D=P^{-1}MP$ where
-        $P=\rep{\identity}{E_3,B}$.
+        $P=\rep{\identity}{\stdbasis_3,B}$.
         To represent each vector in $B$ with respect to~$E_3$ is easy
         because with respect to the standard basis each vector represents
         itself.
         \begin{multline*}
-          \rep{\colvec{-1 \\ -3/2 \\ 1}}{E_3}=\colvec{-1 \\ -3/2 \\ 1}
+          \rep{\colvec{-1 \\ -3/2 \\ 1}}{\stdbasis_3}=\colvec{-1 \\ -3/2 \\ 1}
           \quad
-          \rep{\colvec{-1/13 \\ -6/13 \\ 1}}{E_3}=\colvec{-1/13 \\ -6/13 \\ 1}
+          \rep{\colvec{-1/13 \\ -6/13 \\ 1}}{\stdbasis_3}=\colvec{-1/13 \\ -6/13 \\ 1}
           \\
-          \rep{\colvec{-1 \\ 2 \\ 1}}{E_3}=\colvec{-1 \\ 2 \\ 1}
+          \rep{\colvec{-1 \\ 2 \\ 1}}{\stdbasis_3}=\colvec{-1 \\ 2 \\ 1}
         \end{multline*}
         Thus the matrix just concatenates the three basis vectors.
         \begin{equation*}
