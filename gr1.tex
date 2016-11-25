@@ -12,8 +12,7 @@ The first example is from
 Suppose that we have three objects,
 we know that one has a mass of 2~kg,
 and we want to find the two unknown masses.
-Suppose further that
-experimentation with a meter stick produces these two balances.
+Experimentation with a meter stick produces these two balances.
 \begin{center}
   \includegraphics{ch1.1}
   \qquad
@@ -56,7 +55,7 @@ this system.
 
 Both examples come down to solving a system of equations.
 In each system, the equations involve only the first power of each variable.
-This chapter shows how to solve any such system.
+This chapter shows how to solve any such system of equations.
 
 
 
@@ -113,12 +112,17 @@ of the equations.
 %</df:linearequations>
 \end{definition}
 
-
 \begin{example}
 The combination \( 3x_1 + 2x_2 \) of $x_1$ and $x_2$ is linear.
-The combination \( 3x_1^2 + 2\sin(x_2) \) is not linear, nor is
-\( 3x_1^2 + 2x_2 \).  
+The combination \( 3x_1^2 + 2\sin(x_2) \) is not a linear function of
+$x_1,x_2$, nor is \( 3x_1^2 + 2x_2 \).  
 \end{example}
+
+We often assume that $x_1$, \ldots, $x_n$ are different because in a
+combination with repeats we can rearrange the sum to 
+make the elements unique, as with $2x+3y+4x=6x+3y$. 
+We sometimes include terms with a zero coefficient, as in
+$x-2y+0z$, and at other times omit them, depending on what is convenient. 
 
 \begin{example}
 The ordered pair \( (-1,5) \) is a solution of this system.
@@ -206,17 +210,14 @@ Thus the system has a unique solution;
 the solution set is \set{(3,1,3)}.
 \end{example}
 
-Most of this subsection and the next one consists of examples
-of solving linear systems by Gauss's Method, which 
-we will use throughout the book.
+We will use Gauss's Method throughout the book.
 It is fast and easy.
-But before we do those examples we will first show that
+We will now show that
 it is also safe: 
-Gauss's Method never loses solutions
-(any tuple that is a solution to the system before you apply the method is also
-a solution after), nor does it ever 
-pick up extraneous solutions
-(any tuple that is not a solution before is also not a solution after).
+Gauss's Method never loses solutions nor does it ever 
+pick up extraneous solutions, so that
+a tuple is a solution to the system before we apply the method if and only if
+it is a solution after.
 
 \begin{theorem}[Gauss's Method]
 \index{linear equation!solution of!Gauss's Method} \label{th:GaussMethod}
@@ -248,7 +249,7 @@ and also because it's pointless.
 \begin{proof}
 We will cover the equation swap operation here. 
 The other two
-cases are \nearbyexercise{ex:ProveGaussMethod}.
+cases are similar and are \nearbyexercise{ex:ProveGaussMethod}.
 
 %<*pf:GaussMethod0>
 Consider a linear system.
