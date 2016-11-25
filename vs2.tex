@@ -144,23 +144,33 @@ of others in the set.
 
 \begin{definition}\label{def:LinInd}
 %<*df:LinInd>
-A multiset subset of a vector space is
+In any vector space, a set of vectors is
 \definend{linearly independent}\index{linearly independent}%
 \index{sets!dependent, independent}
 if none of its elements is a linear combination of the 
-others.\footnote{More information on multisets is in the appendix. 
-Most of the time we won't need the 
-set-multiset distinction and we will
-follow the standard terminology of referring to a linearly independent or 
-dependent `set'.
-\nearbyremark{rem:WhyLIUsesMultiset} explains why 
-the definition requires a multiset.}\spacefactor=1000\ 
-Otherwise it is \definend{linearly dependent}\index{linearly dependent}.
+others from the set.\footnote{See also \nearbyremark{rem:WhyLIUsesMultiset}.}\spacefactor=1000\ 
+Otherwise the set is 
+\definend{linearly dependent}\index{linearly dependent}.
 %</df:LinInd>
 \end{definition}
+% A multiset subset of a vector space is
+% \definend{linearly independent}\index{linearly independent}%
+% \index{sets!dependent, independent}
+% if none of its elements is a linear combination of the 
+% others.\footnote{More information on multisets is in the appendix. 
+% Most of the time we won't need the 
+% set-multiset distinction and we will
+% follow the standard terminology of referring to a linearly independent or 
+% dependent `set'.
+% \nearbyremark{rem:WhyLIUsesMultiset} explains why 
+% the definition requires a multiset.}\spacefactor=1000\ 
+% Otherwise it is \definend{linearly dependent}\index{linearly dependent}.
 
-That definition's use of the word `others' means that
-writing $\vec{v}$ as a linear combination with $\vec{v}=1\cdot\vec{v}$ 
+Thus the set $\set{\vec{s}_0,\ldots,\vec{s}_n}$ is independent
+if there is no equality
+$\vec{s}_i=c_0\vec{s}_0+\ldots+c_{i-1}\vec{s}_{i-1}+c_{i+1}\vec{s}_{i+1}+\ldots+c_n\vec{s}_n$.
+The definition's use of the word `others' means that
+writing $\vec{s}_i$ as a linear combination via $\vec{s}_i=1\cdot\vec{s}_i$ 
 does not count.
 
 %<*LinInd>
@@ -363,15 +373,19 @@ the zero vector is a combination of the empty subset.
 \end{example}
 
 \begin{remark} \label{rem:WhyLIUsesMultiset} %\cite{Velleman} 
-\nearbydefinition{def:LinInd} says that when we 
-decide whether some $S$ is linearly independent we must
-consider it as a multiset.
-Recall that in a set repeated elements collapse, so the set 
-$\set{0,1,0}$ equals the set $\set{0,1}$. 
-But in a multiset they
-do not collapse so the multiset $\set{0,1,0}$ contains the element 
-$0$ twice.
-Here is an example showing why the definition requires a multiset.
+\nearbydefinition{def:LinInd} describes when a collection of 
+vectors is linearly independent.
+In this book we will follow the practice of referring to an
+independent `set', because sets are the most familiar collections and
+because that practice is universal.
+But to be complete we will note that sets will not do.
+
+Recall that a set is a collection with two properties: order does not matter,
+so that the set $\set{1,2}$ equals the set $\set{2,1}$, and 
+repeats collapse, so that the set $\set{1,1,2}$ equals the set
+$\set{1,2}$.
+
+Now consider this matrix reduction.
 \begin{equation*}
   \begin{mat}
     1 &1 &1 \\
@@ -388,11 +402,20 @@ Here is an example showing why the definition requires a multiset.
 On the left the set of matrix rows 
 $\set{\rowvec{1 &1 &1}, \rowvec{2 &2 &2}, \rowvec{1 &2 &3}}$ is
 linearly dependent.
-But on the right the set 
-$\set{\rowvec{1 &1 &1}, \rowvec{1 &1 &1}, \rowvec{1 &2 &3}}=
-\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$ is linearly independent.
-That's not what we need; we rely on Gauss's Method to preserve dependence
-so we need that $\rowvec{1 &1 &1}$ appears twice.
+On the right the set 
+$\set{\rowvec{1 &1 &1}, \rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, which equals
+the set
+$\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, is linearly independent.
+
+That's not what we want; we want to say that the collection of the
+rows of the second matrix is also dependent.
+Thus, for a proper definition of dependence and independence,  
+we need a type of collection where for the second matrix
+the row $\rowvec{1 &1 &1}$ appears twice.
+A collection where order does not matter and where repeats do not collapse
+is a \definend{multiset}.\index{sets!multiset}%
+\index{multiset}\index{linear independence!multiset}
+
 % In the next chapter we will look at functions from one vector space to another.
 % Let the function $\map{f}{\polyspace_1}{\Re}$ be
 % $f(a+bx)=a$ so that for instance $f(1+2x)=1$. 
@@ -407,10 +430,11 @@ so we need that $\rowvec{1 &1 &1}$ appears twice.
 % The second case is the correct one:~$B$ is linearly independent but its image 
 % under~$f$ is linearly dependent.
 
-% Most of the time we won't need the set-multiset distinction and  
-% we will typically 
-% follow the standard terminology of referring to a linearly independent or 
-% dependent ``set.''
+So, strictly speaking, in the definition we should replace 
+`set' with `multiset'.
+However, most of the time the distinction won't matter and
+departing from the standard terminology has its own pitfalls, so we will 
+keep the practice of referring to a linearly independent or dependent `set.'
 \end{remark}
 
 
