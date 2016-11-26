@@ -2821,6 +2821,8 @@ has a root.
 \begin{remark}
 That result is the reason that in this chapter 
 we use scalars that are complex numbers.
+Had we stuck to real number scalars then there would be characteristic
+polynomials, such as $x^2+1$, that do not factor. 
 \end{remark}
 
 % Notice the familiar form of the sets of eigenvectors in the above examples.
@@ -2850,16 +2852,17 @@ The eigenspace of a matrix is analogous.
 \begin{lemma}  \label{le:EigSpaceIsSubSp}
 %<*lm:EigSpaceIsSubSp>
 An eigenspace is a subspace.
+It is a nontrivial subspace.
 %</lm:EigSpaceIsSubSp>
 \end{lemma}
 
 \begin{proof}
 %<*pf:EigSpaceIsSubSp>
-Fix an eigenvalue~$\lambda$.
-Notice first that
+To show that an eigenspace is a subspace,
+notice first that
 $V_{\lambda}$ contains the zero
 vector since $t(\zero)=\zero$, which equals
-$\lambda\zero$.
+$\lambda\cdot \zero$.
 So the eigenspace is a nonempty subset of the space. 
 What remains is to check closure of this set under linear combinations.
 Take \( \vec{\zeta}_1,\ldots,\vec{\zeta}_n\in V_{\lambda} \) and then verify
@@ -2873,6 +2876,11 @@ that the combination is also an element of  $V_{\lambda}$.
 % (despite that the zero vector isn't an eigenvector, 
 % the second equality holds even if some \( \vec{\zeta}_i \) is \( \zero \) since
 % \( t(\zero)=\lambda\cdot\zero=\zero \)).
+
+The space~$V_\lambda$ contains more than just the zero vector
+because by definition $\lambda$ is an eigenvector only if  
+$t(\vec{\zeta}\,)=\lambda\vec{\zeta}$ has solutions for $\vec{\zeta}$
+other than $\zero$.
 %</pf:EigSpaceIsSubSp>
 \end{proof}
 
@@ -2887,7 +2895,7 @@ and \( 2 \).
 \end{equation*}
 \end{example}
 
-\begin{example}
+\begin{example} \label{ex:AnotherCharPolyReprise}
 In \nearbyexample{ex:AnotherCharPoly} these are the eigenspaces 
 associated with the eigenvalues \( \pi \) 
 and~\( 3 \).
@@ -2908,7 +2916,7 @@ The next example is a case where a number is a double root of
 the characteristic equation and the dimension of the associated eigenspace
 is two.
 
-\begin{example}
+\begin{example}  \label{ex:EigenvaluesProjection}
 With respect to the standard bases, this matrix
 \begin{equation*}
   \begin{mat}[r]
@@ -2936,16 +2944,41 @@ Its characteristic equation
   &=(1-x)^2(0-x)
 \end{align*}
 has the double root~$x=1$ along with the single root~$x=0$.
-Its eigenspace associated with the eigenvalue \( 0 \) and
-its eigenspace associated with the eigenvalue \( 1 \)
+Its eigenspace associated with the eigenvalue \( 1 \) and
+its eigenspace associated with the eigenvalue \( 0 \)
 are easy to find.
 \begin{equation*}
-   V_0=\set{\colvec{0 \\ 0 \\ c_3}\suchthat c_3\in\C}
-   \qquad
    V_1=\set{\colvec{c_1 \\ c_2 \\ 0}\suchthat c_1,c_2\in\C}
+   \qquad
+   V_0=\set{\colvec{0 \\ 0 \\ c_3}\suchthat c_3\in\C}
 \end{equation*}
 Note that $V_1$ has dimension two.
 \end{example}
+
+\begin{definition}
+Where a characteristic polynomial factors into
+$(x-\lambda_1)^{m_1}\cdots (x-\lambda_k)^{m_k}$ 
+then the eigenvalue $\lambda_i$ has 
+\definend{algebraic multiplicity}~$m_i$\index{multiplicity!algebraic}%
+\index{algebraic multiplicity}.
+Its
+\definend{geometric multiplicity}\index{multiplicity!geometric}%
+\index{geometric multiplicity}
+is the dimension of the associated eigenspace~$V_{\lambda_i}$.  
+\end{definition}
+
+In \nearbyexample{ex:EigenvaluesProjection}, there are two eigenvalues, 
+For $\lambda_1=1$ both the
+algebraic and geometric multiplicities are~$2$.
+For $\lambda_2=0$  both the
+algebraic and geometric multiplicities are~$1$.
+In contrast, in \nearbyexample{ex:AnotherCharPolyReprise}
+the eigenvalue $\lambda=2$ has algebraic multiplicity~$2$ but geometric 
+multiplicity~$1$.
+For every transformation, each eigenvalue has geometric 
+multiplicy greater than or equal to~$1$ by \nearbylemma{le:EigSpaceIsSubSp}.
+(And in fact, each eigenvalue has geometric multiplicity less than or equal to 
+its algebraic multiplicity, although proving that is beyond our scope.)
 
 By \nearbylemma{le:EigSpaceIsSubSp} 
 if two eigenvectors $\vec{v}_1$ and $\vec{v}_2$ are 
@@ -3257,6 +3290,71 @@ In the next section we study matrices that cannot be diagonalized.
            \end{equation*}
        \end{exparts}  
      \end{answer}
+  \item  % TODO: credit http://algebra.math.ust.hk/eigen/05_multiplicity/lecture2.shtml 
+   For each matrix, find the characteristic equation and the
+   eigenvalues, and associated eigenspaces.
+   Also find the algebraic and geometric multiplicities.
+   \begin{exparts*}
+     \partsitem 
+       $\begin{mat}
+          13 &-4 \\
+          -4 &7
+        \end{mat}$
+     \partsitem
+        $\begin{mat}
+          1 &3 &-3 \\
+         -3 &7 &-3 \\
+         -6 &6 &-2
+        \end{mat}$
+    \partsitem
+        $\begin{mat}
+          2 &3 &-3 \\
+          0 &2 &-3 \\
+          0 &0 &1
+        \end{mat}$
+   \end{exparts*}
+   \begin{answer}
+     \begin{exparts}
+       \item The characteristic polynomial factors as 
+         $x^2-20x+75=(x-5)(x-15)$,
+         so the eigenvalues are $\lambda_1=5$ and~$\lambda_2=15$.
+         These are the associated eigenspaces.
+         \begin{equation*}
+           V_5=\set{k\colvec{1 \\ 2}\suchthat k\in\C}
+           \quad
+           V_{15}=\set{k\colvec{-2 \\ 1}\suchthat k\in\C}
+         \end{equation*}
+         For each eigenvalue, both the algebraic and geometric multiplicities
+         are~$1$.
+      \item The characteristic polynomial $x^3 - 6x^2 + 32$ factors into
+         $(x+2)(x-4)^2$.
+         The eigenvectors are $\lambda_1=-2$ and $\lambda_2=4$.
+         Here are the associated eigenspaces. 
+         \begin{equation*}
+           V_{-2}=\set{k\colvec{1 \\ 1 \\ 2}\suchthat k\in\C}
+           \quad
+           V_4=\set{k_1\colvec{1 \\ 1 \\ 0}
+                     +k_2\colvec{1 \\ 0 \\ -1} \suchthat k_1,k_2\in\C}
+         \end{equation*}
+         For $\lambda_1=-2$ the algebraic and geometric multiplicities are
+         both~$1$. 
+         For $\lambda_2=4$ the algebraic and geometric multiplicities are
+         both~$2$.
+      \item The characteristic polynomial $x^3 - 5x^2 + 8x - 4$ factors into
+         $(x-1)(x-2)^2$.
+         The eigenvalues are $\lambda_1=1$ and $\lambda_2=2$.
+         Here are the associated eigenspaces.
+         \begin{equation*}
+           V_1=\set{k\colvec{-6 \\ 3 \\ 1}\suchthat k\in \C}
+           \quad
+           V_2=\set{k\colvec{1 \\ 0 \\ 0}\suchthat k\in\C}
+         \end{equation*}
+         For $\lambda_1=1$ the algebraic and geometric multiplicities
+         are both~$1$.
+         For $\lambda_2=2$ the algebraic multiplicity is~$2$ but the 
+         geometric multiplicity is~$1$.
+     \end{exparts}
+   \end{answer}
   \item
     Find the characteristic equation, and the
     eigenvalues and associated eigenvectors for this matrix.
