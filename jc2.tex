@@ -2858,14 +2858,13 @@ It is a nontrivial subspace.
 
 \begin{proof}
 %<*pf:EigSpaceIsSubSp>
-To show that an eigenspace is a subspace,
-notice first that
-$V_{\lambda}$ contains the zero
+Notice first that
+$V_{\lambda}$ is not empty; it contains the zero
 vector since $t(\zero)=\zero$, which equals
 $\lambda\cdot \zero$.
-So the eigenspace is a nonempty subset of the space. 
-What remains is to check closure of this set under linear combinations.
-Take \( \vec{\zeta}_1,\ldots,\vec{\zeta}_n\in V_{\lambda} \) and then verify
+To show that an eigenspace is a subspace,
+what remains is to check closure of this set under linear combinations.
+Take \( \vec{\zeta}_1,\ldots,\vec{\zeta}_n\in V_{\lambda} \) and then
 \begin{align*}
   t(\lincombo{c}{\vec{\zeta}})
   &=c_1t(\vec{\zeta}_1)+\dots+c_nt(\vec{\zeta}_n)               \\
@@ -3290,71 +3289,6 @@ In the next section we study matrices that cannot be diagonalized.
            \end{equation*}
        \end{exparts}  
      \end{answer}
-  \item  % TODO: credit http://algebra.math.ust.hk/eigen/05_multiplicity/lecture2.shtml 
-   For each matrix, find the characteristic equation and the
-   eigenvalues, and associated eigenspaces.
-   Also find the algebraic and geometric multiplicities.
-   \begin{exparts*}
-     \partsitem 
-       $\begin{mat}
-          13 &-4 \\
-          -4 &7
-        \end{mat}$
-     \partsitem
-        $\begin{mat}
-          1 &3 &-3 \\
-         -3 &7 &-3 \\
-         -6 &6 &-2
-        \end{mat}$
-    \partsitem
-        $\begin{mat}
-          2 &3 &-3 \\
-          0 &2 &-3 \\
-          0 &0 &1
-        \end{mat}$
-   \end{exparts*}
-   \begin{answer}
-     \begin{exparts}
-       \item The characteristic polynomial factors as 
-         $x^2-20x+75=(x-5)(x-15)$,
-         so the eigenvalues are $\lambda_1=5$ and~$\lambda_2=15$.
-         These are the associated eigenspaces.
-         \begin{equation*}
-           V_5=\set{k\colvec{1 \\ 2}\suchthat k\in\C}
-           \quad
-           V_{15}=\set{k\colvec{-2 \\ 1}\suchthat k\in\C}
-         \end{equation*}
-         For each eigenvalue, both the algebraic and geometric multiplicities
-         are~$1$.
-      \item The characteristic polynomial $x^3 - 6x^2 + 32$ factors into
-         $(x+2)(x-4)^2$.
-         The eigenvectors are $\lambda_1=-2$ and $\lambda_2=4$.
-         Here are the associated eigenspaces. 
-         \begin{equation*}
-           V_{-2}=\set{k\colvec{1 \\ 1 \\ 2}\suchthat k\in\C}
-           \quad
-           V_4=\set{k_1\colvec{1 \\ 1 \\ 0}
-                     +k_2\colvec{1 \\ 0 \\ -1} \suchthat k_1,k_2\in\C}
-         \end{equation*}
-         For $\lambda_1=-2$ the algebraic and geometric multiplicities are
-         both~$1$. 
-         For $\lambda_2=4$ the algebraic and geometric multiplicities are
-         both~$2$.
-      \item The characteristic polynomial $x^3 - 5x^2 + 8x - 4$ factors into
-         $(x-1)(x-2)^2$.
-         The eigenvalues are $\lambda_1=1$ and $\lambda_2=2$.
-         Here are the associated eigenspaces.
-         \begin{equation*}
-           V_1=\set{k\colvec{-6 \\ 3 \\ 1}\suchthat k\in \C}
-           \quad
-           V_2=\set{k\colvec{1 \\ 0 \\ 0}\suchthat k\in\C}
-         \end{equation*}
-         For $\lambda_1=1$ the algebraic and geometric multiplicities
-         are both~$1$.
-         For $\lambda_2=2$ the algebraic multiplicity is~$2$ but the 
-         geometric multiplicity is~$1$.
-     \end{exparts}
-   \end{answer}
   \item
     Find the characteristic equation, and the
     eigenvalues and associated eigenvectors for this matrix.
@@ -3697,11 +3631,76 @@ In the next section we study matrices that cannot be diagonalized.
            \end{equation*}
       \end{exparts}
     \end{answer}
+  \item 
+   For each matrix, find the characteristic polynomial, and the
+   eigenvalues and associated eigenspaces.
+   Also find the algebraic and geometric multiplicities.
+   \begin{exparts*}
+     \partsitem 
+       $\begin{mat}
+          13 &-4 \\
+          -4 &7
+        \end{mat}$
+     \partsitem
+        $\begin{mat}
+          1 &3 &-3 \\
+         -3 &7 &-3 \\
+         -6 &6 &-2
+        \end{mat}$
+    \partsitem
+        $\begin{mat}
+          2 &3 &-3 \\
+          0 &2 &-3 \\
+          0 &0 &1
+        \end{mat}$
+   \end{exparts*}
+   \begin{answer}
+     \begin{exparts}
+       \item The characteristic polynomial factors as 
+         $x^2-20x+75=(x-5)(x-15)$,
+         so the eigenvalues are $\lambda_1=5$ and~$\lambda_2=15$.
+         These are the associated eigenspaces.
+         \begin{equation*}
+           V_5=\set{k\colvec{1 \\ 2}\suchthat k\in\C}
+           \quad
+           V_{15}=\set{k\colvec{-2 \\ 1}\suchthat k\in\C}
+         \end{equation*}
+         For each eigenvalue, both the algebraic and geometric multiplicities
+         are~$1$.
+      \item The characteristic polynomial $x^3 - 6x^2 + 32$ factors into
+         $(x+2)(x-4)^2$.
+         The eigenvectors are $\lambda_1=-2$ and $\lambda_2=4$.
+         Here are the associated eigenspaces. 
+         \begin{equation*}
+           V_{-2}=\set{k\colvec{1 \\ 1 \\ 2}\suchthat k\in\C}
+           \quad
+           V_4=\set{k_1\colvec{1 \\ 1 \\ 0}
+                     +k_2\colvec{1 \\ 0 \\ -1} \suchthat k_1,k_2\in\C}
+         \end{equation*}
+         For $\lambda_1=-2$ the algebraic and geometric multiplicities are
+         both~$1$. 
+         For $\lambda_2=4$ the algebraic and geometric multiplicities are
+         both~$2$.
+      \item The characteristic polynomial $x^3 - 5x^2 + 8x - 4$ factors into
+         $(x-1)(x-2)^2$.
+         The eigenvalues are $\lambda_1=1$ and $\lambda_2=2$.
+         Here are the associated eigenspaces.
+         \begin{equation*}
+           V_1=\set{k\colvec{-6 \\ 3 \\ 1}\suchthat k\in \C}
+           \quad
+           V_2=\set{k\colvec{1 \\ 0 \\ 0}\suchthat k\in\C}
+         \end{equation*}
+         For $\lambda_1=1$ the algebraic and geometric multiplicities
+         are both~$1$.
+         For $\lambda_2=2$ the algebraic multiplicity is~$2$ but the 
+         geometric multiplicity is~$1$.
+     \end{exparts}
+   \end{answer}
    \recommended \item
-     Let \( \map{t}{\polyspace_2}{\polyspace_2} \) be
+     Let \( \map{t}{\polyspace_2}{\polyspace_2} \) be this linear map.
      \begin{equation*}
       a_0+a_1x+a_2x^2\mapsto
-      (5a_0+6a_1+2a_2)-(a_1+8a_2)x+(a_0-2a_2)x^2.
+      (5a_0+6a_1+2a_2)-(a_1+8a_2)x+(a_0-2a_2)x^2
      \end{equation*}
     Find its eigenvalues and the associated eigenvectors.
     \begin{answer}
