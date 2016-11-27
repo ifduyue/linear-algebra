@@ -53,10 +53,10 @@
 
 % ..... One.III.1 .....
 \section{Gauss-Jordan reduction}
-\begin{frame}{Pivoting}
-\noindent Here is an extension of Gauss's Method with some advantages.
+\begin{frame}
+\noindent Here is an extension of Gauss's method with some advantages.
 \ex
-Start as usual with elimination operations to get echelon form.
+Start as usual by getting echelon form.
 \begin{eqnarray*}
   \begin{linsys}{3}
     x  &+  &y  &-  &z  &=  &2   \\
@@ -77,7 +77,7 @@ Start as usual with elimination operations to get echelon form.
   \end{linsys}
 \end{eqnarray*}
 \pause
-Now, instead of doing back substitution, we continue using row operations.
+Now, instead of doing back substitution, continue using row operations.
 First make all the leading entries one.
 \begin{eqnarray*}
   % \begin{linsys}{3}
@@ -132,8 +132,7 @@ With this system
        &-  &y  &+  &z  &-  &w   &=  &0 
   \end{linsys}
 \end{equation*}
-we can rewrite in matrix notation
-and do Gauss's Method.
+we start by getting echelon form.
 \begin{equation*}\hspace*{-2em}
   \grstep{-1\rho_1+\rho_2}
   \begin{amat}{4}
@@ -148,7 +147,7 @@ and do Gauss's Method.
     0  &0   &5/2  &1/2  &-1/2  
   \end{amat}                         
 \end{equation*}
-We can combine the operations turning the leading entries to $1$. 
+We turn the leading entries to $1$'s. 
 \begin{equation*}
   \grstep[(2/5)\rho_3]{(1/2)\rho_2}
   \begin{amat}{4}
@@ -239,8 +238,8 @@ gives the parametrized description of the solution set.
   \ExecuteMetaData[../gr3.tex]{pf:ReducesToIsEqRel2}
   \qed}{%
   The book has the full proof.  
-  For the basic idea, consider
-  this Gauss's Method application.
+  For the intuition, consider
+  this Gauss's method application.
   \begin{equation*}
       \begin{mat}[r]
         1  &2  &-1  \\
@@ -252,11 +251,11 @@ gives the parametrized description of the solution set.
         0  &0  &-3    
       \end{mat}
   \end{equation*}
-  While our initial experience applying Gauss's Method leads
+  While our experience with Gauss's method leads
   us to feel that the second matrix in some way ``comes after'' the first, 
-  in fact the two are inter-reducible.
+  in fact the two are interreducible.
   Here are some other $\nbym{2}{3}$ matrices
-  that are inter-reducible with those two.
+  that are interreducible with those two.
   \begin{equation*}
     \begin{mat}[r]
         1  &2  &-1  \\
@@ -273,8 +272,8 @@ gives the parametrized description of the solution set.
         3  &6  &-6    
       \end{mat}    
   \end{equation*} 
-  In general, the collection of all matrices breaks into
-  classes of inter-reducible matrices.
+  % In general, the collection of all matrices breaks into
+  % classes where inside any class any two matrices are interreducible.
 }
 \end{frame}
 
@@ -343,7 +342,7 @@ The steps take us through these row combinations.
   \end{array}\right)                      
 \end{eqnarray*}
 \pause
-Gauss's method systemmatically develops linear combinations of rows.
+So: Gauss's method acts by taking linear combinations of rows.
 \end{frame}
 
 
@@ -377,8 +376,9 @@ Gauss's method systemmatically develops linear combinations of rows.
 }{
 
   \bigskip
-  The book contains the full proof, which is based on the
-  example above showing how Gauss's Method acts.
+  This states formally what is illustrated in the example showing
+  how Gauss's method acts.
+  The book contains the proof.
 }
 \end{frame}
 \iftoggle{showallproofs}{
@@ -395,21 +395,63 @@ Gauss's method systemmatically develops linear combinations of rows.
 \lm[le:EchFormNoLinCombo]
 \ExecuteMetaData[../gr3.tex]{lm:EchFormNoLinCombo}
 \pause
+\iftoggle{showallproofs}{
 \pf 
 \ExecuteMetaData[../gr3.tex]{pf:EchFormNoLinCombo0}
-\end{frame}\begin{frame}
+}{%
+
+\bigskip
+The book contains the full proof.  
+This matrix illustrates.
+\begin{equation*}
+  \begin{mat}
+    1 &2 &3 &4 \\
+    0 &5 &6 &7 \\
+    0 &0 &0 &8
+  \end{mat}
+\end{equation*}
+Consider writing the second row as a combination of the others.
+\begin{equation*}
+  \colvec{0 &5 &6 &7}=c_1\cdot\rowvec{1 &2 &3 &4} + c_3\cdot\rowvec{0 &0 &0 &8}
+\end{equation*} 
+We start by looking at the first row.
+With the matrix in echelon form, 
+the second row's leading entry~$5$ lies to the right of the 
+first row's~$1$.
+The equation of entries in $1$'s column, the first column,
+gives that $c_1=0$.
+\begin{equation*}
+  0 = c_1\cdot 1 + c_3\cdot 0
+\end{equation*}
+
+Now for the third row.
+Again because of echelon from, the third row's 
+leading entry lies to the right of the~$5$.
+The equation of entries in the~$5$'s column
+gives an impossibility.
+\begin{equation*}
+  5 = c_3\cdot 0
+\end{equation*}
+}
+\end{frame}
+
+\iftoggle{showallproofs}{
+\begin{frame}
 \ExecuteMetaData[../gr3.tex]{pf:EchFormNoLinCombo1}
 
 \pause
 \ExecuteMetaData[../gr3.tex]{pf:EchFormNoLinCombo2}
 \qed
-\end{frame}
+\end{frame}}{}
 
 
 
 
 % ..........
 \begin{frame}
+Summarizing the prior two lemmas:
+Gauss's method takes linear combinations of the rows, 
+systematically eliminating any linear relationship among those rows. 
 \ex
 In this non-echelon form matrix 
 the third row is the sum of the first and second.
@@ -421,7 +463,7 @@ the third row is the sum of the first and second.
   \end{mat}
 \end{equation*}
 \pause
-But after Gauss's Method
+But after Gauss's method
 \begin{equation*}
   \grstep[-3\rho_1+\rho_3]{-2\rho_1+\rho_3}
   \begin{mat}[r]
@@ -438,13 +480,13 @@ But after Gauss's Method
 \end{equation*}
 the only linear relationship among the nonzero rows
 \begin{equation*}
-  \zero=c_1\rowvec{1 &-1 &3} 
-        +c_2\rowvec{0 &2 &-2}
+  c_1\cdot\rowvec{1 &-1 &3} 
+        =c_2\cdot\rowvec{0 &2 &-2}
 \end{equation*}
-is the trivial relationship,
-since the equation of first entries $0=c_1\cdot 1$ gives that
+is the trivial relationship $c_1=c_2=0$,
+since the equation of first entries gives that
 $c_1=0$ and then the equation of second entries
-$0=0\cdot (-1)+c_2\cdot 2$ gives $c_2=0$.
+gives $c_2=0$.
 \end{frame}
 
 
@@ -469,6 +511,44 @@ $0=0\cdot (-1)+c_2\cdot 2$ gives $c_2=0$.
 
   \bigskip
   The book contains the full proof.
+  \ex This Gauss-Jordan reduction shows that the matrix
+  is row equivalent to that reduced echelon form matrix.
+  \begin{equation*}
+    \begin{mat}
+      1 &2 &1 \\
+      2 &4 &0 \\
+      3 &6 &1
+    \end{mat}
+    \grstep[-3\rho_1+\rho_3]{-2\rho_1+\rho_2}
+    \grstep{-\rho_2+\rho_3}
+    \grstep{(1/2)\rho_2}
+    \grstep{-\rho_2+\rho_1}
+    \begin{mat}
+      1 &2 &0 \\
+      0 &0 &1 \\
+      0 &0 &0
+    \end{mat}
+  \end{equation*}
+  By the theorem, it is not row equivalent to any of these.
+  \begin{equation*}
+    \begin{mat}
+      1 &0 &0 \\
+      0 &1 &0 \\
+      0 &0 &1
+    \end{mat}
+    \quad
+    \begin{mat}
+      1 &0 &0 \\
+      0 &1 &1 \\
+      0 &0 &0
+    \end{mat}
+    \quad
+    \begin{mat}
+      1 &3 &0 \\
+      0 &0 &1 \\
+      0 &0 &0
+    \end{mat}
+  \end{equation*}
 }
 \end{frame}
 \iftoggle{showallproofs}{

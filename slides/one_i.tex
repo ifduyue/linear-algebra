@@ -114,7 +114,7 @@ we transform it to one whose solution is easy.
 \pause Next use the first row to act on the rows below, 
 eliminating their $x$~terms.
 \begin{eqnarray*}
-  &\grstep[-2\rho_1+\rho_3]{-1\rho_1+\rho_2}
+  &\grstep[-2\rho_1+\rho_3]{-\rho_1+\rho_2}
   &\begin{linsys}{3}
         x  &+  &4y   &-  &4z  &=  &0  \\
            &   &     &+  &6z  &=  &12  \\
@@ -199,7 +199,7 @@ The unique solution is $(1,0,2,-1)$.
 \iftoggle{showallproofs}{
 }{
 
-  See the book for the proof.
+  The proof is in the book.
 }
 
 \df[df:GaussMethod]
@@ -236,7 +236,7 @@ This system has no solution.
        2x  &+  &3y &+  &2z &=  &13  
   \end{linsys}    
 \end{equation*}
-On the left side of the equals sign
+On the left 
 the sum of the first two rows equals the third row,
 while on the right that is not so.
 So there is no triple of reals that makes all three 
@@ -266,23 +266,6 @@ Gauss' Method makes the inconsistency clear.
 \begin{frame}
 \ex
 This system has infinitely many solutions.
-\begin{equation*}
-  \begin{linsys}{3}
-        x  &-  &y  &+  &z  &=  &4  \\
-        x  &+  &y  &-  &2z &=  &-1   
-  \end{linsys} 
-  \grstep{-\rho_1+\rho_2}   
-  \begin{linsys}{3}
-        x  &-  &y  &+  &z  &=  &4  \\
-           &   &2y &-  &3z &=  &-5   
-  \end{linsys} 
-\end{equation*}
-Taking $z=0$ gives the solution $(3/2,-5/2,0)$.
-Taking $z=-1$ gives $(1,-4,-1)$.
-
-\pause
-\ex
-Another system with infinitely many solutions.
 \begin{eqnarray*}
   \begin{linsys}{3}
         -x   &-  &y  &+  &3z  &=  &3  \\
@@ -304,6 +287,26 @@ Another system with infinitely many solutions.
 \end{eqnarray*}
 Taking $z=0$ gives $(3,-6,0)$ while
 taking $z=1$ gives $(2,-2,1)$.
+
+
+\pause
+\ex
+It is not the `$0=0$' that counts.
+This also has infinitely many solutions.
+\begin{equation*}
+  \begin{linsys}{3}
+        x  &-  &y  &+  &z  &=  &4  \\
+        x  &+  &y  &-  &2z &=  &-1   
+  \end{linsys} 
+  \grstep{-\rho_1+\rho_2}   
+  \begin{linsys}{3}
+        x  &-  &y  &+  &z  &=  &4  \\
+           &   &2y &-  &3z &=  &-5   
+  \end{linsys} 
+\end{equation*}
+Taking $z=0$ gives the solution $(3/2,-5/2,0)$.
+Taking $z=-1$ gives $(1,-4,-1)$.
+
 \end{frame}
 
 
@@ -338,7 +341,6 @@ We want to describe the solution set.
 \pause
 Use the second row to express $y$ in terms of~$z$ as 
 $y=-6+4z$. 
-
 \pause 
 Now substitute into the first row $-x-(-6+4z)+3z=3$
 to 
@@ -346,7 +348,7 @@ express $x$ also in terms of~$z$ with
 $x=3-z$.
 
 This description of the solution set is convenient.
-For instance, here we pick some $z$'s to
+Here we pick some $z$'s to
 show a few of the infinitely many solutions.
 \begin{center} \renewcommand{\arraystretch}{1.2}
   \begin{tabular}{r|cccc}
@@ -355,7 +357,7 @@ show a few of the infinitely many solutions.
    solution $(x,y,z)$  &$(3,-6,0)$ &$(2,-2,1)$ &$(1,2,2)$  &$(3.5,-8,-0.5)$
   \end{tabular}
 \end{center}
-Another example of the convenience is that we can tell
+Also, we can tell
 that $(1,6,3)$ is not a solution without plugging it into the 
 equations because it does not satisfy $x=3-z$.
 \end{frame}
@@ -367,7 +369,7 @@ equations because it does not satisfy $x=3-z$.
 \ExecuteMetaData[../gr1.tex]{df:FreeVars}
 \hspace*{-1em}\ExecuteMetaData[../gr1.tex]{df:Parameter}
 
-We shall routinely parametrize linear systems using the free variables.
+We shall routinely parametrize linear systems with the free variables.
 \end{frame}
 
 
@@ -480,7 +482,7 @@ The entry in row~$2$ and column~$1$ is
 \ExecuteMetaData[../gr1.tex]{df:vector}
 
 \pause
-We denote a vector with an over-arrow 
+We denote vectors with an over-arrow 
 (many authors use boldface).
 \ex
 This column vector has three components.
@@ -522,7 +524,7 @@ the two-component zero vector.
 % ..........
 \begin{frame}{Matrix notation for linear systems}
 \ex
-We can simplify the clerical load in reducing this system
+We can reduce the clerical load in solving this system
 \begin{equation*}
   \begin{linsys}{3}
        -3x   &   &   &+  &2z  &=  &-1  \\
@@ -558,7 +560,7 @@ $-3x+2z=-1$ and $-2y+(8/3)z=-2$.
 
 % ..........
 \begin{frame}
-Parametrizing
+\noindent Parametrizing
 $-3x+2z=-1$ and $-2y+(8/3)z=-2$
 gives this.
 \begin{align*}
@@ -574,19 +576,20 @@ We can write the solution set in vector notation.
                  \suchthat z\in\Re}
 \end{equation*}
 \pause
-Again, this description helps us inderstand the set of solutions.
+This description helps us understand the set of solutions.
 For instance, each value of $z$ gives a different solution.
-\begin{center} \renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{c|cccc}
-    $z$                    &$0$  &$1$  &$2$  &$-1/2$ \\
+\begin{center}\renewcommand{\arraystretch}{1.2}%
+  \begin{tabular}{r|cccc}
+    $z$\,                    &$0$  &$1$  &$2$  &$-1/2$ \\
     \cline{2-5}
-    $\colvec{x \\ y \\ z}$ &$\colvec{1/3 \\ 1 \\ 0}$ 
+    solution $\colvec{x \\ y \\ z}$ &$\colvec{1/3 \\ 1 \\ 0}$ 
                            &$\colvec{1 \\ 7/3 \\ 1}$
                            &$\colvec{5/3 \\ 11/3 \\ 2}$
                            &$\colvec{0 \\ 1/3 \\ -1/2}$
+    \setbox0=\hbox{$\colvec{1 \\ 7/3 \\ 1}$}
+      \rule{0em}{1.1\ht0}
   \end{tabular}
 \end{center}
-
 \end{frame}
 
 
@@ -613,7 +616,7 @@ using the augmented matrix notation
       0  &-5 &0   &1  &1  
     \end{amat}
 \end{eqnarray*}
-gives this vector description of the solution set.
+leads to this vector description of the solution set.
 \begin{equation*}
   \set{\colvec{12/5 \\ -1/5 \\ 0 \\ 0}
        +\colvec{1 \\ 0 \\ 1 \\ 0}z
@@ -646,7 +649,7 @@ has solutions of this form.
        +\colvec{1 \\ 0 \\ 1 \\ 0}z
        +\colvec{-2/5 \\ 1/5 \\ 0 \\ 1}w
    \qquad
-   \text{for $z,w\in\Re$}
+   z,w\in\Re
 \end{equation*}
 Taking $z=w=0$ shows that the first vector is a particular solution of the
 system.
@@ -671,9 +674,15 @@ system.
 \ExecuteMetaData[../gr1.tex]{df:HomogeneousEquation}
 
 \ex
-From the above system we get this associated system
-of homogeneous equations 
-by changing the constants to $0$'s.
+From the prior system 
+\begin{equation*}
+  \begin{linsys}{4}
+    x &+  &2y  &- &z  &  &  &= &2 \\
+   2x &-  &y   &- &2z &+ &w &= &5
+  \end{linsys}
+\end{equation*}
+we get this associated system
+of homogeneous equations.
 \begin{equation*}
   \begin{linsys}{4}
     x &+  &2y  &- &z  &  &  &= &0 \\
@@ -693,14 +702,13 @@ The same Gauss's Method steps reduce it to echelon form.
     \end{amat}
 \end{equation*}
 The vector description of the solution set
+is like the earlier one but the zero vector is a particular solution.
 \begin{equation*}
   \set{
        \colvec{1 \\ 0 \\ 1 \\ 0}z
        +\colvec{-2/5 \\ 1/5 \\ 0 \\ 1}w
       \suchthat z,w\in\Re}
 \end{equation*}
-is the same as earlier but with a particular solution that is the
-zero vector.
 \end{frame}
 
 
@@ -712,7 +720,7 @@ zero vector.
 \ex
 \iftoggle{showallproofs}{Before the proof,
 }{%
-  The book has the full proof.  For the central idea%
+  The book has the proof.  For the main idea%
 }
 consider this system of homogeneous equations.
 \begin{equation*}
@@ -724,19 +732,19 @@ consider this system of homogeneous equations.
 Using the bottom equation, express the leading variable $y$ in terms of the
 free variables 
 $y=z-w$.
-Next, move up, substitute 
-$x+(z-w)+z+w=0$, and solve for the leading variable
+Next substitute 
+$x+(z-w)+z+w=0$ and solve for the leading variable
 $x=-2z$.
 \pause
 Finish by describing the solution in vector notation.
 \begin{equation*}
   \colvec{x \\ y \\ z \\ w}
-    =\colvec{-2 \\ 1 \\ 1 \\ 0}z
-     +\colvec{0 \\ -1 \\ 0 \\ 1}w
-    \qquad \text{for $z,w\in\Re$}
+    =z\colvec{-2 \\ 1 \\ 1 \\ 0}
+     +w\colvec{0 \\ -1 \\ 0 \\ 1}
+    \qquad z,w\in\Re
 \end{equation*}
-and recognize the vectors associated
-with $z$ and~$w$ as $\vec{\beta}_1$ and $\vec{\beta}_2$.
+and recognize the two vectors as the lemma's
+$\vec{\beta}_1$ and $\vec{\beta}_2$.
 \end{frame}
 
 
@@ -793,8 +801,8 @@ This restates the prior two lemmas.\qed
   \qed
 }{
 
-  \bigskip
-  The book contains the full proof.
+  % \bigskip
+  % The book contains the full proof.
 }
 \end{frame}
 
