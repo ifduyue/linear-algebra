@@ -114,8 +114,8 @@ of the equations.
 
 \begin{example}
 The combination \( 3x_1 + 2x_2 \) of $x_1$ and $x_2$ is linear.
-The combination \( 3x_1^2 + 2\sin(x_2) \) is not a linear function of
-$x_1,x_2$, nor is \( 3x_1^2 + 2x_2 \).  
+The combination \( 3x_1^2 + 2x_2 \) is not a linear function of
+$x_1$ and $x_2$, nor is \( 3x_1 + 2\sin(x_2) \).  
 \end{example}
 
 We often assume that $x_1$, \ldots, $x_n$ are different because in a
@@ -236,15 +236,15 @@ then the two systems have the same set of solutions.
 %</th:GaussMethod>
 \end{theorem}
 
-Each of the three Gauss's Method operations has a restriction.
+Each of the three operations has a restriction.
 Multiplying a row by~\( 0 \) is not allowed because obviously that
 can change the solution set.
 Similarly, adding a multiple of a row to itself is not allowed because
 adding~\( -1 \) times the row to itself has the effect of multiplying the row
 by~\( 0 \).
-We disallow swapping a row with itself
-to make some results in the fourth chapter easier,
-and also because it's pointless.
+And we disallow swapping a row with itself,
+to make some results in the fourth chapter easier.
+Besides, it's pointless.
 
 \begin{proof}
 We will cover the equation swap operation here. 
@@ -316,7 +316,7 @@ For instance, we will denote a row combination operation by
 \( k\rho_i+\rho_j \), 
 with the row that changes written second.
 To save writing we will 
-often combine addition steps when they use the same $\rho_i$ as in the
+often combine addition steps when they use the same $\rho_i$, as in the
 next example.
 
 \begin{example}
@@ -1923,10 +1923,9 @@ The second equation gives
 $y=(1/2)-(3/2)z$ 
 and the first equation gives
 $x=(3/2)-(1/2)z$.
-Thus we can describe the solution set in this way.   
+Thus we can describe the solution set as this set of triples.   
 \begin{equation*}
-  \set{ (x,y,z)=
-       ((3/2)-(1/2)z,(1/2)-(3/2)z,z)\suchthat z\in\Re}
+  \set{((3/2)-(1/2)z,\,(1/2)-(3/2)z,\,z)\suchthat z\in\Re}
   \tag{$**$}
 \end{equation*}
 \end{example}
@@ -1983,7 +1982,7 @@ The solution set
    \set{(2-2z+2w,-1+z-w,z,w)\suchthat z,w\in\Re}
   \tag{$**$}
 \end{equation*}
-has the leading variables in terms of the variables that are free.
+has the leading variables expressed in terms of the variables that are free.
 \end{example}
 
 \begin{example}    \label{ex:Parametrize1}
@@ -2028,16 +2027,16 @@ We say that the solution set in the prior example
 is \definend{parametrized\/}\index{parametrized} 
 with $y$ and $w$.
 
-(The terms `parameter' and `free variable' do not mean the same thing.
+The terms `parameter' and `free variable' do not mean the same thing.
 In the prior example
 $y$ and~$w$ are free because in the echelon form system they
-do not lead while
-they are parameters because of how 
+do not lead. 
+They are parameters because 
 we used them to describe the set of solutions.
 Had we instead 
 rewritten the second equation as $w=2/3-(1/3)z$ then
 the free variables would still be $y$ and~$w$ but the parameters 
-would be $y$ and~$z$.)
+would be $y$ and~$z$.
 
 In the rest of this book 
 we will solve linear systems by bringing them to
@@ -2067,7 +2066,7 @@ This is another system with infinitely many solutions.
 The leading variables are \( x \), \( y \), and \( w \).
 The variable \( z \) is free.
 Notice that, although there are infinitely many 
-solutions, the value of $w$ doesn't vary but is constant at $-1$.
+solutions, the value of $w$ doesn't vary but is constant $w=-1$.
 To parametrize, write \( w \) in terms of \( z \) with \( w=-1+0z \).
 Then \( y=(1/4)z \).
 Substitute for \( y \) in the first 
@@ -2107,34 +2106,33 @@ For instance,
 has $2$~rows and $3$~columns and so
 is a \( \nbym{2}{3} \) matrix.
 Read that aloud as ``two-by-three'';
-the number of rows is always given first.
-(The matrix has parentheses on either side
+the number of rows is always stated first.
+(The matrix has parentheses around it
 so that when 
 two matrices are adjacent
 we can tell where one ends and the other begins.)
-We name matrix entries with the corresponding lower-case letter
-so that \( a_{2,1}=3 \) is the entry in the second row and first column 
-of the above array.
+We name matrix entries with the corresponding lower-case letter,
+so that the entry in the second row and first column 
+of the above array is \( a_{2,1}=3 \).
 Note that the order of the subscripts matters: 
 $a_{1,2}\neq a_{2,1}$ since \( a_{1,2}=2.2 \). 
-% Matrices occur throughout this book.
 We denote
 the set of all \( \nbym{n}{m} \)
-matrices by \( \matspace_{\nbym{n}{m}} \).\index{matrices, set of}
+matrices by \( \matspace_{\nbym{n}{m}} \).\index{matrices|set of}
 
-We use matrices to do Gauss's Method in essentially the same
+We do Gauss's Method using matrices in essentially the same
 way that we did it for systems of equations:
-where a row's
+a matrix row's
 \definend{leading entry}\index{echelon form!leading entry}%
 \index{leading!entry} % 
-is its first nonzero entry (if it has one),
+is its first nonzero entry (if it has one) and
 we perform row operations to arrive at 
 \definend{matrix echelon form},\index{echelon form!matrix}%
-\index{matrix!echelon form}%
+\index{matrix!echelon form} %
 where the leading entry in lower rows are to the right of those in 
 the rows above.
-We switch to this notation because it lightens
-the clerical load of Gauss's Method\Dash the copying of variables and the
+We like matrix notation because it lightens
+the clerical load, the copying of variables and the
 writing of $+$'s and $=$'s. 
 
 \begin{example}
@@ -2201,7 +2199,7 @@ We write them vertically, in one-column matrices.
 For instance, the top line says that \( x=2-2z+2w \)
 and the second line says that \( y= -1+z-w \).
 (Our next section gives a geometric interpretation that will help 
-picture the solution sets.)
+us picture the solution sets.)
 
 \begin{definition}\label{df:vector}
 %<*df:vector>
@@ -2211,7 +2209,7 @@ often just called a \definend{vector},\index{vector}
 is a matrix with a single column.
 A matrix with a single row is a
 \definend{row vector}\index{row!vector}\index{vector!row}.
-The entries of a vector are its
+The entries of a vector are sometimes called
 \definend{components}\index{component of a vector}\index{vector!component}.
 A column or row vector whose components are all zeros is a 
 \definend{zero vector}.\index{zero vector}\index{vector!zero}
@@ -2300,9 +2298,9 @@ operation extends beyond vectors to apply to any
 matrix.\index{matrix!scalar multiplication}\index{scalar multiplication!matrix}
 
 We write scalar multiplication either as \( r\cdot\vec{v} \) or
-\( \vec{v}\cdot r \), or even without the `$\cdot$' symbol:~$r\vec{v}$.
+\( \vec{v}\cdot r \), and soemtimes even omit the `$\cdot$' symbol:~$r\vec{v}$.
 (Do not refer to scalar multiplication 
-as `scalar product' because we will use that name for a different operation.)
+as `scalar product' because that name is for a different operation.)
 
 \begin{example}
 \begin{equation*}
@@ -2422,7 +2420,6 @@ is a particular solution of the system.
 
 Before the exercises, we will consider what we have accomplished  
 and what we will do in the remainder of the chapter.
-
 So far we have done the mechanics of Gauss's Method.
 We have not stopped to consider any of the questions
 that arise,
@@ -2434,8 +2431,8 @@ For example, can we
 always describe solution sets as above, with
 a particular solution vector added to an unrestricted linear combination of 
 some other vectors?
-We've noted that the solution sets we described in this way 
-have infinitely many solutions
+We've noted that the solution sets described in this way 
+have infinitely many members
 so answering this question
 would tell us about the size of solution sets.
 The following subsection shows that the answer is ``yes.''
@@ -2444,7 +2441,7 @@ uses that answer to describe the geometry of solution sets.
 
 Other questions arise from the observation that we can do Gauss's Method in 
 more than one way (for instance, when swapping rows we may have a choice of 
-more than one row).
+rows to swap with).
 \nearbytheorem{th:GaussMethod} says that we must get the same solution set
 no matter how we proceed but
 if we do Gauss's Method in two ways
@@ -3555,20 +3552,20 @@ The solution set from
 \end{equation*}
 The combination is unrestricted in that 
 $w$ and $u$ can be any real numbers\Dash there
-is no condition like ``such that $2w-u=0$'' to restrict 
+is no condition like ``such that $2w-u=0\mspace{1mu}$'' to restrict 
 which pairs $w,u$ we can use.
 
 That example shows an infinite solution set fitting the pattern.
 The other two kinds of solution sets also fit.
 A one-element solution set fits because it 
-has a particular solution,
+has a particular solution
 and the unrestricted combination part is trivial. 
-(That is, instead of being a combination of two vectors or
+That is, instead of being a combination of two vectors or
 of one vector, it is a combination of no vectors.
-By convention the sum of an empty set of vectors
+(By convention the sum of an empty set of vectors
 is the zero vector.)
 An empty solution set fits the pattern because there is no 
-particular solution and thus there are no sums of that form at all.
+particular solution and thus there are no sums of that form.
 
 \begin{theorem} \label{th:GenEqPartPlusHomo}
 %<*th:GenEqPartPlusHomo>
@@ -3717,13 +3714,9 @@ The solution set
   \set{\colvec[r]{1/3 \\ 1 \\ 1/3 \\ 1}w \suchthat w\in\Re}
 \end{equation*}
 has many vectors besides the zero vector
-(if we interpret \( w \) as a number of molecules then solutions
+(if we take \( w \) to be a number of molecules then solutions
 make sense only when \( w \) is a nonnegative multiple of $3$).
 \end{example}
-
-% We now have the terminology to prove the two parts of 
-% \nearbytheorem{th:GenEqPartPlusHomo}.
-% The first lemma deals with unrestricted combinations.
 
 \begin{lemma} \label{le:HomoSltnSpanVecs}
 %<*le:HomoSltnSpanVecs>
@@ -4241,7 +4234,7 @@ with the same number of variables as equations will have a unique solution.
 Thus, we can think of the word as connoting 
 ``troublesome,'' or at least ``not ideal.''
 (That `singular' applies to those systems that never have exactly one solution 
-is ironic, but it is the standard term.)
+is ironic but it is the standard term.)
 
 \begin{example}
 The systems from \nearbyexample{ex:FirstExHomoSys},
