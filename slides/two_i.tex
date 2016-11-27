@@ -107,149 +107,235 @@ and all \definend{scalars}
 % ..........
 \begin{frame}
 \ex
-Consider the set of row vectors
-consisting of all multiples of $\rowvec{1 &2}$.
+Consider the line with slope~$2$ that passes through the origin in the plane.
+\begin{center}
+  \includegraphics{asy/two_i_line_slope_two.pdf}    
+\end{center}
+It is a set consisting of vectors.
 \begin{equation*}
-  V=\set{\rowvec{a  &2a}\suchthat a\in\Re}
+  V=\set{\colvec{x  \\ y}\in\R^2\suchthat y=2x}
 \end{equation*}
-Some members of $V$ are $\rowvec{4 &8}$, $\rowvec{1/2 &1}$,
-$\rowvec{-100 &-200}$, and $\rowvec{0 &0}$.
+It has infinitely many elements; here are some of them.
+\begin{equation*}
+  \colvec{4 \\ 8} 
+  \quad
+  \colvec{1/2 \\ 1}
+  \quad
+  \colvec{-100 \\ -200}
+  \quad
+  \colvec{0 \\ 0}
+\end{equation*}
+We will show that this set is a vector space under 
+the usual operations of vector addition and scalar multiplication.
+\end{frame}
+
+\begin{frame}
+To show that it is a vector space we will verify conditions (1)-(10) above. 
 
 \pause
-This $V$
-is a vector space under the natural addition
+Before we go through those details, we pause for some intuition.
+A vector space is a place where linear combinations can happen.
+For instance, this linear combination of vectors from $V$
 \begin{equation*}
-  \rowvec{a_1 &2a_1}+\rowvec{a_2 &2a_2}
+  3\cdot\colvec{4 \\ 8} 
+  +
+  6\cdot\colvec{1/2 \\ 1}
+  -
+  (1/10)\cdot\colvec{-100 \\ -200}
+  +
+  \colvec{0 \\ 0}
   =
-  \rowvec{a_1+a_2 &2a_1+2a_2}
+  \colvec{5 \\ 10}
+  \tag{$*$}
 \end{equation*}
+totals to a member of~$V$.
+
+To say ``linear combinations can happen'' requires that there be 
+an addition operation, and a scalar multiplication.
+To say that an operation is an addition the definition 
+requires that it satisfy some 
+conditions, such as commutativity, and similarly we have some conditions
+on scalar multiplication.
+
+But the key conditions, as we illustrated in ($*$) above, are the closure
+conditions: when you take a combintation of vectors from the space then
+you must get as a total another vector from the space.  
+\end{frame}
+
+\begin{frame}
+Now we will verify that $V$
+is a vector space under the natural addition
 and scalar multiplication operations.
 \begin{equation*}
-  r\rowvec{a_1 &2a_1}
+  \colvec{x_1  \\ y_1}+\colvec{x_2  \\ y_2}
   =
-  \rowvec{ra_1 &2ra_1}
+  \colvec{x_1+x_2 \\ y_1+y_2}
+  \qquad
+  r\cdot\colvec{x \\ y}
+  =
+  \colvec{rx  \\ ry}
 \end{equation*}
 To verify that, we will check each of the ten conditions.
 Because this is the first time through the definition,
 we will verify these at length.
 \end{frame}\begin{frame}
-We first check closure under addition~(1),
+We first check Condition~(1), closure under addition,
 that the sum of two members of $V$
 is also a member of $V$.
-Take $\vec{v}$ and  $\vec{w}$ to be members of $V$.
+
+Take two vectors
 \begin{equation*}
-  \vec{v}=\rowvec{v_1 &2v_1}
-  \qquad
-  \vec{w}=\rowvec{w_1 &2w_1}  
+  \vec{v}_1=\colvec{x_1 \\ y_1}
+  \quad
+  \vec{v}_2=\colvec{x_2  \\ y_2}  
+  \quad\text{such that }
 \end{equation*}
+that are members of~$V$, that is, are subject to the requirement 
+that the second component is
+twice the first: $y_1=2x_1$ and~$y_2=2x_2$.
 Then their sum
 \begin{equation*}
-  \vec{v}+\vec{w}=
-  \rowvec{v_1+w_1 &2v_1+2w_1}
+  \vec{v}_1+\vec{v}_2=
+  \colvec{x_1+x_2 \\ y_1+y_2}
 \end{equation*} 
-is also a member of $V$ because its second entry is twice its first.
+is also a member of $V$ because it meets the same requirement:
+$y_1+y_2=2x_1+2x_2=2(x_1+x_2)$.
+\end{frame}
+\begin{frame}
+Condition~(2), commutativity of addition, is also straightforward.
+Again we take two vectors
+\begin{equation*}
+  \vec{v}_1=\colvec{x_1 \\ y_1}
+  \quad
+  \vec{v}_2=\colvec{x_2  \\ y_2}  
+  \quad\text{such that }
+\end{equation*}
+subject to $y_1=2x_1$ and~$y_2=2x_2$.
 
-\pause
-Condition~(2), commutativity of addition, is straightforward.
 The sums in the two orders are
 \begin{equation*}
-  \vec{v}+\vec{w}=\rowvec{v_1+w_1 &2(v_1+w_1)}
+  \vec{v}_1+\vec{v}_2=\colvec{x_1+x_2 \\ y_1+y_2}
 \end{equation*}
 and
 \begin{equation*}
-  \vec{w}+\vec{v}
+  \vec{v}_2+\vec{v}_1
   =
-  \rowvec{w_1+v_1 &2(w_1+v_1)}  
+  \colvec{x_2+x_1 \\ y_2+y_1}  
 \end{equation*}
 and the two are equal because 
-$v_1+w_1$ equals $w_1+v_1$, as both are sums of real numbers
+$x_1+x_2=x_2+x_1$ and $y_1+y_2=y_2+y_1$, as those are sums of real numbers
 and real number addition is commutative.
+
+\re For some of the conditions, including this one, 
+we don't refer to the $y=2x$ requirement.
+We'll say more about this in the next section.
 \end{frame}\begin{frame}
 Condition~(3), associativity of addition, is like the prior one.
 The left side is 
 \begin{equation*}
-  (\vec{v}+\vec{w})+\vec{u}=\rowvec{(v_1+w_1)+u_1 &(2v_1+2w_1)+2u_1}
+  (\vec{v}_1+\vec{v}_2)+\vec{v}_3=\colvec{(x_1+x_2)+x_3 \\ (y_1+y_2)+y_3}
 \end{equation*}
-while the right side is this.
+while the right side is  
 \begin{equation*}
-  \vec{v}+(\vec{w}+\vec{u})
-  =
-  \rowvec{v_1+(w_1+u_1) &2v_1+(2w_1+2u_1)}  
+  \vec{v}_1+(\vec{v}_2+\vec{v}_3)=\colvec{x_1+(x_2+x_3) \\ y_1+(y_2+y_3)}
 \end{equation*}
-The two are equal because real number addition is associative 
-$(v_1+w_1)+u_1=v_1+(w_1+u_1)$.
+and the two are equal, since the entries are real numbers.
 
 \pause
 For condition~(4) we can just exhibit the member of $V$ with the desired 
 property. 
-So consider $\zero=\rowvec{0 &0}$.
-It is a member of $V$ since its second component is twice its first.
-Note that it is the required identity element with respect to addition. 
-\begin{align*}
+\begin{equation*}
+  \zero=\colvec{0 \\ 0}
+\end{equation*}
+This is a member of $V$ since its second component is twice its first.
+It is the identity element with respect to addition. 
+\begin{equation*}
   \vec{v}+\zero
-  &=\rowvec{v_1 &2v_1}+\rowvec{0  &0}     \\
-  &=\rowvec{v_1 &2v_1}    \\
-  &=\vec{v}
-\end{align*}
+  =\colvec{x+0 \\ y+0}
+  =\vec{v}
+\end{equation*}
 \end{frame}\begin{frame}
 Condition~(5), existence of an additive inverse, is also a matter of 
 producing the desired element.
-Given a member $\vec{v}=\rowvec{v_1 &2v_1}$ of $V$, consider
-$\vec{w}=\rowvec{-v_1 &-2v_1}$.
-Then $\vec{w}\in V$, and note that it cancels $\vec{v}$.
+Given a member $\vec{v}\in V$
 \begin{equation*}
-  \vec{w}+\vec{v}=\rowvec{-v_1 &-2v_1}+\rowvec{v_1 &2v_1}=\zero
+  \vec{v}=\colvec{x \\ y}
+  \quad 
+  \text{such that $y=2x$}
 \end{equation*}
-
-\pause
-We finish by verifying the five conditions having to do with scalar multiplication.
-
+then consider this vector $\vec{w}\in \R^2$.
+\begin{equation*}
+  \vec{w}=\colvec{-x \\ -y}
+\end{equation*}
+Note that $\vec{w}\in V$ because $-y=2(-x)$ follows from $y=2x$.
+Note also that the two add to make the zero vector~$\vec{v}+\vec{w}=\zero$.
+\end{frame}
+\begin{frame}
+We finish by verifying the five conditions having to do with scalar 
+multiplication.
 
 Condition~(6) is closure under scalar multiplication.
-Consider a scalar $r\in\Re$ and a vector $\vec{v}=\rowvec{v_1 &2v_1}\in V$.
-The scalar multiple $r\vec{v}=\rowvec{rv_1 &r2v_1}$ is also a member
-of $V$ because the second component is twice the first.
+Consider a scalar $r\in\Re$ and a vector $\vec{v}\in V$.
+\begin{equation*}
+  \vec{v}=\colvec{x \\ y}
+\end{equation*}
+(such that $y=2x$).
+Then 
+\begin{equation*}
+  r\cdot\vec{v}=\colvec{rx \\ ry}
+\end{equation*}
+satisfies the requirement that the second component is twice the first
+$ry=2(rx)$, since that follows from $y=2x$. 
+Thus $r\vec{v}\in V$.
 
 \pause
 Condition~(7) is that 
 real number addition distributes over scalar multiplication.
-Let the scalars be $r,s\in\Re$, and 
-let the vector be $\vec{v}=\rowvec{v_1 &2v_1}\in V$.
-Here is the check.
-\begin{align*}
-  (r+s)\vec{v} &= \rowvec{(r+s)v_1 &(r+s)2v_1}               \\
-               &=\rowvec{rv_1 &2rv_1}+\rowvec{sv_1 &2sv_1}   \\
-               &=r\vec{v}+s\vec{v}
-\end{align*}
+Fix scalars $r,s\in\Re$, and a vector such that $y=2x$. 
+\begin{equation*}
+  \vec{v}=\colvec{x \\ y}
+\end{equation*}
+Then we have this.
+\begin{equation*}
+  (r+s)\cdot\vec{v}
+  =\colvec{(r+s)x \\ (r+s)y}
+  =\colvec{rx+sx \\ ry+sy}
+  =r\vec{v}+s\vec{v}
+\end{equation*}
+% (the second equality holds because these are real numbers).
 \end{frame}\begin{frame}
 For (8),
 distributivity of vector addition over scalar multiplication,
 take a scalar $r\in\Re$ and 
-two vectors $\vec{v},\vec{w}\in V$.
-\begin{align*}
-  r(\vec{v}+\vec{w}) &=\rowvec{rv_1 &2rv_1}+\rowvec{rw_1 &2rw_1}   \\
-                     &=\rowvec{rv_1+rw_1 &2rv_1+2rw_1}           \\
-                     &=r\rowvec{v_1 &2v_1}+r\rowvec{w_1 &2w_1}   \\
-                     &=r\vec{v}+r\vec{w}
-\end{align*}
+two vectors $\vec{v}_1,\vec{v}_2\in V$.
+\begin{equation*}
+  r(\vec{v}+\vec{w}) 
+  =\colvec{r(x_1+x_2) \\ r(y_1+y_2)}
+  =\colvec{rx_1+rx_2 \\ ry_1+ry_2}
+  =r\vec{v}+r\vec{w} 
+\end{equation*}
 
 \pause
-For condition~(9) suppose $r,s\in\Re$ and $\vec{v}=\rowvec{v_1 &2v_1}\in V$.
-The left side is $(rs)\rowvec{v_1 &2v_1}=\rowvec{(rs)v_1 &(rs)2v_1}$, while the
+For condition~(9) suppose $r,s\in\Re$ and $\vec{v}\in V$.
+The left side is 
+\begin{equation*}
+  (rs)\cdot\vec{v}=\colvec{(rs)x \\ (rs)y}
+\end{equation*}
+while the
 right side is 
-$r(s\rowvec{v_1 &2v_1})=r\rowvec{sv_1 &s2v_1}=\rowvec{r(sv_1) &r(s2v_1)}$.
-The two are equal because
-$(rs)v_1=r(sv_1)$ and $(rs)2v_1=r(s2v_1)$, 
-as those are real number multiplications.   
+\begin{equation*}
+  r\cdot(s\vec{v})=\colvec{r(sx) \\ r(sy)}
+\end{equation*}
+The two are equal because those are real number multiplications.   
 
 \pause
 Condition~(10) is simple:
-$1\vec{v}=1\rowvec{v_1 &2v_1}=\rowvec{1\cdot v_1 &1\cdot 2v_1}=\vec{v}$
-for any $\vec{v}\in V$.
+\begin{equation*}
+  1\cdot\vec{v}=\colvec{1\cdot x \\ 1\cdot y}=\vec{v}
+\end{equation*}
 
 \pause\medskip
-Therefore the set
-$V=\set{\rowvec{a  &2a}\suchthat a\in\Re}$
+The conclusion: $V$
 is a vector space under the natural addition and scalar multiplication 
 operations.
 \end{frame}
@@ -257,127 +343,127 @@ operations.
 
 
 
+% % ..........
+% \begin{frame}
+% \ex
+% The set $\Re^3$ is a vector space under the usual vector addition and
+% scalar multiplication operations.
+% \begin{equation*}
+%   \colvec{v_1 \\ v_2 \\ v_3}
+%   +\colvec{w_1 \\ w_2 \\ w_3}
+%   =\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
+%   \quad\text{and}\quad
+%   r\colvec{v_1 \\ v_2 \\ v_3}
+%   =\colvec{rv_1 \\ rv_2 \\ rv_3}
+% \end{equation*}
+% To verify that, we will check the conditions (more briefly than 
+% for the prior example).
+
+% \pause
+% Condition~(1) is closure under addition.
+% This is clear because the only condition for membership
+% in the set $\Re^3$ is to be a three-tall vector of reals, and the sum of
+% two three-tall vectors of reals is also a three-tall vector of reals.
+
+% \pause
+% Condition~(2) is routine.
+% \begin{equation*}
+%   \vec{v}+\vec{w}
+%   =
+%   \colvec{v_1 \\ v_2 \\ v_3}
+%   +\colvec{w_1 \\ w_2 \\ w_3}
+%   =\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
+%   =
+%   \colvec{w_1 \\ w_2 \\ w_3}
+%   +\colvec{v_1 \\ v_2 \\ v_3}
+%   =\vec{w}+\vec{v}
+% \end{equation*}
+% \end{frame}\begin{frame}
+% Condition~(3) is also a direct consequence of the related
+% real number property.
+% \begin{multline*}
+%   (\vec{v}+\vec{w})+\vec{u}
+%   =
+%   \colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
+%   +\colvec{u_1 \\ u_2 \\ u_3}
+%   =\colvec{v_1+w_1+u_1 \\ v_2+w_2+u_2 \\ v_3+w_3+u_3}        \\
+%   =
+%   \colvec{v_1 \\ v_2 \\ v_3}
+%   +\colvec{w_1+u_1 \\ w_2+u_2 \\ w_3+u_3}
+%   =\vec{v}+(\vec{w}+\vec{u})
+% \end{multline*}
+
+% \pause
+% For condition~(4) take the vector of $0$'s.
+% \begin{equation*}
+%   \colvec{0  \\ 0 \\ 0}+\colvec{v_1 \\ v_2 \\ v_3}=\colvec{v_1 \\ v_2 \\ v_3}
+% \end{equation*}
+% For condition~(5), given $\vec{v}\in\Re^3$, use  $\vec{w}=-1\vec{v}$
+% as the additive inverse.
+% \begin{equation*}
+%   \colvec{-v_1  \\ -v_2 \\ -v_3}+\colvec{v_1 \\ v_2 \\ v_3}=\colvec{0 \\ 0 \\ 0}
+% \end{equation*}
+% \end{frame}\begin{frame}
+% Condition~(6) is closure under scalar multiplication.
+% Let the scalar be $r\in\Re$ and the vector be $\vec{v}\in\Re^3$.
+% Then $r\vec{v}$ is a three-tall vector of reals, so $r\vec{v}\in\Re^3$.
+
+% \pause
+% Conditions~(7)
+% \begin{equation*}
+%   (r+s)\colvec{v_1 \\ v_2 \\ v_3}
+%   =\colvec{(r+s)v_1 \\ (r+s)v_2 \\ (r+s)v_3}
+%   =\colvec{rv_1+sv_1 \\ rv_2+sv_2 \\ rv_3+sv_3}
+%   =\colvec{rv_1 \\ rv_2 \\ rv_3}
+%   +\colvec{sv_1 \\ sv_2 \\ sv_3}
+%   =r\vec{v}+s\vec{v}  
+% \end{equation*}
+% and~(8)
+% \begin{equation*}
+%   r(\vec{v}+\vec{w})
+%   =r(\colvec{v_1 \\ v_2 \\ v_3}+\colvec{w_1 \\ w_2 \\ w_3})
+%   =r\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
+%   =\colvec{rv_1+rw_1 \\ rv_2+rw_2 \\ rv_3+rw_3}
+%   % =\colvec{rv_1 \\ rv_2 \\ rv_3}
+%   % +\colvec{rw_1 \\ rw_2 \\ rw_3}
+%   =r\vec{v}+r\vec{w}  
+% \end{equation*}
+% are straightforward.
+% \end{frame}\begin{frame}
+% Condition~(9) is similar.
+% \begin{equation*}
+%   (rs)\colvec{v_1 \\ v_2 \\ v_3}
+%   =\colvec{(rs)v_1 \\ (rs)v_2 \\ (rs)v_3}
+%   =r\colvec{sv_1 \\ sv_2 \\ sv_3}
+%   =r(s\vec{v})  
+% \end{equation*}
+% And~(10) is also easy.
+% \begin{equation*}
+%   1\vec{v}
+%   =1\colvec{v_1 \\ v_2 \\ v_3}
+%   =\colvec{1\cdot v_1 \\ 1\cdot v_2 \\ 1\cdot v_3}
+%   =\colvec{v_1 \\ v_2 \\ v_3}
+%   =\vec{v} 
+% \end{equation*}
+
+% \pause\medskip
+% So the set $\Re^3$ is a vector space under the usual operations
+% of vector addition and scalar-vector multiplication.
+% \end{frame}
+
+
+
+
 % ..........
 \begin{frame}
 \ex
-The set $\Re^3$ is a vector space under the usual vector addition and
-scalar multiplication operations.
+This plane through the origin 
 \begin{equation*}
-  \colvec{v_1 \\ v_2 \\ v_3}
-  +\colvec{w_1 \\ w_2 \\ w_3}
-  =\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
-  \quad\text{and}\quad
-  r\colvec{v_1 \\ v_2 \\ v_3}
-  =\colvec{rv_1 \\ rv_2 \\ rv_3}
-\end{equation*}
-To verify that, we will check the conditions (more briefly than 
-for the prior example).
-
-\pause
-Condition~(1) is closure under addition.
-This is clear because the only condition for membership
-in the set $\Re^3$ is to be a three-tall vector of reals, and the sum of
-two three-tall vectors of reals is also a three-tall vector of reals.
-
-\pause
-Condition~(2) is routine.
-\begin{equation*}
-  \vec{v}+\vec{w}
-  =
-  \colvec{v_1 \\ v_2 \\ v_3}
-  +\colvec{w_1 \\ w_2 \\ w_3}
-  =\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
-  =
-  \colvec{w_1 \\ w_2 \\ w_3}
-  +\colvec{v_1 \\ v_2 \\ v_3}
-  =\vec{w}+\vec{v}
-\end{equation*}
-\end{frame}\begin{frame}
-Condition~(3) is also a direct consequence of the related
-real number property.
-\begin{multline*}
-  (\vec{v}+\vec{w})+\vec{u}
-  =
-  \colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
-  +\colvec{u_1 \\ u_2 \\ u_3}
-  =\colvec{v_1+w_1+u_1 \\ v_2+w_2+u_2 \\ v_3+w_3+u_3}        \\
-  =
-  \colvec{v_1 \\ v_2 \\ v_3}
-  +\colvec{w_1+u_1 \\ w_2+u_2 \\ w_3+u_3}
-  =\vec{v}+(\vec{w}+\vec{u})
-\end{multline*}
-
-\pause
-For condition~(4) take the vector of $0$'s.
-\begin{equation*}
-  \colvec{0  \\ 0 \\ 0}+\colvec{v_1 \\ v_2 \\ v_3}=\colvec{v_1 \\ v_2 \\ v_3}
-\end{equation*}
-For condition~(5), given $\vec{v}\in\Re^3$, use  $\vec{w}=-1\vec{v}$
-as the additive inverse.
-\begin{equation*}
-  \colvec{-v_1  \\ -v_2 \\ -v_3}+\colvec{v_1 \\ v_2 \\ v_3}=\colvec{0 \\ 0 \\ 0}
-\end{equation*}
-\end{frame}\begin{frame}
-Condition~(6) is closure under scalar multiplication.
-Let the scalar be $r\in\Re$ and the vector be $\vec{v}\in\Re^3$.
-Then $r\vec{v}$ is a three-tall vector of reals, so $r\vec{v}\in\Re^3$.
-
-\pause
-Conditions~(7)
-\begin{equation*}
-  (r+s)\colvec{v_1 \\ v_2 \\ v_3}
-  =\colvec{(r+s)v_1 \\ (r+s)v_2 \\ (r+s)v_3}
-  =\colvec{rv_1+sv_1 \\ rv_2+sv_2 \\ rv_3+sv_3}
-  =\colvec{rv_1 \\ rv_2 \\ rv_3}
-  +\colvec{sv_1 \\ sv_2 \\ sv_3}
-  =r\vec{v}+s\vec{v}  
-\end{equation*}
-and~(8)
-\begin{equation*}
-  r(\vec{v}+\vec{w})
-  =r(\colvec{v_1 \\ v_2 \\ v_3}+\colvec{w_1 \\ w_2 \\ w_3})
-  =r\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
-  =\colvec{rv_1+rw_1 \\ rv_2+rw_2 \\ rv_3+rw_3}
-  % =\colvec{rv_1 \\ rv_2 \\ rv_3}
-  % +\colvec{rw_1 \\ rw_2 \\ rw_3}
-  =r\vec{v}+r\vec{w}  
-\end{equation*}
-are straightforward.
-\end{frame}\begin{frame}
-Condition~(9) is similar.
-\begin{equation*}
-  (rs)\colvec{v_1 \\ v_2 \\ v_3}
-  =\colvec{(rs)v_1 \\ (rs)v_2 \\ (rs)v_3}
-  =r\colvec{sv_1 \\ sv_2 \\ sv_3}
-  =r(s\vec{v})  
-\end{equation*}
-And~(10) is also easy.
-\begin{equation*}
-  1\vec{v}
-  =1\colvec{v_1 \\ v_2 \\ v_3}
-  =\colvec{1\cdot v_1 \\ 1\cdot v_2 \\ 1\cdot v_3}
-  =\colvec{v_1 \\ v_2 \\ v_3}
-  =\vec{v} 
-\end{equation*}
-
-\pause\medskip
-So the set $\Re^3$ is a vector space under the usual operations
-of vector addition and scalar-vector multiplication.
-\end{frame}
-
-
-
-
-% ..........
-\begin{frame}
-\ex
-This plane through the origin subset of $\Re^3$ 
-\begin{equation*}
-  P=\set{\colvec{x \\ y \\ z} \suchthat 2x+y+3z=0}  
+  P=\set{\colvec{x \\ y \\ z}\in\Re^3 \suchthat 2x+y+3z=0}  
 \end{equation*}
 is a vector space.
-We will verify conditions~(1) and~(6)
-(the others are exactly as in the prior example).
+We will verify the two closure conditions~(1) and~(6);
+the others are similar to the prior example.
 
 \pause
 For (1) suppose that these are members of the plane
@@ -391,7 +477,7 @@ Then the sum is
 \begin{equation*}
   \vec{p}_1+\vec{p}_2=\colvec{x_1+x_2 \\ y_1+y_2 \\ z_1+z_2}
 \end{equation*}
-and to verify that it is in the plane note that
+and this sum $\vec{p}_1+\vec{p}_2$ is in the plane because
 $2(x_1+x_2)+(y_1+y_2)+3(z_1+z_2)=(2x_1+y_1+3z_1)+(2x_2+y_2+3z_2)=0$.
 \end{frame}\begin{frame}
 \begin{center}
@@ -417,10 +503,13 @@ $2(rx_1)+(ry_1)+3(rz_1)=r(2x_1+y_1+3z_1)=0$.
 % ..........
 \begin{frame}
 \ex
-The set 
-$\polyspace_2=\set{a_0+a_1x+a_2x^2 \suchthat a_0,a_1,a_2\in\Re}$
-of quadratic polynomials
-is a vector space under the usual operations of polynomial addition
+Consider the set of quadratic polynomials.
+\begin{equation*}
+  \polyspace_2=\set{a_0+a_1x+a_2x^2 \suchthat a_0,a_1,a_2\in\Re}
+\end{equation*}
+Some members are $3+2x+1x^2$, $10+0x+5x^2$, and $0x^2+0x+0$.
+\pause
+This is a vector space under the usual operations of polynomial addition
 \begin{equation*}
   (a_0+a_1x+a_2x^2)+(b_0+b_1x+b_2x^2)=(a_0+b_0)+(a_1+b_1)x+(a_2+b_2)x^2
 \end{equation*}
@@ -429,16 +518,30 @@ and scalar multiplication.
 r\cdot (a_0+a_1x+a_2x^2)=(ra_0)+(ra_1)x+(ra_2)x^2
 \end{equation*}
 
-We won't here check all the conditions but
-in particular note that this space is closed: 
-a linear combination of quadratic polynomials 
-is a quadratic polynomial.
-For instance, here is a sample combination in $\polyspace_2$:
+Remember the intuition that a vector space is a place where linear
+combinations can happen.
+Here is a sample combination in $\polyspace_2$
 \begin{equation*}
   4\cdot(1+2x+3x^2)-(1/5)\cdot (10+5x^2)
   =2+8x+11x^2
 \end{equation*}
+illustrating that 
 a linear combination of quadratic polynomials is a quadratic polynomial.
+\end{frame}\begin{frame}
+We won't gie a full verification, but
+we will check the closure conditions (1) and~(6).
+
+For (1) note that if 
+$\vec{v}=a_0+a_1x+a_2x^2$ and 
+$\vec{w}=(b_0+b_1x+b_2x^2)$
+then $\vec{v}+\vec{w}=(a_0+b_0)+(a_1+b_1)x+(a_2+b_2)x^2$ is also a quadratic
+polynomial.
+
+\pause
+Similarly, for (6) note that
+if $\vec{v}=a_0+a_1x+a_2x^2$ then
+$r\cdot \vec{v}=(ra_0)+(ra_1)x+(ra_2)x^2$
+is also a member of $\polyspace_2$.
 \end{frame}
 
 
