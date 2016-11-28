@@ -406,16 +406,23 @@ On the right the set
 $\set{\rowvec{1 &1 &1}, \rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, which equals
 the set
 $\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, is linearly independent.
-
 That's not what we want; we want to say that the collection of the
 rows of the second matrix is also dependent.
+
 Thus, for a proper definition of dependence and independence,  
 we need a type of collection where for the second matrix
 the row $\rowvec{1 &1 &1}$ appears twice.
 A collection where order does not matter and where repeats do not collapse
 is a \definend{multiset}.\index{sets!multiset}%
 \index{multiset}\index{linear independence!multiset}
+So, strictly speaking, we should in the definition replace 
+`set' with `multiset', and adjust all later discussions also.
 
+However, most of the time the distinction won't matter and
+departing from standard terminology has its own pitfalls, so we will 
+follow the practice of referring to a linearly independent or dependent `set.' 
+Later in this book we shall occasionally need to take combinations without
+letting repeated parts collapse, and we shall do that without comment.
 % In the next chapter we will look at functions from one vector space to another.
 % Let the function $\map{f}{\polyspace_1}{\Re}$ be
 % $f(a+bx)=a$ so that for instance $f(1+2x)=1$. 
@@ -429,12 +436,6 @@ is a \definend{multiset}.\index{sets!multiset}%
 % dependent multiset~$\set{1,1}$.
 % The second case is the correct one:~$B$ is linearly independent but its image 
 % under~$f$ is linearly dependent.
-
-So, strictly speaking, in the definition we should replace 
-`set' with `multiset'.
-However, most of the time the distinction won't matter and
-departing from the standard terminology has its own pitfalls, so we will 
-keep the practice of referring to a linearly independent or dependent `set.'
 \end{remark}
 
 
