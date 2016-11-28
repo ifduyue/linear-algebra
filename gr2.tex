@@ -13,7 +13,7 @@ infinite.
 But 
 this is easy to see geometrically
 in the case of systems with two equations and two unknowns.
-Draw each two-unknowns equation as a line in the plane, and then
+Draw each two-unknowns equation as a line in the plane and then
 the two lines could have a unique intersection, 
 be parallel, or be the same line.
 %<*diagram:ThreeKindsSolutionSets>
@@ -62,7 +62,7 @@ be parallel, or be the same line.
 These pictures aren't a short way to prove
 the results from the prior section, because those results apply
 to linear systems with any number of variables.
-But they do provide a geometric insight about those results.
+But they do provide a visual insight, another way of seeing those results.
 
 This section develops what we need to
 express our results geometrically. 
@@ -259,14 +259,14 @@ And, we do addition and scalar multiplication component-wise.
 Having considered points, we next turn to lines.\index{line}
 In $\Re^2$, the line through \( (1,2) \) and \( (3,1) \)
 is comprised of (the endpoints of) the vectors in this set.
-\begin{equation*}
-   \set{ \colvec[r]{1 \\ 2}+t\colvec[r]{2 \\ -1}\suchthat t\in\Re}
-\end{equation*}
-That description expresses this picture.
+% \begin{equation*}
+%    \set{ \colvec[r]{1 \\ 2}+t\colvec[r]{2 \\ -1}\suchthat t\in\Re}
+% \end{equation*}
+% That description expresses this picture.
 \begin{center}
   \includegraphics{ch1.16}
 \end{center}
-The vector that in the description is associated with the parameter~\( t \)
+In the description the vector that is associated with the parameter~\( t \)
 \begin{equation*}
   \colvec[r]{2 \\ -1}=\colvec[r]{3 \\ 1}-\colvec[r]{1 \\ 2}
 \end{equation*}
@@ -423,7 +423,7 @@ Specifically, it is a \( k \)-dimensional linear surface, where
 \( k \) is the number of free variables in an echelon form version 
 of the system.
 For instance, in the single equation case the solution set is an
-$n-1$-dimensional hyperplane in $\Re^n$ (where $n>0$). 
+$n-1$-dimensional hyperplane in $\Re^n$, where $n\geq 1$. 
 Second, the solution set of a homogeneous linear system is a linear surface
 passing through the origin.
 Finally, we can view the general solution set of any
@@ -1850,7 +1850,7 @@ Not every vector in each is orthogonal to all vectors in the other.
   \puzzle \item 
     \cite{Cleary}
     Astrologers claim to be able to recognize trends in personality and 
-    fortune that depend on an individual's birthday by somehow incorporating 
+    fortune that depend on an individual's birthday by incorporating 
     where the stars were $2000$~years ago.
     %, during the Hellenistic period.  
     Suppose that instead of star-gazers coming up with stuff, math teachers 

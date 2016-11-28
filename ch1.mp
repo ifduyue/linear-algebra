@@ -419,14 +419,23 @@ beginfig(16) % vector description of a line
   pickup pencircle scaled (2*line_width_dark);
   draw z0--z1 withcolor white;
   pickup pencircle scaled line_width_dark;
-  draw z0--z1 withcolor shading_color;
+  % draw z0--z1 withcolor shading_color;
+  draw z0--z1 withcolor black;
   z2=(0w,0v); z3=(1w,2v);
     drawarrow z2--((1-n)[z2,z3]) withcolor shading_color;
   z4=(3w,1v);
     drawarrow z2--((1-n)[z2,z4]) withcolor shading_color;
+  % impose arrow on line
+  pickup pencircle scaled (2*line_width_dark);
+  drawarrow 1.05[z4,z3]--1.05[z3,z4] withcolor white;
+  pickup pencircle scaled line_width_dark;
   drawarrow z3--z4;
+  % label.urt(btex {\small 
+  %      \ $\colvec{2 \\ -1}=\colvec{3 \\ 1}-\colvec{1 \\ 2}$} etex,.5[z3,z4]);
+  % label.urt(btex {\small 
+  %      \ $\colvec{2 \\ -1}$} etex,.5[z3,z4]);  
   label.urt(btex {\small 
-       \ $\colvec{2 \\ -1}=\colvec{3 \\ 1}-\colvec{1 \\ 2}$} etex,.5[z3,z4]);  
+       \ $\set{\colvec{1 \\ 2}+t\colvec{2 \\ -1}\suchthat i\in\R}$} etex,.5[z3,z4]);  
 endfig;
 
 
@@ -1194,14 +1203,14 @@ beginfig(28) % equiv relation; some row-equiv mats shown double-arrowed
 
   input arrow
   %input arrow
-  z0=(.8w,0v);
+  z0=(.8w,-0.05v);
   boxit.a0(btex \strut{\small $\displaystyle
                  \begin{mat}
 		   1  &0  \\
 		   0  &1 
 		 \end{mat}$} etex);
   a0.c=z0;
-  z1=(0w,.4v);
+  z1=(0w,0.35v);
   boxit.a1(btex {\small $\displaystyle
                  \begin{mat}
 		   2  &2  \\
@@ -1222,7 +1231,7 @@ beginfig(28) % equiv relation; some row-equiv mats shown double-arrowed
 		   0  &-1
 		 \end{mat}$} etex);
   a3.c=z3;
-  z4=(1.5w,.25v);
+  z4=(1.6w,.15v);
   boxit.a4(btex {\small $\displaystyle
                  \begin{mat}
 		   2  &2  \\
