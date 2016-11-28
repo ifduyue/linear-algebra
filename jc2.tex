@@ -2883,10 +2883,9 @@ other than $\zero$.
 %</pf:EigSpaceIsSubSp>
 \end{proof}
 
-\begin{example}
-In \nearbyexample{ex:IntroCharEqn}
-these are the eigenspaces associated with the eigenvalues \( 0 \) 
-and \( 2 \).
+\begin{example}   \label{ex:AlgMultDifferentThanGeoMult}
+These are the eigenspaces associated with the eigenvalues \( 0 \) 
+and \( 2 \) of \nearbyexample{ex:IntroCharEqn}.
 \begin{equation*}
   V_0=\set{\colvec[r]{a \\ -a \\ a}\suchthat a\in\C},
   \qquad
@@ -2895,9 +2894,9 @@ and \( 2 \).
 \end{example}
 
 \begin{example} \label{ex:AnotherCharPolyReprise}
-In \nearbyexample{ex:AnotherCharPoly} these are the eigenspaces 
-associated with the eigenvalues \( \pi \) 
-and~\( 3 \).
+These are the eigenspaces 
+for the eigenvalues \( \pi \) 
+and~\( 3 \) of \nearbyexample{ex:AnotherCharPoly}.
 \begin{equation*}
   V_{\pi}=\set{\colvec{a \\ 0}\suchthat a\in\C}
   \qquad
@@ -2971,13 +2970,14 @@ For $\lambda_1=1$ both the
 algebraic and geometric multiplicities are~$2$.
 For $\lambda_2=0$  both the
 algebraic and geometric multiplicities are~$1$.
-In contrast, in \nearbyexample{ex:AnotherCharPolyReprise}
-the eigenvalue $\lambda=2$ has algebraic multiplicity~$2$ but geometric 
-multiplicity~$1$.
+In contrast, \nearbyexample{ex:AlgMultDifferentThanGeoMult}
+shows that the eigenvalue $\lambda=2$ has algebraic multiplicity~$2$ 
+but geometric multiplicity~$1$.
 For every transformation, each eigenvalue has geometric 
 multiplicy greater than or equal to~$1$ by \nearbylemma{le:EigSpaceIsSubSp}.
-(And in fact, each eigenvalue has geometric multiplicity less than or equal to 
-its algebraic multiplicity, although proving that is beyond our scope.)
+(And, an eigenvalue must have geometric multiplicity 
+less than or equal to 
+its algebraic multiplicity, although proving this is beyond our scope.)
 
 By \nearbylemma{le:EigSpaceIsSubSp} 
 if two eigenvectors $\vec{v}_1$ and $\vec{v}_2$ are 
