@@ -116,7 +116,7 @@ and all \definend{scalars}\index{scalar}
  \( (r+s)\cdot\vec{v}=r\cdot\vec{v}+s\cdot\vec{v} \)
 \item scalar multiplication distributes over vector addition,
   \( r\cdot(\vec{v}+\vec{w})=r\cdot\vec{v}+r\cdot\vec{w} \)
-\item ordinary multipication of scalars associates with 
+\item ordinary multiplication of scalars associates with 
   scalar multiplication, \( (rs)\cdot\vec{v} =r\cdot(s\cdot\vec{v}) \)
 \item multiplication by the scalar~$1$ is the 
   identity operation, \( 1\cdot\vec{v}=\vec{v} \).
@@ -156,110 +156,176 @@ and every scalar and vector,
 and the result of the operation is a member of the set
 (see \nearbyexample{PlaneThruOriginSubsp}). 
 
-\begin{example}  \label{ex:RealVecSpaces}
-The set
-\( \Re^2 \) is a vector space if the operations `\( + \)' and `\( \cdot \)'
-have their usual meaning.
+
+\begin{example}  \label{PlaneThruOriginSubsp}
+This subset of \( \Re^2 \) is a line through the origin.
 \begin{equation*}
-  \colvec{x_1 \\ x_2}
+  P=\set{ \colvec{x \\ y}  \suchthat y=3x}
+\end{equation*}
+We shall verify that it is a
+a vector space, under the usual meaning of `+' and `\(\cdot\)'.
+\begin{equation*}
+  \colvec{x_1 \\ y_1}
   +
-  \colvec{y_1 \\ y_2}
+  \colvec{x_2 \\ y_2}
   =
-  \colvec{x_1+y_1 \\ x_2+y_2}
+  \colvec{x_1+x_2 \\ y_1+y_2}
   \qquad
   r\cdot
-  \colvec{x_1 \\ x_2}
+  \colvec{x \\ y}
   =
-  \colvec{rx_1 \\ rx_2}
+  \colvec{rx \\ ry}
 \end{equation*}
-We shall check all of the conditions.
+These operations
+are just the ones of \( \Re^2 \), reused on its subset $P$.
+We say that \( P \) \definend{inherits\/}\index{inherited operations} 
+these operations from \( \Re^3 \).
 
-There are five conditions in the paragraph having to do with addition.
-For (1), closure of addition, observe that for any \( v_1,v_2,w_1,w_2\in\Re \)
-the result of the vector sum
+We shall check all ten conditions.
+The paragraph having to do with addition has five conditions.
+For condition~(1), closure under addition, 
+suppose that we start with two vectors 
 \begin{equation*}
-  \colvec{v_1 \\ v_2}
-  +\colvec{w_1 \\ w_2}
-  =\colvec{v_1+w_1 \\ v_2+w_2}
+  \vec{v}_1=\colvec{x_1 \\ y_1}
+  \quad
+  \vec{v}_2=\colvec{x_2 \\ y_2}
 \end{equation*}
-is a column array with two real entries, and so is in \( \Re^2 \).
-For (2), that addition of vectors commutes, 
-take all entries to be real numbers and compute
+from the plane~$P$, so that they satisfy the restriction
+that $y_1=3x_1$ and~$y_2=3x_2$.
+The sum
 \begin{equation*}
-  \colvec{v_1 \\ v_2}
-  +\colvec{w_1 \\ w_2}
-  =\colvec{v_1+w_1 \\ v_2+w_2}
-  =\colvec{w_1+v_1 \\ w_2+v_2}
-  =\colvec{w_1 \\ w_2}
-  +\colvec{v_1 \\ v_2}
+  \vec{v}_1+\vec{v}_2
+  =\colvec{x_1+x_2 \\ y_1+y_2}
 \end{equation*}
-(the second equality follows from the fact that the components of the
-vectors are real numbers, and the addition of real numbers is commutative).
+is then also a member of the plane $P$
+because the fact that its second component is three times its first 
+$y_1+y_2=3(x_1+x_2)$ follows from the 
+restrictions on $\vec{v}_1$ and~$\vec{v}_2$.
+For~(2), that addition of vectors commutes, 
+just compare 
+\begin{equation*}
+  \vec{v}_1+\vec{v}_2
+  =\colvec{x_1+x_2 \\ y_1+y_2}
+  \quad
+  \vec{v}_2+\vec{v}_1
+  =\colvec{x_2+x_1 \\ y_2+y_1}
+\end{equation*}
+and note that they are equal, because the entries are real numbers and 
+real numbers commute. 
+(That the vectors satisfy the restriction of lying on the line is not relevant;
+they commute just because all vectors in the plane commute.)
 Condition~(3), associativity of vector addition, is similar.
 \begin{align*}
-  (\colvec{v_1 \\ v_2}
-  +\colvec{w_1 \\ w_2})
-  +\colvec{u_1 \\ u_2}
-  &=\colvec{(v_1+w_1)+u_1 \\ (v_2+w_2)+u_2}  \\
-  &=\colvec{v_1+(w_1+u_1) \\ v_2+(w_2+u_2)}  \\
-  &=\colvec{v_1 \\ v_2}
-  +(\colvec{w_1 \\ w_2}
-  +\colvec{u_1 \\ u_2})
+  (\colvec{x_1 \\ y_1}
+  +\colvec{x_2 \\ y_2})
+  +\colvec{x_3 \\ y_3}
+  &=\colvec{(x_1+x_2)+x_3 \\ (y_1+y_2)+y_3}  \\
+  &=\colvec{x_1+(x_2+x_3) \\ y_1+(y_2+y_3)}  \\
+  &=\colvec{x_1 \\ y_1}
+  +(\colvec{x_2 \\ y_2}
+  +\colvec{x_3 \\ y_3})
 \end{align*}
-For the fourth condition we must produce a zero element\Dash the
-vector of zeroes is it.
+For the fourth condition we must produce a vector that acts as the 
+zero element, and the vector of zeroes suffices.
 \begin{equation*}
-  \colvec{v_1 \\ v_2}
+  \colvec{x \\ y}
   +\colvec{0 \\ 0}
-  =\colvec{v_1 \\ v_2}
+  =\colvec{x \\ y}
 \end{equation*}
-For (5), to produce an additive inverse, note that for any $v_1,v_2\in\Re$
-we have
+Note that $\zero\in P$ as its second component is triple the first.
+For~(5), that given any~$\vec{v}\in P$ we can
+produce an additive inverse, just note that we have
 \begin{equation*}
-  \colvec{-v_1 \\ -v_2}
-  +\colvec{v_1 \\ v_2}
+  \colvec{-x \\ -y}
+  +\colvec{x \\ y}
   =\colvec{0 \\ 0}
 \end{equation*}
-so the first vector is the desired additive inverse of the second.
+so the vector $-\vec{v}$ is the desired additive inverse.
+As with the prior condition, observe here that if $\vec{v}\in P$, so that
+$y=3x$, then $-\vec{v}\in P$ also, since $-y=3(-x)$.
 
 The checks for the five conditions having to do with scalar multiplication
 are similar.
-For (6), closure under scalar multiplication,
-where $r, v_1, v_2 \in \Re$,
+For~(6), closure under scalar multiplication,
+suppose that $r\in\R$ and $\vec{v}\in P$
 \begin{equation*}
-  r\cdot\colvec{v_1 \\ v_2}
-  =\colvec{rv_1 \\ rv_2}
+  \vec{v}=\colvec{x \\ y}
 \end{equation*}
-is a column array with two real entries, and so is in \( \Re^2 \).
-Next, this checks (7).
+so that it satisfies the restriction that~$y=3x$.
+Then 
 \begin{equation*}
-  (r+s)\cdot\colvec{v_1 \\ v_2}
-  =\colvec{(r+s)v_1 \\ (r+s)v_2}
-  =\colvec{rv_1+sv_1 \\ rv_2+sv_2}
-  =r\cdot\colvec{v_1 \\ v_2}+s\cdot\colvec{v_1 \\ v_2}
+  r\cdot\vec{v}=r\cdot\colvec{x \\ y}
+  =\colvec{rx \\ ry}
 \end{equation*}
-For (8), 
-that scalar multiplication distributes from the left over
-vector addition, we have this.
+is also a member of $P$:
+the fact that its second component is three times
+its first $ry=3(rx)$ follows from the restriction on~$\vec{x}$.
+Next, this checks~(7).
 \begin{equation*}
-  r\cdot(\colvec{v_1 \\ v_2}+\colvec{w_1 \\ w_2})
-  =\colvec{r(v_1+w_1) \\ r(v_2+w_2)}
-  =\colvec{rv_1+rw_1 \\ rv_2+rw_2}
-  =r\cdot\colvec{v_1 \\ v_2}+r\cdot\colvec{w_1 \\ w_2}
+  (r+s)\cdot\colvec{x \\ y}
+  =\colvec{(r+s)x \\ (r+s)y}
+  =\colvec{rx+sx \\ ry+sy}
+  =r\cdot\colvec{x \\ y}+s\cdot\colvec{x \\ y}
+\end{equation*}
+For~(8) we have this.
+\begin{equation*}
+  r\cdot(\colvec{x_1 \\ y_1}+\colvec{x_2 \\ y_2})
+  =\colvec{r(x_1+x_2) \\ r(y_1+y_2)}
+  =\colvec{rx_1+rx_2 \\ ry_1+ry_2}
+  =r\cdot\colvec{x_1 \\ y_1}+r\cdot\colvec{x_2 \\ y_2}
 \end{equation*}
 The ninth
 \begin{equation*}
-  (rs)\cdot\colvec{v_1 \\ v_2}
-  =\colvec{(rs)v_1 \\ (rs)v_2}
-  =\colvec{r(sv_1) \\ r(sv_2)}
-  =r\cdot(s\cdot\colvec{v_1 \\ v_2})
+  (rs)\cdot\colvec{x \\ y}
+  =\colvec{(rs)x \\ (rs)y}
+  =\colvec{r(sx) \\ r(sy)}
+  =r\cdot(s\cdot\colvec{x \\ y})
 \end{equation*}
 and tenth conditions are also straightforward.
 \begin{equation*}
-  1\cdot\colvec{v_1 \\ v_2}
-  =\colvec{1v_1 \\ 1v_2}
-  =\colvec{v_1 \\ v_2}
+  1\cdot\colvec{x \\ y}
+  =\colvec{1x \\ 1y}
+  =\colvec{x \\ y}
 \end{equation*}
+\end{example}
+
+\begin{example}  \label{ex:RealVecSpaces}
+The whole plane, the set
+\( \Re^2 \), is a vector space if the operations `\( + \)' and `\( \cdot \)'
+have their usual meaning.
+\begin{equation*}
+  \colvec{x_1 \\ y_1}
+  +
+  \colvec{x_2 \\ y_2}
+  =
+  \colvec{x_1+x_2 \\ y_1+y_2}
+  \qquad
+  r\cdot
+  \colvec{x \\ y}
+  =
+  \colvec{rx \\ ry}
+\end{equation*}
+We shall check just two of the conditions.
+
+For (1), closure of addition, observe that 
+the result of the vector sum
+\begin{equation*}
+  \colvec{x_1 \\ y_1}
+  +\colvec{x_2 \\ y_2}
+  =\colvec{x_1+x_2 \\ y_1+y_2}
+\end{equation*}
+is a column array with two real entries, and so is a member of the 
+plane~\( \Re^2 \).
+In contrast with the prior example, here there is no restriction on the
+vectors that we must check.
+
+The other closure condition, (6), is similar.
+We have
+\begin{equation*}
+  r\cdot\colvec{x \\ y}
+  =\colvec{rx \\ ry}
+\end{equation*}
+is a column array with two real entries, and so is a member of~\( \Re^2 \).
 \end{example}
 
 In a similar way, 
@@ -269,74 +335,15 @@ and scalar multiplication.
 column vectors, i.e., we usually do not write `\( (\pi) \)'.
 Instead we just write `\( \pi \)'.)
 
-\begin{example}  \label{PlaneThruOriginSubsp}
-This subset of \( \Re^3 \) that is a plane through the origin
-\begin{equation*}
-  P=\set{ \colvec{x \\ y \\ z}  \suchthat x+y+z=0}
-\end{equation*}
-is a vector space if `+' and `\(\cdot\)' are interpreted in this way.
-\begin{equation*}
-  \colvec{x_1 \\ y_1 \\ z_1}
-  +
-  \colvec{x_2 \\ y_2 \\ z_2}
-  =
-  \colvec{x_1+x_2 \\ y_1+y_2 \\ z_1+z_2}
-  \qquad
-  r\cdot
-  \colvec{x \\ y \\ z}
-  =
-  \colvec{rx \\ ry \\ rz}
-\end{equation*}
-The addition and scalar multiplication operations here
-are just the ones of \( \Re^3 \), reused on its subset $P$.
-We say that \( P \) \definend{inherits\/}\index{inherited operations} 
-these operations from \( \Re^3 \).
-This example of an addition in $P$
-\begin{equation*}
-   \colvec[r]{1 \\ 1 \\ -2}+\colvec[r]{-1 \\ 0 \\ 1}=\colvec[r]{0 \\ 1 \\ -1}
-\end{equation*}
-illustrates that $P$ is closed under addition.
-We've added two vectors from $P$\Dash that is, with the property that the sum 
-of their three entries is zero\Dash and the result is a vector also in $P$.
-Of course, this example is not a proof.
-For the proof that $P$ is closed under addition, take two elements of $P$. 
-\begin{equation*}
-  \colvec{x_1 \\ y_1 \\ z_1} \quad \colvec{x_2 \\ y_2 \\ z_2} 
-\end{equation*} 
-Membership in $P$ means that $x_1+y_1+z_1=0$ and $x_2+y_2+z_2=0$. 
-Observe that their sum
-\begin{equation*}
-  \colvec{x_1+x_2 \\ y_1+y_2 \\ z_1+z_2}
-\end{equation*} 
-is also in $P$ since its entries add
-$(x_1+x_2)+(y_1+y_2)+(z_1+z_2)=(x_1+y_1+z_1)+(x_2+y_2+z_2)$ to $0$.
-To show that \( P \) is closed under scalar multiplication, start with
-a vector from $P$
-\begin{equation*}
-  \colvec{x \\ y \\ z}
-\end{equation*}
-where \( x+y+z=0 \), and then for \( r\in\Re \)
-observe that the scalar multiple
-\begin{equation*}
-  r\cdot\colvec{x \\ y \\ z}
-  =
-  \colvec{rx \\ ry \\ rz}
-\end{equation*}
-gives \( rx+ry+rz=r(x+y+z)=0 \).
-Thus the two closure conditions are satisfied.
-Verification of the other conditions in the definition of a vector space
-are just as straightforward.
-\end{example}
-
 \begin{example} \label{ex:ColsIntEntNotVS}
-\nearbyexample{ex:RealVecSpaces} shows that the set of all two-tall vectors
-with real entries is a vector space. 
-\nearbyexample{PlaneThruOriginSubsp} gives a subset of an $\Re^n$ that is also
+\nearbyexample{PlaneThruOriginSubsp} gives a subset of $\Re^2$ that is a
 a vector space.
+\nearbyexample{ex:RealVecSpaces} shows that the entire
+set of two-tall vectors with real entries is also a vector space. 
 In contrast with those two, consider the set
-of two-tall columns with entries that are integers
-(under the usual operations of component-wise 
-addition and scalar multiplication).
+of two-tall columns with entries that are integers,
+under the operations of component-wise 
+addition and scalar multiplication.
 This is a subset of a vector space but it is not itself a vector space.
 The reason is that this set is not closed under scalar multiplication, 
 that is, it does not satisfy condition~(6). 
@@ -817,7 +824,7 @@ But from now on our primary objects of study will be vector spaces.
         \( \set{a_0+a_1x\suchthat a_0-2a_1=0} \), under the
         usual polynomial addition and scalar multiplication operations.
    \end{exparts}
-   \textit{Hint.}  Use \nearbyexample{ex:RealVecSpaces} as a guide.
+   \textit{Hint.}  Use \nearbyexample{PlaneThruOriginSubsp} as a guide.
    Most of the ten conditions are just verifications. 
    \begin{answer}
       \begin{exparts}
