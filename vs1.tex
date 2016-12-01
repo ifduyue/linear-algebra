@@ -153,14 +153,13 @@ conditions, (1) and~(6).
 They specify that the addition and scalar multiplication operations
 are always sensible\Dash they are defined for every pair of vectors 
 and every scalar and vector,
-and the result of the operation is a member of the set
-(see \nearbyexample{PlaneThruOriginSubsp}). 
+and the result of the operation is a member of the set. 
 
 
 \begin{example}  \label{PlaneThruOriginSubsp}
 This subset of \( \Re^2 \) is a line through the origin.
 \begin{equation*}
-  P=\set{ \colvec{x \\ y}  \suchthat y=3x}
+  L=\set{ \colvec{x \\ y}  \suchthat y=3x}
 \end{equation*}
 We shall verify that it is a
 a vector space, under the usual meaning of `+' and `\(\cdot\)'.
@@ -177,27 +176,27 @@ a vector space, under the usual meaning of `+' and `\(\cdot\)'.
   \colvec{rx \\ ry}
 \end{equation*}
 These operations
-are just the ones of \( \Re^2 \), reused on its subset $P$.
-We say that \( P \) \definend{inherits\/}\index{inherited operations} 
+are just the ones of \( \Re^2 \), reused on its subset $L$.
+We say that \( L \) \definend{inherits\/}\index{inherited operations} 
 these operations from \( \Re^3 \).
 
 We shall check all ten conditions.
 The paragraph having to do with addition has five conditions.
 For condition~(1), closure under addition, 
-suppose that we start with two vectors 
+suppose that we start with two vectors from the line~$L$, 
 \begin{equation*}
   \vec{v}_1=\colvec{x_1 \\ y_1}
   \quad
   \vec{v}_2=\colvec{x_2 \\ y_2}
 \end{equation*}
-from the plane~$P$, so that they satisfy the restriction
+so that they satisfy the restrictions
 that $y_1=3x_1$ and~$y_2=3x_2$.
-The sum
+Their sum
 \begin{equation*}
   \vec{v}_1+\vec{v}_2
   =\colvec{x_1+x_2 \\ y_1+y_2}
 \end{equation*}
-is then also a member of the plane $P$
+is also a member of the line $L$
 because the fact that its second component is three times its first 
 $y_1+y_2=3(x_1+x_2)$ follows from the 
 restrictions on $\vec{v}_1$ and~$\vec{v}_2$.
@@ -210,9 +209,10 @@ just compare
   \vec{v}_2+\vec{v}_1
   =\colvec{x_2+x_1 \\ y_2+y_1}
 \end{equation*}
-and note that they are equal, because the entries are real numbers and 
+and note that they are equal since their entries are real numbers and 
 real numbers commute. 
-(That the vectors satisfy the restriction of lying on the line is not relevant;
+(That the vectors satisfy the restriction of lying in the line is not relevant
+for this condition;
 they commute just because all vectors in the plane commute.)
 Condition~(3), associativity of vector addition, is similar.
 \begin{align*}
@@ -226,40 +226,41 @@ Condition~(3), associativity of vector addition, is similar.
   +\colvec{x_3 \\ y_3})
 \end{align*}
 For the fourth condition we must produce a vector that acts as the 
-zero element, and the vector of zeroes suffices.
+zero element. 
+The vector of zeroes will do.
 \begin{equation*}
   \colvec{x \\ y}
   +\colvec{0 \\ 0}
   =\colvec{x \\ y}
 \end{equation*}
-Note that $\zero\in P$ as its second component is triple the first.
-For~(5), that given any~$\vec{v}\in P$ we can
-produce an additive inverse, just note that we have
+Note that $\zero\in L$ as its second component is triple its first.
+For~(5), that given any~$\vec{v}\in L$ we can
+produce an additive inverse, we have
 \begin{equation*}
   \colvec{-x \\ -y}
   +\colvec{x \\ y}
   =\colvec{0 \\ 0}
 \end{equation*}
-so the vector $-\vec{v}$ is the desired additive inverse.
-As with the prior condition, observe here that if $\vec{v}\in P$, so that
-$y=3x$, then $-\vec{v}\in P$ also, since $-y=3(-x)$.
+and so the vector $-\vec{v}$ is the desired inverse.
+As for the prior condition, observe here that if $\vec{v}\in L$, so that
+$y=3x$, then $-\vec{v}\in L$ also, since $-y=3(-x)$.
 
 The checks for the five conditions having to do with scalar multiplication
 are similar.
 For~(6), closure under scalar multiplication,
-suppose that $r\in\R$ and $\vec{v}\in P$
+suppose that $r\in\R$ and $\vec{v}\in L$
 \begin{equation*}
   \vec{v}=\colvec{x \\ y}
 \end{equation*}
-so that it satisfies the restriction that~$y=3x$.
+so that it satisfies the restriction~$y=3x$.
 Then 
 \begin{equation*}
   r\cdot\vec{v}=r\cdot\colvec{x \\ y}
   =\colvec{rx \\ ry}
 \end{equation*}
-is also a member of $P$:
+is also a member of $L$:
 the fact that its second component is three times
-its first $ry=3(rx)$ follows from the restriction on~$\vec{x}$.
+its first $ry=3(rx)$ follows from the restriction on~$\vec{v}$.
 Next, this checks~(7).
 \begin{equation*}
   (r+s)\cdot\colvec{x \\ y}
@@ -305,9 +306,9 @@ have their usual meaning.
   =
   \colvec{rx \\ ry}
 \end{equation*}
-We shall check just two of the conditions.
+We shall check just two of the conditions, the closure conditions.
 
-For (1), closure of addition, observe that 
+For (1) observe that 
 the result of the vector sum
 \begin{equation*}
   \colvec{x_1 \\ y_1}
@@ -319,13 +320,13 @@ plane~\( \Re^2 \).
 In contrast with the prior example, here there is no restriction on the
 vectors that we must check.
 
-The other closure condition, (6), is similar.
-We have
+Condition (6) is similar.
+The vector
 \begin{equation*}
   r\cdot\colvec{x \\ y}
   =\colvec{rx \\ ry}
 \end{equation*}
-is a column array with two real entries, and so is a member of~\( \Re^2 \).
+has two real entries, and so is a member of~\( \Re^2 \).
 \end{example}
 
 In a similar way, 
@@ -336,19 +337,18 @@ column vectors, i.e., we usually do not write `\( (\pi) \)'.
 Instead we just write `\( \pi \)'.)
 
 \begin{example} \label{ex:ColsIntEntNotVS}
-\nearbyexample{PlaneThruOriginSubsp} gives a subset of $\Re^2$ that is a
+\nearbyexample{PlaneThruOriginSubsp} gives a subset of $\Re^2$ that is
 a vector space.
-\nearbyexample{ex:RealVecSpaces} shows that the entire
-set of two-tall vectors with real entries is also a vector space. 
-In contrast with those two, consider the set
+% \nearbyexample{ex:RealVecSpaces} shows that the entire
+% set of two-tall vectors with real entries is also a vector space. 
+For contrast, consider the set
 of two-tall columns with entries that are integers,
-under the operations of component-wise 
+under the same operations of component-wise 
 addition and scalar multiplication.
-This is a subset of a vector space but it is not itself a vector space.
-The reason is that this set is not closed under scalar multiplication, 
+This is a subset of $\Re^2$ but it is not a vector space:
+it is not closed under scalar multiplication, 
 that is, it does not satisfy condition~(6). 
-Here is a column with integer entries and a scalar 
-such that the outcome of the operation 
+For instance, on the left below is a vector with integer entries, and a scalar. 
 \begin{equation*}
   0.5
   \cdot
@@ -356,13 +356,14 @@ such that the outcome of the operation
   =
   \colvec[r]{2 \\ 1.5}
 \end{equation*}
+On the right is a column vector that 
 is not a member of the set, since its entries are not all integers.
 \end{example}
 
 \begin{example}  \label{ex:TrivSbspReFour}
-The singleton set
+The one-element set
 \begin{equation*}
-  \{ \colvec[r]{0 \\ 0 \\ 0 \\ 0} \}
+  \set{ \colvec[r]{0 \\ 0 \\ 0 \\ 0} }
 \end{equation*}
 is a vector space under the operations 
 \begin{equation*}
@@ -2124,12 +2125,10 @@ But from now on our primary objects of study will be vector spaces.
  
 \subsection{Subspaces and Spanning Sets}
 \index{subspace|(}
-One of the examples that led us to define vector spaces was
-the solution set of a homogeneous system.
-For instance, we saw in \nearbyexample{PlaneThruOriginSubsp}
-such a space that is a planar subset of $\Re^3$. 
-There, the vector space $\Re^3$ contains inside it another
-vector space, the plane.
+In \nearbyexample{PlaneThruOriginSubsp} we saw a
+vector space that is a subset of $\Re^2$, a line through the origin. 
+There, the vector space $\Re^2$ contains inside it another
+vector space, the line.
 
 \begin{definition} \label{df:Subspace}
 %<*df:Subspace>
@@ -2141,7 +2140,7 @@ under the inherited operations.
 \end{definition}
 
 \begin{example}  \label{ex:PlaneSubspRThree}
-\nearbyexample{PlaneThruOriginSubsp}'s plane
+This plane through the origin 
 \begin{equation*}
   P=\set{\colvec{x \\ y \\ z}\suchthat x+y+z=0}
 \end{equation*}
@@ -2157,13 +2156,14 @@ vectors add in $P$ as they add in $\Re^3$
 and scalar multiplication is also the same as in $\Re^3$.
 To show that $P$ is a subspace we need only note that it is a subset and then
 verify that it is a space.
-We have already checked in \nearbyexample{PlaneThruOriginSubsp}
-that $P$ satisfies the conditions in the definition of a 
-vector space.
-For instance, for closure under addition we noted that if
+We won't check all ten conditions, just the two closure ones.
+For closure under addition, note that if
 the summands satisfy that
 $x_1+y_1+z_1=0$ and $x_2+y_2+z_2=0$ then the sum satisfies that
 $(x_1+x_2)+(y_1+y_2)+(z_1+z_2)=(x_1+y_1+z_1)+(x_2+y_2+z_2)=0$.
+For closure under scalar multiplication, if
+$x+y+z=0$ then the scalar multiple has
+$rx+ry+rz=r(x+y+z)=0$.
 \end{example}
 
 \begin{example}   \label{ex:SubspacesRTwo}
@@ -2321,7 +2321,6 @@ closure under linear combinations of pairs of vectors shows that
 obviously the
 additive inverse of \( \vec{s} \) under the inherited operations.
 %</pf:SubspIffClosed1>
-
 The verifications for the scalar multiplication conditions are similar;
 see \nearbyexercise{exer:SubspIffClosed}.
 \end{proof}
