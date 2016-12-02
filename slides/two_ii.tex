@@ -179,8 +179,7 @@ and note that it has more than just the solution $c_1=c_2=c_3=0$.
   \qed
 }{
   \bigskip
-  \ex
-  The book has the proof; here is an illustration. 
+  \ex The book has the proof; here is an illustration.
   The span of this set is the $xy$-plane.
   \begin{equation*}
     P=\set{\colvec{2 \\ 0 \\ 0},
@@ -225,9 +224,8 @@ because in the first set $\vec{v}_3=2\vec{v}_2-\vec{v}_1$.
   \ExecuteMetaData[../vs2.tex]{pf:LiSetMinSpanSet}\qed
 }{
 
-  \bigskip
-  The book has the proof.
-  For illustration, this is a linearly independent subset of $\polyspace_3$
+  \ex
+  This is a linearly independent subset of $\polyspace_3$
   \begin{equation*}
     S=\set{1+x,1-x,x^2}
   \end{equation*}
@@ -243,34 +241,28 @@ because in the first set $\vec{v}_3=2\vec{v}_2-\vec{v}_1$.
 \lm[lm:AddVecLiSetIsLiIffVecNotInSpan]
 \ExecuteMetaData[../vs2.tex]{lm:AddVecLiSetIsLiIffVecNotInSpan}
 
+\iftoggle{showallproofs}{
 \pause
 \pf
 \ExecuteMetaData[../vs2.tex]{pf:AddVecLiSetIsLiIffVecNotInSpan0}
 
-\pause
 \ExecuteMetaData[../vs2.tex]{pf:AddVecLiSetIsLiIffVecNotInSpan1}
-
-\qed
-\end{frame}
-
-
-
-%..........
-\begin{frame}
-\ex 
-In $\polyspace_2$ consider the set $S=\set{1-x,1+x}$.
-The span $\spanof{S}$ is the subset of all
+\qed}{
+\ex The book has the proof; here is an illustration.
+Consider this linearly independent subset of $\polyspace_2$.
+\begin{equation*}
+  S=\set{1-x,1+x}
+\end{equation*}
+Its span $\spanof{S}$ is the set of
 linear polynomials $\set{a+bx\suchthat a,b\in\Re}$.
-(To see that, consider 
-a relationship $a+bx=r_1(1-x)+r_2(1+x)$, which gives a linear system
+(To check: consider $a+bx=r_1(1-x)+r_2(1+x)$, which gives a linear system
 with equations
 $r_1+r_2=a$ and 
 $-r_1+r_2=b$, having
-the solution, for any $a$, $b$ of 
+the solution 
 $r_2=(1/2)a+(1/2)b$ and 
 $r_1=(1/2)a-(1/2)b$.)  
 
-\pause
 Here are two supersets.
 \begin{equation*}
   S_1=S\cup\set{2+2x}
@@ -279,17 +271,18 @@ Here are two supersets.
 \end{equation*}
 
 \pause
-In case one adding a linear polynomial just adds ``repeat information''
+On the left, adding a linear polynomial just adds ``repeat information''
 so $\spanof{S_1}=\spanof{S}$ and $S_1$ is linearly dependent.
 
-\pause
-Case two, with ``new information,'' enlarges the span 
+The right, with ``new information,'' enlarges the span 
 $\spanof{S_2}=\polyspace_2\supsetneq \spanof{S}$
-and the new set $S_2$ is linearly independent, just as is $S$.
+and the new set $S_2$ is also linearly independent.
 (To check this, use  
 $a+bx+cx^2=r_1(1-x)+r_2(1+x)+r_3(2+x^2)$ to get a linear system
 with solution $r_3=c$, $r_2=(1/2)a+(1/2)b$ and $r_1=(1/2)a-(1/2)b-c$.)
+}
 \end{frame}
+
 
 
 

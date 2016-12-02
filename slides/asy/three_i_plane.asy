@@ -10,7 +10,7 @@ settings.outformat="pdf";
 import three;
 import graph3;
 currentprojection=orthographic(camera=(20,4,3),target=(0,0,0));
-currentlight=(20,4,3); // (20,20,50);
+currentlight=(20,-10,10); // from the plane normal // (20,4,3); // (20,20,50);
 
 pen line_pen=linecap(0)
              +linewidth(1.5pt);

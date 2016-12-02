@@ -80,15 +80,16 @@ persists through the operations: this illustrates addition
   \text{is just like}\quad
   (1+2x)+(-3+(1/2)x)=-2+(5/2)x
 \end{multline*}
- and this shows scalar multiplication.
+ and this illustrates scalar multiplication.
 \begin{equation*}
   3\colvec{1 \\ 2}=\colvec{3 \\ 6}
   \quad\text{is just like}\quad
   3(1+2x)=3+6x
 \end{equation*}
 \end{frame}\begin{frame}
-More formally,
-we can think that each two-tall vector corresponds to a linear polynomial.
+\ex
+Similarly,
+we can link each two-tall vector with a linear polynomial.
 \begin{equation*}
   \colvec{a \\ b}
   \quad\longleftrightarrow\quad
@@ -231,8 +232,7 @@ This illustrates.
 
 
 \begin{frame}{How-to}
-To verify that a function $\map{f}{V}{W}$
-between two vector spaces is an isomorphism,
+To verify that $\map{f}{V}{W}$ is an isomorphism,
 do these four.
 \begin{itemize}
   \item To show that $f$ is one-to-one, 
@@ -240,7 +240,7 @@ do these four.
     $f(\vec{v}_1)=f(\vec{v}_2)$
     and derive that $\vec{v}_1=\vec{v}_2$.
   \item To show that $f$ is onto,
-    assume that $\vec{w}\in W$ and find a $\vec{v}\in V$
+    let $\vec{w}$ be an element of $ W$ and find a $\vec{v}\in V$
     such that $f(\vec{v})=\vec{w}$.
   \item To show that $f$ preserves addition, check that for all 
     $\vec{v}_1,\vec{v}_2\in V$
@@ -249,11 +249,11 @@ do these four.
     $\vec{v}\in V$ and $r\in\Re$
     we have $f(r\cdot\vec{v})=r\cdot f(\vec{v})$.
 \end{itemize}
-The intuition behind the first two is to ensure that
-the spaces correspond: 
+The first two cover condition~(1), that the spaces correspond, that 
 for each member of~$W$ there exactly one associcated member of~$V$.
-For the latter two, we've seen some initial discussion above, and
-the next section develops the ideas at length.
+The latter two cover~(2), that the map preserves structure.
+For these two, the intuition is in the discussion above.
+(Later section cover these two at length.)
 \end{frame}
 
 
@@ -276,11 +276,10 @@ To verify that $f$ is an isomorphism we must check condition~(1),
 that $f$ is a correspondence, and condition~(2), that $f$ preserves structure.
 \end{frame}
 \begin{frame}
-The first part of~(1) is that $f$ is one-to-one.
-We usually verify one-to-one-ness 
-by supposing that the function yields the same output
-on two inputs $f(a_0+a_1x+a_2x^2)=f(b_0+b_1x+b_2x^2)$
-and from that derive that the two inputs must be equal.
+The first part of the definition's clause~(1) is that $f$ is one-to-one.
+We suppose $f(\vec{v}_1)=f(\vec{v}_2)$, that the function yields the same output
+on two inputs $f(a_0+a_1x+a_2x^2)=f(b_0+b_1x+b_2x^2)$.
+From that, we must derive that the two inputs are equal.
 The definition of $f$ gives
 \begin{equation*}
   \colvec{a_0 \\ a_1 \\ a_2}
@@ -290,23 +289,23 @@ The definition of $f$ gives
 and two column vectors are equal only if their entries are equal
 $a_0=b_0$, $a_1=b_1$, and~$a_2=b_2$.
 Thus the original inputs are equal
-$a_0+a_1x+a_2x^2=b_0+b_1x+b_2x^2$.
+$\vec{v}_1=a_0+a_1x+a_2x^2=b_0+b_1x+b_2x^2=\vec{v}_2$.
 So $f$ is one-to-one.
 
 \pause
 The second part of~(1) is that $f$ is onto.
-We usually verify onto-ness by considering an element of the codomain
+We consider an element of the codomain
 \begin{equation*}
   \vec{w}=\colvec{a_0 \\ a_1 \\ a_2}\in\Re^3
 \end{equation*}
-and producing an element of the domain that maps to it.
+and produce an element of the domain that maps to it.
 Observe that $\vec{w}$ is the image under $f$ of the member 
 $\vec{v}=a_0+a_1x+a_2x^2$ of the domain.
 Thus $f$ is onto.
 \end{frame}
 \begin{frame}
-Condition~(2) also has two halves.
-First we must show that $f$ preserves addition.
+The definition's clause~(2) also has two halves.
+First we show that $f$ preserves addition.
 Consider $f$ acting on the sum of two elements of the domain.
 \begin{multline*}
   f(\,(a_0+a_1x+a_2x^2)+(b_0+b_1x+b_2x^2)\,)  \\
@@ -338,6 +337,8 @@ This is similar to the check for addition.
    &=f(\,(ra_0)+(ra_1)x+(ra_2)x^2\,)
 \end{align*}
 
+\pause
+\bigskip
 So the function~$f$ is an isomorphism.
 Because there is an isomorphism, the two spaces are isomorphic
 $\polyspace_2\isomorphicto \Re^3$. 
@@ -347,7 +348,7 @@ $\polyspace_2\isomorphicto \Re^3$.
 
 
 \begin{frame}
-\ex Consider these two vector spaces (under the natural operations).
+\ex Consider these two vector spaces (under the natural operations)
 \begin{equation*}
   V=\set{
     \begin{mat}
@@ -358,7 +359,7 @@ $\polyspace_2\isomorphicto \Re^3$.
   \qquad
   W=\set{\rowvec{x &y &z}\suchthat x,y,z\in\Re}
 \end{equation*}
-Consider this function.
+and consider this function.
 \begin{equation*}
   \begin{mat}
     a &b \\
@@ -513,14 +514,22 @@ Preservation of scalar multiplication is similar.
 \centergraphic{../ch3.16}
 Checking that each is an isomorphism is an exercise.
 
+\bigskip
 \pause
-Consider the automorphism $t_{\pi/2}$ rotating by a quarter circle.
-This makes precise the intuition that
-the Euclidean plane is uniform\Dash that space near the $x$-axis
+Why study automorphisms?
+Isn't it trivial that the plane is just like itself?
+
+Consider the family of automorphisms~$t_{\Theta}$ 
+rotating all vectors counterclockwise.
+They makes precise the intuition that
+the plane is uniform\Dash that space near the $x$-axis
 is just like space near the $y$-axis. 
+\end{frame}
+\begin{frame}
 So one lesson is that we can use maps
-to describe relationships between spaces (for isomorphisms, the relation
-captures the intuition ``just like''). 
+to describe relationships between spaces. 
+If the maps are isomorphisms then this relation
+makes precise the intuition ``just like''. 
 
 A second lesson is that while there is an obvious automorphism
 of~$\Re^2$
@@ -562,7 +571,13 @@ the obvious one.
 }{
 
   \medskip
-  The book contains the proof's details.
+  The book contains the details of both proofs.
+
+  \medskip\re
+  Examination of the proofs show that they depend only on 
+  clause~(2) of the definition, not on that the map is a 
+  correspondence.
+  We will say more in the next section.
 }
 \end{frame}
 \iftoggle{showallproofs}{
@@ -575,31 +590,37 @@ the obvious one.
 
 %..........
 \begin{frame}
-This result eases checking that a function preserves
-the structure of a vector space, since we can do it in one step
-with statement~(2).   
+% This result eases checking that a function preserves
+% the structure of a vector space, since we can do it in one step
+% with statement~(2).   
 
 \ex
-This line through the origin
+The line through the origin with slope two
 \begin{graphicbytext}{0.15}{asy/three_i_line.pdf}
 \begin{equation*}
-  L=\set{\colvec{t \\ 2t}=t\cdot\colvec{1 \\ 2} \suchthat t\in\Re}
+  L=\set{\colvec{x \\ y}\suchthat y=2x}
+   =\set{\colvec{t \\ 2t}\suchthat t\in\Re}
 \end{equation*}
-is a vector space under the addition and scalar multiplication operations
-that it inherits from $\Re^2$.
-\begin{equation*}
-  \colvec{t_1 \\ 2t_1}+\colvec{t_2 \\ 2t_2}=\colvec{t_1+t_2 \\ 2(t_1+t_2)}
-  \qquad
-  r\cdot\colvec{t \\ 2t}=\colvec{rt \\ 2rt}
-\end{equation*}
+is a vector space.
 \end{graphicbytext}
-We will verify that
+The parametrization
+\begin{equation*}
+  L=\set{\colvec{t \\ 2t}\suchthat t\in\Re}
+   =\set{t\cdot\colvec{1 \\ 2} \suchthat t\in\Re}
+\end{equation*}
+suggests that $L$ is just like the real line~$\Re$:
+there is a point on~$L$
+\begin{equation*}
+  1\cdot\colvec{1 \\ 2}
+\end{equation*}
+associated with $1\in\Re$,
+a point associated with $2\in\Re$, etc.
+We will show that this function is an isomorphism between $L$
+and~$\Re^1$.
 \begin{equation*}
   f(\,\colvec{t \\ 2t}\,)
   =t
 \end{equation*}
-is an isomorphism between $L$
-and~$\Re^1$.
 \end{frame}
 \begin{frame}
 To verify that $f$ is one-to-one
@@ -607,18 +628,18 @@ suppose that $f$ maps two members of $L$ to the same output.
 \begin{equation*}
   f(\,t_1\cdot\colvec{1 \\ 2}\,)=f(\,t_2\cdot\colvec{1 \\ 2}\,)
 \end{equation*}
-By the definition of~$f$ we have that $t_1=t_2$ and so the two
-members of $L$ are equal.
+By the definition of~$f$ we have $t_1=t_2$ and so the two
+input members of $L$ are equal.
 
 To check that $f$ is onto
 consider a member of the codomain, $r\in\Re$.
 There is a member of the domain~$L$ that maps to it, namely this one.
 \begin{equation*}
-  f(\,r\cdot\colvec{1 \\ 2}\,)
+  f(\,r\cdot\colvec{1 \\ 2}\,)=r
 \end{equation*}
 % Thus $f$ is onto.
 
-To finish, check that $f$ preserves structure with the lemma's~(2).
+To finish, we combine the two structure checks,  using the lemma's~(2).
 \begin{multline*}
   f(\,c_1\cdot\colvec{t_1 \\ 2t_1}+c_2\cdot\colvec{t_2 \\ 2t_2}\,)
   =f(\,(c_1t_1++c_2t_2)\cdot\colvec{1 \\ 2}\,)                    \\
@@ -660,13 +681,12 @@ this line through the origin subspace of~$\Re^2$
 \noindent is isomorphic to $\Re^1$
 via this function.
 \begin{equation*}
-  f(\,\colvec{t \\ 2t}\,)
-  =f(\,t\cdot\colvec{1 \\ 2}\,)=t
+  f(\,t\cdot\colvec{1 \\ 2}\,)=t
 \end{equation*}  
 The inverse $\map{f^{-1}}{\Re}{L}$ 
 given by
 \begin{equation*}
-  f^{-1}(x)=x\cdot\colvec{1 \\ 2}=\colvec{x \\ 2x}
+  f^{-1}(r)=r\cdot\colvec{1 \\ 2}=\colvec{x \\ 2x}
 \end{equation*}
 is also an isomorphism.
 \end{frame}
@@ -735,12 +755,13 @@ The proof is these two lemmas.
 \begin{frame}
 \ex
 The plane $2x-y+z=0$ through the origin in $\Re^3$ is a vector space
-(under the natural addition and scalar multiplication operations).
-\begin{graphicbytext}{0.3}{asy/three_i_plane.pdf}
-  Consider that to be a one-equation linear system
-  and parametrize $x=(1/2)y-(1/2)z$
-  to describe the space as a span.
-\end{graphicbytext}
+(under the natural operations).
+\begin{center}
+\includegraphics[scale=.8]{asy/three_i_plane.pdf}
+\end{center}
+  Describe the space as a span by taking that to be a one-equation 
+  linear system
+  and parametrizing $x=(1/2)y-(1/2)z$.
   \begin{equation*}
     P=\set{\colvec{1/2 \\ 1 \\ 0}y
             +\colvec{-1/2 \\ 0 \\ 1}z
@@ -752,8 +773,7 @@ The plane $2x-y+z=0$ through the origin in $\Re^3$ is a vector space
   B=\sequence{\colvec{1/2 \\ 1 \\ 0},
               \colvec{-1/2 \\ 0 \\ 1}}
 \end{equation*}
-The basis~$B$ has two vectors so this is a dimension~$2$ space. 
-For instance, it is isomorphic to $\Re^2$.
+The basis has two vectors so this is a dimension~$2$ space. 
 \end{frame}
 
 
@@ -805,11 +825,11 @@ For instance, it is isomorphic to $\Re^2$.
   \begin{frame}
     The book contains the full proofs of the two. 
     The proof of the first lemma depends on showing that 
-    if the spaces are isomorphic then the image of a basis of the 
-    domain is a basis of the codomain.
+    under isomorphic the image of a domain basis 
+    is a range basis.
     The proof of the second lemma depends on giving an explicit 
     isomorphism from an $n$-dimensional domain to $\Re^n$.    
-    The next example illustrates.
+    We will illustrate the two, using the prior example.
   \end{frame}
 }
 
@@ -823,34 +843,35 @@ For instance, it is isomorphic to $\Re^2$.
           \suchthat y,z\in\Re}
   \end{equation*}
 \end{graphicbytextright}
-  The second lemma's proof
+  \medskip
+  Second lemma first.
+  It's proof
   shows that this is an isomorphism: the map $\map{f}{P}{\Re^2}$ that 
   associates each element~$\vec{v}\in P$
   with its representation $\rep{\vec{v}}{B}\in\Re^2$.
-  Here is an example of its action.
+  Here is an example of its action on a basis vector picked at random.
   \begin{equation*}
-    \vec{v}_1=\colvec{1/2 \\ 1 \\ 0}\cdot 3
+    \vec{v}_1=\colvec{7/2 \\ 3 \\ -4}=\colvec{1/2 \\ 1 \\ 0}\cdot 3
            +\colvec{-1/2 \\ 0 \\ 1}\cdot (-4)
     \quad\mapsunder{f}\quad
     \rep{\vec{v}_1}{B}=\colvec{3 \\ -4}
   \end{equation*}
   \pause
-  Another example.
+  Another.
   \begin{equation*}
-    \vec{v}_2=\colvec{1/2 \\ 1 \\ 0}\cdot (1/2)
+    \vec{v}_2=\colvec{-17/4 \\ 1/2 \\ 9}=\colvec{1/2 \\ 1 \\ 0}\cdot (1/2)
            +\colvec{-1/2 \\ 0 \\ 1}\cdot 9
     \quad\mapsunder{f}\quad
     \rep{\vec{v}_2}{B}=\colvec{1/2 \\ 9}
   \end{equation*}
 \end{frame}
 \begin{frame}
-  The first lemma's proof shows that where we take the domain to
-  have basis vectors
-  $\vec{\beta}_i$ then
-  under an isomorphism~$f$ the
-  images $f(\vec{\beta}_i)$ form a basis for the range.
-  \pause
-  Applied here we have
+  The first lemma's proof shows that any isomorphism takes bases to bases:
+  starting with  basis vectors
+  $\vec{\beta}_i$ for the domain and applying an isomorphism~$f$ gives
+  basis vectors $f(\vec{\beta}_i)$ for the range.
+
+  For the isomorphism from the prior slide we have
   \begin{equation*}
     \vec{\beta}_1=\colvec{1/2 \\ 1 \\ 0}\cdot 1
            +\colvec{-1/2 \\ 0 \\ 1}\cdot 0
