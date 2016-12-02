@@ -107,15 +107,13 @@ and all \definend{scalars}
 % ..........
 \begin{frame}
 \ex
-Consider the line with slope~$2$ that passes through the origin in the plane.
+Let $V$ be the line with slope~$2$ that passes through the origin in the plane.
 \begin{center}
-  \includegraphics{asy/two_i_line_slope_two.pdf}    
+  \vcenteredhbox{\includegraphics{asy/two_i_line_slope_two.pdf}}
+  \qquad $V=\set{\colvec{x  \\ y}\in\R^2\suchthat y=2x}$    
 \end{center}
 It is a set consisting of vectors.
-\begin{equation*}
-  V=\set{\colvec{x  \\ y}\in\R^2\suchthat y=2x}
-\end{equation*}
-It has infinitely many elements; here are some of them.
+Here are some of its infinitely many elements.
 \begin{equation*}
   \colvec{4 \\ 8} 
   \quad
@@ -125,15 +123,14 @@ It has infinitely many elements; here are some of them.
   \quad
   \colvec{0 \\ 0}
 \end{equation*}
-We will show that this set is a vector space under 
-the usual operations of vector addition and scalar multiplication.
+We will show that this set is a vector space, where the operations are 
+the usual vector addition and scalar multiplication.
 \end{frame}
 
 \begin{frame}
-To show that it is a vector space we will verify conditions (1)-(10) above. 
+We will verify conditions (1)-(10) above. 
 
-\pause
-Before we go through those details, we pause for some intuition.
+Before we go through those details, we first reiterate the intuition.
 A vector space is a place where linear combinations can happen.
 For instance, this linear combination of vectors from $V$
 \begin{equation*}
@@ -148,18 +145,19 @@ For instance, this linear combination of vectors from $V$
   \colvec{5 \\ 10}
   \tag{$*$}
 \end{equation*}
-totals to a member of~$V$.
+totals to a member of~$V$, a two-tall vector whose second 
+compenent is twice its first.
 
-To say ``linear combinations can happen'' requires that there be 
-an addition operation, and a scalar multiplication.
-To say that an operation is an addition the definition 
-requires that it satisfy some 
+To say ``linear combinations can happen'' requires that we have
+an addition operation and a scalar multiplication.
+For an operation to deserve to be called an addition  
+it must satisfy some 
 conditions, such as commutativity, and similarly we have some conditions
 on scalar multiplication.
 
 But the key conditions, as we illustrated in ($*$) above, are the closure
-conditions: when you take a combintation of vectors from the space then
-you must get as a total another vector from the space.  
+conditions: when you take a combination of vectors from the space then
+it must total to another vector from the space.  
 \end{frame}
 
 \begin{frame}
@@ -175,11 +173,10 @@ and scalar multiplication operations.
   =
   \colvec{rx  \\ ry}
 \end{equation*}
-To verify that, we will check each of the ten conditions.
-Because this is the first time through the definition,
-we will verify these at length.
+Because this is the first time through the definition
+we will verify the ten conditions at length.
 \end{frame}\begin{frame}
-We first check Condition~(1), closure under addition,
+First is condition~(1), closure under addition,
 that the sum of two members of $V$
 is also a member of $V$.
 
@@ -188,17 +185,16 @@ Take two vectors
   \vec{v}_1=\colvec{x_1 \\ y_1}
   \quad
   \vec{v}_2=\colvec{x_2  \\ y_2}  
-  \quad\text{such that }
 \end{equation*}
-that are members of~$V$, that is, are subject to the requirement 
+that are members of~$V$, that is, are subject to the restriction 
 that the second component is
 twice the first: $y_1=2x_1$ and~$y_2=2x_2$.
-Then their sum
+Their sum
 \begin{equation*}
   \vec{v}_1+\vec{v}_2=
   \colvec{x_1+x_2 \\ y_1+y_2}
 \end{equation*} 
-is also a member of $V$ because it meets the same requirement:
+is also a member of $V$ because it satisfies the same restriction:
 $y_1+y_2=2x_1+2x_2=2(x_1+x_2)$.
 \end{frame}
 \begin{frame}
@@ -208,26 +204,23 @@ Again we take two vectors
   \vec{v}_1=\colvec{x_1 \\ y_1}
   \quad
   \vec{v}_2=\colvec{x_2  \\ y_2}  
-  \quad\text{such that }
 \end{equation*}
 subject to $y_1=2x_1$ and~$y_2=2x_2$.
 
 The sums in the two orders are
 \begin{equation*}
   \vec{v}_1+\vec{v}_2=\colvec{x_1+x_2 \\ y_1+y_2}
-\end{equation*}
-and
-\begin{equation*}
+  \qquad
   \vec{v}_2+\vec{v}_1
   =
   \colvec{x_2+x_1 \\ y_2+y_1}  
 \end{equation*}
 and the two are equal because 
-$x_1+x_2=x_2+x_1$ and $y_1+y_2=y_2+y_1$, as those are sums of real numbers
-and real number addition is commutative.
+$x_1+x_2=x_2+x_1$ and $y_1+y_2=y_2+y_1$, as those are sums of real numbers.
 
-\re For some of the conditions, including this one, 
-we don't refer to the $y=2x$ requirement.
+\medskip
+\re Some conditions, including this one, 
+have nothing to do with the $y=2x$ restriction.
 We'll say more about this in the next section.
 \end{frame}\begin{frame}
 Condition~(3), associativity of addition, is like the prior one.
@@ -242,8 +235,8 @@ while the right side is
 and the two are equal, since the entries are real numbers.
 
 \pause
-For condition~(4) we can just exhibit the member of $V$ with the desired 
-property. 
+Condition~(4) asserts that a member of $V$ is an additive identity.
+We can just exhibit the called-for vector. 
 \begin{equation*}
   \zero=\colvec{0 \\ 0}
 \end{equation*}
@@ -257,13 +250,12 @@ It is the identity element with respect to addition.
 \end{frame}\begin{frame}
 Condition~(5), existence of an additive inverse, is also a matter of 
 producing the desired element.
-Given a member $\vec{v}\in V$
+Given
 \begin{equation*}
   \vec{v}=\colvec{x \\ y}
-  \quad 
-  \text{such that $y=2x$}
 \end{equation*}
-then consider this vector $\vec{w}\in \R^2$.
+subject to $y=2x$,
+consider this vector.
 \begin{equation*}
   \vec{w}=\colvec{-x \\ -y}
 \end{equation*}
@@ -275,23 +267,22 @@ We finish by verifying the five conditions having to do with scalar
 multiplication.
 
 Condition~(6) is closure under scalar multiplication.
-Consider a scalar $r\in\Re$ and a vector $\vec{v}\in V$.
+Consider a scalar $r\in\Re$ and a vector $\vec{v}\in V$
 \begin{equation*}
   \vec{v}=\colvec{x \\ y}
 \end{equation*}
-(such that $y=2x$).
+(that is, such that $y=2x$).
 Then 
 \begin{equation*}
   r\cdot\vec{v}=\colvec{rx \\ ry}
 \end{equation*}
-satisfies the requirement that the second component is twice the first
-$ry=2(rx)$, since that follows from $y=2x$. 
-Thus $r\vec{v}\in V$.
-
-\pause
+satisfies the restriction that the second component is twice the first
+$ry=2(rx)$, because that equation follows from $y=2x$. 
+Thus $r\vec{v}$ is also a member of~$V$.
+\end{frame}\begin{frame}
 Condition~(7) is that 
 real number addition distributes over scalar multiplication.
-Fix scalars $r,s\in\Re$, and a vector such that $y=2x$. 
+Fix scalars $r,s\in\Re$, and a vector $\vec{v}\in V$.
 \begin{equation*}
   \vec{v}=\colvec{x \\ y}
 \end{equation*}
@@ -302,31 +293,28 @@ Then we have this.
   =\colvec{rx+sx \\ ry+sy}
   =r\vec{v}+s\vec{v}
 \end{equation*}
-% (the second equality holds because these are real numbers).
-\end{frame}\begin{frame}
+
+\pause
 For (8),
 distributivity of vector addition over scalar multiplication,
 take a scalar $r\in\Re$ and 
 two vectors $\vec{v}_1,\vec{v}_2\in V$.
 \begin{equation*}
-  r(\vec{v}+\vec{w}) 
+  r(\vec{v}_1+\vec{v}_2) 
   =\colvec{r(x_1+x_2) \\ r(y_1+y_2)}
   =\colvec{rx_1+rx_2 \\ ry_1+ry_2}
-  =r\vec{v}+r\vec{w} 
+  =r\vec{v}_1+r\vec{v}_2 
 \end{equation*}
-
-\pause
+\end{frame}\begin{frame}
 For condition~(9) suppose $r,s\in\Re$ and $\vec{v}\in V$.
-The left side is 
+Compare these two.
 \begin{equation*}
   (rs)\cdot\vec{v}=\colvec{(rs)x \\ (rs)y}
-\end{equation*}
-while the
-right side is 
-\begin{equation*}
+  \qquad
   r\cdot(s\vec{v})=\colvec{r(sx) \\ r(sy)}
 \end{equation*}
-The two are equal because those are real number multiplications.   
+They are equal because the expressions in the components 
+are multiplications of real numbers.   
 
 \pause
 Condition~(10) is simple:
@@ -336,7 +324,7 @@ Condition~(10) is simple:
 
 \pause\medskip
 The conclusion: $V$
-is a vector space under the natural addition and scalar multiplication 
+is a vector space, under the natural addition and scalar multiplication 
 operations.
 \end{frame}
 
@@ -461,44 +449,71 @@ This plane through the origin
 \begin{equation*}
   P=\set{\colvec{x \\ y \\ z}\in\Re^3 \suchthat 2x+y+3z=0}  
 \end{equation*}
-is a vector space.
+is a vector space (under the natural operations).
 We will verify the two closure conditions~(1) and~(6);
-the others are similar to the prior example.
+verifying the other conditions is similar to the prior example.
 
-\pause
-For (1) suppose that these are members of the plane
+Condition~(1) is that two vectors in the plane
+sum to a vector in the plane.
+Before we confirm that algebraically, here is the geometry.
+\begin{center}
+  \includegraphics{asy/two_i_plane.pdf}    
+\end{center}
+\end{frame}\begin{frame}
+For (1), take two members of the plane,
 \begin{equation*}
   \vec{p}_1=\colvec{x_1 \\ y_1 \\ z_1}
   \quad
   \vec{p}_2=\colvec{x_2 \\ y_2 \\ z_2}
 \end{equation*}
 so that both $2x_1+y_1+3z_1=0$ and $2x_2+y_2+3z_2=0$.
-Then the sum is 
+The sum is 
 \begin{equation*}
   \vec{p}_1+\vec{p}_2=\colvec{x_1+x_2 \\ y_1+y_2 \\ z_1+z_2}
 \end{equation*}
-and this sum $\vec{p}_1+\vec{p}_2$ is in the plane because
-$2(x_1+x_2)+(y_1+y_2)+3(z_1+z_2)=(2x_1+y_1+3z_1)+(2x_2+y_2+3z_2)=0$.
+and this sum is in the plane because it satisfies the
+restriction.
+\begin{equation*}
+2(x_1+x_2)+(y_1+y_2)+3(z_1+z_2)=(2x_1+y_1+3z_1)+(2x_2+y_2+3z_2)=0
+\end{equation*}
 \end{frame}\begin{frame}
-\begin{center}
-  \includegraphics{asy/two_i_plane.pdf}    
-\end{center}
-
 For condition~(6) take a member of the plane
 \begin{equation*}
-  \vec{p}=\colvec{x_1 \\ y_1 \\ z_1}
-  \qquad \text{such that $2x_1+y_1+3z_1=0$}
+  \vec{p}=\colvec{x \\ y \\ z}
+  \qquad 
+  2x+y+3z=0
 \end{equation*}
 and multiply by a scalar $r\in\Re$. 
 \begin{equation*}
-  r\vec{p}=\colvec{rx_1 \\ ry_1 \\ rz_1}
+  r\vec{p}=\colvec{rx \\ ry \\ rz}
 \end{equation*}
-Verify that $r\vec{p}$ is a member of the plane~$P$ with
-$2(rx_1)+(ry_1)+3(rz_1)=r(2x_1+y_1+3z_1)=0$.
+Then $r\vec{p}$ is a member of the plane~$P$ because
+$2(rx)+(ry)+3(rz)=r(2x+y+3z)=0$.
 \end{frame}
 
 
+\begin{frame}
+\frametitle{$\Re^n$}
+The set of $n$-tall vectors is a vector space under the 
+natural operations.
 
+All ten conditions are easy;  
+we will just verify condition~(1).
+Where
+\begin{equation*}
+  \vec{v}=\colvec{v_1 \\ \vdots \\ v_n}
+  \qquad
+  \vec{w}=\colvec{w_1 \\ \vdots \\ w_n}
+\end{equation*}
+then the sum
+\begin{equation*}
+  \vec{v}+\vec{w}
+    =\colvec{v_1+w_1 \\ \vdots \\ v_n+w_n}
+\end{equation*}
+is also a member of $\Re^n$.
+(There are no restrictions to check, since every $n$-tall vector is a 
+member of $\Re^n$.)
+\end{frame}
 
 % ..........
 \begin{frame}
@@ -507,7 +522,7 @@ Consider the set of quadratic polynomials.
 \begin{equation*}
   \polyspace_2=\set{a_0+a_1x+a_2x^2 \suchthat a_0,a_1,a_2\in\Re}
 \end{equation*}
-Some members are $3+2x+1x^2$, $10+0x+5x^2$, and $0x^2+0x+0$.
+Some members are $3+2x+1x^2$, $10+0x+5x^2$, and $0+0x+0x^2$.
 \pause
 This is a vector space under the usual operations of polynomial addition
 \begin{equation*}
@@ -528,7 +543,7 @@ Here is a sample combination in $\polyspace_2$
 illustrating that 
 a linear combination of quadratic polynomials is a quadratic polynomial.
 \end{frame}\begin{frame}
-We won't gie a full verification, but
+We won't give a full verification but
 we will check the closure conditions (1) and~(6).
 
 For (1) note that if 
@@ -632,20 +647,22 @@ operations).
 \df[df:Subspace]
 \ExecuteMetaData[../vs1.tex]{df:Subspace}
 
-\pause\medskip
+\pause\smallskip
 \ExecuteMetaData[../vs1.tex]{ProperSubspace}
 
 \pause
 \ex
-In the vector space $\Re^2$, the line $y=2x$ 
+We have seen that in the vector space $\Re^2$, the line $y=2x$ 
 \begin{equation*}
   S=\set{\colvec{a \\ 2a} \suchthat a\in\Re}
-   =\set{\colvec{1 \\ 2}a \suchthat a\in\Re}
+   =\set{\colvec{1 \\ 2}\cdot a \suchthat a\in\Re}
 \end{equation*}
 is a subspace.
-The operations, as required by the definition above, are the ones from $\Re^2$.
-We could show it is a vector space by checking the ten conditions 
-but the next result gives an easier way.
+The operations are the ones from $\Re^2$, as required by the definition above.
+Earlier, to show it is a vector space we checked the ten conditions from the 
+definition.
+The result below says that to check if something is a subspace there
+is an easier way.
 
 \pause
 \ex
@@ -658,14 +675,14 @@ This subset of $\matspace_{\nbyn{2}}$ is a subspace.
    =\set{\begin{mat}
            1  &0  \\
            1  &0
-         \end{mat}a
+         \end{mat}\cdot a
          +\begin{mat}
            0  &1  \\
            0  &1
-          \end{mat}b
+          \end{mat}\cdot b
          \suchthat a,b\in\Re}
 \end{equation*}
-As above, addition and scalar multiplication are the same as in 
+Addition and scalar multiplication are the same as in 
 $\matspace_{\nbyn{2}}$.
 \end{frame}
 
@@ -701,28 +718,25 @@ Still another is that it does not contain the zero vector.)
 \lm[th:SubspIffClosed]
 \ExecuteMetaData[../vs1.tex]{lm:SubspIffClosed}
 
-\pause\bigskip
+\pause\medskip
 \iftoggle{showallproofs}{
   \ExecuteMetaData[../vs1.tex]{pf:SubspIffClosed0}
 }{
   The book has the full proof.
-  Its idea is that if $V$ is a vector space with a subset $S$
-  then many of the ten properties required for $S$ to be a 
-  vector space are automatic.
-  For instance, suppose that 
-  $\vec{s}_1,\vec{s}_2\in S$ and consider commutativity 
-  of addition: does $\vec{s}_1+\vec{s}_2$ equal $\vec{s}_2+\vec{s}_1$? 
-  \pause
-  Because the $+$ operation is inherited from $V$ and
-  as sums of elements of~$V$ the two are equal
-  $\vec{s}_1+\vec{s}_2=\vec{s}_2+\vec{s}_1$, 
-  then provided $S$ is closed the two are equal in~$S$.
-
-  \pause
-  Many of the other nine conditions are also automatic.
-  The only ones that need to be checked are the closure conditions.
-  Both statements~(2) and~(3) above just combine the two closure conditions
-  into a single one, to make the subspace verification faster.
+  For the idea, recall that in the first example of a vector space 
+  we remarked that 
+  some of the conditions do not depend on the restriction.
+  For instance, there $\vec{v}_1+\vec{v}_2$ equals $\vec{v}_2+\vec{v}_1$ 
+  \begin{equation*}
+    \colvec{x_1 \\ y_1}+\colvec{x_2 \\ y_2}
+    =\colvec{x_1+x_2 \\ y_1+y_2}
+    =\colvec{x_2+x_1 \\ y_2+y_1}
+    =\colvec{x_2 \\ y_2}+\colvec{x_1 \\ y_1}
+  \end{equation*}
+  because the vector components are real number sums.
+  Only the closure conditions need verification.
+  Statements~(2) and~(3) above combine the closure conditions
+  into a single one, to make the verification faster.
 }
 \end{frame}
 \iftoggle{showallproofs}{
@@ -749,7 +763,7 @@ $L=\set{b_0+b_1x\suchthat b_0,b_1\in\Re}$.
 By the prior result, to verify that we need only check 
 closure under linear combinations of two members.
 \begin{equation*}
-  r(b_0+b_1x)+s(c_0+c_1x)=(rb_0+sc_0)+(rb_1+sc_1)x
+  r\cdot(b_0+b_1x)+s\cdot(c_0+c_1x)=(rb_0+sc_0)+(rb_1+sc_1)x
 \end{equation*}
 The right side is a linear polynomial with real coefficients, and so is a 
 member of $L$.
@@ -761,13 +775,13 @@ Another subspace of $\polyspace_2$ is the set of quadratic polynomials
 having three equal coefficients.
 \begin{equation*}
   M=\set{a+ax+ax^2\suchthat a\in\Re}
-   =\set{(1+x+x^2)a\suchthat a\in\Re}
+   =\set{(1+x+x^2)\cdot a\suchthat a\in\Re}
 \end{equation*}
 Verify that it is a subspace by
 considering a linear combination of two of its members
 (under the inherited operations).
 \begin{equation*}
-  r(a+ax+ax^2)+s(b+bx+bx^2)
+  r\cdot(a+ax+ax^2)+s\cdot(b+bx+bx^2)
   =(ra+sb)+(ra+sb)x+(ra+sb)x^2
 \end{equation*}
 The result is a quadratic polynomial with three equal coefficients  
@@ -779,13 +793,15 @@ and so $M$ is closed under linear combinations.
 
 % ..........
 \begin{frame}
-Each of the above subspace examples  
+The prior subspace example 
 parametrizes the description.
-For instance, with the prior example's 
-$\set{a+ax+ax^2\suchthat a\in\Re}$ we brought out the
-parameter by restating it as $\set{(1+x+x^2)a\suchthat a\in\Re}$.
-% That's a key to understanding vector spaces.
+\begin{equation*}
+  M=\set{a+ax+ax^2\suchthat a\in\Re}
+  = \set{(1+x+x^2)\cdot a\suchthat a\in\Re}
+\end{equation*}
+That proves to be a great way to understand vector spaces.
 
+\smallskip
 \ex
 This subset of $\Re^3$ is a plane.
 \begin{equation*}
@@ -829,8 +845,7 @@ Of course, that gives a linear combination.
 
 
 \begin{frame}
-\ex To show that this is a subspace of the space of 
-two by two matrices $\matspace_{\nbyn{2}}$
+\ex To show that this is a subspace of $\matspace_{\nbyn{2}}$
 \begin{equation*}
   Q = 
   \set{
@@ -842,7 +857,7 @@ two by two matrices $\matspace_{\nbyn{2}}$
       \text{$a-b=0$ and $b-c=0$}}
 \end{equation*}
 treat that as a two-equation linear system and parametrize.
-You get leading variables $a$ and~$b$, and free variables $c$ and~$d$.
+The leading variables are $a$ and~$b$, with free variables $c$ and~$d$.
 \begin{equation*}
   Q = 
   \set{
@@ -975,7 +990,7 @@ this system does not have a solution.
 \end{frame}
 \begin{frame}
 \ex
-We can illustrate that a span is closed under linear combinations.
+This illustrates that a span is closed under linear combinations.
 Where 
 \begin{equation*}
   \hat{S}=\set{\colvec{1 \\ -1 \\ 0},
@@ -989,7 +1004,7 @@ these are two elements of the span $\spanof{\hat{S}}$.
   \vec{v}_2=-2\cdot\colvec{1 \\ -1 \\ 0}
     +10\cdot\colvec{1 \\ 1 \\ 0}
 \end{equation*}
-The linear combination $-3\vec{v}_1+7\vec{v_2}$
+The linear combination of those two $-3\vec{v}_1+7\vec{v_2}$
 makes another element of the span.
 \begin{equation*}
   -3\cdot\big( 5\colvec{1 \\ -1 \\ 0}

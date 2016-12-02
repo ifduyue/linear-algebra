@@ -56,9 +56,11 @@
 %..........
 \begin{frame}{Linear independence}
 \df[def:LinInd]
-A multiset subset of a vector space is \definend{linearly independent}
-if none of its elements is a linear combination of the others.
-Otherwise it is \definend{linearly dependent}.
+In any vector space, a set of vectors is
+\definend{linearly independent}
+if none of its elements is a linear combination of the 
+others from the set.
+Otherwise the set is \definend{linearly dependent}.
 % Makes footnote: \ExecuteMetaData[../vs2.tex]{df:LinInd}
 
 \pause\medskip
@@ -154,7 +156,7 @@ Another way is to solve the linear system
     3c_1 &   &     &+  &6c_3   &=  &0
   \end{linsys}
 \end{equation*}
-and note that it has more than just the trivial solution.
+and note that it has more than just the solution $c_1=c_2=c_3=0$.
 \end{frame}
 
 
@@ -177,6 +179,7 @@ and note that it has more than just the trivial solution.
   \qed
 }{
   \bigskip
+  \ex
   The book has the proof; here is an illustration. 
   The span of this set is the $xy$-plane.
   \begin{equation*}
@@ -194,7 +197,6 @@ and note that it has more than just the trivial solution.
                  \colvec{0 \\ 2 \\ 0},
                  \colvec{0 \\ 0 \\ -1}}
   \end{equation*}
-  \pause
   If the new vector is already in the starting span $\vec{q}\in\spanof{P}$
   then the span is unchanged $\spanof{P_0}=\spanof{P}$.
   But if the new vector is outside the starting span $\vec{q}\notin\spanof{P}$
@@ -218,8 +220,21 @@ because in the first set $\vec{v}_3=2\vec{v}_2-\vec{v}_1$.
 \pause
 \co[cor:LiSetMinSpanSet]
 \ExecuteMetaData[../vs2.tex]{cor:LiSetMinSpanSet}
-\pf
-\ExecuteMetaData[../vs2.tex]{pf:LiSetMinSpanSet}\qed
+\iftoggle{showallproofs}{
+  \pf
+  \ExecuteMetaData[../vs2.tex]{pf:LiSetMinSpanSet}\qed
+}{
+
+  \bigskip
+  The book has the proof.
+  For illustration, this is a linearly independent subset of $\polyspace_3$
+  \begin{equation*}
+    S=\set{1+x,1-x,x^2}
+  \end{equation*}
+  Removal of any element, such as if we remove $1-x$ to get 
+  $\hat{S}=\set{1+x,x^2}$, will make the span smaller:
+  $\spanof{\hat{S}}\subsetneq\spanof{S}$.
+}
 \end{frame}
 
 

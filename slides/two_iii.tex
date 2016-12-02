@@ -209,6 +209,30 @@ and refer to it as a set.
 
 
 
+\begin{frame}
+\ex Consider the vector space $\Re^3$ and this vector and basis.
+\begin{equation*}
+  \vec{v}=\colvec{1 \\ 2 \\ 3}\in\Re^3
+  \qquad
+  B=\sequence{\colvec{1 \\ 1 \\ 1},
+              \colvec{1 \\ 1 \\ 0},
+              \colvec{1 \\ 0 \\ 0}}
+   =\sequence{\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3}
+\end{equation*}
+Find how to express $\vec{v}$ as 
+$c_1\vec{\beta}_1+c_2\vec{\beta}_2+c_3\vec{\beta}_3$ by solving this system.
+\begin{equation*}
+  \begin{linsys}{3}
+    c_1 &+ &c_2 &+ &c_3 &= &1 \\
+    c_1 &+ &c_2 &  &    &= &2 \\
+    c_1 &  &    &  &    &= &3 \\
+  \end{linsys}
+\end{equation*}
+By eye we see just what the Theorem says we will see:
+there is one, and only one, solution $c_1=3$, $c_2=-1$, and~$c_1=-1$.
+\end{frame}
+
+
 %..........
 \begin{frame}
 \df[def:RepresentingVectors]

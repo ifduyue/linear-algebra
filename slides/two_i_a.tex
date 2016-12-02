@@ -49,15 +49,19 @@
 % ..... Two.I.2.19 .....
 \section{Real three-space}
 \begin{frame}{Subspaces of $\Re^3$}
-The next slide gives a sample of subspaces of the vector space~$\Re^3$:
+The next slide shows a sample of subspaces of the vector space~$\Re^3$:
 the entire space, planes, lines, and the trivial subspace.
-Subsets are drawn connected to their supersets on the levels 
+Subsets are drawn connected to supersets, on the levels 
 directly above and below.
 
-On the level one up from the bottom, the second 
-and third subspaces are lines because
+On the level one up from the bottom, the subspaces are lines 
+(in the second and third case, because
 the conjunction of the two conditions means that each is the 
-intersection of two planes.
+intersection of two planes).
+That is, they are one-dimensional.
+
+On the next level up, the subspaces are planes, two-dimensional.
+On the top level, the space is $3$-space.
 \end{frame}
 
 \begin{frame}
@@ -88,7 +92,7 @@ This shows~$P$.
   \includegraphics{asy/two_i_a_plane.pdf}
 \end{center}
 The two vectors from the spanning set are in red.
-For each, its body lies in the plane.
+For each, its entire body lies in the plane.
 \end{frame}
 
 
@@ -123,7 +127,7 @@ The $xy$-plane is a span in a natural way.
 
 \begin{frame}
 \ex
-Next, parametrize the lines.
+Next we parametrize the lines.
 The conditions in the set description
 \begin{equation*}
   L=\set{\colvec{x \\ y \\ z}\suchthat \text{$x-y+z=0$ and $x+2z=0$}}
@@ -151,15 +155,17 @@ gives this.
 \end{equation*}
 \end{frame}
 \begin{frame}
-Here is the line, drawn with the same view as the earlier plane.
+Here is the line, in yellow. 
+The axes are blue.
 \begin{center}
   \includegraphics{asy/two_i_a_line.pdf}
 \end{center}
-In red is the spanning vector
+The spanning vector is red
 \begin{equation*}
   \colvec{-2 \\ -1 \\ 1}
 \end{equation*}
-(its endpoint lies behind the plane of the screen).
+(its endpoint lies behind the plane of the screen, where $x$ and~$y$
+are negative).
 \end{frame}
 
 
@@ -202,17 +208,17 @@ We can do the same for the trivial subspace.
   \set{\colvec{0 \\ 0 \\ 0}}
   =\spanof{\,\set{}\,}
 \end{equation*}
-(Remember the convention that a sum of zero-many members of $\Re^n$ 
+(Remember that a sum of zero-many vectors 
 is the zero vector.)
 \end{frame}
 
 \begin{frame}{$\Re^3$'s diagram reprised}
 The following slide repeats the diagram of $\Re^3$'s subspaces, 
 showing the same subspaces.
-On this diagram those subspaces they are described as spans, 
+On this diagram the same subspaces they are described as spans, 
 where the spanning set uses a minimal number of vectors.
 
-By `minimal' we mean something like:~while 
+By `minimal' we mean:~while 
 we could describe the $xy$-plane in either of these ways,
 \begin{equation*}
   \text{$xy$-plane}
@@ -243,7 +249,7 @@ the second has an extra vector, so the next slide doesn't use that description.
 The next slide has a picture of some of the subspaces of the
 space of quadratic polynomials.
 As with the $\Re^3$ diagram, 
-subsets are shown connected to supersets on the level above.
+subsets are shown connected to supersets on the adjacent level.
 
 With $\Re^3$ the geometry gave us a good start for a natural classification
 of subspaces into planes, lines, etc.
@@ -265,7 +271,7 @@ along with a couple of more-generic spaces.
 
 \begin{frame}{Parametrizing}
 \ex
-For the top line, this will do.
+For the top level, this will do.
 \begin{equation*}
   \polyspace_2
   =\spanof{\,\set{x^2,x,1}\,}
@@ -275,7 +281,8 @@ For the top line, this will do.
 \end{equation*}
 
 \ex
-The trivial subspace is the span of the empty set.
+On the bottom level, 
+the trivial subspace is the span of the empty set.
 \begin{equation*}
   \set{0}
   =\set{0x^2+0x+0}
@@ -302,7 +309,8 @@ The set of constant polynomials is similar.
 \begin{frame}
 \ex
 Paramatrize $P=\set{ax^2+bx+c\suchthat a+b+c=0}$ 
-in much the same way as for subspaces of real three-space.
+in much the same way as for subspaces of real three-space:
+treat the restriction as a one-equation linear system and parametrize.
 \begin{align*}
   % \set{ax^2+bx+c\suchthat a+b+c=0}
   P
