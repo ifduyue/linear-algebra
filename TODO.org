@@ -25,7 +25,7 @@ leaves extra space at start of first sentence.
 ** Add Topic on coupled oscillators and normal modes, maybe with video?
 
 * Refactor some code 
-
+** Move Range space and Null space to after the definition of Computing Linear Maps
 ** Change vector look?
   http://www.reddit.com/r/LaTeX/comments/m4lxo/both_of_these_arrows_look_wrong_to_me_pic/
 

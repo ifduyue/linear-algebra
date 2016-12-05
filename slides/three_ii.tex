@@ -149,8 +149,8 @@ We proved these two while studying isomorphisms.
 \ExecuteMetaData[../map2.tex]{lm:HomoPreserveLinCombo}
 
 \medskip
-To verify that a map is a homomorphism the one that we use most often
-is statement~(2). 
+To verify that a map is a homomorphism, we most often
+use~(2). 
 
 \pause
 \ex
@@ -216,17 +216,17 @@ is a homomorphism.
 %..........
 \begin{frame}
 \ex
-The derivative
-is the usual transformation of polynomial space
-$\map{d/dx}{\polyspace_2}{\polyspace_1}$.
+The derivative is a transformation on polynomial spaces.
+For instance, consider
+$\map{d/dx}{\polyspace_2}{\polyspace_1}$
+given by
 \begin{equation*}
   d/dx\,(ax^2+bx+c)=2ax+b
 \end{equation*}
-For instance, $d/dx\,(3x^2-2x+4)=6x-2$
-and $d/dx\,(x^2+1)=2x$.
+(examples are $d/dx\,(3x^2-2x+4)=6x-2$
+and $d/dx\,(x^2+1)=2x$).
 
-\pause
-This map is a homomorphism.
+It is a homomorphism.
 \begin{multline*}
   d/dx\,\big(\,r_1(a_1x^2+b_1x+c_1)+r_2(a_2x^2+b_2x+c_2)\,\big)  \hspace*{5em}  \\
   \begin{aligned} 
@@ -302,18 +302,69 @@ It is linear.
 \th[th:HomoDetActOnBasis]
 \ExecuteMetaData[../map2.tex]{th:HomoDetActOnBasis}
 
-\pause
-\pf
-\ExecuteMetaData[../map2.tex]{pf:HomoDetActOnBasis0}
+  \pause
+\iftoggle{showallproofs}{
+  \pf
+  \ExecuteMetaData[../map2.tex]{pf:HomoDetActOnBasis0}
 
-\pause
-\ExecuteMetaData[../map2.tex]{pf:HomoDetActOnBasis1}
+  \pause
+  \ExecuteMetaData[../map2.tex]{pf:HomoDetActOnBasis1}
+}{
+  \ex
+  The book has the proof.  
+  Here is an illustration.
+  Consider a map $\map{h}{\Re^2}{\Re^2}$ with this action on a basis.
+  \begin{equation*}
+    \colvec{1 \\ 1}\mapsunder{h}\colvec{1 \\ 3}
+    \quad
+    \colvec{1 \\ 0}\mapsunder{h}\colvec{2 \\ 0}
+  \end{equation*}
+  The effect of the map on any vector~$\vec{v}$ at all
+  is determined by those two facts.
+  Represent that vector~$\vec{v}$ with respect to the basis.
+  \begin{equation*}
+    \colvec{-1 \\ 5}=5\cdot\colvec{1 \\ 1}-6\cdot\colvec{1 \\ 0}
+  \end{equation*}
+  Compute $h(\vec{v})$ using the definition of homomorphism.
+  \begin{equation*}
+    h(\vec{v})=h(\,5\cdot\colvec{1 \\ 1}-6\cdot\colvec{1 \\ 0}\,)
+    =5\cdot\colvec{1 \\ 3}-6\cdot\colvec{2 \\ 0}
+    =\colvec{-7 \\ 15}
+  \end{equation*}
+}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../map2.tex]{pf:HomoDetActOnBasis2}
-\qed
+\iftoggle{showallproofs}{
+  \ExecuteMetaData[../map2.tex]{pf:HomoDetActOnBasis2}
+  \qed
+}{
+  \ex Consider $\map{f}{\Re^3}{\Re^3}$ with this effect on the 
+   standard basis.
+   \begin{equation*}
+     f(\vec{e}_1)=\colvec{1 \\ 2 \\ -1}
+     \quad
+     f(\vec{e}_2)=\colvec{0 \\ 1 \\ 0}
+     \quad
+     f(\vec{e}_3)=\colvec{3 \\ -1 \\ 0}
+   \end{equation*}
+   Because this is the standard basis,
+   the effect of the map on any vector $\vec{v}\in\Re^3$ is especially
+   easy to compute.
+   For instance, 
+   \begin{equation*}
+     \rep{\colvec{-5 \\ 0 \\ 10}}{\stdbasis_3,\stdbasis_3}
+     =\colvec{-5 \\ 0 \\ 10}
+   \end{equation*}
+   and so we have this.
+   \begin{equation*}
+     f(\colvec{-5 \\ 0 \\ 10})=-5\cdot\colvec{1 \\ 2 \\ -1}
+                               +0\cdot\colvec{0 \\ 1 \\ 0}
+                               +10\cdot\colvec{3 \\ -1 \\ 0}
+         =\colvec{25 \\ -20 \\ 5}
+   \end{equation*}
+}
 
-\pause % \medskip
+\pause
 \df[df:ExtendedLinearly]
 \ExecuteMetaData[../map2.tex]{df:ExtendedLinearly}
 \end{frame}
@@ -333,13 +384,12 @@ These drawings show that this map satisfies the addition
   \qquad$\mapsunder{t_{\pi/6}}$\qquad
   \vcenteredhbox{\includegraphics{asy/three_ii_rotate_sum_after.pdf}}
 \end{center}
-and scalar multiplication conditions
+and scalar multiplication conditions.
 \begin{center}
   \vcenteredhbox{\includegraphics{asy/three_ii_rotate_prod_before.pdf}}
   \qquad$\mapsunder{t_{\pi/6}}$\qquad
   \vcenteredhbox{\includegraphics{asy/three_ii_rotate_prod_after.pdf}}
 \end{center}
-(they also suggest why we say linear maps ``preserve'' the operations).
 We will develop the formula for $t_\Theta$.
 \end{frame}
 \begin{frame}
@@ -378,7 +428,8 @@ Extend linearly.
 \ex 
 One basis of the space of quadratic polynomials $\polyspace_2$
 is $B=\sequence{x^2,x,1}$.
-We can define a map $\map{\text{eval}_3}{\polyspace_2}{\Re}$ 
+Define  the \definend{evaluation map} 
+$\map{\text{eval}_3}{\polyspace_2}{\Re}$ 
 by specifying its action on that basis
 \begin{equation*}
   x^2\mapsunder{\text{eval}_3}9
@@ -467,8 +518,8 @@ transformation.
   \begin{equation*}
     (2f+3g)\,(a_0+a_1x)=\colvec{2a_0+14a_1 \\ 3a_1}
   \end{equation*}
-  The point of the lemma is that $2f+3g$ is also a homomorphism
-  (as is routine to check).
+  The point of the lemma is that $2f+3g$ is also a homomorphism;
+  the check is routine.
   The collection of homomorphisms from $\polyspace_1$ to $\Re^2$
   is closed under linear combinations of those homomorphisms\Dash it 
   is a vector space.
@@ -583,6 +634,7 @@ The image of $\Re^2$ under $f$ is this subspace of~$\matspace_{\nbyn{2}}$.
 For any angle $\theta$, 
 the function $\map{t_{\theta}}{\Re^2}{\Re^2}$ that rotates 
 vectors counterclockwise through an angle $\theta$ is a homomorphism.
+
 In the domain~$\Re^2$ each line through the origin is a subspace.
 The image of that line under this map is another line through the origin, 
 a subspace of the codomain~$\Re^2$. 
@@ -605,11 +657,11 @@ This map from $\matspace_{\nbyn{2}}$ to $\Re^2$ is linear.
   \mapsunder{h}
   \colvec{a+b  \\ 2a+2b}
 \end{equation*}
-The range space is a line through the origin
+The range space is a line through the origin.
 \begin{equation*}
   \set{\colvec{t \\ 2t} \suchthat t\in\Re}
 \end{equation*}
-(every member of that set is the image 
+Every member of that set is the image of a $\nbyn{2}$ matrix.
 \begin{equation*}
   \colvec{t \\ 2t}
   =
@@ -620,7 +672,6 @@ The range space is a line through the origin
     \end{mat}
    )
 \end{equation*}
-of a $\nbyn{2}$ matrix).
 The map's rank is $1$.
 \end{frame}
 \begin{frame}
@@ -654,85 +705,156 @@ Thus the rank of $\pi$ is~$2$.
 
 
 
-
 %..........
 \begin{frame}{Homomorphisms organize the domain}
 In moving from isomorphisms to homomorphisms we dropped 
 the requirement that the maps be onto and one-to-one.
-Because any homomorphism $\map{h}{V}{W}$ is onto 
+But any homomorphism $\map{h}{V}{W}$ is onto 
 its range space $\rangespace{h}$,
-dropping the onto condition has, in a way, no effect.
+so dropping the onto condition has, in a way, no effect
+on the range.
 
 \pause
 In contrast,
 consider dropping the one-to-one condition.
-Now there may be some vectors $\vec{w}\in W$
-having many vectors $\vec{v}\in V$ mapped to $\vec{w}$.
-(The drawing below shows only one maps-to arrow $\mapsto$ for all
-the many domain elements, just to avoid a confused picture.) 
-\centergraphic{../ch3.5}
+With that, there may be some output vectors $\vec{w}\in W$
+for which there are many associated inputs,
+$\vec{v}\in V$ such that $h(\vec{v})=\vec{w}$.
+This is a real difference.
+Now, we can ask: 
+for any vector in the range $\vec{w}\in\rangespace{h}$ 
+what are the associated domain vectors $\vec{v}\in V$?
+
+\smallskip
 \ExecuteMetaData[../map2.tex]{InverseImage}
 \end{frame}
+
+
 \begin{frame}
 \ex
-The projection map $\map{\pi}{\Re^2}{\Re}$ is linear.
+Projection $\map{\pi}{\Re^2}{\Re}$ onto the $x$~axis is linear.
 \begin{equation*}
-  \pi(\colvec{x \\ y})
+  \pi(\,\colvec{x \\ y}\,)
   =x
 \end{equation*}
 \pause
-Identify the codomain $\Re$ with the $x$-axis in $\Re^2$.
-Here is an $x$-axis member, in red.
-\centergraphic{asy/three_ii_proj1.pdf}
-\pause
-Next are some elements of $\pi^{-1}(2)$.
-They are red because they are associated with $2$.
-\centergraphic{asy/three_ii_proj2.pdf}
+Here are some elements of $\pi^{-1}(2)$.
 Think of these as ``$2$~vectors.''
-The set of endpoints of all such vectors makes the line~$x=2$.
-\end{frame}\begin{frame}
-Here are some ``$3$-vectors,'' inverse images of $3$.
-\centergraphic{asy/three_ii_proj3.pdf}
+\begin{center}
+  \includegraphics{asy/three_ii_proj_2d01.pdf}
+  \qquad\raisebox{0.25in}{$\longmapsto$}\qquad
+  \includegraphics{asy/three_ii_proj_2d00.pdf}
+\end{center}
+Think of elements of $\pi^{-1}(3)$ as ``$3$~vectors.''
+\begin{center}
+  \includegraphics{asy/three_ii_proj_2d03.pdf}
+  \qquad\raisebox{0.25in}{$\longmapsto$}\qquad
+  \includegraphics{asy/three_ii_proj_2d02.pdf}
+\end{center}
+These elements of $\pi^{-1}(5)$ are ``$5$~vectors.''
+\begin{center}
+  \includegraphics{asy/three_ii_proj_2d05.pdf}
+  \qquad\raisebox{0.25in}{$\longmapsto$}\qquad
+  \includegraphics{asy/three_ii_proj_2d04.pdf}
+\end{center}
+\end{frame}
+\begin{frame}
+These drawings give us a way to make the definition of
+homomorphism more concrete.  
+Consider preservation of addition.
+\begin{equation*}
+\pi(\vec{u})+\pi(\vec{v})=\pi(\vec{u}+\vec{v})
+\end{equation*}
+If $\vec{u}$ is such that  $\pi(\vec{u})=2$,
+and $\vec{v}$ is such that $\pi(\vec{v})=3$,
+then $\vec{u}+\vec{v}$ will be such that
+the sum $\pi(\vec{u}+\vec{v})=5$.
 \pause
-Projection is a homomorphism,
-$\pi(\vec{u})+\pi(\vec{v})=\pi(\vec{u}+\vec{v})$.
-Since  $\pi(\vec{u})=2$ and $\pi(\vec{v})=3$,
-the sum $\vec{u}+\vec{v}$ will be mapped by $\pi$ to~$5$.
-\centergraphic{asy/three_ii_proj5.pdf}
-Thus, we can understand the definition of addition preservation as:
-red plus blue makes purple\Dash a ``$2$ vector'' plus a
-``$3$~vector'' sums to a ``$5$~vector.''
+That is, a ``$2$ vector'' plus a
+``$3$~vector'' is a ``$5$~vector.''
+Red plus blue makes purple.
+\centergraphic{asy/three_ii_proj_2d06.pdf}
 
-\pause
-A similar interpretation holds for preservation of scalar multiplication.
+A similar interpretation holds for preservation of scalar multiplication:
+the image of an  ``$r\cdot 2$~vector'' is 
+$r$ times $2$.
 \end{frame}
 
+
+\begin{frame}
+\ex
+This function $\map{h}{\Re^2}{\Re^2}$ is linear. 
+\begin{equation*}
+  \colvec{x \\ y}\mapsto\colvec{x+y \\ 2x+2y}
+\end{equation*}
+Here are elements of $h^{-1}(\colvec{1 \\ 2})$ going to $\colvec{1 \\ 2}$.
+(Only one inverse image element is shown as a vector, most are shown as dots.)
+\begin{center}
+  \includegraphics{asy/three_ii_inv_img01.pdf}
+  \quad\raisebox{0.25in}{$\longmapsto$}\quad
+  \includegraphics{asy/three_ii_inv_img00.pdf}
+\end{center}
+Here are some elements of $h^{-1}(\colvec{1.5 \\ 3})$ 
+and $h^{-1}(\colvec{2.5 \\ 5})$. 
+\begin{center}
+  \includegraphics{asy/three_ii_inv_img03.pdf}
+  \quad\raisebox{0.25in}{$\longmapsto$}\quad
+  \includegraphics{asy/three_ii_inv_img02.pdf}
+  \hspace*{0.75in}
+  \includegraphics{asy/three_ii_inv_img05.pdf}
+  \quad\raisebox{0.25in}{$\longmapsto$}\quad
+  \includegraphics{asy/three_ii_inv_img04.pdf}
+\end{center}
+\end{frame}
+\begin{frame}
+The way that the range space vectors add
+\begin{equation*}
+  {\color{red}\colvec{1 \\ 2}}+{\color{blue}\colvec{1.5 \\ 3}}
+   ={\color{magenta}\colvec{2.5 \\ 5}}
+\end{equation*}
+is reflected in the domain: a red vector plus a blue vector makes a purple
+vector. 
+\begin{center}
+  \includegraphics{asy/three_ii_inv_img06.pdf}
+\end{center}
+\pause
+That is, preservation of addition is: 
+$h({\color{red}\vec{v}_1})+h({\color{blue}\vec{v}_2})
+   =h({\color{magenta}\vec{v}_1+\vec{v}_2})$.
+
+\pause
+So the intuition is that a linear map organizes its domain into inverse 
+images, such that those sets reflect the structure of the range.
+\end{frame}
 
 
 
 %..........
 \begin{frame}
 \ex
-The projection $\map{\pi}{\Re^3}{\Re^2}$ is a homomorphism.
-As above we can identify the codomain with the $xy$-plane inside of
+Projection $\map{\pi}{\Re^3}{\Re^2}$ is a homomorphism.
+\begin{equation*}
+  \colvec{x \\ y \\ z}\mapsto\colvec{x \\ y}
+\end{equation*}
+Here we draw the range~$\Re^2$ as the $xy$-plane inside of
 $\Re^3$.
 \only<1>{\centergraphic{asy/three_ii_3dproj1.pdf}}
 \only<2>{\centergraphic{asy/three_ii_3dproj2.pdf}}
 \only<3->{\centergraphic{asy/three_ii_3dproj3.pdf}}
-In that codomain $xy$-plane the parallelogram shows a vector addition
+In the range the parallelogram shows a vector addition
 $\vec{w}_1+\vec{w}_2=\vec{w}_3$.
-We will illustrate that here also a $\vec{w}_1$ vector plus a
-$\vec{w}_2$ vector equals a $\vec{w}_3$ vector.
 
 \pause
-The diagram shows some of the infinitely 
-many points in each inverse image set~$\pi^{-1}(\vec{w}_i)$
-(drawing all the points would show that each is a vertical line).
+\only<2->{The diagram shows some of the  
+points in each inverse image~$\pi^{-1}(\vec{w}_1)$, 
+$\pi^{-1}(\vec{w}_2)$, and~$\pi^{-1}(\vec{w}_3)$.}
 \pause
-The sum of a vector $\vec{v}_1\in\pi^{-1}(\vec{w}_1)$ 
+\only<3->{The sum of a vector $\vec{v}_1\in\pi^{-1}(\vec{w}_1)$ 
 and a vector $\vec{v}_2\in\pi^{-1}(\vec{w}_2)$
 equals a vector
 $\vec{v}_3\in\pi^{-1}(\vec{w}_3)$.
+A $\vec{w}_1$ vector plus a
+$\vec{w}_2$ vector equals a $\vec{w}_3$ vector.}
 \end{frame}
 
 
@@ -741,7 +863,7 @@ $\vec{v}_3\in\pi^{-1}(\vec{w}_3)$.
 %..........
 \begin{frame}
 This interpretation of the definition of 
-operation preservation also holds when the spaces are not 
+homomorphism also holds when the spaces are not 
 ones that we can sketch.
 
 \ex
@@ -749,12 +871,12 @@ Let $\map{h}{\polyspace_2}{\Re^2}$ be
 \begin{equation*}
   ax^2+bx+c\mapsto\colvec{b \\ b}
 \end{equation*}
-and consider these three members of the range
+and consider these three members of the range such that 
+$\vec{w}_1+\vec{w}_2=\vec{w}_3$
 \begin{equation*}
   \vec{w}_1=\colvec{1 \\ 1}\quad
   \vec{w}_2=\colvec{-1 \\ -1}\quad  
   \vec{w}_3=\colvec{0 \\ 0}
-  \qquad \text{(note that $\vec{w}_1+\vec{w}_2=\vec{w}_3$).}
 \end{equation*}
 \pause
 The inverse image of $\vec{w}_1$ is 
@@ -775,9 +897,9 @@ equals a $\vec{v}_3\in h^{-1}(\vec{w}_3)$:
 a quadratic with an $x$~coefficient of $1$ 
 plus a quadratic with an $x$~coefficient of $-1$
 equals a quadratic with an $x$~coefficient of~$0$.
-\pause
-A ``$\vec{w}_1$~vector'' plus a
-``$\vec{w}_2$~vector'' is a ``$\vec{w}_3$~vector.'' 
+% \pause
+% A ``$\vec{w}_1$~vector'' plus a
+% ``$\vec{w}_2$~vector'' is a ``$\vec{w}_3$~vector.'' 
 \end{frame}
 
 
