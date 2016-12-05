@@ -720,13 +720,17 @@ consider dropping the one-to-one condition.
 With that, there may be some output vectors $\vec{w}\in W$
 for which there are many associated inputs,
 $\vec{v}\in V$ such that $h(\vec{v})=\vec{w}$.
-This is a real difference.
-Now, we can ask: 
+Now we can ask: 
 for any vector in the range $\vec{w}\in\rangespace{h}$ 
 what are the associated domain vectors $\vec{v}\in V$?
 
+\pause
 \smallskip
 \ExecuteMetaData[../map2.tex]{InverseImage}
+
+\smallskip
+The structure of the inverse image sets
+will give us insight into the definition of homomorphism.
 \end{frame}
 
 
@@ -787,8 +791,9 @@ This function $\map{h}{\Re^2}{\Re^2}$ is linear.
 \begin{equation*}
   \colvec{x \\ y}\mapsto\colvec{x+y \\ 2x+2y}
 \end{equation*}
-Here are elements of $h^{-1}(\colvec{1 \\ 2})$ going to $\colvec{1 \\ 2}$.
-(Only one inverse image element is shown as a vector, most are shown as dots.)
+Here are elements of $h^{-1}(\colvec{1 \\ 2})$.
+(Only one inverse image element is shown as a vector, most are indicated 
+with dots.)
 \begin{center}
   \includegraphics{asy/three_ii_inv_img01.pdf}
   \quad\raisebox{0.25in}{$\longmapsto$}\quad
@@ -821,10 +826,14 @@ vector.
 That is, preservation of addition is: 
 $h({\color{red}\vec{v}_1})+h({\color{blue}\vec{v}_2})
    =h({\color{magenta}\vec{v}_1+\vec{v}_2})$.
-
-\pause
+\end{frame}
+\begin{frame}
 So the intuition is that a linear map organizes its domain into inverse 
-images, such that those sets reflect the structure of the range.
+images, 
+\begin{center}  
+  \includegraphics{../ch3.5}  % bean to bean; many to one
+\end{center}
+such that those sets reflect the structure of the range.
 \end{frame}
 
 
