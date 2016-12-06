@@ -701,30 +701,31 @@ we can find a
 $\vec{v}\in\Re^3$ that maps to it, specifically any $\vec{v}$ with a 
 first component~$a$ and second component~$b$.
 Thus the rank of $\pi$ is~$2$.
+
+\bigskip\pause
+In the book's next section, on computing linear maps,
+we will do more examples of determining the range space.
 \end{frame}
 
 
 
 %..........
-\begin{frame}{Homomorphisms organize the domain}
+\begin{frame}{Many-to-one}
 In moving from isomorphisms to homomorphisms we dropped 
 the requirement that the maps be onto and one-to-one.
 But any homomorphism $\map{h}{V}{W}$ is onto 
 its range space $\rangespace{h}$,
 so dropping the onto condition has, in a way, no effect
 on the range.
+It doesn't allow any essentially new maps.
 
 \pause
 In contrast,
-consider dropping the one-to-one condition.
-With that, there may be some output vectors $\vec{w}\in W$
-for which there are many associated inputs,
-$\vec{v}\in V$ such that $h(\vec{v})=\vec{w}$.
-Now we can ask: 
-for any vector in the range $\vec{w}\in\rangespace{h}$ 
-what are the associated domain vectors $\vec{v}\in V$?
+consider the effect of dropping the one-to-one condition.
+With that, an output vector $\vec{w}\in W$
+may have many associated inputs,
+many $\vec{v}\in V$ such that $h(\vec{v})=\vec{w}$.
 
-\pause
 \smallskip
 \ExecuteMetaData[../map2.tex]{InverseImage}
 
@@ -776,7 +777,7 @@ the sum $\pi(\vec{u}+\vec{v})=5$.
 \pause
 That is, a ``$2$ vector'' plus a
 ``$3$~vector'' is a ``$5$~vector.''
-Red plus blue makes purple.
+Red plus blue makes magenta.
 \centergraphic{asy/three_ii_proj_2d06.pdf}
 
 A similar interpretation holds for preservation of scalar multiplication:
@@ -817,8 +818,7 @@ The way that the range space vectors add
   {\color{red}\colvec{1 \\ 2}}+{\color{blue}\colvec{1.5 \\ 3}}
    ={\color{magenta}\colvec{2.5 \\ 5}}
 \end{equation*}
-is reflected in the domain: a red vector plus a blue vector makes a purple
-vector. 
+is reflected in the domain: red plus blue makes magenta. 
 \begin{center}
   \includegraphics{asy/three_ii_inv_img06.pdf}
 \end{center}
@@ -827,7 +827,7 @@ That is, preservation of addition is:
 $h({\color{red}\vec{v}_1})+h({\color{blue}\vec{v}_2})
    =h({\color{magenta}\vec{v}_1+\vec{v}_2})$.
 \end{frame}
-\begin{frame}
+\begin{frame}{Homomorphisms organize the domain}
 So the intuition is that a linear map organizes its domain into inverse 
 images, 
 \begin{center}  
@@ -921,20 +921,15 @@ In each of those examples, the homomorphism
 $\map{h}{V}{W}$ shows how to view the domain $V$ as organized into the 
 inverse images $h^{-1}(\vec{w})$.
 
-In the examples these inverse images all look the same so if
-we can describe one then we understand how the domain is 
+In the examples these inverse images are all the same, but shifted.
+So if we describe one of them then we understand how the domain is 
 divided. 
-% We say ``organized'' because these inverse image sets 
-% reflect the structure of the range
-% in that a ``$\vec{w}_1$~vector'' plus a ``$\vec{w}_2$~vector'' 
-% equals a ``$\vec{w}_1+\vec{w}_2$~vector,'' and likewise for 
-% scalar multiplication.
+Vector spaces have a distinguished element, $\vec{0}$.
+So we next consider the inverse image $h^{-1}(\zero)$.
 \end{frame}
 
 
 \begin{frame}
-Vector spaces have a distinguished element, $\vec{0}$.
-So we next consider the inverse image of that element $h^{-1}(\zero)$.
 \lm[le:NullspIsSubSp]\hspace*{-1em}
 \ExecuteMetaData[../map2.tex]{lm:NullspIsSubSp}
 
@@ -1063,6 +1058,25 @@ A trivial space has an empty basis so  $d_{3}$'s nullity is~$0$.
 
 %..........
 \begin{frame}{Rank plus nullity}
+Recall the example map $\map{h}{\Re^2}{\Re^2}$
+\begin{equation*}
+  \colvec{x \\ y}\mapsto\colvec{x+y \\ 2x+2y}
+\end{equation*}
+whose range space $\rangespace{h}$ is the line $y=2x$
+and whose domain is organized into lines, 
+$\nullspace{h}$ is the line $y=-x$.
+There, an entire line's worth of domain vectors collapses to the
+single range point.
+\begin{center}
+  \includegraphics{asy/three_ii_inv_img01.pdf}
+  \quad\raisebox{0.25in}{$\longmapsto$}\quad
+  \includegraphics{asy/three_ii_inv_img00.pdf}  
+\end{center}
+In moving from domain to range, this maps drops a dimension.
+We can account for it by thinking that each output point
+absorbs a one-dimensional set.
+\end{frame}
+\begin{frame}
 \th[th:RankPlusNullEqDim]
 \ExecuteMetaData[../map2.tex]{th:RankPlusNullEqDim}
 
@@ -1070,14 +1084,16 @@ A trivial space has an empty basis so  $d_{3}$'s nullity is~$0$.
   \pause
   \pf
   \ExecuteMetaData[../map2.tex]{pf:RankPlusNullEqDim0}
-  
+
   \pause
   \ExecuteMetaData[../map2.tex]{pf:RankPlusNullEqDim1}
+
 }{
 
   \medskip
   The book contains the proof.
 
+  \medskip
   \ex Consider this map $\map{h}{\Re^3}{\Re}$.
   \begin{equation*}
     \colvec{x \\ y \\ z}\mapsunder{h} x/2+y/5+z  
@@ -1099,10 +1115,11 @@ A trivial space has an empty basis so  $d_{3}$'s nullity is~$0$.
 
 \begin{frame}
 \iftoggle{showallproofs}{
-    \ExecuteMetaData[../map2.tex]{pf:RankPlusNullEqDim2}
-    \qed
+  \ExecuteMetaData[../map2.tex]{pf:RankPlusNullEqDim2}
+  \qed
 }{
-  \noindent This shows the inverse images $h^{-1}(0)$ and $h^{-1}(1)$
+  \noindent 
+  This shows the inverse images $h^{-1}(0)$ and $h^{-1}(1)$
   lined up on the $z$~axis.
   \begin{center}
     \includegraphics{asy/three_ii_kernel.pdf}
@@ -1113,7 +1130,7 @@ A trivial space has an empty basis so  $d_{3}$'s nullity is~$0$.
   The only difference between these $2$-dimensional subsets
   is where they sit in the stack,
   shown here as where they intersect $z$~axis.
-  \pause
+
   That is, $h$ partitions the $3$-dimensional domain
   into   
   $2$-dimensional sets, leaving $1$ dimension of
@@ -1282,7 +1299,7 @@ The set $\set{1,0,2}\subseteq\Re$ is linearly dependent.
 
 
 %..........
-\begin{frame}{A one-to-one homorphism is an isomorphism}
+\begin{frame}{A one-to-one homomorphism is an isomorphism}
 \th[th:OOHomoEquivalence]
 \ExecuteMetaData[../map2.tex]{th:OOHomoEquivalence}
 
