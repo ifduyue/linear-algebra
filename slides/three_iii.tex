@@ -796,16 +796,20 @@ is not an isomorphism.
 
 
 \begin{frame}{Review examples}
-We will revisit some of the results about
-representing a map with a matrix, doing a number of calculations that 
-show how we can study the map with calculations on 
+We will show how we can study the map with calculations on 
 associated matrices.
-Nothing here is new; it is all about integrating results that we have seen.
-The examples are based on this equation.
+For this, we revisit some of the results about
+maps and matrices.
+
+This equation is key.
 \begin{equation*}
    \rep{h}{B,D}\cdot\rep{\vec{v}}{B}=\rep{h(\vec{v})}{D}
   \tag{$*$}
 \end{equation*}
+\pause
+In this section we will write the domain vector $\vec{v}$ using 
+the entries $x$, $y$, etc., and 
+write the codomain vector~$h(\vec{v})$ with $a$, $b$, etc.
 
 \ex 
 First, the number of rows and columns.
@@ -819,16 +823,11 @@ This is an instance of~($*$).
   =
   \colvec{a \\ b}
 \end{equation*}
-(In this section we will represent
-the domain vector using $x$, $y$, etc., and 
-represent the codomain vector with $a$, $b$, etc.)
-
-\pause
-Matrix-vector multiplication takes the
-dot product of $H$'s rows with $\rep{\vec{v}}{B}$'s column.
-So, given a matrix $H$ we can tell the dimension of $h$'s domain because it
-is the width of~$H$'s rows, the number of columns in~$H$.
-Similarly, $h$'s codomain's dimension is the number of rows in~$H$.
+For matrix-vector multiplication to be defined, this $\nbym{2}{3}$ matrix
+must multiply a $3$-tall vector and get a $2$-tall result.
+So, given a matrix $H$, the dimension of $h$'s domain 
+is the number of columns in~$H$, and
+the dimension of $h$'s codomain is the number of rows.
 \end{frame}
 
 
@@ -840,16 +839,16 @@ Consider this linear map $\map{h}{\Re^3}{\Re^3}$.
 \end{equation*}
 A function is onto if every codomain member~$\vec{w}$
 is the image of at least one domain member~$\vec{v}$.
-This map is not onto because
-there is a restriction on which outputs are possible:
+This function is not onto because
+there is a restriction:
 the first component of the output must be the average of
 the other two.
 
 A function is one-to-one if every codomain member~$\vec{w}$
 is the image of at most one domain member~$\vec{v}$.
-This~$h$ is not one-to-one because the 
+This function is not one-to-one because the 
 output entries don't use~$y$,
-so holding $x$ and~$z$ constant and varying~$y$ gives many inputs all
+so holding $x$ and~$z$ constant and varying~$y$ gives many inputs that are all
 associated with the same output. 
 
 \pause
@@ -857,27 +856,35 @@ associated with the same output.
 % License: Creative Commons, by Wikiphoto
 % Source: http://www.wikihow.com/Image:Duel-in-Red-Dead-Redemption-Step-1.jpg
 \begin{graphicbytext}[-2ex]{.26}{duel.jpg}
-Although we were able to decide onto-ness and one-to-one-ness here, 
-we are left with the worry
-that we will one day meet a function definition too involved to solve.
+We could decide onto-ness and one-to-one-ness for this function but  
+maybe 
+we will one day meet a function we can't beat.
 We want an algorithm.
 \end{graphicbytext}
 \end{frame}
 \begin{frame}
-For that, fix bases.
-We will use 
+For the calculations
+we use 
 $\stdbasis_3\subseteq\Re^3$ for both the domain and codomain.
-Finding the action of~$h$ on the domain's basis
+Find the action of~$h$ on the domain's basis
 \begin{equation*}
   \colvec{1 \\ 0 \\ 0}\mapsto\colvec{1 \\ 1 \\ 1}
-  \quad
+  \qquad
   \colvec{0 \\ 1 \\ 0}\mapsto\colvec{0 \\ 0 \\ 0}
-  \quad
+  \qquad
   \colvec{0 \\ 0 \\ 1}\mapsto\colvec{0 \\ 1 \\ -1}
 \end{equation*}
-and representing those outputs with respect to the codomain's basis
-gives $H$.
+and represent those outputs with respect to the codomain's basis.
 \begin{equation*}
+  \rep{\colvec{1 \\ 1 \\ 1}}{\stdbasis_3}=\colvec{1 \\ 1 \\ 1}
+  \quad
+  \rep{\colvec{0 \\ 0 \\ 0}}{\stdbasis_3}=\colvec{0 \\ 0 \\ 0}
+  \quad
+  \rep{\colvec{0 \\ 1 \\ -1}}{\stdbasis_3}=\colvec{0 \\ 1 \\ -1}
+\end{equation*}
+This is why we like the standard basis; it makes calculations easy.
+\begin{equation*}
+  H=
   \rep{h}{\stdbasis_3,\stdbasis_3}
   =
   \begin{mat}
@@ -886,23 +893,22 @@ gives $H$.
     1 &0 &-1
   \end{mat}
 \end{equation*}
-\pause
-This is the instance of equation~($*$).
-\begin{align*}
-  \rep{h}{B,D}\cdot\rep{\vec{v}}{B}
-  &=\rep{h(\vec{v})}{D}                   \\
+\end{frame}
+\begin{frame}
+\noindent This is the instance of 
+$\rep{h}{B,D}\cdot\rep{\vec{v}}{B}$.
+\begin{equation*}
   \begin{mat}
     1 &0 &0 \\
     1 &0 &1 \\
     1 &0 &-1
   \end{mat}
   \colvec{x \\ y \\ z}
-  &=
+  =
   \colvec{a \\ b \\ c}  
-\end{align*}
-\end{frame}
-\begin{frame}
-\noindent Solve for $x$, $y$, and~$z$ using Gauss's Method.
+\end{equation*}
+To find the range space
+solve for $x$, $y$, and~$z$.
 \begin{align*}
   \begin{amat}{3}
     1 &0 &0  &a \\
@@ -912,94 +918,68 @@ This is the instance of equation~($*$).
   &\grstep[-\rho_1+\rho_3]{-\rho_1+\rho_2}
   \begin{amat}{3}
     1 &0 &0  &a \\
-    0 &0 &1  &-a+b \\
+    0 &0 &1   &-a+b \\
     0 &0 &-1 &-a+c   
-  \end{amat}                    \\
-  &\grstep{\rho_2+\rho_3}
+  \end{amat}                             \\                    
+  &\grstep[-\rho_1+\rho_3]{-\rho_1+\rho_2}
   \begin{amat}{3}
-    1 &0 &0  &a \\
-    0 &0 &1  &-a+b \\
-    0 &0 &0  &-2a+b+c   
-  \end{amat}
+    1 &0 &0   &a \\
+    0 &0 &1   &-a+b \\
+    0 &0 &0   &-2a+b+c   
+  \end{amat}                                               
 \end{align*}
 \pause
-This calculation shows that $h$ is not onto.
-Only some codomain vectors~$\vec{w}$
-have  
-an associated domain vector~$\vec{v}$,
-because only some representation entry triples $a,b,c$ work.
-Specifically, only those~$\vec{w}$'s 
-whose representation entries satisfy  
+So $h$ is not onto:
+only those~$\vec{w}$'s 
+whose representations satisfy that 
 $0=-2a+b+c$ have an associated~$\vec{v}$.
-
-\pause
-This calculation also shows that~$h$ is not one-to-one.
-A codomain vector~$\vec{w}$ that appears as an output\Dash
-one whose representation entries satisfy  
-$0=-2a+b+c$\Dash is the image of any domain vector~$\vec{v}$
-whose representation entries satisfy $x=a$, $z=-a+b$, and~$y\in\Re$.
-That's not one-to-one, it is infinitely-many-to-one.
-\end{frame}
-\begin{frame}
-So the algorithm is to fix bases and work with the resulting representations.
-
-\pause
-Recall that for a real space~$\Re^m$ and with respect to 
-the standard basis~$\stdbasis_m$ a vector represents itself,
-as here.
-\begin{equation*}
-  \rep{\colvec{1 \\ 1 \\ 1}}{\stdbasis_3}
-  =\colvec{1 \\ 1 \\ 1}
-\end{equation*}
-This example and the next few 
-use real spaces with standard bases
-so that we can pass back and forth between vectors and their representations.
-% Our final example will be a non-real space one.
-
-With that, the earlier calculation gives the range space
 \begin{equation*}
   \rangespace{h}
    =\set{\colvec{a \\ b \\ c}\suchthat a=(b+c)/2}      
    =\set{\colvec{1/2 \\ 1 \\ 0}b+\colvec{1/2 \\ 0 \\ 1}c\suchthat b,c\in\Re}    \end{equation*}
-and so $\rank(h)=2$.
-We have shown again that the map is not onto since the range space is not
-$3$-dimensional, it is $2$-dimensional.
+That's a plane so the map is rank~$2$.
 \end{frame}
 \begin{frame}
-To find the null space, in the calculation set $a=b=c=0$.
+To decide if $h$ is one-to-one we solve the associated homogeneous system.
 \begin{equation*}
-  \nullspace{h}
-   =\set{\colvec{x \\ y \\ z}\suchthat \text{$x=0$ and $z=0$}}  
-   =\set{\colvec{0 \\ 1 \\ 0}y\suchthat y\in\Re}
+  \begin{amat}{3}
+    1 &0 &0  &0 \\
+    1 &0 &1  &0 \\
+    1 &0 &-1 &0   
+  \end{amat}
+  \grstep{}\grstep{}
+  \begin{amat}{3}
+    1 &0 &0   &0 \\
+    0 &0 &1   &0 \\
+    0 &0 &0   &0   
+  \end{amat}                                               
 \end{equation*}
-The nullity is~$1$.
-This shows again that the map is not one-to-one, since the null space is not
-$0$~dimensional, it is $1$~dimensional.
+The null space 
+\begin{equation*}
+  \nullspace{h}=\set{\colvec{x \\ y \\ z}\suchthat \text{$x=0$ and $z=0$}}
+               =\set{\colvec{0 \\ 1 \\ 0}\cdot y\suchthat y\in\Re}
+\end{equation*}
+is nontrivial so $h$ is not one-to-one.
+It is a line so the nullity of $h$ is~$1$.
 
 \pause
-\medskip
 \begin{graphicbytext}{.25}{asy/three_iii_cosets.pdf}
-Finally, recall that the map breaks the domain into look-alike 
+Recall that the map breaks the domain into look-alike 
 inverse images\Dash if one
 $h^{-1}(\vec{w})$
 is not a singleton then they are all not singletons\Dash so 
 we look at the null space as the prototype.
-It is shown in dark blue.
+It is in dark blue.
+In pale blue are two other inverse images.
 \end{graphicbytext} 
 \begin{equation*}
-  h^{-1}(\zero_W)=\nullspace{h}
-    =\set{\colvec{x \\ y \\ z}\suchthat x=z=0,\,y\in\Re}
-\end{equation*}
-In pale blue are two other inverse image sets.
-\begin{equation*}
-  h^{-1}(\colvec{0 \\ 1 \\ -1})=\set{\colvec{0 \\ y \\ 1}\suchthat y\in\Re}
-  \qquad
-  h^{-1}(\colvec{1 \\ 0 \\ 2})=\set{\colvec{1 \\ y \\ 1}\suchthat y\in\Re}
+ \hspace*{-1.5em} h^{-1}(\colvec{0 \\ 1 \\ -1})=\set{\colvec{0 \\ 0 \\ 1}+\colvec{0 \\ y \\ 0}\suchthat y\in\Re}
+  \quad
+  h^{-1}(\colvec{1 \\ 0 \\ 2})=\set{\colvec{1 \\ 0 \\ 1}+\colvec{0 \\ y \\ 0}\suchthat y\in\Re}
 \end{equation*}
 \end{frame}
-
-
 \begin{frame}
+So the algorithm is to fix bases and work with the resulting representations.
 \ex Let $h$ be the transformation of~$\Re^2$ represented with respect to 
 the standard basis by this matrix.
 \begin{equation*}
@@ -1222,24 +1202,24 @@ The calculations so far involve real spaces and are done with respect to
 the standard bases, to reduce the number of factors at play.
 We close with an example showing what to do in other cases.
 
-\pause
-Given a domain space~$V$,
-once we fix a basis~$B$ then every
-vector $\vec{v}\in V$ is represented by one and only one column 
-$\rep{\vec{v}}{B}$.
-So the calculations on the representations correspond to 
-calculations on the vectors themselves.
-That is, as we have seen, the representation map is an isomorphism.
-The same holds for the codomain vectors $\vec{w}\in W$ once we've fixed
-some basis~$D$.
+% \pause
+% Given a domain space~$V$,
+% once we fix a basis~$B$ then every
+% vector $\vec{v}\in V$ is represented by one and only one column 
+% $\rep{\vec{v}}{B}$.
+% So the calculations on the representations correspond to 
+% calculations on the vectors themselves.
+% That is, as we have seen, the representation map is an isomorphism.
+% The same holds for the codomain vectors $\vec{w}\in W$ once we've fixed
+% some basis~$D$.
 
-If we calculate that for every output representation 
-there exists an associated input representation then we have found that for 
-every output vector there exists an input vector,
-so the map is onto.
-Likewise, if we have find for every output representation 
-there is a unique  associated input representation then we have found that 
-the map is one-to-one.
+% If we calculate that for every output representation 
+% there exists an associated input representation then we have found that for 
+% every output vector there exists an input vector,
+% so the map is onto.
+% Likewise, if we have find for every output representation 
+% there is a unique  associated input representation then we have found that 
+% the map is one-to-one.
 \end{frame}
 
 
@@ -1253,7 +1233,7 @@ with these bases.
   \qquad
   B=\sequence{1+x,1-x,x+x^2}
 \end{equation*}
-As we saw in the prior example, equation~($*$)
+As it happens, 
 \begin{equation*}
   H=\rep{h}{B,D}=
   \begin{mat}
@@ -1262,6 +1242,7 @@ As we saw in the prior example, equation~($*$)
     1 &4
   \end{mat}
 \end{equation*}
+and the prior example
 gives this calculation (the fact that underlying this is
 the linear map $\map{h}{\Re^2}{\polyspace_2}$ represented by~$H$
 with respect to those bases is not relevant).
@@ -1291,12 +1272,13 @@ satisfies that $a-2b+c=0$.
 To get the underlying range elements, expand.
 \begin{align*}
   &=\set{(2b-c)\cdot(1+x)+b\cdot(1-x)+c\cdot(x+x^2)\suchthat b,c\in\Re}  \\
-  &=\set{b\cdot(3+x)+c\cdot(-1+x^2)\suchthat b,c\in\Re}
+  &=\set{b\cdot(3+x)+c\cdot(-1+x^2)\suchthat b,c\in\Re}      
 \end{align*}
-It is a $2$~dimensional subspace of the $3$~dimensional codomain~$\polyspace_2$ 
-so we see again that~$h$ is not onto.
+Inside of the $3$~dimensional codomain~$\polyspace_2$,
+the range is a $2$~dimensional subspace with basis $\sequence{3+x,-1+x^2}$.  
+So ~$h$ is not onto.
 
-The null space of~$h$ is a singleton set.
+The null space is a singleton set, so $h$ is one-to-one.
 \begin{equation*}
   \nullspace{h}=\set{\colvec{0 \\ 0}}  
 \end{equation*}

@@ -104,7 +104,7 @@ then
   cd ..
 
   # Create the graphics for the optional slides.
-  echo ".. create graphics for optional slides (can take ten minutes)"
+  echo ".. create graphics for optional slides (can take minutes)"
   sage ./three_ii_a.sage 
   sage ./five_ii_a.sage
   cd graphics
