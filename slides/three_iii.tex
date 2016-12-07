@@ -59,22 +59,23 @@
 Fix a domain space~$V$ 
 with basis~$\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$, 
 and a codomain space~$W$.
-We've seen that to specify the action of a  
-homomorphism $\map{h}{V}{W}$ on all domain vectors, we need only
-specify its action
-on the basis elements.
+This equation
 \begin{equation*}
   h(\vec{v})=h(c_1\cdot\vec{\beta}_1+\cdots+c_n\cdot\vec{\beta}_n)
             =c_1\cdot h(\vec{\beta}_1)+\cdots+c_n\cdot h(\vec{\beta}_n)
   \tag{$*$}
 \end{equation*}
-We've called this extending the action linearly from the basis to the entire 
-domain. 
+says that once we specify where a 
+homomorphism $\map{h}{V}{W}$ 
+sends the basis elements, then we have specified where it sends any input 
+vector.
+We've called this \definend{extending linearly} the action of the map 
+from the basis to the entire domain. 
 We now introduce a scheme for these calculations.
 
 \pause\medskip
 \ex
-Let the domain be $V=\polyspace_2$ and the codomain be $W=\Re^2$,
+Let $V=\polyspace_2$ and $W=\Re^2$,
 with these bases.
 \begin{equation*}
   B_{V}=\sequence{1,1+x,1+x+x^2}
@@ -82,7 +83,7 @@ with these bases.
   B_{W}
   =\sequence{\colvec{2 \\ 0}, \colvec{-1 \\ 1}}
 \end{equation*}
-Suppose that $\map{h}{\polyspace_2}{\Re^2}$ has this 
+Let $\map{h}{\polyspace_2}{\Re^2}$ have this 
 action on the domain basis.
 \begin{equation*}
   h(1)=\colvec{0 \\ 1}
@@ -119,26 +120,23 @@ with respect to the codomain's basis $B_{W}$.
   \colvec{-2 \\ -1}=(-3/2)\cdot\colvec{2 \\ 0}-1\cdot\colvec{-1 \\ 1}   
 \end{align*}
 \pause
-Summarize by writing those side-by-side.
+Summarize by concatenating those into the 
+\alert{matrix representation of~$h$ with respect to $B_V,B_W$}.
 \begin{equation*}
   \begin{mat}
     1/2 &5/2 &-3/2 \\
     1   &2   &-1
   \end{mat}
 \end{equation*}
-This is the matrix representation of~$h$ (with respect to $B_V,B_W$).
 \end{frame}
 \begin{frame}
-The point of arranging those numbers in that way is that
-if we start by representing a domain vector with respect to the domain's basis 
+The point is that
+if we represent a domain vector with respect to the domain's basis 
 $\vec{v}=c_1\cdot\vec{\beta}_1+c_2\cdot\vec{\beta}_2+c_3\cdot\vec{\beta}_3$
-% \begin{equation*}
-%   \rep{\vec{v}}{B_{V}}=\colvec{c_1 \\ c_2 \\ c_3}
-% \end{equation*}
 and apply equation~($*$)
 \begin{align*}
    h(c_1\vec{\beta}_1+c_2\vec{\beta}_2+c_3\vec{\beta}_3)  
-   &=c_1\cdot h(\vec{\beta}_1)+c_2\cdot h(\vec{\beta}_2)+c_3\cdot h(\vec{\beta}_3) \\
+   &=c_1\cdot h(\vec{\beta}_1)+c_2\cdot h(\vec{\beta}_2)+c_3\cdot h(\vec{\beta}_3) \tag{$*$}\\
     &=c_1\cdot\bigl((1/2)\cdot\colvec{2 \\ 0}+1\cdot\colvec{-1 \\ 1}\bigr)  \\
       &\quad +c_2\cdot\bigl((5/2)\cdot\colvec{2 \\ 0}+2\cdot\colvec{-1 \\ 1}\bigr)  \\
       &\quad +c_3\cdot\bigl((-3/2)\cdot\colvec{2 \\ 0}-1\cdot\colvec{-1 \\ 1}\bigr)
@@ -148,8 +146,8 @@ then regrouping
   =((1/2)c_1+(5/2)c_2-(3/2)c_3)\cdot\colvec{2 \\ 0}
   +(1c_1+2c_2-1c_3)\cdot\colvec{-1 \\ 1}         
 \end{equation*}
-expresses the image of $h(\vec{v})$ with respect to the codomain's 
-basis.
+gives the column vector that represents $h(\vec{v})$ 
+with respect to the codomain's basis.
 \begin{equation*}
   \rep{h(\vec{v})}{B_{W}}
   =\colvec{(1/2)c_1+(5/2)c_2-(3/2)c_3 \\ 1c_1+2c_2-1c_3}
@@ -157,7 +155,7 @@ basis.
 \end{frame}
 \begin{frame}
 \noindent
-In summary, to represent application of the linear map
+Thus, to represent an application of the linear map
 \begin{equation*}
   h(\vec{v})
 \end{equation*}
@@ -178,10 +176,9 @@ and compute the representation of the output.
 \pause
 The way the numbers combine to do this computation is:
 take
-the dot product of the rows of the representing matrix
-with the single column 
-representing the input,
-to get the single column representing the output.
+the dot product of the rows of the matrix
+with the column representing the input,
+to get the column vector representing the output.
 \end{frame}
 
 
@@ -202,13 +199,14 @@ Consider projection $\map{\pi}{\Re^2}{\Re^2}$ onto the $x$-axis.
 \begin{equation*}
   \colvec{a \\ b}\mapsunder{\pi}\colvec{a \\ 0}
 \end{equation*}
-Let the domain and codomain bases be 
+Let these be the domain and codomain bases. 
 \begin{equation*}
   B=\sequence{\colvec{1 \\ 1}, \colvec{-1 \\ 1}}
   \qquad
   D=\sequence{\colvec{0 \\ 1}, \colvec{2 \\ 2}}
 \end{equation*}
-then by the computations 
+Apply the map to each element of the domain basis,
+and represent the result with respect to the codomain basis
 \begin{align*}
   \colvec{1 \\ 1}\mapsunder{\pi}\colvec{1 \\ 0}
   &\quad\text{so}\quad
@@ -217,7 +215,7 @@ then by the computations
   &\quad\text{so}\quad
   \rep{\pi(\vec{\beta}_2)}{D}=\colvec{1 \\ -1/2}
 \end{align*}
-this is the matrix representation of $\pi$.
+to get the matrix representation of the map.
 \begin{equation*}
   \rep{\pi}{B,D}=
   \begin{mat}
@@ -237,7 +235,8 @@ but this time take the input and output bases to be the standard.
   B=D=\stdbasis_2
   =\sequence{\colvec{1 \\ 0}, \colvec{0 \\ 1}}
 \end{equation*}
-We have
+Remembering that with respect to the standard basis each vector represents
+itself,
 \begin{gather*}
   \colvec{1 \\ 0}\mapsunder{\pi}\colvec{1 \\ 0}
   \quad\text{ so }
@@ -246,7 +245,7 @@ We have
   \quad\text{ so }
   \rep{\pi(\vec{\beta}_2)}{D}=\colvec{0 \\ 0}
 \end{gather*}
-and this is $\rep{\pi}{\stdbasis_2,\stdbasis_2}$.
+this is $\rep{\pi}{\stdbasis_2,\stdbasis_2}$.
 \begin{equation*}
   \begin{mat}
     1  &0  \\
@@ -256,29 +255,26 @@ and this is $\rep{\pi}{\stdbasis_2,\stdbasis_2}$.
 \end{frame}
 
 \begin{frame}
-\ex Consider the domain~$\Re^2$ and the codomain~$\Re$.
-Recall that with respect to the standard basis, a vector represents itself.
-\begin{equation*}
-  \rep{\colvec{-2 \\ 2}}{\stdbasis_2}=\colvec{-2 \\ 2}_{\stdbasis_2}
-\end{equation*}
-To represent $\map{h}{\Re^2}{\Re}$ 
+\ex
+We will represent $\map{h}{\Re^2}{\Re}$ 
 \begin{equation*}
   \colvec{a \\ b}\mapsunder{h} 2a+3b
 \end{equation*}
 with respect to 
-$\stdbasis_2$ and~$\stdbasis_1$,
-first find the effect of $h$ on the domain's basis.
+$\stdbasis_2$ and~$\stdbasis_1$.
+First find the effect of $h$ on the domain's basis.
 \begin{equation*}
   \colvec{1 \\ 0}\mapsto 2
   \qquad
   \colvec{0 \\ 1}\mapsto 3
 \end{equation*}
-Represent those with respect to the codomain's basis.
+Represent those outputs with respect to the codomain's basis.
 \begin{equation*}
   \rep{h(\vec{e}_1)}{\stdbasis_1}=\colvec{2}
   \qquad
   \rep{h(\vec{e}_2)}{\stdbasis_1}=\colvec{3}
 \end{equation*}
+(Those column vectors are $1$-tall.)
 This is $\nbym{1}{2}$ matrix representation.
 \begin{equation*}
   H=\rep{h}{\stdbasis_2,\stdbasis_1}
@@ -310,7 +306,8 @@ See \nearbyexercise{exer:MatVecMultRepLinMap}.
 
 \pause
 \ex
-We can perform the operation without any reference to spaces and bases.
+We can perform the matrix-vector product 
+operation without reference to maps, or spaces and bases.
 \begin{equation*}
   \begin{mat}[r]
     3  &1  &2  \\
@@ -319,6 +316,14 @@ We can perform the operation without any reference to spaces and bases.
   \colvec[r]{4  \\ -1 \\ -3}
   =\colvec{3\cdot 4+1\cdot(-1)+2\cdot(-3) \\ 0\cdot 4-2\cdot(-1)+5\cdot(-3)}
   =\colvec[r]{5 \\ -13}
+\end{equation*}
+\ex The product of these two is not defined.
+\begin{equation*}
+  \begin{mat}
+    1 &2 \\
+    3 &4
+  \end{mat}
+  \colvec{5 \\ 6 \\ 7}
 \end{equation*}
 \end{frame}
 \begin{frame}
@@ -341,7 +346,7 @@ with respect to these.
   B=\sequence{\colvec{1 \\ 1}, \colvec{-1 \\ 1}}\quad
   D=\sequence{\colvec{0 \\ 1}, \colvec{2 \\ 2}}
 \end{equation*}
-The domain vector 
+This domain vector 
 \begin{equation*}
   \vec{v}=\colvec{-1 \\ 5}
 \end{equation*} 
@@ -350,12 +355,10 @@ has this representation with respect to the domain basis.
   \rep{\vec{v}}{B}=\colvec{2 \\ 3}
   \qquad
   \text{since 
-  $2\cdot\colvec{1 \\ 1}+3\cdot\colvec{-1 \\ 1}=\colvec{-1 \\ 5}$}
+  $\colvec{-1 \\ 5}=2\cdot\colvec{1 \\ 1}+3\cdot\colvec{-1 \\ 1}$}
 \end{equation*}
-\end{frame}
-\begin{frame}
-\noindent The matrix-vector product
-gives the representation
+The matrix-vector product
+gives the representation of $\pi(\vec{v})$.
 \begin{equation*}
   \begin{mat}
     -1  &1 \\
@@ -363,16 +366,18 @@ gives the representation
   \end{mat}
   \colvec{2 \\ 3}
   =\colvec{1 \\ -1/2}
-  =\rep{\,\pi(\vec{v})\,}{D}
 \end{equation*}
-As a check,
-\begin{equation*}
-  1\cdot\colvec{0 \\ 1}-(1/2)\cdot\colvec{2 \\ 2}
-  =\colvec{-1 \\ 0}
-\end{equation*}
-so it correctly computes the action of the projection map on the domain vector.
+\end{frame}
+\begin{frame}
+We can check that the prior computation is right.
+The projection of the vector
 \begin{equation*}
   \pi(\,\colvec{-1 \\ 5}\,)=\colvec{-1 \\ 0}
+\end{equation*}
+is represented with respect to the codomain basis~$D$ as here.
+\begin{equation*}
+  \colvec{-1 \\ 0}
+  =1\cdot\colvec{0 \\ 1}-(1/2)\cdot\colvec{2 \\ 2}
 \end{equation*}
 \end{frame}
 
@@ -468,11 +473,10 @@ the result.
 \end{frame}
 
 \begin{frame}
-Note first that $h$ is a function, that is, it is well-defined\Dash 
+Observe that $h$ is a function, that is, it is well-defined\Dash 
 for a given input $\vec{v}$, the output $h(\vec{v})$ exists and is unique.
 This is because
-the representation of a vector with respect to a basis can be done in
-one and only one way. 
+the representation of a vector with respect to a basis is unique. 
 
 \pause
 We will now verify that $h$ is a linear function.
@@ -526,18 +530,63 @@ the result is $c\cdot\rep{h(\vec{u})}{D}+d\cdot\rep{h(\vec{v})}{D}$.
  
   \bigskip
   The book has the proof.
+  It follows exactly the pattern on the prior slide.
 }
 \end{frame}
 
 
 
 
+
+
+%=======================================
+\section{Finding Map Facts From the Matrix}
+
 %..........
 \begin{frame}
-We will connect some properties of linear maps
-with properties of the associated matrices.
 
-First an easy one: 
+We will show how to study the map by using an 
+associated matrix.
+That is, to understand the map our algorithm 
+is to fix bases and work with the resulting representations.
+Much of what we cover will be review, but putting it all in one place is
+useful.
+
+\pause
+This equation is the key.
+\begin{equation*}
+   \rep{h}{B,D}\cdot\rep{\vec{v}}{B}=\rep{h(\vec{v})}{D}
+  \tag{$*$}
+\end{equation*}
+
+In this section we will write the domain vector $\vec{v}$ using 
+the entries $x$, $y$, etc., and 
+write the codomain vector~$h(\vec{v})$ with $a$, $b$, etc.
+
+\pause
+\ex 
+First, the number of rows and columns.
+This is an instance of~($*$).
+\begin{equation*}
+  \begin{mat}
+    1 &2 &3 \\ 
+    4 &5 &6
+  \end{mat}
+  \colvec{x \\ y \\ z}
+  =
+  \colvec{a \\ b}
+\end{equation*}
+For matrix-vector multiplication to be defined, this $\nbym{2}{3}$ matrix
+must multiply a $3$-tall input and get a $2$-tall output.
+So, given a matrix $H$, the dimension of $h$'s domain 
+is the number of columns in~$H$, and
+the dimension of $h$'s codomain is the number of rows.
+\end{frame}
+
+
+
+\begin{frame}
+Next, an easy one: 
 observe that $\map{h}{V}{W}$ is the zero map $\vec{v}\mapsto\zero$
 if and only
 if it is represented, with respect to any bases, by the zero matrix.
@@ -546,16 +595,17 @@ if it is represented, with respect to any bases, by the zero matrix.
 For one direction, assume that $h$ is the zero map.
 Then for any bases $B,D$ we have $h(\vec{\beta}_i)=\zero_W$, which is 
 represented with respect to $D$ by the column vector of zeroes.
-Thus $h$ is represented by the zero matrix.
-
-\pause
+% Thus $h$ is represented by the zero matrix.
+% 
+% \pause
 For the other direction 
 assume that there are bases $B,D$ such that $\rep{h}{B,D}$ is the zero
 matrix.
 For each $\vec{\beta}_i$ we have that $\rep{h(\vec{\beta}_1)}{D}$ is a
 vector of zeros, and so $h(\vec{\beta}_i)$ is $\zero_W$.
-Extending linearly gives that $h$ maps each $\vec{v}\in V$ to $\zero_W$,
-and $h$ is the zero map.  
+Extend linearly.
+%  gives that $h$ maps each $\vec{v}\in V$ to $\zero_W$,
+% and $h$ is the zero map.  
 
 \pause
 \ex The zero map $\map{z}{\Re^2}{\Re^3}$ is represented, 
@@ -584,7 +634,7 @@ zero matrix.
 
 
 %..........
-\begin{frame}
+\begin{frame}{Rank}
 \th[th:RankMatEqRankMap]
 \ExecuteMetaData[../map3.tex]{th:RankMatEqRankMap}
 \iftoggle{showallproofs}{
@@ -598,6 +648,7 @@ zero matrix.
 
   \bigskip
   The book has the proof.
+  We will instead do an example.
 }
 \end{frame}
 \iftoggle{showallproofs}{
@@ -619,6 +670,7 @@ given by
 \end{equation*}
 Its range is the line~$x=y$ and so the rank of the map
 is~$1$.
+
 \pause
 We will see two matrices representing this map,
 the first with respect to these.
@@ -675,7 +727,7 @@ nonzero row so it has matrix rank~$1$, as on the prior slide.
 
 
 %..........
-\begin{frame}
+\begin{frame}{One-to-One and Onto}
 \co[cor:MatDescsMap]
 \ExecuteMetaData[../map3.tex]{co:MatDescsMap}
 \iftoggle{showallproofs}{
@@ -689,8 +741,9 @@ nonzero row so it has matrix rank~$1$, as on the prior slide.
 }{
 
   \bigskip
-  The book has the proof.
-  There are many examples in the section below.
+  Recall that the number of columns is the dimension of $h$'s domain,
+  and the number of rows is the dimension of the codomain. 
+  The book has the full argument.
 }
 \end{frame}
 
@@ -724,7 +777,10 @@ The $\Theta=\pi/4$ instance is
     1  &1
   \end{mat}
 \end{equation*}
-and the rank of this matrix is two, reflecting
+and the rank of this matrix is two
+(we can see by inspection that Gauss's Method will result in two
+non-zero rows).
+This reflects the geometry, which shows
 that the map $t_{\pi/4}$ is one-to-one and onto. 
 \end{frame}
 
@@ -767,8 +823,8 @@ This matrix
    -1  &2
   \end{mat}
 \end{equation*}
-is nonsingular since by inspection its two rows form a linearly independent
-set.
+is nonsingular since its two rows form a linearly independent
+set (we see that by inspection).
 So any map, with any domain and codomain, and represented by this matrix  
 with respect to any pair of bases,
 is an isomorphism.
@@ -788,50 +844,7 @@ is not an isomorphism.
 \end{frame}
 
 
-
-
-%=======================================
-\section{Finding Map Facts From the Matrix}
-
-
-
-\begin{frame}{Review examples}
-We will show how we can study the map with calculations on 
-associated matrices.
-For this, we revisit some of the results about
-maps and matrices.
-
-This equation is key.
-\begin{equation*}
-   \rep{h}{B,D}\cdot\rep{\vec{v}}{B}=\rep{h(\vec{v})}{D}
-  \tag{$*$}
-\end{equation*}
-\pause
-In this section we will write the domain vector $\vec{v}$ using 
-the entries $x$, $y$, etc., and 
-write the codomain vector~$h(\vec{v})$ with $a$, $b$, etc.
-
-\ex 
-First, the number of rows and columns.
-This is an instance of~($*$).
-\begin{equation*}
-  \begin{mat}
-    1 &2 &3 \\ 
-    4 &5 &6
-  \end{mat}
-  \colvec{x \\ y \\ z}
-  =
-  \colvec{a \\ b}
-\end{equation*}
-For matrix-vector multiplication to be defined, this $\nbym{2}{3}$ matrix
-must multiply a $3$-tall vector and get a $2$-tall result.
-So, given a matrix $H$, the dimension of $h$'s domain 
-is the number of columns in~$H$, and
-the dimension of $h$'s codomain is the number of rows.
-\end{frame}
-
-
-\begin{frame}{Onto and one-to-one}
+\begin{frame}{Computing Range and Null Spaces}
 \ex
 Consider this linear map $\map{h}{\Re^3}{\Re^3}$.  
 \begin{equation*}
@@ -882,7 +895,7 @@ and represent those outputs with respect to the codomain's basis.
   \quad
   \rep{\colvec{0 \\ 1 \\ -1}}{\stdbasis_3}=\colvec{0 \\ 1 \\ -1}
 \end{equation*}
-This is why we like the standard basis; it makes calculations easy.
+(This is why we like the standard basis; it makes calculations easy.)
 \begin{equation*}
   H=
   \rep{h}{\stdbasis_3,\stdbasis_3}
@@ -929,15 +942,15 @@ solve for $x$, $y$, and~$z$.
   \end{amat}                                               
 \end{align*}
 \pause
-So $h$ is not onto:
-only those~$\vec{w}$'s 
+The rank is~$2$.
+So $h$ is not onto: specifically,
+the range space $\rangespace{h}$ consists of only those~$\vec{w}$'s 
 whose representations satisfy that 
-$0=-2a+b+c$ have an associated~$\vec{v}$.
-\begin{equation*}
-  \rangespace{h}
-   =\set{\colvec{a \\ b \\ c}\suchthat a=(b+c)/2}      
-   =\set{\colvec{1/2 \\ 1 \\ 0}b+\colvec{1/2 \\ 0 \\ 1}c\suchthat b,c\in\Re}    \end{equation*}
-That's a plane so the map is rank~$2$.
+$0=-2a+b+c$.
+% \begin{equation*}
+%   \rangespace{h}
+%    =\set{\colvec{a \\ b \\ c}\suchthat a=(b+c)/2}      
+%    =\set{\colvec{1/2 \\ 1 \\ 0}b+\colvec{1/2 \\ 0 \\ 1}c\suchthat b,c\in\Re}    \end{equation*}
 \end{frame}
 \begin{frame}
 To decide if $h$ is one-to-one we solve the associated homogeneous system.
@@ -954,32 +967,33 @@ To decide if $h$ is one-to-one we solve the associated homogeneous system.
     0 &0 &0   &0   
   \end{amat}                                               
 \end{equation*}
-The null space 
+The solution set
 \begin{equation*}
-  \nullspace{h}=\set{\colvec{x \\ y \\ z}\suchthat \text{$x=0$ and $z=0$}}
+  \set{\colvec{x \\ y \\ z}\suchthat \text{$x=0$ and $z=0$}}
                =\set{\colvec{0 \\ 1 \\ 0}\cdot y\suchthat y\in\Re}
 \end{equation*}
 is nontrivial so $h$ is not one-to-one.
-It is a line so the nullity of $h$ is~$1$.
+Specifically, the null space $\nullspace{h}$ 
+is the set of domain vectors whose representation
+falls in that one-dimensional set.
 
-\pause
-\begin{graphicbytext}{.25}{asy/three_iii_cosets.pdf}
-Recall that the map breaks the domain into look-alike 
-inverse images\Dash if one
-$h^{-1}(\vec{w})$
-is not a singleton then they are all not singletons\Dash so 
-we look at the null space as the prototype.
-It is in dark blue.
-In pale blue are two other inverse images.
-\end{graphicbytext} 
-\begin{equation*}
- \hspace*{-1.5em} h^{-1}(\colvec{0 \\ 1 \\ -1})=\set{\colvec{0 \\ 0 \\ 1}+\colvec{0 \\ y \\ 0}\suchthat y\in\Re}
-  \quad
-  h^{-1}(\colvec{1 \\ 0 \\ 2})=\set{\colvec{1 \\ 0 \\ 1}+\colvec{0 \\ y \\ 0}\suchthat y\in\Re}
-\end{equation*}
+% \pause
+% \begin{graphicbytext}{.25}{asy/three_iii_cosets.pdf}
+% Recall that the map breaks the domain into look-alike 
+% inverse images\Dash if one
+% $h^{-1}(\vec{w})$
+% is not a singleton then they are all not singletons\Dash so 
+% we look at the null space as the prototype.
+% It is in dark blue.
+% In pale blue are two other inverse images.
+% \end{graphicbytext} 
+% \begin{equation*}
+%  \hspace*{-1.5em} h^{-1}(\colvec{0 \\ 1 \\ -1})=\set{\colvec{0 \\ 0 \\ 1}+\colvec{0 \\ y \\ 0}\suchthat y\in\Re}
+%   \quad
+%   h^{-1}(\colvec{1 \\ 0 \\ 2})=\set{\colvec{1 \\ 0 \\ 1}+\colvec{0 \\ y \\ 0}\suchthat y\in\Re}
+% \end{equation*}
 \end{frame}
 \begin{frame}
-So the algorithm is to fix bases and work with the resulting representations.
 \ex Let $h$ be the transformation of~$\Re^2$ represented with respect to 
 the standard basis by this matrix.
 \begin{equation*}
@@ -1029,6 +1043,7 @@ Do the calculation to solve this linear system for $x$ and~$y$.
 \end{frame}
 
 \begin{frame}
+\noindent \textit{(Continued from prior slide.)}
 \begin{equation*}
   \begin{amat}{2}
     1 &2  &a \\
@@ -1054,11 +1069,11 @@ $\rangespace{h}=\Re^2$, and
 the rank of~$h$ is as large as it could be,~$2$.
 
 \pause
-The calculation also shows that for all~$\vec{w}$ the associated~$\vec{v}$
+The similar calculation on the homogeneous system
+shows that for all~$\vec{w}$ the associated~$\vec{v}$
 is unique.
-So~$h$ is one-to-one.
-To compute the null space, set $a=b=0$, giving 
-the trivial domain subspace.
+So~$h$ is one-to-one;
+the null space is trivial.
 \begin{equation*}
   \nullspace{h}=\set{\colvec{0 \\ 0}}
 \end{equation*}
@@ -1103,10 +1118,12 @@ $\rank(h)=2$.
 For each $a,b$ there is more than one
 triple $x,y,z$ so
 this map is not one-to-one.
-To find the null space set $a=0$, $b=0$.
+To find the null space set do the reduction on the homogeneous system
+by setting $a=b=0$.
+The nullspace $\nullspace{h}$ is the set of vectors whose representation
+falls into this set.
 \begin{equation*}
-  \nullspace{h}
-   =\set{\colvec{x \\ y \\ z}\suchthat \text{$y+2z=0$ and $x-3z=0$}}
+   \set{\colvec{x \\ y \\ z}\suchthat \text{$y+2z=0$ and $x-3z=0$}}
    =\set{\colvec{3 \\ -2 \\ 1}z\suchthat z\in\Re}
 \end{equation*}
 The nullity is~$1$.
@@ -1136,18 +1153,20 @@ The matrix rank is~$1$.
   \end{amat}                   
 \end{equation*}
 \pause
-The map is not onto; $\rank(h)=1$.
+So the map rank is also $1$; the map is not onto.
+The range space $\rangespace{h}$ is the set of vectors whose representation 
+is a member of this set.
 \begin{equation*}
-  \rangespace{h}
-  =\set{\colvec{a \\ b}\suchthat -2a+b=0}
-  =\set{\colvec{1/2 \\ 1}b\suchthat b\in\Re}
+  \set{\colvec{a \\ b}\suchthat -2a+b=0}
+  =\set{\colvec{1/2 \\ 1}\cdot b\suchthat b\in\Re}
 \end{equation*}
 \pause
 The map is also not one-to-one; $\nullity(h)=1$.
+The null space $\nullspace{h}$ is the set of vectors whose 
+representation is a member of this set.
 \begin{equation*}
-  \nullspace{h}
-  =\set{\colvec{x \\ y}\suchthat x+3y=0}
-  =\set{\colvec{-3 \\ 1}y\suchthat y\in\Re}
+  \set{\colvec{x \\ y}\suchthat x+3y=0}
+  =\set{\colvec{-3 \\ 1}\cdot y\suchthat y\in\Re}
 \end{equation*}
 Note that rank plus nullity equals the dimension of the domain.
 \end{frame}
@@ -1164,7 +1183,7 @@ Note that rank plus nullity equals the dimension of the domain.
   \end{mat}
 \end{equation*}
 has a dimension~$2$ domain and a dimension~$3$ codomain.
-Then
+Here is the linear reduction.
 \begin{equation*}
   \begin{amat}{2}
     1 &2 &a \\
@@ -1180,14 +1199,15 @@ Then
     0 &0 &a-2b+c   
   \end{amat}
 \end{equation*}
-gives these.
-\begin{align*}
+If we use the standard bases then vectors represent themselves.
+\begin{equation*}
   \rangespace{h}
-  &=\set{\colvec{a \\ b \\ c}\suchthat a=2b-c}  \\
+  =\set{\colvec{a \\ b \\ c}\suchthat a=2b-c}  
+  \qquad
   \nullspace{h}
-  &=\set{\colvec{0 \\ 0}}
-\end{align*}
-The map~$h$ is not onto but it is one-to-one.
+  =\set{\colvec{0 \\ 0}}
+\end{equation*}
+The map~$h$ is not onto, but it is one-to-one.
 \end{frame}
 
 
@@ -1269,7 +1289,7 @@ satisfies that $a-2b+c=0$.
   \rangespace{h}
   =\set{\vec{p}\in\polyspace_2\suchthat \rep{\vec{p}}{D}=\colvec{2b-c \\ b \\ c}}
 \end{equation*}
-To get the underlying range elements, expand.
+To get the underlying range elements, the vectors that are represented, expand.
 \begin{align*}
   &=\set{(2b-c)\cdot(1+x)+b\cdot(1-x)+c\cdot(x+x^2)\suchthat b,c\in\Re}  \\
   &=\set{b\cdot(3+x)+c\cdot(-1+x^2)\suchthat b,c\in\Re}      
