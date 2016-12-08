@@ -194,6 +194,8 @@ def plot_before_after_action(a, b, c, d, pts, colors=None):
     p = plot(G)
     return p
 
+# Find the signed angle between the planar vector v and Mv
+# See http://math.stackexchange.com/a/879474/12012
 def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
     """Apply the matrix to points around the upper half circle, and 
     return the angle between the input and output vectors.
@@ -215,11 +217,41 @@ def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
         v = vector(RDF, pt)
         w = v*M
         try:
-            angle = arccos(w*v/(1.0*w.norm()*v.norm()))
+            dot = v[0]*w[0] + v[1]*w[1]  # dot product
+	    det = v[0]*w[1] - v[1]*w[0]  # determinant
+            angle = atan2(det, dot)      # atan2(y, x) or atan2(sin, cos)
         except:
             angle = None
         r.append((t,angle))
     return r
+
+# This finds the positive angle between the vectors.
+# def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
+#     """Apply the matrix to points around the upper half circle, and 
+#     return the angle between the input and output vectors.
+#       a, b, c, d  reals  Upper left, ur, ll, lr of matrix.
+#       num_pts  positive integer  number of points
+#       lower_limit=0, upper_limit=pi  ignore angles outside these limits
+#     """
+#     if lower_limit is None:
+#         lower_limit=0
+#     if upper_limit is None:
+#         upper_limit=pi
+#     r = []
+#     M = Matrix(RDF, [[a, b], [c, d]])
+#     for i in range(num_pts):
+#         t = i*pi/num_pts
+#         if ((t<lower_limit) or (t>upper_limit)):
+#             continue
+#         pt = (cos(t), sin(t))
+#         v = vector(RDF, pt)
+#         w = v*M
+#         try:
+#             angle_size = arccos(w*v/(1.0*w.norm()*v.norm()))
+#         except:
+#             angle = None
+#         r.append((t,angle))
+#     return r
 
 MARKERSIZE = 2
 TICKS = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])

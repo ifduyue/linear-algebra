@@ -27,7 +27,7 @@ p=plot_before_after_action(2,2,0,2,[(cos(pi/6),sin(pi/6))],['orange'])
 p.set_axes_range(-0.1,2.1,-0.1,2.75)
 p.save("graphics/five_ii_a_skew4.pdf")
 p = plot_color_angles(2,2,0,2)
-p.set_axes_range(0,pi,0,pi)
+p.set_axes_range(0,pi,-pi,pi)
 p.save("graphics/five_ii_a_skew5.pdf", figsize=3, tick_formatter=[pi,pi])
 
 
@@ -38,8 +38,12 @@ q.save("graphics/five_ii_a_generic1.pdf")
 p = plot_circle_action(1,3,2,4) 
 p.set_axes_range(-3, 3, -4.5, 4.5) 
 p.save("graphics/five_ii_a_generic2.pdf")
+# positive angle: 
+# p = plot_color_angles(1,3,2,4)
+# p.set_axes_range(0,pi,0,pi)
+# p.save("graphics/five_ii_a_generic3.pdf", figsize=3, tick_formatter=[pi,pi])
 p = plot_color_angles(1,3,2,4)
-p.set_axes_range(0,pi,0,pi)
+p.set_axes_range(0,pi,-pi,pi)
 p.save("graphics/five_ii_a_generic3.pdf", figsize=3, tick_formatter=[pi,pi])
 
 
@@ -51,6 +55,6 @@ p = plot_circle_action(-1,0,0,2)
 p.set_axes_range(-2.5, 2.5, -2.5, 2.5) 
 p.save("graphics/five_ii_a_diagonal2.pdf")
 p = plot_color_angles(-1,0,0,2)
-p.set_axes_range(0,pi,0,pi)
+p.set_axes_range(0,pi,-pi,pi)
 p.save("graphics/five_ii_a_diagonal3.pdf", figsize=3, tick_formatter=[pi,pi])
 
