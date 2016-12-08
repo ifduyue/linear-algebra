@@ -26,6 +26,10 @@
 \addheadbox{filler}{\ }  % create extra space at top of slide 
 \hypersetup{colorlinks=true,linkcolor=blue} 
 
+\usepackage{tikz}
+\usetikzlibrary{backgrounds}\usetikzlibrary{matrix}
+\tikzset{node style ge/.style={circle}}
+
 \title[Determinants] % (optional, use only with long paper titles)
 {Four.I Definition of Determinant}
 
@@ -55,7 +59,8 @@
 \section{Properties of Determinants}
 %..........
 \begin{frame}{Nonsingular matrices}
-\noindent An \( \nbyn{n} \) matrix \( T \) is nonsingular if and only if
+\noindent For any matrix, whether or not it is nonsingular is a key question.
+Recall that an \( \nbyn{n} \) matrix \( T \) is nonsingular if and only if
 each of these holds:%
 \ExecuteMetaData[../det1.tex]{EquivalentOfNonsingular}
 This chapter develops a formula to determine whether a
@@ -72,30 +77,28 @@ matrix is nonsingular.
 
 
 
-\begin{frame}{Remark: how we will proceed}
+\begin{frame}{How we will proceed}
 The prior slide gives a formula for the $\nbyn{1}$, $\nbyn{2}$, and~$\nbyn{3}$
 determinants. 
-We can give a formula for the general $\nbyn{n}$~case,
-the permutation expansion.
-However, this formula has a number of disadvantages, including 
-its complexity and that 
-it is too slow for practical computations. 
+But while those three formulas are a help, they don't make clear what
+should be the general formula, for the $\nbyn{n}$~case.
 
-Instead, we will define a
-determinant function as one that satisfies some conditions. 
-These conditions let us compute the determinant via Gauss's Method, 
+So we will proceed by stating some conditions that a
+determinant function must satisfy. 
+These will let us compute the determinant via Gauss's Method, 
 which we know to be fast and easy.
 (The conditions extrapolate from the $\nbyn{1}$, $\nbyn{2}$, 
-and~$\nbyn{3}$ cases; see the discussion in the book.) 
-
-Defining a function by giving a list of conditions it must satisfy is 
-common in more advanced courses. 
-But it has the downside that we must 
-show that there is one and only one function satisfying those conditions.
-We will first give an algorithm that, following the conditions, goes from 
+and~$\nbyn{3}$ cases; see the book's discussion.) 
+We will give an algorithm that, following the conditions, goes from 
 any square matrix input to a real number output.
-Later we will develop the formula for the determinant, which will
-show that the determinant is well-defined (that is, 
+
+\pause
+However, defining a function by giving a list of conditions 
+has the downside that we must 
+show that there is one and only one function satisfying those conditions.
+After giving the algorithm, we will develop a formula, 
+the permutation expansion,
+which will show that the determinant is well-defined (that is, 
 for any input there is exactly one associated output). 
 \end{frame}
 
@@ -295,32 +298,35 @@ that has to do with multplying diagonals.
     d &e &f \\
     g &h &i 
   \end{vmat}
-  =aei+bfg+cdh
-   -gec-hfa-idb
+  ={\color{green}aei+bfg+cdh}
+   {\color{red}-gec-hfa-idb}
   \qquad
-  \begin{pmat}{ccc|cc}
+  \begin{tikzpicture}[baseline=(A.center), scale=1]
+  \path[draw, line width=4pt, color=green, opacity=0.5] (-1.35,.6)--(.3,-.6);
+  \path[draw, line width=4pt, color=green, opacity=0.5] (-.75,.6)--(.8,-.6);
+  \path[draw, line width=4pt, color=green, opacity=0.5] (-.25,.6)--(1.3,-.6);
+  \path[draw, line width=4pt, color=red, opacity=0.5] (-1.3,-.6)--(.3,.6);
+  \path[draw, line width=4pt, color=red, opacity=0.5] (-.75,-.6)--(.8,.6);
+  \path[draw, line width=4pt, color=red, opacity=0.5] (-.25,-.6)--(1.3,.6);
+  \node (A) at (0,0) {$\begin{pmat}{ccc|cc}
     a &b &c &a &b \\
     d &e &f &d &e \\
     g &h &i &g &h
-  \end{pmat}
+  \end{pmat}$};
+\end{tikzpicture}
 \end{equation*}
-Don't try to extend to $\nbyn{4}$ or larger sizes.
-For those cases instead use Gauss's Method.
+Don't try to extend to $\nbyn{4}$ or larger sizes; there is no general
+pattern here.
+Instead, for larger matrices use Gauss's Method.
 \end{frame}
 
 
-\begin{frame}{The  determinant is unique}
+\begin{frame}{Uniqueness}
 Recall our definition, that a function is a determinant if
 it satisfies four conditions.
 This approach does not make evident that 
 such function is unique.
-(An analogy: imagine defining a function
-$\map{f}{\N}{\N}$ to be an `even-maker' under the condition that its 
-output is an even constant.
-There is such a function, but also there is more than one.)
-
-We now handle that issue; later we will handle the issue of showing that such 
-a function exists at all.
+We now handle that question. 
 
 \pause
 \lm[lm:DetFcnIsUnique]
@@ -330,45 +336,38 @@ a function exists at all.
 \pf 
 \ExecuteMetaData[../det1.tex]{pf:DetFcnIsUnique}
 \qed
-
-
-
-
-
-% \medskip
-% So if there is a function mapping $\matspace_{\nbyn{n}}$ to $\Re$ that
-% satisfies the four conditions of the definition then there is only one such
-% function.
 \end{frame}
-\begin{frame}{More process discussion}
-We are left with the possibility that such a function does not exist.
-How could there fail to be such a function, when we have been using 
-Gauss's Method to compute its outputs?
-\ExecuteMetaData[../det1.tex]{DifferentGaussMethodReductions}
+\begin{frame}{Existence}
+We still must show that determinants exist, that there is a 
+well-defined function satisfying all the conditions.
 
-That we get consistent results in this one case
-does not ensure that all determinant computations using Gauss's Method
-give well-defined values.
+How could there fail to be such a function, when we have been 
+computing its outputs?
+\ExecuteMetaData[../det1.tex]{DifferentGaussMethodReductions}
+But just because we get consistent results in this case
+does not mean that all determinant computations
+give the same value.
 \end{frame}
 \begin{frame}
-In particular, recall that the definition's condition~(2),
-that row swaps change the sign of the determinant, is 
-redundant.
-Imagine that we did not notice the need for a sign change and had mistakenly
-proposed a definition where row swaps leave the determinant unchanged.
-Then the prior slide's pair of $\nbyn{2}$ calculations would yield the
-conflicting output values of $-2$ and~$2$.
-We must prove that our definition does not lead to 
-such a thing, 
+% In particular, recall that the definition's condition~(2),
+% that row swaps change the sign of the determinant, is 
+% redundant.
+% Imagine that we did not notice the need for a sign change and had mistakenly
+% proposed a definition where row swaps leave the determinant unchanged.
+% Then the prior slide's pair of $\nbyn{2}$ calculations would yield the
+% conflicting output values of $-2$ and~$2$.
+% We must prove that our definition does not lead to 
+% such a thing, 
 
-\pause
+% \pause
 The rest of this section gives an alternative way to compute
 the determinant, a formula.
 This formula does not involve Gauss's Method and
 makes plain that the determinant is a function, 
 that it returns well-defined outputs.
-As mentioned earlier, computing a determinant with this formula  
-is less practical than using the algorithm of Gauss's Method since it 
+
+Computing a determinant with this formula  
+is less practical than using Gauss's Method since this formula
 is slow.
 But it nonetheless is invaluable for the theory.
 \end{frame}
@@ -862,9 +861,10 @@ the determinant (not involving Gauss's Method) is to give a formula for
 the determinant of such matrices.
 We do that in the next subsection.
 
-\pause
-That subsection is optional 
-so we state its results here.
+\pause\bigskip
+The next subsection is optional 
+so for those not going on, we state its results here.
+We will follow up on the second result.
 
 \th[th:DetsExist]
 \ExecuteMetaData[../det1.tex]{th:DetsExist}
