@@ -84,6 +84,13 @@ Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
 At the end, you'll have book.pdf and jhanswer.pdf.  Put them
 in the same directory.  You could have just skipped the compiling, you know.
 
+To compile the version that is published in paper, change lines 10 and 11 in
+bookjhconcrete.sty to be this.
+  \booltrue{hardcopybool}  % uncomment this to make a book for publishing 
+  % \boolfalse{hardcopybool}  % the default  
+Then run ./make_book_for_web.sh.  You might also want to run this.
+  pdflatex cover
+
 If you want projector slides, cd slides and run make_slides.sh.  This can take 
 some time, maybe ten minutes.
 
