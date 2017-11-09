@@ -30,8 +30,6 @@ pen DXPEN=linecap(0)
 pen LIGHTPEN=linewidth(0.4pt);  // matches mpost line_width_light
 pen DARKPEN=linewidth(0.8pt);   //    line_width_dark
 
-
-
 texpreamble("\usepackage{conc}");
 
 // HSL color space, to lighten or darken

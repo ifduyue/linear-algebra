@@ -25,9 +25,8 @@ Why?
 Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
 
 0) Install the Debian TeX Live (that is, the packages from the archive).
-  (I'd rather go with TeX LIve from tug.org but I had to get Sage also and 
-  it required me to get the Debian packages and .. I didn't want to end
-  in dependency hell.)
+  (I'd rather go with TeX Live from tug.org but I had to get Sage and
+  Asymptote also and they required me to get the Debian packages and ..)
 
   Also install Asymptote.
 
@@ -40,13 +39,13 @@ Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
   cd ~/Downloads
   wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts 
   sudo texlua install-getnonfreefonts
-  sudo getnonfreefonts-sys -a
+  sudo getnonfreefonts --sys --all
   sudo texhash
 
-  Now comes the sucky part.  I could not get it to find Luximono (running 
-  linear-algebra/make_book_for_web.sh says it can't find ul9r8r).
-
-  Following the directions on this page
+  (I don't believe this needs to be done anymore but I am leaving it just
+  in case I misunderstood what happened:  I could not get it to find
+  Luximono (running linear-algebra/make_book_for_web.sh says it can't
+  find ul9r8r).  Following the directions on this page
     http://people.debian.org/~preining/TeX/TeX-on-Debian/ch4.html
   I did
     sudo mkdir /etc/texmf/updmap.d
@@ -57,7 +56,7 @@ Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
     sudo update-updmap
     sudo texhash
     sudo updmap-sys
-  and it now worked.  Dunno.
+  and it now worked.)
 
 3) I had to get updated packages from ctan becuase the Debian stuff is old:
     thmtools, geometry, mh

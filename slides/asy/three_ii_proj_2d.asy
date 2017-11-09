@@ -135,6 +135,7 @@ for(int i=0; i < 5; ++i) {
   draw(p,domain_vec,VECTORPEN+red+blue,arrow=Arrow(DefaultHead,VECTORHEADSIZE),PenMargin(-1,1.5));
 }
 
+shipout(fn+format("%02d",picnum), p);
 
 
 

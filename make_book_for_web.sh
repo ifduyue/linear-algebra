@@ -54,7 +54,7 @@ then
     mpost voting.mp
     mpost appen.mp
     cd asy
-    asy -noprc -fpdf ppiped
+    asy ppiped
     asy axes
     asy wilber
     cd ..

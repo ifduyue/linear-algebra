@@ -37,7 +37,7 @@ pen DXPEN=linecap(0)
              +red
              +linewidth(1pt);
 
-texpreamble("\usepackage{conc}\usepackage{../../linalgjh}");
+texpreamble("\usepackage{../../conc}\usepackage{../../linalgjh}");
 
 // HSL color space, to lighten or darken
 //   see http://en.wikipedia.org/wiki/HSL_and_HSV
