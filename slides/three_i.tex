@@ -1,6 +1,6 @@
 % see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
 \makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[10pt,t]{beamer}
+\documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
@@ -331,10 +331,11 @@ as required.
 We finish by checking that $f$ preserves scalar multiplication.
 This is similar to the check for addition.
 \begin{align*}
-  r\cdot f(\,a_0+a_1x+a_2x^2\,)
-   &=r\cdot\colvec{a_0 \\ a_1 \\ a_2}   \\ 
+  f(r\cdot(a_0+a_1x+a_2x^2))
+  &=f(\,(ra_0)+(ra_1)x+(ra_2)x^2\,) \\
    &=\colvec{ra_0 \\ ra_1 \\ ra_2}  \\ 
-   &=f(\,(ra_0)+(ra_1)x+(ra_2)x^2\,)
+   &=r\cdot\colvec{a_0 \\ a_1 \\ a_2}   \\ 
+   &=r\cdot f(\,a_0+a_1x+a_2x^2\,)
 \end{align*}
 
 \pause
@@ -496,6 +497,25 @@ Preservation of scalar multiplication is similar.
 
 
 %..........
+\begin{frame}{Preservation is special}
+Many functions do not preserve addition and scalar multiplication.
+For instance, $\map{f}{\Re^2}{\Re^2}$
+\begin{equation*}
+  f(\colvec{x \\ y})=\colvec{x^2 \\ y^2}
+\end{equation*}
+does not preserve addition since the sum done one way 
+\begin{equation*}
+  f(\colvec{1 \\ 0}+\colvec{2 \\ 0})=f(\colvec{3 \\ 0})=\colvec{9 \\ 0}
+\end{equation*}
+gives a different result than the sum done the other way.
+\begin{equation*}
+  f(\colvec{1 \\ 0})+f(\colvec{2 \\ 0})=\colvec{1 \\ 0}+\colvec{4 \\ 0}
+  =\colvec{5 \\ 0}
+\end{equation*}
+\end{frame}
+
+
+%..........
 \begin{frame}{Special case: Automorphisms}
 \df[df:Automorphism]\hspace*{-1em}
 \ExecuteMetaData[../map1.tex]{df:Automorphism}
@@ -642,7 +662,7 @@ There is a member of the domain~$L$ that maps to it, namely this one.
 To finish, we combine the two structure checks,  using the lemma's~(2).
 \begin{multline*}
   f(\,c_1\cdot\colvec{t_1 \\ 2t_1}+c_2\cdot\colvec{t_2 \\ 2t_2}\,)
-  =f(\,(c_1t_1++c_2t_2)\cdot\colvec{1 \\ 2}\,)                    \\
+  =f(\,(c_1t_1+c_2t_2)\cdot\colvec{1 \\ 2}\,)                    \\
   =c_1t_1+c_2t_2   
   =
   c_1\cdot f(\,\colvec{t_1 \\ 2t_1}\,)+c_2\cdot f(\,\colvec{t_2 \\ 2t_2}\,)
@@ -686,7 +706,7 @@ via this function.
 The inverse $\map{f^{-1}}{\Re}{L}$ 
 given by
 \begin{equation*}
-  f^{-1}(r)=r\cdot\colvec{1 \\ 2}=\colvec{x \\ 2x}
+  f^{-1}(r)=r\cdot\colvec{1 \\ 2}=\colvec{r \\ 2r}
 \end{equation*}
 is also an isomorphism.
 \end{frame}

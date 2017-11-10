@@ -7,10 +7,11 @@
 #  cd linear-algebra/slides
 #  ./make_slides.sh 2>&1 | tee make_slides.log
 # (you may need to put in "chmod u+x ./make_slides.sh" the first time).
-# Warning: running this script takes minutes, not seconds.  Perhaps 20 mins.
+# Warning: running this script takes minutes, not seconds.  Perhaps 10 mins.
 # In particular, "asy -f png four_ii_orientation_neg" takes a long time.
 #
 # 2012-Jun-15 Jim Hefferon
+# 2017-Nov-10 Small adjustments so version three will compile from the .git
 
 usage()
 {
@@ -72,6 +73,12 @@ done
 # Generate the figures
 if [[ -z $REGENERATING ]] 
 then
+  echo " Regenerating ..  "
+  echo "   This regenerates all the graphics and then runs LaTeX a number of"
+  echo "   times.  On my laptop it takes two minutes.  Also, a lot of stuff"
+  echo "   flies by on the screen."
+  echo " "
+  echo " "
   # Make the graphics
   cd asy
 

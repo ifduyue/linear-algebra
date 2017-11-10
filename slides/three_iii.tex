@@ -1,6 +1,6 @@
 % see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
 \makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[10pt,t]{beamer}
+\documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
@@ -934,7 +934,7 @@ solve for $x$, $y$, and~$z$.
     0 &0 &1   &-a+b \\
     0 &0 &-1 &-a+c   
   \end{amat}                             \\                    
-  &\grstep[-\rho_1+\rho_3]{-\rho_1+\rho_2}
+  &\grstep{\rho_2+\rho_3}
   \begin{amat}{3}
     1 &0 &0   &a \\
     0 &0 &1   &-a+b \\
@@ -1069,15 +1069,13 @@ $\rangespace{h}=\Re^2$, and
 the rank of~$h$ is as large as it could be,~$2$.
 
 \pause
-The similar calculation on the homogeneous system
-shows that for all~$\vec{w}$ the associated~$\vec{v}$
-is unique.
+Doing the homogeneous system by substituting $a=0$, $b=0$ above
+shows the null space is trivial.
 So~$h$ is one-to-one;
-the null space is trivial.
 \begin{equation*}
   \nullspace{h}=\set{\colvec{0 \\ 0}}
 \end{equation*}
-A trivial space has an empty basis so the nullity is~$0$.
+The trivial null space has an empty basis, so the nullity is~$0$.
 \end{frame}
 
 
@@ -1095,7 +1093,7 @@ Suppose that a map~$h$ between real spaces is represented by this.
 \end{equation*}
 The domain has dimension~$3$ and the codomain has dimension~$2$
 so $\map{h}{\Re^3}{\Re^2}$.
-\pause
+% \pause
 \begin{equation*}
   \begin{amat}{3}
     1 &2 &1  &a \\
@@ -1114,101 +1112,101 @@ For each $a,b$ there is at least one triple
 $x,y,z$ so this map is onto;
 $\rank(h)=2$.
 
-\pause 
+% \pause 
 For each $a,b$ there is more than one
 triple $x,y,z$ so
 this map is not one-to-one.
-To find the null space set do the reduction on the homogeneous system
-by setting $a=b=0$.
-The nullspace $\nullspace{h}$ is the set of vectors whose representation
-falls into this set.
+Said another way, find the null space by substituting $a=0$, $b=0$ above
+to solve the homogeneous system.
 \begin{equation*}
-   \set{\colvec{x \\ y \\ z}\suchthat \text{$y+2z=0$ and $x-3z=0$}}
+   \nullspace{h}
+   =\set{\colvec{x \\ y \\ z}\suchthat \text{$y+2z=0$ and $x-3z=0$}}
    =\set{\colvec{3 \\ -2 \\ 1}z\suchthat z\in\Re}
 \end{equation*}
 The nullity is~$1$.
 \end{frame}
 
 
-\begin{frame}
-\ex Let $h$ be the transformation of~$\Re^2$ represented with respect to the
-standard bases $\stdbasis_2,\stdbasis_2$ by this matrix.
-\begin{equation*}
-  H=
-  \begin{mat}
-    1 &3 \\ 
-    2 &6
-  \end{mat}
-\end{equation*}
-The matrix rank is~$1$.
-\begin{equation*}
-  \begin{amat}{2}
-    1 &3  &a \\
-    2 &6  &b
-  \end{amat}
-  \grstep{-2\rho_1+\rho_2}
-  \begin{amat}{2}
-    1 &3  &a \\
-    0 &0 &-2a+b
-  \end{amat}                   
-\end{equation*}
-\pause
-So the map rank is also $1$; the map is not onto.
-The range space $\rangespace{h}$ is the set of vectors whose representation 
-is a member of this set.
-\begin{equation*}
-  \set{\colvec{a \\ b}\suchthat -2a+b=0}
-  =\set{\colvec{1/2 \\ 1}\cdot b\suchthat b\in\Re}
-\end{equation*}
-\pause
-The map is also not one-to-one; $\nullity(h)=1$.
-The null space $\nullspace{h}$ is the set of vectors whose 
-representation is a member of this set.
-\begin{equation*}
-  \set{\colvec{x \\ y}\suchthat x+3y=0}
-  =\set{\colvec{-3 \\ 1}\cdot y\suchthat y\in\Re}
-\end{equation*}
-Note that rank plus nullity equals the dimension of the domain.
-\end{frame}
+% \begin{frame}
+% \ex Let $h$ be the transformation of~$\Re^2$ represented with respect to the
+% standard bases $\stdbasis_2,\stdbasis_2$ by this matrix.
+% \begin{equation*}
+%   H=
+%   \begin{mat}
+%     1 &3 \\ 
+%     2 &6
+%   \end{mat}
+% \end{equation*}
+% The matrix rank is~$1$.
+% \begin{equation*}
+%   \begin{amat}{2}
+%     1 &3  &a \\
+%     2 &6  &b
+%   \end{amat}
+%   \grstep{-2\rho_1+\rho_2}
+%   \begin{amat}{2}
+%     1 &3  &a \\
+%     0 &0 &-2a+b
+%   \end{amat}                   
+% \end{equation*}
+% \pause
+% So the map rank is also $1$; the map is not onto.
+% The range space $\rangespace{h}$ is the set of vectors whose representation 
+% is a member of this set.
+% \begin{equation*}
+%   \set{\colvec{a \\ b}\suchthat -2a+b=0}
+%   =\set{\colvec{1/2 \\ 1}\cdot b\suchthat b\in\Re}
+% \end{equation*}
+% \pause
+% The map is also not one-to-one; $\nullity(h)=1$.
+% The null space $\nullspace{h}$ is the set of vectors whose 
+% representation is a member of this set.
+% \begin{equation*}
+%   \set{\colvec{x \\ y}\suchthat x+3y=0}
+%   =\set{\colvec{-3 \\ 1}\cdot y\suchthat y\in\Re}
+% \end{equation*}
+% Note that rank plus nullity equals the dimension of the domain.
+% \end{frame}
 
 
-\begin{frame}
-\ex A linear map $\map{h}{\Re^m}{\Re^n}$ represented as here
-\begin{equation*}
-  H=
-  \begin{mat}
-    1 &2 \\
-    1 &3 \\
-    1 &4
-  \end{mat}
-\end{equation*}
-has a dimension~$2$ domain and a dimension~$3$ codomain.
-Here is the linear reduction.
-\begin{equation*}
-  \begin{amat}{2}
-    1 &2 &a \\
-    1 &3 &b \\
-    1 &4 &c   
-  \end{amat}
-  \grstep[-\rho_1+\rho_3]{-\rho_1+\rho_2}
-  \grstep{-2\rho_2+\rho_3}
-  \grstep{-2\rho_2+\rho_1}
-  \begin{amat}{2}
-    1 &0 &3a-2b \\
-    0 &1 &-a+b \\
-    0 &0 &a-2b+c   
-  \end{amat}
-\end{equation*}
-If we use the standard bases then vectors represent themselves.
-\begin{equation*}
-  \rangespace{h}
-  =\set{\colvec{a \\ b \\ c}\suchthat a=2b-c}  
-  \qquad
-  \nullspace{h}
-  =\set{\colvec{0 \\ 0}}
-\end{equation*}
-The map~$h$ is not onto, but it is one-to-one.
-\end{frame}
+% \begin{frame}
+% \ex A linear map represented as here
+% \begin{equation*}
+%   H=
+%   \begin{mat}
+%     1 &2 \\
+%     1 &3 \\
+%     1 &4
+%   \end{mat}
+% \end{equation*}
+% has a dimension~$2$ domain and a dimension~$3$ codomain,
+% sop we can take $\map{h}{\Re^2}{\Re^3}$.
+% Here is the linear reduction.
+% \begin{equation*}
+%   \begin{amat}{2}
+%     1 &2 &a \\
+%     1 &3 &b \\
+%     1 &4 &c   
+%   \end{amat}
+%   \grstep[-\rho_1+\rho_3]{-\rho_1+\rho_2}
+%   \grstep{-2\rho_2+\rho_3}
+%   \grstep{-2\rho_2+\rho_1}
+%   \begin{amat}{2}
+%     1 &0 &3a-2b \\
+%     0 &1 &-a+b \\
+%     0 &0 &a-2b+c   
+%   \end{amat}
+% \end{equation*}
+% If we use the standard bases then vectors represent themselves.
+% \begin{align*}
+%   \rangespace{h}
+%   & =\set{\colvec{a \\ b \\ c}\suchthat a=2b-c}
+%   =\set{\colvec{2 \\ 1 \\ 0}\cdot b +\colvec{-1 \\ 0 \\ 1}\cdot c\suchthat b,c\in\Re}  \\
+%   \nullspace{h}
+%   &=\set{\colvec{0 \\ 0}}
+% \end{align*}
+% The map~$h$ is not onto but it is one-to-one.
+% \end{frame}
 
 
 
@@ -1218,9 +1216,8 @@ So
 we can determine things about a map by fixing bases and 
 calculating with the representation.
 
-The calculations so far involve real spaces and are done with respect to 
-the standard bases, to reduce the number of factors at play.
-We close with an example showing what to do in other cases.
+We close with an example showing how to extend those calculations
+to the underlying spaces.
 
 % \pause
 % Given a domain space~$V$,
@@ -1244,17 +1241,14 @@ We close with an example showing what to do in other cases.
 
 
 \begin{frame}
-\ex Let the domain and codomain be $\Re^2$ and~$\polyspace_2$,
-with these bases.
+\ex Fix these, as well as 
+the domain and codomain $\Re^2$ and~$\polyspace_2$.
 \begin{equation*}
-  D=\sequence{\colvec{1 \\ 1 \\ 1},
-              \colvec{1 \\ 0 \\ 1},
-              \colvec{0 \\ 2 \\ 0}}
-  \qquad
-  B=\sequence{1+x,1-x,x+x^2}
-\end{equation*}
-As it happens, 
-\begin{equation*}
+  B=\sequence{\colvec{1 \\ 1},
+              \colvec{1 \\ 0}
+              },
+  D=\sequence{1+x,1-x,x+x^2}
+  \quad
   H=\rep{h}{B,D}=
   \begin{mat}
     1 &2 \\
@@ -1262,10 +1256,7 @@ As it happens,
     1 &4
   \end{mat}
 \end{equation*}
-and the prior example
-gives this calculation (the fact that underlying this is
-the linear map $\map{h}{\Re^2}{\polyspace_2}$ represented by~$H$
-with respect to those bases is not relevant).
+Gauss's Method is routine.
 \begin{equation*}
   \begin{amat}{2}
     1 &2 &a \\
@@ -1281,34 +1272,27 @@ with respect to those bases is not relevant).
     0 &0 &a-2b+c   
   \end{amat}
 \end{equation*}
-\end{frame}
-\begin{frame}
-The range contains an output vector if and only if its representation
-satisfies that $a-2b+c=0$.
-\begin{equation*}
-  \rangespace{h}
-  =\set{\vec{p}\in\polyspace_2\suchthat \rep{\vec{p}}{D}=\colvec{2b-c \\ b \\ c}}
-\end{equation*}
-To get the underlying range elements, the vectors that are represented, expand.
+The null space is trivial $\nullspace{h}=\set{\vec{0}}$
+so $h$ is one-to-one.
+The range contains the output vectors whose representations
+satisfy $a-2b+c=0$, so $h$ is not onto.
+\pause
+To get the underlying elements of the codomain~$\polyspace_2$, expand.
 \begin{align*}
+  \rangespace{h}
+  &=\set{\vec{p}\in\polyspace_2\suchthat \rep{\vec{p}}{D}=\colvec{2b-c \\ b \\ c}}  \\
+% \end{equation*}
+% \end{frame}
+% \begin{frame}
+%\begin{align*}
   &=\set{(2b-c)\cdot(1+x)+b\cdot(1-x)+c\cdot(x+x^2)\suchthat b,c\in\Re}  \\
   &=\set{b\cdot(3+x)+c\cdot(-1+x^2)\suchthat b,c\in\Re}      
 \end{align*}
-Inside of the $3$~dimensional codomain~$\polyspace_2$,
-the range is a $2$~dimensional subspace with basis $\sequence{3+x,-1+x^2}$.  
-So ~$h$ is not onto.
-
-The null space is a singleton set, so $h$ is one-to-one.
-\begin{equation*}
-  \nullspace{h}=\set{\colvec{0 \\ 0}}  
-\end{equation*}
+That's the span of $\sequence{3+x,-1+x^2}$, which is linearly independent
+so it is a basis. 
+% \begin{equation*}
+%   \nullspace{h}=\set{\colvec{0 \\ 0}}  
+% \end{equation*}
 \end{frame}
 
-
-%...........................
-% \begin{frame}
-% \ExecuteMetaData[../gr3.tex]{GaussJordanReduction}
-% \df[def:RedEchForm]
-% 
-% \end{frame}
 \end{document}
