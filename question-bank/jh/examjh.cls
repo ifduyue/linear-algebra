@@ -45,6 +45,7 @@
 
 % --- Class structure: declaration of options part
 % ---
+
 \LoadClass{exam}
 
 % --- Class structure: main code part
