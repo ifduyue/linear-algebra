@@ -13,7 +13,13 @@ The manual requires two nonstandard fonts, Bera Sans and ProggyClean.
 The second is in the fonts/ subdirectory while the first is widely available
 on the internet.
 
-Note that it requires running "xelatex --shell-escape lab". 
+Further, you may well have to adjust the font paths in lab.cls.  Note that
+the paths end in a '/'; that's important.
+
+Note that it requires running "xelatex --shell-escape lab".
+
+I had to install the LaTeX package sagetex (from www.ctan.org) and the
+Python package pexpect, personally, last time I got it to run.
 
 For me, on Ubuntu 12.04 with TeX Live 2012, running ./make_lab.sh will
 after a while produce the book as a PDF.  (This requires Sage and

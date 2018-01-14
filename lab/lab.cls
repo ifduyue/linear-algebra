@@ -45,7 +45,7 @@
 
 \usepackage{../linalgjh}
 % Set the fonts
-\usepackage{conc}
+\usepackage{../conc}
 
 \RequirePackage{amsmath}
 \RequirePackage{amsmath,amsthm,amssymb}
@@ -73,14 +73,17 @@
 %              Scale=MatchLowercase]{VerilySerifMono.otf}  % Verily Serif Mono
 % \setmonofont[
 %              Scale=MatchLowercase]{Andale Mono}  
+% 2017-Dec-30 Can't find Courier New
+% \setmonofont[
+%              Scale=MatchLowercase]{Courier New}  
 \setmonofont[
-             Scale=MatchLowercase]{Courier New}  
+             Scale=MatchLowercase]{Courier}  
 % font for code listings
 \newfontfamily\listingsfont[Path=fonts/,
                                   Scale=1]{ProggyClean.ttf}
 \newfontfamily\listingsinlinefont[Path=fonts/,
                                   Scale=MatchLowercase]{ProggyClean.ttf}
-\newfontfamily\luximono[Path=/usr/local/texlive/texmf-local/fonts/type1/bh/luxi/,
+\newfontfamily\luximono[Path=/usr/local/share/texmf/fonts/type1/bh/luxi/,
                         ItalicFont = ul9ro8a.pfb,
                         BoldFont = ul9b8a.pfb]{ul9r8a.pfb}
 \newfontfamily\berasans[Path=/usr/share/texlive/texmf-dist/fonts/type1/public/bera/,
@@ -97,7 +100,8 @@
 
 
 \usepackage[math-style=upright]{unicode-math} % see http://tex.stackexchange.com/questions/50995/font-mixup-with-neo-euler-and-fontspec
-\setmathfont[Path=/usr/local/texlive/texmf-local/fonts/opentype/euler/]{euler.otf}
+% \setmathfont[% Path=/usr/local/texlive/texmf-local/fonts/opentype/euler/
+%              ]{euler.otf}
 \AtBeginDocument{\DeclareMathAlphabet\mathbf{U}{eur}{b}{n}} % fontspec manual p. 11; doesn't seem to do anything.
 \setmathfont[range=\mathbb,
              % Path=/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/symbols/
