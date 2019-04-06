@@ -22,10 +22,23 @@ _Linear Algebra_ is Free. You can use it under the GNU Free Documentation licens
 This text has been available online for over twenty years. It has been used in hundreds of classrooms. It has also been widely used for self-study, both as a supplement to another text that a student has been assigned in a class and as a main text for independent learning.
 
 
+# Contributing
+
+I am always glad to hear from users with reports and suggestions, but particularly with bug reports. 
+Please email me using my contact information on the book's home page [joshua.smcvt.edu/linearalgebra](http://joshua.smcvt.edu/linearalgebra).
+I save up the reports and do them in a batch, typically in the summer.
+
+I batch them for two reasons.
+First, changing the text has in the past caused confusion when people in a class have different versions, with different pagination, etc.
+And also, the project has been stable for years and this helps preserve my time.
+
+If you are working with the git repository, please note that the changes-once-a-year pattern includes pull requests.
+In addition, I am not accepting requests to get project write access; if you have something specific that you want to do then please email me.
+
+
 # Author
 
 I am a math professor at Saint Michael's College in Colchester Vermont.
 
-I am glad to hear from users, for example from instructors with reports and suggestions from their experience, but particularly with bug reports. You will have the most luck with my contact information on the book's home page [joshua.smcvt.edu/linearalgebra](http://joshua.smcvt.edu/linearalgebra).
 
 
