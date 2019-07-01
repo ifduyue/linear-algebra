@@ -227,7 +227,7 @@ Condition~(3), associativity of vector addition, is similar.
 \end{align*}
 For the fourth condition we must produce a vector that acts as the 
 zero element. 
-The vector of zeroes will do.
+The vector of zero entries will do.
 \begin{equation*}
   \colvec{x \\ y}
   +\colvec{0 \\ 0}
@@ -242,25 +242,24 @@ produce an additive inverse, we have
   =\colvec{0 \\ 0}
 \end{equation*}
 and so the vector $-\vec{v}$ is the desired inverse.
-As for the prior condition, observe here that if $\vec{v}\in L$, so that
+As with the prior condition, observe here that if $\vec{v}\in L$, so that
 $y=3x$, then $-\vec{v}\in L$ also, since $-y=3(-x)$.
 
 The checks for the five conditions having to do with scalar multiplication
 are similar.
 For~(6), closure under scalar multiplication,
-suppose that $r\in\R$ and $\vec{v}\in L$
+suppose that $r\in\R$ and $\vec{v}\in L$, that is, 
 \begin{equation*}
   \vec{v}=\colvec{x \\ y}
 \end{equation*}
-so that it satisfies the restriction~$y=3x$.
+satisfies that~$y=3x$.
 Then 
 \begin{equation*}
   r\cdot\vec{v}=r\cdot\colvec{x \\ y}
   =\colvec{rx \\ ry}
 \end{equation*}
-is also a member of $L$:
-the fact that its second component is three times
-its first $ry=3(rx)$ follows from the restriction on~$\vec{v}$.
+is also a member of $L$:~the relation $ry=3\cdot rx$ holds because
+$y=3x$.
 Next, this checks~(7).
 \begin{equation*}
   (r+s)\cdot\colvec{x \\ y}
@@ -292,7 +291,7 @@ and tenth conditions are also straightforward.
 
 \begin{example}  \label{ex:RealVecSpaces}
 The whole plane, the set
-\( \Re^2 \), is a vector space if the operations `\( + \)' and `\( \cdot \)'
+\( \Re^2 \), is a vector space where the operations `\( + \)' and `\( \cdot \)'
 have their usual meaning.
 \begin{equation*}
   \colvec{x_1 \\ y_1}
@@ -318,7 +317,7 @@ the result of the vector sum
 is a column array with two real entries, and so is a member of the 
 plane~\( \Re^2 \).
 In contrast with the prior example, here there is no restriction on the
-vectors that we must check.
+first and second components of the vectors.
 
 Condition (6) is similar.
 The vector

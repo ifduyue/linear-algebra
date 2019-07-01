@@ -373,16 +373,18 @@ the zero vector is a combination of the empty subset.
 \end{example}
 
 \begin{remark} \label{rem:WhyLIUsesMultiset} %\cite{Velleman} 
-\nearbydefinition{def:LinInd} describes when a collection of 
-vectors is linearly independent.
-In this book we will follow the practice of referring to an
-independent `set', because sets are the most familiar collections and
-because that practice is universal.
-But to be complete we will note that sets will not do.
-
-Recall that a set is a collection with two properties: order does not matter,
+The definition of linear independence,
+\nearbydefinition{def:LinInd}, refers to a `set' of vectors.
+Sets are the most familiar kind of collection, and furthermore
+in practice everyone refers to these collections as sets so 
+we will do the same.
+ 
+But to be complete we will note that sets are not quite the right kind
+of collection.
+Recall that a set is a collection with two properties: 
+(i)~order does not matter,
 so that the set $\set{1,2}$ equals the set $\set{2,1}$, and 
-repeats collapse, so that the set $\set{1,1,2}$ equals the set
+(ii)~repeats collapse, so that the set $\set{1,1,2}$ equals the set
 $\set{1,2}$.
 
 Now consider this matrix reduction.
@@ -399,43 +401,27 @@ Now consider this matrix reduction.
     1 &2 &3
   \end{mat}
 \end{equation*}
-On the left the set of matrix rows 
-$\set{\rowvec{1 &1 &1}, \rowvec{2 &2 &2}, \rowvec{1 &2 &3}}$ is
+On the left the set of matrix rows is 
+$\set{\rowvec{1 &1 &1}, \rowvec{2 &2 &2}, \rowvec{1 &2 &3}}$, and is
 linearly dependent.
-On the right the set 
-$\set{\rowvec{1 &1 &1}, \rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, which equals
+On the right the set of rows is  
+$\set{\rowvec{1 &1 &1}, \rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$. 
+Because repeats collapse that equals
 the set
-$\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, is linearly independent.
-That's not what we want; we want to say that the collection of the
-rows of the second matrix is also dependent.
+$\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, 
+which is linearly independent.
+Oops, Gauss's Method should preserve linear dependence.
 
-Thus, for a proper definition of dependence and independence,  
-we need a type of collection where for the second matrix
-the row $\rowvec{1 &1 &1}$ appears twice.
-A collection where order does not matter and where repeats do not collapse
+That is, strictly speaking,  
+we need a type of collection where repeats do not collapse.
+Such a collection is a
 is a \definend{multiset}.\index{sets!multiset}%
 \index{multiset}\index{linear independence!multiset}
-So, strictly speaking, we should in the definition replace 
-`set' with `multiset', and adjust all later discussions also.
-
 However, most of the time the distinction won't matter and
 departing from standard terminology has its own pitfalls, so we will 
-follow the practice of referring to a linearly independent or dependent `set.' 
+refer to a linearly independent or dependent `set.' 
 Later in this book we shall occasionally need to take combinations without
 letting repeated parts collapse, and we shall do that without comment.
-% In the next chapter we will look at functions from one vector space to another.
-% Let the function $\map{f}{\polyspace_1}{\Re}$ be
-% $f(a+bx)=a$ so that for instance $f(1+2x)=1$. 
-% Consider the subset $B=\set{1,1+x}$ of the domain.
-% The images of the elements are $f(1)=1$ and~$f(1+x)=1$.
-% Because in a set repeated elements collapse 
-% these images form a set with one element $\set{1}$,
-% which is linearly independent.
-% But in a multiset repeated elements do not collapse so 
-% these images form a linearly 
-% dependent multiset~$\set{1,1}$.
-% The second case is the correct one:~$B$ is linearly independent but its image 
-% under~$f$ is linearly dependent.
 \end{remark}
 
 
