@@ -406,8 +406,8 @@ Method~\cite{FullerLogan}.
       \begin{equation*}
         \grstep[-a_{3,1}\rho_1+\rho_3 \\ \vdotswithin{-a_{3,1}\rho_1+\rho_3} \\ -a_{n,1}\rho_1+\rho_n]{-a_{2,1}\rho_1+\rho_2}         
       \end{equation*}
-      The result is a matrix whose first row is unchanged, whose 
-      first column is all zero's (except for
+      The result is a matrix~$B$ whose first row is unchanged, whose 
+      first column is all zeros (except for
       the $1,1$ entry of $a_{1,1}$), and whose remaining entries are these. 
       \begin{equation*}
         \begin{mat}
@@ -428,16 +428,16 @@ Method~\cite{FullerLogan}.
              &a_{n,n}a_{1,1}-a_{n,1}a_{1,n}  
         \end{mat}
       \end{equation*}
-      The determinant of this matrix is 
-      $a_{1,1}^{n-1}$~times the determinant of~$A$.
+       The determinant of this $\nbyn{n}$ matrix $B$ is 
+       $a_{1,1}^{n-1}$~times the determinant of~$A$.
 
-      Denote by~$C$ the $1,1$ minor of the matrix,
-      that is, the submatrix consisting of the first $n-1$ rows and columns.
-      The Laplace expansion down the final column of the above matrix  
-      gives that its determinant is $(-1)^{1+1}a_{1,1}\det(C)$.
+     Denote by~$C$ the $1,1$ minor of the matrix $B$,
+     that is, the submatrix consisting of the last $n-1$ rows and columns.
+     The Laplace expansion down the first column of $B$  
+     gives that its determinant is $\det(B) = (-1)^{1+1}a_{1,1}\det(C)$.
 
-      If $a_{1,1}\neq 0$ then setting the two equal and 
-      canceling gives $\det(A)=\det(C)/a_{n,n}^{n-2}$.       
+      If $a_{1,1}\neq 0$ then setting equal the two expressions for $\set(B)$ 
+      and canceling gives $\det(A)=\det(C)/a_{n,n}^{n-2}$.       
     \end{answer}
 \end{exercises}
 
