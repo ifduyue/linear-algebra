@@ -13,7 +13,7 @@ leaves extra space at start of first sentence.
 ** SAGE? Lab manual?
 
 ** Cover art?
-
+   
 ** Hestenes?
 
 ** Include handwritten versions of lower case Greek letters on flyleaf?
@@ -22,8 +22,9 @@ leaves extra space at start of first sentence.
 
 ** Add Topic on graphs are isomorphic iff their adjacency matrices are similar?
 
-** Add Topic on coupled oscillators and normal modes, maybe with video?
-
+** Change orientation of spine text 
+** Topic on Principle Components
+** Better Topic on graphics
 * Refactor some code 
 ** Move Range space and Null space to after the definition of Computing Linear Maps
 ** Change vector look?
@@ -51,7 +52,10 @@ See http://tex.stackexchange.com/questions/37167/sorting-logs-into-different-fol
   http://www.ctan.org/pkg/numprint
 
 
-
+* Give it a less-flat format
+In particular, the metapost outputs cluttering the dir are a mess.
+** Have an INSTALL file
+** Have a Contributing file
 * Try .cls
 
 ** Maybe various formats, different color schemes?
@@ -64,3 +68,5 @@ See http://tex.stackexchange.com/questions/37167/sorting-logs-into-different-fol
 * e-book format?
   Tried breqn but changing the equation* environment on line 1938 of gr1.tex
   to dmath* did not result in a break.  Puzzled.
+
+** Convert to ebook, using the newly-available options through tex4ht
