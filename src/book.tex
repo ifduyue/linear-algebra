@@ -21,18 +21,18 @@
 % the \include{..} area, and uncomment the titlepage lines.  You may
 % have to "rm *.aux" to get it to compile.
 \includeonly{
-covernew,% 
-\ifbool{hardcopybool}{titlepage}{symlist},
+% covernew,% 
+% \ifbool{hardcopybool}{titlepage}{symlist},
 % symlist, % comment this out for printed version
 % titlepage, % uncomment for printed version
-pref,%
-gr1,gr2,gr3,cas,leontief,ppivot,network,%
-vs1,vs2,vs3,fields,crystal,voting,dimen,%
-map1,map2,map3,map4,map5,map6,lstsqs,homogeom,magicsqs,markov,erlang,%
-det1,det2,det3,cramer,detspeed,chio,projplane,%
-jc1,jc2,jc3,jc4,powers,pops,search,recur,wilber,%eigengeom,prinaxis,%
-appen,%
-bib%
+pref/pref,%
+gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
+% vs1,vs2,vs3,fields,crystal,voting,dimen,%
+% map1,map2,map3,map4,map5,map6,lstsqs,homogeom,magicsqs,markov,erlang,%
+%det1,det2,det3,cramer,detspeed,chio,projplane,%
+% jc1,jc2,jc3,jc4,powers,pops,search,recur,wilber,%eigengeom,prinaxis,%
+% appen,%
+% bib%
 %test%
 }%
 \usepackage{makeidx}\makeindex
@@ -52,11 +52,11 @@ bib%
 \mainmatter
 \pagenumbering{arabic}
 \pagestyle{bookbody} 
-\include{gr1}
-\include{gr2}
-\include{gr3}
+\include{gr/gr1}
+\include{gr/gr2}
+\include{gr/gr3}
 \pagestyle{booktopic}
-  \include{cas} \include{leontif} \include{ppivot} \include{network}\pagestyle{bookbody} 
+  \include{gr/cas} \include{gr/leontif} \include{gr/ppivot} \include{gr/network}\pagestyle{bookbody} 
 \include{vs1}
 \include{vs2}
 \include{vs3}

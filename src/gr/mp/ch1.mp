@@ -3,6 +3,7 @@
 verbatimtex
 %&latex
 \documentclass{book}
+\usepackage{import}
 \usepackage{bookjh} 
 \usepackage{linalgjh}
 \usepackage{tabstackengine} \setstacktabbedgap{1pt}
