@@ -1,0 +1,55 @@
+# latexmkrc
+#  Configuration for latexmk
+#  Note that you need latexmk version 4.65 (2019-06-18) to run
+# the 'ensure_path'
+# 2019-Jul-04 Jim Hefferon
+
+# First have to find the directory in which this is being compiled,
+#  .../src so that it can go in the TEXINPUTS and MPINPUTS variable.
+
+# use Cwd;
+my $compile_dir = getcwd;
+# for debugging: print "!!!!! compile_dir is ",$compile_dir,"\n";
+
+
+# To put .sty files in other dirs you need to put the .sty's into
+# the path where LaTeX searches.  For instance, the MetaPost files
+# will not compile without this.
+ensure_path( 'TEXINPUTS', "$compile_dir//" );
+ensure_path( 'MPINPUTS', "$compile_dir//" );
+
+
+# If LaTeX reports that to compile book.tex you need a file ending in
+# .1 then latexmk will look for a file of the same name (including
+# the path) and run the sub 'mpost' on it.
+#   I do not need a rule for ending in 2, 3, etc because once
+# the metapost file is compiled to give the .1 then all of the numbers
+# are also there.
+add_cus_dep( 'mp', '1', 0, 'mpost' );
+
+# This is adapted from the version that comes with latexmk.  The change
+# is to cd to the directory containing the .mp file so it can write
+# and read the .mpx file, etc. 
+sub mpost {
+    my $file = $_[0];
+    my ($name, $path) =  fileparse( $file );
+    # debugging: print "!!!!! file base name is ",$name,", file path is ",$path,"\n";
+    chdir $path;
+    # print "!!!!! current dir is ",getcwd,"\n";
+    # print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
+    # print "!!!!! MPINPUTS is ",$ENV{'MPINPUTS'},"\n";
+    my $return = system "mpost \"$name\"";
+    # Fix the problem that mpost puts its output and log files
+    # in the current directory, not in the auxiliary directory
+    # (which is often the same as the output directory):
+    # move "$name.1", $path;
+    move "$name.log", $aux_dir;
+    chdir $compile_dir;
+    return $return;
+}
+
+# for debugging
+# show_cus_dep();
+
+# Use these to create this file
+@default_files = ('book.tex');
