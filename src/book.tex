@@ -21,18 +21,18 @@
 % the \include{..} area, and uncomment the titlepage lines.  You may
 % have to "rm *.aux" to get it to compile.
 \includeonly{
-% covernew,% 
+cover/covernew,% 
 % \ifbool{hardcopybool}{titlepage}{symlist},
-% symlist, % comment this out for printed version
+cover/symlist, % comment this out for printed version
 % titlepage, % uncomment for printed version
 pref/pref,%
 gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
-% vs1,vs2,vs3,fields,crystal,voting,dimen,%
+% vs/vs1,vs/vs2,vs/vs3,vs/fields,vs/crystal,vs/voting,vs/dimen,%
 % map1,map2,map3,map4,map5,map6,lstsqs,homogeom,magicsqs,markov,erlang,%
 %det1,det2,det3,cramer,detspeed,chio,projplane,%
 % jc1,jc2,jc3,jc4,powers,pops,search,recur,wilber,%eigengeom,prinaxis,%
 % appen,%
-% bib%
+bib/bib%
 %test%
 }%
 \usepackage{makeidx}\makeindex
@@ -43,8 +43,8 @@ gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
 \begin{document}
 \frontmatter
 \pagenumbering{roman}
-\ifbool{hardcopybool}{\include{titlepage}}{\include{covernew}\include{symlist}\clearemptydoublepage}
-% \include{covernew}\include{symlist}\clearemptydoublepage % comment out for printed version
+% \ifbool{hardcopybool}{\include{titlepage}}{\include{covernew}\include{symlist}\clearemptydoublepage}
+\include{cover/covernew}\include{cover/symlist}\clearemptydoublepage % comment out for printed version
 % \include{titlepage} % uncomment for printed version (also remember to change the color of hyperlinks in bookjhconcrete.sty)
 \pagestyle{bookfront} 
 \setcounter{page}{1}\thispagestyle{empty}\include{pref} %
@@ -57,11 +57,11 @@ gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
 \include{gr/gr3}
 \pagestyle{booktopic}
   \include{gr/cas} \include{gr/leontif} \include{gr/ppivot} \include{gr/network}\pagestyle{bookbody} 
-\include{vs1}
-\include{vs2}
-\include{vs3}
+\include{vs/vs1}
+\include{vs/vs2}
+\include{vs/vs3}
 \pagestyle{booktopic}
-  \include{fields} \include{crystal} \include{voting}  \include{dimen}\pagestyle{bookbody}
+  \include{vs/fields} \include{vs/crystal} \include{vs/voting}  \include{vs/dimen}\pagestyle{bookbody}
 \include{map1}
 \include{map2}
 \include{map3}
@@ -84,7 +84,7 @@ gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
 %\include{eigengeom}
 \include{appen}
 %\typeout{ BIBLIOGRAPHY COMMENTED OUT}
-{\pagestyle{empty}\include{bib}}
+{\pagestyle{empty}\include{bib/bib}}
 %\typeout{ INDEX COMMENTED OUT}
 {\printindex}
 \end{document}
