@@ -27,8 +27,9 @@ cover/symlist, % comment this out for printed version
 % titlepage, % uncomment for printed version
 pref/pref,%
 gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
-% vs/vs1,vs/vs2,vs/vs3,vs/fields,vs/crystal,vs/voting,vs/dimen,%
-% map1,map2,map3,map4,map5,map6,lstsqs,homogeom,magicsqs,markov,erlang,%
+vs/vs1,vs/vs2,vs/vs3,vs/fields,vs/crystal,vs/voting,vs/dimen,%
+map/map1,map/map2,map/map3,map/map4,map/map5,map/map6,%
+  map/lstsqs,map/homogeom,map/magicsqs,map/markov,map/erlang,%
 %det1,det2,det3,cramer,detspeed,chio,projplane,%
 % jc1,jc2,jc3,jc4,powers,pops,search,recur,wilber,%eigengeom,prinaxis,%
 % appen,%
@@ -62,14 +63,14 @@ bib/bib%
 \include{vs/vs3}
 \pagestyle{booktopic}
   \include{vs/fields} \include{vs/crystal} \include{vs/voting}  \include{vs/dimen}\pagestyle{bookbody}
-\include{map1}
-\include{map2}
-\include{map3}
-\include{map4}
-\include{map5}
-\include{map6}
+\include{map/map1}
+\include{map/map2}
+\include{map/map3}
+\include{map/map4}
+\include{map/map5}
+\include{map/map6}
 \pagestyle{booktopic}
-  \include{lstsqs} \include{homogeom} \include{magicsqs} \include{markov} \include{erlang}\pagestyle{bookbody}
+  \include{map/lstsqs} \include{map/homogeom} \include{map/magicsqs} \include{map/markov} \include{map/erlang}\pagestyle{bookbody}
 \include{det1}
 \include{det2}
 \include{det3} 

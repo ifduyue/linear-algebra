@@ -12,309 +12,309 @@ input jh
 ahangle:=40;
 
 input jh3d
-beginfig(1) % 2-flat in R3; 2x+y+z=4
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
-  drawing_scale:=30pt;
+% beginfig(1) % 2-flat in R3; 2x+y+z=4
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+%   drawing_scale:=30pt;
 
-  save c_a, c_b, c_c, c_d,
-       origin;
-  c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
-  origin:=new_vect; vect_def(origin,0,0,0);
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
+%   origin:=new_vect; vect_def(origin,0,0,0);
 
-  vect_def(c_a,2.1,-0.1,-0.1);  vect_def(c_b,1.05,-0.1,2);
-  vect_def(c_c,0.55,3,-0.1); vect_def(c_d,-0.5,3,2);
+%   vect_def(c_a,2.1,-0.1,-0.1);  vect_def(c_b,1.05,-0.1,2);
+%   vect_def(c_c,0.55,3,-0.1); vect_def(c_d,-0.5,3,2);
 
-  % I don't understand what these do.
-  set_point(Obs,10,5,5);
-  Obs_phi:=90; Obs_dist:=8;
-  point_of_view_abs(origin,Obs_phi);
-  % Now project the 3D points c_a ... c_d down to z1 ... z4
-  project_point(1,c_a);
-  project_point(2,c_b);
-  project_point(3,c_c);
-  project_point(4,c_d);
-  pickup pencircle scaled line_width_dark;
-  draw z1--z2--z4--z3--cycle;
+%   % I don't understand what these do.
+%   set_point(Obs,10,5,5);
+%   Obs_phi:=90; Obs_dist:=8;
+%   point_of_view_abs(origin,Obs_phi);
+%   % Now project the 3D points c_a ... c_d down to z1 ... z4
+%   project_point(1,c_a);
+%   project_point(2,c_b);
+%   project_point(3,c_c);
+%   project_point(4,c_d);
+%   pickup pencircle scaled line_width_dark;
+%   draw z1--z2--z4--z3--cycle;
 
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(2.5,3.5,2.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
-  draw_xyz_axes_withticks(2.5,3.5,2.5,2,3,2);
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(2.5,3.5,2.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(2.5,3.5,2.5,2,3,2);
 
-%  filldraw z1--z2--z4--z3--cycle withcolor shading_color;
-  pickup pencircle scaled (2*line_width_dark);
-  draw z2--z4 withcolor white;
-  pickup pencircle scaled line_width_dark;
-  draw .5[z1,z2]--z2--z4--.5[z4,z3];
+% %  filldraw z1--z2--z4--z3--cycle withcolor shading_color;
+%   pickup pencircle scaled (2*line_width_dark);
+%   draw z2--z4 withcolor white;
+%   pickup pencircle scaled line_width_dark;
+%   draw .5[z1,z2]--z2--z4--.5[z4,z3];
 
-  label.lft(btex {\scriptsize \hspace*{1em}
-          $P=\set{\colvec{x \\ y \\ z} \suchthat 2x+y+z=4}$} etex,.707[z3,z4]);
-endfig;
-
-
-
-beginfig(2) % 2-flat in R3; 2x+y+z=4
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
-  drawing_scale:=30pt;
-
-  save c_a, c_b, c_c, c_d,
-       origin;
-  c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
-  c_e:=new_vect;  c_f:=new_vect;  c_g:=new_vect;
-  origin:=new_vect; vect_def(origin,0,0,0);
-
-  vect_def(c_a,2.1,-0.1,-0.1);  vect_def(c_b,1.05,-0.1,2);
-  vect_def(c_c,0.55,3,-0.1); vect_def(c_d,-0.5,3,2);
-  vect_def(c_e,1.5,1.5,1); vect_def(c_f,1,2.5,1);
-  vect_def(c_g,1,1.5,2); 
-
-  % I don't understand what these do.
-  set_point(Obs,10,5,5);
-  Obs_phi:=90; Obs_dist:=8;
-  point_of_view_abs(origin,Obs_phi);
-  % Now project the 3D points c_a ... c_d down to z1 ... z4
-  project_point(1,c_a);
-  project_point(2,c_b);
-  project_point(3,c_c);
-  project_point(4,c_d);
-  project_point(5,c_e);
-  project_point(6,c_f);
-  project_point(7,c_g);
-  pickup pencircle scaled line_width_dark;
-  draw z1--z2--z4--z3--cycle;
-
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(2.5,3.5,2.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
-  draw_xyz_axes_withticks(2.5,3.5,2.5,2,3,2);
-
-%  filldraw z1--z2--z4--z3--cycle withcolor shading_color;
-  pickup pencircle scaled (2*line_width_dark);
-  draw z2--z4 withcolor white;
-  pickup pencircle scaled line_width_dark;
-  draw .5[z1,z2]--z2--z4--.5[z4,z3];
-
-  label.lft(btex {\scriptsize \hspace*{1em}
-                       $P=\set{\colvec{2 \\ 0 \\ 0}
-		               +\colvec{-0.5 \\ 1 \\ 0} y
-		               +\colvec{-0.5 \\ 0 \\ 1} z
-		               \suchthat y,z\in\Re}$} etex,.707[z3,z4]);
-  drawarrow (z5+(.25w,-.1v))--(z6+(.25w,-.1v));
-  drawarrow z5--z7;
-endfig;
+%   label.lft(btex {\scriptsize \hspace*{1em}
+%           $P=\set{\colvec{x \\ y \\ z} \suchthat 2x+y+z=4}$} etex,.707[z3,z4]);
+% endfig;
 
 
 
-beginfig(3) % 2-flat in R3; 2x+y+z=4, paramatized
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
-  drawing_scale:=30pt;
+% beginfig(2) % 2-flat in R3; 2x+y+z=4
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+%   drawing_scale:=30pt;
 
-  save c_a, c_b, c_c, c_d,
-       origin;
-  c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
-  c_e:=new_vect;  c_f:=new_vect;  c_g:=new_vect;
-  origin:=new_vect; vect_def(origin,0,0,0);
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
+%   c_e:=new_vect;  c_f:=new_vect;  c_g:=new_vect;
+%   origin:=new_vect; vect_def(origin,0,0,0);
 
-  vect_def(c_a,2.1,-0.1,-0.1);  vect_def(c_b,1.05,-0.1,2);
-  vect_def(c_c,0.55,3,-0.1); vect_def(c_d,-0.5,3,2);
-  vect_def(c_e,2,0,0); vect_def(c_f,1.5,1,0);
-  vect_def(c_g,1.5,0,1); 
+%   vect_def(c_a,2.1,-0.1,-0.1);  vect_def(c_b,1.05,-0.1,2);
+%   vect_def(c_c,0.55,3,-0.1); vect_def(c_d,-0.5,3,2);
+%   vect_def(c_e,1.5,1.5,1); vect_def(c_f,1,2.5,1);
+%   vect_def(c_g,1,1.5,2); 
 
-  % I don't understand what these do.
-  set_point(Obs,10,5,5);
-  Obs_phi:=90; Obs_dist:=8;
-  point_of_view_abs(origin,Obs_phi);
-  % Now project the 3D points c_a ... c_d down to z1 ... z4
-  project_point(1,c_a);
-  project_point(2,c_b);
-  project_point(3,c_c);
-  project_point(4,c_d);
-  project_point(5,c_e);
-  project_point(6,c_f);
-  project_point(7,c_g);
-  project_point(8,origin);
-  pickup pencircle scaled line_width_dark;
-  draw z1--z2--z4--z3--cycle;
+%   % I don't understand what these do.
+%   set_point(Obs,10,5,5);
+%   Obs_phi:=90; Obs_dist:=8;
+%   point_of_view_abs(origin,Obs_phi);
+%   % Now project the 3D points c_a ... c_d down to z1 ... z4
+%   project_point(1,c_a);
+%   project_point(2,c_b);
+%   project_point(3,c_c);
+%   project_point(4,c_d);
+%   project_point(5,c_e);
+%   project_point(6,c_f);
+%   project_point(7,c_g);
+%   pickup pencircle scaled line_width_dark;
+%   draw z1--z2--z4--z3--cycle;
 
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(2.5,3.5,2.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
-  draw_xyz_axes_withticks(2.5,3.5,2.5,2,3,2);
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(2.5,3.5,2.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(2.5,3.5,2.5,2,3,2);
 
-%  filldraw z1--z2--z4--z3--cycle withcolor shading_color;
-  pickup pencircle scaled (2*line_width_dark);
-  draw z2--z4 withcolor white;
-  pickup pencircle scaled line_width_dark;
-  draw .5[z1,z2]--z2--z4--.5[z4,z3];
+% %  filldraw z1--z2--z4--z3--cycle withcolor shading_color;
+%   pickup pencircle scaled (2*line_width_dark);
+%   draw z2--z4 withcolor white;
+%   pickup pencircle scaled line_width_dark;
+%   draw .5[z1,z2]--z2--z4--.5[z4,z3];
 
-  label.lft(btex {\scriptsize \hspace*{1em}
-                       $P=\set{\colvec{2 \\ 0 \\ 0}
-		               +\colvec{-0.5 \\ 1 \\ 0} y
-		               +\colvec{-0.5 \\ 0 \\ 1} z
-		               \suchthat y,z\in\Re}$} etex,.707[z3,z4]);
-  drawarrow z8--z5 withcolor shading_color;
-  drawarrow z5--z6;
-  drawarrow z5--z7;
-endfig;
-
-
-beginfig(4) % two vectors in R3, just in space
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
-  drawing_scale:=30pt;
-
-  save c_a, c_b, c_c, c_d,
-       origin;
-  c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
-  origin:=new_vect; vect_def(origin,0,0,0);
-
-  vect_def(c_a,1,0,1);  vect_def(c_b,2,-1,3); % first vector from c_a to c_b
-  vect_def(c_c,1,1,1); vect_def(c_d,2,3,2.5); % second vector
-
-  % I don't understand what these do.
-  set_point(Obs,20,5,5);
-  Obs_phi:=90; Obs_dist:=10;
-  point_of_view_abs(origin,Obs_phi);
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(3.5,4.5,3.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
-  draw_xyz_axes_withticks(3.5,4.5,3.5,3,4,3);
-  % Now project the 3D points c_a ... c_d down to z1 ... z4
-  project_point(1,c_a);
-  project_point(2,c_b);
-  project_point(3,c_c);
-  project_point(4,c_d);
-  project_point(5,origin);
-  pickup pencircle scaled (2*line_width_dark);
-  drawarrow z1--z2 withcolor white;
-  drawarrow z3--z4 withcolor white;
-  pickup pencircle scaled line_width_dark;
-  drawarrow z1--z2;
-    label.llft(btex {\scriptsize $\vec{v}$} etex,.707[z1,z2]);
-  drawarrow z3--z4;
-    label.lrt(btex {\scriptsize $\vec{u}$} etex,.707[z3,z4]);
-endfig;
+%   label.lft(btex {\scriptsize \hspace*{1em}
+%                        $P=\set{\colvec{2 \\ 0 \\ 0}
+% 		               +\colvec{-0.5 \\ 1 \\ 0} y
+% 		               +\colvec{-0.5 \\ 0 \\ 1} z
+% 		               \suchthat y,z\in\Re}$} etex,.707[z3,z4]);
+%   drawarrow (z5+(.25w,-.1v))--(z6+(.25w,-.1v));
+%   drawarrow z5--z7;
+% endfig;
 
 
 
+% beginfig(3) % 2-flat in R3; 2x+y+z=4, paramatized
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+%   drawing_scale:=30pt;
+
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
+%   c_e:=new_vect;  c_f:=new_vect;  c_g:=new_vect;
+%   origin:=new_vect; vect_def(origin,0,0,0);
+
+%   vect_def(c_a,2.1,-0.1,-0.1);  vect_def(c_b,1.05,-0.1,2);
+%   vect_def(c_c,0.55,3,-0.1); vect_def(c_d,-0.5,3,2);
+%   vect_def(c_e,2,0,0); vect_def(c_f,1.5,1,0);
+%   vect_def(c_g,1.5,0,1); 
+
+%   % I don't understand what these do.
+%   set_point(Obs,10,5,5);
+%   Obs_phi:=90; Obs_dist:=8;
+%   point_of_view_abs(origin,Obs_phi);
+%   % Now project the 3D points c_a ... c_d down to z1 ... z4
+%   project_point(1,c_a);
+%   project_point(2,c_b);
+%   project_point(3,c_c);
+%   project_point(4,c_d);
+%   project_point(5,c_e);
+%   project_point(6,c_f);
+%   project_point(7,c_g);
+%   project_point(8,origin);
+%   pickup pencircle scaled line_width_dark;
+%   draw z1--z2--z4--z3--cycle;
+
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(2.5,3.5,2.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(2.5,3.5,2.5,2,3,2);
+
+% %  filldraw z1--z2--z4--z3--cycle withcolor shading_color;
+%   pickup pencircle scaled (2*line_width_dark);
+%   draw z2--z4 withcolor white;
+%   pickup pencircle scaled line_width_dark;
+%   draw .5[z1,z2]--z2--z4--.5[z4,z3];
+
+%   label.lft(btex {\scriptsize \hspace*{1em}
+%                        $P=\set{\colvec{2 \\ 0 \\ 0}
+% 		               +\colvec{-0.5 \\ 1 \\ 0} y
+% 		               +\colvec{-0.5 \\ 0 \\ 1} z
+% 		               \suchthat y,z\in\Re}$} etex,.707[z3,z4]);
+%   drawarrow z8--z5 withcolor shading_color;
+%   drawarrow z5--z6;
+%   drawarrow z5--z7;
+% endfig;
 
 
-beginfig(5) % two vectors in R3, canonical position, in a plane, with a hyp
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
-  drawing_scale:=30pt;
-  numeric n; %what percentage of arrow ends to knock off?
-  n:=.00; % tried some values
-  z0=(0pt,1pt);
+% beginfig(4) % two vectors in R3, just in space
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+%   drawing_scale:=30pt;
+
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
+%   origin:=new_vect; vect_def(origin,0,0,0);
+
+%   vect_def(c_a,1,0,1);  vect_def(c_b,2,-1,3); % first vector from c_a to c_b
+%   vect_def(c_c,1,1,1); vect_def(c_d,2,3,2.5); % second vector
+
+%   % I don't understand what these do.
+%   set_point(Obs,20,5,5);
+%   Obs_phi:=90; Obs_dist:=10;
+%   point_of_view_abs(origin,Obs_phi);
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(3.5,4.5,3.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(3.5,4.5,3.5,3,4,3);
+%   % Now project the 3D points c_a ... c_d down to z1 ... z4
+%   project_point(1,c_a);
+%   project_point(2,c_b);
+%   project_point(3,c_c);
+%   project_point(4,c_d);
+%   project_point(5,origin);
+%   pickup pencircle scaled (2*line_width_dark);
+%   drawarrow z1--z2 withcolor white;
+%   drawarrow z3--z4 withcolor white;
+%   pickup pencircle scaled line_width_dark;
+%   drawarrow z1--z2;
+%     label.llft(btex {\scriptsize $\vec{v}$} etex,.707[z1,z2]);
+%   drawarrow z3--z4;
+%     label.lrt(btex {\scriptsize $\vec{u}$} etex,.707[z3,z4]);
+% endfig;
+
+
+
+
+
+% beginfig(5) % two vectors in R3, canonical position, in a plane, with a hyp
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+%   drawing_scale:=30pt;
+%   numeric n; %what percentage of arrow ends to knock off?
+%   n:=.00; % tried some values
+%   z0=(0pt,1pt);
   
-  save c_a, c_b, c_c, c_d,
-       origin;
-  c_a:=new_vect;  c_b:=new_vect; 
-  c_c:=new_vect;  c_d:=new_vect;   c_e:=new_vect;  c_f:=new_vect; 
-  origin:=new_vect; vect_def(origin,0,0,0);
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect; 
+%   c_c:=new_vect;  c_d:=new_vect;   c_e:=new_vect;  c_f:=new_vect; 
+%   origin:=new_vect; vect_def(origin,0,0,0);
 
-  vect_def(c_a,1,-1,2); % first vector
-  vect_def(c_b,1,2,1.5); % second vector 
-  vect_def(c_c,2/11,-2,0); % plane boundaries: y=-2, z=0 
-  vect_def(c_d,20/11,-2,3); %   y=-2, z=3 
-  vect_def(c_e,-3/11,3,0); %      y=3, z=0
-  vect_def(c_f,15/11,3,3); %       y=3, z=3  
+%   vect_def(c_a,1,-1,2); % first vector
+%   vect_def(c_b,1,2,1.5); % second vector 
+%   vect_def(c_c,2/11,-2,0); % plane boundaries: y=-2, z=0 
+%   vect_def(c_d,20/11,-2,3); %   y=-2, z=3 
+%   vect_def(c_e,-3/11,3,0); %      y=3, z=0
+%   vect_def(c_f,15/11,3,3); %       y=3, z=3  
 
-  % I don't understand what these do.
-  set_point(Obs,20,5,5);
-  Obs_phi:=90; Obs_dist:=10;
-  point_of_view_abs(origin,Obs_phi);
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(3.5,4.5,3.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
-  draw_xyz_axes_withticks(3.5,4.5,3.5,3,4,3);
-  % draw plane boundary
-  project_point(4,c_c);
-  project_point(5,c_d);
-  project_point(6,c_e);
-  project_point(7,c_f);
-%  pickup pencircle scaled line_width_dark;
-%  draw z4--z5--z7--z6--cycle withcolor white;
-  pickup pencircle scaled line_width_light;
-  draw z4--z5--z7--z6--cycle withcolor shading_color;
-  % Now project the 3D points c_a ... c_d down to z1 ... z4
-  project_point(1,c_a);
-endfig;
-
-
+%   % I don't understand what these do.
+%   set_point(Obs,20,5,5);
+%   Obs_phi:=90; Obs_dist:=10;
+%   point_of_view_abs(origin,Obs_phi);
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(3.5,4.5,3.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(3.5,4.5,3.5,3,4,3);
+%   % draw plane boundary
+%   project_point(4,c_c);
+%   project_point(5,c_d);
+%   project_point(6,c_e);
+%   project_point(7,c_f);
+% %  pickup pencircle scaled line_width_dark;
+% %  draw z4--z5--z7--z6--cycle withcolor white;
+%   pickup pencircle scaled line_width_light;
+%   draw z4--z5--z7--z6--cycle withcolor shading_color;
+%   % Now project the 3D points c_a ... c_d down to z1 ... z4
+%   project_point(1,c_a);
+% endfig;
 
 
-beginfig(6)
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
 
-  save c_a, c_b, c_c, c_d,
-       origin;
-  c_a:=new_vect;  c_b:=new_vect; 
-  c_c:=new_vect;  c_d:=new_vect;   c_e:=new_vect;  c_f:=new_vect; 
-  origin:=new_vect; vect_def(origin,0,0,0);
 
-  vect_def(c_a,0,1,0); % first vector
-  vect_def(c_b,1,0,0); % second vector 
-  vect_def(c_c,0,1,0); % plane boundaries: y=-2, z=0 
-  vect_def(c_d,-1,0,0); %   y=-2, z=3 
-  vect_def(c_e,0,0,0); %      y=3, z=0
-  vect_def(c_f,15/11,3,3); %       y=3, z=3  
+% beginfig(6)
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
 
-  % I don't understand what these do.
-  set_point(Obs,20,5,5);
-  Obs_phi:=90; Obs_dist:=10;
-  point_of_view_abs(origin,Obs_phi);
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(3.5,4.5,3.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
-  draw_xyz_axes_withticks(3.5,4.5,3.5,3,4,3);
-  % draw plane boundary
-  project_point(4,c_a);
-  project_point(5,c_b);
-  project_point(6,c_c);
-  project_point(7,c_d);
-  project_point(8,origin);
-  pickup pencircle scaled line_width_dark;
-  % ????  draw fullcircle scaled (z5++z7) shifted z8;
-  path equator;
-  equator=z4..z5..z6..z7..cycle;
-  pickup pencircle scaled line_width_light;
-  draw equator withcolor red;
-endfig;
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect; 
+%   c_c:=new_vect;  c_d:=new_vect;   c_e:=new_vect;  c_f:=new_vect; 
+%   origin:=new_vect; vect_def(origin,0,0,0);
+
+%   vect_def(c_a,0,1,0); % first vector
+%   vect_def(c_b,1,0,0); % second vector 
+%   vect_def(c_c,0,1,0); % plane boundaries: y=-2, z=0 
+%   vect_def(c_d,-1,0,0); %   y=-2, z=3 
+%   vect_def(c_e,0,0,0); %      y=3, z=0
+%   vect_def(c_f,15/11,3,3); %       y=3, z=3  
+
+%   % I don't understand what these do.
+%   set_point(Obs,20,5,5);
+%   Obs_phi:=90; Obs_dist:=10;
+%   point_of_view_abs(origin,Obs_phi);
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(3.5,4.5,3.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(3.5,4.5,3.5,3,4,3);
+%   % draw plane boundary
+%   project_point(4,c_a);
+%   project_point(5,c_b);
+%   project_point(6,c_c);
+%   project_point(7,c_d);
+%   project_point(8,origin);
+%   pickup pencircle scaled line_width_dark;
+%   % ????  draw fullcircle scaled (z5++z7) shifted z8;
+%   path equator;
+%   equator=z4..z5..z6..z7..cycle;
+%   pickup pencircle scaled line_width_light;
+%   draw equator withcolor red;
+% endfig;
 
 
 
@@ -381,7 +381,8 @@ small_atom_sphere = large_atom_sphere scaled small_atom_scale;
 small_atom_eq = large_atom_eq scaled small_atom_scale; 
 
 
-beginfig(8) % sodium and chloride atoms make a cube
+% 2019-Jul-06 JH Changed from 8 to make latexmk find a .1 file
+beginfig(1) % sodium and chloride atoms make a cube
   % some parameters; the observer's position 
   save obs_x, obs_y, obs_z, obs_dist; numeric obs_x, obs_y, obs_z, obs_dist;
   obs_x = 10;  obs_y = 8;  obs_z =6;

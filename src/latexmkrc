@@ -27,6 +27,10 @@ ensure_path( 'MPINPUTS', "$compile_dir//" );
 # the metapost file is compiled to give the .1 then all of the numbers
 # are also there.
 add_cus_dep( 'mp', '1', 0, 'mpost' );
+for ($extension = 2 ; $extension < 100 ; $extension++) {
+    add_cus_dep( 'mp', "$extension", 0, 'mpost' );
+    print "Added custom dependency for extension: $extension\n";     	
+}
 
 # This is adapted from the version that comes with latexmk.  The change
 # is to cd to the directory containing the .mp file so it can write
@@ -34,11 +38,12 @@ add_cus_dep( 'mp', '1', 0, 'mpost' );
 sub mpost {
     my $file = $_[0];
     my ($name, $path) =  fileparse( $file );
-    # debugging: print "!!!!! file base name is ",$name,", file path is ",$path,"\n";
+    print "!!!!! $file is ",$file,"\n";
+    print "!!!!! file base name is ",$name,", file path is ",$path,"\n";
     chdir $path;
-    # print "!!!!! current dir is ",getcwd,"\n";
-    # print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
-    # print "!!!!! MPINPUTS is ",$ENV{'MPINPUTS'},"\n";
+    print "!!!!! current dir is ",getcwd,"\n";
+    print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
+    print "!!!!! MPINPUTS is ",$ENV{'MPINPUTS'},"\n";
     my $return = system "mpost \"$name\"";
     # Fix the problem that mpost puts its output and log files
     # in the current directory, not in the auxiliary directory

@@ -25,6 +25,7 @@ leaves extra space at start of first sentence.
 ** Change orientation of spine text 
 ** Topic on Principle Components
 ** Better Topic on graphics
+** Get source for four_minute_mile.pdf, moneyball.pdf
 * Refactor some code 
 ** Move Range space and Null space to after the definition of Computing Linear Maps
 ** Change vector look?
@@ -51,6 +52,7 @@ See http://tex.stackexchange.com/questions/37167/sorting-logs-into-different-fol
 ** Use the numprint package?
   http://www.ctan.org/pkg/numprint
 
+** Adjust ch2.mp figure numbers to be in sensibel order, starting with 1.
 
 * Give it a less-flat format
 In particular, the metapost outputs cluttering the dir are a mess.
