@@ -23,13 +23,11 @@ ensure_path( 'MPINPUTS', "$compile_dir//" );
 # If LaTeX reports that to compile book.tex you are missing a file ending in
 # .1 then latexmk will look for a file of the same name (including
 # the path) and run the sub 'mpost' on it.
-#   I do not need a rule for ending in 2, 3, etc because once
-# the metapost file is compiled to give the .1 then all of the numbers
-# are also there.
+#   I need a rule for ending in 2, 3, etc so I add them all.
 add_cus_dep( 'mp', '1', 0, 'mpost' );
 for ($extension = 2 ; $extension < 100 ; $extension++) {
     add_cus_dep( 'mp', "$extension", 0, 'mpost' );
-    print "Added custom dependency for extension: $extension\n";     	
+    # print "Added custom dependency for extension: $extension\n";     	
 }
 
 # This is adapted from the version that comes with latexmk.  The change
@@ -38,12 +36,12 @@ for ($extension = 2 ; $extension < 100 ; $extension++) {
 sub mpost {
     my $file = $_[0];
     my ($name, $path) =  fileparse( $file );
-    print "!!!!! $file is ",$file,"\n";
-    print "!!!!! file base name is ",$name,", file path is ",$path,"\n";
+    # print "!!!!! $file is ",$file,"\n";
+    # print "!!!!! file base name is ",$name,", file path is ",$path,"\n";
     chdir $path;
-    print "!!!!! current dir is ",getcwd,"\n";
-    print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
-    print "!!!!! MPINPUTS is ",$ENV{'MPINPUTS'},"\n";
+    # print "!!!!! current dir is ",getcwd,"\n";
+    # print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
+    # print "!!!!! MPINPUTS is ",$ENV{'MPINPUTS'},"\n";
     my $return = system "mpost \"$name\"";
     # Fix the problem that mpost puts its output and log files
     # in the current directory, not in the auxiliary directory
@@ -58,10 +56,19 @@ sub mpost {
 # ===== Asymptote-handling ========
 # If LaTeX reports that to compile book.tex you are missing a file ending in
 # .pdf then latexmk will look for a file of the same name (including
-# the path) and run the sub 'mpost' on it.
+# the path) and run the sub 'asy2pdf' on it.
 
 # This is adapted from the version that comes with latexmk.  The change
-# is to only use the dependencies that involve pdf.
+# is to only use the dependencies that involve pdf.  As with the metapost
+# part, I go to the directory, call asy there, and come back.
+
+# I use asy files to produce multiple pdf files.  Thus, jc/asy/wilber.asy
+# produces wilber001.pdf, wilber002.pdf etc.  This is convenient because
+# they share common code.  But this is not compatible with latexmk, which
+# does not allow add_cus_dep("asy","000.pdf",0,"asy2pdf"); (I have written
+# J Collins the maintainer of latexmk about it.)  So the first graphic that
+# appears in the file has to be named <asybasename>.pdf.  Awkward, but
+# not a show stopper.
 
 add_cus_dep("asy","pdf",0,"asy2pdf");
 
@@ -70,43 +77,44 @@ sub asy2pdf { return asy2x( $_[0], 'pdf' ); }
 sub asy2x   {
     my $file = $_[0];
     my ($name, $path) =  fileparse( $file );
-    # debugging: print "!!!!! file base name is ",$name,", file path is ",$path,"\n";
+    # print "!!!!! file name is ",$name,", file path is ",$path,"\n";
+    # print "!!!!! file name with trailing digits stripped is ",$name,"\n";
     chdir $path;
     # print "!!!!! current dir is ",getcwd,"\n";
     # print "!!!!! about to run the systemcommand ","asy -vv -f '$_[1]' '$_[0]' &> '$_[0].log'","\n";
     # print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
-   my $ret = system("asy -vv -f '$_[1]' '$name' &> '$name.log'");
+    my $ret = system("asy -vv -f '$_[1]' '$name' &> '$name.log'");
     # print "!!!!! finished with the system command\n";
-   my $FH = new FileHandle;
-   open $FH, "$name.log";
-   %imp = ();
+    my $FH = new FileHandle;
+    open $FH, "$name.log";
+    %imp = ();
 
-   while (<$FH>) {
-       if (/^(Including|Loading) .* from (.*)\s*$/) {
-          my $import = $2;
-	  $imp{$import} = 1;
-       }
-       elsif ( /^error/ || /^.*\.asy: \d/ ) {
-           warn "==Message from asy: $_";
-	   $ret = 1;
-       }
-       elsif ( /^kpsewhich / || /^Processing / || /^Using /
-               || /^Welcome / || /^Wrote /|| /^cd /|| /^gs /
-	     ) {
-       }
-       else {
-           warn "==Message from asy: $_";
-       }
-   }
-   print "!!!!! About to close file handle.\n";
-   close $FH;
+    while (<$FH>) {
+        if (/^(Including|Loading) .* from (.*)\s*$/) {
+           my $import = $2; 
+ 	  $imp{$import} = 1;
+        }
+        elsif ( /^error/ || /^.*\.asy: \d/ ) {
+            warn "==Message from asy: $_"; 
+ 	   $ret = 1;
+        }
+        elsif ( /^kpsewhich / || /^Processing / || /^Using /
+                || /^Welcome / || /^Wrote /|| /^cd /|| /^gs / 
+ 	     ) {
+        }
+        else {
+            warn "==Message from asy: $_";
+        }
+    }
+    # print "!!!!! About to close file handle.\n";
+    close $FH;
 # For latexmk 4.48
-   print "!!!!! About to do rdb_set_source.\n";
-   rdb_set_source( $rule, keys %imp );
-   print "!!!!! About to change dir back to compile directory.\n";
-   chdir $compile_dir;
-   print "!!!!! Done.\n";
-   return $ret;
+    # print "!!!!! About to do rdb_set_source.\n";
+    rdb_set_source( $rule, keys %imp );
+    # print "!!!!! About to change dir back to compile directory.\n";
+    chdir $compile_dir;
+    # print "!!!!! Done.\n";
+    return $ret;
 }
 
 

@@ -75,7 +75,9 @@ pen spring_pen = linewidth(0.4pt);
 path spr = a--b..coil(lambda,r,t1,t2,100)..c--d;
 draw(p,rotate(90)*spr,spring_pen);
 
-shipout(format("wilber%03d",picnum),p,format="pdf");
+// was: shipout(format("wilber.%03d",picnum),p,format="pdf");
+// 2019-Jul-07 JH For latexmk, stripping "pdf" leaves ASY file basename
+shipout(format("wilber",picnum),p,format="pdf");
 
 
 

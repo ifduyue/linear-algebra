@@ -24,15 +24,15 @@
 cover/covernew,% 
 % \ifbool{hardcopybool}{titlepage}{symlist},
 cover/symlist, % comment this out for printed version
-% titlepage, % uncomment for printed version
+% cover/titlepage, % uncomment for printed version
 pref/pref,%
 gr/gr1,gr/gr2,gr/gr3,gr/cas,gr/leontief,gr/ppivot,gr/network,%
 vs/vs1,vs/vs2,vs/vs3,vs/fields,vs/crystal,vs/voting,vs/dimen,%
 map/map1,map/map2,map/map3,map/map4,map/map5,map/map6,%
   map/lstsqs,map/homogeom,map/magicsqs,map/markov,map/erlang,%
-%det1,det2,det3,cramer,detspeed,chio,projplane,%
-% jc1,jc2,jc3,jc4,powers,pops,search,recur,wilber,%eigengeom,prinaxis,%
-% appen,%
+det/det1,det/det2,det/det3,det/cramer,det/detspeed,det/chio,det/projplane,%
+jc/jc1,jc/jc2,jc/jc3,jc/jc4,jc/powers,jc/pops,jc/search,jc/recur,jc/wilber,%eigengeom,prinaxis,%
+appen/appen,%
 bib/bib%
 %test%
 }%
@@ -46,9 +46,9 @@ bib/bib%
 \pagenumbering{roman}
 % \ifbool{hardcopybool}{\include{titlepage}}{\include{covernew}\include{symlist}\clearemptydoublepage}
 \include{cover/covernew}\include{cover/symlist}\clearemptydoublepage % comment out for printed version
-% \include{titlepage} % uncomment for printed version (also remember to change the color of hyperlinks in bookjhconcrete.sty)
+\include{cover/titlepage} % uncomment for printed version (also remember to change the color of hyperlinks in bookjhconcrete.sty)
 \pagestyle{bookfront} 
-\setcounter{page}{1}\thispagestyle{empty}\include{pref} %
+\setcounter{page}{1}\thispagestyle{empty}\include{pref/pref} %
 \pagestyle{booktoc}\clearemptydoublepage\tableofcontents\bigskip\par\noindent${}^*\!$Starred subsections are optional.\clearemptydoublepage %
 \mainmatter
 \pagenumbering{arabic}
@@ -57,7 +57,7 @@ bib/bib%
 \include{gr/gr2}
 \include{gr/gr3}
 \pagestyle{booktopic}
-  \include{gr/cas} \include{gr/leontif} \include{gr/ppivot} \include{gr/network}\pagestyle{bookbody} 
+  \include{gr/cas} \include{gr/leontief} \include{gr/ppivot} \include{gr/network}\pagestyle{bookbody} 
 \include{vs/vs1}
 \include{vs/vs2}
 \include{vs/vs3}
@@ -71,19 +71,19 @@ bib/bib%
 \include{map/map6}
 \pagestyle{booktopic}
   \include{map/lstsqs} \include{map/homogeom} \include{map/magicsqs} \include{map/markov} \include{map/erlang}\pagestyle{bookbody}
-\include{det1}
-\include{det2}
-\include{det3} 
+\include{det/det1}
+\include{det/det2}
+\include{det/det3} 
 \pagestyle{booktopic}
-  \include{cramer} \include{detspeed} \include{chio}  \include{projplane} \pagestyle{bookbody}
-\include{jc1}
-\include{jc2}
-\include{jc3}
-\include{jc4}
+  \include{det/cramer} \include{det/detspeed} \include{det/chio}  \include{det/projplane} \pagestyle{bookbody}
+\include{jc/jc1}
+\include{jc/jc2}
+\include{jc/jc3}
+\include{jc/jc4}
 \pagestyle{booktopic}
-  \include{powers} \include{pops} \include{search} \include{recur} \include{wilber} \pagestyle{bookbody}
+  \include{jc/powers} \include{jc/pops} \include{jc/search} \include{jc/recur} \include{jc/wilber} \pagestyle{bookbody}
 %\include{eigengeom}
-\include{appen}
+\include{appen/appen}
 %\typeout{ BIBLIOGRAPHY COMMENTED OUT}
 {\pagestyle{empty}\include{bib/bib}}
 %\typeout{ INDEX COMMENTED OUT}

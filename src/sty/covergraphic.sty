@@ -33,8 +33,9 @@
   \put(5.5,-3.3){\makebox[0pt][r]{\color{coverdarkcolor}\fontsize{16pt}{8pt}{\fontfamily{ugq}\selectfont Third edition}}}
   \put(5.5,-1.85){\makebox[0pt][r]{\color{coverdarkcolor}\fontsize{20pt}{8pt}{
 \fontfamily{ugq}\selectfont #1}}}
-  \put(0,-6.5){\includegraphics{cover/asy/axes.pdf}} % put this first to compile axes.asy, to make shadow.pdf also
+  \put(0,-6.5){\includegraphics{cover/asy/axes.pdf}} % put this first to compile axes.asy, so latexmk makes shadow.pdf also 
   \put(-0.0,-6.9){\includegraphics{cover/asy/shadow.pdf}}
+  \put(0,-6.5){\includegraphics{cover/asy/axes.pdf}} % put this again or else shoadow covers part of the axes
   \put(2.32,-6.4){{\color{coverbgcolor}\large \texttt{http://joshua.smcvt.edu/linearalgebra}}}
 \end{picture}
 }
