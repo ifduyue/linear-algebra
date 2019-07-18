@@ -289,7 +289,7 @@ linear combination of the basis vectors:
 \begin{equation*}
   \rep{\vec{v}}{B}
   =
-  \colvec{c_1 \\ c_2 \\ \vdots \\ c_n}
+  \colvec{c_1 \\ c_2 \\ \vdots \\ c_n}_{B}
 \end{equation*}
 where
 \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) and 
@@ -299,6 +299,9 @@ The \( c \)'s are the
 \index{coordinates!with respect to a basis}.
 %</df:RepresentingVectors>
 \end{definition}
+
+When there is only one basis around, we often omit the subscript
+naming that basis.
 
 \begin{example}
 In \( \polyspace_3 \), with respect to the basis
@@ -313,15 +316,11 @@ the representation is different.
 \begin{equation*}
   \rep{x+x^2}{D}=\colvec[r]{0 \\ 0 \\ 1 \\ 0}_D
 \end{equation*}
-(When there is more than one basis around,
-to help keep straight which representation is with respect to which 
-basis we often write it as a subscript on the column vector.)
 \end{example}
 
 \begin{remark}
 \nearbydefinition{def:basis} requires that a basis be a sequence
-because
-without that we couldn't write these coordinates in a fixed order. 
+so that we can write these coordinates in an order. 
 \end{remark}
 
 \begin{example}
@@ -344,6 +343,55 @@ and get that $c_1=3$ and $c_2=-1/2$.
   \rep{\vec{v}}{B}=\colvec[r]{3 \\ -1/2}
 \end{equation*}  
 \end{example}
+
+The column is a representation of the vector in the sense that
+a linear relationship holds among a set of vectors if and only if
+that relationship holds among the set of repsentations, 
+as the next result shows.
+
+\begin{lemma}
+Where $B$ is a basis with $n$~elements, 
+$a_1\vec{v}_1+\cdots+a_k\vec{v}_k=\vec{0}_{V}$ if and only if
+$a_1\rep{\vec{v}_1}{B}+\cdots+a_k\rep{\vec{v}_k}{B}=\vec{0}_{\Re^n}$.
+\end{lemma}
+
+\begin{proof}
+Fix a basis \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \)
+and suppose
+\begin{equation*}
+  \rep{\vec{v}_1}{B}=\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
+  \quad\cdots\quad
+  \rep{\vec{v}_k}{B}=\colvec{c_{1,k} \\ \vdots \\ c_{n,k}}
+\end{equation*}
+so that $\vec{v}_1=c_{1,1}\vec{\beta}_1+\dots+c_{n,1}\vec{\beta}_n$, etc.
+Then $a_1\vec{v}_1+\dots+a_k\vec{v}_k=\vec{0}$ is equivalent to these.
+\begin{align*}
+  \vec{0}
+  &=a_1\cdot(c_{1,1}\vec{\beta}_1+\dots+c_{n,1}\vec{\beta}_n)
+    +\dots+
+    a_k\cdot(c_{1,k}\vec{\beta}_1+\dots+c_{n,k}\vec{\beta}_n)  \\
+  &=(a_1c_{1,1}+\dots+a_kc_{1,k})\cdot\vec{\beta}_1
+    +\dots+
+    (a_1c_{n,1}+\dots+a_kc_{n,k})\cdot\vec{\beta}_n 
+\end{align*}
+Because \( B \) is a basis, \nearbytheorem{th:BasisIffUniqueRepWRT}
+says the last one holds if and only if all the coefficients are zero.
+\begin{align*}
+    a_1c_{1,1}+\dots+a_kc_{1,k} &=0    \\
+                                &\alignedvdots \\ 
+    a_1c_{n,1}+\dots+a_kc_{n,k} &=0
+\end{align*}
+This is the equivalent in column vectors.
+\begin{equation*}
+  a_1\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
+  +\dots+
+  a_k\colvec{c_{1,k} \\ \vdots \\ c_{n,k}}
+  =\colvec{0 \\ \vdots \\ 0}
+\end{equation*}
+Note that not only does a relationship hold for one set if and only if it
+holds for the other, but it is the same relationship\Dash the 
+\( a_i \) are the same.
+\end{proof}
 
 \begin{remark}
 This use of column notation and the term `coordinate' has both a disadvantage
