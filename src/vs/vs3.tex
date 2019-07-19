@@ -303,7 +303,7 @@ The \( c \)'s are the
 When there is only one basis around, we often omit the subscript
 naming that basis.
 
-\begin{example}
+\begin{example}  \label{ex:RepPolyWRTA Basis}
 In \( \polyspace_3 \), with respect to the basis
 \( B=\sequence{1,2x,2x^2,2x^3} \),
 the representation of \( x+x^2 \) is
@@ -324,14 +324,14 @@ so that we can write these coordinates in an order.
 \end{remark}
 
 \begin{example}
-In \( \Re^2 \), where $\vec{v}=\binom{3}{2}$, to find
-the coordinates of that vector with respect to the basis
+In \( \Re^2 \), to find
+the coordinates of the vector $\vec{v}=\binom{3}{2}$ with respect to the basis
 \begin{equation*}
   B=\sequence{
               \colvec[r]{1 \\ 1},
               \colvec[r]{0 \\ 2} }
 \end{equation*}
-we solve
+solve
 \begin{equation*}
   c_1\colvec[r]{1 \\ 1}
   +c_2\colvec[r]{0 \\ 2}
@@ -344,13 +344,28 @@ and get that $c_1=3$ and $c_2=-1/2$.
 \end{equation*}  
 \end{example}
 
-The column is a representation of the vector in the sense that
-a linear relationship holds among a set of vectors if and only if
-that relationship holds among the set of repsentations, 
-as the next result shows.
+The notation
+generalizes the familiar case:~in \( \Re^n \) 
+and with respect to the standard
+basis \( \stdbasis_n \), the vector starting at the origin and ending at
+\( (v_1,\dots,v_n) \) has this representation.
+\begin{equation*}
+  \rep{\colvec{v_1 \\ \vdots \\ v_n}}{\stdbasis_n}
+    =
+  \colvec{v_1 \\ \vdots \\ v_n}_{\stdbasis_n}
+\end{equation*}
+This is an example.
+\begin{equation*}
+  \rep{\colvec{-1 \\ 1}}{\stdbasis_{n}}
+  =\colvec{-1 \\ 1}
+\end{equation*}
 
-\begin{lemma}
-Where $B$ is a basis with $n$~elements, 
+The column represent the vector in the sense that
+a linear relationship holds among a set of vectors if and only if
+that relationship holds among the set of representations.
+
+\begin{lemma}  \label{lem:LinearRelRepresented}
+Where $B$ is a basis with $n$~elements, for any set of vectors
 $a_1\vec{v}_1+\cdots+a_k\vec{v}_k=\vec{0}_{V}$ if and only if
 $a_1\rep{\vec{v}_1}{B}+\cdots+a_k\rep{\vec{v}_k}{B}=\vec{0}_{\Re^n}$.
 \end{lemma}
@@ -360,7 +375,7 @@ Fix a basis \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \)
 and suppose
 \begin{equation*}
   \rep{\vec{v}_1}{B}=\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
-  \quad\cdots\quad
+  \quad\ldots\quad
   \rep{\vec{v}_k}{B}=\colvec{c_{1,k} \\ \vdots \\ c_{n,k}}
 \end{equation*}
 so that $\vec{v}_1=c_{1,1}\vec{\beta}_1+\dots+c_{n,1}\vec{\beta}_n$, etc.
@@ -374,14 +389,16 @@ Then $a_1\vec{v}_1+\dots+a_k\vec{v}_k=\vec{0}$ is equivalent to these.
     +\dots+
     (a_1c_{n,1}+\dots+a_kc_{n,k})\cdot\vec{\beta}_n 
 \end{align*}
-Because \( B \) is a basis, \nearbytheorem{th:BasisIffUniqueRepWRT}
-says the last one holds if and only if all the coefficients are zero.
+Obviously the bottom equation is true if the coefficients are zero.  
+But, because \( B \) is a basis, \nearbytheorem{th:BasisIffUniqueRepWRT}
+says that the bottom equation is true if and only if the coefficients are zero.
+So the relation is equivalent to this.
 \begin{align*}
     a_1c_{1,1}+\dots+a_kc_{1,k} &=0    \\
-                                &\alignedvdots \\ 
+                               &\alignedvdots \\ 
     a_1c_{n,1}+\dots+a_kc_{n,k} &=0
 \end{align*}
-This is the equivalent in column vectors.
+This is the equivalent recast into column vectors.
 \begin{equation*}
   a_1\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
   +\dots+
@@ -393,31 +410,27 @@ holds for the other, but it is the same relationship\Dash the
 \( a_i \) are the same.
 \end{proof}
 
-\begin{remark}
-This use of column notation and the term `coordinate' has both a disadvantage
-and an advantage.
-The disadvantage is that
-representations look like vectors from \( \Re^n \), which can be
-confusing when the vector space is $\Re^n$, as in the prior example.
-We must infer the intent from the context.
-For example, the phrase `in \( \Re^2 \), where $\vec{v}=\binom{3}{2}$'
-refers to the plane vector that, when in canonical position, ends at
-\( (3,2) \).
-And in the end of that example,
-although we've omitted a subscript \( B \) from the column, 
-that the right side is a representation is clear from the context.
-
-The advantage of the notation and the term is that they
-generalize the familiar case:~in \( \Re^n \) 
-and with respect to the standard
-basis \( \stdbasis_n \), the vector starting at the origin and ending at
-\( (v_1,\dots,v_n) \) has this representation.
+\begin{example}
+\nearbyexample{ex:RepPolyWRTA Basis} finds the 
+representation of \( x+x^2\in\polyspace_3 \) with respect to
+\( B=\sequence{1,2x,2x^2,2x^3} \).
 \begin{equation*}
-  \rep{\colvec{v_1 \\ \vdots \\ v_n}}{\stdbasis_n}
-    =
-  \colvec{v_1 \\ \vdots \\ v_n}_{\stdbasis_n}
+  \rep{x+x^2}{B}=\colvec[r]{0 \\ 1/2 \\ 1/2 \\ 0}_B
 \end{equation*}
-\end{remark}
+This relationship 
+\begin{equation*}
+  2\cdot(x+x^2)-1\cdot(2x)-2\cdot(x^2) = 0+0x+0x^2+0x^3
+\end{equation*}
+is represented by this one.
+\begin{equation*}
+  2\cdot\rep{x+x^2}{B}-\rep{2x}{B}-2\cdot\rep{x^2}{B}
+  =2\cdot\colvec{0 \\ 1/2 \\ 1/2 \\ 0}
+   -\colvec{0 \\ 1 \\ 0 \\ 0}
+   -2\cdot\colvec{0 \\ 0 \\ 1/2 \\ 0}
+  =\colvec{0 \\ 0 \\ 0 \\ 0}
+\end{equation*}
+
+\end{example}
 
 Our main use of representations will come later but
 the definition appears here because the fact that every vector is a linear
@@ -1174,6 +1187,35 @@ That will start in the next subsection.
           The check that the result is a basis for $\polyspace_2$ is easy.  
       \end{exparts}
     \end{answer}
+  \recommended \item Consider \( 2+4x^2, 1+3x^2, 1+5x^2 \in\polyspace_2\).
+    \begin{exparts}
+      \partsitem Find a linear relationship among the three.
+      \partsitem Represent them with respect to 
+        $B=\sequence{1-x,1+x,x^2}$.
+      \partsitem Check that the same linear relationship holds among
+        the representations, as in 
+        \nearbylemma{lem:LinearRelRepresented}.
+    \end{exparts}
+    \begin{answer}
+    \begin{exparts}
+      \partsitem $1\cdot(2+4x^2)-3\cdot(1+3x^2)+1\cdot(1+5x^2)=0+0x+0x^2$
+      \partsitem Simple calculation gives this.
+        \begin{equation*}
+          \rep{2+4x^2}{B}=\colvec{1 \\ 1 \\ 4}
+          \quad
+          \rep{1+3x^2}{B}=\colvec{1/2 \\ 1/2 \\ 3}
+          \quad
+          \rep{1+5x^2}{B}=\colvec{1/2 \\ 1/2 \\ 5}
+        \end{equation*}
+      \partsitem The check is straightforward.
+        \begin{equation*}
+          1\cdot\colvec{1 \\ 1 \\ 4}
+          -3\cdot\colvec{1/2 \\ 1/2 \\ 3}
+          +1\cdot\colvec{1/2 \\ 1/2 \\ 5}
+          =\colvec{0 \\ 0 \\ 0}
+        \end{equation*}
+    \end{exparts}
+    \end{answer}
   \recommended \item  
     Where
     \( \sequence{\vec{\beta}_1,\dots,\vec{\beta}_n } \)
@@ -1239,7 +1281,7 @@ That will start in the next subsection.
       linear combinations are unique if and only if the subset is linearly
       independent.
      \end{answer}
-  \recommended \item
+  \item
     A square matrix is \definend{symmetric}\index{matrix!symmetric}%
     \index{symmetric matrix} 
     if for all indices \( i \) and
@@ -1490,9 +1532,9 @@ if it has a basis with only finitely many vectors.
 \end{definition}
 
 \noindent One space that is not finite-dimensional is
-the set of polynomials with real coefficients
-\nearbyexample{ex:PolysOfAllFiniteDegrees}; 
-this space is not spanned by any finite subset since that would contain
+the set of polynomials with real coefficients,
+\nearbyexample{ex:PolysOfAllFiniteDegrees}. 
+This is not spanned by any finite subset since that would contain
 a polynomial of largest degree but this space has polynomials of all degrees.
 Such spaces are interesting and important but we will focus in a
 different direction.
@@ -1500,113 +1542,19 @@ From now on we will study only finite-dimensional vector spaces.
 In the rest of this book we shall take `vector space' to mean 
 `finite-dimensional vector space'.
 
-\begin{remark}
-One reason for sticking to finite-dimensional spaces is so that 
-the representation of a vector with respect to a 
-basis is a finitely-tall vector and we can easily write it.
-Another reason is that 
-the statement `any infinite-dimensional vector space has a basis'
-is equivalent to a statement called the Axiom of Choice
-\cite{Blass84} and so covering this would 
-move us far past this book's scope.
-(A discussion of the Axiom of Choice is in the
-Frequently Asked Questions list for \texttt{sci.math}, and
-another accessible one is \cite{Rucker}.)  
-\end{remark}
-
-
-To prove the main theorem we shall use a technical result, the Exchange Lemma.
-We first illustrate it with an example.
-
-\begin{example}
-Here is a basis for $\Re^3$ and a vector given as a linear combination
-of members of that basis.
-\begin{equation*}
-  B=\sequence{\colvec[r]{1 \\ 0  \\ 0},
-              \colvec[r]{1 \\ 1 \\ 0},
-              \colvec[r]{0 \\ 0 \\ 2}}
-  \qquad
-  \colvec[r]{1 \\ 2 \\ 0}
-  =(-1)\cdot\colvec[r]{1 \\ 0  \\ 0}
-   +2\colvec[r]{1 \\ 1 \\ 0}
-   +0\cdot\colvec[r]{0 \\ 0 \\ 2}
-\end{equation*}
-Two of the basis vectors have non-zero coefficients.
-Pick one, for instance the first.
-Replace it with the vector that we've expressed as the combination
-\begin{equation*}
-  \hat{B}=\sequence{\colvec[r]{1 \\ 2  \\ 0},
-              \colvec[r]{1 \\ 1 \\ 0},
-              \colvec[r]{0 \\ 0 \\ 2}}
-\end{equation*}
-and the result is another basis for \( \Re^3 \).
-\end{example}
-
-\begin{lemma}[Exchange Lemma] \label{lm:ExchangeLemma}
-%<*lm:ExchangeLemma>
-Assume that 
-\( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) is a basis for a
-vector space, and that for the vector \( \vec{v} \)
-the relationship \( \vec{v}=\lincombo{c}{\vec{\beta}} \)
-has \( c_i\neq 0 \).
-Then exchanging \( \vec{\beta}_i \) for \( \vec{v} \) yields another
-basis for the space.
-%</lm:ExchangeLemma>
-\end{lemma}
-
-\begin{proof}
-%<*pf:ExchangeLemma0>
-Call the outcome of the exchange 
-\( \hat{B}=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_{i-1},\vec{v},
-                       \vec{\beta}_{i+1},\dots,\vec{\beta}_n}  \).
-
-We first show that $\hat{B}$ is linearly independent.
-Any relationship 
-\( d_1\vec{\beta}_1+\dots+d_i\vec{v}+\dots+d_n\vec{\beta}_n=\zero \)
-among the members of $\hat{B}$, after substitution for $\vec{v}$,
-\begin{equation*}
-  d_1\vec{\beta}_1+\dots
-    +d_i\cdot(c_1\vec{\beta}_1+\dots+c_i\vec{\beta}_i+\dots+c_n\vec{\beta}_n)
-    +\dots+d_n\vec{\beta}_n
-  =\zero
-\tag*{($*$)}\end{equation*}
-gives a linear relationship among the members of $B$.
-The basis $B$ is linearly independent so the coefficient $d_ic_i$ of 
-$\vec{\beta}_i$ is zero.
-Because we assumed that $c_i$ is nonzero, $d_i=0$.
-Using this in equation~$(*)$ gives that all of the other $d$'s are also
-zero.
-Therefore $\hat{B}$ is linearly independent.
-%</pf:ExchangeLemma0>
-
-%<*pf:ExchangeLemma1>
-We finish by showing that $\hat{B}$ has the same span as $B$.
-Half of this argument, that $\spanof{\smash{\hat{B}}}\subseteq\spanof{B}$, 
-is easy; we can write any member 
-$d_1\vec{\beta}_1+\dots+d_i\vec{v}+\dots+d_n\vec{\beta}_n$
-of $\spanof{\smash{\hat{B}}}$ as
-$
-  d_1\vec{\beta}_1+\dots
-    +d_i\cdot(c_1\vec{\beta}_1+\dots+c_n\vec{\beta}_n)
-    +\dots+d_n\vec{\beta}_n
-$,
-which is a linear combination of linear combinations of members of $B$, and
-hence is in $\spanof{B}$.
-For the $\spanof{B}\subseteq\spanof{\smash{\hat{B}}}$ half of the argument,
-recall that if
-$\vec{v}=c_1\vec{\beta}_1+\dots+c_n\vec{\beta}_n$ with $c_i\neq 0$
-then we can rearrange the equation to
-$\vec{\beta}_i=(-c_1/c_i)\vec{\beta}_1+\dots+(1/c_i)\vec{v}+\dots
-   +(-c_n/c_i)\vec{\beta}_n$.
-Now, consider any member
-$d_1\vec{\beta}_1+\dots+d_i\vec{\beta}_i+\dots+d_n\vec{\beta}_n$
-of $\spanof{B}$, substitute for $\vec{\beta}_i$ its expression as a linear
-combination of the members of $\hat{B}$, and recognize, 
-as in the first half of this argument, that the result is a linear
-combination of linear combinations of members of $\hat{B}$, and hence is in 
-$\spanof{\smash{\hat{B}}}$.
-%</pf:ExchangeLemma1>
-\end{proof}
+% \begin{remark}
+% One reason for sticking to finite-dimensional spaces is so that 
+% the representation of a vector with respect to a 
+% basis is a finitely-tall vector and we can easily write it.
+% Another reason is that 
+% the statement `any infinite-dimensional vector space has a basis'
+% is equivalent to a statement called the Axiom of Choice
+% \cite{Blass84} and so covering this would 
+% move us far past this book's scope.
+% (A discussion of the Axiom of Choice is in the
+% Frequently Asked Questions list for \texttt{sci.math}, and
+% another accessible one is \cite{Rucker}.)  
+% \end{remark}
 
 \begin{theorem} \label{th:AllBasesSameSize}
 %<*th:AllBasesSameSize>
@@ -1616,55 +1564,205 @@ bases have the same number of elements.\index{basis}
 \end{theorem}
 
 \begin{proof}
-%<*pf:AllBasesSameSize0>
 Fix a vector space with at least one finite basis.
-Choose, from among all of this space's bases,
+From among all of this space's bases, choose
 one \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) of minimal size.
 We will show that any other basis
 \( D=\smash{\sequence{\vec{\delta}_1,\vec{\delta}_2,\ldots}} \)
-also has the same number of members, $n$.
+has the same number of members, $n$.
 Because \( B \) has minimal size, \( D \) has no fewer than \( n \) vectors.
 We will argue that it cannot have more than \( n \) vectors.
-%</pf:AllBasesSameSize0>
 
-%<*pf:AllBasesSameSize1>
-The basis \( B \) spans the space and \( \vec{\delta}_1 \) is in the space,
-so \( \vec{\delta}_1 \) is a nontrivial linear combination of elements of
-\( B \).
-By the Exchange Lemma, we can swap \( \vec{\delta}_1 \) for a
-vector from \( B \), resulting in a basis \( B_1 \), where one element is
-\( \vec{\delta}_1 \) and all of the \( n-1 \) other elements 
-are \( \vec{\beta} \)'s.
-%</pf:AllBasesSameSize1>
+So suppose that
+$\vec{\delta}_1$, \ldots{}, $\vec{\delta}_{n+1}$ are distinct.
+The assumption that $D$ is linearly independent gives that
+the only relationship
+$a_1\vec{\delta}+1+\dots+a_{n+1}\vec{\delta}_{n+1}=\vec{0}$
+is the one where each $a_i$ is zero.
+We shall get a contradiction by finding that 
+there are nontrivial relationships among these~$n+1$ vectors.
 
-%<*pf:AllBasesSameSize2>
-The prior paragraph forms the basis step for an induction argument.
-The inductive step starts with a basis \( B_k \) (for \( 1\leq k<n \))
-containing \( k \) members of \( D \) and \( n-k \) members of \( B \).
-We know that \( D \) has at least \( n \) members so there is a
-\( \vec{\delta}_{k+1} \).
-Represent it as a linear combination of elements of \( B_k \).
-The key point:~in that representation, at least one of the nonzero scalars
-must be associated with a \( \vec{\beta}_i \) or else that
-representation would be a
-nontrivial linear relationship among elements of the linearly independent
-set \( D \).
-Exchange \( \vec{\delta}_{k+1} \) for \( \vec{\beta}_i \) to get a new basis
-\( B_{k+1} \) with one \( \vec{\delta} \) more and one \( \vec{\beta} \)
-fewer than the previous basis \( B_k \).
-%</pf:AllBasesSameSize2>
-
-%<*pf:AllBasesSameSize3>
-Repeat that until no \( \vec{\beta} \)'s remain, so
-that \( B_n \) contains  
-$\vec{\delta}_1,\dots,\vec{\delta}_n$.
-Now, \( D \) cannot have more than these \( n \) vectors because
-any \( \vec{\delta}_{n+1} \) that remains would be in the span of
-\( B_n \) (since it is a basis) 
-and hence would be a linear combination of the other $\vec{\delta}$'s, 
-contradicting that $D$ is linearly independent.
-%</pf:AllBasesSameSize3>
+Represent them with respect to~$B$.
+\begin{equation*}
+  \rep{\vec{\delta}_1}{B}=\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
+  \quad\cdots\quad
+  \rep{\vec{\delta}_{n+1}}{B}=\colvec{c_{1,n+1} \\ \vdots \\ c_{n,n+1}}  
+\end{equation*}
+\nearbylemma{lem:LinearRelRepresented} says that a relationship
+holds among the vectors
+$a_1\vec{\delta}_1+\dots+a_{n+1}\vec{\delta}_{n+1}=\vec{0}$ 
+if and only if the same relationship holds among the representations.
+\begin{equation*}
+  a_1\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
+  +\cdots+
+  a_{n+1}\colvec{c_{1,n+1} \\ \vdots \\ c_{n,n+1}}
+  =\colvec{0 \\ \vdots \\ 0}  
+\end{equation*}
+Here the $c_{i,j}$ are fixed, since they are the coefficients in the 
+representations of the given vectors, while we are looking for the~$a_i$.
+Thus the above is a homogeneous linear system
+\begin{equation*}
+  \begin{linsys}{3}
+    c_{1,1}a_1 &+ &\cdots &+ &c_{1,n+1}a_{n+1} &= &0 \\ 
+              &  &        &  &               &\vdots \\ 
+    c_{n,1}a_1 &+ &\cdots &+ &c_{n,n+1}a_{n+1} &= &0 
+  \end{linsys}
+\end{equation*}
+with more unknowns, $n+1$, than equations.
+Such a system does not have only one solution, it has infinitely many solutions.
 \end{proof}
+
+
+% To prove the main theorem we shall use a technical result, the Exchange Lemma.
+% We first illustrate it with an example.
+
+% \begin{example}
+% Here is a basis for $\Re^3$ and a vector given as a linear combination
+% of members of that basis.
+% \begin{equation*}
+%   B=\sequence{\colvec[r]{1 \\ 0  \\ 0},
+%               \colvec[r]{1 \\ 1 \\ 0},
+%               \colvec[r]{0 \\ 0 \\ 2}}
+%   \qquad
+%   \colvec[r]{1 \\ 2 \\ 0}
+%   =(-1)\cdot\colvec[r]{1 \\ 0  \\ 0}
+%    +2\colvec[r]{1 \\ 1 \\ 0}
+%    +0\cdot\colvec[r]{0 \\ 0 \\ 2}
+% \end{equation*}
+% Two of the basis vectors have non-zero coefficients.
+% Pick one, for instance the first.
+% Replace it with the vector that we've expressed as the combination
+% \begin{equation*}
+%   \hat{B}=\sequence{\colvec[r]{1 \\ 2  \\ 0},
+%               \colvec[r]{1 \\ 1 \\ 0},
+%               \colvec[r]{0 \\ 0 \\ 2}}
+% \end{equation*}
+% and the result is another basis for \( \Re^3 \).
+% \end{example}
+
+% \begin{lemma}[Exchange Lemma] \label{lm:ExchangeLemma}
+% %<*lm:ExchangeLemma>
+% Assume that 
+% \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) is a basis for a
+% vector space, and that for the vector \( \vec{v} \)
+% the relationship \( \vec{v}=\lincombo{c}{\vec{\beta}} \)
+% has \( c_i\neq 0 \).
+% Then exchanging \( \vec{\beta}_i \) for \( \vec{v} \) yields another
+% basis for the space.
+% %</lm:ExchangeLemma>
+% \end{lemma}
+
+% \begin{proof}
+% %<*pf:ExchangeLemma0>
+% Call the outcome of the exchange 
+% \( \hat{B}=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_{i-1},\vec{v},
+%                        \vec{\beta}_{i+1},\dots,\vec{\beta}_n}  \).
+
+% We first show that $\hat{B}$ is linearly independent.
+% Any relationship 
+% \( d_1\vec{\beta}_1+\dots+d_i\vec{v}+\dots+d_n\vec{\beta}_n=\zero \)
+% among the members of $\hat{B}$, after substitution for $\vec{v}$,
+% \begin{equation*}
+%   d_1\vec{\beta}_1+\dots
+%     +d_i\cdot(c_1\vec{\beta}_1+\dots+c_i\vec{\beta}_i+\dots+c_n\vec{\beta}_n)
+%     +\dots+d_n\vec{\beta}_n
+%   =\zero
+% \tag*{($*$)}\end{equation*}
+% gives a linear relationship among the members of $B$.
+% The basis $B$ is linearly independent so the coefficient $d_ic_i$ of 
+% $\vec{\beta}_i$ is zero.
+% Because we assumed that $c_i$ is nonzero, $d_i=0$.
+% Using this in equation~$(*)$ gives that all of the other $d$'s are also
+% zero.
+% Therefore $\hat{B}$ is linearly independent.
+% %</pf:ExchangeLemma0>
+
+% %<*pf:ExchangeLemma1>
+% We finish by showing that $\hat{B}$ has the same span as $B$.
+% Half of this argument, that $\spanof{\smash{\hat{B}}}\subseteq\spanof{B}$, 
+% is easy; we can write any member 
+% $d_1\vec{\beta}_1+\dots+d_i\vec{v}+\dots+d_n\vec{\beta}_n$
+% of $\spanof{\smash{\hat{B}}}$ as
+% $
+%   d_1\vec{\beta}_1+\dots
+%     +d_i\cdot(c_1\vec{\beta}_1+\dots+c_n\vec{\beta}_n)
+%     +\dots+d_n\vec{\beta}_n
+% $,
+% which is a linear combination of linear combinations of members of $B$, and
+% hence is in $\spanof{B}$.
+% For the $\spanof{B}\subseteq\spanof{\smash{\hat{B}}}$ half of the argument,
+% recall that if
+% $\vec{v}=c_1\vec{\beta}_1+\dots+c_n\vec{\beta}_n$ with $c_i\neq 0$
+% then we can rearrange the equation to
+% $\vec{\beta}_i=(-c_1/c_i)\vec{\beta}_1+\dots+(1/c_i)\vec{v}+\dots
+%    +(-c_n/c_i)\vec{\beta}_n$.
+% Now, consider any member
+% $d_1\vec{\beta}_1+\dots+d_i\vec{\beta}_i+\dots+d_n\vec{\beta}_n$
+% of $\spanof{B}$, substitute for $\vec{\beta}_i$ its expression as a linear
+% combination of the members of $\hat{B}$, and recognize, 
+% as in the first half of this argument, that the result is a linear
+% combination of linear combinations of members of $\hat{B}$, and hence is in 
+% $\spanof{\smash{\hat{B}}}$.
+% %</pf:ExchangeLemma1>
+% \end{proof}
+
+% \begin{theorem} \label{th:AllBasesSameSize}
+% %<*th:AllBasesSameSize>
+% In any finite-dimensional vector space, all 
+% bases have the same number of elements.\index{basis}
+% %</th:AllBasesSameSize>
+% \end{theorem}
+
+% \begin{proof}
+% %<*pf:AllBasesSameSize0>
+% Fix a vector space with at least one finite basis.
+% Choose, from among all of this space's bases,
+% one \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) of minimal size.
+% We will show that any other basis
+% \( D=\smash{\sequence{\vec{\delta}_1,\vec{\delta}_2,\ldots}} \)
+% also has the same number of members, $n$.
+% Because \( B \) has minimal size, \( D \) has no fewer than \( n \) vectors.
+% We will argue that it cannot have more than \( n \) vectors.
+% %</pf:AllBasesSameSize0>
+
+% %<*pf:AllBasesSameSize1>
+% The basis \( B \) spans the space and \( \vec{\delta}_1 \) is in the space,
+% so \( \vec{\delta}_1 \) is a nontrivial linear combination of elements of
+% \( B \).
+% By the Exchange Lemma, we can swap \( \vec{\delta}_1 \) for a
+% vector from \( B \), resulting in a basis \( B_1 \), where one element is
+% \( \vec{\delta}_1 \) and all of the \( n-1 \) other elements 
+% are \( \vec{\beta} \)'s.
+% %</pf:AllBasesSameSize1>
+
+% %<*pf:AllBasesSameSize2>
+% The prior paragraph forms the basis step for an induction argument.
+% The inductive step starts with a basis \( B_k \) (for \( 1\leq k<n \))
+% containing \( k \) members of \( D \) and \( n-k \) members of \( B \).
+% We know that \( D \) has at least \( n \) members so there is a
+% \( \vec{\delta}_{k+1} \).
+% Represent it as a linear combination of elements of \( B_k \).
+% The key point:~in that representation, at least one of the nonzero scalars
+% must be associated with a \( \vec{\beta}_i \) or else that
+% representation would be a
+% nontrivial linear relationship among elements of the linearly independent
+% set \( D \).
+% Exchange \( \vec{\delta}_{k+1} \) for \( \vec{\beta}_i \) to get a new basis
+% \( B_{k+1} \) with one \( \vec{\delta} \) more and one \( \vec{\beta} \)
+% fewer than the previous basis \( B_k \).
+% %</pf:AllBasesSameSize2>
+
+% %<*pf:AllBasesSameSize3>
+% Repeat that until no \( \vec{\beta} \)'s remain, so
+% that \( B_n \) contains  
+% $\vec{\delta}_1,\dots,\vec{\delta}_n$.
+% Now, \( D \) cannot have more than these \( n \) vectors because
+% any \( \vec{\delta}_{n+1} \) that remains would be in the span of
+% \( B_n \) (since it is a basis) 
+% and hence would be a linear combination of the other $\vec{\delta}$'s, 
+% contradicting that $D$ is linearly independent.
+% %</pf:AllBasesSameSize3>
+% \end{proof}
 
 \begin{definition}  \label{df:Dimension}
 %<*df:Dimension>
@@ -2570,6 +2668,149 @@ that the two senses of `minimal' are equivalent.
             subspace.
        \end{exparts}  
      \end{answer}
+    \item Here is an alternative proof of this section's main result,
+      \nearbytheorem{th:AllBasesSameSize}.
+      First is an example, then a lemma, then the theorem.
+      \begin{exparts}
+        \partsitem Express this vector from $\Re^3$ a 
+          as a linear combination of members of the basis.
+         \begin{equation*}
+           B=\sequence{\colvec[r]{1 \\ 0  \\ 0},
+             \colvec[r]{1 \\ 1 \\ 0},
+             \colvec[r]{0 \\ 0 \\ 2}}
+           \qquad
+           \vec{v}=\colvec[r]{1 \\ 2 \\ 0}
+         \end{equation*}
+        \partsitem In that combination pick a basis vector with a 
+          non-zero coefficient.
+          Alter~$B$ by exchanging~$\vec{v}$ for that basis vector,
+          to get a new sequence~$\hat{B}$.
+          Check that $\hat{B}$ is also a basis for~$\Re^3$.
+        \partsitem (Exchange Lemma)
+          Assume that 
+          \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) is a basis for a
+          vector space, and that for the vector \( \vec{v} \)
+          the relationship \( \vec{v}=\lincombo{c}{\vec{\beta}} \)
+          has \( c_i\neq 0 \).
+          Prove that exchanging  \( \vec{v} \) for \( \vec{\beta}_i \) 
+          yields another basis for the space.
+        \partsitem Use that, with induction, to prove
+          \nearbytheorem{th:AllBasesSameSize}.
+      \end{exparts}
+      \begin{answer}
+      \begin{exparts}
+        \partsitem
+          $\colvec[r]{1 \\ 2 \\ 0}
+             =(-1)\cdot\colvec[r]{1 \\ 0  \\ 0}
+              +2\colvec[r]{1 \\ 1 \\ 0}
+              +0\cdot\colvec[r]{0 \\ 0 \\ 2}$
+        \partsitem Two of the basis vectors are associated with 
+           non-zero coefficients.
+           We can for instance pick the first.
+           \begin{equation*}
+             \hat{B}=\sequence{\colvec[r]{1 \\ 2  \\ 0},
+               \colvec[r]{1 \\ 1 \\ 0},
+               \colvec[r]{0 \\ 0 \\ 2}}
+           \end{equation*}
+           Checking that it is another basis for \( \Re^3 \) is routine.
+        \partsitem  
+          Call the outcome of the exchange 
+          \( \hat{B}=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_{i-1},\vec{v},
+            \vec{\beta}_{i+1},\dots,\vec{\beta}_n}  \).
+          We first show that $\hat{B}$ is linearly independent.
+          Any relationship 
+          \( d_1\vec{\beta}_1+\dots+d_i\vec{v}+\dots+d_n\vec{\beta}_n=\zero \)
+          among the members of $\hat{B}$, after substitution for $\vec{v}$,
+          \begin{equation*}
+          d_1\vec{\beta}_1+\dots
+          +d_i\cdot(c_1\vec{\beta}_1+\dots+c_i\vec{\beta}_i+\dots+c_n\vec{\beta}_n)
+          +\dots+d_n\vec{\beta}_n
+          =\zero
+          \tag*{($*$)}\end{equation*}
+          gives a linear relationship among the members of $B$.
+          The basis $B$ is linearly independent so the coefficient $d_ic_i$ of 
+          $\vec{\beta}_i$ is zero.
+          Because we assumed that $c_i$ is nonzero, $d_i=0$.
+          Using this in equation~$(*)$ gives that all of the other $d$'s 
+          are also zero.
+          Therefore $\hat{B}$ is linearly independent.
+
+          We finish by showing that $\hat{B}$ has the same span as $B$.
+          Half of this argument, that 
+          $\spanof{\smash{\hat{B}}}\subseteq\spanof{B}$, 
+          is easy; we can write any member 
+          $d_1\vec{\beta}_1+\dots+d_i\vec{v}+\dots+d_n\vec{\beta}_n$
+          of $\spanof{\smash{\hat{B}}}$ as
+          $
+          d_1\vec{\beta}_1+\dots
+          +d_i\cdot(c_1\vec{\beta}_1+\dots+c_n\vec{\beta}_n)
+          +\dots+d_n\vec{\beta}_n
+          $,
+          which is a linear combination of linear combinations of members 
+          of $B$, and hence is in $\spanof{B}$.
+          For the $\spanof{B}\subseteq\spanof{\smash{\hat{B}}}$ half of the 
+          argument, recall that if
+          $\vec{v}=c_1\vec{\beta}_1+\dots+c_n\vec{\beta}_n$ with $c_i\neq 0$
+          then we can rearrange the equation to
+          $\vec{\beta}_i=(-c_1/c_i)\vec{\beta}_1+\dots+(1/c_i)\vec{v}+\dots
+          +(-c_n/c_i)\vec{\beta}_n$.
+          Now, consider any member
+          $d_1\vec{\beta}_1+\dots+d_i\vec{\beta}_i+\dots+d_n\vec{\beta}_n$
+          of $\spanof{B}$, substitute for $\vec{\beta}_i$ its expression 
+          as a linear
+          combination of the members of $\hat{B}$, and recognize, 
+          as in the first half of this argument, that the result is a linear
+          combination of linear combinations of members of $\hat{B}$, 
+          and hence is in $\spanof{\smash{\hat{B}}}$.
+        \partsitem Fix a vector space with at least one finite basis.
+          Choose, from among all of this space's bases,
+          one \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_n} \) 
+          of minimal size.
+          We will show that any other basis
+          \( D=\smash{\sequence{\vec{\delta}_1,\vec{\delta}_2,\ldots}} \)
+          also has the same number of members, $n$.
+          Because \( B \) has minimal size, \( D \) has no fewer than 
+          \( n \)~vectors.
+          We will argue that it cannot have more than \( n \) vectors.
+
+          The basis \( B \) spans the space and \( \vec{\delta}_1 \) 
+          is in the space,
+          so \( \vec{\delta}_1 \) is a nontrivial linear combination of 
+          elements of \( B \).
+          By the Exchange Lemma, we can swap \( \vec{\delta}_1 \) for a
+          vector from \( B \), resulting in a basis \( B_1 \), 
+          where one element is
+          \( \vec{\delta}_1 \) and all of the \( n-1 \) other elements 
+          are \( \vec{\beta} \)'s.
+
+          The prior paragraph forms the basis step for an induction argument.
+          The inductive step starts with a basis \( B_k \) (for \( 1\leq k<n \))
+          containing \( k \) members of \( D \) and \( n-k \) members of 
+          \( B \).
+          We know that \( D \) has at least \( n \) members so there is a
+          \( \vec{\delta}_{k+1} \).
+          Represent it as a linear combination of elements of \( B_k \).
+          The key point:~in that representation, 
+          at least one of the nonzero scalars
+          must be associated with a \( \vec{\beta}_i \) or else that
+          representation would be a
+          nontrivial linear relationship among elements of the linearly 
+          independent set \( D \).
+          Exchange \( \vec{\delta}_{k+1} \) for \( \vec{\beta}_i \) 
+          to get a new basis
+          \( B_{k+1} \) with one \( \vec{\delta} \) more and one 
+          \( \vec{\beta} \) fewer than the previous basis \( B_k \).
+
+          Repeat that until no \( \vec{\beta} \)'s remain, so
+          that \( B_n \) contains  
+          $\vec{\delta}_1,\dots,\vec{\delta}_n$.
+          Now, \( D \) cannot have more than these \( n \) vectors because
+          any \( \vec{\delta}_{n+1} \) that remains would be in the span of
+          \( B_n \) (since it is a basis) 
+          and hence would be a linear combination of the other 
+          $\vec{\delta}$'s, contradicting that $D$ is linearly independent.
+      \end{exparts}
+      \end{answer}
   \puzzle \item 
     \cite{Wohascum47}
     For any vector $\vec{v}$ in $\Re^n$ and any permutation $\sigma$
