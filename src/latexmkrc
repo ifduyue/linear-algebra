@@ -8,6 +8,7 @@
 #  .../src so that it can go in the TEXINPUTS and MPINPUTS variable.
 
 # use Cwd;
+# compile_dir  directory in which this compilation takes place
 my $compile_dir = getcwd;
 # for debugging: print "!!!!! compile_dir is ",$compile_dir,"\n";
 
@@ -15,7 +16,8 @@ my $compile_dir = getcwd;
 # To put .sty files in other dirs you need to put the .sty's into
 # the path where LaTeX searches.  For instance, the MetaPost files
 # will not compile without this.
-ensure_path( 'TEXINPUTS', "$compile_dir//" );
+# The double slash means that it will look in all dirs below compile_dir 
+ensure_path( 'TEXINPUTS', "$compile_dir//" ); 
 ensure_path( 'MPINPUTS', "$compile_dir//" );
 
 
@@ -118,6 +120,11 @@ sub asy2x   {
 }
 
 
+
+# ================== slides =====================
+
+
+
 # ============ For debugging =========
 # for debugging
 # show_cus_dep();
@@ -125,4 +132,13 @@ sub asy2x   {
 
 # ============ Declare files to compile ====
 # Use these to create this file
-@default_files = ('book.tex');
+@default_files = ('book.tex' );
+
+# Each slide deck comes in three varieties, so put them in the list of files 
+my @slidefiles = qw( one/one_i one/one_ii
+   );
+for my $i (@slidefiles) {
+  push @default_files, "slides/".$i.".tex";
+  push @default_files, "slides/".$i."_handout.tex";
+  push @default_files, "slides/".$i."_allproofs.tex";
+}

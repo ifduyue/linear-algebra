@@ -1,14 +1,13 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../gr2} % read refs from .aux file
+\usepackage{directories}  % define \grdir, etc.
+\usepackage{xr}\externaldocument{\grdir gr2} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -55,7 +54,7 @@ Then the three possibilities for solution sets become clear.
       \small \textit{Unique solution}
     \end{tabular}}
     \begin{center}
-      \includegraphics{../ch1.3} \\[.75ex]
+      \includegraphics{\grmpdir ch1.3} \\[.75ex]
       \small $\begin{linsys}{2}
                          3x  &+  &2y  &=  &7   \\
                          x   &-  &y   &=  &-1
@@ -68,7 +67,7 @@ Then the three possibilities for solution sets become clear.
       \small \textit{No solutions}
     \end{tabular}}
     \begin{center}
-      \includegraphics{../ch1.4} \\[.75ex]
+      \includegraphics{\grmpdir ch1.4} \\[.75ex]
       \small $\begin{linsys}{2}
                          3x  &+  &2y  &=  &7   \\
                          3x  &+  &2y  &=  &4
@@ -82,7 +81,7 @@ Then the three possibilities for solution sets become clear.
       \textit{solutions}
     \end{tabular}}
     \begin{center}
-      \includegraphics{../ch1.5}         \\[.75ex]
+      \includegraphics{\grmpdir ch1.5}         \\[.75ex]
       \small $ \begin{linsys}{2}
                          3x  &+  &2y  &=  &7   \\
                          6x  &+  &4y  &=  &14
@@ -100,13 +99,13 @@ the geometry gives us insight into what can happen with linear systems.
 \section{Vectors in space}
 \begin{frame}{Vectors}
 A \definend{vector} is an object consisting of a magnitude and a direction.
-\centergraphic{../ch1.8}
+\centergraphic{\grmpdir ch1.8}
 For instance, a vector can model a displacement.
 
 \pause
 Two vectors with the same magnitude and
 same direction, such as all of these, are equal.  
-\centergraphic{../ch1.12}
+\centergraphic{\grmpdir ch1.12}
 For instance, each of the 
 above could model a displacement of one over and two up.
 \end{frame}
@@ -168,14 +167,14 @@ which, when it starts at the origin, ends at that point.
 \begin{frame}{Vector operations}
 Scalar multiplication makes a vector longer or shorter, 
 including possibly flipping it around.
-\centergraphic{../ch1.13}
+\centergraphic{\grmpdir ch1.13}
 \pause
 Where \( \vec{v} \) and \( \vec{w} \) represent displacements,
 the vector sum \( \vec{v}+\vec{w}\/ \) represents those displacements combined.
 \begin{center}
-\includegraphics{../ch1.14}
+\includegraphics{\grmpdir ch1.14}
 \qquad
-\includegraphics{../ch1.15}
+\includegraphics{\grmpdir ch1.15}
 \end{center}
 The second drawing shows the \definend{parallelogram rule} for vector addition.
 \end{frame}
@@ -191,12 +190,12 @@ is comprised of the vectors in this set
      \set{ \colvec[r]{1 \\ 2}+t\colvec[r]{2 \\ -1}\suchthat t\in\Re}
   $}
   \qquad
-  \vcenteredhbox{\includegraphics{../ch1.16}}
+  \vcenteredhbox{\includegraphics{\grmpdir ch1.16}}
 \end{center}
 (that is, it is comprised of the endpoints of those vectors).
 \pause
 % That description expresses this picture.
-% \centergraphic{../ch1.16}
+% \centergraphic{\grmpdir ch1.16}
 The vector associated with the parameter \( t \)
 \begin{equation*}
   \colvec[r]{2 \\ -1}
@@ -252,7 +251,7 @@ and $k\leq n$ is a
 \section{Length and angle measures}
 \begin{frame}{Length} 
 \df[df:Length]
-\ExecuteMetaData[../gr2.tex]{df:Length}
+\ExecuteMetaData[\grdir gr2.tex]{df:Length}
 \ex
 The length of
 \begin{equation*}
@@ -274,7 +273,7 @@ $\vec{v}$ to unit length.
 % ..........
 \begin{frame}{Dot product} 
 \df[df:DotProduct]
-\ExecuteMetaData[../gr2.tex]{df:DotProduct}
+\ExecuteMetaData[\grdir gr2.tex]{df:DotProduct}
 
 \ex
 The dot product of two vectors
@@ -296,11 +295,11 @@ is the square of the vector's length.
 % ..........
 \begin{frame}{Triangle Inequality} 
 \th[th:TriangleInequality]
-\ExecuteMetaData[../gr2.tex]{th:TriangleInequality}
+\ExecuteMetaData[\grdir gr2.tex]{th:TriangleInequality}
 
 This is the source of the familiar saying, 
 ``The shortest distance between two points is in a straight line.''
-\centergraphic{../ch1.23}
+\centergraphic{\grmpdir ch1.23}
 \end{frame}
 
 
@@ -309,10 +308,10 @@ This is the source of the familiar saying,
 % ..........
 \begin{frame}
 \pf[th:TriangleInequality]
-\ExecuteMetaData[../gr2.tex]{pf:TriangleInequality0}
+\ExecuteMetaData[\grdir gr2.tex]{pf:TriangleInequality0}
 
 \pause
-\ExecuteMetaData[../gr2.tex]{pf:TriangleInequality1}
+\ExecuteMetaData[\grdir gr2.tex]{pf:TriangleInequality1}
 \end{frame}
 
 
@@ -320,7 +319,7 @@ This is the source of the familiar saying,
 
 % ..........
 \begin{frame}
-\ExecuteMetaData[../gr2.tex]{pf:TriangleInequality2}
+\ExecuteMetaData[\grdir gr2.tex]{pf:TriangleInequality2}
 \qed
 \end{frame}
 
@@ -330,10 +329,10 @@ This is the source of the familiar saying,
 % ..........
 \begin{frame}{Cauchy-Schwarz Inequality} 
 \co[th:CauchySchwarz]
-\ExecuteMetaData[../gr2.tex]{co:CauchySchwarzInequality}
+\ExecuteMetaData[\grdir gr2.tex]{co:CauchySchwarzInequality}
 \pause
 \pf[th:CauchySchwarz]
-\ExecuteMetaData[../gr2.tex]{pf:CauchySchwarzInequality}
+\ExecuteMetaData[\grdir gr2.tex]{pf:CauchySchwarzInequality}
 \end{frame}
 
 
@@ -353,14 +352,14 @@ is this.
 
 We motivate that definition with
 two vectors in \( \Re^3 \). 
-\centergraphic{../ch1.21}
+\centergraphic{\grmpdir ch1.21}
 If neither is a multiple of the other then they determine a plane, because if
 we put them in canonical position then the origin and the endpoints
 make three noncolinear points. 
 Consider the triangle formed by
 \( \vec{u} \), \( \vec{v} \), and \( \vec{u}-\vec{v} \).
 \end{frame}\begin{frame}
-\centergraphic{../ch1.22}
+\centergraphic{\grmpdir ch1.22}
 Apply the Law of Cosines:
 $\absval{\vec{u}-\vec{v}\,}^2
   =
@@ -387,7 +386,7 @@ the formula.
 % ..........
 \begin{frame}
 \co[co:VectorsOrthogonalIffDoTProductZero]
-\ExecuteMetaData[../gr2.tex]{co:VectorsOrthogonalIffDoTProductZero}
+\ExecuteMetaData[\grdir gr2.tex]{co:VectorsOrthogonalIffDoTProductZero}
 \end{frame}
 
 

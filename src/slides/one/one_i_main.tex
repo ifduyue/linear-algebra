@@ -1,14 +1,12 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer} % add handout option for no pauses
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
-% \usepackage{linear_algebra}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../gr1}
+\usepackage{directories} % define \grdir, etc
+\usepackage{xr}
+  \externaldocument{\grdir gr1}
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -64,7 +62,7 @@
 \section{Gauss's Method}
 \begin{frame}{Linear systems} 
 \df[def:linearcombination]
-\ExecuteMetaData[../gr1.tex]{df:linearcombination}
+\ExecuteMetaData[\grdir gr1.tex]{df:linearcombination}
 
 \ex This is a linear combination of $x$, $y$, and $z$.
 \begin{equation*}
@@ -76,7 +74,7 @@
 %...........................
 \begin{frame}
 \df[def:linearcombination]
-\ExecuteMetaData[../gr1.tex]{df:linearequations}
+\ExecuteMetaData[\grdir gr1.tex]{df:linearequations}
 \ex 
 There are three linear equations in this linear system.
 \begin{equation*}
@@ -143,7 +141,7 @@ first row: $x+4(1)-4(2)=0$, so that $x=4$.
 
 \pause
 \df[df:EchelonForm]
-\ExecuteMetaData[../gr1.tex]{df:EchelonForm}
+\ExecuteMetaData[\grdir gr1.tex]{df:EchelonForm}
 \end{frame}
 
 
@@ -194,7 +192,7 @@ The unique solution is $(1,0,2,-1)$.
 %...........................
 \begin{frame}{Gauss's Method}
 \th[th:GaussMethod]
-\ExecuteMetaData[../gr1.tex]{th:GaussMethod}
+\ExecuteMetaData[\grdir gr1.tex]{th:GaussMethod}
 
 \iftoggle{showallproofs}{
 }{
@@ -203,7 +201,7 @@ The unique solution is $(1,0,2,-1)$.
 }
 
 \df[df:GaussMethod]
-\ExecuteMetaData[../gr1.tex]{df:GaussMethod}
+\ExecuteMetaData[\grdir gr1.tex]{df:GaussMethod}
 \end{frame}
 
 
@@ -215,10 +213,10 @@ The unique solution is $(1,0,2,-1)$.
   We verify the result for operation~(1).
   The other two are similar.
   
-  \ExecuteMetaData[../gr1.tex]{pf:GaussMethod0}
+  \ExecuteMetaData[\grdir gr1.tex]{pf:GaussMethod0}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../gr1.tex]{pf:GaussMethod1}\qed
+  \ExecuteMetaData[\grdir gr1.tex]{pf:GaussMethod1}\qed
   \end{frame}
 }{
 }
@@ -366,8 +364,8 @@ equations because it does not satisfy $x=3-z$.
 
 \begin{frame}
 \df[df:FreeVars]
-\ExecuteMetaData[../gr1.tex]{df:FreeVars}
-\hspace*{-1em}\ExecuteMetaData[../gr1.tex]{df:Parameter}
+\ExecuteMetaData[\grdir gr1.tex]{df:FreeVars}
+\hspace*{-1em}\ExecuteMetaData[\grdir gr1.tex]{df:Parameter}
 
 We shall routinely parametrize linear systems with the free variables.
 \end{frame}
@@ -461,7 +459,7 @@ we have $x=1+y$.
 % ..........
 \begin{frame}{Matrices and vectors}
 \df[df:matrix]
-\ExecuteMetaData[../gr1.tex]{df:matrix}
+\ExecuteMetaData[\grdir gr1.tex]{df:matrix}
 
 \pause
 \ex
@@ -479,7 +477,7 @@ The entry in row~$2$ and column~$1$ is
 
 \pause
 \df[df:vector]
-\ExecuteMetaData[../gr1.tex]{df:vector}
+\ExecuteMetaData[\grdir gr1.tex]{df:vector}
 
 \pause
 We denote vectors with an over-arrow 
@@ -511,9 +509,9 @@ the two-component zero vector.
 % ..........
 \begin{frame}{Vector operations}
 \df[df:VectorSum]
-\ExecuteMetaData[../gr1.tex]{df:VectorSum}
+\ExecuteMetaData[\grdir gr1.tex]{df:VectorSum}
 \df[df:VectorScalarMultiplication]
-\ExecuteMetaData[../gr1.tex]{df:VectorScalarMultiplication}
+\ExecuteMetaData[\grdir gr1.tex]{df:VectorScalarMultiplication}
 \ex
 \begin{equation*}
   3\colvec{1 \\2}-2\colvec{0 \\ 1}=\colvec{3 \\ 4}
@@ -671,7 +669,7 @@ system.
 % ..........
 \begin{frame}
 \df[df:HomogeneousEquation]
-\ExecuteMetaData[../gr1.tex]{df:HomogeneousEquation}
+\ExecuteMetaData[\grdir gr1.tex]{df:HomogeneousEquation}
 
 \ex
 From the prior system 
@@ -716,7 +714,7 @@ is like the earlier one but the zero vector is a particular solution.
 % ..........
 \begin{frame}\vspace*{-1ex}
 \lm[le:HomoSltnSpanVecs]
-\ExecuteMetaData[../gr1.tex]{le:HomoSltnSpanVecs}
+\ExecuteMetaData[\grdir gr1.tex]{le:HomoSltnSpanVecs}
 \ex
 \iftoggle{showallproofs}{Before the proof,
 }{%
@@ -752,25 +750,25 @@ $\vec{\beta}_1$ and $\vec{\beta}_2$.
 \iftoggle{showallproofs}{
   \begin{frame}
   \pf[le:HomoSltnSpanVecs]
-  \ExecuteMetaData[../gr1.tex]{pf:HomoSltnSpanVecs0}
+  \ExecuteMetaData[\grdir gr1.tex]{pf:HomoSltnSpanVecs0}
 
   \pause
-  \ExecuteMetaData[../gr1.tex]{pf:HomoSltnSpanVecs1}
+  \ExecuteMetaData[\grdir gr1.tex]{pf:HomoSltnSpanVecs1}
   \pause
-  \ExecuteMetaData[../gr1.tex]{pf:HomoSltnSpanVecs2}
+  \ExecuteMetaData[\grdir gr1.tex]{pf:HomoSltnSpanVecs2}
   \end{frame}\begin{frame}
-  \ExecuteMetaData[../gr1.tex]{pf:HomoSltnSpanVecs3}\qed
+  \ExecuteMetaData[\grdir gr1.tex]{pf:HomoSltnSpanVecs3}\qed
   \end{frame}}{}
 
 % ..........
 \begin{frame}
 \lm[th:GenEqPartHomo]
-\ExecuteMetaData[../gr1.tex]{th:GenEqPartHomo}
+\ExecuteMetaData[\grdir gr1.tex]{th:GenEqPartHomo}
 \pause
 \pf[th:GenEqPartHomo]
-\ExecuteMetaData[../gr1.tex]{pf:GenEqPartHomo0}
+\ExecuteMetaData[\grdir gr1.tex]{pf:GenEqPartHomo0}
 \end{frame}\begin{frame}
-\ExecuteMetaData[../gr1.tex]{pf:GenEqPartHomo1}
+\ExecuteMetaData[\grdir gr1.tex]{pf:GenEqPartHomo1}
 \qed
 \end{frame}
 
@@ -779,7 +777,7 @@ $\vec{\beta}_1$ and $\vec{\beta}_2$.
 % ..........
 \begin{frame}
 \th[th:GenEqPartPlusHomo]
-\ExecuteMetaData[../gr1.tex]{th:GenEqPartPlusHomo}
+\ExecuteMetaData[\grdir gr1.tex]{th:GenEqPartPlusHomo}
 \pf
 This restates the prior two lemmas.\qed
 \end{frame}
@@ -789,15 +787,15 @@ This restates the prior two lemmas.\qed
 % ..........
 \begin{frame}
 \co[co:ThreeKindsSolutionSets]
-\ExecuteMetaData[../gr1.tex]{co:ThreeKindsSolutionSets}
+\ExecuteMetaData[\grdir gr1.tex]{co:ThreeKindsSolutionSets}
 
 \iftoggle{showallproofs}{
   \pause
   \pf[co:ThreeKindsSolutionSets]
-  \ExecuteMetaData[../gr1.tex]{pf:ThreeKindsSolutionSets0}
+  \ExecuteMetaData[\grdir gr1.tex]{pf:ThreeKindsSolutionSets0}
   
   \pause
-  \ExecuteMetaData[../gr1.tex]{pf:ThreeKindsSolutionSets1}
+  \ExecuteMetaData[\grdir gr1.tex]{pf:ThreeKindsSolutionSets1}
   \qed
 }{
 
@@ -810,13 +808,13 @@ This restates the prior two lemmas.\qed
 
 % ..........
 \begin{frame}{Summary: Kinds of Solution Sets}
-\ExecuteMetaData[../gr1.tex]{table:KindsSolutionSets}
+\ExecuteMetaData[\grdir gr1.tex]{table:KindsSolutionSets}
 \pause
 An important special case is when there are the same number of
 equations as unknowns.
 
 \df[df:Nonsingular]
-\ExecuteMetaData[../gr1.tex]{df:Nonsingular}
+\ExecuteMetaData[\grdir gr1.tex]{df:Nonsingular}
 \end{frame}
 
 

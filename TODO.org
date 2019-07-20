@@ -26,6 +26,7 @@ leaves extra space at start of first sentence.
 ** Topic on Principle Components
 ** Better Topic on graphics
 ** Get source for four_minute_mile.pdf, moneyball.pdf
+** For proof that every basis si the same size, put the coordinate-bound one on the slides
 * Refactor some code 
 ** Move Range space and Null space to after the definition of Computing Linear Maps
 ** Change vector look?
@@ -72,3 +73,4 @@ In particular, the metapost outputs cluttering the dir are a mess.
   to dmath* did not result in a break.  Puzzled.
 
 ** Convert to ebook, using the newly-available options through tex4ht
+** See if can document them whil I do it.
