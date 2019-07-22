@@ -1,15 +1,14 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{xcolor}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../map4} % read refs from .aux file
-\usepackage{xr}\externaldocument{../map2} % read refs from .aux file
+\usepackage{directories}  % Define \mapdir, \mapmpdir, etc
+\usepackage{xr}\externaldocument{\mapdir map4} % read refs from .aux file
+\usepackage{xr}\externaldocument{\mapdir map2} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -227,7 +226,7 @@ is the entry-by-entry sum of the other two.
 
 \begin{frame}{Definition of matrix sum and scalar multiple}
 \df[def:SumScalarProdMats]
-\ExecuteMetaData[../map4.tex]{df:SumScalarProdMats}
+\ExecuteMetaData[\mapdir map4.tex]{df:SumScalarProdMats}
 
 \pause
 \ex
@@ -285,7 +284,7 @@ Adding the two functions would be adding apples and oranges.
 %..........
 \begin{frame}
 \th[th:MatOpsRepMapOps]
-\ExecuteMetaData[../map4.tex]{th:MatOpsRepMapOps}
+\ExecuteMetaData[\mapdir map4.tex]{th:MatOpsRepMapOps}
 
 \pause
 \pf
@@ -296,7 +295,7 @@ See \nearbyexercise{exer:CorrspMapMatOps}\hspace{-0.25em}.
 \pause
 \medskip
 \df[df:ZeroMatrix]
-\ExecuteMetaData[../map4.tex]{df:ZeroMatrix}
+\ExecuteMetaData[\mapdir map4.tex]{df:ZeroMatrix}
 
 \pause
 \medskip
@@ -336,11 +335,11 @@ is composition.
 
 \pause
 \lm[lm:CompositionOfLinearMapsIsLinear]
-\ExecuteMetaData[../map4.tex]{lm:CompositionOfLinearMapsIsLinear}
+\ExecuteMetaData[\mapdir map4.tex]{lm:CompositionOfLinearMapsIsLinear}
 
 \pause
 \pf
-\ExecuteMetaData[../map4.tex]{pf:CompositionOfLinearMapsIsLinear}
+\ExecuteMetaData[\mapdir map4.tex]{pf:CompositionOfLinearMapsIsLinear}
 \qed
 
 % \pause
@@ -450,7 +449,7 @@ So here is how the two starting matrices combine.
 %..........
 \begin{frame}{Definition of matrix multiplication}
 \df[def:MatMult]
-\ExecuteMetaData[../map4.tex]{df:MatMult}
+\ExecuteMetaData[\mapdir map4.tex]{df:MatMult}
 \ex
 \begin{equation*}
   \begin{mat}
@@ -517,12 +516,12 @@ functions from a space to itself $\map{g,h}{V}{V}$.
 %..........
 \begin{frame}{Matrix multiplication represents composition}
 \th[th:MatMultRepComp]
-\ExecuteMetaData[../map4.tex]{th:MatMultRepComp}
+\ExecuteMetaData[\mapdir map4.tex]{th:MatMultRepComp}
 
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map4.tex]{pf:MatMultRepComp0}
+  \ExecuteMetaData[\mapdir map4.tex]{pf:MatMultRepComp0}
 }{
 
   \bigskip
@@ -531,7 +530,7 @@ functions from a space to itself $\map{g,h}{V}{V}$.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../map4.tex]{pf:MatMultRepComp1}
+  \ExecuteMetaData[\mapdir map4.tex]{pf:MatMultRepComp1}
   \qed
   \end{frame}
 }{}
@@ -540,11 +539,11 @@ functions from a space to itself $\map{g,h}{V}{V}$.
 
 %..........
 \begin{frame}{Arrow diagrams}
-% \ExecuteMetaData[../map4.tex]{MatMultArrowDiag0}
+% \ExecuteMetaData[\mapdir map4.tex]{MatMultArrowDiag0}
 This pictures the relationship between maps and matrices.
-\centergraphic{../ch3.20}
+\centergraphic{\mapmpdir ch3.20}
 \pause
-\ExecuteMetaData[../map4.tex]{MatMultArrowDiag1}
+\ExecuteMetaData[\mapdir map4.tex]{MatMultArrowDiag1}
 \end{frame}
 
 \begin{frame}
@@ -604,7 +603,7 @@ Here is the same statement in the other notation.
 \begin{frame}
 % So far in this example we have given the maps above the arrows, $f$, $g$, 
 % and $\composed{g}{h}$. 
-% \centergraphic{../ch3.20}
+% \centergraphic{\mapmpdir ch3.20}
 We next compute the matrices representing those maps, and we will
 finish by checking that the product of $G$ and~$H$ is the matrix 
 representing $\composed{g}{h}$.
@@ -712,7 +711,7 @@ equals the matrix representing~$\composed{g}{h}$.
   \end{mat}
 \end{align*}
 % \bigskip
-% \centergraphic{../ch3.20}
+% \centergraphic{\mapmpdir ch3.20}
 \end{frame}
 
 
@@ -852,13 +851,13 @@ the property of being commutative,
 it does have some nice algebraic properties.  
 
 \th[th:MatMultWellBehaved]
-\ExecuteMetaData[../map4.tex]{th:MatMultWellBehaved}
+\ExecuteMetaData[\mapdir map4.tex]{th:MatMultWellBehaved}
 \pause
 \pf
-\ExecuteMetaData[../map4.tex]{pf:MatMultWellBehaved0}
+\ExecuteMetaData[\mapdir map4.tex]{pf:MatMultWellBehaved0}
 
 % \pause
-\ExecuteMetaData[../map4.tex]{pf:MatMultWellBehaved1}
+\ExecuteMetaData[\mapdir map4.tex]{pf:MatMultWellBehaved1}
 \qed
 \end{frame}
 
@@ -916,11 +915,11 @@ act on the left matrix's rows.
 %..........
 \begin{frame}
 \lm[lm:ColsAndRowsInMatrixMult]
-\ExecuteMetaData[../map4.tex]{lm:ColsAndRowsInMatrixMult}
+\ExecuteMetaData[\mapdir map4.tex]{lm:ColsAndRowsInMatrixMult}
 \end{frame}
 % \begin{frame}
 % \pf
-% \ExecuteMetaData[../map4.tex]{pf:ColsAndRowsInMatrixMult}
+% \ExecuteMetaData[\mapdir map4.tex]{pf:ColsAndRowsInMatrixMult}
 % \qed
 % \end{frame}
 
@@ -930,7 +929,7 @@ act on the left matrix's rows.
 %..........
 \begin{frame}
 \df[df:UnitMatrix]
-\ExecuteMetaData[../map4.tex]{df:UnitMatrix}
+\ExecuteMetaData[\mapdir map4.tex]{df:UnitMatrix}
 \ex
 The $2,1$ unit $\nbym{2}{3}$ matrix multiplies from the left 
 \begin{equation*}
@@ -997,10 +996,10 @@ Rescaling the unit matrix rescales the result.
 %..........
 \begin{frame}
 \df[df:MainDiagonal]
-\ExecuteMetaData[../map4.tex]{df:MainDiagonal}
+\ExecuteMetaData[\mapdir map4.tex]{df:MainDiagonal}
 \pause
 \df[df:IdentityMatrix]
-\ExecuteMetaData[../map4.tex]{df:IdentityMatrix}
+\ExecuteMetaData[\mapdir map4.tex]{df:IdentityMatrix}
 \pause
 Taking the product with an identity matrix returns the multiplicand. 
 \ex
@@ -1044,7 +1043,7 @@ or from the right leaves the matrix unchanged.
 %..........
 \begin{frame}
 \df[df:DiagonalMatrix]
-\ExecuteMetaData[../map4.tex]{df:DiagonalMatrix}
+\ExecuteMetaData[\mapdir map4.tex]{df:DiagonalMatrix}
 \pause
 \ex
 Multiplication from the left by a diagonal matrix rescales the rows.
@@ -1087,7 +1086,7 @@ From the right it rescales the columns.
 %..........
 \begin{frame}
 \df[df:PermutationMatrix]
-\ExecuteMetaData[../map4.tex]{df:PermutationMatrix}
+\ExecuteMetaData[\mapdir map4.tex]{df:PermutationMatrix}
 \pause
 \ex
 Multiplication by a permutation matrix from the left will swap rows.
@@ -1136,7 +1135,7 @@ From the right it swaps columns.
 %..........
 \begin{frame}
 \df[df:ElementaryReductionMatrices]
-\ExecuteMetaData[../map4.tex]{df:ElementaryReductionMatrices}
+\ExecuteMetaData[\mapdir map4.tex]{df:ElementaryReductionMatrices}
 % \pause
 % \ex
 % Here are some $\nbyn{2}$ examples.
@@ -1240,12 +1239,12 @@ row operation $-2\rho_1+\rho_3$.
 
 \begin{frame}
 \lm[GrByMatMult]
-\ExecuteMetaData[../map4.tex]{lm:GrByMatMult}
+\ExecuteMetaData[\mapdir map4.tex]{lm:GrByMatMult}
 \pf
 Clear.
 \qed
 \co[cor:ReducViaMatrices]
-\ExecuteMetaData[../map4.tex]{co:ReducViaMatrices}
+\ExecuteMetaData[\mapdir map4.tex]{co:ReducViaMatrices}
 
 \pause
 \ex
@@ -1376,25 +1375,25 @@ Here is the full equation.
 % ..... Three.IV.3 .....
 \section{Inverses}
 \begin{frame}{Function inverses}
-\ExecuteMetaData[../map4.tex]{FunctionInverseReview0}
+\ExecuteMetaData[\mapdir map4.tex]{FunctionInverseReview0}
 Our goal is, where a linear~$h$ has an inverse, to find the
 relationship between the matrices $\rep{h}{B,D}$
 and $\rep{h^{-1}}{D,B}$.
 
 \pause
-\ExecuteMetaData[../map4.tex]{FunctionInverseReview1}
+\ExecuteMetaData[\mapdir map4.tex]{FunctionInverseReview1}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../map4.tex]{FunctionInverseReview2}
+\ExecuteMetaData[\mapdir map4.tex]{FunctionInverseReview2}
 
 \pause
-\ExecuteMetaData[../map4.tex]{FunctionInverseReview3}
+\ExecuteMetaData[\mapdir map4.tex]{FunctionInverseReview3}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../map4.tex]{FunctionInverseReview4}
+\ExecuteMetaData[\mapdir map4.tex]{FunctionInverseReview4}
 
 \pause
-\ExecuteMetaData[../map4.tex]{FunctionInverseReview5}
+\ExecuteMetaData[\mapdir map4.tex]{FunctionInverseReview5}
 \end{frame}
 
 
@@ -1402,7 +1401,7 @@ and $\rep{h^{-1}}{D,B}$.
 %..........
 \begin{frame}{Definition of matrix inverse}
 \df[df:MatrixInverse]
-\ExecuteMetaData[../map4.tex]{df:MatrixInverse}
+\ExecuteMetaData[\mapdir map4.tex]{df:MatrixInverse}
 \pause
 \ex
 This matrix 
@@ -1495,16 +1494,16 @@ and multiply both sides (from the left) by the matrix inverse.
 \begin{frame}
 This specializes the arrow diagram for composition 
 to the case of inverses.
-\centergraphic{../ch3.21}  
+\centergraphic{\mapmpdir ch3.21}  
 \pause
 \lm[le:LeftAndRightInvEqual]
-\ExecuteMetaData[../map4.tex]{lm:LeftAndRightInvEqual}
+\ExecuteMetaData[\mapdir map4.tex]{lm:LeftAndRightInvEqual}
 
 \th[th:MatrixInvertibleIffNonsingular]
-\ExecuteMetaData[../map4.tex]{th:MatrixInvertibleIffNonsingular}
+\ExecuteMetaData[\mapdir map4.tex]{th:MatrixInvertibleIffNonsingular}
 \pause
 \pf
-\ExecuteMetaData[../map4.tex]{pf:MatrixInvertibleIffNonsingular}
+\ExecuteMetaData[\mapdir map4.tex]{pf:MatrixInvertibleIffNonsingular}
 \qed
 \end{frame}
 
@@ -1514,13 +1513,13 @@ to the case of inverses.
 %..........
 \begin{frame}
 \lm[lem:ProdInvIsInv]
-\ExecuteMetaData[../map4.tex]{lm:ProdInvIsInv}
+\ExecuteMetaData[\mapdir map4.tex]{lm:ProdInvIsInv}
 % \pause
 % \pf
-% \ExecuteMetaData[../map4.tex]{pf:ProdInvIsInv0}
+% \ExecuteMetaData[\mapdir map4.tex]{pf:ProdInvIsInv0}
 
 % \pause
-% \ExecuteMetaData[../map4.tex]{pf:ProdInvIsInv1}
+% \ExecuteMetaData[\mapdir map4.tex]{pf:ProdInvIsInv1}
 % \qed
 % \end{frame}
 
@@ -1529,16 +1528,16 @@ to the case of inverses.
 
 % \begin{frame}
 \lm[lem:ComputeInvMat]
-\ExecuteMetaData[../map4.tex]{lm:ComputeInvMat}
+\ExecuteMetaData[\mapdir map4.tex]{lm:ComputeInvMat}
 % \pause
 % \pf
-% \ExecuteMetaData[../map4.tex]{pf:ComputeInvMat0}
+% \ExecuteMetaData[\mapdir map4.tex]{pf:ComputeInvMat0}
 
 % \pause
-% \ExecuteMetaData[../map4.tex]{pf:ComputeInvMat1}
+% \ExecuteMetaData[\mapdir map4.tex]{pf:ComputeInvMat1}
 
 % \pause
-% \ExecuteMetaData[../map4.tex]{pf:ComputeInvMat2}
+% \ExecuteMetaData[\mapdir map4.tex]{pf:ComputeInvMat2}
 % \qed  
 \end{frame}
 
@@ -1739,10 +1738,10 @@ The solution is this.
 
 \begin{frame}{The inverse of a $\nbyn{2}$ matrix}
 \co[cor:TwoByTwoInv]
-\ExecuteMetaData[../map4.tex]{co:TwoByTwoInv}
+\ExecuteMetaData[\mapdir map4.tex]{co:TwoByTwoInv}
 \pause
 \pf
-\ExecuteMetaData[../map4.tex]{pf:TwoByTwoInv}
+\ExecuteMetaData[\mapdir map4.tex]{pf:TwoByTwoInv}
 \qed
 \pause  
 \ex

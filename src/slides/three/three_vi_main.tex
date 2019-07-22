@@ -1,14 +1,13 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../map6} % read refs from .aux file
+\usepackage{directories}  % Define \mapdir, \mapmpdir, etc.
+\usepackage{xr}\externaldocument{\mapdir map6} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -54,17 +53,17 @@
 \section{Orthogonal Projection Into a Line}
 %..........
 \begin{frame}{Project a vector into a line}
-\ExecuteMetaData[../map6.tex]{PictureOrthogonalProjectionIntoALine0}
+\ExecuteMetaData[\mapdir map6.tex]{PictureOrthogonalProjectionIntoALine0}
 \begin{center}
-  \includegraphics{../ch3.28}
+  \includegraphics{\mapmpdir ch3.28}
   \hspace*{0.6in}
-  \includegraphics{../ch3.29}      
+  \includegraphics{\mapmpdir ch3.29}      
 \end{center}
 \pause
-\ExecuteMetaData[../map6.tex]{PictureOrthogonalProjectionIntoALine1}
+\ExecuteMetaData[\mapdir map6.tex]{PictureOrthogonalProjectionIntoALine1}
 
 \pause
-\ExecuteMetaData[../map6.tex]{PictureOrthogonalProjectionIntoALine2}
+\ExecuteMetaData[\mapdir map6.tex]{PictureOrthogonalProjectionIntoALine2}
 \end{frame}
 
 
@@ -73,7 +72,7 @@
 \begin{frame}
 We have decomposed $\vec{v}$ into two parts
 $\vec{v}=(c_{\vec{p}}\vec{s})+(v-c_{\vec{p}}\vec{s})$.
-\centergraphic{../ch3.29}
+\centergraphic{\mapmpdir ch3.29}
 Intuitively, some of $\vec{v}$ lies with the line and that gives
 the first part $c_{\vec{p}}\vec{s}$.
 The part of $\vec{v}$ that lies with a line orthogonal to $\ell$
@@ -96,7 +95,7 @@ we don't need them here.
 
 \begin{frame}
 \df[def:ProjIntoLine]
-\ExecuteMetaData[../map6.tex]{df:ProjIntoLine}
+\ExecuteMetaData[\mapdir map6.tex]{df:ProjIntoLine}
 
 \ex
 The projection of this $\Re^3$ vector into the line
@@ -137,7 +136,7 @@ projecting a vector $\vec{v}$ into the line spanned by \( \vec{s} \)
 decomposes $\vec{v}$ into two parts, a part with the line and a part 
 orthogonal to that.
 \begin{center}  \small
-  \vcenteredhbox{\includegraphics{../ch3.35}}
+  \vcenteredhbox{\includegraphics{\mapmpdir ch3.35}}
    \qquad
    $\displaystyle \vec{v}=\proj{\vec{v}}{\spanof{\vec{s}\,}}
              \,+\,\left(\vec{v}-\proj{\vec{v}}{\spanof{\vec{s}\,}}\right)$
@@ -146,7 +145,7 @@ Because these are orthogonal they are in some sense non-interacting.
 Here we will develop that.
 \pause
 \df[df:MutuallyOrthogonal]
-\ExecuteMetaData[../map6.tex]{df:MutuallyOrthogonal}
+\ExecuteMetaData[\mapdir map6.tex]{df:MutuallyOrthogonal}
 \ex
 The vectors of the standard basis $\stdbasis_3\subset\Re^3$
 are mutually orthogonal.
@@ -171,23 +170,23 @@ These two vectors in $\Re^2$ are mutually orthogonal.
 The next result makes `non-interacting' precise.
 
 \th[th:OrthoIsInd]
-\ExecuteMetaData[../map6.tex]{th:OrthoIsInd}
+\ExecuteMetaData[\mapdir map6.tex]{th:OrthoIsInd}
 \pause
 \pf
-\ExecuteMetaData[../map6.tex]{pf:OrthoIsInd}
+\ExecuteMetaData[\mapdir map6.tex]{pf:OrthoIsInd}
 \qed
 \pause
 \co[cor:OrthAndBigEnoughIsBasis]
-\ExecuteMetaData[../map6.tex]{co:OrthAndBigEnoughIsBasis}
+\ExecuteMetaData[\mapdir map6.tex]{co:OrthAndBigEnoughIsBasis}
 
 \pause
 \pf
-\ExecuteMetaData[../map6.tex]{pf:OrthAndBigEnoughIsBasis}
+\ExecuteMetaData[\mapdir map6.tex]{pf:OrthAndBigEnoughIsBasis}
 \qed
 
 \pause
 \df[df:OrthogonalBasis]
-\ExecuteMetaData[../map6.tex]{df:OrthogonalBasis}
+\ExecuteMetaData[\mapdir map6.tex]{df:OrthogonalBasis}
 \end{frame}
 
 
@@ -195,15 +194,15 @@ The next result makes `non-interacting' precise.
 
 \begin{frame}
 \th[th:GramSchmidt]
-\ExecuteMetaData[../map6.tex]{th:GramSchmidt}
+\ExecuteMetaData[\mapdir map6.tex]{th:GramSchmidt}
 
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map6.tex]{pf:GramSchmidt0}
+  \ExecuteMetaData[\mapdir map6.tex]{pf:GramSchmidt0}
 
   \pause
-  \ExecuteMetaData[../map6.tex]{pf:GramSchmidt1}
+  \ExecuteMetaData[\mapdir map6.tex]{pf:GramSchmidt1}
 }{
 
   \bigskip
@@ -213,16 +212,16 @@ The next result makes `non-interacting' precise.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../map6.tex]{pf:GramSchmidt2}
+  \ExecuteMetaData[\mapdir map6.tex]{pf:GramSchmidt2}
 
   \pause
-  \ExecuteMetaData[../map6.tex]{pf:GramSchmidt3}
+  \ExecuteMetaData[\mapdir map6.tex]{pf:GramSchmidt3}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map6.tex]{pf:GramSchmidt4}
+  \ExecuteMetaData[\mapdir map6.tex]{pf:GramSchmidt4}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map6.tex]{pf:GramSchmidt5}
+  \ExecuteMetaData[\mapdir map6.tex]{pf:GramSchmidt5}
   \qed
   \end{frame}
 }{}

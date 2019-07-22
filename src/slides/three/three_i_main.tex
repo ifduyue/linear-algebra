@@ -1,14 +1,13 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../map1} % read refs from .aux file
+\usepackage{directories}  % Define \mapdir, \mapmpdir
+\usepackage{xr}\externaldocument{\mapdir map1} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -227,7 +226,7 @@ This illustrates.
 %..........
 \begin{frame}{Isomorphism}
 \df[def:Isomorphism]
-\ExecuteMetaData[../map1.tex]{df:Isomorphism}
+\ExecuteMetaData[\mapdir map1.tex]{df:Isomorphism}
 \end{frame}
 
 
@@ -518,20 +517,20 @@ gives a different result than the sum done the other way.
 %..........
 \begin{frame}{Special case: Automorphisms}
 \df[df:Automorphism]\hspace*{-1em}
-\ExecuteMetaData[../map1.tex]{df:Automorphism}
+\ExecuteMetaData[\mapdir map1.tex]{df:Automorphism}
 
 \pause
 \ex[exam:RigidPlaneMapsAutos]\hspace*{-1em}
-\ExecuteMetaData[../map1.tex]{ex:RigidPlaneMapsAutos0}
-\centergraphic{../ch3.14}
+\ExecuteMetaData[\mapdir map1.tex]{ex:RigidPlaneMapsAutos0}
+\centergraphic{\mapmpdir ch3.14}
 
 \pause
-\ExecuteMetaData[../map1.tex]{ex:RigidPlaneMapsAutos1}
-\centergraphic{../ch3.15}
+\ExecuteMetaData[\mapdir map1.tex]{ex:RigidPlaneMapsAutos1}
+\centergraphic{\mapmpdir ch3.15}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../map1.tex]{ex:RigidPlaneMapsAutos2}
-\centergraphic{../ch3.16}
+\ExecuteMetaData[\mapdir map1.tex]{ex:RigidPlaneMapsAutos2}
+\centergraphic{\mapmpdir ch3.16}
 Checking that each is an isomorphism is an exercise.
 
 \bigskip
@@ -565,11 +564,11 @@ the obvious one.
 %..........
 \begin{frame}
 \lm[le:IsoSendsZeroToZero]
-\ExecuteMetaData[../map1.tex]{lm:IsoSendsZeroToZero}
+\ExecuteMetaData[\mapdir map1.tex]{lm:IsoSendsZeroToZero}
 
 \pause
 \pf
-\ExecuteMetaData[../map1.tex]{pf:IsoSendsZeroToZero}
+\ExecuteMetaData[\mapdir map1.tex]{pf:IsoSendsZeroToZero}
 \qed
 \end{frame}
 
@@ -579,15 +578,15 @@ the obvious one.
 %..........
 \begin{frame}
 \lm[le:PresStructIffPresCombos]
-\ExecuteMetaData[../map1.tex]{lm:PresStructIffPresCombos}
+\ExecuteMetaData[\mapdir map1.tex]{lm:PresStructIffPresCombos}
 
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map1.tex]{pf:PresStructIffPresCombos0}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:PresStructIffPresCombos0}
 
   \pause
-  \ExecuteMetaData[../map1.tex]{pf:PresStructIffPresCombos1}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:PresStructIffPresCombos1}
 }{
 
   \medskip
@@ -602,7 +601,7 @@ the obvious one.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../map1.tex]{pf:PresStructIffPresCombos2}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:PresStructIffPresCombos2}
   \qed
   \end{frame}
 }{}
@@ -677,14 +676,14 @@ To finish, we combine the two structure checks,  using the lemma's~(2).
 %..........
 \begin{frame}
 \lm[lem:IsoInvAlsoIso]
-\ExecuteMetaData[../map1.tex]{lm:IsoInvAlsoIso}
+\ExecuteMetaData[\mapdir map1.tex]{lm:IsoInvAlsoIso}
 
 \pause
 \pf
-\ExecuteMetaData[../map1.tex]{pf:IsoInvAlsoIso0}
+\ExecuteMetaData[\mapdir map1.tex]{pf:IsoInvAlsoIso0}
 
 \pause
-\ExecuteMetaData[../map1.tex]{pf:IsoInvAlsoIso1}
+\ExecuteMetaData[\mapdir map1.tex]{pf:IsoInvAlsoIso1}
 \qed
 \end{frame}
 
@@ -716,15 +715,15 @@ is also an isomorphism.
 %..........
 \begin{frame}
 \th[th:IsoEquivRel]
-\ExecuteMetaData[../map1.tex]{th:IsoEquivRel}
+\ExecuteMetaData[\mapdir map1.tex]{th:IsoEquivRel}
 
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map1.tex]{pf:IsoEquivRel0}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:IsoEquivRel0}
   
   \pause
-  \ExecuteMetaData[../map1.tex]{pf:IsoEquivRel1}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:IsoEquivRel1}
 }{
   \medskip
   The book contains the proof; here is a diagram of what it
@@ -732,20 +731,20 @@ is also an isomorphism.
   the collection of all finite-dimensional vector spaces
   is partitioned into classes.
   Two spaces are in the same class if they are isomorphic.
-  \centergraphic{../ch3.17}
+  \centergraphic{\mapmpdir ch3.17}
   The next result characterizes these classes.
 }
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../map1.tex]{pf:IsoEquivRel2}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:IsoEquivRel2}
   \qed
 
   So
   the collection of spaces
   is partitioned into classes with
   two spaces in the same class if and only if they are isomorphic.
-  \centergraphic{../ch3.17}
+  \centergraphic{\mapmpdir ch3.17}
   \end{frame}
 }{
 }
@@ -756,7 +755,7 @@ is also an isomorphism.
 %..........
 \begin{frame}
 \th[th:NDimSpaceIsoRN]
-\ExecuteMetaData[../map1.tex]{th:NDimSpaceIsoRN}
+\ExecuteMetaData[\mapdir map1.tex]{th:NDimSpaceIsoRN}
 
 \medskip
 The proof is these two lemmas.
@@ -764,10 +763,10 @@ The proof is these two lemmas.
 
 \pause
 \lm[lem:IsoImpliesSameDim]
-\ExecuteMetaData[../map1.tex]{lm:IsoImpliesSameDim}
+\ExecuteMetaData[\mapdir map1.tex]{lm:IsoImpliesSameDim}
 
 \lm[lem:EqDimImpIso]
-\ExecuteMetaData[../map1.tex]{lm:EqDimImpIso}
+\ExecuteMetaData[\mapdir map1.tex]{lm:EqDimImpIso}
 \end{frame}
 
 
@@ -801,36 +800,36 @@ The basis has two vectors so this is a dimension~$2$ space.
 \iftoggle{showallproofs}{
   \begin{frame}
   \lm[lem:IsoImpliesSameDim]
-  \ExecuteMetaData[../map1.tex]{lm:IsoImpliesSameDim}
+  \ExecuteMetaData[\mapdir map1.tex]{lm:IsoImpliesSameDim}
 
   \pf
-  \ExecuteMetaData[../map1.tex]{pf:IsoImpliesSameDim0}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:IsoImpliesSameDim0}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map1.tex]{pf:IsoImpliesSameDim1}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:IsoImpliesSameDim1}
   \qed
   \end{frame}
 
   %..........
   \begin{frame}
   \lm[lem:EqDimImpIso]
-  \ExecuteMetaData[../map1.tex]{lm:EqDimImpIso}
+  \ExecuteMetaData[\mapdir map1.tex]{lm:EqDimImpIso}
 
   \pause
   \pf
-  \ExecuteMetaData[../map1.tex]{pf:EqDimImpIso0}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:EqDimImpIso0}
 
   \pause
-  \ExecuteMetaData[../map1.tex]{pf:EqDimImpIso1}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:EqDimImpIso1}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map1.tex]{pf:EqDimImpIso2}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:EqDimImpIso2}
 
   \pause
-  \ExecuteMetaData[../map1.tex]{pf:EqDimImpIso3}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:EqDimImpIso3}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map1.tex]{pf:EqDimImpIso4}
+  \ExecuteMetaData[\mapdir map1.tex]{pf:EqDimImpIso4}
   \qed
 
   \pause
@@ -918,14 +917,14 @@ The basis has two vectors so this is a dimension~$2$ space.
 %..........
 \begin{frame}
 \co[co:FiniteDimensionalIsoToReN]
-\ExecuteMetaData[../map1.tex]{co:FiniteDimensionalIsoToReN}
+\ExecuteMetaData[\mapdir map1.tex]{co:FiniteDimensionalIsoToReN}
 
 \pause
 \medskip
 Thus the real spaces $\Re^n$ form a set of canonical
 representatives of the isomorphism classes\Dash every 
 isomorphism class contains one and only one~$\Re^n$.
-\centergraphic{../ch3.18}
+\centergraphic{\mapmpdir ch3.18}
 \end{frame}
 
 

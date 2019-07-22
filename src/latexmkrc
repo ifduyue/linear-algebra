@@ -146,6 +146,10 @@ sub asy2x   {
 # Each slide deck comes in three varieties, so put them in the list of files 
 my @slidefiles = qw( one/one_i one/one_ii one/one_iii
                      two/two_i two/two_i_a two/two_ii two/two_iii
+                     three/three_i three/three_ii  three/three_ii_a
+                     three/three_iii three/three_iv  three/three_iv
+                     three/three_i three/three_ii  three/three_ii_a
+		     three/three_vi
                    );
 for my $i (@slidefiles) {
   push @default_files, "slides/".$i.".tex";

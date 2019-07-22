@@ -1,16 +1,15 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../map3} % read refs from .aux file
-\usepackage{xr}\externaldocument{../map1} % read refs from .aux file
-\usepackage{xr}\externaldocument{../vs3} % read refs from .aux file
+\usepackage{directories}  % Define \mapdir, \mapmpdir, etc.
+\usepackage{xr}\externaldocument{\mapdir map3} % read refs from .aux file
+\usepackage{xr}\externaldocument{\mapdir map1} % read refs from .aux file
+\usepackage{xr}\externaldocument{\vsdir vs3} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -187,7 +186,7 @@ to get the column vector representing the output.
 %..........
 \begin{frame}{Matrix representation of a linear map}
 \df[def:MatRepMap]
-\ExecuteMetaData[../map3.tex]{df:MatRepMap}
+\ExecuteMetaData[\mapdir map3.tex]{df:MatRepMap}
 
 \pause
 \medskip
@@ -291,7 +290,7 @@ This is $\nbym{1}{2}$ matrix representation.
 %..........
 \begin{frame}\vspace*{-.5ex}
 \th[th:MatMultRepsFuncAppl]
-\ExecuteMetaData[../map3.tex]{th:MatMultRepsFuncAppl}
+\ExecuteMetaData[\mapdir map3.tex]{th:MatMultRepsFuncAppl}
 \end{frame}
 \begin{frame}
 \pf
@@ -302,7 +301,7 @@ See \nearbyexercise{exer:MatVecMultRepLinMap}.
 \pause
 \medskip
 \df[def:MatrixVecProd]
-\ExecuteMetaData[../map3.tex]{df:MatrixVecProd}
+\ExecuteMetaData[\mapdir map3.tex]{df:MatrixVecProd}
 
 \pause
 \ex
@@ -520,11 +519,11 @@ the result is $c\cdot\rep{h(\vec{u})}{D}+d\cdot\rep{h(\vec{v})}{D}$.
 
 \begin{frame}
 \th[th:MatIsLinMap]
-\ExecuteMetaData[../map3.tex]{th:MatIsLinMap}
+\ExecuteMetaData[\mapdir map3.tex]{th:MatIsLinMap}
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map3.tex]{pf:MatIsLinMap}
+  \ExecuteMetaData[\mapdir map3.tex]{pf:MatIsLinMap}
   \qed
 }{
  
@@ -636,14 +635,14 @@ zero matrix.
 %..........
 \begin{frame}{Rank}
 \th[th:RankMatEqRankMap]
-\ExecuteMetaData[../map3.tex]{th:RankMatEqRankMap}
+\ExecuteMetaData[\mapdir map3.tex]{th:RankMatEqRankMap}
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map3.tex]{pf:RankMatEqRankMap0}
+  \ExecuteMetaData[\mapdir map3.tex]{pf:RankMatEqRankMap0}
 
   \pause
-  \ExecuteMetaData[../map3.tex]{pf:RankMatEqRankMap1}
+  \ExecuteMetaData[\mapdir map3.tex]{pf:RankMatEqRankMap1}
 }{
 
   \bigskip
@@ -653,7 +652,7 @@ zero matrix.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../map3.tex]{pf:RankMatEqRankMap2}
+  \ExecuteMetaData[\mapdir map3.tex]{pf:RankMatEqRankMap2}
   \qed
   \end{frame}
 }{}
@@ -729,14 +728,14 @@ nonzero row so it has matrix rank~$1$, as on the prior slide.
 %..........
 \begin{frame}{One-to-One and Onto}
 \co[cor:MatDescsMap]
-\ExecuteMetaData[../map3.tex]{co:MatDescsMap}
+\ExecuteMetaData[\mapdir map3.tex]{co:MatDescsMap}
 \iftoggle{showallproofs}{
   \pause
   \pf
-  \ExecuteMetaData[../map3.tex]{pf:MatDescsMap0}
+  \ExecuteMetaData[\mapdir map3.tex]{pf:MatDescsMap0}
 
   \pause
-  \ExecuteMetaData[../map3.tex]{pf:MatDescsMap1}
+  \ExecuteMetaData[\mapdir map3.tex]{pf:MatDescsMap1}
   \qed
 }{
 
@@ -790,7 +789,7 @@ that the map $t_{\pi/4}$ is one-to-one and onto.
 %..........
 \begin{frame}
 \df[df:NonsingularMap]
-\ExecuteMetaData[../map3.tex]{df:NonsingularMap}
+\ExecuteMetaData[\mapdir map3.tex]{df:NonsingularMap}
 % \end{frame}
 
 
@@ -800,13 +799,13 @@ that the map $t_{\pi/4}$ is one-to-one and onto.
 % \begin{frame}
 \pause
 \lm[le:NonsingMatIffNonsingMap]
-\ExecuteMetaData[../map3.tex]{le:NonsingMatIffNonsingMap}
+\ExecuteMetaData[\mapdir map3.tex]{le:NonsingMatIffNonsingMap}
 \pause
 \pf
-\ExecuteMetaData[../map3.tex]{pf:NonsingMatIffNonsingMap0}
+\ExecuteMetaData[\mapdir map3.tex]{pf:NonsingMatIffNonsingMap0}
 
 \pause
-\ExecuteMetaData[../map3.tex]{pf:NonsingMatIffNonsingMap1}
+\ExecuteMetaData[\mapdir map3.tex]{pf:NonsingMatIffNonsingMap1}
 \qed
 \end{frame}
 
@@ -868,7 +867,7 @@ associated with the same output.
 \medskip
 % License: Creative Commons, by Wikiphoto
 % Source: http://www.wikihow.com/Image:Duel-in-Red-Dead-Redemption-Step-1.jpg
-\begin{graphicbytext}[-2ex]{.26}{duel.jpg}
+\begin{graphicbytext}[-2ex]{.26}{pix/duel.jpg}
 We could decide onto-ness and one-to-one-ness for this function but  
 maybe 
 we will one day meet a function we can't beat.

@@ -1,15 +1,14 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../map5} % read refs from .aux file
-\usepackage{xr}\externaldocument{../map4} % 
+\usepackage{directories}  % Define \mapdir, \mapmpdir, etc
+\usepackage{xr}\externaldocument{\mapdir map5} % read refs from .aux file
+\usepackage{xr}\externaldocument{\mapdir map4} % 
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -81,22 +80,22 @@ respect to a second.
 Think of translating from $\rep{\vec{v}}{B}$ to $\rep{\vec{v}}{D}$
 as holding the vector constant. 
 This is the arrow diagram.
-\ExecuteMetaData[../map5.tex]{ChangeRepresentationOfVectorArrowDiagram}
+\ExecuteMetaData[\mapdir map5.tex]{ChangeRepresentationOfVectorArrowDiagram}
 
 \pause
 \df[df:ChangeOfBasisMatrix]
-\ExecuteMetaData[../map5.tex]{df:ChangeOfBasisMatrix}
+\ExecuteMetaData[\mapdir map5.tex]{df:ChangeOfBasisMatrix}
 \end{frame}
 
 
 
 \begin{frame}
 \lm[le:ChBasisMatDoesChBases]
-\ExecuteMetaData[../map5.tex]{lm:ChBasisMatDoesChBases}
+\ExecuteMetaData[\mapdir map5.tex]{lm:ChBasisMatDoesChBases}
 
 \iftoggle{showallproofs}{
   \pf
-  \ExecuteMetaData[../map5.tex]{pf:ChBasisMatDoesChBases}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:ChBasisMatDoesChBases}
   \qed
 }{
   \medskip
@@ -149,13 +148,13 @@ For example, we can translate the representation of $\vec{v}=2-x+3x^2$.
 
 \begin{frame}
 \lm[le:NonSingIsChBasis]
-\ExecuteMetaData[../map5.tex]{lm:NonSingIsChBasis}
+\ExecuteMetaData[\mapdir map5.tex]{lm:NonSingIsChBasis}
 \iftoggle{showallproofs}{
   \pf
-  \ExecuteMetaData[../map5.tex]{pf:NonSingIsChBasis0}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:NonSingIsChBasis0}
 
   \pause
-  \ExecuteMetaData[../map5.tex]{pf:NonSingIsChBasis1}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:NonSingIsChBasis1}
 }{
 
   \medskip
@@ -194,7 +193,7 @@ For example, we can translate the representation of $\vec{v}=2-x+3x^2$.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../map5.tex]{pf:NonSingIsChBasis2}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:NonSingIsChBasis2}
   \begin{equation*}\hspace*{-1.5em}
     M_{i}(k)
       \colvec{
@@ -251,13 +250,13 @@ For example, we can translate the representation of $\vec{v}=2-x+3x^2$.
   \end{equation*}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map5.tex]{pf:NonSingIsChBasis3}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:NonSingIsChBasis3}
   
   \pause
-  \ExecuteMetaData[../map5.tex]{pf:NonSingIsChBasis4}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:NonSingIsChBasis4}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../map5.tex]{pf:NonSingIsChBasis5}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:NonSingIsChBasis5}
   \qed
   \end{frame}
 }{}
@@ -265,7 +264,7 @@ For example, we can translate the representation of $\vec{v}=2-x+3x^2$.
 
 \begin{frame}
 \co[co:MatrixNonsingularIffChangesBasis]
-\ExecuteMetaData[../map5.tex]{co:MatrixNonsingularIffChangesBasis}
+\ExecuteMetaData[\mapdir map5.tex]{co:MatrixNonsingularIffChangesBasis}
 \end{frame}
 
 
@@ -279,7 +278,7 @@ The natural next step is to see how to convert $\rep{h}{B,D}$
 to $\rep{h}{\hat{B},\hat{D}}$.
 Here is the arrow diagram.
 
-\ExecuteMetaData[../map5.tex]{ChangeRepresentationOfMapArrowDiagram}
+\ExecuteMetaData[\mapdir map5.tex]{ChangeRepresentationOfMapArrowDiagram}
 \end{frame}
 
 
@@ -432,10 +431,10 @@ Thus we have this.
 
 \begin{frame}
 \df[def:MatEquiv]
-\ExecuteMetaData[../map5.tex]{df:MatEquiv}
+\ExecuteMetaData[\mapdir map5.tex]{df:MatEquiv}
 \pause
 \co[le:MatEqIsSameMap]
-\ExecuteMetaData[../map5.tex]{co:MatEqIsSameMap}
+\ExecuteMetaData[\mapdir map5.tex]{co:MatEqIsSameMap}
 
 \pause
 \medskip
@@ -447,7 +446,7 @@ the set of matrices into matrix equivalence classes.
   \raisebox{.4in}{\begin{tabular}{l}
                     All matrices:
                   \end{tabular}}
-  \includegraphics{../ch3.23}
+  \includegraphics{\mapmpdir ch3.23}
   \raisebox{.4in}{\begin{tabular}{l}
                      $H$ matrix equivalent \\ to $\hat{H}$
                   \end{tabular}}
@@ -459,11 +458,11 @@ the set of matrices into matrix equivalence classes.
 
 \begin{frame}{Canonical form for matrix equivalence}
 \th[th:CanonFormForMatEquiv]
-\ExecuteMetaData[../map5.tex]{th:CanonFormForMatEquiv}
+\ExecuteMetaData[\mapdir map5.tex]{th:CanonFormForMatEquiv}
 
 \pause
 \medskip
-\ExecuteMetaData[../map5.tex]{BlockPartialIdentityForm}
+\ExecuteMetaData[\mapdir map5.tex]{BlockPartialIdentityForm}
 \end{frame}
 
 \begin{frame}
@@ -675,7 +674,7 @@ In sum, we have this equation.
 \iftoggle{showallproofs}{
   \begin{frame}
   \pf
-  \ExecuteMetaData[../map5.tex]{pf:CanonFormForMatEquiv}
+  \ExecuteMetaData[\mapdir map5.tex]{pf:CanonFormForMatEquiv}
   \qed
   \end{frame}
 }{}
@@ -701,10 +700,10 @@ is projection from three~space to the $xy$~plane.
 
 \begin{frame}{Matrix equivalence is characterized by rank}
 \co[co:MatrixEquivalentIffSameRank]
-\ExecuteMetaData[../map5.tex]{co:MatrixEquivalentIffSameRank}
+\ExecuteMetaData[\mapdir map5.tex]{co:MatrixEquivalentIffSameRank}
 \pause
 \pf
-\ExecuteMetaData[../map5.tex]{pf:MatrixEquivalentIffSameRank}
+\ExecuteMetaData[\mapdir map5.tex]{pf:MatrixEquivalentIffSameRank}
 \qed
 
 % \pause
