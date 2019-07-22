@@ -1,5 +1,7 @@
 // r3_subspaces.asy
 import jh;
+// import settexpreamble;
+//   settexpreamble();
 // real height; height=8.5cm; size(0,height); // beamer is 12.8cm x 9.6cm
 import settings;
 // settings.render=0;   // for png: -10;  // fewer jaggies but very slow
@@ -23,24 +25,12 @@ real marginwd=4pt;
 
 pen edgepen=fontsize(8pt)+linewidth(0.4pt)+lightblue;
 
+draw((0,0)--(10,10));
+
 // define style
 defaultnodestyle=nodestyle(xmargin=4pt, ymargin=2pt, drawfn=FillDrawer(white,white));
 defaultdrawstyle=drawstyle(p=fontsize(8pt)+fontcommand("\ttfamily"), arrow=Arrow(6));
 
-// from node 4.0
-// draw_t style1=FillDrawer(white,white);  // node boxes with no edge
-// defaultnodestyle=nodestyle(xmargin=2pt, ymargin=1pt, drawfn=style1);
-
-// node rthree=box("$\Re^3$",(0pt,dimthree),marginwd,style1,mag);
-// node xyplane=box("$xy$-plane",(-3.4*horiz_gap,dimtwo),marginwd,style1,mag);
-// node pone=box("$\set{\colvec{x \\ y \\ z}\suchthat x+y+z=0}$",(-1.7*horiz_gap,dimtwo),marginwd,style1,mag);
-// node ptwo=box("$\set{\colvec{x \\ y \\ z}\suchthat x+2z=0}$",(0.1*horiz_gap,dimtwo),marginwd,style1,mag);
-// node pthree=box("\ldots",(1.1*horiz_gap,dimtwo),marginwd,style1,mag);
-// node yaxis=box("$y$-axis",(-4.3*horiz_gap,dimone),marginwd,style1,mag);
-// node lone=box("$\set{\colvec{x \\ y \\ z}\suchthat \text{$x-y+z=0$ and $x+2z=0$}}$",(-2.2*horiz_gap,dimone),marginwd,style1,mag);
-// node ltwo=box("$\set{\colvec{x \\ y \\ z}\suchthat \text{$y=2x$ and $z=0$}}$",(0.2*horiz_gap,dimone),marginwd,style1,mag);
-// node lthree=box("\ldots",(1.3*horiz_gap,dimone),marginwd,style1,mag);
-// node triv=box("trivial subspace $\set{\colvec{0 \\ 0 \\ 0}}$",(0,dimzero),marginwd,style1,mag);
 
 // contents
 node rthree=nbox("$\Re^3$");

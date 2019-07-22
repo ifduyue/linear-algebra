@@ -1,15 +1,14 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../vs2} % read refs from .aux file
-\usepackage{xr}\externaldocument{../gr3} % read refs from .aux file
+\usepackage{directories}  % Defines \vsdir, \vsmpdir
+\usepackage{xr}\externaldocument{\vsdir vs2} % read refs from .aux file
+\usepackage{xr}\externaldocument{\grdir gr3} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -61,10 +60,10 @@ In any vector space, a set of vectors is
 if none of its elements is a linear combination of the 
 others from the set.
 Otherwise the set is \definend{linearly dependent}.
-% Makes footnote: \ExecuteMetaData[../vs2.tex]{df:LinInd}
+% Makes footnote: \ExecuteMetaData[\vsdir vs2.tex]{df:LinInd}
 
 \pause\medskip
-\ExecuteMetaData[../vs2.tex]{LinInd}
+\ExecuteMetaData[\vsdir vs2.tex]{LinInd}
 \end{frame}
 
 
@@ -72,11 +71,11 @@ Otherwise the set is \definend{linearly dependent}.
 %..........
 \begin{frame}
 \lm[le:LDIffANonTrivLinRel]
-\ExecuteMetaData[../vs2.tex]{lm:LDIffANonTrivLinRel}
+\ExecuteMetaData[\vsdir vs2.tex]{lm:LDIffANonTrivLinRel}
 
 \pause
 \pf
-\ExecuteMetaData[../vs2.tex]{pf:LDIffANonTrivLinRel}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:LDIffANonTrivLinRel}
 \qed
 
 \bigskip
@@ -167,15 +166,15 @@ and note that it has more than just the solution $c_1=c_2=c_3=0$.
 %..........
 \begin{frame}
 \lm[lm:AddVecSpanNoGrowIffVecInSpan]
-\ExecuteMetaData[../vs2.tex]{lm:AddVecSpanNoGrowIffVecInSpan}
+\ExecuteMetaData[\vsdir vs2.tex]{lm:AddVecSpanNoGrowIffVecInSpan}
 
 \pause
 \iftoggle{showallproofs}{
   \pf
-  \ExecuteMetaData[../vs2.tex]{pf:AddVecSpanNoGrowIffVecInSpan0}
+  \ExecuteMetaData[\vsdir vs2.tex]{pf:AddVecSpanNoGrowIffVecInSpan0}
   
   \pause
-  \ExecuteMetaData[../vs2.tex]{pf:AddVecSpanNoGrowIffVecInSpan1}
+  \ExecuteMetaData[\vsdir vs2.tex]{pf:AddVecSpanNoGrowIffVecInSpan1}
   \qed
 }{
   \bigskip
@@ -205,7 +204,7 @@ and note that it has more than just the solution $c_1=c_2=c_3=0$.
 
 \begin{frame}
 \co[cor:OmitVecNotShrinkSpanIffVecIsDep]
-\ExecuteMetaData[../vs2.tex]{cor:OmitVecNotShrinkSpanIffVecIsDep}
+\ExecuteMetaData[\vsdir vs2.tex]{cor:OmitVecNotShrinkSpanIffVecIsDep}
 
 \ex
 These two subsets of $\R^3$ have the same span
@@ -218,10 +217,10 @@ because in the first set $\vec{v}_3=2\vec{v}_2-\vec{v}_1$.
 
 \pause
 \co[cor:LiSetMinSpanSet]
-\ExecuteMetaData[../vs2.tex]{cor:LiSetMinSpanSet}
+\ExecuteMetaData[\vsdir vs2.tex]{cor:LiSetMinSpanSet}
 \iftoggle{showallproofs}{
   \pf
-  \ExecuteMetaData[../vs2.tex]{pf:LiSetMinSpanSet}\qed
+  \ExecuteMetaData[\vsdir vs2.tex]{pf:LiSetMinSpanSet}\qed
 }{
 
   \ex
@@ -239,14 +238,14 @@ because in the first set $\vec{v}_3=2\vec{v}_2-\vec{v}_1$.
 %..........
 \begin{frame}
 \lm[lm:AddVecLiSetIsLiIffVecNotInSpan]
-\ExecuteMetaData[../vs2.tex]{lm:AddVecLiSetIsLiIffVecNotInSpan}
+\ExecuteMetaData[\vsdir vs2.tex]{lm:AddVecLiSetIsLiIffVecNotInSpan}
 
 \iftoggle{showallproofs}{
 \pause
 \pf
-\ExecuteMetaData[../vs2.tex]{pf:AddVecLiSetIsLiIffVecNotInSpan0}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:AddVecLiSetIsLiIffVecNotInSpan0}
 
-\ExecuteMetaData[../vs2.tex]{pf:AddVecLiSetIsLiIffVecNotInSpan1}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:AddVecLiSetIsLiIffVecNotInSpan1}
 \qed}{
 \ex The book has the proof; here is an illustration.
 Consider this linearly independent subset of $\polyspace_2$.
@@ -289,17 +288,17 @@ with solution $r_3=c$, $r_2=(1/2)a+(1/2)b$ and $r_1=(1/2)a-(1/2)b-c$.)
 %..........
 \begin{frame}
 \co[th:AlwaysAnLDSubset]
-\ExecuteMetaData[../vs2.tex]{th:AlwaysAnLDSubset}
+\ExecuteMetaData[\vsdir vs2.tex]{th:AlwaysAnLDSubset}
 
 \pause
 \pf
-\ExecuteMetaData[../vs2.tex]{pf:AlwaysAnLDSubset0}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset0}
 
 \pause
-\ExecuteMetaData[../vs2.tex]{pf:AlwaysAnLDSubset1}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset1}
 
 \pause
-\ExecuteMetaData[../vs2.tex]{pf:AlwaysAnLDSubset2}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset2}
 \qed
 \end{frame}
 \begin{frame}
@@ -382,11 +381,11 @@ and so we cannot omit any members without shrinking the span.
 %..........
 \begin{frame}
 \co[cor:LDMeansLC]
-\ExecuteMetaData[../vs2.tex]{co:LDMeansLC}
+\ExecuteMetaData[\vsdir vs2.tex]{co:LDMeansLC}
 
 \pause
 \pf
-\ExecuteMetaData[../vs2.tex]{pf:LDMeansLC}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:LDMeansLC}
 \qed
 \end{frame}
 
@@ -396,16 +395,16 @@ and so we cannot omit any members without shrinking the span.
 %..................
 \begin{frame}{Linear independence and subset}
 \lm[le:SubsetPreserveLI]
-\ExecuteMetaData[../vs2.tex]{lm:SubsetPreserveLI}
+\ExecuteMetaData[\vsdir vs2.tex]{lm:SubsetPreserveLI}
 
 \pf
-\ExecuteMetaData[../vs2.tex]{pf:SubsetPreserveLI}
+\ExecuteMetaData[\vsdir vs2.tex]{pf:SubsetPreserveLI}
 \qed
 
 \pause
 \medskip
 This table summarizes the cases.
-\ExecuteMetaData[../vs2.tex]{IndependenceAndSubsetTable}
+\ExecuteMetaData[\vsdir vs2.tex]{IndependenceAndSubsetTable}
 \medskip
 
 An example of the lower left is that the set $S$ of all vectors in the

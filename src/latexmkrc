@@ -19,6 +19,9 @@ my $compile_dir = getcwd;
 # The double slash means that it will look in all dirs below compile_dir 
 ensure_path( 'TEXINPUTS', "$compile_dir//" ); 
 ensure_path( 'MPINPUTS', "$compile_dir//" );
+ensure_path( 'ASYMPTOTE_DIR', "$compile_dir/asy/" );
+ensure_path( 'ASYMPTOTE_DIR', "$compile_dir/asy/asy-graphtheory-master/" );
+ensure_path( 'ASYMPTOTE_DIR', "$compile_dir/asy/asy-graphtheory-master/modules/" );
 
 
 # ===== MetaPost-handling ========
@@ -79,41 +82,47 @@ sub asy2pdf { return asy2x( $_[0], 'pdf' ); }
 sub asy2x   {
     my $file = $_[0];
     my ($name, $path) =  fileparse( $file );
-    # print "!!!!! file name is ",$name,", file path is ",$path,"\n";
-    # print "!!!!! file name with trailing digits stripped is ",$name,"\n";
+    print "!!!!! file name is ",$name,", file path is ",$path,"\n";
     chdir $path;
-    # print "!!!!! current dir is ",getcwd,"\n";
-    # print "!!!!! about to run the systemcommand ","asy -vv -f '$_[1]' '$_[0]' &> '$_[0].log'","\n";
+    print "!!!!! current dir is ",getcwd,"\n";
+    my $asy_string = "ASYMPTOTE_DIR=\"/home/ftpmaint/Documents/linear-algebra.git/src/asy/asy-graphtheory-master/modules:/home/ftpmaint/Documents/linear-algebra.git/src/asy\"";
+    # my $cmd_string = "$asy_string asy -nosafe -vv '$name' &> '$name.log'";
+    my $cmd_string = "$asy_string asy -nosafe -vv '$name'";
+    # print "!!!!! about to run the system command ","asy -nosafe -vv -f '$_[1]' '$name' &> '$name.log'","\n";
+    print "!!!!! about to run the systemcommand ","$cmd_string","\n";
     # print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
-    my $ret = system("asy -vv -f '$_[1]' '$name' &> '$name.log'");
-    # print "!!!!! finished with the system command\n";
-    my $FH = new FileHandle;
-    open $FH, "$name.log";
-    %imp = ();
+    # -nosafe gets around GS error when using opacity:
+    #    https://github.com/vectorgraphics/asymptote/issues/77
+    # my $ret = system("asy -nosafe -vv -f '$_[1]' '$name' &> '$name.log'");
+    my $ret = system("$cmd_string");
+    print "!!!!! finished with the system command\n";
+    # my $FH = new FileHandle;
+    # open $FH, "$name.log";
+    # %imp = ();
 
-    while (<$FH>) {
-        if (/^(Including|Loading) .* from (.*)\s*$/) {
-           my $import = $2; 
- 	  $imp{$import} = 1;
-        }
-        elsif ( /^error/ || /^.*\.asy: \d/ ) {
-            warn "==Message from asy: $_"; 
- 	   $ret = 1;
-        }
-        elsif ( /^kpsewhich / || /^Processing / || /^Using /
-                || /^Welcome / || /^Wrote /|| /^cd /|| /^gs / 
- 	     ) {
-        }
-        else {
-            warn "==Message from asy: $_";
-        }
-    }
-    # print "!!!!! About to close file handle.\n";
-    close $FH;
+    # while (<$FH>) {
+    #     if (/^(Including|Loading) .* from (.*)\s*$/) {
+    #        my $import = $2; 
+    # 	  $imp{$import} = 1;
+    #     }
+    #     elsif ( /^error/ || /^.*\.asy: \d/ ) {
+    #         warn "==Message from asy: $_"; 
+    # 	   $ret = 1;
+    #     }
+    #     elsif ( /^kpsewhich / || /^Processing / || /^Using /
+    #             || /^Welcome / || /^Wrote /|| /^cd /|| /^gs / 
+    # 	     ) {
+    #     }
+    #     else {
+    #         warn "==Message from asy: $_";
+    #     }
+    # }
+    # # print "!!!!! About to close file handle.\n";
+    # close $FH;
 # For latexmk 4.48
     # print "!!!!! About to do rdb_set_source.\n";
-    rdb_set_source( $rule, keys %imp );
-    # print "!!!!! About to change dir back to compile directory.\n";
+    # rdb_set_source( $rule, keys %imp );
+    print "!!!!! About to change dir back to compile directory.\n";
     chdir $compile_dir;
     # print "!!!!! Done.\n";
     return $ret;
@@ -136,7 +145,8 @@ sub asy2x   {
 
 # Each slide deck comes in three varieties, so put them in the list of files 
 my @slidefiles = qw( one/one_i one/one_ii one/one_iii
-   );
+                     two/two_i two/two_i_a two/two_ii two/two_iii
+                   );
 for my $i (@slidefiles) {
   push @default_files, "slides/".$i.".tex";
   push @default_files, "slides/".$i."_handout.tex";

@@ -1,17 +1,16 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../vs3} % read refs from .aux file
-\usepackage{xr}\externaldocument{../vs2} % read refs from .aux file
-\usepackage{xr}\externaldocument{../gr1} % read refs from .aux file
-\usepackage{xr}\externaldocument{../gr3} % read refs from .aux file
+\usepackage{directories}  % Defines \vsdir, \vsmpdir, etc
+\usepackage{xr}\externaldocument{\vsdir vs3} % read refs from .aux file
+\usepackage{xr}\externaldocument{\vsdir vs2} % read refs from .aux file
+\usepackage{xr}\externaldocument{\grdir gr1} % read refs from .aux file
+\usepackage{xr}\externaldocument{\grdir gr3} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -58,10 +57,10 @@
 %..........
 \begin{frame}{Definition of basis}
 \df[def:basis]
-\ExecuteMetaData[../vs3.tex]{df:basis}
+\ExecuteMetaData[\vsdir vs3.tex]{df:basis}
 
 \pause\medskip
-\ExecuteMetaData[../vs3.tex]{BasisNotation}
+\ExecuteMetaData[\vsdir vs3.tex]{BasisNotation}
 
 \pause
 \ex
@@ -181,7 +180,7 @@ $\vec{\imath}$, $\vec{\jmath}$, and $\vec{k}$.
 
 \pause
 \df[df:StandardBasis]
-\ExecuteMetaData[../vs3.tex]{df:StandardBasis}
+\ExecuteMetaData[\vsdir vs3.tex]{df:StandardBasis}
 
 \medskip\noindent
 Checking that $\stdbasis_n$ is a basis for $\Re^n$ is routine.
@@ -196,14 +195,14 @@ common practice
 and refer to it as a set.
 
 \th[th:BasisIffUniqueRepWRT]
-\ExecuteMetaData[../vs3.tex]{th:BasisIffUniqueRepWRT}
+\ExecuteMetaData[\vsdir vs3.tex]{th:BasisIffUniqueRepWRT}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:BasisIffUniqueRepWRT0}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:BasisIffUniqueRepWRT0}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../vs3.tex]{pf:BasisIffUniqueRepWRT1}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:BasisIffUniqueRepWRT1}
 \qed
 \end{frame}
 
@@ -236,7 +235,7 @@ there is one, and only one, solution $c_1=3$, $c_2=-1$, and~$c_3=-1$.
 %..........
 \begin{frame}
 \df[def:RepresentingVectors]
-\ExecuteMetaData[../vs3.tex]{df:RepresentingVectors}
+\ExecuteMetaData[\vsdir vs3.tex]{df:RepresentingVectors}
 \end{frame}
 
 
@@ -290,7 +289,7 @@ has $\rep{\vec{w}}{\stdbasis_n}=\vec{w}$.
 %..........
 \begin{frame}{Definition of dimension}
 \df[df:FiniteDimensional]
-\ExecuteMetaData[../vs3.tex]{df:FiniteDimensional}
+\ExecuteMetaData[\vsdir vs3.tex]{df:FiniteDimensional}
 
 \ex
 The space 
@@ -451,14 +450,14 @@ so $\vec{v}_2$ is not redundant on the other two members of $B_2$.
 
 \begin{frame}
 \lm[lm:ExchangeLemma]
-\ExecuteMetaData[../vs3.tex]{lm:ExchangeLemma}
+\ExecuteMetaData[\vsdir vs3.tex]{lm:ExchangeLemma}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:ExchangeLemma0}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:ExchangeLemma0}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../vs3.tex]{pf:ExchangeLemma1}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:ExchangeLemma1}
 \qed
 \end{frame}
 
@@ -467,7 +466,7 @@ so $\vec{v}_2$ is not redundant on the other two members of $B_2$.
 %..........
 \begin{frame}{All of a space's bases are the same size}
 \th[th:AllBasesSameSize]
-\ExecuteMetaData[../vs3.tex]{th:AllBasesSameSize}
+\ExecuteMetaData[\vsdir vs3.tex]{th:AllBasesSameSize}
 
 \ex
 The idea of the proof is that, given two bases, exchange
@@ -501,16 +500,16 @@ The third exchange finishes it off.
 
 \begin{frame}
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:AllBasesSameSize0}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:AllBasesSameSize0}
 
 \pause
-\ExecuteMetaData[../vs3.tex]{pf:AllBasesSameSize1}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:AllBasesSameSize1}
 
 \pause
-\ExecuteMetaData[../vs3.tex]{pf:AllBasesSameSize2}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:AllBasesSameSize2}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../vs3.tex]{pf:AllBasesSameSize3}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:AllBasesSameSize3}
 \qed
 \end{frame}
 
@@ -519,7 +518,7 @@ The third exchange finishes it off.
 %..........
 \begin{frame}{Definition of dimension}
 \df[df:Dimension]
-\ExecuteMetaData[../vs3.tex]{df:Dimension}
+\ExecuteMetaData[\vsdir vs3.tex]{df:Dimension}
 
 \pause
 \ex
@@ -587,11 +586,11 @@ So $S$ is a vector space of dimension two.
 %..........
 \begin{frame}
 \co[cor:NoLiSetGreatDim]
-\ExecuteMetaData[../vs3.tex]{co:NoLiSetGreatDim}
+\ExecuteMetaData[\vsdir vs3.tex]{co:NoLiSetGreatDim}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:NoLiSetGreatDim}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:NoLiSetGreatDim}
 \qed
 
 \pause\medskip
@@ -605,18 +604,18 @@ finite-dimensional without specifically saying so.
 %..........
 \begin{frame}
 \co[cor:LIExpBas]
-\ExecuteMetaData[../vs3.tex]{co:LIExpBas}
+\ExecuteMetaData[\vsdir vs3.tex]{co:LIExpBas}
 
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:LIExpBas}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:LIExpBas}
 \qed
 
 \pause
 \co[co:SpanningSetShrinksToABasis]
-\ExecuteMetaData[../vs3.tex]{co:SpanningSetShrinksToABasis}
+\ExecuteMetaData[\vsdir vs3.tex]{co:SpanningSetShrinksToABasis}
 
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:SpanningSetShrinksToABasis}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:SpanningSetShrinksToABasis}
 \qed
 \end{frame}
 
@@ -625,11 +624,11 @@ finite-dimensional without specifically saying so.
 %..........
 \begin{frame}
 \co[cor:NVecsRNSpanIffLI]
-\ExecuteMetaData[../vs3.tex]{co:NVecsRNSpanIffLI}
+\ExecuteMetaData[\vsdir vs3.tex]{co:NVecsRNSpanIffLI}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:NVecsRNSpanIffLI}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:NVecsRNSpanIffLI}
 \qed
 
 \pause
@@ -654,27 +653,27 @@ it is therefore a basis.
 %..........
 \begin{frame}{Row space}
 \df[df:RowSpace]
-\ExecuteMetaData[../vs3.tex]{df:RowSpace}
+\ExecuteMetaData[\vsdir vs3.tex]{df:RowSpace}
 
 \pause
 \lm[le:RowSpUnchByGR]
-\ExecuteMetaData[../vs3.tex]{lm:RowSpUnchByGR}
+\ExecuteMetaData[\vsdir vs3.tex]{lm:RowSpUnchByGR}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:RowSpUnchByGR0}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RowSpUnchByGR0}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../vs3.tex]{pf:RowSpUnchByGR1}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RowSpUnchByGR1}
 \qed
 
 \pause
 \lm[le:RowSpUnchByGR]
-\ExecuteMetaData[../vs3.tex]{lm:RowsEchMatLI}
+\ExecuteMetaData[\vsdir vs3.tex]{lm:RowsEchMatLI}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:RowsEchMatLI}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RowsEchMatLI}
 \qed
 \end{frame}
 
@@ -720,7 +719,7 @@ row is three times the first plus the second, and eliminated that extra row.
 %..........
 \begin{frame}{Column space}
 \df[df:ColumnSpace]
-\ExecuteMetaData[../vs3.tex]{df:ColumnSpace}
+\ExecuteMetaData[\vsdir vs3.tex]{df:ColumnSpace}
 
 \pause
 \ex
@@ -754,7 +753,7 @@ is in the column space of this matrix.
 %..........
 \begin{frame}{Transpose}
 \df[df:Transpose]
-\ExecuteMetaData[../vs3.tex]{df:Transpose}
+\ExecuteMetaData[\vsdir vs3.tex]{df:Transpose}
 
 \pause
 \ex
@@ -819,11 +818,11 @@ shows that the column space is the entire vector space $\Re^2$.
 %..........
 \begin{frame}
 \lm[le:RowOpsNoChngColRnk]
-\ExecuteMetaData[../vs3.tex]{lm:RowOpsNoChngColRnk}
+\ExecuteMetaData[\vsdir vs3.tex]{lm:RowOpsNoChngColRnk}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:RowOpsNoChngColRnk}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RowOpsNoChngColRnk}
 \qed
 \end{frame}
 
@@ -833,19 +832,19 @@ shows that the column space is the entire vector space $\Re^2$.
 %..........
 \begin{frame}
 \th[th:RowRankEqualsColumnRank]
-\ExecuteMetaData[../vs3.tex]{th:RowRankEqualsColumnRank}
+\ExecuteMetaData[\vsdir vs3.tex]{th:RowRankEqualsColumnRank}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:RowRankEqualsColumnRank0}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RowRankEqualsColumnRank0}
 
 \pause
-\ExecuteMetaData[../vs3.tex]{pf:RowRankEqualsColumnRank1}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RowRankEqualsColumnRank1}
 \qed
 
 \pause
 \df[df:Rank]
-\ExecuteMetaData[../vs3.tex]{df:Rank}
+\ExecuteMetaData[\vsdir vs3.tex]{df:Rank}
 \end{frame}
 
 
@@ -884,11 +883,11 @@ because that's the size of its largest set of linearly independent rows.
 %..........
 \begin{frame}
 \th[th:RankVsSoltnSp]
-\ExecuteMetaData[../vs3.tex]{tm:RankVsSoltnSp}
+\ExecuteMetaData[\vsdir vs3.tex]{tm:RankVsSoltnSp}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:RankVsSoltnSp}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:RankVsSoltnSp}
 \qed
 \end{frame}
 
@@ -898,11 +897,11 @@ because that's the size of its largest set of linearly independent rows.
 %..........
 \begin{frame}
 \co[co:EquivToNonsingular]
-\ExecuteMetaData[../vs3.tex]{co:EquivToNonsingular}
+\ExecuteMetaData[\vsdir vs3.tex]{co:EquivToNonsingular}
 
 \pause
 \pf
-\ExecuteMetaData[../vs3.tex]{pf:EquivToNonsingular}
+\ExecuteMetaData[\vsdir vs3.tex]{pf:EquivToNonsingular}
 \qed
 \end{frame}
 

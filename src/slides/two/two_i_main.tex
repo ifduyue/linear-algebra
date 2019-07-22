@@ -1,14 +1,13 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compatii\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../vs1} % read refs from .aux file
+\usepackage{directories}  % contains \vsdir, \vsmpdir
+\usepackage{xr}\externaldocument{\vsdir vs1} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -54,13 +53,13 @@
 \section{Definition and examples}
 % \begin{frame}{Vector space}
 % \df[def:VecSpace]
-% \ExecuteMetaData[../vs1.tex]{df:VectorSpace0}
+% \ExecuteMetaData[\vsdir vs1.tex]{df:VectorSpace0}
 
 % \pause
-% \ExecuteMetaData[../vs1.tex]{df:VectorSpace1}
+% \ExecuteMetaData[\vsdir vs1.tex]{df:VectorSpace1}
 
 % \pause
-% \ExecuteMetaData[../vs1.tex]{df:VectorSpace2}
+% \ExecuteMetaData[\vsdir vs1.tex]{df:VectorSpace2}
 % \end{frame}
 
 
@@ -617,7 +616,7 @@ operations).
 \end{equation*}
 
 \df[df:TrivialVectorSpace]
-\ExecuteMetaData[../vs1.tex]{df:TrivialVectorSpace}
+\ExecuteMetaData[\vsdir vs1.tex]{df:TrivialVectorSpace}
 \end{frame}
 
 
@@ -626,11 +625,11 @@ operations).
 % ..........
 \begin{frame}
 \lm[lm:ElementaryPropertiesOfVectorSpaces]
-\ExecuteMetaData[../vs1.tex]{lm:ElementaryPropertiesOfVectorSpaces}
+\ExecuteMetaData[\vsdir vs1.tex]{lm:ElementaryPropertiesOfVectorSpaces}
 
 \pause
 \pf
-\ExecuteMetaData[../vs1.tex]{pf:ElementaryPropertiesOfVectorSpaces0}
+\ExecuteMetaData[\vsdir vs1.tex]{pf:ElementaryPropertiesOfVectorSpaces0}
 \qed
 \end{frame}
 
@@ -645,10 +644,10 @@ operations).
 % ..........
 \begin{frame}{Subspace}
 \df[df:Subspace]
-\ExecuteMetaData[../vs1.tex]{df:Subspace}
+\ExecuteMetaData[\vsdir vs1.tex]{df:Subspace}
 
 \pause\smallskip
-\ExecuteMetaData[../vs1.tex]{ProperSubspace}
+\ExecuteMetaData[\vsdir vs1.tex]{ProperSubspace}
 
 \pause
 \ex
@@ -716,11 +715,11 @@ Still another is that it does not contain the zero vector.)
 % ..........
 \begin{frame}
 \lm[th:SubspIffClosed]
-\ExecuteMetaData[../vs1.tex]{lm:SubspIffClosed}
+\ExecuteMetaData[\vsdir vs1.tex]{lm:SubspIffClosed}
 
 \pause\medskip
 \iftoggle{showallproofs}{
-  \ExecuteMetaData[../vs1.tex]{pf:SubspIffClosed0}
+  \ExecuteMetaData[\vsdir vs1.tex]{pf:SubspIffClosed0}
 }{
   The book has the full proof.
   For the idea, recall that in the first example of a vector space 
@@ -742,7 +741,7 @@ Still another is that it does not contain the zero vector.)
 \iftoggle{showallproofs}{
   \begin{frame}
   \pf[th:SubspIffClosed]
-  \ExecuteMetaData[../vs1.tex]{pf:SubspIffClosed1}
+  \ExecuteMetaData[\vsdir vs1.tex]{pf:SubspIffClosed1}
 
   \pause
   The conditions for scalar multiplication are similar.
@@ -926,10 +925,10 @@ linear combination of such matrices is such a matrix.
 % ..........
 \begin{frame}{Span}
 \df[df:Span]
-\ExecuteMetaData[../vs1.tex]{df:Span}
+\ExecuteMetaData[\vsdir vs1.tex]{df:Span}
 
 \medskip
-\ExecuteMetaData[../vs1.tex]{NotationForSpan}
+\ExecuteMetaData[\vsdir vs1.tex]{NotationForSpan}
 
 \pause
 \ex
@@ -981,11 +980,11 @@ this system does not have a solution.
 % ..........
 \begin{frame}
 \lm[le:SpanIsASubsp]
-\ExecuteMetaData[../vs1.tex]{lm:SpanIsASubsp}
+\ExecuteMetaData[\vsdir vs1.tex]{lm:SpanIsASubsp}
 
 \pause
 \pf
-\ExecuteMetaData[../vs1.tex]{pf:SpanIsASubsp}
+\ExecuteMetaData[\vsdir vs1.tex]{pf:SpanIsASubsp}
 \qed
 \end{frame}
 \begin{frame}
