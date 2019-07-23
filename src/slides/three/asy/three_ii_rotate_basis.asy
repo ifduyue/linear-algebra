@@ -1,7 +1,7 @@
 // three_ii_rotate_basis.asy
 import jh;
-texpreamble("\usepackage{../../linalgjh}");  // should go in jh.asy?
-real height; height=.2*beamerpaperheight; size(0,height);
+// texpreamble("\usepackage{../../linalgjh}");  // should go in jh.asy?
+real height; height=.2*BEAMERPAPERHEIGHT; size(0,height);
 import settings;
 settings.render=0;   // for png: -10;  // fewer jaggies but very slow
 // settings.maxtile=(10,10);

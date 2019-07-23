@@ -3,6 +3,9 @@ import jh;
 
 import graph;
 unitsize(1cm);
+import settings;
+settings.outformat="pdf";
+settings.prc=false;
 
 real Line(real x) {return 2*x;}
 

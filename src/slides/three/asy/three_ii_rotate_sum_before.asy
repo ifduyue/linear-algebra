@@ -1,6 +1,6 @@
 // three_ii_rotate_sum_before.asy
 import jh;
-real height; height=.25*beamerpaperheight; size(0,height);
+real height; height=.25* BEAMERPAPERHEIGHT; size(0,height);
 import settings;
 settings.render=0;   // for png: -10;  // fewer jaggies but very slow
 // settings.maxtile=(10,10);

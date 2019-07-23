@@ -18,6 +18,10 @@ string settexpreamble() {
 }
 settexpreamble();
 
+// This is a 4:3 ratio, set by geometry package 
+real BEAMERPAPERWIDTH = 12.8cm;
+real BEAMERPAPERHEIGHT = 9.6cm;
+
 
 pen FILLCOLOR=rgb("fff0ca");
 
@@ -42,6 +46,7 @@ pen AXISPEN=linecap(0)
 pen DXPEN=linecap(0)
              +red
              +linewidth(1pt);
+pen CURVEPEN=MAINPEN;
 pen LIGHTPEN=linewidth(0.4pt);  // matches mpost line_width_light
 pen DARKPEN=linewidth(0.8pt);   //    line_width_dark
 

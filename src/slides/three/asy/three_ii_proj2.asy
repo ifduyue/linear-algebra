@@ -1,6 +1,9 @@
 // three_ii_proj2.asy
 import jh;
 real height; height=1.75cm; size(0,height);
+import settings;
+settings.outformat="pdf";
+settings.prc=false;
 
 import graph;
 

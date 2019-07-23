@@ -4,6 +4,8 @@ import jh;
 import settings;
 settings.outformat="pdf";
 settings.render=0;
+settings.outformat="pdf";
+settings.prc=false;
 
 real height; height=1.5cm; size(0,height);
 

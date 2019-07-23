@@ -4,6 +4,8 @@ real height; height=3cm; size(0,height);
 import settings;
 settings.render=0;  // for png: -7;  // fewer jaggies but very slow
 settings.maxtile=(20,20);
+settings.outformat="pdf";
+settings.prc=false;
 
 import three;
 import graph3;

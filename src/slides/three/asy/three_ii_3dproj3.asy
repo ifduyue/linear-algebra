@@ -4,6 +4,8 @@ real height; height=3.5cm; size(0,height);
 import settings;
 settings.render=0;  // was -3
 settings.maxtile=(20,20);
+settings.outformat="pdf";
+settings.prc=false;
 
 import three;
 import graph3;

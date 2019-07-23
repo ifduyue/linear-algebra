@@ -1,6 +1,6 @@
 // three_iii_cosets.asy
 import jh;
-real height; height=.3*beamerpaperheight; size(0,height);
+real height; height=.3*BEAMERPAPERHEIGHT; size(0,height);
 import settings;
 settings.render=0;   // for png: -10;  // fewer jaggies but very slow
 // settings.maxtile=(10,10);

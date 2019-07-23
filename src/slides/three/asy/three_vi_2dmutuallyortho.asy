@@ -4,6 +4,8 @@ real height; height=2cm; size(0,height);
 import settings;
 // settings.render=-7;  // fewer jaggies but very slow
 // settings.maxtile=(10,10);
+settings.outformat="pdf";
+settings.prc=false;
 
 pen line_pen=linecap(0)
              +linewidth(1.5pt);
