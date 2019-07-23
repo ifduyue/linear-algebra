@@ -153,6 +153,7 @@ my @slidefiles = qw( one/one_i one/one_ii one/one_iii
                      three/three_iii three/three_iv  three/three_iv
                      three/three_i three/three_ii  three/three_ii_a
 		     three/three_vi
+                     four/four_i four/four_ii four/four_iii
                    );
 for my $i (@slidefiles) {
   push @default_files, "slides/".$i.".tex";

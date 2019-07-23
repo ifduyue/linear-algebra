@@ -1,15 +1,14 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compote\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../det1} % read refs from .aux file
-\usepackage{xr}\externaldocument{../map4} % read refs from .aux file
+\usepackage{directories}  % Define \detdir, detmpdir, etc.
+\usepackage{xr}\externaldocument{\detdir det1} % read refs from .aux file
+\usepackage{xr}\externaldocument{\mapdir map4} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -62,7 +61,7 @@
 \noindent For any matrix, whether or not it is nonsingular is a key question.
 Recall that an \( \nbyn{n} \) matrix \( T \) is nonsingular if and only if
 each of these holds:%
-\ExecuteMetaData[../det1.tex]{EquivalentOfNonsingular}
+\ExecuteMetaData[\detdir det1.tex]{EquivalentOfNonsingular}
 This chapter develops a formula to determine whether a
 matrix is nonsingular.
 \end{frame}
@@ -71,7 +70,7 @@ matrix is nonsingular.
 
 
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{DeterminantIntro}  
+\ExecuteMetaData[\detdir det1.tex]{DeterminantIntro}  
 \end{frame}
 
 
@@ -107,11 +106,11 @@ for any input there is exactly one associated output).
 
 \begin{frame}{Definition of determinant}
 \df[def:Det]
-\ExecuteMetaData[../det1.tex]{df:Det}
+\ExecuteMetaData[\detdir det1.tex]{df:Det}
 
 \pause 
 \re[rem:SwapRowsRedun] % \hspace*{-1em} 
-\ExecuteMetaData[../det1.tex]{re:SwapRowsRedun}
+\ExecuteMetaData[\detdir det1.tex]{re:SwapRowsRedun}
 \end{frame}
 
 
@@ -119,23 +118,23 @@ for any input there is exactly one associated output).
 
 \begin{frame}{Consequences of the definition}
 \lm[le:IdenRowsDetZero]
-\ExecuteMetaData[../det1.tex]{lm:IdenRowsDetZero}
+\ExecuteMetaData[\detdir det1.tex]{lm:IdenRowsDetZero}
 
 \pause 
 \pf 
-\ExecuteMetaData[../det1.tex]{pf:IdenRowsDetZero0}
+\ExecuteMetaData[\detdir det1.tex]{pf:IdenRowsDetZero0}
 
 \pause
-\ExecuteMetaData[../det1.tex]{pf:IdenRowsDetZero1}
+\ExecuteMetaData[\detdir det1.tex]{pf:IdenRowsDetZero1}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{pf:IdenRowsDetZero2}
+\ExecuteMetaData[\detdir det1.tex]{pf:IdenRowsDetZero2}
 
 \pause
-\ExecuteMetaData[../det1.tex]{pf:IdenRowsDetZero3}  
+\ExecuteMetaData[\detdir det1.tex]{pf:IdenRowsDetZero3}  
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{pf:IdenRowsDetZero4}
+\ExecuteMetaData[\detdir det1.tex]{pf:IdenRowsDetZero4}
 \qed
 \end{frame}
 
@@ -330,11 +329,11 @@ We now handle that question.
 
 \pause
 \lm[lm:DetFcnIsUnique]
-\ExecuteMetaData[../det1.tex]{lm:DetFcnIsUnique}
+\ExecuteMetaData[\detdir det1.tex]{lm:DetFcnIsUnique}
 
 \pause 
 \pf 
-\ExecuteMetaData[../det1.tex]{pf:DetFcnIsUnique}
+\ExecuteMetaData[\detdir det1.tex]{pf:DetFcnIsUnique}
 \qed
 \end{frame}
 \begin{frame}{Existence}
@@ -343,7 +342,7 @@ well-defined function satisfying all the conditions.
 
 How could there fail to be such a function, when we have been 
 computing its outputs?
-\ExecuteMetaData[../det1.tex]{DifferentGaussMethodReductions}
+\ExecuteMetaData[\detdir det1.tex]{DifferentGaussMethodReductions}
 But just because we get consistent results in this case
 does not mean that all determinant computations
 give the same value.
@@ -458,24 +457,24 @@ determinants also break along a plus sign one row at a time.
 %..........
 \begin{frame}{Multilinear}
 \df[def:multilinear]
-\ExecuteMetaData[../det1.tex]{df:Multilinear}
+\ExecuteMetaData[\detdir det1.tex]{df:Multilinear}
 
 
 \lm[lem:DetsMultilinear]
-\ExecuteMetaData[../det1.tex]{lm:DetsMultilinear}
+\ExecuteMetaData[\detdir det1.tex]{lm:DetsMultilinear}
 
 \pause
 \pf
-\ExecuteMetaData[../det1.tex]{pf:DetsMultilinear0}
+\ExecuteMetaData[\detdir det1.tex]{pf:DetsMultilinear0}
 
 \pause
-\ExecuteMetaData[../det1.tex]{pf:DetsMultilinear1}
+\ExecuteMetaData[\detdir det1.tex]{pf:DetsMultilinear1}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{pf:DetsMultilinear2}
+\ExecuteMetaData[\detdir det1.tex]{pf:DetsMultilinear2}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{pf:DetsMultilinear3}
+\ExecuteMetaData[\detdir det1.tex]{pf:DetsMultilinear3}
 \qed
 
 \medskip
@@ -734,11 +733,11 @@ matrices that are all $0$'s except for a single~$1$ in each row and column.
 
 
 \begin{frame}{Permutation matrices}
-\ExecuteMetaData[../det1.tex]{NotationForPermutationMatrices}
+\ExecuteMetaData[\detdir det1.tex]{NotationForPermutationMatrices}
 
 \pause
 \df[df:permutation]
-\ExecuteMetaData[../det1.tex]{df:permutation}
+\ExecuteMetaData[\detdir det1.tex]{df:permutation}
 
 So, in a permutation each number 
 $1$, \ldots, $n$ is the output associated with one and only one input.
@@ -755,12 +754,12 @@ These are the $2$-permutations.
 \end{center}
 The sequence notation is shorter:
 \( \phi_1=\sequence{1,2} \) and \( \phi_2=\sequence{2,1} \).
-% \ExecuteMetaData[../det1.tex]{ex:AllTwoPerms}
+% \ExecuteMetaData[\detdir det1.tex]{ex:AllTwoPerms}
 \ex[ex:AllThreePerms]
-\ExecuteMetaData[../det1.tex]{ex:AllThreePerms}
+\ExecuteMetaData[\detdir det1.tex]{ex:AllThreePerms}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{AssociatePermutationWithPermutationMatrix}
+\ExecuteMetaData[\detdir det1.tex]{AssociatePermutationWithPermutationMatrix}
 
 \ex
 Associated with the $4$-permutation $\phi=\sequence{2,4,3,1}$ is the
@@ -789,11 +788,11 @@ matrix whose rows are the matching $\iota$'s.
 
 \begin{frame}{Permutation expansion}
 \df[df:PermutationExpansion]
-\ExecuteMetaData[../det1.tex]{df:PermutationExpansion}
+\ExecuteMetaData[\detdir det1.tex]{df:PermutationExpansion}
 
 \pause
 \medskip
-\ExecuteMetaData[../det1.tex]{SummationForPermutationExpansion}
+\ExecuteMetaData[\detdir det1.tex]{SummationForPermutationExpansion}
 \end{frame}
 \begin{frame}
 \ex
@@ -867,10 +866,10 @@ so for those not going on, we state its results here.
 We will follow up on the second result.
 
 \th[th:DetsExist]
-\ExecuteMetaData[../det1.tex]{th:DetsExist}
+\ExecuteMetaData[\detdir det1.tex]{th:DetsExist}
 
 \th[th:DeterminantOfAMatrixEqualsDeterminantOfTranspose]
-\ExecuteMetaData[../det1.tex]{th:DeterminantOfAMatrixEqualsDeterminantOfTranspose}
+\ExecuteMetaData[\detdir det1.tex]{th:DeterminantOfAMatrixEqualsDeterminantOfTranspose}
 \end{frame}
 \begin{frame}{Column properties from row properties}
 The fact that the determinant of the transpose equals the determinant
@@ -891,10 +890,10 @@ These three don't change the determinant.
 
 \pause
 \co[cor:ColSwapChgSign]
-\ExecuteMetaData[../det1.tex]{co:ColSwapChgSign}
+\ExecuteMetaData[\detdir det1.tex]{co:ColSwapChgSign}
 \pause
 \pf
-\ExecuteMetaData[../det1.tex]{pf:ColSwapChgSign}
+\ExecuteMetaData[\detdir det1.tex]{pf:ColSwapChgSign}
 \qed
 \end{frame}
 
@@ -906,7 +905,7 @@ These three don't change the determinant.
 %..........
 \begin{frame}{Inversion}
 \df[df:Inversion]
-\ExecuteMetaData[../det1.tex]{df:Inversion}
+\ExecuteMetaData[\detdir det1.tex]{df:Inversion}
 \pause
 \ex The permutation $\phi=\sequence{3,2,1}$ has three inversions:
 $3$ is before $2$, $3$ is before $1$, and $2$ is before $1$.
@@ -958,11 +957,11 @@ comes before row~$1$, and row~$4$ is before row~$3$.
 %..........
 \begin{frame}
 \lm[le:SwapsChangeSgn]
-\ExecuteMetaData[../det1.tex]{lm:SwapsChangeSgn}
+\ExecuteMetaData[\detdir det1.tex]{lm:SwapsChangeSgn}
 
 \pause
 \iftoggle{showallproofs}{\pf
-  \ExecuteMetaData[../det1.tex]{pf:SwapsChangeSgn0}
+  \ExecuteMetaData[\detdir det1.tex]{pf:SwapsChangeSgn0}
 }{%
 
   \medskip
@@ -1010,10 +1009,10 @@ comes before row~$1$, and row~$4$ is before row~$3$.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../det1.tex]{pf:SwapsChangeSgn1}
+  \ExecuteMetaData[\detdir det1.tex]{pf:SwapsChangeSgn1}
   \end{frame}
   \begin{frame}
-  \noindent\ExecuteMetaData[../det1.tex]{pf:SwapsChangeSgn2}
+  \noindent\ExecuteMetaData[\detdir det1.tex]{pf:SwapsChangeSgn2}
   \qed
   \end{frame}
 }{%
@@ -1072,7 +1071,7 @@ comes before row~$1$, and row~$4$ is before row~$3$.
 %..........
 \begin{frame}{Signum}
 \df[df:Signum]
-\ExecuteMetaData[../det1.tex]{df:Signum}
+\ExecuteMetaData[\detdir det1.tex]{df:Signum}
 
 \pause
 \ex The permutation
@@ -1111,11 +1110,11 @@ So $\sgn(\phi)=+1$.
 %..........
 \begin{frame}
 \co[cor:ParityInversEqParitySwaps]
-\ExecuteMetaData[../det1.tex]{co:ParityInversEqParitySwaps}
+\ExecuteMetaData[\detdir det1.tex]{co:ParityInversEqParitySwaps}
 
 \pause
 \pf
-\ExecuteMetaData[../det1.tex]{pf:ParityInversEqParitySwaps}
+\ExecuteMetaData[\detdir det1.tex]{pf:ParityInversEqParitySwaps}
 \qed
 \end{frame}
 
@@ -1135,23 +1134,23 @@ Consequently we have turned to getting an alternate formula
 that obviously gives only one output.
 
 \pause
-\ExecuteMetaData[../det1.tex]{DefiningDFunction}
+\ExecuteMetaData[\detdir det1.tex]{DefiningDFunction}
 \end{frame}
 \begin{frame}
 \lm[lm:DeterminantsExist]
-\ExecuteMetaData[../det1.tex]{lm:DeterminantsExist}
+\ExecuteMetaData[\detdir det1.tex]{lm:DeterminantsExist}
 
 \iftoggle{showallproofs}{
   \pf
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist0}
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist0}
 
   \pause
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist1}
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist1}
   % \end{frame}
   % \begin{frame}
 
   \pause
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist2}
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist2}
 }{%
 
   \pause  
@@ -1164,19 +1163,19 @@ that obviously gives only one output.
 \end{frame}
 \iftoggle{showallproofs}{
   \begin{frame}
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist3}
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist3}
   \end{frame}
   \begin{frame}
-  \noindent\ExecuteMetaData[../det1.tex]{pf:DeterminantsExist4}
+  \noindent\ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist4}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist5}
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist5}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist6}
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist6}
   \end{frame}
   \begin{frame}
-  \ExecuteMetaData[../det1.tex]{pf:DeterminantsExist7}% 
+  \ExecuteMetaData[\detdir det1.tex]{pf:DeterminantsExist7}% 
   \qed
   \end{frame}
 }{}
@@ -1566,16 +1565,16 @@ that obviously gives only one output.
 %..........
 \begin{frame}{The determinant of the transpose}
 \th[th:DetMatrixEqualsDetTrans]
-\ExecuteMetaData[../det1.tex]{th:DetMatrixEqualsDetTrans}
+\ExecuteMetaData[\detdir det1.tex]{th:DetMatrixEqualsDetTrans}
 
 \pf
-\ExecuteMetaData[../det1.tex]{pf:DetMatrixEqualsDetTrans0}
+\ExecuteMetaData[\detdir det1.tex]{pf:DetMatrixEqualsDetTrans0}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{pf:DetMatrixEqualsDetTrans1} 
+\ExecuteMetaData[\detdir det1.tex]{pf:DetMatrixEqualsDetTrans1} 
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../det1.tex]{pf:DetMatrixEqualsDetTrans2}%
+\ExecuteMetaData[\detdir det1.tex]{pf:DetMatrixEqualsDetTrans2}%
 \qed
 
 \pause
