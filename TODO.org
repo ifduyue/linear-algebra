@@ -55,6 +55,7 @@ See http://tex.stackexchange.com/questions/37167/sorting-logs-into-different-fol
 
 ** Adjust ch2.mp figure numbers to be in sensibel order, starting with 1.
 
+** Get latexmk to compile without the empty .asy files (if there were .pdf's with numbers like xxx00.pdf and xxx01.pdf then as a hack I put in a couple of xxx00.asy-type files.)
 * Give it a less-flat format
 In particular, the metapost outputs cluttering the dir are a mess.
 ** Have an INSTALL file
