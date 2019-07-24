@@ -1,0 +1,97 @@
+% \documentclass[11pt,answers]{examjh}
+\documentclass[11pt,noanswers]{examjh}
+\usepackage{../../linalgjh}
+\examhead{MA 213 Hef{}feron, 2017-Fall}{Due: Tue 2017-Nov-14}
+
+\setlength{\parindent}{0em}
+\begin{document}
+\makebox[\linewidth]{\textbf{Homework 4, MA~213}}
+
+\vspace*{3ex}
+\textit{You may work with others to figure out how to do questions, 
+and you are welcome to look for answers in the book, online, by talking
+to someone who had the course before, etc.
+However, you must write 
+the answers on your own.
+You must also show your work (you may, of course, 
+quote any result from the book).}
+
+\begin{questions}
+\question Verify that the map $\map{h}{\Re^m}{\Re^n}$ represented by this matrix
+  with respect to the standard bases
+  \begin{equation*}
+    \begin{mat}
+      2  &1  &0  \\
+      3  &1  &1  \\
+      7  &2  &1
+    \end{mat}
+  \end{equation*}
+  is an isomorphism.
+  What is the range space?
+  The null space?
+
+\question
+  Assume that each matrix represents a map $\map{h}{\Re^m}{\Re^n}$
+  with respect to the standard bases.
+  In each case, 
+  (i)~state $m$ and~$n$
+  (ii)~find $\rangespace{h}$ and $\rank(h)$
+  (iii)~find $\nullspace{h}$ and $\nullity(h)$,
+  and (iv)~state whether the map is onto and whether it is one-to-one.
+  \begin{enumerate}
+  \item
+    $
+    \begin{mat}
+      2  &1  \\ 
+      1  &1
+    \end{mat}
+    $
+  \item
+    $
+    \begin{mat}
+      2  &3  &3  \\
+      0  &1  &3  \\ 
+     -2  &-1 &2 
+    \end{mat}
+    $
+  \item
+    $
+    \begin{mat}
+      1  &1  \\ 
+      2  &1  \\
+      3  &1
+    \end{mat}
+    $
+  \end{enumerate}
+
+\item For these 
+  \begin{equation*}
+    A=
+    \begin{mat}
+      2  &1  \\
+      4  &3
+    \end{mat}
+    \quad
+    B=
+    \begin{mat}
+      2  &2  &2 \\
+      0  &1  &0  \\
+      1  &1  &1
+    \end{mat}
+    \quad
+    C=
+    \begin{mat}
+      2  &1  &1 \\
+      1  &1  &2
+      \end{mat}
+    \quad
+    \vec{v}=\colvec{1 \\ 1 \\ -1}  
+  \end{equation*}
+    \begin{enumerate}
+      \item Find, or state ``not defined'': $6A$, $6C$. 
+      \item Find, or state ``not defined'': $A\vec{v}$, $C\vec{v}$. 
+      \item Find, or state ``not defined'': $A+B$, $B+C$. 
+    \end{enumerate}
+
+\end{questions}
+\end{document}

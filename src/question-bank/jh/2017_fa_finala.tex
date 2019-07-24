@@ -1,0 +1,487 @@
+% \documentclass[11pt]{examjh}
+\documentclass[11pt,answers]{examjh}
+\usepackage{../../linalgjh}
+\examhead{MA 213 Hef{}feron, 2017-Fall}{Final Exam}
+
+\begin{document}
+\begin{questions}
+
+
+\question
+Represent the projection map from $\Re^3$ to the $xy$-plane with
+respect to the basis.
+\begin{equation*}
+B=\sequence{\colvec{1 \\ 1 \\ 1},
+\colvec{0 \\ 1 \\ 1},
+\colvec{0 \\ 0 \\ 1}}
+\end{equation*}
+\begin{solution}[2in]
+Projection has this effect.
+\begin{equation*}
+\colvec{1 \\ 1 \\ 1}\mapsto\colvec{1 \\ 1 \\ 0}
+\quad
+\colvec{0 \\ 1 \\ 1}\mapsto\colvec{0 \\ 1 \\ 0}
+\quad
+\colvec{0 \\ 0 \\ 1}\mapsto\colvec{0 \\ 0 \\ 0}
+\end{equation*}
+Finding the representations with respect to $B$
+\begin{equation*}
+\rep{\colvec{1 \\ 1 \\ 0}}{B}=\colvec{1 \\ 0 \\ -1}
+\quad
+\rep{\colvec{0 \\ 1 \\ 0}}{B}=\colvec{0 \\ 1 \\ -1}
+\quad
+\rep{\colvec{0 \\ 0 \\ 0}}{B}=\colvec{0 \\ 0 \\ 0}
+\quad
+\end{equation*}
+and so the matrix is this.
+\begin{equation*}
+\rep{\pi}{B,B}=
+\begin{mat}
+1  &0  &0 \\
+0  &1  &0 \\
+-1 &-1 &0
+\end{mat}
+\end{equation*}
+\end{solution}
+
+
+
+
+
+\question
+For each, decide if it is a basis for the space.
+Justify.
+\begin{parts}
+\item
+$\set{1+x+x^2,x-x^2,2-x}\subseteq\polyspace_2$
+\begin{solution}[1in]
+The set is linearly independent since this
+\begin{equation*}
+  c_1(1+x+x^2)+c_2(x-x^2)+c_3(2-x)=0+0x+0x^2
+\end{equation*}
+gives a linear system
+\begin{equation*}
+\begin{linsys}{3}
+  c_1 &- &c_2 &  &     &= &0 \\
+  c_1 &- &c_2 &- &c_3  &= &0 \\
+  c_1 &  &    &+ &2c_3 &= &0 
+\end{linsys}
+\grstep[-\rho_1+\rho_3]{-\rho_1+\rho_2}  
+\begin{linsys}{3}
+  c_1 &- &c_2 &  &     &= &0 \\
+      &  &    &- &c_3  &= &0 \\
+      &  &c_2 &+ &2c_3 &= &0 
+\end{linsys}
+\end{equation*}
+whose only solution is $c_1=c_2=c_3=0$.
+Because it has three vectors, and the dimension of $\polyspace_2$ is three,
+it is a basis.
+\end{solution}
+
+\item
+$
+  \set{\colvec{0 \\ 1 \\ 2},
+  \colvec{1 \\ 1 \\ 2},
+  \colvec{0 \\ -1 \\ 0}}\subseteq\R^3
+$
+\begin{solution}[1.25in]
+The equation
+\begin{equation*}
+c_1\colvec{0 \\ 1 \\ 2}
++c_2\colvec{1 \\ 1 \\ 2}
++c_3\colvec{0 \\ -1 \\ 0}
+=\colvec{0 \\ 0 \\ 0}
+\end{equation*}
+has $c_2=0$ by the equation of first entries.
+With that, the equation of third entries gives $c_1=0$.
+Thus the only solution is the trivial one.
+Because $\R^3$ has dimension three, this is a basis.
+\end{solution}
+\end{parts}
+
+
+
+
+
+\question  % Five.II.3.20
+Find the characteristic polynomial and the eigenvalues.
+\begin{equation*}
+\begin{mat}
+1 &2  \\
+4 &3
+\end{mat}
+\end{equation*}
+\begin{solution}[2in]
+The equation
+\begin{equation*}
+\begin{vmatrix}
+1-x  &2  \\
+4  &3-x
+\end{vmatrix}=0
+\end{equation*}
+gives the characteristic equation
+$0=(1-x)(3-x)-8=x^2-4x-5$.
+The eigenvalues are $\lambda_1=5$ and  $\lambda_2=-1$.
+\end{solution}
+
+
+
+\question
+Perform the operations, or say ``not defined.''
+\begin{parts}
+\item
+$
+5\cdot\begin{mat}
+1 &3 \\
+-1 &3
+\end{mat}
+-3\cdot
+\begin{mat}
+4 &0 \\
+3 &1
+\end{mat}
+$
+\begin{solution}[1in]
+$
+\begin{mat}
+-7  &15 \\
+-14 &12
+\end{mat}
+$
+\end{solution}
+\item
+$
+  \det(
+  \begin{mat}
+  3 &3  &-1 \\
+  0 &0 &2
+  \end{mat}
+)
+$
+\begin{solution}[1in]
+The determinant of a non-square matrix is not defined. 
+\end{solution}
+\item
+$
+\begin{mat}
+1 &3 &-1 \\
+2 &4 &2 
+\end{mat}
+\begin{mat}
+3 &0 \\
+2 &0 \\
+1 &-1
+\end{mat}
+$
+\begin{solution}[1in]
+$
+\begin{mat}
+8  &1 \\
+16 &-2
+\end{mat}
+$
+\end{solution}
+\end{parts}
+
+
+
+
+\question
+Consider the map $\map{t}{\Re^2}{\Re^2}$ that rotates vectors through an
+angle of $\pi/6$ radians counterclockwise.
+\begin{parts}
+\item
+Represent it with respect to the standard basis.
+\begin{solution}[1.5in]
+On the basis elements the effect of the transformation is
+\begin{equation*}
+\colvec{1 \\ 0}\mapsto\colvec{\cos \pi/6 \\ \sin \pi/6}
+\qquad
+\colvec{0 \\ 1}\mapsto\colvec{-\sin \pi/6 \\ \cos \pi/6}
+\end{equation*}
+and with respect to the standard basis vectors represent themselves, 
+so the matrix representation is this.
+\begin{equation*}
+T=\rep{t}{\stdbasis_2,\stdbasis_2}=
+\begin{mat}
+\cos\pi/6  &-\sin\pi/6 \\
+\sin\pi/6   &\cos\pi/6
+\end{mat}
+\end{equation*}
+
+\end{solution}
+\item Give the change of basis arrow diagram.
+\begin{solution}[1in]
+\begin{equation*}
+  \begin{CD}
+    V_{\wrt{\stdbasis_2}}                   @>t>T>        V_{\wrt{\stdbasis_2}}       \\
+    @V{\scriptstyle\identity} VV              @V{\scriptstyle\identity} VV \\
+    V_{\wrt{B}}                   @>t>\hat{T}>        V_{\wrt{B}}
+  \end{CD}
+\end{equation*}
+\end{solution}
+
+\item
+Find the matrices $P$ and $Q$ that change its representation to being with
+respect to this basis.
+\begin{equation*}
+B=\sequence{\colvec{1 \\ 1},
+\colvec{1 \\ -1}}
+\end{equation*}
+\begin{solution}[2in]
+To find the matrix for the left side of the diagram we compute the
+effect of the identity map.
+\begin{equation*}
+\colvec{1 \\ 0}\mapsunder{\identity}\colvec{1 \\ 0}
+\quad
+\colvec{1 \\ 0}\mapsunder{\identity}\colvec{1 \\ 0}
+\end{equation*}
+and represent those with respect to $B$.
+\begin{equation*}
+\rep{\colvec{1 \\ 0}}{B}=\colvec{1/2 \\ 1/2}
+\quad
+\rep{\colvec{0 \\ 1}}{B}=\colvec{1/2 \\ -1/2}
+\qquad
+P=
+\begin{mat}
+1/2  &1/2  \\
+1/2  &-1/2
+\end{mat}
+\end{equation*}
+\end{solution}
+
+\item
+Give $\rep{t}{B,B}$.
+\begin{solution}[1in]
+We compute $P^{-1}TP$.
+\begin{equation*}
+\frac{1}{(1/2)(-1/2)-(1/2)(1/2)}
+\begin{mat}
+-1/2  &-1/2  \\
+-1/2  &1/2
+\end{mat}
+\begin{mat}
+\cos\pi/6  &-\sin\pi/6 \\
+\sin\pi/6   &\cos\pi/6
+\end{mat}
+\begin{mat}
+1/2  &1/2  \\
+1/2  &-1/2
+\end{mat}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+
+
+\question
+Find the range space and the rank of this linear map $\map{h}{\polyspace_2}{\R^2}$.
+\begin{equation*}
+  ax^2+bx+c\mapsto\colvec{a+b \\ a-b}
+\end{equation*}
+\begin{solution}[2in]
+One way is to represent the map with respect to some bases.
+We take these.
+\begin{equation*}
+B=\sequence{1,x,x^2}
+\qquad
+D=\stdbasis_2
+\end{equation*}
+We have 
+\begin{equation*}
+1\mapsunder{h}\colvec{0 \\ 0}
+\quad
+x\mapsunder{h}\colvec{1 \\ -1}
+\quad
+x^2\mapsunder{h}\colvec{1 \\ 1}
+\end{equation*}
+and so we have $\rep{h}{B,D}$.
+\begin{equation*}
+\rep{\colvec{0 \\ 0}}{D}=\colvec{0 \\ 0}
+\quad
+\rep{\colvec{1 \\ -1}}{D}=\colvec{1 \\ -1}
+\quad
+\rep{\colvec{1 \\ 1}}{D}=\colvec{1 \\ 1}
+\qquad
+\begin{mat}
+0 &1  &1 \\
+0 &-1 &1
+\end{mat}
+\end{equation*}
+By eye we see that Gauss's method on that matrix gives that its rank is two.
+This is also the rank of the map.
+Because the codomain has dimension two, the map is onto and the range space
+is all of $\R^2$.
+\end{solution}
+
+
+
+
+\question % One.I.3.9
+Find the solution set of this linear system.
+Express it as a span of a minimal set of vectors.
+\begin{equation*}
+\begin{linsys}{4}
+  x &   &  &+  &z  &+  &w  &=  &-1  \\
+  2x&-  &y &   &   &+  &w  &=  &3   \\
+  x &+  &y &+  &3z &+  &2w  &=  &1
+\end{linsys}
+\end{equation*}
+\begin{solution}[2.5in]
+\begin{equation*}
+  \begin{linsys}{4}
+    x  &   &  &+  &z  &+ &w  &=  &-1  \\
+   2x  &-  &y &   &   &+ &w  &=  &3   \\
+    x  &+  &y &+  &3z &+ &2w &=  &1   
+  \end{linsys}
+  \grstep[-\rho_1+\rho_3]{-2\rho_1+\rho_2}
+  \begin{linsys}{4}
+    x  &   &  &+  &z  &+ &w  &=  &-1  \\
+       &   &-y&-  &2z &- &w  &=  &5   \\
+       &   &y &+  &2z &+ &w  &=  &2   
+   \end{linsys}
+\end{equation*}
+It has no solutions because the final two equations
+conflict.
+The solution set is empty.
+\end{solution}
+
+\question
+Find the determinant of these matrices.
+State whether each is singular or nonsingular.
+\begin{parts}
+\item $
+\begin{mat}
+1 &2 \\
+3 &4
+\end{mat}
+$
+\begin{solution}[0.5in]
+$(1)(4)-(2)(3)=-2$
+\end{solution}
+
+\item
+$
+\begin{mat}
+1 &0 &3  \\
+2 &1 &-1 \\
+2 &0 &4
+\end{mat}
+$
+\begin{solution}[2in]
+Doing the Laplace expansion down the second column gives this.
+\begin{equation*}
+\begin{vmatrix}
+1 &0 &3  \\
+2 &1 &-1 \\
+2 &0 &4
+\end{vmatrix}
+=-0
++1\cdot
+\begin{vmatrix}
+1 &3 \\
+2 &4
+\end{vmatrix}
+-0
+=-2
+\end{equation*}
+\end{solution}
+\end{parts}
+
+
+
+\question
+Find the inverse of each matrix, or state that none exists.
+\begin{parts}
+\item % Three.Iv.4.15(e)
+$
+\begin{mat}
+0 &1 &5  \\
+0 &-2 &4  \\
+2 &3 &-2 
+\end{mat}
+$
+\begin{solution}[2in]
+          \begin{multline*}
+            \begin{pmat}{rrr|rrr}
+              0  &1  &5  &1  &0  &0  \\
+              0  &-2 &4  &0  &1  &0  \\ 
+              2  &3  &-2 &0  &0  &1
+            \end{pmat}
+            \grstep{\rho_3\leftrightarrow\rho_1}\;
+            \begin{pmat}{rrr|rrr}
+              2  &3  &-2 &0  &0  &1  \\
+              0  &-2 &4  &0  &1  &0  \\ 
+              0  &1  &5  &1  &0  &0  
+            \end{pmat}                                            \\
+            \begin{aligned}
+              &\grstep{(1/2)\rho_2+\rho_3}
+              \begin{pmat}{rrr|rrr}
+                2  &3  &-2 &0  &0   &1  \\
+                0  &-2 &4  &0  &1   &0  \\ 
+                0  &0  &7  &1  &1/2 &0  
+              \end{pmat}                                             \\
+              &\grstep[-(1/2)\rho_2 \\ (1/7)\rho_3]{(1/2)\rho_1}
+              \begin{pmat}{rrr|rrr}
+                1  &3/2  &-1 &0    &0     &1/2  \\
+                0  &1    &-2 &0    &-1/2  &0    \\ 
+                0  &0    &1  &1/7  &1/14  &0  
+              \end{pmat}                                   \\
+              &\grstep[\rho_3+\rho_1]{2\rho_3+\rho_2}
+              \begin{pmat}{rrr|rrr}
+                1  &3/2  &0  &1/7  &1/14  &1/2  \\
+                0  &1    &0  &2/7  &-5/14 &0    \\ 
+                0  &0    &1  &1/7  &1/14  &0  
+              \end{pmat}                                   \\
+              &\grstep{-(3/2)\rho_2+\rho_1}
+              \begin{pmat}{rrr|rrr}
+                1  &0    &0  &-2/7 &17/28 &1/2  \\
+                0  &1    &0  &2/7  &-5/14 &0    \\ 
+                0  &0    &1  &1/7  &1/14  &0  
+              \end{pmat}
+            \end{aligned}
+          \end{multline*}
+\end{solution}
+\item
+$
+\begin{mat}
+2  &6 \\
+4  &12
+\end{mat}
+$
+\begin{solution}[1in]
+The determinant is zero so the matrix has no inverse.
+\end{solution}
+\end{parts}
+
+
+
+\question
+Diagonalize this matrix.
+\begin{equation*}
+\begin{mat}
+3 &0 \\
+8 &-1
+\end{mat}
+\end{equation*}
+\begin{solution}[2in]
+Find the eigenvalues via the characteristic equation.
+\begin{equation*}
+0=\begin{vmatrix}
+3-x &0  \\
+8   &-1-x
+\end{vmatrix}
+=(3-x)(-1-x)-(8)(0)
+\qquad \lambda_1=3, \; \lambda_2=-1
+\end{equation*}
+A diagonal matrix similar to the given one is this.
+\begin{equation*}
+\begin{mat}
+3  &0 \\
+0  &-1
+\end{mat}
+\end{equation*}
+\end{solution}
+\end{questions}
+\end{document}
+

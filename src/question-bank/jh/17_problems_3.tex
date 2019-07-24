@@ -1,0 +1,142 @@
+\documentclass[11pt,answers]{examjh}
+% \documentclass[11pt,noanswers]{examjh}
+\usepackage{../../linalgjh}
+\examhead{MA 213 Hef{}feron, 2017-Fall}{Due: Tue 2017-Oct-31}
+
+\setlength{\parindent}{0em}
+\begin{document}
+\makebox[\linewidth]{\textbf{Homework 3, MA~213}}
+
+\vspace*{3ex}
+\textit{You may work with others to figure out how to do questions, 
+and you are welcome to look for answers in the book, online, by talking
+to someone who had the course before, etc.
+However, you must write 
+the answers on your own.
+You must also show your work (you may, of course, 
+quote any result from the book).}
+
+\begin{questions}
+
+\question
+Verify that each map is a homomorphism.
+  \begin{parts}
+  \part $\map{f}{\Re^3}{\Re^2}$ given by 
+    \begin{equation*}
+      \colvec{x \\ y \\ z}\mapsto\colvec{x+2y \\ y} 
+    \end{equation*}
+    \begin{solution}
+    We can verify that it respects
+    linear combinations.
+    \begin{align*}
+      f(c_1\vec{v}_1+c_2\vec{v}_2)
+      &=f(c_1\colvec{x_1 \\ y_1 \\ z_1}+c_2\colvec{x_2 \\ y_2 \\ z_2})   \\
+      &=f(\colvec{c_1x_1+c_2x_2 \\ c_1y_1+c_2y_2 \\ c_1z_1+c_2z_2})   \\
+      &=\colvec{(c_1x_1+c_2x_2)+2(c_1y_1+c_2y_2) \\ c_1y_1+c_2y_2}    \\
+      &=\colvec{c_1x_1+2c_1y_1 \\ c_1y_1}  +\colvec{c_2x_2+2c_2y_2 \\ c_2y_2}    \\
+      &=c_1\colvec{x_1+2y_1 \\ y_1}  +c_2\colvec{x_2+2y_2 \\ y_2}    \\
+      &=c_1f(\colvec{x_1 \\ y_1 \\ z_1})+c_2f(\colvec{x_2 \\ y_2 \\ z_2}) \\
+      &=c_1f(\vec{v}_1)+c_2f(\vec{v}_2) 
+    \end{align*}
+
+    \end{solution}
+      
+  \part $\map{h}{\polyspace_2}{\Re^2}$ given by
+    \begin{equation*}
+      ax^2+bx+c\mapsto \colvec{c \\ a+c}
+    \end{equation*}
+    \begin{solution}
+    It respects combinations.
+    \begin{align*}
+      h(r_1\cdot (a_1x^2+b_1x+c_1)+r_2\cdot (a_2x^2+b_2x+c_2))
+      &=h((r_1a_1+r_2a_2)x^2+(r_1b_1+r_2b_2)x+(r_1c_1+r_2c_2)) \\
+      &=\colvec{r_1c_1+r_2c_2 \\ (r_1a_1+r_2a_2)+(r_1c_1+r_2c_2)} \\
+      &=\colvec{r_1c_1 \\ r_1a_1+r_1c_1} 
+        +\colvec{r_2c_2 \\ r_2a_2+r_2c_2}                   \\
+      &=r_1\colvec{c_1 \\ a_1+c_1} 
+        +r_2\colvec{c_2 \\ a_2+c_2}                   \\
+      &=r_1h(a_1x^2+b_1x+c_1)+r_2h(a_2x^2+b_2x+c_2)  \\
+      &=r_1\cdot h(\vec{v}_1)+r_2\cdot h(\vec{v}_2)
+    \end{align*}
+    \end{solution}
+  \end{parts}
+
+\question For each map in the prior question, describe the range space and find
+the rank of the map.
+\begin{solution}
+\begin{parts}
+\part
+Consider a vector from the codomain.
+\begin{equation*}
+  \vec{w}=\colvec{a \\ b}\in\Re^2
+\end{equation*}
+We have
+\begin{equation*}
+\begin{linsys}{2}
+  x &+ &2y &= &a \\
+    &  &y  &= &b
+\end{linsys}
+\qquad
+y=b,\; x=a-2b,\; z\in\Re
+\end{equation*}
+and so for any $a,b\in\Re$ there is a domain vector
+\begin{equation*}
+  \vec{v}=\colvec{x \\ y \\ z}\in\Re^3
+\end{equation*}
+such that $h(\vec{v})=\vec{w}$.
+That is, $h$ is onto and the range space is all of $\Re^2$.
+Thus the rank of~$h$, the dimension of the range, is~$2$.
+
+\part
+Consider a vector from the codomain.
+\begin{equation*}
+  \vec{w}=\colvec{x \\ y}\in\Re^2
+\end{equation*}
+We have
+\begin{equation*}
+\begin{linsys}{3}
+    &  &  &  &c &= &x \\
+  a &  &  &+ &c  &= &y
+\end{linsys}
+\qquad
+c=x,\; a=-x+y,\; b\in\Re
+\end{equation*}
+and so for any $\vec{w}\in\Re^2$ there is a domain vector
+$\vec{v}=ax^2+bx+c\in\polyspace_2$
+such that $h(\vec{v})=\vec{w}$.
+Thus $h$ is onto and the range space is all of $\Re^2$.
+The rank of~$h$ is~$2$.
+\end{parts}
+\end{solution}
+
+\question Produce a linear map $\map{h}{\matspace_{\nbyn{2}}}{\R^2}$
+  of rank~$2$.
+  You must verify that it has that rank.
+  \begin{solution}
+  Of course there are many correct answers.
+  One is $\map{h}{\matspace_{\nbyn{2}}}{\Re^2}$ given by this.
+  \begin{equation*}
+  h(\begin{mat}
+  a  &b \\
+  c  &d
+  \end{mat})
+  =\colvec{a \\ b}
+  \end{equation*}
+  The verification is straightforward.
+  Consider $\vec{w}\in\Re^2$.
+  \begin{equation*}
+    \colvec{x \\ y}
+  \end{equation*}
+  Then 
+  \begin{equation*}
+  \begin{linsys}{2}
+      a=x,\; b=y,\; c\in\Re,\; d\in\Re
+  \end{linsys}
+  \end{equation*}
+  shows that there are vectors $\vec{v}\in\matspace_{\nbyn{2}}$ that map
+  to $\vec{w}$.
+  So $h$ is onto and thus it has rank~$2$.
+  \end{solution}
+
+\end{questions}
+\end{document}

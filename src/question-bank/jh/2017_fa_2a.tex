@@ -1,0 +1,340 @@
+% \documentclass[11pt]{examjh}
+\documentclass[11pt,answers]{examjh}
+\usepackage{../../linalgjh}
+\examhead{MA 213 Hef{}feron, 2017-Fall}{Exam Two}
+
+\begin{document}
+\begin{questions}
+
+\question
+Show that the map $\map{f}{\polyspace_2}{\R^2}$
+\begin{equation*}
+ax^2+bx+c
+\mapsto
+\colvec{2c+a \\ 2a+4c}  
+\end{equation*}
+is not onto.
+\begin{solution}[1in]
+The output vectors all lie on the line $y=2x$.
+\end{solution}
+
+
+
+\question
+Show that the map $\map{t}{\polyspace_2}{\R^3}$ given by
+$t(ax^2+bx+c)=\colvec{a \\ a+b \\ a+c }$ is an isomorphism.
+\begin{solution}[3in]
+To see that the map is one-to-one suppose that $t(\vec{v}_1)=t(\vec{v}_2)$,
+aiming to conclude that $\vec{v}_1=\vec{v}_2$.
+That is, $t(a_1x^2+b_1x+c_1)=t(a_2x^2+b_2x+c_2)$.
+Then
+\begin{equation*}
+\colvec{a_1 \\ a_1+b_1 \\ a_1+c_1 }=\colvec{a_2 \\ a_2+b_2 \\ a_2+c_2 }
+\end{equation*}
+and because three-tall vectors
+are equal only if they have have equal components, the same linear
+conclude that 
+$a_1=a_2$, that $b_1=b_2$, and that $c_1=c_2$.
+Therefore $a_1x^2+b_1x+c_1=a_2x^2+b_2x+c_2$ and the function is 
+one-to-one.
+
+To see that the map is onto, we suppose that we are given a member
+of the codomain.
+\begin{equation*}
+  \vec{w}=\colvec{p \\ q \\ r}
+\end{equation*}
+Observe that where $\vec{v}=px^2+(q-p)x+(r-p)$ then $t(\vec{v})=\vec{w}$.
+Thus~$t$ is onto.  
+
+To see that the map is a homomorphism we show that it respects linear 
+combinations of two elements.
+\begin{align*}
+  t(r_1(a_1x^2+b_1x+c_1)+r_2(a_2x^2+b_2x+c_2))
+  &=t((r_1a_1+r_2a_2)x^2+(r_1b_1+r_2b_2)x+(r_1c_1+r_2c_2))   \\
+  &=\colvec{r_1a_1+r_2a_2 \\ (r_1a_1+r_2a_2)+(r_1b_1+r_2b_2) \\ (r_1a_1+r_2a_2)+(r_1c_1+r_2c_2)}  \\
+  &=\colvec{r_1a_1 \\ r_1a_1+r_1b_1 \\ r_1a_1+r_1c_1}
+  +\colvec{r_2a_2 \\ r_2a_2+r_2b_2 \\ r_2a_2+r_2c_2}  \\
+  &=r_1t(a_1x^2+b_1x+c_1)+r_2t(a_2x^2+b_2x+c_2)
+\end{align*}
+\end{solution}
+
+
+
+\question
+Consider the map $\map{h}{\polyspace_3}{\polyspace_2}$
+given by this formula
+$ax^3+bx^2+cx+d \mapsto (a+b-c)x^2-(b+c)x+(b-c)$.
+\begin{parts}
+\item Prove it is a linear map.
+\begin{solution}[2.25in]
+We show that it respects combinations.
+\begin{multline*}
+  h(r_1(a_1x^3+b_1x^2+c_1x+d_1)+r_2(a_2x^3+b_2x^2+c_2x+d_2))  \\
+  \begin{split}
+  &=
+    h((r_1a_1+r_2a_2)x^3+(r_1b_1+r_2b_2)x^2+(r_1c_1+r_2c_2)x+(r_1d_1+r_2d_2))  \\
+    &=((r_1a_1+r_2a_2)+(r_1b_1+r_2b_2)-(r_1c_1+r_2c_2))x^2 \\
+    &\quad-((r_1b_1+r_2b_2)+(r_1c_1+r_2c_2))x+(r_1b_1+r_2b_2)-(r_1c_1+r_2c_2)  \\
+  &=r_1(a_1+b_1-c_1)x^2-r_1(b_1+c_1)x+r_1(b_1-c_1)  \\
+    &\quad +
+    r_2(a_2+b_2-c_2)x^2-r_2(b_2+c_2)x+r_2(b_2-c_2)  \\
+  &=r_1h(a_1x^3+b_1x^2+c_1x+d_1)+r_2h(a_2x^3+b_2x^2+c_2x+d_2)
+  \end{split}  
+\end{multline*}
+\end{solution}
+\item Represent it with respect to these bases.
+\begin{equation*}
+   B=\sequence{x^3,x^3+x^2,x,x+1}
+   \quad
+  D=\sequence{x^2+1,x+1,1}
+\end{equation*}
+\begin{solution}[2.5in]
+The action of the map on the domain's basis vectors is this.
+\begin{equation*}
+    x^3\mapsto x^2
+    \quad
+    x^3+x^2\mapsto 2x^2-x+1
+    \quad
+    x\mapsto -x^2-x-1
+    \quad
+    x+1\mapsto -x^2-x-1
+\end{equation*}
+Represent those with respect to the codomain's basis.
+\begin{equation*}
+  \rep{x^2}{D}=\colvec{1 \\ 0 \\ -1}_D
+  \quad
+  \rep{2x^2-x+1}{D}=\colvec{2 \\ -1 \\ 0}_D
+  \quad
+  \rep{-x^2-x-1}{D}=\colvec{-1 \\ -1 \\ 1}_D
+  % \quad
+  % \rep{-x^2-x-1}{D}=\colvec{-1 \\ -1 \\ 1}_D
+\end{equation*}
+Concatenate them together into a matrix.
+\begin{equation*}
+  \rep{h}{B,D}=
+  \begin{mat}
+    1  &2   &-1  &-1    \\
+    0  &-1  &-1  &-1    \\
+   -1  &0   &1   &1
+  \end{mat}
+\end{equation*}
+\end{solution}
+\end{parts}  
+
+
+
+\question
+Which of these spaces are isomorphic?  Briefly say why.
+\begin{parts}
+\item $\Re^n$
+\item $\polyspace_n$
+\item $\matspace_{2\times n}$
+\begin{solution}[0.5in]
+Spaces are isomorphic if and only if they have the same dimension.
+The first is dimension $n$, the second is dimension~$n+1$, and the third
+is dimension $2n$.
+For the first two, the isomorphisms are:
+$\R^1\cong \polyspace_0$, 
+$\R^2\cong \polyspace_1$, 
+$\R^3\cong \polyspace_2$, \ldots\@
+In short, $\R^{k+1}\cong\polyspace_{k}$ for any $k\in\N$.
+For the first and third, $\R^{2k}\cong\matspace_{2\times k}$ for $k\in\N^+$.
+Finally, for the second and third,
+$\polyspace_{2k-1}\cong\matspace_{2\times k}$ for $k\in\N^+$.
+\end{solution}
+\end{parts}
+
+
+\question
+  Consider the map $\map{h}{\Re^3}{\Re^3}$ represented by this matrix
+  with respect to the standard bases.
+  \begin{equation*}
+    \begin{mat}
+      1 &0  &1 \\
+      3 &1  &1  \\
+      1 &-1 &3
+    \end{mat}
+  \end{equation*}
+  \begin{parts}
+    \item Find the range space of the map.
+      What is the map's rank?
+\begin{solution}[2in]
+Here is the Gauss-Jordan reduction.
+\begin{equation*}
+  \begin{amat}{3}
+      1 &0 &-1 &a \\
+      2 &1 &0  &b \\
+      2 &2 &2  &c  
+  \end{amat}
+  \grstep[-2\rho_1+\rho_3]{-2\rho_1+\rho_2}
+  \begin{amat}{3}
+      1 &0 &-1 &a \\
+      0 &1 &2  &-2a+b \\
+      0 &2 &4  &-2a+c  
+  \end{amat}
+  \grstep{-2\rho_2+\rho_3}
+  \begin{amat}{3}
+      1 &0 &-1 &a \\
+      0 &1 &2  &-2a+b \\
+      0 &0 &0  &2a-2b+c  
+  \end{amat}
+\end{equation*}
+The range space is the set containing all of the members of the codomain 
+for which this system has a solution.
+\begin{equation*}
+  \rangespace{h}=\set{\colvec{b-(1/2)c \\ b \\ c}\suchthat b,c\in\Re}
+\end{equation*}
+The rank is 2.
+\end{solution}
+    \item Describe the null space of the map.
+      What is the map's nullity?
+\begin{solution}[1.25in]
+The null space is the set of members of the domain that map to 
+$a=0$, $b=0$, and~$c=0$.
+\begin{equation*}
+  \nullspace{h}=\set{\colvec{z \\ -2z \\ z}\suchthat z\in\Re}
+\end{equation*}
+The nullity is~$1$.
+\end{solution}
+    \item Is the map onto?  Briefly justify.
+\begin{solution}[1.0in]
+  The codomain has dimension~$3$ but the map's range has only dimension~$2$, 
+  so the map is not onto.
+\end{solution}
+    \item Is the map one-to-one?  Briefly justify.
+\begin{solution}[1.0in]
+  The dimension of the nullspace is not~$0$, so the map is not one-to-one.
+\end{solution}
+  \end{parts}
+  
+
+  
+\question
+Give an isomorphism between $\matspace_{\nbyn{2}}$ and $\R^4$.
+You need not show the verification.
+\begin{solution}[0.75in]
+Here is the natural one.
+\begin{equation*}
+\begin{mat}
+a &b \\
+c &d
+\end{mat}
+\mapsto
+\colvec{a \\ b \\ c \\ d}
+\end{equation*}
+\end{solution}
+
+
+\question
+Let the matrix $H$ represent the map $\map{h}{\Re^2}{\Re^3}$
+and the matrix $G$ represent $\map{g}{\Re^3}{\Re^2}$.
+\begin{equation*}
+H=
+\begin{mat}
+2  &1  \\
+3  &1  \\
+4  &1
+\end{mat}
+\qquad
+G=
+\begin{mat}
+0  &1 &2  \\
+3  &2 &1  
+\end{mat}
+\end{equation*}
+\begin{parts}
+\item What is the representation of the composition $g\circ h$?
+\begin{solution}[1.25in]
+The matrix product.
+\begin{equation*}
+  GH=
+  \begin{mat}
+  11 &3 \\
+  16 &6
+  \end{mat}
+\end{equation*}
+\end{solution}
+\item Does the composition $h\circ g$ have a representation?
+\begin{solution}[1.25in]
+\begin{equation*}
+  HG=
+  \begin{mat}
+  3 &4 &5 \\
+  3 &5 &7 \\
+  3 &6 &9
+  \end{mat}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+
+
+
+
+\question
+Perform each matrix operation or state ``not defined.''
+\begin{parts}
+\item
+$
+  \begin{mat}
+    1 &1 \\
+    3 &-1 \\
+  \end{mat}
+  \begin{mat}
+     0 &4 \\
+     2 &3 \\
+  \end{mat}
+  \begin{mat}
+    -1 &1 \\
+    -1 &3 \\
+  \end{mat}
+  $
+\begin{solution}[1.5in]
+  \begin{equation*}
+  \begin{mat}
+  -9 &23 \\
+  -7 &25
+  \end{mat}
+  \end{equation*}
+\end{solution}    
+\item
+$
+\begin{mat}
+1 &3 &1 \\
+0 &0 &2
+\end{mat}
+\begin{mat}
+1 &0 \\
+3 &0 \\
+1 &2
+\end{mat}
+$
+\begin{solution}[1.25in]
+  \begin{equation*}
+  \begin{mat}
+  11 &2 \\
+  2 &4
+    \end{mat}
+  \end{equation*}
+\end{solution}    
+\item
+$
+3\cdot\begin{mat}
+5 &1 \\
+2 &-1
+\end{mat}
+-2\cdot
+\begin{mat}
+4 &0  &0  \\
+2 &-1 &6
+\end{mat}
+$  
+\begin{solution}[1in]
+This is not defined.
+\end{solution}    
+\end{parts}
+
+
+\end{questions}
+\end{document}
+

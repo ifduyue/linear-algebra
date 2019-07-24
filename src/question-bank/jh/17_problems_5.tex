@@ -1,0 +1,85 @@
+% \documentclass[11pt,answers]{examjh}
+\documentclass[11pt,noanswers]{examjh}
+\usepackage{../../linalgjh}
+\examhead{MA 213 Hef{}feron, 2017-Fall}{Due: Thu 2017-Dec-07}
+
+\setlength{\parindent}{0em}
+\begin{document}
+\makebox[\linewidth]{\textbf{Homework 4, MA~213}}
+
+\vspace*{3ex}
+\textit{You may work with others to figure out how to do questions, 
+and you are welcome to look for answers in the book, online, by talking
+to someone who had the course before, etc.
+However, you must write 
+the answers on your own.
+You must also show your work (you may, of course, 
+quote any result from the book).}
+
+\begin{questions}
+
+\question
+  For each space find the matrix changing a vector representation with 
+  respect to $B$ to one with respect to~$D$.
+  \begin{enumerate}
+  \item $V=\Re^3$, $B=\stdbasis_3$, 
+      $D=\sequence{\colvec{1 \\ 2 \\ 3},
+                   \colvec{1 \\ 1 \\ 1},
+                   \colvec{0 \\ 1 \\ -1}}$
+  \item $V=\polyspace_2$,
+    $B=\sequence{x^2, x^2+x, x^2+x+1}$,
+    $D=\sequence{2, -x, x^2}$
+  \end{enumerate}
+
+\question
+  Consider the linear transformation $\map{t}{\Re^3}{\Re^3}$
+  represented with respect to the 
+  standard bases by this matrix.
+  \begin{equation*}
+    \begin{mat}
+      1 &0 &-1 \\
+      3 &1 &1 \\
+     -1 &0 &3
+    \end{mat}
+  \end{equation*}
+  \begin{enumerate}
+    \item Compute the determinant of the matrix.
+    \item Find the size of the box defined by these vectors.
+      \begin{equation*}
+        \colvec{1 \\ -1 \\ 2}
+        \quad
+        \colvec{2 \\ 0 \\ -1}
+        \quad
+        \colvec{1 \\ 1 \\ 0}
+      \end{equation*}
+    Wht is its orientation?
+  \item Find the image under $t$ of the vectors in the prior item and 
+    find the size of the box that they define.
+  \end{enumerate}
+
+\question
+  Express this nonsingular matrix as a product of elementary reduction
+  matrices.
+  \begin{equation*}
+    \begin{mat}
+      1 &2  &0 \\
+      2 &-1 &0 \\
+      3 &1 &2
+    \end{mat}
+  \end{equation*}
+
+\question
+  Find the $P$ and~$Q$ to express $H$ via $PHQ$ as a block partial identity
+  matrix.
+  \begin{equation*}
+    H=
+    \begin{mat}
+      2 &1  &1  \\
+      3 &-1 &0  \\
+      1 &3  &2 
+    \end{mat}
+  \end{equation*}
+
+
+\end{questions}
+\end{document}

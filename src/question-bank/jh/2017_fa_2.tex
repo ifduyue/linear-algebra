@@ -1,0 +1,379 @@
+\documentclass[11pt]{examjh}
+% \documentclass[11pt,answers]{examjh}
+\usepackage{../../linalgjh}
+\examhead{MA 213 Hef{}feron, 2017-Fall}{Exam Two}
+
+\begin{document}
+\begin{questions}
+\question
+List the dimension of each space.
+\begin{parts}
+\item $\R^4$
+\item $\matspace_{3\times 2}$
+\item $\polyspace_4$
+\begin{solution}[0.5in]
+
+\end{solution}
+\end{parts}
+
+
+
+\question
+Perform each matrix operation or state ``not defined.''
+\begin{parts}
+\item
+$
+  \begin{mat}
+    1 &1  &2 \\
+    3 &-1 &0 \\
+    2 &2  &1
+  \end{mat}
+  \begin{mat}
+    -1 &1 \\
+    -3 &3 \\
+     1 &0
+  \end{mat}
+  $
+\begin{solution}[1.25in]
+  \begin{equation*}
+    \begin{mat}
+    \end{mat}
+  \end{equation*}
+\end{solution}    
+\item
+$
+5\cdot\begin{mat}
+5 &1 \\
+2 &-1
+\end{mat}
++6\cdot
+\begin{mat}
+4 &0  &0  \\
+2 &-1 &6
+\end{mat}
+$  
+\begin{solution}[1in]
+  \begin{equation*}
+    \begin{mat}
+    \end{mat}
+  \end{equation*}
+\end{solution}    
+\item
+$
+\begin{mat}
+1 &3 &1 \\
+0 &0 &2
+\end{mat}
+\begin{mat}
+1 &0 \\
+3 &0 \\
+1 &2
+\end{mat}
+$
+\begin{solution}[1.25in]
+  \begin{equation*}
+    \begin{mat}
+    \end{mat}
+  \end{equation*}
+\end{solution}    
+\end{parts}
+
+
+
+\question
+Show that the map $\map{t}{\polyspace_2}{\matspace_{1\times 3}}$ given by
+$t(ax^2+bx+c)=\rowvec{b-a &c &b}$ is an isomorphism.
+\begin{solution}[2.5in]
+To see that the map is one-to-one suppose that $t(\vec{v}_1)=t(\vec{v}_2)$,
+aiming to conclude that $\vec{v}_1=\vec{v}_2$.
+That is, $t(a_1x^2+b_1x+c_1)=t(a_2x^2+b_2x+c_2)$.
+Then $b_1x^2-(a_1+c_1)x+a_1=b_2x^2-(a_2+c_2)x+a_2$ and because 
+quadratic polynomials
+are equal only if they have have the same quadratic terms, the same constant
+terms, and the same linear terms we conclude that 
+$b_1=b_2$, that $a_1=a_2$, and from that, $c_1=c_2$.
+Therefore $a_1x^2+b_1x+c_1=a_2x^2+b_2x+c_2$ and the function is 
+one-to-one.
+
+To see that the map is onto, we suppose that we are given a member~$\vec{w}$ 
+of the codomain and we find a member~$\vec{v}$ of the domain that maps to
+it.
+Let the member of the codomain be~$\vec{w}=px^2+qx+r$.
+Observe that where $\vec{v}=rx^2+px+(-q+r)$ then $t(\vec{v})=\vec{w}$.
+Thus~$t$ is onto.  
+
+To see that the map is a homomorphism we show that it respects linear 
+combinations of two elements.
+\begin{multline*}
+  t(r_1(a_1x^2+b_1x+c_1)+r_2(a_2x^2+b_2x+c_2))              \\ 
+  \begin{split} \quad 
+  &=t((r_1a_1+r_2a_2)x^2+(r_1b_1+r_2b_2)x+(r_1c_1+r_2c_2))   \\
+  &=(r_1b_1+r_2b_2)x^2-((r_1a_1+r_2a_2)+(r_1c_1+r_2c_2))x+(r_1a_1+r_2a_2)  \\
+  &=(r_1b_1)x^2-(r_1a_1+r_1c_1)x+r_1a_1
+     +(r_2b_2)x^2-(r_2a_2+r_2c_2)x+r_2a_2                       \\
+  &=r_1t(a_1x^2+b_1x+c_1)+r_2t(a_2x^2+b_2x+c_2)
+  \end{split}
+\end{multline*}
+\end{solution}
+
+
+
+\question
+Consider the map $\map{h}{\polyspace_3}{\polyspace_2}$
+given by this formula
+$ax^3+bx^2+cx+d \mapsto (a+b-c)x^2-(b+c)x+(b-c)$.
+\begin{parts}
+\item Prove it is a linear map.
+\begin{solution}[2.25in]
+
+\end{solution}
+\item Represent it with respect to these.
+\begin{equation*}
+   B=\sequence{x^3,x^3+x^2,x,x+1}
+   \quad
+  D=\sequence{x^2+1,x+1,1}
+\end{equation*}
+\begin{solution}[2.5in]
+The action of the map on the domain's basis vectors is this.
+\begin{equation*}
+    \colvec{1 \\ 1 \\ 1}\mapsto\colvec{2 \\ 2}
+    \quad
+    \colvec{1 \\ 1 \\ 0}\mapsto\colvec{2 \\ 1}
+    \quad
+    \colvec{1 \\ 0 \\ 0}\mapsto\colvec{1 \\ 1}
+\end{equation*}
+Represent those with respect to the codomain's basis.
+\begin{equation*}
+  \rep{\colvec{2 \\ 2}}{D}=\colvec{2 \\ 1}_D
+  \quad
+  \rep{\colvec{2 \\ 1}}{D}=\colvec{2 \\ 1/2}_D
+  \quad
+  \rep{\colvec{1 \\ 1}}{D}=\colvec{1 \\ 1/2}_D
+\end{equation*}
+Concatenate them together into a matrix.
+\begin{equation*}
+  \rep{h}{B,D}=
+  \begin{mat}
+    2 &2   &1 \\
+    1 &1/2 &1/2
+  \end{mat}
+\end{equation*}
+\end{solution}
+\end{parts}  
+
+
+
+\question
+Which of these spaces are isomorphic?  Briefly say why.
+\begin{parts}
+\item $\Re^2$
+\item $\polyspace_2$
+\item $\matspace_{nbyn{2}}$
+\begin{solution}[0.5in]
+
+\end{solution}
+\end{parts}
+
+
+\question
+  Consider the map $\map{h}{\Re^3}{\Re^3}$ represented by this matrix
+  with respect to the standard bases.
+  \begin{equation*}
+    \begin{mat}
+      1 &0 &-1 \\
+      2 &1 &0  \\
+      2 &2 &2
+    \end{mat}
+  \end{equation*}
+  \begin{parts}
+    \item Find the range space of the map.
+      What is the map's rank?
+\begin{solution}[2in]
+Here is the Gauss-Jordan reduction.
+\begin{equation*}
+  \begin{amat}{3}
+      1 &0 &-1 &a \\
+      2 &1 &0  &b \\
+      2 &2 &2  &c  
+  \end{amat}
+  \grstep[-2\rho_1+\rho_3]{-2\rho_1+\rho_2}
+  \begin{amat}{3}
+      1 &0 &-1 &a \\
+      0 &1 &2  &-2a+b \\
+      0 &2 &4  &-2a+c  
+  \end{amat}
+  \grstep{-2\rho_2+\rho_3}
+  \begin{amat}{3}
+      1 &0 &-1 &a \\
+      0 &1 &2  &-2a+b \\
+      0 &0 &0  &2a-2b+c  
+  \end{amat}
+\end{equation*}
+The range space is the set containing all of the members of the codomain 
+for which this system has a solution.
+\begin{equation*}
+  \rangespace{h}=\set{\colvec{b-(1/2)c \\ b \\ c}\suchthat b,c\in\Re}
+\end{equation*}
+The rank is 2.
+\end{solution}
+    \item Describe the null space of the map.
+      What is the map's nullity?
+\begin{solution}[1.25in]
+The null space is the set of members of the domain that map to 
+$a=0$, $b=0$, and~$c=0$.
+\begin{equation*}
+  \nullspace{h}=\set{\colvec{z \\ -2z \\ z}\suchthat z\in\Re}
+\end{equation*}
+The nullity is~$1$.
+\end{solution}
+    \item Is the map onto?  Briefly justify.
+\begin{solution}[1.0in]
+  The codomain has dimension~$3$ but the map's range has only dimension~$2$, 
+  so the map is not onto.
+\end{solution}
+    \item Is the map one-to-one?  Briefly justify.
+\begin{solution}[1.0in]
+  The dimension of the nullspace is not~$0$, so the map is not one-to-one.
+\end{solution}
+  \end{parts}
+
+
+\question
+Show that the map $\map{f}{\matspace_{\nbyn{2}}}{\R^2}$
+\begin{equation*}
+\begin{mat}
+  a  &b  \\
+  c  &d 
+\end{mat}\mapsto
+\colvec{a+b \\ 2a+2b}  
+\end{equation*}
+is not onto.
+\begin{solution}[1in]
+
+\end{solution}
+
+  
+
+\question
+True or False: every matrix can be multiplied by itself, since the domains
+and codomains of the underlying functions agree.  
+(Give a one-sentence justification of your answer.)
+\begin{solution}[0.5in]
+  False.
+  Here is a multiplication of a matrix with itself.
+  \begin{equation*}
+    \begin{mat}
+      1 &2 \\
+      3 &4
+    \end{mat}
+    \begin{mat}
+      1 &2 \\
+      3 &4
+    \end{mat}
+    =    
+    \begin{mat}
+      7 &10 \\
+      15 &22
+    \end{mat}
+  \end{equation*}
+\end{solution}
+
+
+\question
+Let the matrix $H$ represents the map $\map{f}{\Re^2}{\Re^3}$
+and the matrix $G$ represent $\map{g}{\Re^3}{\Re^2}$,
+\begin{equation*}
+H=
+\begin{mat}
+2  &1  \\
+3  &1  \\
+4  &1
+\end{mat}
+\qquad
+G=
+\begin{mat}
+0  &1 &2  \\
+3  &2 &1  
+\end{mat}
+\end{equation*}
+\begin{parts}
+\item What is the representation of the composition $g\circ f$?
+\begin{solution}[1.25in]
+
+\end{solution}
+\item Does the composition $f\circ g$ have a representation?
+\begin{solution}[1.25in]
+
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}
+
+
+sage: M1=matrix(QQ,[[1,1,2], [3,-1,0], [2,2,1]])
+sage: M1
+[ 1  1  2]
+[ 3 -1  0]
+[ 2  2  1]
+sage: M2=matrix(QQ,[[-1,1], [-3,3], [1,0]])
+sage: M2
+[-1  1]
+[-3  3]
+[ 1  0]
+sage: M1*M2
+[-2  4]
+[ 0  0]
+[-7  8]
+
+sage: M=matrix(QQ, [[1,0,-1], [2,1,0], [2,2,2]])
+sage: load "../lab/gauss_method.sage"
+/usr/lib/sagemath/local/lib/python2.7/site-packages/sage/misc/sage_extension.py:371: DeprecationWarning: Use %runfile instead of load.
+See http://trac.sagemath.org/12719 for details.
+  line = f(line, line_number)
+sage: gauss_jordan(M)
+[ 1  0 -1]
+[ 2  1  0]
+[ 2  2  2]
+ take -2 times row 1 plus row 2
+ take -2 times row 1 plus row 3
+[ 1  0 -1]
+[ 0  1  2]
+[ 0  2  4]
+ take -2 times row 2 plus row 3
+[ 1  0 -1]
+[ 0  1  2]
+[ 0  0  0]
+
+
+sage: M3=matrix(QQ,[[1,2], [3,4]])
+sage: M3
+[1 2]
+[3 4]
+sage: M3*M3
+[ 7 10]
+[15 22]
+
+sage: M4=matrix(QQ,[[1,0,-1], [2,1,0], [2,0,-1]])
+sage: M4
+[ 1  0 -1]
+[ 2  1  0]
+[ 2  0 -1]
+sage: M4^(-1)
+[-1  0  1]
+[ 2  1 -2]
+[-2  0  1]
+sage: gauss_jordan(M4)
+[ 1  0 -1]
+[ 2  1  0]
+[ 2  0 -1]
+ take -2 times row 1 plus row 2
+ take -2 times row 1 plus row 3
+[ 1  0 -1]
+[ 0  1  2]
+[ 0  0  1]
+ take 1 times row 3 plus row 1
+ take -2 times row 3 plus row 2
+[1 0 0]
+[0 1 0]
+[0 0 1]
