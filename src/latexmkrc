@@ -149,7 +149,7 @@ sub asy2x   {
 
 # ============ Declare files to compile ====
 # Use these to create this file
-@default_files = ('book.tex' );
+@default_files = qw( book.tex jhanswer.tex);
 
 # Each slide deck comes in three varieties, so put them in the list of files 
 my @slidefiles = qw( one/one_i one/one_ii one/one_iii

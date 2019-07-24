@@ -1,13 +1,13 @@
 \documentclass[twoside]{book}
-\usepackage{ifpdf} 
-%\newcommand{\pdflatex}[1]{\ifpdf #1\fi}
-%\pdflatex{\DeclareGraphicsRule{*}{mps}{*}{}}
-\ifpdf
-    \usepackage[yes]{hrefout} % allow selection of hyperref from command line
-  \else
-    \usepackage{dvidrv} % set the dvi driver from the command line
-    \usepackage[no]{hrefout} % allow selection of hyperref from command line
-  \fi
+% \usepackage{ifpdf} 
+% %\newcommand{\pdflatex}[1]{\ifpdf #1\fi}
+% %\pdflatex{\DeclareGraphicsRule{*}{mps}{*}{}}
+% \ifpdf
+%     \usepackage[yes]{hrefout} % allow selection of hyperref from command line
+%   \else
+%     % \usepackage{dvidrv} % set the dvi driver from the command line
+%     \usepackage[no]{hrefout} % allow selection of hyperref from command line
+%   \fi
 
 \usepackage{verbatim}
 \usepackage{xr}
