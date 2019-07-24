@@ -1,14 +1,13 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compote\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../jc2} % read refs from .aux file
+\usepackage{directories}
+\usepackage{xr}\externaldocument{\jcdir jc2} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -52,9 +51,9 @@
 % =============================================
 \begin{frame}
 \vspace*{-2ex}
-\ExecuteMetaData[../jc2.tex]{SimilarityMotiviation0}  
+\ExecuteMetaData[\jcdir jc2.tex]{SimilarityMotiviation0}  
 \pause  
-\ExecuteMetaData[../jc2.tex]{SimilarityMotiviation1}  
+\ExecuteMetaData[\jcdir jc2.tex]{SimilarityMotiviation1}  
 \end{frame}
 
 
@@ -63,7 +62,7 @@
 % ..... Five.II.1 .....
 \begin{frame}{Similar matrices}
 \df[df:Similar]
-\ExecuteMetaData[../jc2.tex]{df:Similar}  
+\ExecuteMetaData[\jcdir jc2.tex]{df:Similar}  
 
 \ex
 Consider the derivative map $\map{d/dx}{\polyspace_2}{\polyspace_2}$.
@@ -190,7 +189,7 @@ Where
 
 \pause
 \ex[ex:OnlyZeroSimToZero]
-\ExecuteMetaData[../jc2.tex]{ex:OnlyZeroSimToZero}  
+\ExecuteMetaData[\jcdir jc2.tex]{ex:OnlyZeroSimToZero}  
 \end{frame}
 
 
@@ -215,7 +214,7 @@ split into two or more similarity classes\Dash similarity gives a finer
 partition than does equivalence.
 This pictures some matrix equivalence classes subdivided into
 similarity classes.
-\centergraphic{../ch5.4} 
+\centergraphic{\jcmpdir ch5.4} 
 
 \pause
 We naturally want a canonical form to represent the similarity classes.
@@ -230,7 +229,7 @@ are represented by a diagonal form.
 \section{Diagonalizability}
 \begin{frame}
 \df[df:Diagonalizable]
-\ExecuteMetaData[../jc2.tex]{df:Diagonalizable}  
+\ExecuteMetaData[\jcdir jc2.tex]{df:Diagonalizable}  
 
 \ex
 This matrix
@@ -269,7 +268,7 @@ to get this $D=PSP^{-1}$.
 \end{frame}
 \begin{frame}
 \ex  
-\ExecuteMetaData[../jc2.tex]{ex:NotDiagonalizable}  
+\ExecuteMetaData[\jcdir jc2.tex]{ex:NotDiagonalizable}  
 \end{frame}
 
 
@@ -277,11 +276,11 @@ to get this $D=PSP^{-1}$.
 
 \begin{frame}
 \lm[lm:DiagIffBasisOfEigens]
-\ExecuteMetaData[../jc2.tex]{lm:DiagIffBasisOfEigens}  
+\ExecuteMetaData[\jcdir jc2.tex]{lm:DiagIffBasisOfEigens}  
 
 \pause
 \pf
-\ExecuteMetaData[../jc2.tex]{pf:DiagIffBasisOfEigens}  
+\ExecuteMetaData[\jcdir jc2.tex]{pf:DiagIffBasisOfEigens}  
 \qed
 \end{frame}
 
@@ -396,11 +395,11 @@ where this is a basis.
 \section{Eigenvalues and Eigenvectors}
 \begin{frame}{Eigenvalues and eigenvectors}
 \df[def:Eigen]
-\ExecuteMetaData[../jc2.tex]{df:Eigen}  
+\ExecuteMetaData[\jcdir jc2.tex]{df:Eigen}  
 
 \pause
 \df[df:EigenOfMatrix]
-\ExecuteMetaData[../jc2.tex]{df:EigenOfMatrix}  
+\ExecuteMetaData[\jcdir jc2.tex]{df:EigenOfMatrix}  
 
 \ex
 The matrix
@@ -801,18 +800,18 @@ that does not hold for the second matrix.
 
 \begin{frame}{Characteristic polynomial}
 \df[df:CharacteristicPoly]
-\ExecuteMetaData[../jc2.tex]{df:CharacteristicPoly}
+\ExecuteMetaData[\jcdir jc2.tex]{df:CharacteristicPoly}
 
 \no
-\ExecuteMetaData[../jc2.tex]{df:CharacteristicPolyExer}
+\ExecuteMetaData[\jcdir jc2.tex]{df:CharacteristicPolyExer}
 
 \pause
 \lm[le:MapNonTrivSpHasEigen] 
-\ExecuteMetaData[../jc2.tex]{lm:MapNonTrivSpHasEigen}
+\ExecuteMetaData[\jcdir jc2.tex]{lm:MapNonTrivSpHasEigen}
 
 \pause
 \pf
-\ExecuteMetaData[../jc2.tex]{pf:MapNonTrivSpHasEigen}
+\ExecuteMetaData[\jcdir jc2.tex]{pf:MapNonTrivSpHasEigen}
 \qed
 
 \pause
@@ -827,7 +826,7 @@ to complex number scalars.
 
 \begin{frame}{Eigenspace}
 \df[df:Eigenspace]
-\ExecuteMetaData[../jc2.tex]{df:Eigenspace}
+\ExecuteMetaData[\jcdir jc2.tex]{df:Eigenspace}
 
 \ex
 Recall that this matrix has three eigenvalues, $5$, $4$, and~$2$.
@@ -850,11 +849,11 @@ Earlier, we found that these are the eigenspaces.
 \end{frame}
 \begin{frame}
 \lm[le:EigSpaceIsSubSp] 
-\ExecuteMetaData[../jc2.tex]{lm:EigSpaceIsSubSp}
+\ExecuteMetaData[\jcdir jc2.tex]{lm:EigSpaceIsSubSp}
 
 \pause
 \pf
-\ExecuteMetaData[../jc2.tex]{pf:EigSpaceIsSubSp}
+\ExecuteMetaData[\jcdir jc2.tex]{pf:EigSpaceIsSubSp}
 \qed
 \end{frame}
 
@@ -863,14 +862,14 @@ Earlier, we found that these are the eigenspaces.
 
 \begin{frame}
 \th[th:DistEValueGivesLIEvecs]
-\ExecuteMetaData[../jc2.tex]{th:DistEValueGivesLIEvecs}
+\ExecuteMetaData[\jcdir jc2.tex]{th:DistEValueGivesLIEvecs}
 
 \pause
 \pf
-\ExecuteMetaData[../jc2.tex]{pf:DistEValueGivesLIEvecs0}
+\ExecuteMetaData[\jcdir jc2.tex]{pf:DistEValueGivesLIEvecs0}
 \end{frame}
 \begin{frame}
-\ExecuteMetaData[../jc2.tex]{pf:DistEValueGivesLIEvecs1}
+\ExecuteMetaData[\jcdir jc2.tex]{pf:DistEValueGivesLIEvecs1}
 \qed
 \end{frame}
 
@@ -917,9 +916,9 @@ Picking a vector from each of $V_3$ and~$V_2$ gives this linearly independent se
 
 \begin{frame}{A criteria for diagonalizability}
 \co[co:DistinctEivenvaluesImpliesDiagonal]
-\ExecuteMetaData[../jc2.tex]{co:DistinctEivenvaluesImpliesDiagonal}
+\ExecuteMetaData[\jcdir jc2.tex]{co:DistinctEivenvaluesImpliesDiagonal}
 \pf
-\ExecuteMetaData[../jc2.tex]{pf:DistinctEivenvaluesImpliesDiagonal}
+\ExecuteMetaData[\jcdir jc2.tex]{pf:DistinctEivenvaluesImpliesDiagonal}
 \qed
 \end{frame}
 

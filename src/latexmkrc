@@ -85,17 +85,21 @@ sub asy2x   {
     my $file = $_[0];
     my ($name, $path) =  fileparse( $file );
     print "!!!!! file name is ",$name,", file path is ",$path,"\n";
-    $name =~ s/\d+$//;  # strip trailing digits
-    print "!!!!! file name with trailing digits stripped is ",$name,"\n";
     chdir $path;
     print "!!!!! current dir is ",getcwd,"\n";
+    # If an .asy file with this name exists, go with it.  OW, if there is a
+    # file with the same name but the trailing digits stripped, then
+    # go for that one.
+    if (! -e "$name.asy") {
+         $name =~ s/\d+$//;  # strip trailing digits
+     	 print "!!!!! file name with trailing digits stripped is ",$name,"\n";
+      }
     my $asy_string = "ASYMPTOTE_DIR=\"/home/ftpmaint/Documents/linear-algebra.git/src/asy/asy-graphtheory-master/modules:/home/ftpmaint/Documents/linear-algebra.git/src/asy\"";
-    # my $cmd_string = "$asy_string asy -nosafe -vv '$name' &> '$name.log'";
+    # -nosafe gets around GhostScript error when using opacity:
+    #    https://github.com/vectorgraphics/asymptote/issues/77
     my $cmd_string = "$asy_string asy -nosafe -vv '$name'";
     print "!!!!! about to run the systemcommand ","$cmd_string","\n";
     # print "!!!!! TEXINPUTS is ",$ENV{'TEXINPUTS'},"\n";
-    # -nosafe gets around GS error when using opacity:
-    #    https://github.com/vectorgraphics/asymptote/issues/77
     # my $ret = system("asy -nosafe -vv -f '$_[1]' '$name' &> '$name.log'");
     my $ret = system("$cmd_string");
     print "!!!!! finished with the system command\n";
@@ -154,6 +158,7 @@ my @slidefiles = qw( one/one_i one/one_ii one/one_iii
                      three/three_i three/three_ii  three/three_ii_a
 		     three/three_vi
                      four/four_i four/four_ii four/four_iii
+                     five/five_i five/five_ii five/five_ii_a
                    );
 for my $i (@slidefiles) {
   push @default_files, "slides/".$i.".tex";

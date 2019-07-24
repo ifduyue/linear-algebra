@@ -1,4 +1,4 @@
-// three_ii_3dproj1.asy
+// three_ii_3dproj2.asy
 import jh;
 real height; height=3.5cm; size(0,height);
 import settings;

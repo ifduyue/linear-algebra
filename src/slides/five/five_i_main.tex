@@ -1,14 +1,13 @@
-% see: https://groups.google.com/forum/?fromgroups#!topic/comp.text.tex/s6z9Ult_zds
-\makeatletter\let\ifGm@compote\relax\makeatother 
-\documentclass[9pt,t]{beamer}
+% \documentclass[9pt,t]{beamer}
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
 \PassOptionsToPackage{usenames,dvipsnames}{color}
 % \DeclareGraphicsRule{*}{mps}{*}{}
-\usepackage{../linalgjh}
+\usepackage{linalgjh}
 \usepackage{present}
-\usepackage{xr}\externaldocument{../jc1} % read refs from .aux file
+\usepackage{directories}  % Define \jcdir, \jcmpdir, etc.
+\usepackage{xr}\externaldocument{\jcdir jc1} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
 \makeatletter
@@ -56,7 +55,7 @@
 \section{Chapter Five.  Similarity}
 %..........
 \begin{frame}{Scalars will now be complex}
-\ExecuteMetaData[../jc1.tex]{ReasonForShiftToComplexNumbers}
+\ExecuteMetaData[\jcdir jc1.tex]{ReasonForShiftToComplexNumbers}
 
 % We start with a review of polynomials, factoring, and complex numbers.
 % Because it is a review, we leave off some proofs.  
@@ -67,10 +66,10 @@
 
 \section{Factoring and Complex Numbers}
 \begin{frame}{Division Theorem for Polynomials}
-\ExecuteMetaData[../jc1.tex]{PolynomialReview0}  
+\ExecuteMetaData[\jcdir jc1.tex]{PolynomialReview0}  
 
 \pause
-\ExecuteMetaData[../jc1.tex]{PolynomialReview1}  
+\ExecuteMetaData[\jcdir jc1.tex]{PolynomialReview1}  
 
 \ex
 \begin{equation*}
@@ -92,25 +91,25 @@ $3x^3+2x^2-x+4=(x^2+x)\cdot(3x-1)+4$.}
 
 \begin{frame}
 \th[th:EuclidForPolys]
-\ExecuteMetaData[../jc1.tex]{th:EuclidForPolys}  
+\ExecuteMetaData[\jcdir jc1.tex]{th:EuclidForPolys}  
 %\pause
 \co[co:PolyDividedByLinearPolyIsConstant]
-\ExecuteMetaData[../jc1.tex]{co:PolyDividedByLinearPolyIsConstant}  
+\ExecuteMetaData[\jcdir jc1.tex]{co:PolyDividedByLinearPolyIsConstant}  
 
 %\pause
 \pf
-\ExecuteMetaData[../jc1.tex]{co:PolyDividedByLinearPolyIsConstant}  
+\ExecuteMetaData[\jcdir jc1.tex]{co:PolyDividedByLinearPolyIsConstant}  
 \qed
 
 \pause
-\ExecuteMetaData[../jc1.tex]{PolynomialFactor}  
+\ExecuteMetaData[\jcdir jc1.tex]{PolynomialFactor}  
 
 \co[co:RootOfPolyIsAssocLinearFactor]
-\ExecuteMetaData[../jc1.tex]{co:RootOfPolyIsAssocLinearFactor}
+\ExecuteMetaData[\jcdir jc1.tex]{co:RootOfPolyIsAssocLinearFactor}
 
 \pause
 \pf  
-\ExecuteMetaData[../jc1.tex]{pf:RootOfPolyIsAssocLinearFactor}  
+\ExecuteMetaData[\jcdir jc1.tex]{pf:RootOfPolyIsAssocLinearFactor}  
 \qed
 \end{frame}
 
@@ -119,22 +118,22 @@ $3x^3+2x^2-x+4=(x^2+x)\cdot(3x-1)+4$.}
 
 \begin{frame}{Factoring over the real numbers}
 \th[th:CubicsAndHigherFactor]
-\ExecuteMetaData[../jc1.tex]{th:CubicsAndHigherFactor}
+\ExecuteMetaData[\jcdir jc1.tex]{th:CubicsAndHigherFactor}
 
 \pause
 \co[co:RealPolysFactorIntoLinearsAndQuads]  
-\ExecuteMetaData[../jc1.tex]{co:RealPolysFactorIntoLinearsAndQuads}
+\ExecuteMetaData[\jcdir jc1.tex]{co:RealPolysFactorIntoLinearsAndQuads}
 \end{frame}
 
 
 
 
 \begin{frame}{Factoring over the complex numbers}
-\ExecuteMetaData[../jc1.tex]{ComplexNumbers}
+\ExecuteMetaData[\jcdir jc1.tex]{ComplexNumbers}
 
 \pause
 \th[th:FundThmAlg]\textcolor{blue}{[Fundamental Theorem of Algebra]}  
-\ExecuteMetaData[../jc1.tex]{th:FundThmAlg}
+\ExecuteMetaData[\jcdir jc1.tex]{th:FundThmAlg}
 \end{frame}
 
 
@@ -142,7 +141,7 @@ $3x^3+2x^2-x+4=(x^2+x)\cdot(3x-1)+4$.}
 
 \section{Complex Representations}
 \begin{frame}
-\ExecuteMetaData[../jc1.tex]{ComplexOperations}  
+\ExecuteMetaData[\jcdir jc1.tex]{ComplexOperations}  
 
 With those rules for scalars, all of
 the operations that we've covered
