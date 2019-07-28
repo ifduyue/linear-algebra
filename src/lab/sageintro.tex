@@ -677,7 +677,6 @@ that is accessible with the \inlinecode{help} command.
 All of \Sage's built-in routines do this.
 
 
-
 %----------------------------------
 \section{\Sage}
 Learning what \Sage{} can do is the goal of much of this book 
@@ -715,13 +714,13 @@ Experiment with some expressions.
 % sage: sin(pi/3)
 % 1/2*sqrt(3)
 % \end{lstlisting}
-\begin{sagecode}
-2**3                                                                      
-2^3
-3*1 + 4*2
-5 == 3+3
-sin(pi/3)
-\end{sagecode}
+\begin{sagecommandline}
+sage: 2**3                                                                      
+sage: 2^3
+sage: 3*1 + 4*2
+sage: 5 == 3+3
+sage: sin(pi/3)
+\end{sagecommandline}
 The second expression 
 shows that \Sage{} provides a convenient shortcut for exponentiation over
 \python's \inlinecode{2**3}.
@@ -729,11 +728,11 @@ The fourth expression
 shows that \Sage{} sometimes returns exact results rather than an
 approximation.
 You can still get the approximation; here are three equivalent ways.
-\begin{sagecode}
-sin(pi/3).numerical_approx()
-sin(pi/3).n()
-n(sin(pi/3))  
-\end{sagecode}
+\begin{sagecommandline}
+sage: sin(pi/3).numerical_approx()
+sage: sin(pi/3).n()
+sage: n(sin(pi/3))  
+\end{sagecommandline}
 \noindent
 The function \inlinecode{n()} is an abbreviation for 
 \inlinecode{numerical_approx()}.

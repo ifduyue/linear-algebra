@@ -59,23 +59,7 @@
              Path = /usr/share/texmf/fonts/type1/public/cm-super/,
              ItalicFont = sfoti10.pfb,
              SmallCapsFont = sfocc10]{sform10.pfb}
-% \setsansfont{Computer Modern Sans Serif Demi Condensed}
 \setsansfont{Latin Modern Sans Demi Cond}
-% \setmonofont[Path=/usr/local/texlive/texmf-local/fonts/type1/bh/luxi/,
-%              Scale=0.87]{ul9r8a.pfb}  % Luxi Mono Regular
-% \setmonofont[Path=/usr/local/texlive/texmf-local/fonts/type1/bh/luxi/,
-%                Scale=0.87]{ul9r8a.pfb}  % Luxi Mono Regular
-% \setmonofont[Path=fonts/tmp/,
-%              Scale=MatchLowercase]{lmmono10-regular.otf}  % Latin Modern Mono Regular
-% \setmonofont[Path=fonts/tmp/,
-%              Scale=MatchLowercase]{texgyrecursor-regular.otf}  % TeX Gyre Cursor Regular
-% \setmonofont[Path=fonts/tmp/,
-%              Scale=MatchLowercase]{VerilySerifMono.otf}  % Verily Serif Mono
-% \setmonofont[
-%              Scale=MatchLowercase]{Andale Mono}  
-% 2017-Dec-30 Can't find Courier New
-% \setmonofont[
-%              Scale=MatchLowercase]{Courier New}  
 \setmonofont[
              Scale=MatchLowercase]{Courier}  
 % font for code listings
@@ -93,19 +77,54 @@
   % Path=/usr/local/texlive/2012/texmf-dist/fonts/type1/public/bera/,
                         BoldFont = fvsb8a.pfb,
                         Scale = MatchLowercase]{fvsr8a.pfb}
-% \newfontfamily\latinmodernmono[Path=fonts/tmp/,
-%               Scale=MatchLowercase]{lmmono10-regular.otf}
-% \newfontfamily\texgyrecursor[Path=fonts/tmp/,
-%               Scale=MatchLowercase]{texgyrecursor-bold.otf}
 
 
 \usepackage[math-style=upright]{unicode-math} % see http://tex.stackexchange.com/questions/50995/font-mixup-with-neo-euler-and-fontspec
 % \setmathfont[% Path=/usr/local/texlive/texmf-local/fonts/opentype/euler/
 %              ]{euler.otf}
-\AtBeginDocument{\DeclareMathAlphabet\mathbf{U}{eur}{b}{n}} % fontspec manual p. 11; doesn't seem to do anything.
+% From https://tex.stackexchange.com/a/425887/339
+\setmathfont[Path=fonts/euler-otf-master/,
+             range={"0000-"0001,"0020-"007E,
+                    "00A0,"00A7-"00A8,"00AC,"00AF,"00B1,"00B4-"00B5,"00B7,
+                    "00D7,"00F7,
+                    "0131,
+                    "0237,"02C6-"02C7,"02D8-"02DA,"02DC,
+                    "0300-"030C,"030F,"0311,"0323-"0325,"032E-"0332,"0338,
+                    "0391-"0393,"0395-"03A1,"03A3-"03A8,"03B1-"03BB,
+                    "03BD-"03C1,"03C3-"03C9,"03D1,"03D5-"03D6,"03F5,
+                    "2016,"2018-"2019,"2021,"2026-"202C,"2032-"2037,"2044,
+                    "2057,"20D6-"20D7,"20DB-"20DD,"20E1,"20EE-"20EF,
+                    "210B-"210C,"210E-"2113,"2118,"211B-"211C,"2126-"2128,
+                    "212C-"212D,"2130-"2131,"2133,"2135,"2190-"2199,
+                    "21A4,"21A6,"21A9-"21AA,"21BC-"21CC,"21D0-"21D5,
+                    "2200,"2202-"2209,"220B-"220C,"220F-"2213,"2215-"221E,
+                    "2223,"2225,"2227-"222E,"2234-"2235,"2237-"223D,
+                    "2240-"224C,"2260-"2269,"226E-"2279,"2282-"228B,"228E,
+                    "2291-"2292,"2295-"2299,"22A2-"22A5,"22C0-"22C5,
+                    "22DC-"22DD,"22EF,"22F0-"22F1,
+                    "2308-"230B,"2320-"2321,"2329-"232A,"239B-"23AE,
+                    "23DC-"23DF,
+                    "27E8-"27E9,"27F5-"27FE,"2A0C,"2B1A,
+                    "1D400-"1D433,"1D49C,"1D49E-"1D49F,"1D4A2,"1D4A5-"1D4A6,
+                    "1D4A9-"1D4AC,"1D4AE-"1D4B5,"1D4D0-"1D4E9,"1D504-"1D505,
+                    "1D507-"1D50A,"1D50D-"1D514,"1D516-"1D51C,"1D51E-"1D537,
+                    "1D56C-"1D59F,"1D6A8-"1D6B8,"1D6BA-"1D6D2,"1D6D4-"1D6DD,
+                    "1D6DF,"1D6E1,"1D7CE-"1D7D7
+                   }]{euler.otf}
+\setmathfont[Path=fonts/euler-otf-master/,
+             range=up/{greek,Greek}, script-features={}, sscript-features={}
+            ]{euler.otf}
+\setmathfont[Path=fonts/euler-otf-master/,
+            range=up/{latin,Latin,num}, script-features={}, sscript-features={}
+            ]{euler.otf}
+% \AtBeginDocument{\DeclareMathAlphabet\mathbf{U}{eur}{b}{n}} % fontspec manual p. 11; doesn't seem to do anything.
 \setmathfont[range=\mathbb,
              % Path=/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/symbols/
             Path=/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/]{msbm10.pfb}	
+% Bug leaves \prime undefined: https://tex.stackexchange.com/a/208996/339
+% \setmathfont[range=\mathit/{latin,Latin}]{Gentium Italic}
+\setmathfont[range={"2032}]{TeX Gyre Pagella Math}
+% \setmathfont[range={\int}]{Latin Modern Math}
 
 % \newfontfamily\lcircleone[Path=/usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/latxfont/]{lcircle1.pfb}
 % \newcommand{\lcircleonedot}{\lcircleone \char"119}
@@ -172,7 +191,7 @@
 \RequirePackage{lipsum}
 
 
-\usepackage[pyfuture=all,usefamily=sage]{pythontex}
+\usepackage[pyfuture=all]{pythontex}
 
 % pythontex loads a version of fancyvrb.
 % Give general settings for fancyvrb-formatted text.
@@ -188,7 +207,7 @@
 
 
 
-% \usepackage{sagetex} % has to come before listings because defines some stuff
+\usepackage{sagetex} % has to come before listings because defines some stuff
 %------------------------- code listings
 \definecolor{pythoncolor}{HTML}{BCD4CE}   
 \definecolor{latexrulecolor}{HTML}{E6E6E6}   
@@ -234,6 +253,86 @@
   language=[LaTeX]TeX,                % the language of the code
 }
 
+% Copied and modified from sagetex
+% Was:
+% \lstdefinelanguage{Sage}[]{Python}
+%   {morekeywords={False,sage,True},sensitive=true}
+% \lstdefinelanguage{SageOutput}[]{}
+%   {morekeywords={False,True},sensitive=true}
+% \lstdefinestyle{DefaultSageInputOutput}{
+%   nolol,
+%   identifierstyle=,
+%   name=sagecommandline,
+%   xleftmargin=5pt,
+%   numbersep=5pt,
+%   aboveskip=0pt,
+%   belowskip=0pt,
+%   breaklines=true,
+%   numberstyle=\footnotesize,
+%   numbers=right
+% }
+% \lstdefinestyle{DefaultSageInput}{
+%   language=Sage,
+%   style=DefaultSageInputOutput,
+%   basicstyle={\ttfamily\bfseries},
+%   commentstyle={\ttfamily\color{dgreencolor}},
+%   keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
+%   stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+% }
+% \lstdefinestyle{DefaultSageOutput}{
+%   language=SageOutput,
+%   style=DefaultSageInputOutput,
+%   basicstyle={\ttfamily},
+%   commentstyle={\ttfamily\color{dgreencolor}},
+%   keywordstyle={\ttfamily\color{dbluecolor}},
+%   stringstyle={\ttfamily\color{dgraycolor}},
+% }
+% \lstdefinestyle{SageInput}{
+%   style=DefaultSageInput,
+% }
+% \lstdefinestyle{SageOutput}{
+%   style=DefaultSageOutput,
+% }
+\lstdefinelanguage{Sage}[]{Python}
+  {morekeywords={False,sage,True},sensitive=true}
+\lstdefinelanguage{SageOutput}[]{}
+  {morekeywords={False,True},sensitive=true}
+\lstdefinestyle{DefaultSageInputOutput}{
+  numbers=none,
+  lineskip=-2ex
+}
+\lstdefinestyle{DefaultSageInput}{
+  language=Sage,
+  style=DefaultSageInputOutput,
+  basicstyle={\ttfamily\bfseries},
+  commentstyle={\ttfamily\color{dgreencolor}},
+  keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
+  stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+}
+\lstdefinestyle{DefaultSageOutput}{
+  language=SageOutput,
+  style=DefaultSageInputOutput,
+  basicstyle={\ttfamily},
+  commentstyle={\ttfamily\color{dgreencolor}},
+  keywordstyle={\ttfamily\color{dbluecolor}},
+  stringstyle={\ttfamily\color{dgraycolor}},
+}
+\lstdefinestyle{SageInput}{
+  % style=DefaultSageInput,
+   aboveskip=0ex,
+   belowskip=0ex,
+   numbers=left,
+   lineskip=0ex,
+}
+\lstdefinestyle{SageOutput}{
+  % style=DefaultSageOutput,
+   aboveskip=0ex,
+   belowskip=0ex,
+   numbers=left,
+   lineskip=0ex,
+}
+
+
 % Page layout
 \RequirePackage[left=1in,right=1in,top=1in,bottom=1in,
                 head=13.6pt]{geometry}
@@ -241,11 +340,13 @@
 \RequirePackage{fancyhdr}
 \fancypagestyle{preface}{%
   \fancyhf{} % clear all six fields
+  \setlength{\headheight}{0pt}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
 \fancypagestyle{firstpage}{%
   \fancyhf{} % clear all six fields
+  \setlength{\headheight}{14.5pt}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
@@ -254,6 +355,7 @@
   \fancyhead[RE]{{\berasansx \nouppercase{\leftmark}}}
   \fancyhead[LO]{{\berasansx Section: \nouppercase{\rightmark}}}
   \fancyhead[LE,RO]{{\berasansx Page \thepage}}
+  \setlength{\headheight}{14.5pt}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
