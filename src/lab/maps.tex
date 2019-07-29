@@ -78,46 +78,46 @@ We will see two different ways to define a linear transformation.
 
 \subsection{Symbolically}
 We first define a map that takes two inputs and returns three outputs.
-\begin{sageoutput}
-a, b = var('a, b')   
-T_symbolic(a, b) = [a+b, a-b, b]         
-T_symbolic       
-\end{sageoutput}
+\begin{sagecommandline}
+sage: a, b = var('a, b')   
+sage: T_symbolic(a, b) = [a+b, a-b, b]         
+sage: T_symbolic       
+\end{sagecommandline}
 We have not yet defined a domain and codomain 
 so this not a function\Dash instead it is a prototype for a function.
 Make an instance of a function by applying $T_{\textit{symbolic}}$ on a 
 particular domain and codomain.  % ;s,7,68,62;s,8,70,62]
-\begin{sageoutput}[d,0,2] 
-a, b = var('a, b')   
-T_symbolic(a, b) = [a+b, a-b, b]         
-T = linear_transformation(QQ^2, QQ^3, T_symbolic)
-T                                              
-\end{sageoutput}
+\begin{sagecommandline} 
+sage: a, b = var('a, b')   
+sage: T_symbolic(a, b) = [a+b, a-b, b]         
+sage: T = linear_transformation(QQ^2, QQ^3, T_symbolic)
+sage: T                                              
+\end{sagecommandline}
 \noindent Note the left/right issue again: \Sage's matrix is the transpose of
 the matrix that the book would use.
 
 Evaluating this function on a member of the domain gives a member
 of the codomain. 
-\begin{sageoutput}[d,0,3]
-a, b = var('a, b')   
-T_symbolic(a, b) = [a+b, a-b, b]         
-T = linear_transformation(QQ^2, QQ^3, T_symbolic)
-v = vector(QQ, [1, 3])  
-v
-T(v)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: a, b = var('a, b')   
+sage: T_symbolic(a, b) = [a+b, a-b, b]         
+sage: T = linear_transformation(QQ^2, QQ^3, T_symbolic)
+sage: v = vector(QQ, [1, 3])  
+sage: v
+sage: T(v)
+\end{sagecommandline}
 
 \Sage{} can compute the interesting things about the transformation.
 Here it finds the null space 
 and range space, using the equivalent 
 terms \textit{kernel} and \textit{image}.
-\begin{sageoutput}[d,0,3]
-a, b = var('a, b')   
-T_symbolic(a, b) = [a+b, a-b, b]         
-T = linear_transformation(QQ^2, QQ^3, T_symbolic)
-T.kernel()                                       
-T.image()                                        
-\end{sageoutput}
+\begin{sagecommandline}
+sage: a, b = var('a, b')   
+sage: T_symbolic(a, b) = [a+b, a-b, b]         
+sage: T = linear_transformation(QQ^2, QQ^3, T_symbolic)
+sage: T.kernel()                                       
+sage: T.image()                                        
+\end{sagecommandline}
 The null space is the trivial subspace of the domain so
 its basis is empty,
 with dimension~$0$.
@@ -129,31 +129,31 @@ the dimension of the null space plus the dimension of the
 range space equals to the dimension of the domain.
 
 For contrast consider a map that is not one-to-one.
-\begin{sageoutput}
-S_symbolic(a, b) = [a+2*b, a+2*b]
-S_symbolic
-S = linear_transformation(QQ^2, QQ^2, S_symbolic)
-S
-v = vector(QQ, [1, 3])  
-S(v)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: S_symbolic(a, b) = [a+2*b, a+2*b]
+sage: S_symbolic
+sage: S = linear_transformation(QQ^2, QQ^2, S_symbolic)
+sage: S
+sage: v = vector(QQ, [1, 3])  
+sage: S(v)
+\end{sagecommandline}
 \noindent This map is not one-to-one since the input $(a,b)=(2,0)$  gives
 the same result as~$(a,b)=(0,1)$.  
-\begin{sageoutput}[d,0,2]
-S_symbolic(a, b) = [a+2*b, a+2*b]
-S = linear_transformation(QQ^2, QQ^2, S_symbolic)
-S(vector(QQ, [2, 0]))
-S(vector(QQ, [0, 1]))
-\end{sageoutput}
+\begin{sagecommandline}
+sage: S_symbolic(a, b) = [a+2*b, a+2*b]
+sage: S = linear_transformation(QQ^2, QQ^2, S_symbolic)
+sage: S(vector(QQ, [2, 0]))
+sage: S(vector(QQ, [0, 1]))
+\end{sagecommandline}
 \noindent
 Another way to tell that the map is not one-to-one is to look at the 
 null space.
-\begin{sageoutput}[d,0,2]
-S_symbolic(a, b) = [a+2*b, a+2*b]
-S = linear_transformation(QQ^2, QQ^2, S_symbolic)
-S.kernel()
-S.image()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: S_symbolic(a, b) = [a+2*b, a+2*b]
+sage: S = linear_transformation(QQ^2, QQ^2, S_symbolic)
+sage: S.kernel()
+sage: S.image()
+\end{sagecommandline}
 The null space has nonzero dimension, namely it 
 has dimension~$1$,
 so \Sage{} agrees that the map is not one-to-one.
@@ -168,22 +168,22 @@ the dimension of the domain.
 \subsection{Via matrices}
 We can define a transformation by specifying 
 the matrix representing its action.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-M
-m = linear_transformation(M)
-m  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
+sage: M
+sage: m = linear_transformation(M)
+sage: m  
+\end{sagecommandline}
 \noindent Note again that \Sage{} prefers the 
 representation where the vector multiplies
 from the left.
-\begin{sageoutput}[d,0,2]
-M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-m = linear_transformation(M)
-v = vector(QQ, [7, 8, 9])
-v
-m(v)  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
+sage: m = linear_transformation(M)
+sage: v = vector(QQ, [7, 8, 9])
+sage: v
+sage: m(v)  
+\end{sagecommandline}
 \noindent \Sage{} has done this calculation.
 \begin{equation*}
   \colvec{7 &8 &9}
@@ -197,65 +197,65 @@ m(v)
 
 If you have a matrix intended for a vector-on-the-right
 calculation (as in the book) then \Sage{} will make the necessary adaptation.
-\begin{sageoutput}
-N = matrix(QQ, [[1, 3, 5], [2, 4, 6]])
-n = linear_transformation(N, side='right')
-n
-v = vector(QQ, [7, 8, 9])
-v
-n(v)  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: N = matrix(QQ, [[1, 3, 5], [2, 4, 6]])
+sage: n = linear_transformation(N, side='right')
+sage: n
+sage: v = vector(QQ, [7, 8, 9])
+sage: v
+sage: n(v)  
+\end{sagecommandline}
 \noindent Although we gave it a \inlinecode{side='right'} option, 
 the matrix that \Sage{} shows by default is for 
 \inlinecode{side='left'}.
 
 Despite that we specified them differently, 
 these two transformations are the same.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-m = linear_transformation(M)
-N = matrix(QQ, [[1, 3, 5], [2, 4, 6]])
-n = linear_transformation(N, side='right')
-m == n  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
+sage: m = linear_transformation(M)
+sage: N = matrix(QQ, [[1, 3, 5], [2, 4, 6]])
+sage: n = linear_transformation(N, side='right')
+sage: m == n  
+\end{sagecommandline}
 
 We can ask the same questions of linear transformations created from
 matrices that we asked of linear transformations created from functions.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-m = linear_transformation(M)
-m.kernel() 
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
+sage: m = linear_transformation(M)
+sage: m.kernel() 
+\end{sagecommandline}
 \noindent The null space of $m$ is not the trivial subspace of $\Re^3$ 
 and so this function is not one-to-one.
 The domain has dimension~$3$ and the null space has dimension~$1$ 
 and so the
 range space is a dimension~$2$ subspace of $\Re^2$.
-\begin{sageoutput}[d,0,2] 
-M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-m = linear_transformation(M)
-m.image()
-m.image() == QQ^2
-\end{sageoutput}
+\begin{sagecommandline} 
+sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
+sage: m = linear_transformation(M)
+sage: m.image()
+sage: m.image() == QQ^2
+\end{sagecommandline}
 
 \Sage{} lets us have the matrix represent a transformation involving 
 spaces with nonstandard bases.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4]])
-delta_1 = vector(QQ, [1, -1])
-delta_2 = vector(QQ, [1, 1])
-domain_basis = [delta_1, delta_2]
-domain_basis
-D = (QQ^2).subspace_with_basis(domain_basis)
-gamma_1 = vector(QQ, [2, 0])
-gamma_2 = vector(QQ, [0, 3])
-codomain_basis = [gamma_1, gamma_2]
-codomain_basis
-C = (QQ^2).subspace_with_basis(codomain_basis)
-m = linear_transformation(D, C, M)
-m
-m(vector(QQ, [1, 0]))
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4]])
+sage: delta_1 = vector(QQ, [1, -1])
+sage: delta_2 = vector(QQ, [1, 1])
+sage: domain_basis = [delta_1, delta_2]
+sage: domain_basis
+sage: D = (QQ^2).subspace_with_basis(domain_basis)
+sage: gamma_1 = vector(QQ, [2, 0])
+sage: gamma_2 = vector(QQ, [0, 3])
+sage: codomain_basis = [gamma_1, gamma_2]
+sage: codomain_basis
+sage: C = (QQ^2).subspace_with_basis(codomain_basis)
+sage: m = linear_transformation(D, C, M)
+sage: m
+sage: m(vector(QQ, [1, 0]))
+\end{sagecommandline}
 \noindent
 \Sage{} has calculated that
 \begin{equation*}
@@ -294,64 +294,64 @@ addition and scalar multiplication.
 
 \subsection{Addition}
 % First create two functions. 
-% \begin{sageoutput}
-% f_symbolic(x,y) = [x-y, x+2*y, 3*x]  
-% g_symbolic(x,y) = [y, 2*x-y, y]  
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: f_symbolic(x,y) = [x-y, x+2*y, 3*x]  
+% sage: g_symbolic(x,y) = [y, 2*x-y, y]  
+% \end{sagecommandline}
 % We can add these two and with that new function make a linear 
 % transformation.
-% \begin{sageoutput}[d,0,2;s,9,68,62;s,10,70,62]
-% f_symbolic(x,y) = [x-y, x+2*y, 3*x]  
-% g_symbolic(x,y) = [y, 2*x-y, y]  
-% f_symbolic+g_symbolic
-% h = linear_transformation(RR^2, RR^3, f_symbolic+g_symbolic)
-% h
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: f_symbolic(x,y) = [x-y, x+2*y, 3*x]  
+% sage: g_symbolic(x,y) = [y, 2*x-y, y]  
+% sage: f_symbolic+g_symbolic
+% sage: h = linear_transformation(RR^2, RR^3, f_symbolic+g_symbolic)
+% sage: h
+% \end{sagecommandline}
 % We could instead make two linear transformations and then add.
-% \begin{sageoutput}[d,0,2;s,9,68,62;s,10,70,62]
-% f_symbolic(x,y) = [x-y, x+2*y, 3*x]  
-% g_symbolic(x,y) = [y, 2*x-y, y]  
-% f = linear_transformation(RR^2, RR^3, f_symbolic)
-% g = linear_transformation(RR^2, RR^3, g_symbolic)
-% h = f + g
-% h
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: f_symbolic(x,y) = [x-y, x+2*y, 3*x]  
+% sage: g_symbolic(x,y) = [y, 2*x-y, y]  
+% sage: f = linear_transformation(RR^2, RR^3, f_symbolic)
+% sage: g = linear_transformation(RR^2, RR^3, g_symbolic)
+% sage: h = f + g
+% sage: h
+% \end{sagecommandline}
 Recall that matrix addition is defined so that the representation of
 the sum of two linear transformations is the matrix sum of the representatives.
 \Sage{} can illustrate.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4]])
-m = linear_transformation(QQ^2, QQ^2, M)
-m
-N = matrix(QQ, [[5, -1], [0, 7]])
-n = linear_transformation(QQ^2, QQ^2, N)
-n
-m+n
-M+N
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4]])
+sage: m = linear_transformation(QQ^2, QQ^2, M)
+sage: m
+sage: N = matrix(QQ, [[5, -1], [0, 7]])
+sage: n = linear_transformation(QQ^2, QQ^2, N)
+sage: n
+sage: m+n
+sage: M+N
+\end{sagecommandline}
 \noindent Similarly, linear map scalar multiplication is reflected by 
 matrix scalar multiplication.
-\begin{sageoutput}[d,0,2]
-M = matrix(QQ, [[1, 2], [3, 4]])
-m = linear_transformation(QQ^2, QQ^2, M)
-m*3
-M*3  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4]])
+sage: m = linear_transformation(QQ^2, QQ^2, M)
+sage: m*3
+sage: M*3  
+\end{sagecommandline}
 
 
 
 \subsection{Composition}
 The composition of linear maps gives rise to matrix multiplication.
 \Sage{} uses the star \inlinecode{*} to denote composition of linear maps.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4]])
-m = linear_transformation(QQ^2, QQ^2, M)
-m
-N = matrix(QQ, [[5, -1], [0, 7]])
-n = linear_transformation(QQ^2, QQ^2, N)
-n
-m*n
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4]])
+sage: m = linear_transformation(QQ^2, QQ^2, M)
+sage: m
+sage: N = matrix(QQ, [[5, -1], [0, 7]])
+sage: n = linear_transformation(QQ^2, QQ^2, N)
+sage: n
+sage: m*n
+\end{sagecommandline}
 
 \textit{Note:} there is a left/right issue here.
 As the book emphasizes, matrix multiplication is about 
@@ -386,39 +386,39 @@ via these matrix multiplications.
 done, $N$ must come left-most: $\composed{m}{n}$ is represented 
 by $NM$.
 Here \Sage{} does the map application.
-\begin{sageoutput}
-M = matrix(QQ, [[1, 2], [3, 4]])
-N = matrix(QQ, [[5, -1], [0, 7]])
-M*N
-N*M
-m = linear_transformation(QQ^2, QQ^2, M)
-n = linear_transformation(QQ^2, QQ^2, N)
-t = m*n
-t
-v = vector(QQ, [1, 2])
-t(v)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(QQ, [[1, 2], [3, 4]])
+sage: N = matrix(QQ, [[5, -1], [0, 7]])
+sage: M*N
+sage: N*M
+sage: m = linear_transformation(QQ^2, QQ^2, M)
+sage: n = linear_transformation(QQ^2, QQ^2, N)
+sage: t = m*n
+sage: t
+sage: v = vector(QQ, [1, 2])
+sage: t(v)
+\end{sagecommandline}
 
 % By the way, you must be careful about how you write that calculation.
-% \begin{sageoutput}[d,0,4;s,10,70,-1;s,11,70,-1;s,15,70,-1;s,20,70,-1;s,22,70,-1;s,24,70,-1;s,26,70,-1;s,28,70,-1;s,30,70,-1;s,32,64,15]
-% M = matrix(QQ, [[1, 2], [3, 4]])
-% m = linear_transformation(QQ^2, QQ^2, M)
-% N = matrix(QQ, [[5, -1], [0, 7]])
-% n = linear_transformation(QQ^2, QQ^2, N)
-% v = vector(QQ, [1, 2])
-% m*n(v)
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: M = matrix(QQ, [[1, 2], [3, 4]])
+% sage: m = linear_transformation(QQ^2, QQ^2, M)
+% sage: N = matrix(QQ, [[5, -1], [0, 7]])
+% sage: n = linear_transformation(QQ^2, QQ^2, N)
+% sage: v = vector(QQ, [1, 2])
+% sage: m*n(v)
+% \end{sagecommandline}
 % This gives an error because \Sage{} tries to compose the function~$m$ with the
 % vector~$n(\vec{v})$.
 % Instead you need some parentheses.
-% \begin{sageoutput}[d,0,5]
-% M = matrix(QQ, [[1, 2], [3, 4]])
-% m = linear_transformation(QQ^2, QQ^2, M)
-% N = matrix(QQ, [[5, -1], [0, 7]])
-% n = linear_transformation(QQ^2, QQ^2, N)
-% v = vector(QQ, [1, 2])
-% (m*n)(v)
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: M = matrix(QQ, [[1, 2], [3, 4]])
+% sage: m = linear_transformation(QQ^2, QQ^2, M)
+% sage: N = matrix(QQ, [[5, -1], [0, 7]])
+% sage: n = linear_transformation(QQ^2, QQ^2, N)
+% sage: v = vector(QQ, [1, 2])
+% sage: (m*n)(v)
+% \end{sagecommandline}
 
 
 

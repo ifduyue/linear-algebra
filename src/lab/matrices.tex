@@ -10,15 +10,15 @@ mechanizing.
 To define a matrix 
 you can use real number entries, or complex entries, or 
 entries from other number systems such as the rationals. 
-\begin{sageoutput}
-A = matrix(RDF, [[1, 2], [3, 4]])
-A
-i = CDF(i)
-A = matrix(CDF, [[1+2*i, 3+4*i], [5+6*i, 7+8*i]])
-A
-A = matrix(QQ, [[1, 2], [3, 4]])
-A                               
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(RDF, [[1, 2], [3, 4]])
+sage: A
+sage: i = CDF(i)
+sage: A = matrix(CDF, [[1+2*i, 3+4*i], [5+6*i, 7+8*i]])
+sage: A
+sage: A = matrix(QQ, [[1, 2], [3, 4]])
+sage: A                           
+\end{sagecommandline}
 \noindent
 Here we represent reals with the model connected to the computer's hardware
 floating point implementation. 
@@ -40,10 +40,10 @@ because the matrices in the book usually have rational entries.
 
 The \inlinecode{matrix} constructor allows you to specify the number of
 rows and columns.
-\begin{sageoutput}
-B = matrix(QQ, 2, 3, [[1, 1, 1], [2, 2, 2]])  
-B
-\end{sageoutput}
+\begin{sagecommandline}
+sage: B = matrix(QQ, 2, 3, [[1, 1, 1], [2, 2, 2]])  
+sage: B
+\end{sagecommandline}
 \noindent
 If your specified size doesn't match the entries you list 
 \begin{lstlisting}[style=python]
@@ -57,36 +57,36 @@ number of rows and columns size from the entries but
 a shortcut to get the zero matrix 
 is to put the number zero in the place of the entries, and there you
 must say which size you want.
-\begin{sageoutput}
-B = matrix(QQ, 2, 3, 0)                     
-B
-\end{sageoutput}
+\begin{sagecommandline}
+sage: B = matrix(QQ, 2, 3, 0)                     
+sage: B
+\end{sagecommandline}
 \noindent
 Another place where specifying the size is a convenience is 
 \Sage's shortcut to get an identity matrix.
-\begin{sageoutput}
-B = matrix(QQ, 2, 2, 1)
-B
-\end{sageoutput}
+\begin{sagecommandline}
+sage: B = matrix(QQ, 2, 2, 1)
+sage: B
+\end{sagecommandline}
 \noindent
 The difference between this shortcut and the prior one is that 
 \inlinecode{matrix(QQ, 3, 2, 1)} gives an error because 
 an identity matrix must be square.
 \Sage{} has another shortcut that can't lead to this error.
-\begin{sageoutput}
-I = identity_matrix(4)
-I
-\end{sageoutput}
+\begin{sagecommandline}
+sage: I = identity_matrix(4)
+sage: I
+\end{sagecommandline}
 
 \Sage{} has a wealth of methods on matrices.
 For instance, you can transpose the rows to columns or test if the 
 matrix is \textit{symmetric},
 unchanged by transposition.
-\begin{sageoutput}
-A = matrix(QQ, [[1, 2], [3, 4]])
-A.transpose()
-A.is_symmetric()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 2], [3, 4]])
+sage: A.transpose()
+sage: A.is_symmetric()
+\end{sagecommandline}
 
 
 
@@ -94,21 +94,21 @@ A.is_symmetric()
 %========================================
 \section{Linear combinations}
 Addition and subtraction are natural.
-\begin{sageoutput}
-A = matrix(QQ, [[1, 2], [3, 4]])
-B = matrix(QQ, [[1, 1], [2, -2]])
-A+B
-A-B
-B-A
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 2], [3, 4]])
+sage: B = matrix(QQ, [[1, 1], [2, -2]])
+sage: A+B
+sage: A-B
+sage: B-A
+\end{sagecommandline}
 
 \Sage{} knows that adding matrices with different sizes is undefined; 
 this gives an error. 
-\begin{sageoutput}[s,3,70,-66;s,4,70,-66;s,8,70,-66;s,10,70,-66;s,12,124,14;s,12,70,13]
-A = matrix(QQ, [[1, 2], [3, 4]])
-C = matrix(QQ, [[0, 0, 2], [3, 2, 1]])
-A+C
-\end{sageoutput}
+% \begin{sagecommandline}
+% sage: A = matrix(QQ, [[1, 2], [3, 4]])
+% sage: C = matrix(QQ, [[0, 0, 2], [3, 2, 1]])
+% sage: A+C
+% \end{sagecommandline}
 \noindent
 Some of the lines in that output block don't contain useful information so 
 they've just been truncated.
@@ -119,12 +119,12 @@ $\nbyn{2}$~matrix and a $\nbym{2}{3}$~matrix.
 
 Scalar multiplication is also natural,
 so you have linear combinations.
-\begin{sageoutput}[d,0,2]
-A = matrix(QQ, [[1, 2], [3, 4]])
-B = matrix(QQ, [[1, 1], [2, -2]])
-3*A
-3*A-4*B
-\end{sageoutput}
+\begin{sagecommandline}[d,0,2]
+sage: A = matrix(QQ, [[1, 2], [3, 4]])
+sage: B = matrix(QQ, [[1, 1], [2, -2]])
+sage: 3*A
+sage: 3*A-4*B
+\end{sagecommandline}
 
 
 
@@ -133,11 +133,11 @@ B = matrix(QQ, [[1, 1], [2, -2]])
 
 \subsection{Matrix-vector product}
 Matrix-vector multiplication is just what you would guess.
-\begin{sageoutput}
-A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
-v = vector(QQ, [1, 2, 3, 4])
-A*v
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
+sage: v = vector(QQ, [1, 2, 3, 4])
+sage: A*v
+\end{sagecommandline}
 \noindent
 The $\nbym{2}{4}$~matrix $A$ multiplies the 
 $\nbym{4}{1}$~column vector~$\vec{v}$, with the vector on the right side,
@@ -145,11 +145,11 @@ as $A\vec{v}$.
 
 If you try this vector on the left as 
 \inlinecode{v*A} then \Sage{} gives a mismatched-sizes error.
-\begin{sageoutput}[s,3,70,-66;s,4,70,-66;s,8,70,-66;s,10,70,-66;s,12,121,16;s,12,67,17]
-A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
-v = vector(QQ, [1, 2, 3, 4])
-v*A
-\end{sageoutput}
+% \begin{sagecommandline}
+% sage: A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
+% sage: v = vector(QQ, [1, 2, 3, 4])
+% sage: v*A
+% \end{sagecommandline}
 \noindent
 As in the earlier error message, 
 some lines are truncated but the final line is wrapped 
@@ -159,11 +159,11 @@ a size~$\nbym{2}{4}$ matrix is not defined.
 
 Of course you can multiply from the left by a vector if it has a size that 
 matches the matrix.
-\begin{sageoutput}[d,0,1]
-A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
-w = vector(QQ, [3, 5])
-w*A
-\end{sageoutput}
+\begin{sagecommandline}[d,0,1]
+sage: A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
+sage: w = vector(QQ, [3, 5])
+sage: w*A
+\end{sagecommandline}
 \noindent
 In practice you will sometimes 
 see matrix-vector multiplications done with vectors
@@ -179,59 +179,59 @@ for the vector on the left (as we will see in Chapter~\ref{chapter:maps}).
 \subsection{Matrix-matrix product}
 If the sizes match then \Sage{} will multiply the matrices.
 Here is the product of a $\nbyn{2}$~matrix $A$ and a $\nbym{2}{3}$~matrix $B$.
-\begin{sageoutput}
-A = matrix(QQ, [[2, 1], [4, 3]])
-B = matrix(QQ, [[5, 6, 7], [8, 9, 10]]) 
-A*B
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[2, 1], [4, 3]])
+sage: B = matrix(QQ, [[5, 6, 7], [8, 9, 10]]) 
+sage: A*B
+\end{sagecommandline}
 Trying $\inlinecode{B*A}$ gives an error 
 \inlinecode{TypeError: unsupported operand parent(s) for '*'}, reflecting that
 the product operation in this order is undefined.
-% \begin{sageoutput}
-% A = matrix(QQ, [[2, 1], [4, 3]])
-% B = matrix(QQ, [[5, 6, 7], [8, 9, 10]]) 
-% B*A
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: A = matrix(QQ, [[2, 1], [4, 3]])
+% sage: B = matrix(QQ, [[5, 6, 7], [8, 9, 10]]) 
+% sage: B*A
+% \end{sagecommandline}
 
 Same-sized square matrices have the product defined in either order.
-\begin{sageoutput}
-A = matrix(QQ, [[1, 2], [3, 4]])
-B = matrix(QQ, [[4, 5], [6, 7]])
-A*B
-B*A
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 2], [3, 4]])
+sage: B = matrix(QQ, [[4, 5], [6, 7]])
+sage: A*B
+sage: B*A
+\end{sagecommandline}
 \noindent
 They are different; matrix multiplication is not commutative.
-\begin{sageoutput}[d,0,2]
-A = matrix(QQ, [[1, 2], [3, 4]])
-B = matrix(QQ, [[4, 5], [6, 7]])
-A*B == B*A
-\end{sageoutput}
+\begin{sagecommandline}[d,0,2]
+sage: A = matrix(QQ, [[1, 2], [3, 4]])
+sage: B = matrix(QQ, [[4, 5], [6, 7]])
+sage: A*B == B*A
+\end{sagecommandline}
 
 In fact, matrix multiplication is very non-commutative 
 in that if you produce two $\nbyn{n}$~matrices
 at random then they almost surely don't commute.
 \Sage{} lets us produce matrices at random.
-\begin{sageoutput}
-random_matrix(RDF, 3, min=-1, max=1)
-random_matrix(RDF, 3, min=-1, max=1)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: random_matrix(RDF, 3, min=-1, max=1)
+sage: random_matrix(RDF, 3, min=-1, max=1)
+\end{sagecommandline}
 \noindent  
 (Note the \inlinecode{RDF}.
 We prefer real number entries here because
 \Sage's \inlinecode{random_matrix} 
 is more straightforward in this case than in the  
 rational entry case.)
-% \begin{sageoutput}
-% number_commuting = 0 
-% for n in range(1000):  # 1000 just as a large number of tries
-%     A = random_matrix(RR, 2, min=-1, max=1)
-%     B = random_matrix(RR, 2, min=-1, max=1)
-%     if (A*B == B*A): 
-%         number_commuting = number_commuting + 1
+% \begin{sagecommandline}
+% sage: number_commuting = 0 
+% sage: for n in range(1000):  # 1000 just as a large number of tries
+% sage:     A = random_matrix(RR, 2, min=-1, max=1)
+% sage:     B = random_matrix(RR, 2, min=-1, max=1)
+% sage:     if (A*B == B*A): 
+% sage:         number_commuting = number_commuting + 1
 
 % print "number commuting of 1000=",number_commuting
-% \end{sageoutput}
+% \end{sagecommandline}
 \begin{lstlisting}
 sage: number_commuting = 0 
 sage: for n in range(1000):                                       
@@ -251,43 +251,43 @@ number commuting of 1000= 0
 \subsection{Inverse}
 Recall that if $A$ is nonsingular then its \textit{inverse} $A^{-1}$
 is the matrix such that $AA^{-1}=A^{-1}A$ is the identity matrix. 
-\begin{sageoutput}
-A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
-A.is_singular()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
+sage: A.is_singular()
+\end{sagecommandline}
 \noindent
 For $\nbyn{2}$ matrix inverses we have a formula.
 In the book to do by-hand inverses for larger cases 
 we write the original matrix next to the identity 
 and then do Gauss-Jordan reduction.
-\begin{sageoutput}[d,0,1]
-A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
-I = identity_matrix(3)
-B = A.augment(I, subdivide=True)
-B
-C = B.rref()
-C
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
+sage: I = identity_matrix(3)
+sage: B = A.augment(I, subdivide=True)
+sage: B
+sage: C = B.rref()
+sage: C
+\end{sagecommandline}
 \noindent
 The inverse is the resulting matrix on the right.
-\begin{sageoutput}[d,0,4]
-A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
-I = identity_matrix(3)
-B = A.augment(I, subdivide=True)
-C = B.rref()
-A_inv = C.matrix_from_columns([3, 4, 5])
-A_inv
-A*A_inv
-A_inv*A
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
+sage: I = identity_matrix(3)
+sage: B = A.augment(I, subdivide=True)
+sage: C = B.rref()
+sage: A_inv = C.matrix_from_columns([3, 4, 5])
+sage: A_inv
+sage: A*A_inv
+sage: A_inv*A
+\end{sagecommandline}
 
 This is an operation that \Sage{} users do all the time so there is a
 standalone command.
-\begin{sageoutput}[d,0,1]
-A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
-A_inv = A.inverse()
-A_inv
-\end{sageoutput}
+\begin{sagecommandline}[d,0,1]
+sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
+sage: A_inv = A.inverse()
+sage: A_inv
+\end{sagecommandline}
 
 One reason for finding the inverse is to make solving linear systems easier.
 These three systems
@@ -314,16 +314,16 @@ share the matrix of coefficients but have different vectors on
 the right side.
 If you have first calculated the inverse of the matrix of coefficients
 then solving each system takes just a matrix-vector product.
-\begin{sageoutput}
-A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
-A_inv = A.inverse()
-v1 = vector(QQ, [4, 4, 4])
-v2 = vector(QQ, [2, -1, 5])
-v3 = vector(QQ, [1/2, 0, 12])
-A_inv*v1
-A_inv*v2
-A_inv*v3
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
+sage: A_inv = A.inverse()
+sage: v1 = vector(QQ, [4, 4, 4])
+sage: v2 = vector(QQ, [2, -1, 5])
+sage: v3 = vector(QQ, [1/2, 0, 12])
+sage: A_inv*v1
+sage: A_inv*v2
+sage: A_inv*v3
+\end{sagecommandline}
 
 
 
@@ -351,12 +351,12 @@ This is an important operation; for instance, if we could do large matrix
 inverses
 quickly then we could quickly solve large linear systems, 
 with just a matrix-vector product.
-\begin{sageoutput}
-A = matrix(RDF, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
-A
-A.is_singular()
-timeit('A.inverse()')
-\end{sageoutput}
+\begin{sagecommandline}
+sage: A = matrix(RDF, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
+sage: A
+sage: A.is_singular()
+sage: timeit('A.inverse()')
+\end{sagecommandline}
 \noindent
 \Sage's \inlinecode{timeit} makes a best guess about how long
 the operation ideally takes by running the command 
@@ -373,11 +373,11 @@ And, $A$ is a particular~$\nbyn{3}$ matrix.
 You'd like to know
 how long it takes to invert a generic, or average, matrix.
 You could try finding the inverse of a random matrix.
-\begin{sageoutput}
-timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
-timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
-timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
-\end{sageoutput}
+\begin{sagecommandline}
+sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
+sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
+sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
+\end{sagecommandline}
 \noindent
 Again this is of the order of hundreds of microseconds.
 
@@ -438,13 +438,13 @@ Similarly, increasing the size from $50$ to~$200$ causes the time to
 increase by much more than a factor of four: $5.78/0.0924\approx 62.55$. 
 
 To get a picture give \Sage{} the data as a list of pairs.
-\begin{sageoutput}
-d = [(3, 0.000125), (10, 0.000940), (25, 0.012),  
-     (50, 0.0924), (75, 0.308), (100, 0.727), 
-     (150, 2.45), (200, 5.78)]
-g = scatter_plot(d)  
-g.save("graphics/mat001.pdf")            
-\end{sageoutput}
+\begin{sagecommandline}
+sage: d = [(3, 0.000125), (10, 0.000940), (25, 0.012),  
+....:      (50, 0.0924), (75, 0.308), (100, 0.727), 
+....:      (150, 2.45), (200, 5.78)]
+sage: g = scatter_plot(d)  
+sage: g.save("graphics/mat001.pdf")            
+\end{sagecommandline}
 \begin{sagesilent}
 d = [(3, 0.000125), (10, 0.000940), (25, 0.012),  
      (50, 0.0924), (75, 0.308), (100, 0.727), 
@@ -495,14 +495,14 @@ Again the table is a neater way to present the data.
   \end{tabular}
 \end{center}
 Get a graph by tacking the new data onto the existing data.
-\begin{sageoutput}[d,0,3]
-d = [(3, 0.000125), (10, 0.000940), (25, 0.012),  
-     (50, 0.0924), (75, 0.308), (100, 0.727), 
-     (150, 2.45), (200, 5.78)]
-d = d + [(500, 89.2), (750, 299), (1000, 705)]
-g = scatter_plot(d)                           
-g.save("graphics/mat002.pdf")                      
-\end{sageoutput}
+\begin{sagecommandline}
+sage: d = [(3, 0.000125), (10, 0.000940), (25, 0.012),  
+....:      (50, 0.0924), (75, 0.308), (100, 0.727), 
+....:      (150, 2.45), (200, 5.78)]
+sage: d = d + [(500, 89.2), (750, 299), (1000, 705)]
+sage: g = scatter_plot(d)                           
+sage: g.save("graphics/mat002.pdf")                      
+\end{sagecommandline}
 \begin{sagesilent}
 d = [(3, 0.000125), (10, 0.000940), (25, 0.012),  
      (50, 0.0924), (75, 0.308), (100, 0.727), 

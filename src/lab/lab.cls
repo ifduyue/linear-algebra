@@ -321,14 +321,14 @@
   % style=DefaultSageInput,
    aboveskip=0ex,
    belowskip=0ex,
-   numbers=left,
+   numbers=none,
    lineskip=0ex,
 }
 \lstdefinestyle{SageOutput}{
   % style=DefaultSageOutput,
    aboveskip=0ex,
    belowskip=0ex,
-   numbers=left,
+   numbers=none,
    lineskip=0ex,
 }
 
