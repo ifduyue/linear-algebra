@@ -10,15 +10,15 @@ In this chapter we consider another geometric effect.
 \section{Turning}
 Consider again the geometry of the action of a skew map on the unit 
 circle.\footnote{\noterightmult}
-\begin{sageoutput}
-load("plot_action.sage")  
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-3, 3, -3, 3) 
-q.save("graphics/eigen000a.pdf")
-p = plot_circle_action(2,2,0,2) 
-p.set_axes_range(-3, 3, -3, 3) 
-p.save("graphics/eigen000b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")  
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-3, 3, -3, 3) 
+sage: q.save("graphics/eigen000a.pdf")
+sage: p = plot_circle_action(2,2,0,2) 
+sage: p.set_axes_range(-3, 3, -3, 3) 
+sage: p.save("graphics/eigen000b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 q = plot_circle_action(1,0,0,1) 
@@ -38,12 +38,12 @@ On the left plot, going counterclockwise,
 the curve begins with red at $(x,y)=(1,0)$.
 On the right plot it begins with red at $(1,2)$.
 Here are the before and after vectors for that red point.
-\begin{sageoutput}[d,0,1;d,2,4]
-load("plot_action.sage")  
-p = plot_before_after_action(2,2,0,2, [(1,0)], ['red']) 
-p.set_axes_range(-0.5, 2, -0.5, 2) 
-p.save("graphics/eigen001.pdf", ticks=([1,2],[1,2]))
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")  
+sage: p = plot_before_after_action(2,2,0,2, [(1,0)], ['red']) 
+sage: p.set_axes_range(-0.5, 2, -0.5, 2) 
+sage: p.save("graphics/eigen001.pdf", ticks=([1,2],[1,2]))
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 p = plot_before_after_action(2,2,0,2, [(1,0)], ['red']) 
@@ -54,14 +54,14 @@ p.save("graphics/eigen001.pdf", ticks=([1,2],[1,2]), figsize=2)
   \vcenteredhbox{\includegraphics{graphics/eigen001.pdf}}
 \end{equation*}
 The matrix's action on the red vector is to both resize and rotate.
-\begin{sageoutput}
-v = vector(RR, [1,0])
-M = matrix(RR, [[2, 2], [0, 2]])
-w = v*M
-w.norm(), v.norm() 
-angle = arccos(w*v/(w.norm()*v.norm())) 
-angle 
-\end{sageoutput}
+\begin{sagecommandline}
+sage: v = vector(RR, [1,0])
+sage: M = matrix(RR, [[2, 2], [0, 2]])
+sage: w = v*M
+sage: w.norm(), v.norm() 
+sage: angle = arccos(w*v/(w.norm()*v.norm())) 
+sage: angle 
+\end{sagecommandline}
 \noindent The map resizes and rotates the violet vector at the other end of the 
 half circle, at $(-1,0)$, by the
 same amount as it does the red vector ending at $(1,0)$. 
@@ -72,14 +72,14 @@ But other vectors may be resized and rotated by the other
 amounts.
 Here is the effect of the transformation on the point
 one sixth of the way around the half-circle.
-\begin{sageoutput}
-v = vector(RR, [cos(pi/6),sin(pi/6)])
-M = matrix(RR, [[2, 2], [0, 2]])
-w = v*M
-w.norm(), v.norm() 
-angle = arccos(w*v/(w.norm()*v.norm())) 
-angle 
-\end{sageoutput}
+\begin{sagecommandline}
+sage: v = vector(RR, [cos(pi/6),sin(pi/6)])
+sage: M = matrix(RR, [[2, 2], [0, 2]])
+sage: w = v*M
+sage: w.norm(), v.norm() 
+sage: angle = arccos(w*v/(w.norm()*v.norm())) 
+sage: angle 
+\end{sagecommandline}
 
 \Sage{} will compute for us the rotations of the vectors.
 At the end of this chapter is the source for a routine 
@@ -98,12 +98,12 @@ Because there are many points, the result looks like a smooth curve.
 % p = scatter_plot(angles, marker='.', ticks=ticks)
 % p.set_axes_range(0, pi, 0, pi) 
 % p.save("graphics/eigen002.pdf", figsize=2.5, tick_formatter=pi)
-\begin{sageoutput}[d,0,1]
-load("plot_action.sage")  
-p = plot_color_angles(2,2,0,2)
-p.set_axes_range(0,pi,0,pi)
-p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")  
+sage: p = plot_color_angles(2,2,0,2)
+sage: p.set_axes_range(0,pi,0,pi)
+sage: p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 p = plot_color_angles(2,2,0,2)
@@ -129,15 +129,15 @@ that is associated with the green output that also lies on the $y$-axis.
 \subsection{Generic matrix}
 We can do the same analysis for our usual generic $\nbyn{2}$~matrix.
 Here is its action on the unit circle.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-3, 3, -5, 5) 
-q.save("graphics/eigen100a.pdf")
-p = plot_circle_action(1,2,3,4) 
-p.set_axes_range(-3, 3, -5, 5) 
-p.save("graphics/eigen100b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-3, 3, -5, 5) 
+sage: q.save("graphics/eigen100a.pdf")
+sage: p = plot_circle_action(1,2,3,4) 
+sage: p.set_axes_range(-3, 3, -5, 5) 
+sage: p.save("graphics/eigen100b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
@@ -159,12 +159,12 @@ arrows.
 % ticks = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])
 % p = scatter_plot(angles, marker='.', ticks=ticks)
 % p.save("graphics/eigen101.pdf", figsize=2.5, tick_formatter=pi)
-\begin{sageoutput}[d,0,1]
-load("plot_action.sage")  
-p = plot_color_angles(1,2,3,4)
-p.set_axes_range(0,pi,0,pi)
-p.save("graphics/eigen101.pdf", tick_formatter=[pi,pi])
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")  
+sage: p = plot_color_angles(1,2,3,4)
+sage: p.set_axes_range(0,pi,0,pi)
+sage: p.save("graphics/eigen101.pdf", tick_formatter=[pi,pi])
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 p = plot_color_angles(1,2,3,4)
@@ -190,13 +190,13 @@ resized is the \textit{eigenvalue} for that vector.
 
 For an eigenvalue~$\lambda$, the set of vectors associated with
 it is an \textit{eigenspace}.
-\begin{sageoutput}[s,3,59,13]
-M = matrix(RDF, [[1, 2], [3, 4]])
-evs = M.eigenvectors_left()
-evs
-evs[0] 
-evs[1]
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(RDF, [[1, 2], [3, 4]])
+sage: evs = M.eigenvectors_left()
+sage: evs
+sage: evs[0] 
+sage: evs[1]
+\end{sagecommandline}
 \noindent
 A matrix has the same eigenvalues whether we are taking multiplication 
 by vectors to come from the left $\vec{v}M$ or from the 
@@ -221,13 +221,14 @@ eigenvalue that is about~$5.37$.
 
 \Sage{} will tell us which of those vectors is which on the graph 
 labeled~($**$).
-\begin{sageoutput}
-M = matrix(RDF, [[1, 2], [3, 4]])
-evs = M.eigenvectors_left()
-v = vector(RDF, evs[0][1][0])
-angle_v = atan2(v[1], v[0]) 
-n(angle_v/pi) 
-\end{sageoutput}
+% Sage says: TypeError: 2.7125795352772983/pi fails to convert into the map's domain Vector space of dimension 2 over Rational Field, but a `pushforward` method is not properly implemented
+% \begin{sagecommandline}
+% sage: M = matrix(RDF, [[1, 2], [3, 4]])
+% sage: evs = M.eigenvectors_left()
+% sage: v = vector(RDF, evs[0][1][0])
+% sage: angle_v = atan2(v[1], v[0]) 
+% sage: n(angle_v/pi) 
+% \end{sagecommandline}
 (Remember that the \inlinecode{n()} function gives the numerical value of
 the argument.)
 So the eigenspace listed first is the one associated with the right-hand
@@ -238,16 +239,16 @@ because both say that the transformation's action in passing from the
 domain to the codomain is to turn the vector around.
 
 \Sage{} can draw before and after pictures for the two eigenvectors.
-\begin{sageoutput}[d,0,3]
-load("plot_action.sage")  
-M = matrix(RDF, [[1, 2], [3, 4]])
-evs = M.eigenvectors_left()  
-p1 = plot_before_after_action(1,2,3,4, [evs[0][1][0]], ['red']) 
-p2 = plot_before_after_action(1,2,3,4, [evs[1][1][0]], ['blue']) 
-p = p1+p2
-p.set_axes_range(-4, 1, -4.5, 1) 
-p.save("graphics/eigen102.pdf", figsize=3.25)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")  
+sage: M = matrix(RDF, [[1, 2], [3, 4]])
+sage: evs = M.eigenvectors_left()  
+sage: p1 = plot_before_after_action(1,2,3,4, [evs[0][1][0]], ['red']) 
+sage: p2 = plot_before_after_action(1,2,3,4, [evs[1][1][0]], ['blue']) 
+sage: p = p1+p2
+sage: p.set_axes_range(-4, 1, -4.5, 1) 
+sage: p.save("graphics/eigen102.pdf", figsize=3.25)
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 M = matrix(RDF, [[1, 2], [3, 4]])
@@ -279,29 +280,29 @@ in the red case by the negative factor $\lambda_1\approx -0.37$.
 % We start with the action of the linear transformation $\map{t}{\Re^2}{\Re^2}$
 % represented with respect to the standard bases by our generic matrix with
 % entries $1$, $2$, $3$, and $4$.
-% \begin{sageoutput}
-% load("plot_action.sage")
-% plot.options['figsize']=4.5
-% g = point_grid(3, 3)
-% p = plot_point_action(1, 2, 3, 4, g)
-% p.save("sageoutput/plot_action110.pdf")  
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: load("plot_action.sage")
+% sage: plot.options['figsize']=4.5
+% sage: g = point_grid(3, 3)
+% sage: p = plot_point_action(1, 2, 3, 4, g)
+% sage: p.save("sagecommandline/plot_action110.pdf")  
+% \end{sagecommandline}
 % \begin{center}
-%   \includegraphics{"sageoutput/plot_action110.pdf"}
+%   \includegraphics{"sagecommandline/plot_action110.pdf"}
 % \end{center}
 % This picture shows that the eigenspace associated with the eigenvector
 % having the largest absolute value is attractive.
 % This is the \textit{power method}:
 
-% \begin{sageoutput}
-% load("plot_action.sage")
-% plot.options['figsize']=4.5
-% g = point_grid(5, 5)
-% p = plot_point_action(2, 2, 0, 2, g)
-% p.save("sageoutput/plot_action111.pdf")  
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: load("plot_action.sage")
+% sage: plot.options['figsize']=4.5
+% sage: g = point_grid(5, 5)
+% sage: p = plot_point_action(2, 2, 0, 2, g)
+% sage: p.save("sagecommandline/plot_action111.pdf")  
+% \end{sagecommandline}
 % \begin{center}
-%   \includegraphics{"sageoutput/plot_action111.pdf"}
+%   \includegraphics{"sagecommandline/plot_action111.pdf"}
 % \end{center}
 
 
@@ -310,34 +311,34 @@ in the red case by the negative factor $\lambda_1\approx -0.37$.
 \section{Matrix polynomials}
 
 \Sage{} will find characteristic and minimal polynomials of a matrix.
-\begin{sageoutput}
-M =  matrix(RDF, [[1, 2], [3, 4]]) 
-poly = M.charpoly()
-poly.factor()
-poly.roots()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M =  matrix(RDF, [[1, 2], [3, 4]]) 
+sage: poly = M.charpoly()
+sage: poly.factor()
+sage: poly.roots()
+\end{sagecommandline}
 
 The characteristic polynomial and minimal polynomial differ only when 
 the characteristic polynomial has repeated roots.
-\begin{sageoutput}
-M =  matrix(RDF, [[2, 2, 3], [0, 4, -1], [0, 0, 2]]) 
-M.charpoly()
-M.minpoly()
-M.charpoly().factor()
-M.minpoly().factor()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M =  matrix(RDF, [[2, 2, 3], [0, 4, -1], [0, 0, 2]]) 
+sage: M.charpoly()
+sage: M.minpoly()
+sage: M.charpoly().factor()
+sage: M.minpoly().factor()
+\end{sagecommandline}
 \noindent
 Note here that \Sage{} has trouble there telling whether $2$ is a repeated 
 root.
 If we do an exact calculation using 
 rational numbers then we get the right answer.  
-\begin{sageoutput}
-M =  matrix(QQ, [[2, 2, 3], [0, 4, -1], [0, 0, 2]]) 
-M.charpoly()
-M.minpoly()
-M.charpoly().factor()
-M.minpoly().factor()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M =  matrix(QQ, [[2, 2, 3], [0, 4, -1], [0, 0, 2]]) 
+sage: M.charpoly()
+sage: M.minpoly()
+sage: M.charpoly().factor()
+sage: M.minpoly().factor()
+\end{sagecommandline}
 
 
 
@@ -345,50 +346,50 @@ M.minpoly().factor()
 \section{Diagonalization and Jordan form}
 
 \Sage{} will tell us if two matrices are similar.
-\begin{sageoutput}
-S =  matrix(QQ, [[2, -3], [1, -1]]) 
-T =  matrix(QQ, [[0, -1], [1,  1]]) 
-S.is_similar(T)
-U =  matrix(QQ, [[1, 2], [3,  4]]) 
-S.is_similar(U)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: S =  matrix(QQ, [[2, -3], [1, -1]]) 
+sage: T =  matrix(QQ, [[0, -1], [1,  1]]) 
+sage: S.is_similar(T)
+sage: U =  matrix(QQ, [[1, 2], [3,  4]]) 
+sage: S.is_similar(U)
+\end{sagecommandline}
 \noindent
 % We can even get a transformation.
-% \begin{sageoutput}
-% S =  matrix(QQ, [[2, -3], [1, -1]]) 
-% T =  matrix(QQ, [[0, -1], [1,  1]]) 
-% S.is_similar(T, transformation=True)
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: S =  matrix(QQ, [[2, -3], [1, -1]]) 
+% sage: T =  matrix(QQ, [[0, -1], [1,  1]]) 
+% sage: S.is_similar(T, transformation=True)
+% \end{sagecommandline}
 
 We can determine if a matrix is diagonalizable.
-\begin{sageoutput}
-M =  matrix(QQ, [[4, -2], [1, 1]])  
-M.is_diagonalizable()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M =  matrix(QQ, [[4, -2], [1, 1]])  
+sage: M.is_diagonalizable()
+\end{sagecommandline}
 \noindent
 To diagonalize the matrix put it in Jordan form.
-\begin{sageoutput}
-M =  matrix(QQ, [[2, -2, 2], [0, 1, 1], [-4, 8, 3]])  
-M.jordan_form()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M =  matrix(QQ, [[2, -2, 2], [0, 1, 1], [-4, 8, 3]])  
+sage: M.jordan_form()
+\end{sagecommandline}
 \noindent 
 Note the \inlinecode{-+-+-} lines that break the matrix into its component
 blocks.
 
 \Sage{} will even give you an appropriate transformation matrix.
-\begin{sageoutput}[d,0,1]
-M =  matrix(QQ, [[2, -2, 2], [0, 1, 1], [-4, 8, 3]])  
-JF, T = M.jordan_form(transformation=True)
-JF
-T
-T*JF*T^(-1)
-\end{sageoutput}
+\begin{sagecommandline}[d,0,1]
+sage: M =  matrix(QQ, [[2, -2, 2], [0, 1, 1], [-4, 8, 3]])  
+sage: JF, T = M.jordan_form(transformation=True)
+sage: JF
+sage: T
+sage: T*JF*T^(-1)
+\end{sagecommandline}
 
 We can find the Jordan form of any matrix.
-\begin{sageoutput}
-M =  matrix(QQ, [[2, -1], [1, 4]])  
-M.jordan_form()
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M =  matrix(QQ, [[2, -1], [1, 4]])  
+sage: M.jordan_form()
+\end{sagecommandline}
 
 
 

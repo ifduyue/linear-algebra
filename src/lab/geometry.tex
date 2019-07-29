@@ -57,22 +57,22 @@ Under the action of~$t$ that line becomes this set.
   \set{\colvec{x \\ y}=\frac{1}{2}\colvec{3\sqrt{3}-1 \\ 3+\sqrt{3}}\cdot s
                                   +\colvec{\sqrt{3} \\ 1}\suchthat s\in\Re}
 \end{equation*}
-\begin{sageoutput}[d,1,6]
-s = var('s')
-plot.options['figsize'] = 2.5
-plot.options['axes_pad'] = 0.05
-plot.options['fontsize'] = 7
-plot.options['dpi'] = 1200
-plot.options['aspect_ratio'] = 1
-ell = parametric_plot((3*s+2,1*s), (s, -10, 10))
-ell.set_axes_range(-4, 4, -4, 4)
-ell.save("graphics/geo000a.pdf")
-t_x(s) = ((3*sqrt(3)-1)/2)*s+sqrt(3)
-t_y(s) = ((3+sqrt(3))/2)*s+1
-t_ell = parametric_plot((t_x(s), t_y(s)), (s, -10, 10))
-t_ell.set_axes_range(-4, 4, -4, 4)
-t_ell.save("graphics/geo000b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: s = var('s')
+sage: plot.options['figsize'] = 2.5
+sage: plot.options['axes_pad'] = 0.05
+sage: plot.options['fontsize'] = 7
+sage: plot.options['dpi'] = 1200
+sage: plot.options['aspect_ratio'] = 1
+sage: ell = parametric_plot((3*s+2,1*s), (s, -10, 10))
+sage: ell.set_axes_range(-4, 4, -4, 4)
+sage: ell.save("graphics/geo000a.pdf")
+sage: t_x(s) = ((3*sqrt(3)-1)/2)*s+sqrt(3)
+sage: t_y(s) = ((3+sqrt(3))/2)*s+1
+sage: t_ell = parametric_plot((t_x(s), t_y(s)), (s, -10, 10))
+sage: t_ell.set_axes_range(-4, 4, -4, 4)
+sage: t_ell.save("graphics/geo000b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 s = var('s')
 plot.options['figsize'] = 2.5
@@ -109,12 +109,12 @@ We can show the effect of plane transformations
 $\map{t}{\Re^2}{\Re^2}$ 
 by applying them to
 the unit square.
-\begin{sageoutput}
-load("plot_action.sage")
-p = plot_square_action(1,0,0,1)  # identity matrix
-p.set_axes_range(-0.25, 1.5, -0.25, 1.5) 
-p.save("graphics/geo100.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: p = plot_square_action(1,0,0,1)  # identity matrix
+sage: p.set_axes_range(-0.25, 1.5, -0.25, 1.5) 
+sage: p.save("graphics/geo100.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 p = plot_square_action(1,0,0,1)  # identity matrix
@@ -158,15 +158,15 @@ so it plots the unit square unchanged.
 
 That routine gives
 these pictures of the effect of the generic matrix.
-\begin{sageoutput}
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-6, 6, -1, 6) 
-q.save("graphics/geo101a.pdf")
-p = plot_square_action(1,2,3,4) 
-p.set_axes_range(-6, 6, -1, 6) 
-p.save("graphics/geo101b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-6, 6, -1, 6) 
+sage: q.save("graphics/geo101a.pdf")
+sage: p = plot_square_action(1,2,3,4) 
+sage: p.set_axes_range(-6, 6, -1, 6) 
+sage: p.save("graphics/geo101b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -194,15 +194,15 @@ building on an understanding of simple behavior.
 This transformation doubles the $x$~components of all 
 vectors.\footnote{In the rest of this section we'll omit the fiddly
 lines that load the script file, set the axis ranges, etc.} 
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo102a.pdf")
-p = plot_square_action(2,0,0,1)  
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo102b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.save("graphics/geo102a.pdf")
+sage: p = plot_square_action(2,0,0,1)  
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo102b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -230,15 +230,15 @@ is simple.
 For instance, tripling the $x$~coordinate gives you a similar shape with
 three times the area of the starting one.
 What about if you take $-1$~times the $x$-coordinate?
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo103a.pdf")
-p = plot_square_action(-1,0,0,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo103b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.save("graphics/geo103a.pdf")
+sage: p = plot_square_action(-1,0,0,1) 
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo103b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -274,15 +274,15 @@ That meaning of area is the absolute value of the oriented area.
 The next transformation combines action in two axes, 
 tripling the $y$~components and multiplying 
 $x$~components by $-1$. 
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo104a.pdf")
-p = plot_square_action(-1,0,0,3) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo104b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.save("graphics/geo104a.pdf")
+sage: p = plot_square_action(-1,0,0,3) 
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo104b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -301,15 +301,15 @@ The colors show that this transformation also changes
 the orientation, so the new shape has an oriented area of~$-3$.
 
 What if we change the orientation twice?
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -4, 2) 
-q.save("graphics/geo105a.pdf")
-p = plot_square_action(-2,0,0,-3) 
-p.set_axes_range(-4, 4, -4, 2) 
-p.save("graphics/geo105b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -4, 2) 
+sage: q.save("graphics/geo105a.pdf")
+sage: p = plot_square_action(-2,0,0,-3) 
+sage: p.set_axes_range(-4, 4, -4, 2) 
+sage: p.save("graphics/geo105b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -329,15 +329,15 @@ red, orange, green, and then blue.
 Thus the new shape has an oriented area of~$6$.
 
 We next show the effect of putting in off-diagonal entries.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo106a.pdf")
-p = plot_square_action(1,0,2,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo106b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.save("graphics/geo106a.pdf")
+sage: p = plot_square_action(1,0,2,1) 
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo106b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -371,15 +371,15 @@ with a height of~$1$ so its oriented area is~$1$.
 Putting a nonzero value in the other off-diagonal entry of the matrix,
 the upper right, has the same effect except that it skews parallel
 to the $y$-axis.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -3, 2) 
-q.save("graphics/geo107a.pdf")
-p = plot_square_action(1,-2,0,1) 
-p.set_axes_range(-4, 4, -3, 2) 
-p.save("graphics/geo107b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -3, 2) 
+sage: q.save("graphics/geo107a.pdf")
+sage: p = plot_square_action(1,-2,0,1) 
+sage: p.set_axes_range(-4, 4, -3, 2) 
+sage: p.save("graphics/geo107b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -423,15 +423,15 @@ square is that then the output shape has oriented area equal to the
 determinant of the matrix. 
 
 For instance, this matrix is singular, so it has determinant~$0$.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 6) 
-q.save("graphics/geo200a.pdf")
-p = plot_square_action(1,2,2,4) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo200b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 6) 
+sage: q.save("graphics/geo200a.pdf")
+sage: p = plot_square_action(1,2,2,4) 
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo200b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -714,12 +714,12 @@ This is the associated factorization.
   \end{mat}
 \end{equation*}
 The product checks out.
-\begin{sageoutput}
-L = matrix(QQ, [[1, 0], [3, 1]])
-D = matrix(QQ, [[1, 0], [0, -2]])
-U = matrix(QQ, [[1, 2], [0, 1]])
-L*D*U  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: L = matrix(QQ, [[1, 0], [3, 1]])
+sage: D = matrix(QQ, [[1, 0], [0, -2]])
+sage: U = matrix(QQ, [[1, 2], [0, 1]])
+sage: L*D*U  
+\end{sagecommandline}
 
 We got into this to understand 
 the geometric effect of the generic transformation.
@@ -730,15 +730,15 @@ the geometric effect of the generic transformation.
    3 &4 
   \end{mat}
 \end{equation*}
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 6) 
-q.save("graphics/geo300a.pdf")
-p = plot_square_action(1,2,3,4) 
-p.set_axes_range(-4, 4, -1, 6) 
-p.save("graphics/geo300b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 6) 
+sage: q.save("graphics/geo300a.pdf")
+sage: p = plot_square_action(1,2,3,4) 
+sage: p.set_axes_range(-4, 4, -1, 6) 
+sage: p.save("graphics/geo300b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -775,15 +775,15 @@ Then we will look at the cumulative effect: that of~$L$, then of~$LD$,
 and finally~$LDU$.
 
 The first matrix is a skew parallel to the $x$-axis.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo301a.pdf")
-p = plot_square_action(1,0,3,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo301b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.save("graphics/geo301a.pdf")
+sage: p = plot_square_action(1,0,3,1) 
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo301b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -800,15 +800,15 @@ p.save("graphics/geo301b.pdf")
 \end{equation*}
 \noindent
 The second matrix rescales and changes the orientation.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -3, 2) 
-q.save("graphics/geo302a.pdf")
-p = plot_square_action(1,0,0,-2) 
-p.set_axes_range(-4, 4, -3, 2) 
-p.save("graphics/geo302b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -3, 2) 
+sage: q.save("graphics/geo302a.pdf")
+sage: p = plot_square_action(1,0,0,-2) 
+sage: p.set_axes_range(-4, 4, -3, 2) 
+sage: p.save("graphics/geo302b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -825,15 +825,15 @@ p.save("graphics/geo302b.pdf")
 \end{equation*}
 \noindent
 Finally, the third matrix is a skew parallel to the $y$-axis.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo303a.pdf")
-p = plot_square_action(1,2,0,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo303b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.save("graphics/geo303a.pdf")
+sage: p = plot_square_action(1,2,0,1) 
+sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.save("graphics/geo303b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
@@ -876,26 +876,26 @@ unit square's upper right corner.
   \colvec{4 \\ 6}
 \end{equation*}
 
-\begin{sageoutput}[d,5,6;d,7,9;d,10,12;d,13,15;d,16,18]
-L = matrix(QQ, [[1, 0], [3, 1]])
-D = matrix(QQ, [[1, 0], [0, -2]])
-U = matrix(QQ, [[1, 2], [0, 1]])
-LD = L*D
-LDU = LD*U  
-load("plot_action.sage")
-p = plot_square_action(1,0,0,1) 
-p.set_axes_range(-4, 4, -2, 6) 
-p.save("graphics/geo304a.pdf")
-p = plot_square_action(L[0][0], L[0][1], L[1][0], L[1][1]) 
-p.set_axes_range(-4, 4, -2, 6) 
-p.save("graphics/geo304b.pdf")
-p = plot_square_action(LD[0][0], LD[0][1], LD[1][0], LD[1][1]) 
-p.set_axes_range(-4, 4, -2, 6) 
-p.save("graphics/geo304c.pdf")
-p = plot_square_action(LDU[0][0], LDU[0][1], LDU[1][0],LDU[1][1]) 
-p.set_axes_range(-4, 4, -2, 6) 
-p.save("graphics/geo304d.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: L = matrix(QQ, [[1, 0], [3, 1]])
+sage: D = matrix(QQ, [[1, 0], [0, -2]])
+sage: U = matrix(QQ, [[1, 2], [0, 1]])
+sage: LD = L*D
+sage: LDU = LD*U  
+sage: load("plot_action.sage")
+sage: p = plot_square_action(1,0,0,1) 
+sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p.save("graphics/geo304a.pdf")
+sage: p = plot_square_action(L[0][0], L[0][1], L[1][0], L[1][1]) 
+sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p.save("graphics/geo304b.pdf")
+sage: p = plot_square_action(LD[0][0], LD[0][1], LD[1][0], LD[1][1]) 
+sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p.save("graphics/geo304c.pdf")
+sage: p = plot_square_action(LDU[0][0], LDU[0][1], LDU[1][0],LDU[1][1]) 
+sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p.save("graphics/geo304d.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 L = matrix(QQ, [[1, 0], [3, 1]])
 D = matrix(QQ, [[1, 0], [0, -2]])
