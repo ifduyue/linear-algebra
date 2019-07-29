@@ -57,12 +57,12 @@ and describe where the transformation maps those elements.
 
 A natural set that contains one nonzero element from each line through the
 origin is the upper half unit circle.
-\begin{sageoutput}
-load("plot_action.sage")
-p = plot_circle_action(1,0,0,1) 
-p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
-p.save("graphics/svd000.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: p = plot_circle_action(1,0,0,1) 
+sage: p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
+sage: p.save("graphics/svd000.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 p = plot_circle_action(1,0,0,1) 
@@ -80,12 +80,12 @@ The above
 graph came from  using a routine that draws the effect of a transformation 
 on the unit circle
 and then specifying the identity transformation.
-% \begin{sageoutput}
-% load("plot_action.sage")
-% p = plot_circle_action(1,0,0,1)  # identity matrix
-% p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
-% p.save("graphics/svd000.pdf")
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: load("plot_action.sage")
+% sage: p = plot_circle_action(1,0,0,1)  # identity matrix
+% sage: p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
+% sage: p.save("graphics/svd000.pdf")
+% \end{sagecommandline}
 Its source code is 
 at the end of this chapter but in short 
 \inlinecode{plot_circle_action(a,b,c,d)}
@@ -107,15 +107,15 @@ the transformation
 that doubles the $x$~component of input vectors. 
 It shows before and after, the upper half circle domain
 and the output codomain.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 2, -1, 2) 
-q.save("graphics/svd001a.pdf")
-p = plot_circle_action(2,0,0,1) 
-p.set_axes_range(-2, 2, -1, 2) 
-p.save("graphics/svd001b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 2, -1, 2) 
+sage: q.save("graphics/svd001a.pdf")
+sage: p = plot_circle_action(2,0,0,1) 
+sage: p.set_axes_range(-2, 2, -1, 2) 
+sage: p.save("graphics/svd001b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
@@ -138,15 +138,15 @@ the effect of the transformation
 \end{equation*}
 that triples the $y$~component and multiplies the 
 $x$~component by $-1$. 
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 2, -4, 4) 
-q.save("graphics/svd002a.pdf")
-p = plot_circle_action(-1,0,0,3) 
-p.set_axes_range(-2, 2, -4, 4) 
-p.save("graphics/svd002b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 2, -4, 4) 
+sage: q.save("graphics/svd002a.pdf")
+sage: p = plot_circle_action(-1,0,0,3) 
+sage: p.set_axes_range(-2, 2, -4, 4) 
+sage: p.save("graphics/svd002b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
@@ -176,15 +176,15 @@ The next transformation is a skew.
 \end{equation*}
 The output's first component is affected
 by the input vector's distance from the $y$-axis.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 3, -1, 2) 
-q.save("graphics/svd003a.pdf")
-p = plot_circle_action(1,0,2,1) 
-p.set_axes_range(-2, 3, -1, 2) 
-p.save("graphics/svd003b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 3, -1, 2) 
+sage: q.save("graphics/svd003a.pdf")
+sage: p = plot_circle_action(1,0,2,1) 
+sage: p.set_axes_range(-2, 3, -1, 2) 
+sage: p.save("graphics/svd003b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
@@ -204,15 +204,15 @@ Here is another skew.
 In this case the output's 
 second component is affected by the input's distance from 
 the $x$-axis.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 2, -2, 2) 
-q.save("graphics/svd004a.pdf")
-p = plot_circle_action(1,1/2,0,1) 
-p.set_axes_range(-2, 2, -2, 2) 
-p.save("graphics/svd004b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 2, -2, 2) 
+sage: q.save("graphics/svd004a.pdf")
+sage: p = plot_circle_action(1,1/2,0,1) 
+sage: p.set_axes_range(-2, 2, -2, 2) 
+sage: p.save("graphics/svd004b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
@@ -230,15 +230,15 @@ p.save("graphics/svd004b.pdf")
 
 And here is a generic transformation.
 It changes orientation also.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 4, -3, 6) 
-q.save("graphics/svd005a.pdf")
-p = plot_circle_action(1,2,3,4) 
-p.set_axes_range(-2, 4, -3, 6) 
-p.save("graphics/svd005b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 4, -3, 6) 
+sage: q.save("graphics/svd005a.pdf")
+sage: p = plot_circle_action(1,2,3,4) 
+sage: p.set_axes_range(-2, 4, -3, 6) 
+sage: p.save("graphics/svd005b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
@@ -267,15 +267,15 @@ and if both have length zero then it is a point.}
 Write $\sigma_1$ for the length of the semi-major axis, 
 the distance from the center to the furthest-away point on the ellipse,
 and write $\sigma_2$ for the length of the semi-minor axis.
-\begin{sageoutput}[d,0,3]
-plot.options['axes_pad'] = 0.5
-plot.options['fontsize'] = 5
-plot.options['aspect_ratio'] = 1
-sigma_1=3
-sigma_2=1
-E = ellipse((0,0), sigma_1, sigma_2)
-E.save("graphics/svd100.pdf",figsize=4)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: plot.options['axes_pad'] = 0.5
+sage: plot.options['fontsize'] = 5
+sage: plot.options['aspect_ratio'] = 1
+sage: sigma_1=3
+sage: sigma_2=1
+sage: E = ellipse((0,0), sigma_1, sigma_2)
+sage: E.save("graphics/svd100.pdf",figsize=4)
+\end{sagecommandline}
 \begin{sagesilent}
 plot.options['axes_pad'] = 0.5
 plot.options['fontsize'] = 5
@@ -313,15 +313,15 @@ are mapped to the $\sigma_i\vec{\delta}_i$.
 So consider again the generic matrix.
 Here is its action again, this time shown
 on a full circle.
-\begin{sageoutput}[d,0,4;d,5,7]
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1,full_circle=True) 
-q.set_axes_range(-2, 2, -5, 6) 
-q.save("graphics/svd101a.pdf")
-p = plot_circle_action(1,2,3,4,full_circle=True) 
-p.set_axes_range(-4, 4, -5, 6) 
-p.save("graphics/svd101b.pdf")
-\end{sageoutput}
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1,full_circle=True) 
+sage: q.set_axes_range(-2, 2, -5, 6) 
+sage: q.save("graphics/svd101a.pdf")
+sage: p = plot_circle_action(1,2,3,4,full_circle=True) 
+sage: p.set_axes_range(-4, 4, -5, 6) 
+sage: p.save("graphics/svd101b.pdf")
+\end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1,full_circle=True) 
@@ -338,14 +338,14 @@ p.save("graphics/svd101b.pdf")
   \tag{$*$}
 \end{equation*}
 \Sage{} will find the SVD of this example matrix.
-\begin{sageoutput}
-M = matrix(RDF, [[1, 2], [3, 4]])
-U,Sigma,V = M.SVD()
-U
-Sigma
-V
-U*Sigma*(V.transpose())
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(RDF, [[1, 2], [3, 4]])
+sage: U,Sigma,V = M.SVD()
+sage: U
+sage: Sigma
+sage: V
+sage: U*Sigma*(V.transpose())
+\end{sagecommandline}
 \noindent 
 The Singular Value Decomposition has $M$ as the product of
 three matrices, $U\Sigma\trans{V}$.
@@ -355,27 +355,27 @@ The singular values are the diagonal entries of~$\Sigma$.
 \Sage{} will plot the effect of the transformation
 on the basis vectors for the domain so we can compare those with the
 basis vectors for the codomain.
-\begin{sageoutput}[d,0,2;d,6,9]
-M = matrix(RDF, [[1, 2], [3, 4]])
-U,Sigma,V = M.SVD()
-beta_1 = vector(RDF, [U[0][0], U[1][0]])
-beta_2 = vector(RDF, [U[0][1], U[1][1]])
-delta_1 = vector(RDF, [V[0][0], V[1][0]])
-delta_2 = vector(RDF, [V[0][1], V[1][1]])
-plot.options['axes_pad'] = 0.05
-plot.options['fontsize'] = 7
-plot.options['aspect_ratio'] = 1
-s = 2  # uniform arrowsize
-C = circle((0,0), 1)
-P = C + plot(beta_1,arrowsize=s) + plot(beta_2,arrowsize=s)
-P.save("graphics/svd102a.pdf",figsize=2)
-image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
-Q = C + plot(beta_1*M, width=3,color=image_color,arrowsize=s) 
-Q = Q + plot(delta_1,width=1.4,color='blue',arrowsize=s) 
-Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s) 
-Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
-Q.save("graphics/svd102b.pdf",figsize=4.467)
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(RDF, [[1, 2], [3, 4]])
+sage: U,Sigma,V = M.SVD()
+sage: beta_1 = vector(RDF, [U[0][0], U[1][0]])
+sage: beta_2 = vector(RDF, [U[0][1], U[1][1]])
+sage: delta_1 = vector(RDF, [V[0][0], V[1][0]])
+sage: delta_2 = vector(RDF, [V[0][1], V[1][1]])
+sage: plot.options['axes_pad'] = 0.05
+sage: plot.options['fontsize'] = 7
+sage: plot.options['aspect_ratio'] = 1
+sage: s = 2  # uniform arrowsize
+sage: C = circle((0,0), 1)
+sage: P = C + plot(beta_1,arrowsize=s) + plot(beta_2,arrowsize=s)
+sage: P.save("graphics/svd102a.pdf",figsize=2)
+sage: image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
+sage: Q = C + plot(beta_1*M, width=3,color=image_color,arrowsize=s) 
+sage: Q = Q + plot(delta_1,width=1.4,color='blue',arrowsize=s) 
+sage: Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s) 
+sage: Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
+sage: Q.save("graphics/svd102b.pdf",figsize=4.467)
+\end{sagecommandline}
 \begin{sagesilent}
 M = matrix(RDF, [[1, 2], [3, 4]])
 U,Sigma,V = M.SVD()
@@ -523,23 +523,23 @@ rank of~$A$.
 The $\nbyn{m}$ matrix~$U$ and the $\nbyn{n}$ matrix~$V$ are unitary, meaning
 that their columns form an orthogonal basis of unit vectors, the left and 
 right \textit{singular vectors} for~$A$, respectively. 
-\begin{sageoutput}
-M = matrix(RDF, [[0, 1, 2], [3, 4, 5]])
-U,Sigma,V = M.SVD()
-U
-Sigma
-V  
-\end{sageoutput}
+\begin{sagecommandline}
+sage: M = matrix(RDF, [[0, 1, 2], [3, 4, 5]])
+sage: U,Sigma,V = M.SVD()
+sage: U
+sage: Sigma
+sage: V  
+\end{sagecommandline}
 % The number of singular values is the rank of the matrix.
 % Here \Sage{} gets a $\sigma_2$ that is not quite zero because of numerical 
 % issues. 
-% \begin{sageoutput}
-% M = matrix(RDF, [[0, 1, 2], [0, 2, 4]])
-% U,Sigma,V = M.SVD()
-% U
-% Sigma
-% V  
-% \end{sageoutput}
+% \begin{sagecommandline}
+% sage: M = matrix(RDF, [[0, 1, 2], [0, 2, 4]])
+% sage: U,Sigma,V = M.SVD()
+% sage: U
+% sage: Sigma
+% sage: V  
+% \end{sagecommandline}
 
 The product $U\Sigma\trans{V}$ simplifies.
 To see how,
