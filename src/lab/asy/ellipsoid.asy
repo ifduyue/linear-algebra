@@ -18,6 +18,8 @@
 import settings;
 // settings.render=-30;
 // settings.maxtile=(10,10);
+settings.outformat="pdf";
+settings.prc=false;
 
 import graph3;
 size(4.5inch,0);

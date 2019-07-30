@@ -170,11 +170,11 @@
 
 % \RequirePackage{color}
 \RequirePackage[usenames,dvipsnames]{xcolor}
-  \definecolor{darkcolor}{HTML}{193E9A}  % 
-  \definecolor{boldcolor}{HTML}{0034B7}  % 
-  \definecolor{lightcolor}{HTML}{DAE4FC} % {799FFC}  % 
-  \definecolor{bgcolor}{HTML}{FCFFDC}  %  
-  \definecolor{flourishcolor}{HTML}{F80018}  %
+  \definecolor{darkcolor}{HTML}{193E9A}  % RGB: 0.098, 0.243, 0.604
+  \definecolor{boldcolor}{HTML}{0034B7}  % RGB: 0, 0.204, 0.718
+  \definecolor{lightcolor}{HTML}{DAE4FC} % RGB: 0.855, 0.894, 0.988
+  \definecolor{bgcolor}{HTML}{FCFFDC}    % RGB: 0.988, 1.000, 0.863  
+  \definecolor{flourishcolor}{HTML}{F80018}  % RGB 0.973, 0, 0.094
 
 % Fix bug in xetex: prevent color changes on pages with Sage graphics;
 % see http://tex.stackexchange.com/questions/60315/text-appearing-bold-on-some-pages-with-images

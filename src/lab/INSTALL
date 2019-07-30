@@ -1,17 +1,23 @@
 src/lab/INSTALL
 
-Notes on getting the lab to compile.
+Notes on getting the lab to compile.  These are under Linux, with TeX Live.
+If you have Windows then you have to open the .sh file and see what is in there
+and run it in the terminal by hand.
 
-1) The script runlab.sh should compile the lab.  It sets up TEXINPUTS,
-calls xelatex, then runs the PythonTeX script, then runs the Sage python
-script, then runs xelatex again.
+1) The main problem is getting the console information from Sage.  Fortunately,
+a recent update to sagetex.sty has provided the means.  So, you must have
+the 2019 version.  Run sage from the command line, and then ask for the
+version number.
 
-2) The main problem is getting the console information from Sage.  Fortunately,
-a recent update to sagetex.sty has provided the means.  But it may take some
-installation.
+  $ sage
+  sage: sagetex.__version__
+  '[2019/01/09 v3.2 embedding Sage into LaTeX documents]'
+
+If you don't have it already then it takes some installation.
 
 Get a sagetex.sty with a version of 3.2 (dated Jan 9, 2019) or later.
-Put it in your local TeX tree and compile it.  I did this under Ubuntu Linux.
+Put it in your local TeX tree and compile it.  I followed
+these steps under Ubuntu Linux.  Obviously your mileage may vary.
 
     cd /usr/local/share/texmf/tex/latex/
     sudo mv /home/ftpmaint/Downloads/sagetex.zip .
@@ -22,13 +28,31 @@ Put it in your local TeX tree and compile it.  I did this under Ubuntu Linux.
     sudo pdflatex sagetex.dtx
     sudo texhash
 
-Now, the tricky part.  When you run "sudo pdflatex sagetex.ins" you get told
+Here is the tricky part.  When you run "sudo pdflatex sagetex.ins" you get told
 to move the .sty to where LaTeX will find it, which is taken care of by the
 later "texhash" command.  But you also get told to move sagetex.py to
-where it can be found.  Turns out that is in the sage dir tree.  Fixing it
-took this.
+where sag can find it.  I moved mine into the sage dir tree.
 
     sudo cp sagetex.py /usr/lib/sagemath/local/lib/python2.7/site-packages/sagetex.py
+
+
+2) The script runlab.sh should compile the lab.  It sets up TEXINPUTS,
+calls xelatex, then runs the PythonTeX script, then runs the Sage python
+script, then runs xelatex again.
+
+3) But the first time you do not yet have all the figures, and the .sage
+commands, etc.  You will find yourself in a very boring cycle of runlab.sh,
+followed by hitting x twice, followed by runlab.sh again.  Better is to
+follow these steps.
+
+  a) sage lab.sagetex.sage
+  b) cd asy
+     asy ellipsoid1
+     cd ..
+
+and then this.
+
+  c) runlab.sh
 
 
 
