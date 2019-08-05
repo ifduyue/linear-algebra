@@ -205,8 +205,8 @@ A subset \( S \) of a vector space is linearly independent if and only if
 among its elements  
 the only linear relationship 
 $ c_1\vec{s}_1+\dots+c_n\vec{s}_n=\zero$
-(with $\vec{s}_i\neq\vec{s}_j$ for all $i\neq j$) 
-is the trivial one \( c_1=0,\dots,\,c_n=0 \).
+is the trivial one, \( c_1=0,\dots,\,c_n=0 \)
+(where $\vec{s}_i\neq\vec{s}_j$ when $i\neq j$) .
 %</lm:LDIffANonTrivLinRel>
 \end{lemma}
 
@@ -288,6 +288,27 @@ since polynomials are equal only if their coefficients are equal.
 Thus, the only linear relationship between these two members of
 $\polyspace_2$ is the trivial one.
 \end{example}
+
+\begin{remark}
+The lemma specifies that $\vec{s}_i\neq\vec{s}_j$ 
+when $i\neq j$ because of course if some vector~$\vec{s}$ appears 
+twice then we can get a nontrivial
+$c_1\vec{s}_1+\dots+c_n\vec{s}_n=\zero$ by taking
+the associated coefficients to be $1$ and~$-1$.
+However, note that the lemma allows the 
+opposite of appearing more than once, that some 
+vectors from~$S$ don't appear at all.
+For instance, if~$S$ is infinite then because
+linear relationships involve only finitely many vectors, 
+any such relationship leaves out many of $S$'s vectors.
+
+Note also that if~$S$ is finite then in the lemma 
+we can take the combination
+$c_1\vec{s}_1+\dots+c_n\vec{s}_n$ to contain each of $S$'s vectors once and
+only once.
+If a vector is missing from a combination then we can add it by using a 
+coefficient of~$0$.
+\end{remark}
 
 \begin{example}
 The rows of this matrix
@@ -375,16 +396,15 @@ the zero vector is a combination of the empty subset.
 \begin{remark} \label{rem:WhyLIUsesMultiset} %\cite{Velleman} 
 The definition of linear independence,
 \nearbydefinition{def:LinInd}, refers to a `set' of vectors.
-Sets are the most familiar kind of collection, and furthermore
-in practice everyone refers to these collections as sets so 
-we will do the same.
- 
+Sets are the most familiar kind of collection and
+in practice everyone refers to these collections as sets.
 But to be complete we will note that sets are not quite the right kind
-of collection.
+of collection for this purpose.
+
 Recall that a set is a collection with two properties: 
 (i)~order does not matter,
 so that the set $\set{1,2}$ equals the set $\set{2,1}$, and 
-(ii)~repeats collapse, so that the set $\set{1,1,2}$ equals the set
+(ii)~duplicates collapse, so that the set $\set{1,1,2}$ equals the set
 $\set{1,2}$.
 
 Now consider this matrix reduction.
@@ -401,29 +421,30 @@ Now consider this matrix reduction.
     1 &2 &3
   \end{mat}
 \end{equation*}
-On the left the set of matrix rows is 
-$\set{\rowvec{1 &1 &1}, \rowvec{2 &2 &2}, \rowvec{1 &2 &3}}$, and is
+On the left the set of matrix rows 
+$\set{\rowvec{1 &1 &1}, \rowvec{2 &2 &2}, \rowvec{1 &2 &3}}$ is
 linearly dependent.
 On the right the set of rows is  
 $\set{\rowvec{1 &1 &1}, \rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$. 
-Because repeats collapse that equals
+Because duplicates collapse, that equals
 the set
 $\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, 
 which is linearly independent.
-Oops, Gauss's Method should preserve linear dependence.
+That's a problem because Gauss's Method should preserve linear dependence.
 
-That is, strictly speaking,  
-we need a type of collection where repeats do not collapse.
-Such a collection is a
+That is, strictly speaking,
+we need a type of collection where duplicates do not collapse.
+A collection where order does not matter and duplicates don't collapse
 is a \definend{multiset}.\index{sets!multiset}%
 \index{multiset}\index{linear independence!multiset}
-However, most of the time the distinction won't matter and
-departing from standard terminology has its own pitfalls, so we will 
-refer to a linearly independent or dependent `set.' 
-Later in this book we shall occasionally need to take combinations without
-letting repeated parts collapse, and we shall do that without comment.
-\end{remark}
 
+However, the standard terminology here is `set'
+and departing from a standard has its own pitfalls, so we will 
+use that word also. 
+Later we shall occasionally need to take combinations without
+letting duplicates collapse and we shall do that without 
+further comment.
+\end{remark}
 
 \begin{corollary} \label{cor:LiSetMinSpanSet}
 %<*cor:LiSetMinSpanSet>

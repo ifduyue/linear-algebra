@@ -4,6 +4,10 @@
 # the 'ensure_path'
 # 2019-Jul-04 Jim Hefferon
 
+$pdf_mode = 1; # Produce PDF's
+$do_cd = 1;  # Change into directory to make files
+
+
 # First have to find the directory in which this is being compiled,
 #  .../src so that it can go in the TEXINPUTS and MPINPUTS variable.
 
@@ -130,9 +134,9 @@ sub asy2x   {
 # For latexmk 4.48
     # print "!!!!! About to do rdb_set_source.\n";
     # rdb_set_source( $rule, keys %imp );
-    print "!!!!! About to change dir back to compile directory.\n";
-    chdir $compile_dir;
-    # print "!!!!! Done.\n";
+    print "!!!!! About to change dir back to compile directory ",$compile_dir,"\n";
+    # my $chdir_ret = chdir $compile_dir;
+    print "!!!!! Done. ret=",$ret,"\n";
     return $ret;
 }
 
@@ -149,7 +153,7 @@ sub asy2x   {
 
 # ============ Declare files to compile ====
 # Use these to create this file
-@default_files = qw( book.tex jhanswer.tex);
+@default_files = qw( book.tex jhanswer.tex );
 
 # Each slide deck comes in three varieties, so put them in the list of files 
 my @slidefiles = qw( one/one_i one/one_ii one/one_iii

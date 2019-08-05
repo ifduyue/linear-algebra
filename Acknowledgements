@@ -185,3 +185,10 @@ General:
 2019-Jul-02
   Steve Nicholson (GitLab)  Typo in preface.
   Darij Grinberg (GitLab)  Improvements to proof of Chio's Theorem.
+
+2019-Aug-05
+  Mitch Rothstein Prove all bases have same size by calculation on coords
+     (Changed slides to do this but book retains Exchange Lemma.)
+  Darij Grinberg  More typos, and a number of thoughtful suggestions.
+    Improvement in discussion of linear relationships.
+  

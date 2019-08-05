@@ -383,7 +383,7 @@ For instance, for these maps from \( \Re^2 \) to itself
    \mapsunder{g}
   \colvec{0 \\ 5x}
 \end{equation*}
-the linear combination \( 5f-2g \) is also a transformation of~$R^2$.
+the linear combination \( 5f-2g \) is also a transformation of~$\Re^2$.
 \begin{equation*}
   \colvec{x \\ y}
    \mapsunder{5f-2g}
@@ -947,32 +947,18 @@ is more fruitful and more central to progress.
     \end{answer}
   \item 
     %(This will be used in \nearbyexercise{exer:Cosets} below.)
-    \begin{exparts}
-      \partsitem Show that for any scalars \( a_{1,1},\dots, a_{m,n}  \) 
-        this map
-        \( \map{h}{\Re^n}{\Re^m} \) is a homomorphism.
-        \begin{equation*}
-          \colvec{x_1 \\ \vdots \\ x_n}
-            \mapsto
-          \colvec{a_{1,1}x_1+\dots+a_{1,n}x_n \\ 
-                       \vdots \\
-                       a_{m,1}x_1+\cdots+a_{m,n}x_n}
-        \end{equation*}
-      \partsitem   Show that for each $i$, the \( i \)-th derivative operator 
-        $d^i/dx^i$ is a linear transformation of \( \polyspace_n \).
-        Conclude that for any scalars \( c_k,\ldots, c_0 \) this map
-        is a linear transformation of that space.
-        \begin{equation*}
-          f\mapsto
-          c_{k}\frac{d^k}{dx^k}f+c_{k-1}\frac{d^{k-1}}{dx^{k-1}}f
-             +\dots+
-          c_1\frac{d}{dx}f+c_0f
-        \end{equation*}
-    \end{exparts}
+    Show that for any scalars \( a_{1,1},\dots, a_{m,n}  \) 
+    this map
+    \( \map{h}{\Re^n}{\Re^m} \) is a homomorphism.
+    \begin{equation*}
+      \colvec{x_1 \\ \vdots \\ x_n}
+        \mapsto
+      \colvec{a_{1,1}x_1+\dots+a_{1,n}x_n \\ 
+                   \vdots \\
+                   a_{m,1}x_1+\cdots+a_{m,n}x_n}
+    \end{equation*}
     \begin{answer}
-      \begin{exparts}
-        \partsitem Where \( c \) and \( d \) are scalars,
-          we have this.
+      Where \( c \) and \( d \) are scalars, we have this.
           \begin{multline*}
             h(c\cdot \colvec{x_1 \\ \vdots \\ x_n} 
               +d\cdot \colvec{y_1 \\ \vdots \\ y_n})                     \\
@@ -991,18 +977,37 @@ is more fruitful and more central to progress.
               +d\cdot h(\colvec{y_1 \\ \vdots \\ y_n})
             \end{aligned}
           \end{multline*}
-        \partsitem Each power $i$ of the derivative operator is linear 
-          because of these rules familiar from calculus.
-          \begin{equation*}
-            \frac{d^i}{dx^i}(\,f(x)+g(x)\,)=\frac{d^i}{dx^i}f(x)
-                                         +\frac{d^i}{dx^i}g(x)
-            \qquad
-            \frac{d^i}{dx^i}\,r\cdot f(x)=r\cdot\frac{d^i}{dx^i}f(x)
-          \end{equation*}
-          Thus the given map is a linear transformation of \( \polyspace_n \)
-          because any linear combination of linear maps is also a linear map.
-      \end{exparts}  
      \end{answer}
+   \item Consider the space of polynomials  \( \polyspace_n \).
+     \begin{exparts}
+       \partsitem Show that for each $i$, the \( i \)-th derivative operator 
+          $d^i/dx^i$ is a linear transformation of that space.
+       \partsitem
+          Conclude that for any scalars \( c_k,\ldots, c_0 \) this map
+          is a linear transformation of that space.
+          \begin{equation*}
+            f\;\mapsto\;
+            c_{k}\frac{d^k}{dx^k}f+c_{k-1}\frac{d^{k-1}}{dx^{k-1}}f
+               +\dots+
+            c_1\frac{d}{dx}f+c_0f
+          \end{equation*}
+      \end{exparts}
+      \begin{answer}
+        \begin{exparts}
+          \partsitem Each power $i$ of the derivative operator is linear 
+            because of these rules familiar from calculus.
+            \begin{equation*}
+              \frac{d^i}{dx^i}(\,f(x)+g(x)\,)=\frac{d^i}{dx^i}f(x)
+                                         +\frac{d^i}{dx^i}g(x)
+              \qquad
+              \frac{d^i}{dx^i}\,r\cdot f(x)=r\cdot\frac{d^i}{dx^i}f(x)
+            \end{equation*}
+         \partsitem 
+          Any linear combination of linear maps is also a linear map.
+          Thus,
+          the given map is a linear transformation of \( \polyspace_n \).
+        \end{exparts}
+      \end{answer}
   \item 
     \nearbylemma{le:SpLinFcns} shows that a sum of linear functions is
     linear and that a scalar multiple of a linear function is linear.
