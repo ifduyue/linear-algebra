@@ -695,7 +695,7 @@ namely by any particular solution.
     When a plane does not pass through the origin, performing
     operations on vectors whose bodies lie in it
     is more complicated than when
-    the plane passes through the origin.
+    the plane does pass through the origin.
     Consider the picture in this subsection of the plane 
     \begin{equation*}
       \set{\colvec[r]{2 \\ 0 \\ 0}
@@ -706,10 +706,10 @@ namely by any particular solution.
     and the three vectors with endpoints
     $(2,0,0)$, $(1.5,1,0)$, and $(1.5,0,1)$.
     \begin{exparts}
-      \partsitem Redraw the picture, including the vector 
-        in the plane that is twice as long as the one with
-        endpoint $(1.5,1,0)$.
-        The endpoint of your vector is not $(3,2,0)$; what is it?
+      \partsitem Redraw the picture, including the vector starting at $(2,0,0)$ 
+        whose body is in the plane, and that is twice as long as the vector
+        shown in the plane whose endpoint is $(1.5,1,0)$.
+        The endpoint of this vector is not $(3,2,0)$; what is it?
       \partsitem Redraw the picture, including the parallelogram 
         in the plane that shows the sum of the vectors 
         ending at $(1.5,0,1)$ and $(1.5,1,0)$.
@@ -725,14 +725,21 @@ namely by any particular solution.
           \begin{equation*}
             \colvec[r]{2 \\ 0 \\ 0}
               +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1
+            =\colvec[r]{1.5 \\ 1 \\ 0}
           \end{equation*}
-          instead it is 
+          instead it is the result of doubling the parameter. 
           \begin{equation*}
             \colvec[r]{2 \\ 0 \\ 0}
               +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 2
             =\colvec[r]{1 \\ 2 \\ 0}
           \end{equation*}
-          which has a parameter twice as large.
+          Comparing the lengths is easy.
+          \begin{equation*}
+            \sqrt{1^2+2^2+0^2}
+            =\sqrt{(2\cdot 0.5)^2 + (2\cdot 1)^2+ (2\cdot 0)^2}
+            =\sqrt{2^2\cdot(0.5^2+1^2+0^2)}
+            =2\cdot\sqrt{0.5^2+1^2+0^2}
+          \end{equation*}
         \partsitem The vector
           \begin{center}
             \includegraphics{gr/mp/ch1.19}
