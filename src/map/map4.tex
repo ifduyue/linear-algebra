@@ -4162,23 +4162,24 @@ clearer idea then we will go with it.
   %   \end{answer}
   \item 
     Matrix multiplication is performed often on computers.
-    Researchers try to understand its performance, and to improve on it,
+    Researchers trying to understand its performance, and improve on it,
     count the number of operations that it takes.
     \begin{exparts}
-      \partsitem \nearbydefinition~\ref{def:MatMult} gives a formula for 
-        entry~$i,j$.
-        \begin{equation*}
-          p_{i,j}
+      \partsitem \nearbydefinition{def:MatMult} gives 
+        % a formula for 
+        % entry~$i,j$.
+        % \begin{equation*}
+          $p_{i,j}
           =
-          g_{i,1}h_{1,j}+g_{i,2}h_{2,j}+\dots+g_{i,r}h_{r,j}
-        \end{equation*}
+          g_{i,1}h_{1,j}+g_{i,2}h_{2,j}+\dots+g_{i,r}h_{r,j}$.
+        % \end{equation*}
         How many real number multiplications are in that expression?
         Using it, how many do we need for the product of a
         \( \nbym{m}{r} \) matrix and a \( \nbym{r}{n} \) matrix?
       \partsitem 
         Matrix multiplication is associative, so in computing
         $H_1H_2H_3H_4$ we can expect to 
-        get the same answer no matter how we put in the parentheses.
+        get the same answer no matter where we put the parentheses.
         The cost in number of multiplications, however, varies.
         Find the association requiring the fewest real number multiplications
         to compute the matrix product of
@@ -4186,10 +4187,10 @@ clearer idea then we will go with it.
         a \( \nbym{10}{20} \) matrix,
         a \( \nbym{20}{5} \) matrix, and
         a \( \nbym{5}{1} \) matrix.
-        Use the same approach as in the prior part.
+        Use the same formula as in the prior part.
       \partsitem \textit{(Very hard.)}
         Find a way to multiply two \( \nbyn{2} \) matrices using only seven
-        multiplications instead of the eight suggested by the naive approach.
+        multiplications instead of the eight suggested by the prior approach.
     \end{exparts}
     \begin{answer}
       \begin{exparts}
@@ -4291,7 +4292,7 @@ clearer idea then we will go with it.
         \partsitem By (b), \( A\vec{x}_1 \),\ldots,\( A\vec{x}_n \) 
           are linearly
           independent iff \( \trans{A}A\vec{x}_1 \),\ldots,
-          \( \trans{A}A\vec{v}_n \) are linearly independent.
+          \( \trans{A}A\vec{x}_n \) are linearly independent.
         \partsitem We have 
           \begin{multline*}
             \text{col rank}(A)=\text{col rank}(\trans{A}A)
