@@ -4161,17 +4161,24 @@ clearer idea then we will go with it.
   %     and its action is thus to rescale the rows and permute them.
   %   \end{answer}
   \item 
-    On a computer multiplications have traditionally been 
-    more costly than additions, so
-    people have tried to in reduce the number of multiplications used to
-    compute a matrix product.
+    Matrix multiplication is performed often on computers.
+    Researchers try to understand its performance, and to improve on it,
+    count the number of operations that it takes.
     \begin{exparts}
-      \partsitem How many real number multiplications do we need in the formula 
-        we gave for the product of a
+      \partsitem \nearbydefinition~\ref{def:MatMult} gives a formula for 
+        entry~$i,j$.
+        \begin{equation*}
+          p_{i,j}
+          =
+          g_{i,1}h_{1,j}+g_{i,2}h_{2,j}+\dots+g_{i,r}h_{r,j}
+        \end{equation*}
+        How many real number multiplications are in that expression?
+        Using it, how many do we need for the product of a
         \( \nbym{m}{r} \) matrix and a \( \nbym{r}{n} \) matrix?
       \partsitem 
-        Matrix multiplication is associative, so all associations yield
-        the same result.
+        Matrix multiplication is associative, so in computing
+        $H_1H_2H_3H_4$ we can expect to 
+        get the same answer no matter how we put in the parentheses.
         The cost in number of multiplications, however, varies.
         Find the association requiring the fewest real number multiplications
         to compute the matrix product of
@@ -4179,6 +4186,7 @@ clearer idea then we will go with it.
         a \( \nbym{10}{20} \) matrix,
         a \( \nbym{20}{5} \) matrix, and
         a \( \nbym{5}{1} \) matrix.
+        Use the same approach as in the prior part.
       \partsitem \textit{(Very hard.)}
         Find a way to multiply two \( \nbyn{2} \) matrices using only seven
         multiplications instead of the eight suggested by the naive approach.
@@ -4192,7 +4200,7 @@ clearer idea then we will go with it.
            let \( H_2 \) be \( \nbym{10}{20} \),
            let \( H_3 \) be \( \nbym{20}{5} \),
            let \( H_4 \) be \( \nbym{5}{1} \).
-           Then, using the formula from the prior part, 
+           Then
            \begin{center}
              \begin{tabular}{l|l}
                \multicolumn{1}{c}{\textit{this association}}  
