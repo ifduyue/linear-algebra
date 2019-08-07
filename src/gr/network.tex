@@ -222,7 +222,7 @@ For instance, the exercises analyze some networks of streets.
                    &  &     &  &7i_2 &  &    &= &9       
             \end{linsys}
           \end{equation*}
-          which yields the unique solution $i_1=81/14$, $i_1=9/2$, $i_2=9/7$,
+          which yields the unique solution $i_0=81/14$, $i_1=9/2$, $i_2=9/7$,
           and $i_3=81/14$.
 
           Of course, the first and second paragraphs yield the same answer.
@@ -409,8 +409,13 @@ For instance, the exercises analyze some networks of streets.
          Adapt Kirchhoff's Current Law to this circumstance.
          Is it a reasonable modeling assumption?
       \partsitem 
-         Label the three between-road arcs in the circle with a variable.
-         Using the (adapted) Current Law,
+         Label the three between-road arcs in the circle with a variable:~let 
+         $i_1$ be the number of cars  
+         going from North Avenue to Main,
+         let $i_2$ be the number of cars between
+         Main and Pier,
+         and let $i_3$ be the number between Pier and North.
+         Using the adapted law,
          for each of the three in-out intersections state an equation
          describing the traffic flow at that node.
       \partsitem 
@@ -429,14 +434,6 @@ For instance, the exercises analyze some networks of streets.
            It does seem reasonable in this case, unless cars are stuck at
            an intersection for a long time.
         \partsitem
-           We can label the flow in this way:
-           let $i_1$ be the number of cars traversing the part of the circle 
-           going from North Avenue to Main,
-           let $i_2$ be the number of cars between
-           Main and Pier,
-           and let $i_3$ be the number of cars traversing the circle between
-           Pier and North.
-
            Because $50$ cars leave via Main while $25$~cars enter, 
            $i_1-25=i_2$.
            Similarly Pier's in/out balance means that $i_2=i_3$ and
