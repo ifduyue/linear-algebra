@@ -1676,7 +1676,8 @@ explore this operation.
      \end{answer}
   \item 
     \cite{Cleary}
-    Match each type of matrix with all these descriptions that could fit:
+    Match each type of matrix with all these descriptions that could fit, 
+    say `None' if it applies:
     (i)~can be multiplied by its transpose to make a $\nbyn{1}$ matrix, 
     % (ii)~is similar to the $\nbyn{3}$ matrix of all zeros,
     (ii)~can represent a linear map from $\Re^3$ to $\Re^2$ that is not onto,
@@ -1689,10 +1690,10 @@ explore this operation.
     \end{exparts}
     \begin{answer}
       \begin{exparts}
+        \item ii
         \item iii
-        \item iv
         \item None
-        \item None (or (i) if we allow multiplication from the left)
+        \item None, or (i) if we include multiplication from the left.
       \end{exparts}
     \end{answer}
   \item  
@@ -2108,7 +2109,10 @@ explore this operation.
           \pm 1  &0  \\
           0      &\pm 1
         \end{mat}
-      \end{equation*}  
+      \end{equation*}
+      \textit{Remark:} 
+      \url{https://en.wikipedia.org/wiki/Square_root_of_a_2_by_2_matrix}
+      shows that there are infinitely many solutions.
     \end{answer}
   \item 
     \begin{exparts}
@@ -3697,9 +3701,12 @@ clearer idea then we will go with it.
         0 &0 &1 
       \end{mat}^{-1}             
     \end{align*}
-    Then just remember how to take the inverse of an elementary reduction 
-    matrix.
-    For instance, $C_{i,j}(k)^{-1}=C_{i,j}(-k)$.
+    Taking the inverse of an elementary reduction matrix is easy.
+    For instance, to undo adding
+    $k$ times row~$i$ to row~$j$, you should take $-k$ times
+    row~$i$ and add it to row~$j$.
+    With that, 
+    Lemma~\ref{GrByMatMult} says that $C_{i,j}(k)^{-1}=C_{i,j}(-k)$.
     \begin{equation*}
       =
       \begin{mat}
@@ -4092,8 +4099,8 @@ clearer idea then we will go with it.
     Give an example of two matrices of the same rank and size
     with squares of differing rank.
     \begin{answer}
-      Matrices representing (say, with respect to
-      \( \stdbasis_2,\stdbasis_2\subset\Re^2 \)) the maps that send
+      Fix a basis $B=\sequence{\vec{\beta}_1, \vec{\beta}_2}$.
+      Matrices representing the maps that send
       \begin{equation*}
         \vec{\beta}_1 \mapsunder{h} \vec{\beta}_1
         \quad
@@ -4106,6 +4113,22 @@ clearer idea then we will go with it.
         \vec{\beta}_2 \mapsunder{g} \zero
       \end{equation*}
       will do.  
+      For instance, if for we use the standard basis then the two above
+      give these matrices.
+      \begin{equation*}
+        H=
+        \begin{mat}
+          1 &0 \\
+          0 &0
+        \end{mat}
+        \qquad
+        G=
+        \begin{mat}
+          0 &1 \\
+          0 &0
+        \end{mat}
+      \end{equation*}
+      Notice that $H^2$ has rank~$1$ while $G^2$ has rank~$0$.
     \end{answer}
   % 2014-Dec-19 This exercise and answer are good; I trimmed to make pages fit better.
   % \item 

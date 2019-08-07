@@ -7,6 +7,7 @@ TODO list for Linear Algebra http://joshua.smcvt.edu/linearalgebra
 leaves extra space at start of first sentence.
 
 
+** Make theorems come out shaded in print book.  Perhaps I must provided a grey-shaded area, instead of yellow-shaded, since the yellow does not produce any shade in the print editions.
 
 * New material
 
@@ -58,6 +59,7 @@ See http://tex.stackexchange.com/questions/37167/sorting-logs-into-different-fol
 ** Get latexmk to compile without the empty .asy files (if there were .pdf's with numbers like xxx00.pdf and xxx01.pdf then as a hack I put in a couple of xxx00.asy-type files.)
 ** Put header in book.tex to allow selection of printed book vs pdf
 ** Include pbsifont and .sty
+** Add determinant to Lab Manual.
 * Give it a less-flat format
 In particular, the metapost outputs cluttering the dir are a mess.
 ** Have an INSTALL file
