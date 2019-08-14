@@ -2043,7 +2043,7 @@ Thus we can view any linear map as a projection.
     \begin{answer}
       \begin{exparts}
         \partsitem
-          For the equation $\hat{H}=PHQ$ this is the arrow diagram.
+          This is the arrow diagram.
           \begin{equation*}
             \begin{CD}
               V_{\wrt{B}}                   @>h>H>        W_{\wrt{D}}       \\
@@ -2051,6 +2051,9 @@ Thus we can view any linear map as a projection.
               V_{\wrt{\hat{B}}}             @>h>\hat{H}>   W_{\wrt{\hat{D}}}
             \end{CD}
           \end{equation*}
+          The diagram gives $\hat{H}=QHP$ where 
+           $P=\rep{\identity}{\hat{B},B}$ and~$Q=\rep{\identity}{D,\hat{D}}$
+           (remembering that the operation done first is written on the right).
         \partsitem
           We want $P=\rep{\identity}{\hat{B},B}$ and~$Q=\rep{\identity}{D,\hat{D}}$.
           For $P$ we do these calculations (done here by eye).
@@ -2114,7 +2117,7 @@ Thus we can view any linear map as a projection.
      \hat{D}=\sequence{\colvec{1 \\ -1}, \colvec{0 \\ 1}}
    \end{equation*}
     \begin{answer}
-          For the equation $\hat{T}=PTQ$ this is the arrow diagram.
+          This is the arrow diagram.
           \begin{equation*}
             \begin{CD}
               V_{\wrt{B}}                   @>t>T>        W_{\wrt{D}}       \\
@@ -2122,6 +2125,10 @@ Thus we can view any linear map as a projection.
               V_{\wrt{\hat{B}}}             @>t>\hat{T}>   W_{\wrt{\hat{D}}}
             \end{CD}
           \end{equation*}
+          Where $P=\rep{\identity}{\hat{B},B}$ and 
+          $Q=\rep{\identity}{D,\hat{D}}$
+          the equation is $\hat{T}=QTP$.
+ 
           These are the calculations for $P=\rep{\identity}{\hat{B},B}$
           (done by eye).
           \begin{equation*}
