@@ -2845,8 +2845,8 @@ Note, as a check, that this result is indeed in $P$.
     the subspace.
     \begin{equation*}
       \colvec{1 \\ 2 \\ 0} 
-      \quad
-      S=\spanof{\set{\colvec{0 \\ 2 \\ 0},\colvec{1 \\ -1 \\ 1}}}
+      \qquad
+      S=\spanof{\,\set{\colvec{0 \\ 2 \\ 0},\colvec{1 \\ -1 \\ 1}}\,}
     \end{equation*}
     \begin{answer}
       Where
@@ -2859,30 +2859,35 @@ Note, as a check, that this result is indeed in $P$.
         \end{mat}
       \end{equation*}
       straightforward, although tedious, calculation gives this.
-      % sage: A = matrix(QQ, [[0,1], [1,0], [0,-1]])
+      % sage: A = matrix(QQ, [[0,1], [2,-1], [0,1]])
       % sage: A*(A.transpose()*A).inverse()*A.transpose()
-      % [ 1/2    0 -1/2]
-      % [   0    1    0]
-      % [-1/2    0  1/2]
+      % [1/2    0  1/2]
+      % [  0    1    0]
+      % [1/2    0  1/2]
       \begin{equation*}
         A\bigl(\trans{A}A\bigr)^{-1}\trans{A}=
         \begin{mat}
-          1/2 &0 &-1/2 \\
+          1/2 &0 &1/2 \\
            0  &1 &0    \\
-         -1/2 &0 &1/2
+          1/2 &0 &1/2
         \end{mat}
       \end{equation*}
       When applied to the vector we get the projection.
       \begin{equation*}
         \begin{mat}
-          1/2 &0 &-1/2 \\
+          1/2 &0 &1/2 \\
            0  &1 &0    \\
-         -1/2 &0 &1/2
+          1/2 &0 &1/2
         \end{mat}
         \colvec{1 \\ 2 \\ 0}
         =
-        \colvec{1/2 \\ 2 \\ -1/2}        
+        \colvec{1/2 \\ 2 \\  1/2}        
       \end{equation*}
+      % sage: v = vector(QQ, [1, 2, 0])
+      % sage: v
+      % (1, 2, 0)
+      % sage: A*(A.transpose()*A).inverse()*A.transpose()*v
+      % (1/2, 2, 1/2)
     \end{answer}
   \recommended \item With the same subspace as in the prior problem, find the 
     orthogonal projection of this vector.

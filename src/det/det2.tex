@@ -373,7 +373,22 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       \begin{exparts*}
         \partsitem $7$
         \partsitem $0$
-        \partsitem $58$
+         % sage: A = matrix(QQ, [[2, 3, 8], [1, -2, -3], [0, 4, 8]])
+         % sage: A
+         % [ 2  3  8]
+         % [ 1 -2 -3]
+         % [ 0  4  8]
+         % sage: det(A)
+         % 0
+        \partsitem $-58$
+         % sage: A = matrix(QQ, [[1,2,-1,0], [2,2,3,1], [0,2,0,0], [1,2,5,7]])
+         % sage: A
+         % [ 1  2 -1  0]
+         % [ 2  2  3  1]
+         % [ 0  2  0  0]
+         % [ 1  2  5  7]
+         % sage: det(A)
+         % -58
       \end{exparts*}
     \end{answer}
   \recommended \item 
@@ -452,7 +467,7 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       \end{exparts*}  
     \end{answer}
   \recommended \item
-    Consider the linear transformation of~$\Re^3$
+    Consider the linear transformation~$t$ of~$\Re^3$
     represented with respect to the 
     standard bases by this matrix.
     \begin{equation*}
