@@ -532,7 +532,7 @@ Let the dimension of $V$ be $n$.
 Because \( \rangespace{t^n}=\rangespace{t^{n+1}} \),
 the map \( \map{t}{\genrangespace{t}}{\genrangespace{t}} \) is
 a dimension-preserving homomorphism. 
-Therefore, by Theorem~Two.II.\ref{th:OOHomoEquivalence} it is one-to-one.  
+Therefore, by Theorem~Three.II.\ref{th:OOHomoEquivalence} it is one-to-one.  
 \end{proof}
 
 \begin{corollary} \label{GenRngNullDirSumToSp}
@@ -600,27 +600,35 @@ defined by this action on the elements of the standard basis.
     1  &0
   \end{mat}
 \end{equation*}
-This is a \definend{shift map}\index{shift}\index{transformation!shift} 
-and is clearly nilpotent of index two.
+This is a \definend{shift map}\index{shift}\index{transformation!shift}
+because it shifts the entries down, with the bottom entry shifting entirely
+out of the vector.  
 \begin{equation*}
   \colvec{x \\ y}\mapsto \colvec{0 \\ x}
 \end{equation*}
-Another way to depict this map's action is with a 
+On the basis this map's action gives a 
 \definend{string}.\index{string!of basis vectors}
 \begin{equation*}
+  \begin{strings}{ccccc}
+     \colvec{1 \\ 0} &\mapsto &\colvec{0 \\ 1} &\mapsto &\colvec{0 \\ 0}
+  \end{strings}
+  \qquad\text{that is}\qquad
   \begin{strings}{ccccc}
      \vec{e}_1 &\mapsto &\vec{e}_2 &\mapsto &\zero
   \end{strings}
 \end{equation*}
-The vector 
+This map is a natural way to have a vector in   
+both the range space and null space; the string depiction shows 
+that this is one.
 \begin{equation*}
   \vec{e}_2=\colvec[r]{0 \\ 1}
 \end{equation*}
-is in both the range space and null space.
+Observe also that although $n$ is not the zero map, $n^2=\composed{n}{n}$
+is the zero map.
 \end{example}
 
 \begin{example}  \label{NilIndexFourOnCFour}
-A map \( \map{\hat{n}}{\C^4}{\C^4} \)
+A linear function \( \map{\hat{n}}{\C^4}{\C^4} \)
 whose action on \( \stdbasis_4 \) is given by
 the string
 \begin{equation*}
@@ -638,7 +646,6 @@ has \( \rangespace{\hat{n}^2}\intersection\nullspace{\hat{n}^2}=
   \spanof{\set{\vec{e}_3,\vec{e}_4}} \),
 and has \( \rangespace{\hat{n}^3}\intersection\nullspace{\hat{n}^3}=
     \spanof{\set{\vec{e}_4}} \).
-It is nilpotent of index four.
 The matrix representation  is all zeros except for
 some subdiagonal ones.
 \begin{equation*}
@@ -650,11 +657,14 @@ some subdiagonal ones.
     0  &0  &1  &0 \
   \end{mat}
 \end{equation*}
+Here, although $\hat{n}$ is not the zero map, 
+and neither is $\hat{n}^2$ or~$\hat{n}^3$, the function 
+$\hat{n}^4$ is the zero function.
 \end{example}
 
 \begin{example} \label{ThirdNilMap}
 Transformations can act via more than one string.
-A transformation \( t \) acting on a basis
+The transformation \( t \) acting on a basis
 \( B=\sequence{\vec{\beta}_1,\dots,\vec{\beta}_5} \) by
 \begin{equation*}
    \begin{strings}{ccccccc}
@@ -663,7 +673,10 @@ A transformation \( t \) acting on a basis
     \vec{\beta}_4 &\mapsto &\vec{\beta}_5 &\mapsto &\zero
   \end{strings}
 \end{equation*}
-is represented by a matrix that is all zeros except for blocks
+will have, for instance, $\vec{\beta}_3$ in the intersection of
+its range space and null space.
+The strings make clear that $t^3$ is the zero map.
+This map is represented by a matrix that is all zeros except for blocks
 of subdiagonal ones
 \begin{equation*}
   \rep{t}{B,B}=
@@ -899,7 +912,7 @@ null space of dimension three since that's how many basis vectors are
 mapped to zero. 
 A transformation with the right-hand action has a null space of
 dimension four.
-Wit the matrix representation above we can determine which of the 
+With the matrix representation above we can determine which of the 
 two possible shapes is right.
 \begin{equation*}
   \nullspace{t}=
