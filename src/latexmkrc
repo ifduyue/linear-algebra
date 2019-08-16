@@ -135,7 +135,7 @@ sub asy2x   {
     # print "!!!!! About to do rdb_set_source.\n";
     # rdb_set_source( $rule, keys %imp );
     print "!!!!! About to change dir back to compile directory ",$compile_dir,"\n";
-    # my $chdir_ret = chdir $compile_dir;
+    my $chdir_ret = chdir $compile_dir;
     print "!!!!! Done. ret=",$ret,"\n";
     return $ret;
 }
