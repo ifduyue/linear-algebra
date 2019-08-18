@@ -453,18 +453,24 @@ That will start in the next subsection.
            $a_2x^2+a_1x+a_0\in\polyspace_2$ and look for 
            scalars $c_1, c_2, c_3\in\Re$ such that
            $a_2x^2+a_1x+a_0=c_1\cdot(x^2-x+1) +c_2\cdot(2x+1) +c_3(2x-1)$.
-           Gauss's Method on the linear system
+           The resulting linear system is this.
            \begin{equation*}
              \begin{linsys}{3}
                c_1  &\spaceforemptycolumn  &     &  &     &=  &a_2 \\
                     &  &2c_2 &+ &2c_3 &=  &a_1 \\
                     &  &c_2  &- &c_3   &=  &a_0
              \end{linsys}
+             \grstep{(-1/2)\rho_2+\rho_3}
+             \begin{linsys}{3}
+               c_1  &\spaceforemptycolumn  &     &  &     &=  &a_2\hfill\hbox{} \\
+                    &  &2c_2 &+ &2c_3    &=  &a_1\hfill\hbox{} \\
+                    &  &     &  &-2c_3   &=  &a_0-(1/2)a_1
+             \end{linsys}
            \end{equation*}
-           shows that given the $a_i$'s we can compute the $c_j$'s as
+           Thus, given any triple of $a_i$'s, we can compute the $c_j$'s as
            $c_1=a_2$, $c_2=(1/4)a_1+(1/2)a_0$, and $c_3=(1/4)a_1-(1/2)a_0$.
-           Thus each element of $\polyspace_2$ is a combination of the 
-           given three.
+           Therefore each element of $\polyspace_2$ is a combination of the 
+           given $x^2-x+1$, $2x+1$, and~$2x-1$.
 
            To prove that the set of the given three is linearly independent
            we can set up the equation 

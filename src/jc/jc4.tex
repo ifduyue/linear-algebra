@@ -2556,7 +2556,9 @@ where \( B \) is the concatenation of $B_2$ and $B_6$.
 \end{example}
 
 \begin{example}  \label{SecJordanForm}
-As a contrast with the prior example, this matrix
+As a contrast, this matrix
+has the same characteristic polynomial 
+as the prior example, \( (x-2)^2(x-6) \).
 \begin{equation*}
    T=
    \begin{mat}[r]
@@ -2565,35 +2567,34 @@ As a contrast with the prior example, this matrix
      0  &0  &2
    \end{mat}
 \end{equation*}
-has the same characteristic polynomial \( (x-2)^2(x-6) \),
-but here 
-\begin{center}
-  % \renewcommand{\arraystretch}{1.25}
-  \begin{tabular}{r|ccc}
-    \multicolumn{1}{c}{\( p \)}  &\( (T-6I)^p \)  &\( \nullspace{(t-6)^p}  \)  
-       &\textit{nullity} \\                                     \hline
-   \( 1 \)
-   &\matrixvenlarge{\begin{mat}[r]
-        -4  &3  &1  \\
-         0  &0  &2  \\
-         0  &0  &-4
-       \end{mat}}
-   &\( \set{\matrixvenlarge{\colvec{x \\ (4/3)x \\ 0}}\suchthat x\in\C}  \) 
-   &$1$                                                     \\
-   \( 2 \)
-   &\matrixvenlarge{\begin{mat}[r]
-        16  &-12&-2 \\
-         0  &0  &-8 \\
-         0  &0  &16
-       \end{mat}}
-   &\textit{--same--}
-   &\textit{---}
- \end{tabular}
-\end{center}
+But here 
 the action of $t-2$ is stable after only one application\Dash the 
 restriction
 of $t-2$ to $\gennullspace{t-2}$ is nilpotent of index one. 
-The restriction of $t-2$ to the generalized null space acts on a string
+\begin{center}
+  % \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{r|ccc}
+    \multicolumn{1}{c}{\( p \)}  &\( (T-2I)^p \)  &\( \nullspace{(t-2)^p}  \)  
+       &\textit{nullity} \\                                     \hline
+   \( 1 \)
+   &\matrixvenlarge{\begin{mat}[r]
+         0  &2  &1  \\
+         0  &4  &2  \\
+         0  &0  &0
+       \end{mat}}
+   &\( \set{\matrixvenlarge{\colvec{x \\ (-1/2)z \\ z}}\suchthat x,z\in\C}  \) 
+   &$2$                                                     \\
+   \( 2 \)
+   &\matrixvenlarge{\begin{mat}[r]
+         0  &8  &4 \\
+         0  &16 &8 \\
+         0  &0  &0
+       \end{mat}}
+   &\textit{--same--}
+   &\textit{--same--}
+ \end{tabular}
+\end{center}
+So the restriction of $t-2$ to the generalized null space acts on a string
 basis via the two strings $\vec{\beta}_1\mapsto\zero$ 
 and $\vec{\beta}_2\mapsto\zero$.
 We have this Jordan block associated with the eigenvalue~$2$.
@@ -2605,25 +2606,48 @@ We have this Jordan block associated with the eigenvalue~$2$.
   \end{mat}
 \end{equation*}
 
-So the contrast with the prior example is that while 
+Thus, the contrast with the prior example is that while 
 the characteristic polynomial tells us to look at the 
 action of $t-2$ on its generalized null space, the characteristic
 polynomial does not completely describe $t-2$'s action. 
 We must do some computations to find that  
 the minimal polynomial is \( (x-2)(x-6) \).
 
-For the eigenvalue $6$ the arguments for the second eigenvalue of
-the prior example apply again.
-The restriction of $t-6$ to $\gennullspace{t-6}$ is nilpotent of 
+For the eigenvalue $6$, the arguments for the second eigenvalue of
+the prior example apply again:~because the power of $x-6$ in the 
+characteristic polynomial is one,
+the restriction of $t-6$ to $\gennullspace{t-6}$
+must be nilpotent of index one.
+Alternatively, we can just compute it.
+\begin{center}
+  \begin{tabular}{r|ccc}
+    \multicolumn{1}{c}{\( p \)}  &\( (T-6I)^p \)  &\( \nullspace{(t-6)^p}  \)  
+       &\textit{nullity} \\                                     \hline
+   \( 1 \)
+   &\matrixvenlarge{\begin{mat}[r]
+        -4  &2  &1  \\
+         0  &0  &2  \\
+         0  &0  &-4
+       \end{mat}}
+   &\( \set{\matrixvenlarge{\colvec{x \\ 2x \\ 0}}\suchthat x\in\C}  \) 
+   &$1$                                                     \\
+   \( 2 \)
+   &\matrixvenlarge{\begin{mat}[r]
+        16  &-8 &-4 \\
+         0  &0  &-8 \\
+         0  &0  &16
+       \end{mat}}
+   &\textit{--same--}
+   &\textit{--same--}
+ \end{tabular}
+\end{center}
+Either way, the restriction of $t-6$ to $\gennullspace{t-6}$ is nilpotent of 
 index one.
 Thus $t-6$'s canonical form $N_6$ is the $\nbyn{1}$ zero matrix,
 and the associated Jordan block $J_6$ is the $\nbyn{1}$ matrix with entry $6$.
  
-%\begin{center}
-%  % \renewcommand{\arraystretch}{1.25}
-%  \begin{tabular}{c|cc}
-%    \multicolumn{1}{c}{Therefore, \( T \) is diagonalizable.
-Therefore the Jordan form for $T$ is a diagonal matrix.
+Therefore the Jordan form for $T$ is a diagonal matrix, so this is a 
+diagonalizable transformation.
 \begin{equation*}
   \rep{t}{B,B}=
   \begin{mat}[r]
@@ -2635,10 +2659,10 @@ Therefore the Jordan form for $T$ is a diagonal matrix.
   B=\cat{B_2}{B_6}
    =\sequence{\colvec[r]{1 \\ 0 \\ 0},
               \colvec[r]{0 \\ 1 \\ -2},
-              \colvec[r]{2 \\ 4 \\ 0}}
+              \colvec[r]{1 \\ 2 \\ 0}}
 \end{equation*}
-(Checking that the third vector in $B$ is in the null space of $t-6$ is
-routine.)
+Of the three basis vectors, the first two come from the nullspace of
+$t-2$ and the third is from the nullspace of~$t-6$. 
 \end{example}
 
 \begin{example} \label{ThirdJordanForm}
