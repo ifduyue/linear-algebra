@@ -60,6 +60,7 @@ See http://tex.stackexchange.com/questions/37167/sorting-logs-into-different-fol
 ** Put header in book.tex to allow selection of printed book vs pdf
 ** Include pbsifont and .sty
 ** Add determinant to Lab Manual.
+** Make subsection titles in answer manual get title treatment.
 * Give it a less-flat format
 In particular, the metapost outputs cluttering the dir are a mess.
 ** Have an INSTALL file

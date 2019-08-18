@@ -2818,6 +2818,22 @@ that the two senses of `minimal' are equivalent.
       \end{exparts}
       \end{answer}
   \puzzle \item 
+    \cite{Sheffer}
+    A library has $n$ books and $n+1$ subscribers. 
+    Each subscriber read at least one book from the library. 
+    Prove that there must exist two disjoint sets of subscribers who read 
+    exactly the same books (that is, the union of the books 
+    read by the subscribers in each set is the same).
+    \begin{answer}
+      (This answer is from a site comment by Yuzhou Gu.)
+      For each person assign a vector $\vec{v}_i\in\R^n$, 
+      where an entry is $1$ if the person reads the book, and $0$ otherwise. 
+      Because the vectors are linear dependent, we will have a equation 
+      of the form $\sum a_i v_i = 0$. 
+      Then the set of $i$ such that $a_i>0$ and the set of $i$ such that 
+      $a_i<0$ are two disjoint sets with same union of read books.
+    \end{answer}
+  \puzzle \item 
     \cite{Wohascum47}
     For any vector $\vec{v}$ in $\Re^n$ and any permutation $\sigma$
     of the numbers $1$, $2$, \ldots, $n$

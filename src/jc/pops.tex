@@ -183,6 +183,13 @@ pop vector year 9  is (11131.1342876, 155081.09214)
     find their way in).
     Under what conditions can the park maintain a stable population now?
     \begin{answer}
+      We want that next year the population of the park is 
+      a combination of animals that stay and animals that enter from outside,
+      $p_{n+1}=0.95p_n+0.01r_n$.
+      And, next year's population in the rest of the world is 
+      a combination of animals that have left the park and animals that
+      stayed in the rest of the world
+      $r_{n+1}=0.05p_n+0.99r_n$. 
       The matrix equation 
       \begin{equation*}
         \colvec{p_{n+1}  \\ r_{n+1}}
@@ -201,22 +208,24 @@ pop vector year 9  is (11131.1342876, 155081.09214)
           \lambda-0.95  &0.01  \\
           0.10          &\lambda-0.99
         \end{vmat}
-        =\lambda^2-1.94\lambda-0.9404
+        =\lambda^2-1.94\lambda-0.9405
       \end{equation*}
       \Sage{} gives this.
 \begin{lstlisting}
 sage: a,b,c = var('a,b,c') 
-sage: qe = (x^2 - 1.94*x -.9404 == 0)
+sage: qe = (x^2 - 1.94*x -.9405 == 0)
 sage: print solve(qe, x)
 [
-x == -1/100*sqrt(18813) + 97/100,
-x == 1/100*sqrt(18813) + 97/100
+x == -1/100*sqrt(18814) + 97/100,
+x == 1/100*sqrt(18814) + 97/100
 ]
-sage: n(-1/100*sqrt(18813) + 97/100)
--0.401604899378826
-sage: n(1/100*sqrt(18813) + 97/100)
-2.34160489937883       
+sage: n(-1/100*sqrt(18814) + 97/100)
+-0.401641352540816
+sage: n(1/100*sqrt(18814) + 97/100)
+2.34164135254082
 \end{lstlisting}
+So the only way to have a dynamically stable population is if the park's
+numbers grows by $234\%$ every year. 
     \end{answer}
   \item 
     Suppose that a species of bird only lives in Canada, the United States,
