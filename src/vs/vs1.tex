@@ -2877,6 +2877,102 @@ The next section studies spanning sets that are minimal.
            in the upper right.
       \end{exparts}  
     \end{answer}
+  \item \cite{Cleary}
+    A superhero is at the origin of a two dimensional plane.  
+    The superhero has two devices, a hoverboard that moves any distance in the 
+    direction $\binom{3}{1}$ 
+    and a magic carpet that moves any distance in the direction 
+    $\binom{1}{2}$.
+    \begin{exparts}  
+      \partsitem An evil villain is hiding out in the plane at the point 
+        $(-5,7)$.  
+        How many hoverboard units and magic carpet units does the superhero 
+        have to move to get to the villain?
+     \partsitem Is there anywhere in the plane that the villain could safely 
+        hide and not be reached?  
+        If so, give one such location. 
+        If not, explain why not.
+     \partsitem The superhero and the villain are transported to a three 
+        dimensional space where the superhero now has three devices.
+        \begin{equation*}
+          \text{hoverboard: }\colvec{-1 \\ 0 \\ 3}
+          \quad
+          \text{magic carpet: }\colvec{2 \\ 1 \\ 0}
+          \quad
+          \text{scooter: }\colvec{5 \\ 4 \\ -9}
+        \end{equation*}
+        Is there anywhere that the villain could safely hide?  
+        If so, give one such location and if not, explain why not.
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem This relationship
+          \begin{equation*}
+            \colvec{-5 \\ 7}=a\colvec{3 \\ 1}+b\colvec{1 \\ 2}
+          \end{equation*}
+          gives this system of equations.
+          \begin{equation*}
+            \begin{linsys}{2}
+              3a &+ &b  &= &-5 \\
+               a &+ &2b &= &7
+            \end{linsys}
+            \grstep{-(1/3)\rho_1+\rho_2}
+            \begin{linsys}{2}
+              3a &+ &b      &= &-5 \\
+                 &  &(5/3)b &= &26/3
+            \end{linsys}
+          \end{equation*}
+          So $b=26/5$.
+          Substituting $3a+(26/5)=-5$ gives $a=-17/5$.
+          In the terms of the section, the vector $\binom{-5}{7}$
+          is in the span of the set of the other two. 
+        \partsitem There is no place to hide.
+          This Gauss's method reduction
+          \begin{equation*}
+            \begin{linsys}{2}
+              3a &+ &b  &= &x \\
+               a &+ &2b &= &y
+            \end{linsys}
+            \grstep{-(1/3)\rho_1+\rho_2}
+            \begin{linsys}{2}
+              3a &+ &b      &= &x\hfill\hbox{} \\
+                 &  &(5/3)b &= &-(1/3)x+y
+            \end{linsys}
+          \end{equation*}
+          shows that for any $x,y\in\R$ there is a pair $a,b\in\R$.
+          In the terms of the section, the span of the
+          two vectors is the entire plane.
+        \partsitem No place to hide. 
+          Consider this system.
+          \begin{equation*}
+            a\colvec{-1 \\ 0 \\ 3}+b\colvec{2 \\ 1 \\ 0}+c\colvec{5 \\ 4 \\ -9}
+                = \colvec{x \\ y \\ z}
+          \end{equation*}
+          After reduction
+          \begin{align*}
+            \begin{linsys}{3}
+              -a &+ &2b &+ &5c &= &x \\
+                 &  &b  &+ &4c &= &y \\
+              3a &  &   &- &9c &= &z \\
+            \end{linsys}
+            & \grstep{3\rho_1+\rho_3}
+            \begin{linsys}{3}
+              -a &+ &2b  &+ &5c &= &x\hfill\hbox{} \\
+                 &  &b   &+ &4c &= &y\hfill\hbox{} \\
+                 &  &6b  &+ &6c &= &3x+z \\
+            \end{linsys}                                  \\
+            & \grstep{-6\rho_2+\rho_3}
+            \begin{linsys}{3}
+              -a &+ &2b  &+ &5c  &= &x\hfill\hbox{} \\
+                 &  &b   &+ &4c  &= &y\hfill\hbox{} \\
+                 &  &    & &-18c &= &3x+-6y+z \\
+            \end{linsys}
+          \end{align*}
+          it shows that for any $x,y,z\in\R$ 
+          the required $a$, $b$, and~$c$ exist.
+          The superhero's devices span the plane.
+      \end{exparts}
+    \end{answer}
   \item 
     Which of these are members of the span
     \( \spanof{\set{\cos^2x,\sin^2x} } \)
@@ -3812,29 +3908,29 @@ The next section studies spanning sets that are minimal.
           vector).
       \end{exparts}  
      \end{answer}
-  \item 
-    Reprove \nearbylemma{le:SpanIsASubsp} without doing the
-    empty set separately.
-    \begin{answer}
-      Call the subset \( S \).
-      By \nearbylemma{th:SubspIffClosed},
-      we need to check that 
-      \( \spanof{S} \) is closed under linear combinations.
-      If \( c_1\vec{s}_1+\dots+c_n\vec{s}_n,
-        c_{n+1}\vec{s}_{n+1}+\dots+c_m\vec{s}_m\in\spanof{S} \) then
-      for any \( p,r\in\Re \) we have
-      \begin{multline*}
-        p\cdot(c_1\vec{s}_1+\cdots+c_n\vec{s}_n)+
-             r\cdot(c_{n+1}\vec{s}_{n+1}+\cdots+c_m\vec{s}_m)        \\
-        =
-        pc_1\vec{s}_1+\cdots+pc_n\vec{s}_n
-          +rc_{n+1}\vec{s}_{n+1}+\cdots+rc_m\vec{s}_m
-      \end{multline*}
-      which is an element of \( \spanof{S} \).
-      % (\textit{Remark.}
-      % If the set $S$ is empty, then that
-      % `if \ldots\ then \ldots' statement is vacuously true.)  
-    \end{answer}
+  % \item 
+  %   Reprove \nearbylemma{le:SpanIsASubsp} without doing the
+  %   empty set separately.
+  %   \begin{answer}
+  %     Call the subset \( S \).
+  %     By \nearbylemma{th:SubspIffClosed},
+  %     we need to check that 
+  %     \( \spanof{S} \) is closed under linear combinations.
+  %     If \( c_1\vec{s}_1+\dots+c_n\vec{s}_n,
+  %       c_{n+1}\vec{s}_{n+1}+\dots+c_m\vec{s}_m\in\spanof{S} \) then
+  %     for any \( p,r\in\Re \) we have
+  %     \begin{multline*}
+  %       p\cdot(c_1\vec{s}_1+\cdots+c_n\vec{s}_n)+
+  %            r\cdot(c_{n+1}\vec{s}_{n+1}+\cdots+c_m\vec{s}_m)        \\
+  %       =
+  %       pc_1\vec{s}_1+\cdots+pc_n\vec{s}_n
+  %         +rc_{n+1}\vec{s}_{n+1}+\cdots+rc_m\vec{s}_m
+  %     \end{multline*}
+  %     which is an element of \( \spanof{S} \).
+  %     % (\textit{Remark.}
+  %     % If the set $S$ is empty, then that
+  %     % `if \ldots\ then \ldots' statement is vacuously true.)  
+  %   \end{answer}
   \item Find a structure that is closed under linear combinations, 
     and yet is not a vector space.
     % (\textit{Remark.} 
