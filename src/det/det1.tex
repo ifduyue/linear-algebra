@@ -1337,12 +1337,17 @@ if there is an $\nbyn{n}$ determinant function then it is unique.
 
 \begin{proof}
 %<*pf:DetFcnIsUnique>
-Perform Gauss's Method on the 
-matrix, keeping track of how the sign alternates on row swaps and any 
-row-scaling factors, and then 
-multiply down the diagonal of the echelon form result.
-By the definition and the lemma,
-all $\nbyn{n}$ determinant functions must return this value on the matrix.
+Suppose that there were two functions 
+$\map{\det_1,\det_2}{\matspace_{\nbyn{n}}}{\Re}$ 
+satisfying the properties of 
+\nearbydefinition{def:Det}.
+Given a matrix, perform Gauss's Method on it, 
+keeping track of how the sign alternates on row swaps, and any 
+row-scaling factors. 
+Finish by multiplying down the diagonal of the echelon form result.
+By the definition and \nearbylemma{le:IdenRowsDetZero},
+both determinants must return the same value on the matrix.
+Since they give the same output on every input, they are the same function.
 %</pf:DetFcnIsUnique>
 \end{proof}
 
