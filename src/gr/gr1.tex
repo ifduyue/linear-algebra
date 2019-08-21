@@ -138,8 +138,7 @@ In contrast, \( (5,-1) \) is not a solution.
 Finding the set of all solutions is 
 \definend{solving}\index{system of linear equations!solving} 
 the system.
-We don't need 
-guesswork or good luck, 
+We don't need guesswork or good luck; 
 there is an algorithm that always works.
 This algorithm is  
 \definend{Gauss's Method}\index{Gauss's Method}%
@@ -255,13 +254,13 @@ cases are similar and are \nearbyexercise{ex:ProveGaussMethod}.
 Consider a linear system.
 \begin{equation*}
   \begin{linsys}{4}
-    a_{1,1}x_1  &+  &a_{1,2}x_2 &+  &\cdots  &+ &a_{1,n}x_n  &=  &d_1  \\
+    a_{1,1}x_1  &+  &a_{1,2}x_2 &+  &\cdots  &+ &a_{1,n}x_n  &=  &d_1\hfill\hbox{}  \\
                 &   &           &   &        &   &     &\vdotswithin{=}  \\
-    a_{i,1}x_1  &+  &a_{i,2}x_2 &+  &\cdots  &+ &a_{i,n}x_n  &=  &d_i  \\
+    a_{i,1}x_1  &+  &a_{i,2}x_2 &+  &\cdots  &+ &a_{i,n}x_n  &=  &d_i\hfill\hbox{}  \\
                 &   &           &   &        &   &     &\vdotswithin{=}  \\
-    a_{j,1}x_1  &+  &a_{j,2}x_2 &+  &\cdots  &+ &a_{j,n}x_n  &=  &d_j  \\
+    a_{j,1}x_1  &+  &a_{j,2}x_2 &+  &\cdots  &+ &a_{j,n}x_n  &=  &d_j\hfill\hbox{}  \\
                 &   &           &   &        &   &     &\vdotswithin{=} \\
-    a_{m,1}x_1  &+  &a_{m,2}x_2 &+  &\cdots  &+ &a_{m,n}x_n  &=  &d_m  
+    a_{m,1}x_1  &+  &a_{m,2}x_2 &+  &\cdots  &+ &a_{m,n}x_n  &=  &d_m  \\
   \end{linsys}
 \end{equation*} 
 The tuple \( (s_1,\ldots\,,s_n) \)
@@ -311,7 +310,8 @@ They are
 \end{definition}
 
 When writing out the calculations, we will 
-abbreviate `row \(i\)' by `\( \rho_i \)'.
+abbreviate `row \(i\)' by `\( \rho_i \)'
+(this is the Greek letter rho, pronounced aloud as ``row'').
 For instance, we will denote a row combination operation by 
 \( k\rho_i+\rho_j \), 
 with the row that changes written second.
@@ -422,7 +422,7 @@ A system is in \definend{echelon form}\index{echelon form}
 if each leading variable
 is to the right of the leading variable in the row above it,
 except for the leading variable in the first row,
-and any all-zero rows are at the bottom.
+and any rows with all-zero coefficients are at the bottom.
 %</df:EchelonForm>
 \end{definition}
 
@@ -2093,7 +2093,7 @@ Each number in the matrix is an
 %</df:matrix>
 \end{definition}
 
-We usually denote a matrix with an upper case roman letters.
+We usually denote a matrix with an upper case roman letter.
 For instance,
 \begin{equation*}
   A=
@@ -2116,8 +2116,8 @@ of the above array is \( a_{2,1}=3 \).
 Note that the order of the subscripts matters: 
 $a_{1,2}\neq a_{2,1}$ since \( a_{1,2}=2.2 \). 
 We denote
-the set of all \( \nbym{n}{m} \)
-matrices by \( \matspace_{\nbym{n}{m}} \).\index{matrices|set of}
+the set of all \( \nbym{m}{n} \)
+matrices by \( \matspace_{\nbym{m}{n}} \).\index{matrices|set of}
 
 We do Gauss's Method using matrices in essentially the same
 way that we did it for systems of equations:
@@ -3826,8 +3826,8 @@ For the base step consider the bottom-most equation
 \end{equation*}
 where \( a_{m,\ell_m}\neq 0 \).
 %</pf:HomoSltnSpanVecs1>
-(The `$\ell$' means ``leading'' so that $x_{\ell_m}$ is the leading variable
-in row~$m$.) 
+(Here `$\ell$' stands for ``leading'' 
+so that $x_{\ell_m}$ is the leading variable in row~$m$.) 
 %<*pf:HomoSltnSpanVecs2>
 This is the bottom row so 
 any variables % $x_{\ell_{m}+1}$, \ldots{} 

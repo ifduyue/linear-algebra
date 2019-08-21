@@ -442,7 +442,8 @@ endfig;
 
 
 input jh3d
-beginfig(17) % line in R3 thru (1,2,3) and (5,5,5)
+
+beginfig(17) % line in R3 thru (1,2,1) and (0,3,2)
   numeric u;  %scaling factor
   numeric v;  %vertical scaling factor
   numeric w;  %horizontal scaling factor
@@ -450,12 +451,14 @@ beginfig(17) % line in R3 thru (1,2,3) and (5,5,5)
   drawing_scale:=40pt;
 
   save c_a, c_b, c_c, c_d,
+       x_end, y_end, z_end,
        origin;
   c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
+  x_end:=new_vect;  y_end:=new_vect;  z_end:=new_vect;
   origin:=new_vect; vect_def(origin,0,0,0);
 
-  vect_def(c_a,-1,0,-1);  vect_def(c_b,3,4,3); % t=-2 and 2
-  vect_def(c_c,1,2,1); vect_def(c_d,2,3,2);
+  vect_def(c_a,2.25,0.75,-0.25);  vect_def(c_b,-0.5,3.5,2.5); % t=-1.25 and 1.5
+  vect_def(c_c,1,2,1); vect_def(c_d,0,3,2);
 
   % 
   set_point(Obs,20,5,5);
@@ -465,6 +468,9 @@ beginfig(17) % line in R3 thru (1,2,3) and (5,5,5)
   pickup pencircle scaled line_width_dark;
   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
   draw_xyz_axes(3.5,4.5,2.5);
+  vect_def(x_end, 3.5,0,0);
+  vect_def(y_end, 0,4.5,0);
+  vect_def(z_end, 0,0,2.5);
   pickup pencircle scaled line_width_light;
   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
   draw_xyz_axes_withticks(3.5,4.5,2.5,3,4,2);
@@ -474,6 +480,9 @@ beginfig(17) % line in R3 thru (1,2,3) and (5,5,5)
   project_point(3,c_c);
   project_point(4,c_d);
   project_point(5,origin);
+  project_point(6,x_end);
+  project_point(7,y_end);
+  project_point(8,z_end);
   pickup pencircle scaled (2*line_width_dark);
   draw z1--z2 withcolor white;
   pickup pencircle scaled line_width_dark;
@@ -482,10 +491,59 @@ beginfig(17) % line in R3 thru (1,2,3) and (5,5,5)
   drawarrow z5--z4 withcolor shading_color;
   drawarrow z3--z4;
 %  label.lrt(btex {\small $\colvec{1 \\ 1 \\ 1}$} etex,.5[z3,z4]);
-  \label.lrt(btex  {\small $\set{ \colvec{1 \\ 2 \\ 1}
-                  +t\cdot\colvec{1 \\ 1 \\ 1}
+  label.lrt(btex  {\small $\set{ \colvec{1 \\ 2 \\ 1}
+                  +t\cdot\colvec{-1 \\ 1 \\ 1}
                    \suchthat t\in\Re}$} etex,z2);
+  label.lft(btex  {\scriptsize $x$} etex,z6);
+  label.rt(btex  {\scriptsize $y$} etex,z7);
+  label.lft(btex  {\scriptsize $z$} etex,z8);
 endfig;
+
+
+% beginfig(17) % line in R3 thru (1,2,3) and (5,5,5)
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+%   drawing_scale:=40pt;
+
+%   save c_a, c_b, c_c, c_d,
+%        origin;
+%   c_a:=new_vect;  c_b:=new_vect;  c_c:=new_vect;  c_d:=new_vect;
+%   origin:=new_vect; vect_def(origin,0,0,0);
+
+%   vect_def(c_a,-1,0,-1);  vect_def(c_b,3,4,3); % t=-2 and 2
+%   vect_def(c_c,1,2,1); vect_def(c_d,2,3,2);
+
+%   % 
+%   set_point(Obs,20,5,5);
+%   Obs_phi:=90; Obs_dist:=10;
+%   point_of_view_abs(origin,Obs_phi);
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(3.5,4.5,2.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=black;  yaxiscolor:=black; zaxiscolor:=black;
+%   draw_xyz_axes_withticks(3.5,4.5,2.5,3,4,2);
+%   % Now project the 3D points c_a ... c_d down to z1 ... z4
+%   project_point(1,c_a);
+%   project_point(2,c_b);
+%   project_point(3,c_c);
+%   project_point(4,c_d);
+%   project_point(5,origin);
+%   pickup pencircle scaled (2*line_width_dark);
+%   draw z1--z2 withcolor white;
+%   pickup pencircle scaled line_width_dark;
+%   draw z1--z2 withcolor shading_color;
+%   drawarrow z5--z3 withcolor shading_color;
+%   drawarrow z5--z4 withcolor shading_color;
+%   drawarrow z3--z4;
+% %  label.lrt(btex {\small $\colvec{1 \\ 1 \\ 1}$} etex,.5[z3,z4]);
+%   \label.lrt(btex  {\small $\set{ \colvec{1 \\ 2 \\ 1}
+%                   +t\cdot\colvec{1 \\ 1 \\ 1}
+%                    \suchthat t\in\Re}$} etex,z2);
+% endfig;
 
 
 
@@ -3405,6 +3463,7 @@ beginfig(54); % Rick Cleary's birthday vectorology problem
       draw day_mark shifted (12w,day*v);
       endfor
 endfig;
+
 
 
 
