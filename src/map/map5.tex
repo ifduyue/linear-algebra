@@ -2051,12 +2051,13 @@ Thus we can view any linear map as a projection.
               V_{\wrt{\hat{B}}}             @>h>\hat{H}>   W_{\wrt{\hat{D}}}
             \end{CD}
           \end{equation*}
-          The diagram gives $\hat{H}=QHP$ where 
-           $P=\rep{\identity}{\hat{B},B}$ and~$Q=\rep{\identity}{D,\hat{D}}$
+          The diagram gives $\hat{H}=PHQ$ where 
+           $Q=\rep{\identity}{\hat{B},B}$ and $P=\rep{\identity}{D,\hat{D}}$
            (remembering that the operation done first is written on the right).
         \partsitem
-          We want $P=\rep{\identity}{\hat{B},B}$ and~$Q=\rep{\identity}{D,\hat{D}}$.
-          For $P$ we do these calculations (done here by eye).
+          We want $Q=\rep{\identity}{\hat{B},B}$ and 
+          $P=\rep{\identity}{D,\hat{D}}$.
+          For $Q$ we do these calculations (done here by eye).
           \begin{equation*}
             \rep{\identity(1)}{B}=\colvec{1 \\ 0 \\ 0}
             \quad
@@ -2064,7 +2065,7 @@ Thus we can view any linear map as a projection.
             \quad
             \rep{\identity(x^2)}{B}=\colvec{-1 \\ 0 \\ 1}
           \end{equation*}
-          These calculations give $Q$.
+          These calculations give $P$.
           \begin{multline*}
             \rep{\identity(
               \begin{mat}
@@ -2091,18 +2092,18 @@ Thus we can view any linear map as a projection.
           \end{multline*}
           This is the answer.
           \begin{equation*}
-            P=\begin{mat}
-              1 &-1 &-1 \\
-              0 &1  &0  \\
-              0 &0  &1
-            \end{mat}
-            \qquad
-            Q=
+            P=
             \begin{mat}
               0 &0 &0  &-1 \\
               0 &0 &-1 &-1  \\
               0 &1 &1  &1  \\
               1 &1 &1  &1
+            \end{mat}
+            \qquad
+            Q=\begin{mat}
+              1 &-1 &-1 \\
+              0 &1  &0  \\
+              0 &0  &1
             \end{mat}
           \end{equation*}      
       \end{exparts}
@@ -2125,11 +2126,11 @@ Thus we can view any linear map as a projection.
               V_{\wrt{\hat{B}}}             @>t>\hat{T}>   W_{\wrt{\hat{D}}}
             \end{CD}
           \end{equation*}
-          Where $P=\rep{\identity}{\hat{B},B}$ and 
-          $Q=\rep{\identity}{D,\hat{D}}$
-          the equation is $\hat{T}=QTP$.
+          Where $Q=\rep{\identity}{\hat{B},B}$ and 
+          $P=\rep{\identity}{D,\hat{D}}$
+          the equation is $\hat{T}=PTQ$.
  
-          These are the calculations for $P=\rep{\identity}{\hat{B},B}$
+          These are the calculations for $Q=\rep{\identity}{\hat{B},B}$
           (done by eye).
           \begin{equation*}
             \rep{\identity(\colvec{1 \\ 0})}{B}=\colvec{1 \\ 0}
@@ -2138,12 +2139,12 @@ Thus we can view any linear map as a projection.
           \end{equation*}
           So we get this.
           \begin{equation*}
-            P=\begin{mat}
+            Q=\begin{mat}
               1 &-1 \\
               0 &1  
              \end{mat}
           \end{equation*}
-          These calculations give $Q=\rep{\identity}{D,\hat{D}}$.
+          These calculations give $P=\rep{\identity}{D,\hat{D}}$.
           \begin{equation*}
             \rep{\identity(\colvec{0 \\ 1})}{\hat{D}}=\colvec{0 \\ 1}
             \quad
@@ -2151,7 +2152,7 @@ Thus we can view any linear map as a projection.
           \end{equation*}
           Concatenate them to make the other matrix.
           \begin{equation*}
-            Q=\begin{mat}
+            P=\begin{mat}
               0 &-1 \\
               1 &-1  
              \end{mat}
@@ -2247,9 +2248,9 @@ Thus we can view any linear map as a projection.
         \end{mat}
         =
         \begin{mat}
-          1 &1/2 &-1/5 \\
-          0 &1   &-3/5 \\
-          0 &0   &1
+          1 &-1/2 &-1/5 \\
+          0 &1    &-3/5 \\
+          0 &0    &1
         \end{mat}
       \end{align*}      
     \end{answer}

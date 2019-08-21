@@ -15,16 +15,21 @@ pages link to it:
 to it, or if there are some pages that point to it and have a high PageRank.''
 But isn't that circular\Dash how can they tell whether a page is
 important without first deciding on the important pages?
-With eigenvalues and eigenvectors.
+The answer is to use eigenvalues and eigenvectors.
 
 We will present a simplified version of the Page Rank algorithm. 
 For that we will model the World Wide Web as a collection of pages connected by
 links.
 This diagram, from \cite{Wills},
-shows the pages as circles, and the links as arrows;
-for instance, page~$p_1$ has a link to page~$p_2$. 
-\begin{center}  % add a little vertical spacing; looked tight to me.
-  \shortstack{\rule{0em}{1.5ex} \\ \includegraphics{jc/mp/ch5.9} \\ \rule{0em}{1.5ex}}
+shows the pages as circles and the links as arrows.
+Page~$p_1$ has a link to page~$p_2$.
+Page~$p_2$ has a link to~$p_3$.
+And $p_3$ has links to $p_1$, $p_2$, and~$p_3$ 
+% \begin{center}  % add a little vertical spacing; looked tight to me.
+%   \shortstack{\rule{0em}{1.5ex} \\ \includegraphics{jc/mp/ch5.9} \\ \rule{0em}{1.5ex}}
+% \end{center}
+\begin{center} 
+  \includegraphics{jc/mp/ch5.9}
 \end{center}
 
 The key idea is that pages that should be highly ranked if they are
@@ -39,7 +44,12 @@ divided by how many out-links $a_j$ are on that page.
 \begin{equation*}
   \mathcal{I}(p_i)=\sum_{\text{in-linking pages $p_j$}}  \frac{\mathcal{I}(p_j)}{a_j}
 \end{equation*}
-This matrix stores the information.
+Thus, the importance of $p_1$ equals $1/3$ times the importance of~$p_3$,
+since the only link to~$p_1$ comes from~$p_3$.
+Similarly the importance of~$p_2$ is the sum of the
+importance of~$p_1$ plus $1/3$ times the importance of~$p_3$.
+
+This stores the information.
 \begin{equation*}
   \begin{mat}
     0   &0  &1/3  &0   \\
@@ -48,28 +58,30 @@ This matrix stores the information.
     0   &0  &1/3  &0
   \end{mat}
 \end{equation*}
-
 The algorithm's inventors describe a way to think about that matrix. 
 \begin{quotation}
 PageRank can be thought of as a model of user behavior. 
 We assume there is a `random surfer' who is
 given a web page at random and keeps clicking on links, 
-never hitting ``back'' \ldots 
+never hitting ``back'' \ldots{} 
 % but eventually gets bored
 % and starts on another random page. 
 The probability that the random surfer visits a page is its PageRank.
 \cite{BrinPage}
 \end{quotation}
-In the diagram, a surfer on page~$p_3$ has a probability $1/3$ of going 
-next to each of the other pages. 
+Thus, looking at the first row of the matrix, the only way for a random
+surfer to get to $p_1$ is to have come from~$p_3$. 
+That page has three links so the chance of clicking on $p_1$'s is~$1/3$
+times the chance of being on page~$p_3$.  
 
-That leads us to the problem of page~$p_4$.
-Many pages are
-\definend{dangling} or \definend{sink links},
+This brings up the question of page~$p_4$.
+On the Internet many pages are
+\definend{dangling}\index{link!dangling}\index{dangling link} 
+or \definend{sink links},\index{link!sink}\index{sink link}
 without any outbound links.
-The simplest model of what happens here is to 
-imagine that the surfer 
-goes to a next page entirely at random.
+What happens to the random surfer who visits this page?
+The simplest thing is to imagine that the surfer chooses the 
+next page entirely at random.
 \begin{equation*}
   H=\begin{mat}
     0   &0  &1/3  &1/4   \\
@@ -88,20 +100,18 @@ That is, we want an eigenvector of the matrix associated with the
 eigenvalue~$\lambda=1$.
 
 Here is \textit{Sage}'s calculation of the eigenvectors 
-(slightly edited to fit on the page).
+(edited to fit the page).
 \begin{lstlisting}
 sage: H=matrix([[0,0,1/3,1/4], [1,0,1/3,1/4], [0,1,0,1/4], [0,0,1/3,1/4]])   
 sage: H.eigenvectors_right()                                                 
-[(1, [
-(1, 2, 9/4, 1)
-], 1), (0, [
-(0, 1, 3, -4)
-], 1), (-0.3750000000000000? - 0.4389855730355308?*I, 
-         [(1, -0.1250000000000000? + 1.316956719106593?*I, 
+[(1, [(1, 2, 9/4, 1)], 1), 
+ (0, [(0, 1, 3, -4)], 1), 
+ (-0.3750000000000000? - 0.4389855730355308?*I, 
+     [(1, -0.1250000000000000? + 1.316956719106593?*I, 
           -1.875000000000000? - 1.316956719106593?*I, 1)], 1), 
-       (-0.3750000000000000? + 0.4389855730355308?*I, 
-         [(1, -0.1250000000000000? - 1.316956719106593?*I, 
-           -1.875000000000000? + 1.316956719106593?*I, 1)], 1)]
+ (-0.3750000000000000? + 0.4389855730355308?*I, 
+     [(1, -0.1250000000000000? - 1.316956719106593?*I, 
+          -1.875000000000000? + 1.316956719106593?*I, 1)], 1)]
 \end{lstlisting}
 The eigenvector that \textit{Sage} gives 
 associated with the eigenvalue~$\lambda=1$ is this.
@@ -126,7 +136,7 @@ about equal in importance as each other.
 We'll add one more refinement.
 We will allow the surfer to pick a new page at random 
 even if they are not on a dangling page.
-Let this happen with probability~$\alpha$.
+In this equation it happens with probability~$1-\alpha$.
 \begin{equation*}
   G=\alpha\cdot\begin{mat}
     0   &0  &1/3  &1/4   \\
@@ -181,7 +191,7 @@ $\alpha$'s.
 
 \medskip
 The details of the algorithms used by commercial search engines are 
-secret, no doubt have many refinements, and also change frequently.
+secret, have many refinements, and also change frequently.
 But the inventors of Google were gracious enough to outline the basis for 
 their work in \cite{BrinPage}.
 A more current source is \cite{WikipediaPageRank}.
