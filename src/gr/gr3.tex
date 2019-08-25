@@ -286,7 +286,7 @@ Instead we should think of the two matrices as interrelated.
 Below is a picture.
 It shows the matrices from the start of this section and their
 reduced echelon form version in a cluster, as
-inter-reducible. 
+interreducible. 
 \begin{center}  
   \includegraphics{gr/mp/ch1.28}
 \end{center}
@@ -1216,7 +1216,7 @@ class.
         % form $-k(ka_{i,j}+a_{i,j})+ka_{i,j}+a_{i,j}$.)
     \end{exparts}
    \end{answer}
- \item \cite{Cleary}
+ \recommended \item \cite{Cleary}
   Consider the set of students in a class.  
   Which of the following relationships are equivalence relations?  
   Explain each answer in at least a sentence.
@@ -1735,7 +1735,7 @@ is unique, so if \( B \) and \( C \) differ then the difference must
 occur in column~\( n \).
 %</pf:ReducedEchelonFormIsUnique2>
 
-We finish the inductive step, and the argument,
+We finish the inductive step and the argument
 by showing that the two cannot differ only in that column.
 %<*pf:ReducedEchelonFormIsUnique3>
 Consider a homogeneous system of equations for which \( A \) is the
@@ -1781,16 +1781,21 @@ Subtract row~\( i \) of ($\mathord{*}\mathord{*}\mathord{*}$) from
 row~\( i \) of ($**$)
 to get the equation 
 \( (b_{i,n}-c_{i,n})\cdot x_n=0 \).
-We've assumed that \( b_{i,n}\neq c_{i,n} \) so $x_n=0$.
-Thus in ($**$) and~($\mathord{*}\mathord{*}\mathord{*}$)
-the \( n \)-th column contains a leading entry, or else 
-the variable \( x_n \) would be free.
-That's a contradiction because with \( B \) and \( C \) equal on 
-the first \( n-1 \)~columns, the leading entries in the 
-\( n \)-th column would have to be in the same row,
-and with both matrices in reduced echelon form, both leading entries would
+We've assumed that \( b_{i,n}\neq c_{i,n} \) and so we get $x_n=0$.
+Thus $x_n$ is not a free variable and 
+so in ($**$) and~($\mathord{*}\mathord{*}\mathord{*}$)
+the \( n \)-th column contains the leading entry of some row, 
+since in an echelon form matrix any
+column that does not contain a leading entry is associated with 
+a free variable.
+
+But now, with \( B \) and \( C \) equal on 
+the first \( n-1 \)~columns, by the definition of 
+reduced echeleon form their leading entries in the 
+\( n \)-th column are in the same row.
+And, both leading entries would
 have to be $1$, and would have to be the only nonzero entries in that column.
-So \( B=C \).
+Therefore \( B=C \).
 %</pf:ReducedEchelonFormIsUnique4>
 \end{proof}
 

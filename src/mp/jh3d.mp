@@ -42,11 +42,19 @@ begingroup
   % axis first and then ticks in case want axis with a white border
   draw_xyz_axes(xfactor,yfactor,zfactor);
   save vec_scratch; vec_scratch:=new_vect;
+  % It doesn't actually draw the tics.
+  % save ticklength, tickwidth, updown_tick, sidetoside_tick;
+  % numeric ticklength, tickwidth; ticklength:=20pt; tickwidth:=4pt;
+  % pen updown_tick, sidetoside_tick;
+  % updown_tick:=pensquare shifted (-.5,0) xscaled ticklength yscaled tickwidth
+  %                    rotated 90;
+  % sidetoside_tick:=pensquare shifted (-.5,0)
+  % 		       xscaled ticklength yscaled tickwidth;
   pickup sidetoside_tick; % xaxis first
   for i=1 upto numx:
-    vect_mult(vec_scratch,vect_I,i*vect[ticks]x);    
+    vect_mult(vec_scratch,vect_I,i*vect[ticks].x);    
     project_point(2,vec_scratch);    
-    drawdot z2 withcolor xaxiscolor;
+    drawdot z2 withcolor red; % xaxiscolor;
   endfor
   pickup updown_tick; % yaxis next
   for i=1 upto numy:
