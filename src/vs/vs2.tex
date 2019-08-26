@@ -293,7 +293,7 @@ $\polyspace_2$ is the trivial one.
 The lemma specifies that $\vec{s}_i\neq\vec{s}_j$ 
 when $i\neq j$ because of course if some vector~$\vec{s}$ appears 
 twice then we can get a nontrivial
-$c_1\vec{s}_1+\dots+c_n\vec{s}_n=\zero$ by taking
+$c_1\vec{s}_1+\dots+c_n\vec{s}_n=\zero$, by taking
 the associated coefficients to be $1$ and~$-1$.
 Besides, if some vector appears more than once in an expression then
 we can always combine the coefficients.
@@ -385,15 +385,30 @@ It is linearly
 dependent because 
 $0\cdot\vec{v}_1+0\cdot\vec{v}_2+1\cdot\zero=\zero$ is a nontrivial
 relationship, since not all of the coefficients are zero.
-
-A subtler way to see that this subset is dependent is to remember that
-the zero vector is equal to the trivial sum, 
-the sum of the empty set.
-So any set containing the zero vector has an element that
-is a combination of a subset of other vectors from the 
-set, specifically,
-the zero vector is a combination of the empty subset.
 \end{example}
+
+There is a subtle point that we shall see a number of times and that
+bears on the prior example.
+It is about the trivial sum, the sum of the empty set.
+One way to see how to define the trivial sum 
+is to consider the progression
+$\vec{v}_1+\vec{v}_2+\vec{v}_3$, followed by
+$\vec{v}_1+\vec{v}_2$, followed by
+$\vec{v}_1$.
+The difference between the sum of three vectors and the sum of two 
+is $\vec{v}_3$.
+Then the difference between the sum of two and the sum of one 
+is $\vec{v}_2$.
+In next passing to the trivial sum, the sum of zero-many vectors, 
+we can expect to subtract~$\vec{v}_1$.
+So we define the sum of zero-many vectors to be the zero vector. 
+
+The relation with the prior example is that if the zero vector is in a set
+then that set has an element that
+is a combination of a subset of other vectors from the set, specifically,
+the zero vector is a combination of the empty subset.
+Even the set $S=\set{\zero}$ is linearly dependent, because $\zero$ is the 
+sum of the empty set and the empty set is a subset of~$S$. 
 
 \begin{remark} \label{rem:WhyLIUsesMultiset} %\cite{Velleman} 
 The definition of linear independence,
