@@ -97,9 +97,13 @@ The next result supports the definition.
 
 \begin{lemma}  \label{le:ChBasisMatDoesChBases}
 %<*lm:ChBasisMatDoesChBases>
-Left-multiplication by the change of basis matrix for \( B,D \)
-converts a representation with respect to \( B \) to one with respect to
-\( D \).
+To convert from the representation of a vector~$\vec{v}$ 
+with respect to \( B \) 
+to its representation with respect to
+\( D \) use the change of basis matrix.
+\begin{equation*}
+  \rep{\identity}{B,D}\,\rep{\vec{v}}{B}=\rep{\vec{v}}{D}
+\end{equation*}
 Conversely, if left-multiplication by a matrix changes bases 
 $M\cdot\rep{\vec{v}}{B}=\rep{\vec{v}}{D}$
 then $M$ is a change of basis matrix.
@@ -1189,10 +1193,22 @@ either by directly using $\hat{B}$ and $\hat{D}$,
 or else by first changing bases with $\rep{\identity}{\hat{B},B}$ 
 then multiplying by \( H=\rep{h}{B,D} \)
 and then changing bases with $\rep{\identity}{D,\hat{D}}$.
+
+\begin{theorem}
+To convert from the matrix~$H$ representing a map~$h$ with respect to $B,D$
+to the matrix~$\hat{H}$ 
+representing it with respect to~$\hat{B},\hat{D}$ use this formula.
 \begin{equation*}
    \hat{H}=
    \rep{\identity}{D,\hat{D}}\cdot H\cdot \rep{\identity}{\hat{B},B}
-\tag*{\text{($*$})}\end{equation*}
+   \tag*{\text{($*$})}
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+This is evident from the diagram.
+\end{proof}
+
 %</ChangeRepresentationOfMapArrowDiagram>
 % (To compare the equation with the sentence before it
 % remember to read its right hand side
