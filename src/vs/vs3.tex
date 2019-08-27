@@ -300,9 +300,6 @@ The \( c \)'s are the
 %</df:RepresentingVectors>
 \end{definition}
 
-When there is only one basis around, we often omit the subscript
-naming that basis.
-
 \begin{example}  \label{ex:RepPolyWRTA Basis}
 In \( \polyspace_3 \), with respect to the basis
 \( B=\sequence{1,2x,2x^2,2x^3} \),
@@ -322,6 +319,9 @@ the representation is different.
 \nearbydefinition{def:basis} requires that a basis be a sequence
 so that we can write these coordinates in an order. 
 \end{remark}
+
+When there is only one basis around, we often omit the subscript
+naming that basis.
 
 \begin{example}
 In \( \Re^2 \), to find
@@ -344,7 +344,7 @@ and get that $c_1=3$ and $c_2=-1/2$.
 \end{equation*}  
 \end{example}
 
-The notation
+Writing the representation as a column
 generalizes the familiar case:~in \( \Re^n \) 
 and with respect to the standard
 basis \( \stdbasis_n \), the vector starting at the origin and ending at
@@ -359,6 +359,12 @@ This is an example.
   \rep{\colvec{-1 \\ 1}}{\stdbasis_{n}}
   =\colvec{-1 \\ 1}
 \end{equation*}
+
+\begin{remark}
+The $\rep{\vec{v}}{B}$ notation is not standard.
+The most common notation is $[\vec{v}]_B$ but one advantage that
+$\rep{\vec{v}}{B}$ has is that it is harder to misinterpret or overlook.
+\end{remark}
 
 The column represent the vector in the sense that
 a linear relationship holds among a set of vectors if and only if
