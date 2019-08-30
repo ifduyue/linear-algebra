@@ -1322,11 +1322,39 @@ quickly with the Gauss's Method procedure.
 \end{equation*}
 \end{example}
 
-The prior example illustrates an important point.
-Although we have not yet found a $\nbyn{4}$ determinant formula,
-if one exists then we know what value it gives to the matrix \Dash  
-if there is a function with properties (1)\,--\,(4) then on the above 
-matrix the function must return $5$.
+That example raises an important point.
+This chapter's introduction gives formulas for $\nbyn{2}$ 
+and $\nbyn{3}$ determinants, so we know that they exist,
+but not for determinant functions on matrices that are $\nbyn{4}$ or larger.
+Instead, \nearbydefinition{def:Det} gives properties that 
+a determinant function
+should have and leads to computing determinants by Gauss's Method.
+
+However, for any matrix we can reduce it to echelon form by Gauss's Method in
+multiple ways.
+For example, given a reduction we could change it by inserting a first step
+that multiplies the top row by~$2$ and then 
+a second step that multiplies it by~$1/2$.
+So we have to worry that two different Gauss's Method reductions could
+lead to two different computed values for the determinant.
+
+That is, we must verify that \nearbydefinition{def:Det} gives a 
+well-defined function.
+We will do this in two parts.
+First, below is a small result showing that if there is such a function 
+then there is no more than one.
+Then, the next two subsections show that there exists a well-defined function 
+satisfying the definition. 
+
+The easier of the two is the lemma.
+In the example above we got~$5$ by following the properties of the 
+definition.
+So while we have not yet proved that $\det_{\nbyn{4}}$ exists,
+that there is a function with properties (1)\,--\,(4),  
+if it does exist then we know what value it gives on the above matrix.
+If doing the computation in two different ways leads to two different outputs
+then it wouldn't be a function, just because by definition functions associate
+each input with a unique output.
 
 \begin{lemma} \label{lm:DetFcnIsUnique}
 %<*lm:DetFcnIsUnique>
@@ -1337,16 +1365,20 @@ if there is an $\nbyn{n}$ determinant function then it is unique.
 
 \begin{proof}
 %<*pf:DetFcnIsUnique>
-Suppose that there were two functions 
+Suppose that there are two functions 
 $\map{\det_1,\det_2}{\matspace_{\nbyn{n}}}{\Re}$ 
 satisfying the properties of 
-\nearbydefinition{def:Det}.
-Given a matrix, perform Gauss's Method on it, 
-keeping track of how the sign alternates on row swaps, and any 
-row-scaling factors. 
-Finish by multiplying down the diagonal of the echelon form result.
-By the definition and \nearbylemma{le:IdenRowsDetZero},
-both determinants must return the same value on the matrix.
+\nearbydefinition{def:Det} and 
+its consequence \nearbylemma{le:IdenRowsDetZero}.
+Given a square matrix~$M$, fix some way of performing Gauss's Method
+to bring the matrix to echelon form (it does not matter that there are
+multiple ways, just fix one of them).
+By using this fixed reduction as in the
+above examples\Dash 
+keeping track of row-scaling factors and how the sign alternates on row swaps, 
+and then multiplying down the diagonal of the echelon form result\Dash
+we can compute the value that these two functions must return on~$M$,
+and they must return the same value.
 Since they give the same output on every input, they are the same function.
 %</pf:DetFcnIsUnique>
 \end{proof}
@@ -1358,6 +1390,8 @@ use Gauss's Method to compute the only value that a determinant function
 could possibly return, 
 we haven't yet shown that such a function exists for all $n$.
 The rest of this section does that.
+
+
 
 \begin{exercises}
   \item[{\em For these, assume that an $\nbyn{n}$ determinant
@@ -2724,10 +2758,9 @@ as does the $\nbyn{3}$ formula.
 Computing a determinant with the permutation expansion typically takes 
 longer than with Gauss's Method.
 However, we will use it to prove that 
-the determinant function is well-defined.
-We will just state the result here and 
-defer its proof to the following subsection.
-
+the determinant function exists.
+The proof is long so we will just state the result here and 
+defer the proof to the following subsection.
 
 \begin{theorem} \label{th:DetsExist}
 \index{determinant!exists} 
@@ -2737,7 +2770,7 @@ For each $n$ there is an $\nbyn{n}$ determinant function.
 \end{theorem}
 
 Also in the next subsection is the proof of the
-result below  (they are together because the two proofs overlap).
+next result (they are together because the two proofs overlap).
 
 \begin{theorem}  \label{th:DeterminantOfAMatrixEqualsDeterminantOfTranspose}
 \index{transpose!determinant}
@@ -4012,21 +4045,21 @@ The advantage of this formula is that the number of inversions
 is clearly well-defined\Dash  just count them.
 Therefore, we will be finished 
 showing that an~$\nbyn{n}$ determinant function 
-exists when we show that this $d$
-satisfies the conditions required of a determinant.
+exists when we show that~$d$
+satisfies the conditions in the definition of a determinant.
 %</DefiningDFunction>
 
 \begin{lemma} \label{lm:DeterminantsExist}
 \index{determinant!exists}
 %<*lm:DeterminantsExist>
 The function \( d \) above is a determinant.
-Hence determinants exist for every $n$.
+Hence determinant functions $\det_{\nbyn{n}}$ exist for every $n$.
 %</lm:DeterminantsExist>
 \end{lemma}
 
 \begin{proof}
 %<*pf:DeterminantsExist0>
-We must check that it has the four conditions
+We must check that it satisfies the four conditions
 from the definition of determinant, \nearbydefinition{def:Det}.
 %</pf:DeterminantsExist0>
 
@@ -4370,7 +4403,7 @@ the $1,2$ to $2,1$, flip the $2,3$ to $3,2$, and flip $3,1$ to $1,3$.
  
 We finish by noting that the determinant of $P_{\phi}$ equals the determinant
 of $P_{\phi^{-1}}$, as
-\nearbyexercise{exer:PermInvFacts}%
+\nearbyexercise{exer:PermInvFacts} %
 shows.
 %</pf:DetMatrixEqualsDetTrans2>
 \end{proof}
