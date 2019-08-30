@@ -3075,4 +3075,93 @@ beginfig(58);
 endfig;
 
 
+
+
+
+% ==================================================
+% TEMP: Try to improve the hemispheric dome picture
+
+beginfig(59) % projective plane like a dome
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+  u:=.2in; v:=u; w:=v;
+
+  % some parameters; the observer's position 
+  save obs_x, obs_y, obs_z; numeric obs_x, obs_y, obs_z;
+  obs_x = 8;  obs_y = 2;  obs_z = 1;
+
+  % 3D stuff
+  drawing_scale:=30pt;
+  save lpn; lpn:=new_vect; vect_def(lpn,0,0,0); 
+  % Locate the observer and describe where he's looking
+  set_point(Obs,obs_x,obs_y,obs_z);
+  Obs_phi:=90; Obs_dist:=3;
+  point_of_view_abs(lpn,Obs_phi);
+
+  % The dome is a half circle on top of an ellipse.
+  % Use 3D package to get radius of circle and axes of ellipse
+  save dome_rad; numeric dome_rad; dome_rad = 5.05;
+    save dome_scalar; numeric dome_scalar; dome_scalar=dome_rad/(obs_x++obs_y);
+  save dome_basef, dome_baser, dome_top, origin;  % front, right, top of dome
+  dome_basef:=new_vect; dome_baser:=new_vect;
+    dome_top:=new_vect;  origin:=new_vect;
+  vect_def(dome_basef,obs_x*dome_scalar,obs_y*dome_scalar,0);
+    vect_def(dome_baser,-obs_y*dome_scalar,obs_x*dome_scalar,0);
+    vect_def(dome_top,0,0,dome_rad);
+    vect_def(origin,0,0,0);
+  project_point(90,dome_basef); project_point(91,dome_baser);
+    project_point(92,dome_top); project_point(93,origin);
+  free_vect(origin); free_vect(dome_top);  free_vect(dome_baser);
+    free_vect(dome_basef);
+  % save dome_base; path dome_base; 
+  %   dome_base = fullcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
+  save dome_base_front; path dome_base_front; 
+    dome_base_front = halfcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91)) reflectedabout( (0,0),(1,0) );
+  save dome_base_rear; path dome_base_rear; 
+    dome_base_rear = halfcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
+  save dome_roof; path dome_roof; 
+    dome_roof = halfcircle scaled (2*(x91++y91));
+  pickup pencircle scaled line_width_light;
+  draw dome_base_front; draw dome_base_rear dashed evenly; draw dome_roof;
+  
+  % draw axes (with a white border)
+  pickup pencircle scaled line_width_dark;
+  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+  draw_xyz_axes(2.5,2.5,2.5);
+  pickup pencircle scaled line_width_light;
+  xaxiscolor:=shading_color;  yaxiscolor:=shading_color; zaxiscolor:=shading_color;
+  draw_xyz_axes(2.5,2.5,2.5);
+
+  % line seen edge-on by projector person
+  save ell_scalar; numeric ell_scalar; ell_scalar = dome_rad/(1++2++3);
+  save ell; ell:=new_vect;
+  vect_def(ell,1*ell_scalar,2*ell_scalar,3*ell_scalar);
+  project_point(1,ell);
+  free_vect(ell);
+  save ell_line; path ell_line; ell_line = 1.25[z1,z93]--z1; 
+  pickup pencircle scaled 1.75pt; % line_width_dark;
+  draw ell_line withcolor white;
+  pickup pencircle scaled line_width_light;
+  draw ell_line;
+  label.rt(btex \makebox[0em][l]{\small
+           $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1 shifted (7,-2));
+
+  dotlabel.lft(btex {\tiny $Q_1$} etex, 0.6[z1,z93]);
+  dotlabel.lft(btex {\tiny $Q_2$} etex, 0.05[z1,z93]);
+  dotlabel.lft(btex {\tiny $Q_3$} etex, 1.2[z1,z93]);
+  
+  % stick figure
+  save person_hgt; numeric person_hgt; person_hgt = .5u;
+  pickup pencircle scaled line_width_light;
+  drawstickfigure(person_hgt) shifted (x93,y93-.95person_hgt);
+  
+  %
+  free_vect(lpn);
+endfig;
+
+
+
+
+
 end
