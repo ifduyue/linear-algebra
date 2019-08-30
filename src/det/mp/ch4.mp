@@ -1103,9 +1103,6 @@ endfig;
 
 
 
-
-
-
 beginfig(14) % projective plane like a dome
   numeric u;  %scaling factor
   numeric v;  %vertical scaling factor
@@ -1139,12 +1136,16 @@ beginfig(14) % projective plane like a dome
     project_point(92,dome_top); project_point(93,origin);
   free_vect(origin); free_vect(dome_top);  free_vect(dome_baser);
     free_vect(dome_basef);
-  save dome_base; path dome_base; 
-    dome_base = fullcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
+  % save dome_base; path dome_base; 
+  %   dome_base = fullcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
+  save dome_base_front; path dome_base_front; 
+    dome_base_front = halfcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91)) reflectedabout( (0,0),(1,0) );
+  save dome_base_rear; path dome_base_rear; 
+    dome_base_rear = halfcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
   save dome_roof; path dome_roof; 
     dome_roof = halfcircle scaled (2*(x91++y91));
   pickup pencircle scaled line_width_light;
-  draw dome_base; draw dome_roof;
+  draw dome_base_front; draw dome_base_rear dashed evenly; draw dome_roof;
   
   % draw axes (with a white border)
   pickup pencircle scaled line_width_dark;
@@ -1160,13 +1161,17 @@ beginfig(14) % projective plane like a dome
   vect_def(ell,1*ell_scalar,2*ell_scalar,3*ell_scalar);
   project_point(1,ell);
   free_vect(ell);
-  save ell_line; path ell_line; ell_line = 1.2[z1,z93]--z1; 
-  pickup pencircle scaled 1.5pt; % line_width_dark;
+  save ell_line; path ell_line; ell_line = 1.25[z1,z93]--z1; 
+  pickup pencircle scaled 1.75pt; % line_width_dark;
   draw ell_line withcolor white;
   pickup pencircle scaled line_width_light;
   draw ell_line;
   label.rt(btex \makebox[0em][l]{\small
-           $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1);
+           $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1 shifted (7,-2));
+
+  dotlabel.lft(btex {\tiny $Q_1$} etex, 0.6[z1,z93]);
+  dotlabel.lft(btex {\tiny $Q_2$} etex, 0.05[z1,z93]);
+  dotlabel.lft(btex {\tiny $Q_3$} etex, 1.2[z1,z93]);
   
   % stick figure
   save person_hgt; numeric person_hgt; person_hgt = .5u;
@@ -1180,6 +1185,109 @@ endfig;
 
 
 
+% beginfig(14) % projective plane like a dome
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+%   u:=.2in; v:=u; w:=v;
+
+%   % some parameters; the observer's position 
+%   save obs_x, obs_y, obs_z; numeric obs_x, obs_y, obs_z;
+%   obs_x = 8;  obs_y = 2;  obs_z = 1;
+
+%   % 3D stuff
+%   drawing_scale:=30pt;
+%   save lpn; lpn:=new_vect; vect_def(lpn,0,0,0); 
+%   % Locate the observer and describe where he's looking
+%   set_point(Obs,obs_x,obs_y,obs_z);
+%   Obs_phi:=90; Obs_dist:=3;
+%   point_of_view_abs(lpn,Obs_phi);
+
+%   % The dome is a half circle on top of an ellipse.
+%   % Use 3D package to get radius of circle and axes of ellipse
+%   save dome_rad; numeric dome_rad; dome_rad = 5.05;
+%     save dome_scalar; numeric dome_scalar; dome_scalar=dome_rad/(obs_x++obs_y);
+%   save dome_basef, dome_baser, dome_top, origin;  % front, right, top of dome
+%   dome_basef:=new_vect; dome_baser:=new_vect;
+%     dome_top:=new_vect;  origin:=new_vect;
+%   vect_def(dome_basef,obs_x*dome_scalar,obs_y*dome_scalar,0);
+%     vect_def(dome_baser,-obs_y*dome_scalar,obs_x*dome_scalar,0);
+%     vect_def(dome_top,0,0,dome_rad);
+%     vect_def(origin,0,0,0);
+%   project_point(90,dome_basef); project_point(91,dome_baser);
+%     project_point(92,dome_top); project_point(93,origin);
+%   free_vect(origin); free_vect(dome_top);  free_vect(dome_baser);
+%     free_vect(dome_basef);
+%   save dome_base; path dome_base; 
+%     dome_base = fullcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
+%   save dome_roof; path dome_roof; 
+%     dome_roof = halfcircle scaled (2*(x91++y91));
+%   pickup pencircle scaled line_width_light;
+%   draw dome_base; draw dome_roof;
+  
+%   % draw axes (with a white border)
+%   pickup pencircle scaled line_width_dark;
+%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
+%   draw_xyz_axes(2.5,2.5,2.5);
+%   pickup pencircle scaled line_width_light;
+%   xaxiscolor:=shading_color;  yaxiscolor:=shading_color; zaxiscolor:=shading_color;
+%   draw_xyz_axes(2.5,2.5,2.5);
+
+%   % line seen edge-on by projector person
+%   save ell_scalar; numeric ell_scalar; ell_scalar = dome_rad/(1++2++3);
+%   save ell; ell:=new_vect;
+%   vect_def(ell,1*ell_scalar,2*ell_scalar,3*ell_scalar);
+%   project_point(1,ell);
+%   free_vect(ell);
+%   save ell_line; path ell_line; ell_line = 1.2[z1,z93]--z1; 
+%   pickup pencircle scaled 1.5pt; % line_width_dark;
+%   draw ell_line withcolor white;
+%   pickup pencircle scaled line_width_light;
+%   draw ell_line;
+%   label.rt(btex \makebox[0em][l]{\small
+%            $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1);
+  
+%   % stick figure
+%   save person_hgt; numeric person_hgt; person_hgt = .5u;
+%   pickup pencircle scaled line_width_light;
+%   drawstickfigure(person_hgt) shifted (x93,y93-.95person_hgt);
+  
+%   %
+%   free_vect(lpn);
+% endfig;
+
+
+
+
+% beginfig(15);  % antipodal points are one point in projective plane
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+
+%   u:=8pt; v:=u; w:=v;  % was 10pt
+
+%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
+%   save sphere, equator; path sphere, equator;
+%     sphere = fullcircle scaled (2*sphere_rad);
+%     equator = sphere yscaled .4;
+%   pickup pencircle scaled line_width_light;
+%   draw equator withcolor shading_color;
+%   draw sphere;
+
+%   save proj_line; path proj_line;
+%     proj_line = sphere yscaled .3 rotated 35;
+%     %draw proj_line;
+
+%   save line_with_antipodals; path line_with_antipodals;
+%     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
+%   z1 = line_with_antipodals intersectionpoint proj_line;
+%   z2 = -z1;
+%   draw z1--z2 dashed evenly scaled .75;
+%   drawpoint(z1); drawpoint(z2);
+% endfig;
+
+
+
 beginfig(15);  % antipodal points are one point in projective plane
   numeric u;  %scaling factor
   numeric v;  %vertical scaling factor
@@ -1188,11 +1296,17 @@ beginfig(15);  % antipodal points are one point in projective plane
   u:=8pt; v:=u; w:=v;  % was 10pt
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
-  save sphere, equator; path sphere, equator;
-    sphere = fullcircle scaled (2*sphere_rad);
+  save sphere, equator_front, equator_back, equator;
+  path sphere, equator_front, equator_back, equator;
+  transform sphere_transform;
+  sphere_transform = identity scaled (2*sphere_rad);
+    sphere = fullcircle transformed sphere_transform;
     equator = sphere yscaled .4;
+    equator_front = halfcircle reflectedabout( (0,0),(1,0) ) transformed sphere_transform yscaled .4;
+    equator_back = halfcircle transformed sphere_transform yscaled .4;
   pickup pencircle scaled line_width_light;
-  draw equator withcolor shading_color;
+  draw equator_front withcolor shading_color;
+  draw equator_back dashed evenly withcolor shading_color;
   draw sphere;
 
   save proj_line; path proj_line;
@@ -1203,11 +1317,40 @@ beginfig(15);  % antipodal points are one point in projective plane
     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
   z1 = line_with_antipodals intersectionpoint proj_line;
   z2 = -z1;
-  draw z1--z2 dashed evenly scaled .75;
+  pickup pencircle scaled line_width_dark;
+  draw z1--z2 dashed withdots scaled .40;
   drawpoint(z1); drawpoint(z2);
 endfig;
 
 
+
+
+% beginfig(16);  % projective line with antipodal points in projective plane
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+
+%   u:=8pt; v:=u; w:=v; % was 10pt
+
+%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
+%   save sphere, equator; path sphere, equator;
+%     sphere = fullcircle scaled (2*sphere_rad);
+%     equator = sphere yscaled .4;
+%   pickup pencircle scaled line_width_light;
+%   %draw equator withcolor shading_color;
+%   draw sphere;
+
+%   save proj_line; path proj_line;
+%     proj_line = sphere yscaled .3 rotated 35;
+%     draw proj_line;
+
+%   save line_with_antipodals; path line_with_antipodals;
+%     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
+%   z1 = line_with_antipodals intersectionpoint proj_line;
+%   z2 = -z1;
+%   draw z1--z2 dashed evenly scaled .75;
+%   drawpoint(z1); drawpoint(z2);
+% endfig;
 
 
 beginfig(16);  % projective line with antipodal points in projective plane
@@ -1219,27 +1362,62 @@ beginfig(16);  % projective line with antipodal points in projective plane
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, equator; path sphere, equator;
-    sphere = fullcircle scaled (2*sphere_rad);
-    equator = sphere yscaled .4;
+  transform sphere_transform;
+  sphere_transform = identity scaled (2*sphere_rad); 
+    sphere = fullcircle transformed sphere_transform;
+    % equator = sphere yscaled .4;
   pickup pencircle scaled line_width_light;
   %draw equator withcolor shading_color;
   draw sphere;
 
-  save proj_line; path proj_line;
+  save proj_line, proj_line_front, proj_line_back;
+    path proj_line, proj_line_front, proj_line_back;
     proj_line = sphere yscaled .3 rotated 35;
-    draw proj_line;
+    proj_line_front = halfcircle transformed sphere_transform reflectedabout( (0,0),(1,0) ) yscaled .3 rotated 35;
+    proj_line_back = halfcircle transformed sphere_transform yscaled .3 rotated 35;
+  pickup pencircle scaled line_width_light;
+  % draw proj_line;
+  draw proj_line_front;
+  draw proj_line_back dashed evenly;
 
   save line_with_antipodals; path line_with_antipodals;
     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
   z1 = line_with_antipodals intersectionpoint proj_line;
   z2 = -z1;
-  draw z1--z2 dashed evenly scaled .75;
+  pickup pencircle scaled line_width_light;
+  draw z1--z2 dashed withdots scaled .40;
   drawpoint(z1); drawpoint(z2);
 endfig;
 
 
 
 
+
+
+% beginfig(17);  % two projective lines with intersect point in projective plane
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+
+%   u:=8pt; v:=u; w:=v; % was 10pt
+
+%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
+%   save sphere, equator; path sphere, equator;
+%     sphere = fullcircle scaled (2*sphere_rad);
+%     equator = sphere yscaled .4;
+%   pickup pencircle scaled line_width_light;
+%   draw equator;
+%   draw sphere;
+
+%   save proj_line; path proj_line;
+%     proj_line = sphere yscaled .3 rotated 35;
+%     draw proj_line;
+
+%   z1 = proj_line intersectionpoint equator;
+%   z2 = -z1;
+%   draw z1--z2 dashed evenly scaled .75;
+%   drawpoint(z1); drawpoint(z2);
+% endfig;
 
 
 beginfig(17);  % two projective lines with intersect point in projective plane
@@ -1251,19 +1429,35 @@ beginfig(17);  % two projective lines with intersect point in projective plane
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, equator; path sphere, equator;
-    sphere = fullcircle scaled (2*sphere_rad);
+  transform sphere_transform;
+  save equator_front, equator_back; path equator_front, equator_back;
+  sphere_transform = identity scaled (2*sphere_rad); 
+    sphere = fullcircle transformed sphere_transform;
     equator = sphere yscaled .4;
+    equator_front = halfcircle transformed sphere_transform reflectedabout( (0,0),(1,0) ) yscaled 0.4;
+    equator_back = halfcircle transformed sphere_transform yscaled 0.4;
   pickup pencircle scaled line_width_light;
-  draw equator;
+  % draw equator;
+  draw equator_back dashed evenly;
+  draw equator_front;
   draw sphere;
 
   save proj_line; path proj_line;
+  save proj_line_front, proj_line_back; path proj_line_front, proj_line_back;
     proj_line = sphere yscaled .3 rotated 35;
-    draw proj_line;
+    proj_line_front = halfcircle transformed sphere_transform reflectedabout( (0,0),(1,0) ) yscaled 0.4 rotated 35;
+    proj_line_back = halfcircle transformed sphere_transform yscaled 0.4 rotated 35;
+    pickup pencircle scaled line_width_light;
+    % draw proj_line;
+    draw proj_line_back dashed evenly;
+    draw proj_line_front;
 
-  z1 = proj_line intersectionpoint equator;
+  % z1 = proj_line intersectionpoint equator;
+  z1 = proj_line_front intersectionpoint equator_front;
   z2 = -z1;
-  draw z1--z2 dashed evenly scaled .75;
+  pickup pencircle scaled line_width_light;
+  draw z1--z2 dashed withdots scaled .40;
+  % draw z1--z2 dashed evenly scaled .75;
   drawpoint(z1); drawpoint(z2);
 endfig;
 
@@ -1272,6 +1466,53 @@ endfig;
 
 
 
+
+
+% beginfig(18);  % correspondence: projective plane <--> z=1
+%   numeric u;  %scaling factor
+%   numeric v;  %vertical scaling factor
+%   numeric w;  %horizontal scaling factor
+
+%   u:=8pt; v:=u; w:=v; % was 10pt
+
+%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
+%   save sphere, equator; path sphere, equator;
+%     sphere = fullcircle scaled (2*sphere_rad);
+%     equator = sphere yscaled .4;
+%   pickup pencircle scaled line_width_light;
+%   draw equator withcolor shading_color;
+%   draw sphere;
+
+%   save proj_line; path proj_line;
+%     proj_line = sphere yscaled .3 rotated 35;
+%     %draw proj_line;
+
+%   save line_with_antipodals; path line_with_antipodals;
+%     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
+%   z1 = line_with_antipodals intersectionpoint proj_line;
+%   z2 = -z1;
+%   draw z1--z2 dashed evenly scaled .75;
+%   drawpoint(z1); drawpoint(z2);
+
+%   % plane
+%   y10=y11=3v; y12=y13=sphere_rad+1.5*(sphere_rad-y10); %corners of plane
+%   x10=-10w; x11=9w; x12=10w; x13=-9w;
+%   save plane; path plane; plane = z10--z11--z12--z13--cycle;
+%     % draw plane below
+%   % projection of projective point into z=1 plane
+%   z20  = whatever[z1,z2]; y20 = sphere_rad-.1v;
+%   save proj; path proj; proj = (.9[z20,z1])--(.9[z1,z20]);
+%   pickup pencircle scaled line_width_dark; 
+%     drawarrowsimple proj withcolor white;
+%     pickup pencircle scaled line_width_light; 
+%     drawarrowsimple proj;
+%   drawpoint(z20);
+%   % now draw plane, layered over projection arrow
+%   pickup pencircle scaled line_width_dark;
+%     draw plane withcolor white;
+%   pickup pencircle scaled line_width_light;
+%     draw plane;
+% endfig;
 
 
 beginfig(18);  % correspondence: projective plane <--> z=1
@@ -1283,10 +1524,17 @@ beginfig(18);  % correspondence: projective plane <--> z=1
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, equator; path sphere, equator;
-    sphere = fullcircle scaled (2*sphere_rad);
+  transform sphere_transform;
+  sphere_transform = identity scaled (2*sphere_rad);
+  save equator_front, equator_back; path equator_front, equator_back;
+    sphere = fullcircle transformed sphere_transform;
     equator = sphere yscaled .4;
+    equator_back = halfcircle transformed sphere_transform yscaled 0.4;
+    equator_front = halfcircle transformed sphere_transform reflectedabout( (0,0),(1,0) ) yscaled 0.4;
   pickup pencircle scaled line_width_light;
-  draw equator withcolor shading_color;
+  % draw equator withcolor shading_color;
+  draw equator_back dashed evenly withcolor shading_color;
+  draw equator_front withcolor shading_color;
   draw sphere;
 
   save proj_line; path proj_line;
@@ -1297,7 +1545,9 @@ beginfig(18);  % correspondence: projective plane <--> z=1
     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
   z1 = line_with_antipodals intersectionpoint proj_line;
   z2 = -z1;
-  draw z1--z2 dashed evenly scaled .75;
+  pickup pencircle scaled line_width_light;
+  draw z1--z2 dashed withdots scaled .40;
+  % draw z1--z2 dashed evenly scaled .75;
   drawpoint(z1); drawpoint(z2);
 
   % plane
@@ -3074,91 +3324,6 @@ beginfig(58);
   %label.rt(btex {\tiny $x\cdot\colvec{1 \\ 3}+y\cdot\colvec{2 \\ 1}$} etex,z3);
 endfig;
 
-
-
-
-
-% ==================================================
-% TEMP: Try to improve the hemispheric dome picture
-
-beginfig(59) % projective plane like a dome
-  numeric u;  %scaling factor
-  numeric v;  %vertical scaling factor
-  numeric w;  %horizontal scaling factor
-  u:=.2in; v:=u; w:=v;
-
-  % some parameters; the observer's position 
-  save obs_x, obs_y, obs_z; numeric obs_x, obs_y, obs_z;
-  obs_x = 8;  obs_y = 2;  obs_z = 1;
-
-  % 3D stuff
-  drawing_scale:=30pt;
-  save lpn; lpn:=new_vect; vect_def(lpn,0,0,0); 
-  % Locate the observer and describe where he's looking
-  set_point(Obs,obs_x,obs_y,obs_z);
-  Obs_phi:=90; Obs_dist:=3;
-  point_of_view_abs(lpn,Obs_phi);
-
-  % The dome is a half circle on top of an ellipse.
-  % Use 3D package to get radius of circle and axes of ellipse
-  save dome_rad; numeric dome_rad; dome_rad = 5.05;
-    save dome_scalar; numeric dome_scalar; dome_scalar=dome_rad/(obs_x++obs_y);
-  save dome_basef, dome_baser, dome_top, origin;  % front, right, top of dome
-  dome_basef:=new_vect; dome_baser:=new_vect;
-    dome_top:=new_vect;  origin:=new_vect;
-  vect_def(dome_basef,obs_x*dome_scalar,obs_y*dome_scalar,0);
-    vect_def(dome_baser,-obs_y*dome_scalar,obs_x*dome_scalar,0);
-    vect_def(dome_top,0,0,dome_rad);
-    vect_def(origin,0,0,0);
-  project_point(90,dome_basef); project_point(91,dome_baser);
-    project_point(92,dome_top); project_point(93,origin);
-  free_vect(origin); free_vect(dome_top);  free_vect(dome_baser);
-    free_vect(dome_basef);
-  % save dome_base; path dome_base; 
-  %   dome_base = fullcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
-  save dome_base_front; path dome_base_front; 
-    dome_base_front = halfcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91)) reflectedabout( (0,0),(1,0) );
-  save dome_base_rear; path dome_base_rear; 
-    dome_base_rear = halfcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
-  save dome_roof; path dome_roof; 
-    dome_roof = halfcircle scaled (2*(x91++y91));
-  pickup pencircle scaled line_width_light;
-  draw dome_base_front; draw dome_base_rear dashed evenly; draw dome_roof;
-  
-  % draw axes (with a white border)
-  pickup pencircle scaled line_width_dark;
-  xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-  draw_xyz_axes(2.5,2.5,2.5);
-  pickup pencircle scaled line_width_light;
-  xaxiscolor:=shading_color;  yaxiscolor:=shading_color; zaxiscolor:=shading_color;
-  draw_xyz_axes(2.5,2.5,2.5);
-
-  % line seen edge-on by projector person
-  save ell_scalar; numeric ell_scalar; ell_scalar = dome_rad/(1++2++3);
-  save ell; ell:=new_vect;
-  vect_def(ell,1*ell_scalar,2*ell_scalar,3*ell_scalar);
-  project_point(1,ell);
-  free_vect(ell);
-  save ell_line; path ell_line; ell_line = 1.25[z1,z93]--z1; 
-  pickup pencircle scaled 1.75pt; % line_width_dark;
-  draw ell_line withcolor white;
-  pickup pencircle scaled line_width_light;
-  draw ell_line;
-  label.rt(btex \makebox[0em][l]{\small
-           $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1 shifted (7,-2));
-
-  dotlabel.lft(btex {\tiny $Q_1$} etex, 0.6[z1,z93]);
-  dotlabel.lft(btex {\tiny $Q_2$} etex, 0.05[z1,z93]);
-  dotlabel.lft(btex {\tiny $Q_3$} etex, 1.2[z1,z93]);
-  
-  % stick figure
-  save person_hgt; numeric person_hgt; person_hgt = .5u;
-  pickup pencircle scaled line_width_light;
-  drawstickfigure(person_hgt) shifted (x93,y93-.95person_hgt);
-  
-  %
-  free_vect(lpn);
-endfig;
 
 
 
