@@ -1185,108 +1185,6 @@ endfig;
 
 
 
-% beginfig(14) % projective plane like a dome
-%   numeric u;  %scaling factor
-%   numeric v;  %vertical scaling factor
-%   numeric w;  %horizontal scaling factor
-%   u:=.2in; v:=u; w:=v;
-
-%   % some parameters; the observer's position 
-%   save obs_x, obs_y, obs_z; numeric obs_x, obs_y, obs_z;
-%   obs_x = 8;  obs_y = 2;  obs_z = 1;
-
-%   % 3D stuff
-%   drawing_scale:=30pt;
-%   save lpn; lpn:=new_vect; vect_def(lpn,0,0,0); 
-%   % Locate the observer and describe where he's looking
-%   set_point(Obs,obs_x,obs_y,obs_z);
-%   Obs_phi:=90; Obs_dist:=3;
-%   point_of_view_abs(lpn,Obs_phi);
-
-%   % The dome is a half circle on top of an ellipse.
-%   % Use 3D package to get radius of circle and axes of ellipse
-%   save dome_rad; numeric dome_rad; dome_rad = 5.05;
-%     save dome_scalar; numeric dome_scalar; dome_scalar=dome_rad/(obs_x++obs_y);
-%   save dome_basef, dome_baser, dome_top, origin;  % front, right, top of dome
-%   dome_basef:=new_vect; dome_baser:=new_vect;
-%     dome_top:=new_vect;  origin:=new_vect;
-%   vect_def(dome_basef,obs_x*dome_scalar,obs_y*dome_scalar,0);
-%     vect_def(dome_baser,-obs_y*dome_scalar,obs_x*dome_scalar,0);
-%     vect_def(dome_top,0,0,dome_rad);
-%     vect_def(origin,0,0,0);
-%   project_point(90,dome_basef); project_point(91,dome_baser);
-%     project_point(92,dome_top); project_point(93,origin);
-%   free_vect(origin); free_vect(dome_top);  free_vect(dome_baser);
-%     free_vect(dome_basef);
-%   save dome_base; path dome_base; 
-%     dome_base = fullcircle yscaled (2*(x90++y90)) xscaled (2*(x91++y91));
-%   save dome_roof; path dome_roof; 
-%     dome_roof = halfcircle scaled (2*(x91++y91));
-%   pickup pencircle scaled line_width_light;
-%   draw dome_base; draw dome_roof;
-  
-%   % draw axes (with a white border)
-%   pickup pencircle scaled line_width_dark;
-%   xaxiscolor:=white;  yaxiscolor:=white; zaxiscolor:=white;
-%   draw_xyz_axes(2.5,2.5,2.5);
-%   pickup pencircle scaled line_width_light;
-%   xaxiscolor:=shading_color;  yaxiscolor:=shading_color; zaxiscolor:=shading_color;
-%   draw_xyz_axes(2.5,2.5,2.5);
-
-%   % line seen edge-on by projector person
-%   save ell_scalar; numeric ell_scalar; ell_scalar = dome_rad/(1++2++3);
-%   save ell; ell:=new_vect;
-%   vect_def(ell,1*ell_scalar,2*ell_scalar,3*ell_scalar);
-%   project_point(1,ell);
-%   free_vect(ell);
-%   save ell_line; path ell_line; ell_line = 1.2[z1,z93]--z1; 
-%   pickup pencircle scaled 1.5pt; % line_width_dark;
-%   draw ell_line withcolor white;
-%   pickup pencircle scaled line_width_light;
-%   draw ell_line;
-%   label.rt(btex \makebox[0em][l]{\small
-%            $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1);
-  
-%   % stick figure
-%   save person_hgt; numeric person_hgt; person_hgt = .5u;
-%   pickup pencircle scaled line_width_light;
-%   drawstickfigure(person_hgt) shifted (x93,y93-.95person_hgt);
-  
-%   %
-%   free_vect(lpn);
-% endfig;
-
-
-
-
-% beginfig(15);  % antipodal points are one point in projective plane
-%   numeric u;  %scaling factor
-%   numeric v;  %vertical scaling factor
-%   numeric w;  %horizontal scaling factor
-
-%   u:=8pt; v:=u; w:=v;  % was 10pt
-
-%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
-%   save sphere, equator; path sphere, equator;
-%     sphere = fullcircle scaled (2*sphere_rad);
-%     equator = sphere yscaled .4;
-%   pickup pencircle scaled line_width_light;
-%   draw equator withcolor shading_color;
-%   draw sphere;
-
-%   save proj_line; path proj_line;
-%     proj_line = sphere yscaled .3 rotated 35;
-%     %draw proj_line;
-
-%   save line_with_antipodals; path line_with_antipodals;
-%     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
-%   z1 = line_with_antipodals intersectionpoint proj_line;
-%   z2 = -z1;
-%   draw z1--z2 dashed evenly scaled .75;
-%   drawpoint(z1); drawpoint(z2);
-% endfig;
-
-
 
 beginfig(15);  % antipodal points are one point in projective plane
   numeric u;  %scaling factor
@@ -1322,35 +1220,6 @@ beginfig(15);  % antipodal points are one point in projective plane
   drawpoint(z1); drawpoint(z2);
 endfig;
 
-
-
-
-% beginfig(16);  % projective line with antipodal points in projective plane
-%   numeric u;  %scaling factor
-%   numeric v;  %vertical scaling factor
-%   numeric w;  %horizontal scaling factor
-
-%   u:=8pt; v:=u; w:=v; % was 10pt
-
-%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
-%   save sphere, equator; path sphere, equator;
-%     sphere = fullcircle scaled (2*sphere_rad);
-%     equator = sphere yscaled .4;
-%   pickup pencircle scaled line_width_light;
-%   %draw equator withcolor shading_color;
-%   draw sphere;
-
-%   save proj_line; path proj_line;
-%     proj_line = sphere yscaled .3 rotated 35;
-%     draw proj_line;
-
-%   save line_with_antipodals; path line_with_antipodals;
-%     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
-%   z1 = line_with_antipodals intersectionpoint proj_line;
-%   z2 = -z1;
-%   draw z1--z2 dashed evenly scaled .75;
-%   drawpoint(z1); drawpoint(z2);
-% endfig;
 
 
 beginfig(16);  % projective line with antipodal points in projective plane
@@ -1390,34 +1259,6 @@ beginfig(16);  % projective line with antipodal points in projective plane
 endfig;
 
 
-
-
-
-
-% beginfig(17);  % two projective lines with intersect point in projective plane
-%   numeric u;  %scaling factor
-%   numeric v;  %vertical scaling factor
-%   numeric w;  %horizontal scaling factor
-
-%   u:=8pt; v:=u; w:=v; % was 10pt
-
-%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
-%   save sphere, equator; path sphere, equator;
-%     sphere = fullcircle scaled (2*sphere_rad);
-%     equator = sphere yscaled .4;
-%   pickup pencircle scaled line_width_light;
-%   draw equator;
-%   draw sphere;
-
-%   save proj_line; path proj_line;
-%     proj_line = sphere yscaled .3 rotated 35;
-%     draw proj_line;
-
-%   z1 = proj_line intersectionpoint equator;
-%   z2 = -z1;
-%   draw z1--z2 dashed evenly scaled .75;
-%   drawpoint(z1); drawpoint(z2);
-% endfig;
 
 
 beginfig(17);  % two projective lines with intersect point in projective plane
@@ -1463,56 +1304,6 @@ endfig;
 
 
 
-
-
-
-
-
-% beginfig(18);  % correspondence: projective plane <--> z=1
-%   numeric u;  %scaling factor
-%   numeric v;  %vertical scaling factor
-%   numeric w;  %horizontal scaling factor
-
-%   u:=8pt; v:=u; w:=v; % was 10pt
-
-%   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
-%   save sphere, equator; path sphere, equator;
-%     sphere = fullcircle scaled (2*sphere_rad);
-%     equator = sphere yscaled .4;
-%   pickup pencircle scaled line_width_light;
-%   draw equator withcolor shading_color;
-%   draw sphere;
-
-%   save proj_line; path proj_line;
-%     proj_line = sphere yscaled .3 rotated 35;
-%     %draw proj_line;
-
-%   save line_with_antipodals; path line_with_antipodals;
-%     line_with_antipodals = ((0w,0v)--(sphere_rad,0v)) rotated 45;
-%   z1 = line_with_antipodals intersectionpoint proj_line;
-%   z2 = -z1;
-%   draw z1--z2 dashed evenly scaled .75;
-%   drawpoint(z1); drawpoint(z2);
-
-%   % plane
-%   y10=y11=3v; y12=y13=sphere_rad+1.5*(sphere_rad-y10); %corners of plane
-%   x10=-10w; x11=9w; x12=10w; x13=-9w;
-%   save plane; path plane; plane = z10--z11--z12--z13--cycle;
-%     % draw plane below
-%   % projection of projective point into z=1 plane
-%   z20  = whatever[z1,z2]; y20 = sphere_rad-.1v;
-%   save proj; path proj; proj = (.9[z20,z1])--(.9[z1,z20]);
-%   pickup pencircle scaled line_width_dark; 
-%     drawarrowsimple proj withcolor white;
-%     pickup pencircle scaled line_width_light; 
-%     drawarrowsimple proj;
-%   drawpoint(z20);
-%   % now draw plane, layered over projection arrow
-%   pickup pencircle scaled line_width_dark;
-%     draw plane withcolor white;
-%   pickup pencircle scaled line_width_light;
-%     draw plane;
-% endfig;
 
 
 beginfig(18);  % correspondence: projective plane <--> z=1
@@ -1945,11 +1736,19 @@ beginfig(24);  % a walk around the projective plane
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, meridian, proj_line; path sphere, meridian, proj_line;
-    sphere = fullcircle scaled (2*sphere_rad);
+  save meridian_front, meridian_back; path meridian_front, meridian_back;
+  transform sphere_transform;
+  sphere_transform = identity  scaled (2*sphere_rad);
+    sphere = fullcircle transformed sphere_transform; 
+    % sphere = fullcircle scaled (2*sphere_rad);
     meridian = sphere xscaled .4; % fig is intersection of two ellipses
+    meridian_front = halfcircle rotatedabout( (0,0), -90 ) transformed sphere_transform xscaled 0.4;
+    meridian_back = halfcircle rotatedabout( (0,0), 90 ) transformed sphere_transform xscaled 0.4;
     proj_line = sphere yscaled .3;
   pickup pencircle scaled line_width_light;
-  draw meridian withcolor shading_color;
+  % draw meridian withcolor shading_color;
+  draw meridian_front withcolor shading_color;
+  draw meridian_back dashed evenly withcolor shading_color;
   draw sphere;
   % z1/z2 is the projective point, the antipodal spots
   z1 = proj_line intersectionpoint meridian;
@@ -1967,22 +1766,23 @@ beginfig(24);  % a walk around the projective plane
     t13 = ypart((halfcircle rotated 90  scaled 2hand_rad shifted z2) intersectiontimes proj_line);
   %
   pickup pencircle scaled line_width_light;
-  draw z1--z2 dashed evenly scaled .75;
+  % draw z1--z2 dashed evenly scaled .75;
+  draw z1--z2 dashed withdots scaled .40;
+  label.urt(btex {\tiny $Q_0$} etex, point t0 of meridian);
+  label.llft(btex {\tiny $Q_1$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
     drawarrow subpath (t0,t2) of meridian;
     drawarrow subpath (t1,t3) of proj_line;
     % pickup pencircle scaled line_width_light;
-    drawarrow subpath (t10,t12) of meridian withcolor blue;
-    drawarrow subpath (t11,t13) of proj_line withcolor blue;
+    drawarrow subpath (t10,t12) of meridian withcolor black;
+    drawarrow subpath (t11,t13) of proj_line withcolor black;
   endgroup;
   %
   pickup pencircle scaled line_width_light;
   drawpoint(z1); drawpoint(z2);
 endfig;
-
-
 
 
 
@@ -1996,11 +1796,19 @@ beginfig(25);  % a walk around the projective plane
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, meridian, proj_line; path sphere, meridian, proj_line;
-    sphere = fullcircle scaled (2*sphere_rad);
+  save meridian_front, meridian_back; path meridian_front, meridian_back;
+  transform sphere_transform;
+  sphere_transform = identity  scaled (2*sphere_rad);
+    sphere = fullcircle transformed sphere_transform; 
+    % sphere = fullcircle scaled (2*sphere_rad);
     meridian = sphere xscaled .4; % fig is intersection of two ellipses
+    meridian_front = halfcircle rotatedabout( (0,0), -90 ) transformed sphere_transform xscaled 0.4;
+    meridian_back = halfcircle rotatedabout( (0,0), 90 ) transformed sphere_transform xscaled 0.4;
     proj_line = sphere yscaled .7;
   pickup pencircle scaled line_width_light;
-  draw meridian withcolor shading_color;
+  % draw meridian withcolor shading_color;
+  draw meridian_front withcolor shading_color;
+  draw meridian_back dashed evenly withcolor shading_color;
   draw sphere;
   % z1/z2 is the projective point, the antipodal spots
   z1 = proj_line intersectionpoint meridian;
@@ -2018,15 +1826,18 @@ beginfig(25);  % a walk around the projective plane
     t13 = ypart((halfcircle rotated 90  scaled 2hand_rad shifted z2) intersectiontimes proj_line);
   %
   pickup pencircle scaled line_width_light;
-  draw z1--z2 dashed evenly scaled .75;
+  % draw z1--z2 dashed evenly scaled .75;
+  draw z1--z2 dashed withdots scaled .40;
+  label.lft(btex {\tiny $Q_0$} etex, point t0 of meridian);
+  label.rt(btex {\tiny $Q_1$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
     drawarrow subpath (t0,t2) of meridian;
     drawarrow subpath (t1,t3) of proj_line;
     % pickup pencircle scaled line_width_light;
-    drawarrow subpath (t10,t12) of meridian withcolor blue;
-    drawarrow subpath (t11,t13) of proj_line withcolor blue;
+    drawarrow subpath (t10,t12) of meridian withcolor black;
+    drawarrow subpath (t11,t13) of proj_line withcolor black;
   endgroup;
   %
   pickup pencircle scaled line_width_light;
@@ -2046,11 +1857,19 @@ beginfig(26);  % a walk around the projective plane; back fig thru south pole
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, meridian, proj_line; path sphere, meridian, proj_line;
-    sphere = fullcircle scaled (2*sphere_rad);
+  save meridian_front, meridian_back; path meridian_front, meridian_back;
+  transform sphere_transform;
+  sphere_transform = identity  scaled (2*sphere_rad);
+    sphere = fullcircle transformed sphere_transform; 
+    % sphere = fullcircle scaled (2*sphere_rad);
     meridian = sphere rotated 90 xscaled .4; % intersection of two ellipses
+    meridian_front = halfcircle rotatedabout( (0,0), -90 ) transformed sphere_transform xscaled 0.4;
+    meridian_back = halfcircle rotatedabout( (0,0), 90 ) transformed sphere_transform xscaled 0.4;
     proj_line = sphere rotated 90 yscaled .7;
   pickup pencircle scaled line_width_light;
-  draw meridian withcolor shading_color;
+  % draw meridian withcolor shading_color;
+  draw meridian_front withcolor shading_color;
+  draw meridian_back dashed evenly withcolor shading_color;
   draw sphere;
   % z1/z2 is the projective point, the antipodal spots
   z1 = proj_line intersectionpoint meridian;
@@ -2068,21 +1887,23 @@ beginfig(26);  % a walk around the projective plane; back fig thru south pole
     t13 = ypart((halfcircle rotated 90  scaled 2hand_rad shifted z2) intersectiontimes proj_line);
   %
   pickup pencircle scaled line_width_light;
-  draw z1--z2 dashed evenly scaled .75;
+  % draw z1--z2 dashed evenly scaled .75;
+  draw z1--z2 dashed withdots scaled .40;
+  label.llft(btex {\tiny $Q_0$} etex, point t0 of meridian);
+  label.urt(btex {\tiny $Q_1$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
     drawarrow subpath (t0,t2) of meridian;
     drawarrow subpath (t1,t3) of proj_line;
     % pickup pencircle scaled line_width_light;
-    drawarrow subpath (t10,t12) of meridian withcolor blue;
-    drawarrow subpath (t11,t13) of proj_line withcolor blue;
+    drawarrow subpath (t10,t12) of meridian withcolor black;
+    drawarrow subpath (t11,t13) of proj_line withcolor black;
   endgroup;
   %
   pickup pencircle scaled line_width_light;
   drawpoint(z1); drawpoint(z2);
 endfig;
-
 
 
 
@@ -2096,11 +1917,19 @@ beginfig(27);  % a walk around the projective plane; back fig near equator
 
   save sphere_rad; numeric sphere_rad; sphere_rad = 4u;
   save sphere, meridian, proj_line; path sphere, meridian, proj_line;
-    sphere = fullcircle scaled (2*sphere_rad);
+  save meridian_front, meridian_back; path meridian_front, meridian_back;
+  transform sphere_transform;
+  sphere_transform = identity  scaled (2*sphere_rad);
+    sphere = fullcircle transformed sphere_transform; 
+    % sphere = fullcircle scaled (2*sphere_rad);
     meridian = sphere rotated 90 xscaled .4; % intersection of two ellipses
+    meridian_front = halfcircle rotatedabout( (0,0), -90 ) transformed sphere_transform xscaled 0.4;
+    meridian_back = halfcircle rotatedabout( (0,0), 90 ) transformed sphere_transform xscaled 0.4;
     proj_line = sphere rotated 90 yscaled .1;
   pickup pencircle scaled line_width_light;
-  draw meridian withcolor shading_color;
+  % draw meridian withcolor shading_color;
+  draw meridian_front withcolor shading_color;
+  draw meridian_back dashed evenly withcolor shading_color;
   draw sphere;
   % z1/z2 is the projective point, the antipodal spots
   z1 = proj_line intersectionpoint meridian;
@@ -2118,20 +1947,25 @@ beginfig(27);  % a walk around the projective plane; back fig near equator
     t13 = ypart((halfcircle rotated 90  scaled 2hand_rad shifted z2) intersectiontimes proj_line);
   %
   pickup pencircle scaled line_width_light;
-  draw z1--z2 dashed evenly scaled .75;
+  % draw z1--z2 dashed evenly scaled .75;
+  draw z1--z2 dashed withdots scaled .40;
+  label.lft(btex {\tiny $Q_0$} etex, point t0 of meridian);
+  label.rt(btex {\tiny $Q_1$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
     drawarrow subpath (t0,t2) of meridian;
     drawarrow subpath (t1,t3) of proj_line;
     % pickup pencircle scaled line_width_light;
-    drawarrow subpath (t10,t12) of meridian withcolor blue;
-    drawarrow subpath (t11,t13) of proj_line withcolor blue;
+    drawarrow subpath (t10,t12) of meridian withcolor black;
+    drawarrow subpath (t11,t13) of proj_line withcolor black;
   endgroup;
   %
   pickup pencircle scaled line_width_light;
   drawpoint(z1); drawpoint(z2);
 endfig;
+
+
 
 
 % =============== TOPIC: speed of determinants =========
