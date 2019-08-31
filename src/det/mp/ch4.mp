@@ -1169,9 +1169,12 @@ beginfig(14) % projective plane like a dome
   label.rt(btex \makebox[0em][l]{\small
            $\ell=\set{k\cdot\colvec{1 \\ 2 \\ 3} \suchthat k\in\Re}$} etex,z1 shifted (7,-2));
 
-  dotlabel.lft(btex {\tiny $Q_1$} etex, 0.6[z1,z93]);
-  dotlabel.lft(btex {\tiny $Q_2$} etex, 0.05[z1,z93]);
-  dotlabel.lft(btex {\tiny $Q_3$} etex, 1.2[z1,z93]);
+  drawpoint(0.6[z1,z93]);
+  label.lft(btex {\tiny $Q_1$} etex, 0.6[z1,z93]);
+  drawpoint(0.05[z1,z93]);
+  label.lft(btex {\tiny $Q_2$} etex, 0.05[z1,z93]);
+  drawpoint(1.2[z1,z93]);
+  label.lft(btex {\tiny $Q_3$} etex, 1.2[z1,z93]);
   
   % stick figure
   save person_hgt; numeric person_hgt; person_hgt = .5u;
@@ -1768,8 +1771,8 @@ beginfig(24);  % a walk around the projective plane
   pickup pencircle scaled line_width_light;
   % draw z1--z2 dashed evenly scaled .75;
   draw z1--z2 dashed withdots scaled .40;
-  label.urt(btex {\tiny $Q_0$} etex, point t0 of meridian);
-  label.llft(btex {\tiny $Q_1$} etex, point t10 of meridian);
+  label.urt(btex {\tiny $Q_1$} etex, point t0 of meridian);
+  label.llft(btex {\tiny $Q_2$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
@@ -1828,8 +1831,8 @@ beginfig(25);  % a walk around the projective plane
   pickup pencircle scaled line_width_light;
   % draw z1--z2 dashed evenly scaled .75;
   draw z1--z2 dashed withdots scaled .40;
-  label.lft(btex {\tiny $Q_0$} etex, point t0 of meridian);
-  label.rt(btex {\tiny $Q_1$} etex, point t10 of meridian);
+  label.lft(btex {\tiny $Q_1$} etex, point t0 of meridian);
+  label.rt(btex {\tiny $Q_2$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
@@ -1889,8 +1892,8 @@ beginfig(26);  % a walk around the projective plane; back fig thru south pole
   pickup pencircle scaled line_width_light;
   % draw z1--z2 dashed evenly scaled .75;
   draw z1--z2 dashed withdots scaled .40;
-  label.llft(btex {\tiny $Q_0$} etex, point t0 of meridian);
-  label.urt(btex {\tiny $Q_1$} etex, point t10 of meridian);
+  label.llft(btex {\tiny $Q_1$} etex, point t0 of meridian);
+  label.urt(btex {\tiny $Q_2$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
@@ -1949,8 +1952,8 @@ beginfig(27);  % a walk around the projective plane; back fig near equator
   pickup pencircle scaled line_width_light;
   % draw z1--z2 dashed evenly scaled .75;
   draw z1--z2 dashed withdots scaled .40;
-  label.lft(btex {\tiny $Q_0$} etex, point t0 of meridian);
-  label.rt(btex {\tiny $Q_1$} etex, point t10 of meridian);
+  label.lft(btex {\tiny $Q_1$} etex, point t0 of meridian);
+  label.rt(btex {\tiny $Q_2$} etex, point t10 of meridian);
   begingroup
     interim ahlength := 1.5pt;
     pickup pencircle scaled line_width_dark;
