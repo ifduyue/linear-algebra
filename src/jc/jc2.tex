@@ -59,9 +59,9 @@ The top is first.
 The effect of the transformation on the starting basis~$B$
 \begin{equation*}
   x^2\mapsunder{d/dx} 2x
-  \quad
+  \qquad
   x\mapsunder{d/dx} 1
-  \quad
+  \qquad
   1\mapsunder{d/dx} 0
 \end{equation*}
 represented with respect to the ending basis (also~$B$)
@@ -84,28 +84,7 @@ of the map.
   \end{mat}
 \end{equation*}
 
-Next, the bottom.
-The effect of the transformation on elements of~$D$
-\begin{equation*}
-  1\mapsunder{d/dx} 0
-  \qquad
-  1+x\mapsunder{d/dx} 1
-  \qquad
-  1+x^2\mapsunder{d/dx} 2x
-\end{equation*}
-represented with respect to~$D$
-gives the matrix~$\hat{T}$.
-\begin{equation*}
-  \hat{T}=
-  \rep{d/dx}{D,D}=
-  \begin{mat}
-    0 &1 &-2 \\
-    0 &0 &2 \\
-    0 &0 &0
-  \end{mat}
-\end{equation*}
-
-Third, computing the matrix for the right-hand side involves
+Next, computing the matrix for the right-hand side involves
 finding the effect of the identity map on the elements of~$B$.
 Of course, the identity map does not transform them at all so
 to find the matrix we represent $B$'s elements with respect 
@@ -169,6 +148,53 @@ going down on the right.
      0 &0  &1 &1 &1 &1
   \end{pmat}
 \end{equation*}
+
+That leaves the bottom.
+We have two ways to compute the matrix~$\hat{T}$.
+One way is to compute it directly.
+We find the effect of the transformation on elements of~$D$
+\begin{equation*}
+  1\mapsunder{d/dx} 0
+  \qquad
+  1+x\mapsunder{d/dx} 1
+  \qquad
+  1+x^2\mapsunder{d/dx} 2x
+\end{equation*}
+represented with respect to~$D$.
+\begin{equation*}
+  \hat{T}=
+  \rep{d/dx}{D,D}=
+  \begin{mat}
+    0 &1 &-2 \\
+    0 &0 &2 \\
+    0 &0 &0
+  \end{mat}
+\end{equation*}
+The other way to compute~$\hat{T}$ is to follow the diagram 
+up, over and down.
+\begin{align*}
+  \rep{d/dx}{D,D}
+  &=\rep{\identity}{B,D}\rep{d/dx}{B,B}\rep{\identity}{D,B}  \\
+  \hat{T}
+  &=\rep{\identity}{B,D}T\rep{\identity}{D,B}   \\
+  &=  
+  \begin{mat}
+    -1 &-1  &1 \\
+     0 &1   &0 \\
+     1 &0   &0   
+  \end{mat}
+  \begin{mat}
+    0 &0 &0 \\
+    2 &0 &0 \\
+    0 &1 &0
+  \end{mat}
+  \begin{mat}
+    0 &0 &1 \\
+    0 &1 &0 \\ 
+    1 &1 &1
+  \end{mat}
+\end{align*}
+The check that this gives the same matrix~$\hat{T}$ is easy.
 \end{example}
 
 \begin{definition} \label{df:Similar}
