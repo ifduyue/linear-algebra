@@ -13,10 +13,10 @@ be represented by a partial identity matrix with respect to some
 bases $B\subset V$ and $D\subset W$.
 That is, the partial identity form is a canonical form for 
 matrix equivalence. 
-This chapter considers transformations, where
+This chapter considers transformations where
 the codomain equals the domain, so 
 we naturally ask what is possible when the
-two bases are equal $\rep{t}{B,B}$.
+two bases are equal, when we have $\rep{t}{B,B}$.
 In short, we want a canonical form for matrix similarity.
 
 We noted that in the $B,B$ case
@@ -249,7 +249,7 @@ are equal matrices.
 We use induction on the degree of the polynomial.
 The cases where the polynomial is of
 degree~zero and degree~one are clear.
-The full induction argument is \nearbyexercise{le:PolyMapsFactor}
+The full induction argument is \nearbyexercise{exer:PolyMapsFactor}
 but we will give its sense with the degree~two case.
 
 A quadratic polynomial factors into two
@@ -2276,37 +2276,38 @@ is the trivial space
 the only transformation that is without any eigenvalues is 
 the transformation on the trivial space).
 
-The second claim is that 
-\( \gennullspace{t-\lambda_i} \subseteq \genrangespace{t-\lambda_j} \),
-where \( i\neq j \).
+The second claim is that  when \( i\neq j \) then
+\( \gennullspace{t-\lambda_i} \subseteq \genrangespace{t-\lambda_j} \).
 To verify it we will show that \( t-\lambda_j \) is one-to-one on
-\( \gennullspace{t-\lambda_i} \) so that, 
+\( \gennullspace{t-\lambda_i} \).
+This will imply, 
 since \( \gennullspace{t-\lambda_i} \) is \( t-\lambda_j \) invariant
 by \nearbylemma{le:tInvIfftMinLambdaInv},
-the map \( t-\lambda_j \) is an automorphism of the subspace
-\( \gennullspace{t-\lambda_i} \)
+that the map \( t-\lambda_j \) is an automorphism of the subspace
+\( \gennullspace{t-\lambda_i} \),
 and therefore that 
 \( \gennullspace{t-\lambda_i} \)  is a subset of each
 \( \rangespace{t-\lambda_j} \), \( \rangespace{(t-\lambda_j)^2} \), etc.
-For the verification that the map is one-to-one
+To verify that the map is one-to-one,
 suppose that \( \vec{v}\in\gennullspace{t-\lambda_i} \) is in the 
 null space of \( t-\lambda_j \), aiming to show that \( \vec{v}=\zero \).
 Consider the map 
 \( [(t-\lambda_i)-(t-\lambda_j)]^n \).
 On the one hand, the only
 vector that \( (t-\lambda_i)-(t-\lambda_j)=\lambda_i-\lambda_j \) maps to 
-zero is the zero vector.
+zero is the zero vector itself.
 On the other hand, as in the proof of 
-\nearbylemma{le:PolyMapsFactor} we can 
-apply the binomial expansion to get this.
+\nearbylemma{le:PolyMapsFactor}
+the binomial expansion gives this.
 \begin{equation*}
   (t-\lambda_i)^n(\vec{v})
     +\binom{n}{1}(t-\lambda_i)^{n-1}(t-\lambda_j)^1(\vec{v})
     +\binom{n}{2}(t-\lambda_i)^{n-2}(t-\lambda_j)^2(\vec{v})
     +\cdots 
 \end{equation*}
-The first term is zero because \( \vec{v}\in\gennullspace{t-\lambda_i} \)
-while the remaining terms are zero because
+The first term is the zero vector 
+because \( \vec{v}\in\gennullspace{t-\lambda_i} \).
+The remaining terms are the zero vector because
 \( \vec{v} \) is in the null space of \( t-\lambda_j \).
 Therefore \( \vec{v}=\zero \). 
 
@@ -2326,7 +2327,7 @@ Thus \( V=\gennullspace{t-\lambda_1}\directsum\gennullspace{t-\lambda_2}
        (\genrangespace{t-\lambda_1}\intersection\genrangespace{t-\lambda_2}) \).
 Continuing in this way we get this.
 \begin{equation*}
-  V=\gennullspace{t-\lambda_1}\directsum\cdots\directsum\genrangespace{t-\lambda_k}
+  V=\gennullspace{t-\lambda_1}\directsum\cdots\directsum\gennullspace{t-\lambda_k}
           \directsum 
        (\genrangespace{t-\lambda_1}\intersection\cdots\intersection\genrangespace{t-\lambda_k})
 \end{equation*}
@@ -2431,7 +2432,7 @@ Every square matrix is similar to the sum of a diagonal matrix and a nilpotent
 matrix.
 \end{corollary}
 
-For Jordan form a canonical form for 
+For Jordan form to be a canonical form for 
 matrix similarity,\index{representative!of similarity classes}
 strictly speaking it must be unique.
 That is, for any square matrix there needs to be one and only one matrix $J$

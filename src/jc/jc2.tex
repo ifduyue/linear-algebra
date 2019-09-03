@@ -149,10 +149,10 @@ going down on the right.
   \end{pmat}
 \end{equation*}
 
-That leaves the bottom.
-We have two ways to compute the matrix~$\hat{T}$.
-One way is to compute it directly.
-We find the effect of the transformation on elements of~$D$
+That leaves the bottom  of the square.
+There are two ways to compute the matrix~$\hat{T}$.
+One is to compute it directly by
+finding the effect of the transformation on elements of~$D$
 \begin{equation*}
   1\mapsunder{d/dx} 0
   \qquad
@@ -170,13 +170,13 @@ represented with respect to~$D$.
     0 &0 &0
   \end{mat}
 \end{equation*}
-The other way to compute~$\hat{T}$ is to follow the diagram 
-up, over and down.
+The other way to compute~$\hat{T}$, and this is the way we will usually do it,
+is to follow the diagram up, over, and then down.
 \begin{align*}
   \rep{d/dx}{D,D}
-  &=\rep{\identity}{B,D}\rep{d/dx}{B,B}\rep{\identity}{D,B}  \\
+  &=\rep{\identity}{B,D}\,\rep{d/dx}{B,B}\,\rep{\identity}{D,B}  \\
   \hat{T}
-  &=\rep{\identity}{B,D}T\rep{\identity}{D,B}   \\
+  &=\rep{\identity}{B,D}\,T\,\rep{\identity}{D,B}   \\
   &=  
   \begin{mat}
     -1 &-1  &1 \\
@@ -194,7 +194,7 @@ up, over and down.
     1 &1 &1
   \end{mat}
 \end{align*}
-The check that this gives the same matrix~$\hat{T}$ is easy.
+Multiplying out gives the same matrix~$\hat{T}$ as we found above.
 \end{example}
 
 \begin{definition} \label{df:Similar}
@@ -2703,9 +2703,9 @@ has an eigenvalue of \( 1 \) associated with any eigenvector
 \end{equation*}
 where \( x \) and \( y \) are scalars that are not both zero.
 
-In contrast, a number that is not an eigenvalue of of this map is \( 2 \),
+In contrast, a number that is not an eigenvalue of this map is \( 2 \),
 since assuming that $\pi$ doubles a vector leads to 
-the equations $x=2x$, $y=2y$, and $0=2z$, and thus 
+the three equations $x=2x$, $y=2y$, and $0=2z$, and thus 
 no non-$\zero$ vector is doubled.
 \end{example}
 
@@ -2739,7 +2739,7 @@ Application of
 \( t \) to a vector in that range will simply rescale the vector
 \( c+cx\mapsto (2c)+(2c)x \).
 That is, \( t \) has an eigenvalue of \( 2 \) associated with eigenvectors of
-the form \( c+cx \) where \( c\neq 0 \).
+the form \( c+cx \), where \( c\neq 0 \).
 
 This map also has an eigenvalue of \( 0 \) associated with eigenvectors of
 the form \( c-cx \) where \( c\neq 0 \).
