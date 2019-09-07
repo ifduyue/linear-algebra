@@ -248,6 +248,17 @@ The identity matrix has the same property:~$PIP^{-1}=PP^{-1}=I$.
 %</ex:OnlyZeroSimToZero>
 \end{example}
 
+A common special case is where the vector space is $\C^n$ and the
+matrix~$T$ represents a map with respect to the standard bases.
+\begin{equation*}
+  \begin{CD}
+    \C^n_{\wrt{E_n}}                   @>t>T>        \C^n_{\wrt{E_n}}       \\
+    @V{\scriptstyle\identity} VV              @V{\scriptstyle\identity} VV \\
+    \C^n_{\wrt{D}}                   @>t>\hat{T}>        \C^n_{\wrt{D}}
+  \end{CD}
+\end{equation*}
+In this case in the similarity equation 
+$\hat{T}=PTP^{-1}$, the columns of~$P$ are the elements of~$D$. 
 
 Matrix similarity is a special case of matrix equivalence so 
 if two matrices are similar then they are matrix equivalent.
@@ -1233,13 +1244,16 @@ Some matrix equivalence classes break into two or more similarity
 classes; for instance, the nonsingular $\nbyn{2}$ matrices
 form one matrix equivalence class but more than one similarity class.
 
-Thus we cannot use the canonical form for matrix equivalence, 
+The diagram below illustrates.
+Solid curves show the matrix equivalence classes 
+while dashed curves are the similarity classes.
+Each star is a matrix representing its similarity class.
+%  so each
+% similarity class has one. 
+We cannot use the canonical form for matrix equivalence, 
 a block partial-identity matrix, as a canonical form 
-for matrix similarity. 
-The diagram below illustrates. 
-The stars are similarity class representatives.
-Each dashed-line similarity class subdivision has one star 
-but each solid-curve matrix equivalence class division has only one 
+for similarity 
+because each matrix equivalence class has only one 
 partial identity matrix.
 \begin{center}
   \includegraphics{jc/mp/ch5.5}
@@ -1247,12 +1261,12 @@ partial identity matrix.
 To develop a canonical form for representatives of
 the similarity classes
 we naturally build on previous work.
-This means 
-first that the partial identity matrices should represent the similarity
-classes into which they fall. 
-Beyond that, the representatives should be as simple as possible.
+So, if a similarity class does contain a partial identity matrix
+then it should represent that class. 
+Beyond that, representatives should be as simple as possible.
 %(the partial identities are simple in that they consist mostly of zeros). 
-The simplest extension of the partial identity form is the diagonal form.
+
+The simplest extension of the partial identity form is diagonal form.
 
 \begin{definition} \label{df:Diagonalizable}
 %<*df:Diagonalizable>
@@ -1296,45 +1310,7 @@ is diagonalizable.
 \end{equation*}
 \end{example}
 
-\begin{example}
-%<*ex:NotDiagonalizable>
-We will show that this matrix is not diagonalizable.
-\begin{equation*}
-  N=\begin{mat}[r]
-       0  &0  \\
-       1  &0
-    \end{mat}
-\end{equation*}
-The fact that $N$ is not the zero matrix means that it cannot be similar to
-the zero matrix, because the zero matrix is similar only to itself.
-Thus if $N$ were to be similar to a diagonal matrix then that 
-matrix would have have at least one nonzero entry on its diagonal.
-
-The square of $N$ is the zero matrix.
-This implies that for any map~$n$ represented by \( N \) 
-(with respect to some $B,B$) 
-the composition \( \composed{n}{n} \) is the zero map.
-This in turn implies that
-for any matrix representing~$n$ 
-(with respect to some $\hat{B},\hat{B}$), its square is the zero matrix.
-But the square of a nonzero diagonal matrix 
-cannot be the zero matrix, because the square of a diagonal
-matrix is the diagonal matrix whose entries are the squares of the entries 
-from the starting matrix. 
-Thus there is no $\hat{B},\hat{B}$ such that $n$ is represented by 
-a diagonal matrix\Dash 
-the matrix $N$ is not diagonalizable.
-%</ex:NotDiagonalizable>
-\end{example}
-
-That example shows that a diagonal form will not suffice as a 
-canonical form for similarity\Dash we cannot
-find a diagonal matrix in each matrix similarity class.
-However, some similarity classes contain a diagonal matrix and 
-the canonical form that we are developing has the property that if
-a matrix can be diagonalized then the diagonal matrix is the canonical
-representative of its similarity class. 
-% We now characterize which maps can be diagonalized.
+We next see how to find the matrix~$P$.
 
 \begin{lemma} \label{lm:DiagIffBasisOfEigens}
 %<*lm:DiagIffBasisOfEigens>
@@ -1516,6 +1492,49 @@ more closely the property of \nearbylemma{lm:DiagIffBasisOfEigens}.
 This includes seeing a 
 streamlined way to find the $\lambda$'s.
 
+We end with a caution that not every matrix is similar to a diagonal matrix,
+so diagonal form will not suffice as a 
+canonical form for similarity.
+
+\begin{example}  \label{ex:MatrixNotDiagonalizable}
+%<*ex:NotDiagonalizable>
+This matrix is not diagonalizable.
+\begin{equation*}
+  N=\begin{mat}[r]
+       0  &0  \\
+       1  &0
+    \end{mat}
+\end{equation*}
+The fact that $N$ is not the zero matrix means that 
+it cannot be similar to
+the zero matrix, because the zero matrix is similar only to itself.
+Thus if $N$ were to be similar to a diagonal matrix~$D$ then 
+$D$ would have at least one nonzero entry on its diagonal.
+
+The square of $N$ is the zero matrix.
+This implies that for any map~$n$ represented by \( N \) 
+with respect to some $B,B$, 
+the composition \( \composed{n}{n} \) is the zero map.
+This in turn implies that
+any matrix representing~$n$ 
+with respect to some $\hat{B},\hat{B}$ has a square that is the zero matrix.
+But the square of a nonzero diagonal matrix~$D$ 
+cannot be the zero matrix, because the entries of~$D^2$ 
+are the squares of the entries of~$D$. 
+Thus $N$ is not diagonalizable.
+%</ex:NotDiagonalizable>
+\end{example}
+
+So not every similarity class contains a diagonal matrix.
+% However, some similarity classes do contain a diagonal matrix and 
+% the canonical form that we are developing has the property that if
+% a matrix can be diagonalized then the diagonal matrix is the canonical
+% representative of its similarity class. 
+The rest of this section studies maps and matrices that can be diagonalized.
+The section after that expands on the prior example, to understand
+whan can prevent diagonalization.
+The final section puts these two together, to produce a canonical form that
+is in some sense as simple as possible.
 
 \begin{exercises}
   \recommended \item 
@@ -1676,395 +1695,6 @@ streamlined way to find the $\lambda$'s.
          \end{mat}
       \end{equation*}
     \end{answer}
-  \item 
-    Diagonalize these upper triangular matrices.
-    \begin{exparts*}
-      \partsitem 
-        $\begin{mat}[r]
-          -2  &1  \\
-           0  &2
-        \end{mat}$
-      \partsitem 
-        $\begin{mat}[r]
-          5  &4  \\
-          0  &1
-        \end{mat}$
-    \end{exparts*}
-    \begin{answer}
-      \begin{exparts}
-        \partsitem
-          Setting up
-          \begin{equation*}
-            \begin{mat}[r]
-              -2  &1  \\
-               0  &2
-            \end{mat}
-            \colvec{b_1 \\ b_2}
-            =x\cdot\colvec{b_1 \\ b_2}
-            \qquad\Longrightarrow\qquad 
-            \begin{linsys}{2}
-               (-2-x)\cdot b_1  &+  &b_2            &=  &0  \\
-                                &   &(2-x)\cdot b_2 &= &0
-            \end{linsys}
-          \end{equation*}
-          gives the two possibilities that $b_2=0$ and $x=2$.
-          Following the $b_2=0$ possibility leads to the first equation
-          $(-2-x)b_1=0$ with the two cases that $b_1=0$ and that
-          $x=-2$.
-          Thus, under this first possibility, we find $x=-2$ and the 
-          associated vectors whose second component is zero, and whose
-          first component is free.  
-          \begin{equation*}
-            \begin{mat}[r]
-              -2  &1  \\
-               0  &2
-            \end{mat}
-            \colvec{b_1 \\ 0}
-            =-2\cdot\colvec{b_1 \\ 0}
-            \qquad
-            \vec{\beta}_1=\colvec[r]{1 \\ 0}
-          \end{equation*}
-          Following the other possibility leads to a first equation of
-          $-4b_1+b_2=0$ and so the vectors associated with this 
-          solution have a second component that is four times their first
-          component.
-          \begin{equation*}
-            \begin{mat}[r]
-              -2  &1  \\
-               0  &2
-            \end{mat}
-            \colvec{b_1 \\ 4b_1}
-            =2\cdot\colvec{b_1 \\ 4b_1}
-            \qquad
-            \vec{\beta}_2=\colvec{1 \\ 4}
-          \end{equation*}
-          The diagonalization is this.
-          \begin{equation*}
-            \begin{mat}[r]
-              1  &1  \\
-              0  &4
-            \end{mat}
-            \begin{mat}[r]
-              -2  &1  \\
-               0  &2
-            \end{mat}
-            \begin{mat}[r]
-              1  &1  \\
-              0  &4
-            \end{mat}^{-1}
-            =
-            \begin{mat}[r]
-              -2  &0  \\
-               0  &2
-            \end{mat}
-          \end{equation*}
-      \partsitem The calculations are like those in the prior part.
-          \begin{equation*}
-            \begin{mat}[r]
-               5  &4  \\
-               0  &1
-            \end{mat}
-            \colvec{b_1 \\ b_2}
-            =x\cdot\colvec{b_1 \\ b_2}
-            \qquad\Longrightarrow\qquad 
-            \begin{linsys}{2}
-               (5-x)\cdot b_1  &+  &4\cdot b_2     &=  &0  \\
-                               &   &(1-x)\cdot b_2 &=  &0
-            \end{linsys}
-          \end{equation*}
-          The bottom equation
-          gives the two possibilities that $b_2=0$ and $x=1$.
-          Following the $b_2=0$ possibility, and discarding the
-          case where both $b_2$ and $b_1$ are zero, gives
-          that $x=5$, associated with vectors whose second component
-          is zero and whose first component is free.
-          \begin{equation*}
-            \vec{\beta}_1=\colvec[r]{1 \\ 0}
-          \end{equation*}
-          The $x=1$ possibility gives a first equation of
-          $4b_1+4b_2=0$ and so the associated vectors have a 
-          second component that is the negative of their first component.
-          \begin{equation*}
-            \vec{\beta}_1=\colvec[r]{1 \\ -1}
-          \end{equation*}
-          We thus have this diagonalization.
-          \begin{equation*}
-            \begin{mat}[r]
-              1  &1  \\
-              0  &-1
-            \end{mat}
-            \begin{mat}[r]
-               5  &4  \\
-               0  &1
-            \end{mat}
-            \begin{mat}[r]
-              1  &1  \\
-              0  &-1
-            \end{mat}^{-1}
-            =
-            \begin{mat}[r]
-               5  &0  \\
-               0  &1
-            \end{mat}
-          \end{equation*}
-      \end{exparts}
-    \end{answer}
-  \recommended \item \label{exer:PowersOfDiags}
-    What form do the powers of a diagonal matrix have?
-    \begin{answer}
-      For any integer \( p \), we have this.
-      \begin{equation*}
-        \begin{mat}
-          d_1  &0      &   \\
-          0    &\ddots &   \\
-               &       &d_n
-        \end{mat}^p=
-        \begin{mat}
-          d_1^p  &0      &   \\
-          0      &\ddots &   \\
-                 &       &d_n^p
-        \end{mat}
-     \end{equation*} 
-    \end{answer}
-  \item 
-     Give two same-sized diagonal matrices that are not similar.
-     Must any two different diagonal matrices come from different similarity
-     classes?
-     \begin{answer}
-       These two are not similar 
-       \begin{equation*}
-          \begin{mat}[r]
-             0  &0  \\
-             0  &0
-          \end{mat}
-          \qquad
-          \begin{mat}[r]
-             1  &0  \\
-             0  &1
-          \end{mat}
-       \end{equation*}
-       because each is alone in its similarity class.
-
-       For the second half, these
-       \begin{equation*}
-          \begin{mat}[r]
-             2  &0  \\
-             0  &3
-          \end{mat}
-          \qquad
-          \begin{mat}[r]
-             3  &0  \\
-             0  &2
-          \end{mat}
-       \end{equation*}
-       are similar via the matrix that changes bases from
-       \( \sequence{\vec{\beta}_1,\vec{\beta}_2} \) to
-       \( \sequence{\vec{\beta}_2,\vec{\beta}_1} \).
-       (\textit{Question.}
-        Are two diagonal matrices similar if and only if their diagonal
-        entries are permutations of each others?)  
-    \end{answer}
-  \item 
-    Give a nonsingular diagonal matrix.
-    Can a diagonal matrix ever be singular?
-    \begin{answer}
-      Contrast these two.
-      \begin{equation*}
-         \begin{mat}[r]
-           2  &0  \\
-           0  &1
-         \end{mat}
-         \qquad
-         \begin{mat}[r]
-           2  &0  \\
-           0  &0
-         \end{mat}
-      \end{equation*}
-      The first is nonsingular, the second is singular.  
-     \end{answer}
-  \recommended \item
-    Show that the inverse of a diagonal matrix is the diagonal of
-    the inverses, if no element on that diagonal is zero.
-    What happens when a diagonal entry is zero?
-    \begin{answer}  
-       To check that the inverse of a diagonal matrix is the diagonal
-       matrix of the inverses, just multiply.
-       \begin{equation*}
-          \begin{mat}
-             a_{1,1}  &0                \\
-             0        &a_{2,2}          \\
-                      &       &\ddots    \\
-                      &       &      &a_{n,n}
-          \end{mat}
-          \begin{mat}
-            1/a_{1,1}  &0                \\
-             0        &1/a_{2,2}          \\
-                      &       &\ddots    \\
-                      &       &      &1/a_{n,n}
-          \end{mat}
-      \end{equation*}
-      (Showing that it is a left inverse is just as easy.)
-
-      If a diagonal entry is zero then the diagonal matrix is
-      singular; it has a zero determinant.  
-    \end{answer}
-  \item 
-    The equation ending \nearbyexample{ex:DiagUpperTrian}
-    \begin{equation*}
-       \begin{mat}[r]
-         1  &1  \\
-         0  &-1
-       \end{mat}^{-1}
-       \begin{mat}[r]
-         3  &2  \\
-         0  &1
-       \end{mat}
-       \begin{mat}[r]
-         1  &1  \\
-         0  &-1
-       \end{mat}
-       =
-       \begin{mat}[r]
-         3  &0  \\
-         0  &1
-       \end{mat}
-    \end{equation*}
-    is a bit jarring because for $P$ we must take the first matrix,
-    which is shown as an inverse, and for $P^{-1}$ we take the inverse of the
-    first matrix, so that the two $-1$ powers cancel and this matrix is 
-    shown without a superscript $-1$.
-    \begin{exparts}
-      \partsitem Check that this nicer-appearing equation holds.
-        \begin{equation*}
-           \begin{mat}[r]
-             3  &0  \\
-             0  &1
-           \end{mat}
-           =
-           \begin{mat}[r]
-             1  &1  \\
-             0  &-1
-           \end{mat}
-           \begin{mat}[r]
-             3  &2  \\
-             0  &1
-           \end{mat}
-           \begin{mat}[r]
-             1  &1  \\
-             0  &-1
-           \end{mat}^{-1}
-        \end{equation*}
-      \partsitem Is the previous item a coincidence?
-        Or can we always switch the $P$ and the $P^{-1}$?
-   \end{exparts}
-   \begin{answer}
-     \begin{exparts}
-       \partsitem The check is easy.
-         \begin{equation*}
-           \begin{mat}[r]
-             1  &1  \\
-             0  &-1
-           \end{mat}
-           \begin{mat}[r]
-             3  &2  \\
-             0  &1
-           \end{mat}
-           =
-           \begin{mat}[r]
-             3  &3  \\
-             0  &-1
-           \end{mat}
-           \qquad
-           \begin{mat}[r]
-             3  &3  \\
-             0  &-1
-           \end{mat}
-           \begin{mat}[r]
-             1  &1  \\
-             0  &-1
-           \end{mat}^{-1}
-           =
-           \begin{mat}[r]
-             3  &0  \\
-             0  &1
-           \end{mat}
-         \end{equation*}
-        \partsitem It is a coincidence, in the sense that if $T=PSP^{-1}$
-          then $T$ need not equal $P^{-1}SP$.
-          Even in the case of a diagonal matrix~$D$, the condition that
-          $D=PTP^{-1}$ does not imply that $D$ equals $P^{-1}TP$.
-          The matrices from \nearbyexample{ex:DiagTwoByTwo} show this.
-          \begin{equation*}
-            \begin{mat}[r]
-              1  &2  \\
-              1  &1
-            \end{mat}
-            \begin{mat}[r]
-              4  &-2  \\
-              1  &1
-            \end{mat}
-            =
-            \begin{mat}[r]
-              6  &0  \\
-              5  &-1
-            \end{mat}
-            \qquad
-            \begin{mat}[r]
-              6  &0  \\
-              5  &-1
-            \end{mat}
-            \begin{mat}[r]
-              1  &2  \\
-              1  &1
-            \end{mat}^{-1}
-            =
-            \begin{mat}[r]
-              -6  &12  \\
-              -6  &11
-            \end{mat}
-          \end{equation*}
-     \end{exparts}
-   \end{answer}
-  \item 
-    Show that the $P$ used to diagonalize in  
-    \nearbyexample{ex:DiagUpperTrian} is not unique.
-    \begin{answer}
-      The columns of the matrix are the vectors associated with
-      the $x$'s.
-      The exact choice, and the order of the choice was
-      arbitrary.
-      We could, for instance, get a different matrix by swapping 
-      the two columns.
-    \end{answer}
-  \item 
-    Find a formula for the powers of this matrix.
-    \textit{Hint}:~see \nearbyexercise{exer:PowersOfDiags}.
-    \begin{equation*}
-      \begin{mat}[r]
-        -3  &1  \\
-        -4  &2
-      \end{mat}
-    \end{equation*}
-    \begin{answer}
-      Diagonalizing and then taking powers of the diagonal matrix shows that
-      \begin{equation*}
-        \begin{mat}[r]
-          -3  &1  \\
-          -4  &2
-        \end{mat}^k
-        =
-        \frac{1}{3}
-        \begin{mat}[r]
-          -1  &1  \\
-          -4  &4
-        \end{mat}
-        +(\frac{-2}{3})^k
-        \begin{mat}[r]
-           4  &-1 \\
-           4  &-1
-        \end{mat}.
-      \end{equation*}  
-     \end{answer}
   \recommended \item \label{exer:DiagTheseA} 
     Diagonalize this matrix by following the
     steps of \nearbyexample{ex:DiagUpperTrian}. 
@@ -2375,6 +2005,487 @@ streamlined way to find the $\lambda$'s.
           \end{align*}
       \end{exparts}  
     \end{answer}
+  \item 
+    Diagonalize these upper triangular matrices.
+    \begin{exparts*}
+      \partsitem 
+        $\begin{mat}[r]
+          -2  &1  \\
+           0  &2
+        \end{mat}$
+      \partsitem 
+        $\begin{mat}[r]
+          5  &4  \\
+          0  &1
+        \end{mat}$
+    \end{exparts*}
+    \begin{answer}
+      \begin{exparts}
+        \partsitem
+          Setting up
+          \begin{equation*}
+            \begin{mat}[r]
+              -2  &1  \\
+               0  &2
+            \end{mat}
+            \colvec{b_1 \\ b_2}
+            =x\cdot\colvec{b_1 \\ b_2}
+            \qquad\Longrightarrow\qquad 
+            \begin{linsys}{2}
+               (-2-x)\cdot b_1  &+  &b_2            &=  &0  \\
+                                &   &(2-x)\cdot b_2 &= &0
+            \end{linsys}
+          \end{equation*}
+          gives the two possibilities that $b_2=0$ and $x=2$.
+          Following the $b_2=0$ possibility leads to the first equation
+          $(-2-x)b_1=0$ with the two cases that $b_1=0$ and that
+          $x=-2$.
+          Thus, under this first possibility, we find $x=-2$ and the 
+          associated vectors whose second component is zero, and whose
+          first component is free.  
+          \begin{equation*}
+            \begin{mat}[r]
+              -2  &1  \\
+               0  &2
+            \end{mat}
+            \colvec{b_1 \\ 0}
+            =-2\cdot\colvec{b_1 \\ 0}
+            \qquad
+            \vec{\beta}_1=\colvec[r]{1 \\ 0}
+          \end{equation*}
+          Following the other possibility leads to a first equation of
+          $-4b_1+b_2=0$ and so the vectors associated with this 
+          solution have a second component that is four times their first
+          component.
+          \begin{equation*}
+            \begin{mat}[r]
+              -2  &1  \\
+               0  &2
+            \end{mat}
+            \colvec{b_1 \\ 4b_1}
+            =2\cdot\colvec{b_1 \\ 4b_1}
+            \qquad
+            \vec{\beta}_2=\colvec{1 \\ 4}
+          \end{equation*}
+          The diagonalization is this.
+          \begin{equation*}
+            \begin{mat}[r]
+              1  &1  \\
+              0  &4
+            \end{mat}
+            \begin{mat}[r]
+              -2  &1  \\
+               0  &2
+            \end{mat}
+            \begin{mat}[r]
+              1  &1  \\
+              0  &4
+            \end{mat}^{-1}
+            =
+            \begin{mat}[r]
+              -2  &0  \\
+               0  &2
+            \end{mat}
+          \end{equation*}
+      \partsitem The calculations are like those in the prior part.
+          \begin{equation*}
+            \begin{mat}[r]
+               5  &4  \\
+               0  &1
+            \end{mat}
+            \colvec{b_1 \\ b_2}
+            =x\cdot\colvec{b_1 \\ b_2}
+            \qquad\Longrightarrow\qquad 
+            \begin{linsys}{2}
+               (5-x)\cdot b_1  &+  &4\cdot b_2     &=  &0  \\
+                               &   &(1-x)\cdot b_2 &=  &0
+            \end{linsys}
+          \end{equation*}
+          The bottom equation
+          gives the two possibilities that $b_2=0$ and $x=1$.
+          Following the $b_2=0$ possibility, and discarding the
+          case where both $b_2$ and $b_1$ are zero, gives
+          that $x=5$, associated with vectors whose second component
+          is zero and whose first component is free.
+          \begin{equation*}
+            \vec{\beta}_1=\colvec[r]{1 \\ 0}
+          \end{equation*}
+          The $x=1$ possibility gives a first equation of
+          $4b_1+4b_2=0$ and so the associated vectors have a 
+          second component that is the negative of their first component.
+          \begin{equation*}
+            \vec{\beta}_1=\colvec[r]{1 \\ -1}
+          \end{equation*}
+          We thus have this diagonalization.
+          \begin{equation*}
+            \begin{mat}[r]
+              1  &1  \\
+              0  &-1
+            \end{mat}
+            \begin{mat}[r]
+               5  &4  \\
+               0  &1
+            \end{mat}
+            \begin{mat}[r]
+              1  &1  \\
+              0  &-1
+            \end{mat}^{-1}
+            =
+            \begin{mat}[r]
+               5  &0  \\
+               0  &1
+            \end{mat}
+          \end{equation*}
+      \end{exparts}
+    \end{answer}
+  \item If we try to diagonalize the matrix
+    of \nearbyexample{ex:MatrixNotDiagonalizable} 
+    \begin{equation*}
+       N=\begin{mat}[r]
+            0  &0  \\
+            1  &0
+         \end{mat}
+    \end{equation*}
+    using the method of 
+    \nearbyexample{ex:DiagUpperTrian} then what goes wrong?
+    \begin{exparts}
+      \partsitem Draw the similarity diagram with $N$.
+      \partsitem Set up the matrix-vector equation described in
+         \nearbylemma{lm:DiagIffBasisOfEigens} and rewrite it as a
+         linear system.
+      \partsitem By considering solutions for that system, find the 
+         trouble.
+         (Consider separately the system in the $x=0$ and 
+         $x\neq 0$ cases.
+         Also, recall that the zero vector cannot be a member of a basis.)
+    \end{exparts}
+    \begin{answer}
+      \begin{exparts}
+        \item  In this similarity diagram
+          \begin{equation*}
+            \begin{CD}
+            \Re^2_{\wrt{\stdbasis_2}}                   
+               @>n>N>        
+               \Re^2_{\wrt{\stdbasis_2}}       \\
+            @V{\scriptstyle\identity} VV                
+               @V{\scriptstyle\identity} VV \\
+            \Re^2_{\wrt{B}}         
+               @>n>D>        
+               \Re^2_{\wrt{B}}
+           \end{CD}
+          \end{equation*}
+          we will try to calculate the matrix~$D$ and find a suitable 
+          basis~$B$,
+          by traversing the lower-left to upper-left, to upper-right,
+          and to lower-right path.
+        \item The diagram shows that where 
+          $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$ we want
+          $n(\vec{\beta}_1)=\lambda_1\vec{\beta}_1$ and
+          $n(\vec{\beta}_2)=\lambda_2\vec{\beta}_2$.
+          To determine $\lambda_1$ and $\lambda_2$, 
+          where the matrix~$N$ represents the map with respect to the
+          standard bases, we want to find solutions of this system.
+          \begin{equation*}
+            \begin{mat}
+              0 &0 \\
+              1 &0
+            \end{mat}
+            \colvec{b_1 \\ b_2}
+            =
+            x\cdot\colvec{b_1 \\ b_2}           
+          \end{equation*}
+          The equivalent linear system
+          \begin{equation*}
+            \begin{linsys}{2}
+              0b_1 &+  &0b_2 &= &xb_1 \\
+              b_1  &+  &0b_2 &= &xb_2 \\
+            \end{linsys}
+            \qquad
+            \Longrightarrow
+            \qquad
+            \begin{linsys}{2}
+              -xb_1 &   &     &= &0 \\
+              b_1   &-  &xb_2 &= &0 \\
+            \end{linsys}
+          \end{equation*}
+          By the first line, either $x=0$ or~$b_1=0$.
+          If $x=0$ then the second equation becomes $b_1-0=0$ so $b_1=0$ and
+          we get this solution set.
+          \begin{equation*}
+            \set{\colvec{0 \\ 1}b_2 \suchthat b_2\in\C}
+          \end{equation*}
+          We can take the initial member of the basis to be 
+          $\vec{\beta}_1=\vec{e}_2$.
+
+          If $x\neq 0$ then the first equation of the linear system 
+          gives $b_1=0$.
+          The system's first line becomes $0=0$ and its second line becomes
+          $-xb_2=0$.
+          Since this case takes $x\neq 0$, we get $b_2=0$
+          and the set of solutions is trivial.
+          \begin{equation*}
+            \set{\colvec{0 \\ 0}}
+          \end{equation*}
+          So what goes wrong is that we don't get the basis
+          required by \nearbylemma{lm:DiagIffBasisOfEigens}.
+      \end{exparts}
+    \end{answer}
+  \recommended \item \label{exer:PowersOfDiags}
+    What form do the powers of a diagonal matrix have?
+    \begin{answer}
+      For any integer \( p \), we have this.
+      \begin{equation*}
+        \begin{mat}
+          d_1  &0      &   \\
+          0    &\ddots &   \\
+               &       &d_n
+        \end{mat}^p=
+        \begin{mat}
+          d_1^p  &0      &   \\
+          0      &\ddots &   \\
+                 &       &d_n^p
+        \end{mat}
+     \end{equation*} 
+    \end{answer}
+  \item 
+     Give two same-sized diagonal matrices that are not similar.
+     Must any two different diagonal matrices come from different similarity
+     classes?
+     \begin{answer}
+       These two are not similar 
+       \begin{equation*}
+          \begin{mat}[r]
+             0  &0  \\
+             0  &0
+          \end{mat}
+          \qquad
+          \begin{mat}[r]
+             1  &0  \\
+             0  &1
+          \end{mat}
+       \end{equation*}
+       because each is alone in its similarity class.
+
+       For the second half, these
+       \begin{equation*}
+          \begin{mat}[r]
+             2  &0  \\
+             0  &3
+          \end{mat}
+          \qquad
+          \begin{mat}[r]
+             3  &0  \\
+             0  &2
+          \end{mat}
+       \end{equation*}
+       are similar via the matrix that changes bases from
+       \( \sequence{\vec{\beta}_1,\vec{\beta}_2} \) to
+       \( \sequence{\vec{\beta}_2,\vec{\beta}_1} \).
+       (\textit{Question.}
+        Are two diagonal matrices similar if and only if their diagonal
+        entries are permutations of each others?)  
+    \end{answer}
+  \item 
+    Give a nonsingular diagonal matrix.
+    Can a diagonal matrix ever be singular?
+    \begin{answer}
+      Contrast these two.
+      \begin{equation*}
+         \begin{mat}[r]
+           2  &0  \\
+           0  &1
+         \end{mat}
+         \qquad
+         \begin{mat}[r]
+           2  &0  \\
+           0  &0
+         \end{mat}
+      \end{equation*}
+      The first is nonsingular, the second is singular.  
+     \end{answer}
+  \recommended \item
+    Show that the inverse of a diagonal matrix is the diagonal of
+    the inverses, if no element on that diagonal is zero.
+    What happens when a diagonal entry is zero?
+    \begin{answer}  
+       To check that the inverse of a diagonal matrix is the diagonal
+       matrix of the inverses, just multiply.
+       \begin{equation*}
+          \begin{mat}
+             a_{1,1}  &0                \\
+             0        &a_{2,2}          \\
+                      &       &\ddots    \\
+                      &       &      &a_{n,n}
+          \end{mat}
+          \begin{mat}
+            1/a_{1,1}  &0                \\
+             0        &1/a_{2,2}          \\
+                      &       &\ddots    \\
+                      &       &      &1/a_{n,n}
+          \end{mat}
+      \end{equation*}
+      (Showing that it is a left inverse is just as easy.)
+
+      If a diagonal entry is zero then the diagonal matrix is
+      singular; it has a zero determinant.  
+    \end{answer}
+  \item 
+    The equation ending \nearbyexample{ex:DiagUpperTrian}
+    \begin{equation*}
+       \begin{mat}[r]
+         1  &1  \\
+         0  &-1
+       \end{mat}^{-1}
+       \begin{mat}[r]
+         3  &2  \\
+         0  &1
+       \end{mat}
+       \begin{mat}[r]
+         1  &1  \\
+         0  &-1
+       \end{mat}
+       =
+       \begin{mat}[r]
+         3  &0  \\
+         0  &1
+       \end{mat}
+    \end{equation*}
+    is a bit jarring because for $P$ we must take the first matrix,
+    which is shown as an inverse, and for $P^{-1}$ we take the inverse of the
+    first matrix, so that the two $-1$ powers cancel and this matrix is 
+    shown without a superscript $-1$.
+    \begin{exparts}
+      \partsitem Check that this nicer-appearing equation holds.
+        \begin{equation*}
+           \begin{mat}[r]
+             3  &0  \\
+             0  &1
+           \end{mat}
+           =
+           \begin{mat}[r]
+             1  &1  \\
+             0  &-1
+           \end{mat}
+           \begin{mat}[r]
+             3  &2  \\
+             0  &1
+           \end{mat}
+           \begin{mat}[r]
+             1  &1  \\
+             0  &-1
+           \end{mat}^{-1}
+        \end{equation*}
+      \partsitem Is the previous item a coincidence?
+        Or can we always switch the $P$ and the $P^{-1}$?
+   \end{exparts}
+   \begin{answer}
+     \begin{exparts}
+       \partsitem The check is easy.
+         \begin{equation*}
+           \begin{mat}[r]
+             1  &1  \\
+             0  &-1
+           \end{mat}
+           \begin{mat}[r]
+             3  &2  \\
+             0  &1
+           \end{mat}
+           =
+           \begin{mat}[r]
+             3  &3  \\
+             0  &-1
+           \end{mat}
+           \qquad
+           \begin{mat}[r]
+             3  &3  \\
+             0  &-1
+           \end{mat}
+           \begin{mat}[r]
+             1  &1  \\
+             0  &-1
+           \end{mat}^{-1}
+           =
+           \begin{mat}[r]
+             3  &0  \\
+             0  &1
+           \end{mat}
+         \end{equation*}
+        \partsitem It is a coincidence, in the sense that if $T=PSP^{-1}$
+          then $T$ need not equal $P^{-1}SP$.
+          Even in the case of a diagonal matrix~$D$, the condition that
+          $D=PTP^{-1}$ does not imply that $D$ equals $P^{-1}TP$.
+          The matrices from \nearbyexample{ex:DiagTwoByTwo} show this.
+          \begin{equation*}
+            \begin{mat}[r]
+              1  &2  \\
+              1  &1
+            \end{mat}
+            \begin{mat}[r]
+              4  &-2  \\
+              1  &1
+            \end{mat}
+            =
+            \begin{mat}[r]
+              6  &0  \\
+              5  &-1
+            \end{mat}
+            \qquad
+            \begin{mat}[r]
+              6  &0  \\
+              5  &-1
+            \end{mat}
+            \begin{mat}[r]
+              1  &2  \\
+              1  &1
+            \end{mat}^{-1}
+            =
+            \begin{mat}[r]
+              -6  &12  \\
+              -6  &11
+            \end{mat}
+          \end{equation*}
+     \end{exparts}
+   \end{answer}
+  \item 
+    Show that the $P$ used to diagonalize in  
+    \nearbyexample{ex:DiagUpperTrian} is not unique.
+    \begin{answer}
+      The columns of the matrix are the vectors associated with
+      the $x$'s.
+      The exact choice, and the order of the choice was
+      arbitrary.
+      We could, for instance, get a different matrix by swapping 
+      the two columns.
+    \end{answer}
+  \item 
+    Find a formula for the powers of this matrix.
+    \textit{Hint}:~see \nearbyexercise{exer:PowersOfDiags}.
+    \begin{equation*}
+      \begin{mat}[r]
+        -3  &1  \\
+        -4  &2
+      \end{mat}
+    \end{equation*}
+    \begin{answer}
+      Diagonalizing and then taking powers of the diagonal matrix shows that
+      \begin{equation*}
+        \begin{mat}[r]
+          -3  &1  \\
+          -4  &2
+        \end{mat}^k
+        =
+        \frac{1}{3}
+        \begin{mat}[r]
+          -1  &1  \\
+          -4  &4
+        \end{mat}
+        +(\frac{-2}{3})^k
+        \begin{mat}[r]
+           4  &-1 \\
+           4  &-1
+        \end{mat}.
+      \end{equation*}  
+     \end{answer}
   \item 
     We can ask how diagonalization interacts with the matrix operations.
     Assume that \( \map{t,s}{V}{V} \) are each diagonalizable.
