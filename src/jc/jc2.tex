@@ -1246,7 +1246,7 @@ form one matrix equivalence class but more than one similarity class.
 
 The diagram below illustrates.
 Solid curves show the matrix equivalence classes 
-while dashed curves are the similarity classes.
+while dashed dividers mark the similarity classes.
 Each star is a matrix representing its similarity class.
 %  so each
 % similarity class has one. 
@@ -1330,7 +1330,7 @@ the zero matrix, because the zero matrix is similar only to itself.
 Thus if $N$ were to be similar to a diagonal matrix~$D$ then 
 $D$ would have at least one nonzero entry on its diagonal.
 
-The key point is that a power of $N$ is the zero matrix, specifically
+The crucial point is that a power of $N$ is the zero matrix, specifically
 $N^2$ is the zero matrix.
 This implies that for any map~$n$ represented by \( N \) 
 with respect to some $B,B$, 
@@ -2794,10 +2794,10 @@ $.
 %</df:Eigen>
 \end{definition}
 
-\noindent (``Eigen'' is German for ``characteristic of'' or ``peculiar to.'' 
+\noindent ``Eigen'' is German for ``characteristic of'' or ``peculiar to.'' 
 Some authors call these \definend{characteristic}%
 \index{characteristic!vectors, values} values and vectors.
-No authors call them ``peculiar.'')
+No authors call them ``peculiar'' vectors.
 
 \begin{example}
 The projection map
@@ -3471,6 +3471,80 @@ Form a basis of eigenvectors.
 Apply \nearbylemma{lm:DiagIffBasisOfEigens}.
 %</pf:DistinctEivenvaluesImpliesDiagonal>
 \end{proof}
+
+Here is a summary.
+In the prior example we showed that the matrix
+\begin{equation*}
+     T=\begin{mat}[r]
+        2   &-2   &2   \\
+        0   &1    &1   \\
+       -4   &8    &3
+     \end{mat}
+\end{equation*}
+is diagonalizable with $\lambda_1=1$, $\lambda_2=2$, and~$\lambda_3=3$
+and these are associated eigenvectors, which make up a basis~$B$.
+\begin{equation*}
+       \vec{\beta}_1=\colvec[r]{2 \\ 1 \\ 0}\quad
+       \vec{\beta}_2=\colvec[r]{9 \\ 4 \\ 4}\quad
+       \vec{\beta}_3=\colvec[r]{2 \\ 1 \\ 2} 
+\end{equation*}
+The arrow diagram
+\begin{equation*}
+  \begin{CD}
+    V_{\wrt{\stdbasis_3}}            @>t>T>        V_{\wrt{\stdbasis_3}}       \\
+    @V{\scriptstyle\identity} VV              @V{\scriptstyle\identity} VV \\
+    V_{\wrt{B}}                   @>t>D>        V_{\wrt{B}}       
+  \end{CD}
+\end{equation*}
+gives this.
+\begin{align*}
+  D &= P^{-1}TP  \\
+  \begin{mat}
+    1  &0  &0 \\
+    0  &2  &0 \\
+    0  &0  &3
+  \end{mat}
+  &=
+    \begin{mat}
+      -2  &5  &-1/2  \\
+       1  &-2  &0    \\
+      -2  &4  &1/2 
+    \end{mat}
+     \begin{mat}[r]
+        2   &-2   &2   \\
+        0   &1    &1   \\
+       -4   &8    &3
+     \end{mat}
+    \begin{mat}
+      2  &9  &2  \\
+      1  &4  &1  \\
+      0  &4  &2
+    \end{mat}
+\end{align*}
+The bottom line of the diagram has 
+$t(\vec{\beta}_1)=1\cdot\vec{\beta}_1$, etc.
+That is, the action on the basis is this.
+\begin{align*}
+  \vec{\beta}_1\mapsunder{t-1}\zero  \\
+  \vec{\beta}_2\mapsunder{t-2}\zero  \\
+  \vec{\beta}_3\mapsunder{t-3}\zero  \\
+\end{align*}
+For instance, here is how the top line of the arrow diagram represents the 
+first of those three actions
+\begin{align*}
+  (T-1\cdot I)\vec{\beta}_1
+  &=\zero                    \\
+  \begin{mat}
+    1  &-2  &2  \\
+    0  &0   &1  \\
+   -4  &8   &2  \\
+  \end{mat}
+  \colvec{2 \\ 1 \\ 0}
+  &=
+  \colvec{0  \\ 0 \\ 0}
+\end{align*}
+(of course, the representation of $\vec{\beta}_1$ with respect 
+to the standard basis is itself).
 
 This section observes that some
 matrices are similar to a diagonal matrix. 
