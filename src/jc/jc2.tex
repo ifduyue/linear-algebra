@@ -1310,7 +1310,47 @@ is diagonalizable.
 \end{equation*}
 \end{example}
 
-We next see how to find the matrix~$P$.
+Below we will see how to find the matrix~$P$ but first we note
+that not every matrix is similar to a diagonal matrix,
+so diagonal form will not suffice as a 
+canonical form for similarity.
+
+\begin{example}  \label{ex:MatrixNotDiagonalizable}
+%<*ex:NotDiagonalizable>
+This matrix is not diagonalizable.
+\begin{equation*}
+  N=\begin{mat}[r]
+       0  &0  \\
+       1  &0
+    \end{mat}
+\end{equation*}
+The fact that $N$ is not the zero matrix means that 
+it cannot be similar to
+the zero matrix, because the zero matrix is similar only to itself.
+Thus if $N$ were to be similar to a diagonal matrix~$D$ then 
+$D$ would have at least one nonzero entry on its diagonal.
+
+The key point is that a power of $N$ is the zero matrix, specifically
+$N^2$ is the zero matrix.
+This implies that for any map~$n$ represented by \( N \) 
+with respect to some $B,B$, 
+the composition \( \composed{n}{n} \) is the zero map.
+This in turn implies that
+any matrix representing~$n$ 
+with respect to some $\hat{B},\hat{B}$ has a square that is the zero matrix.
+But for any nonzero diagonal matrix~$D^2$, the entries of~$D^2$ 
+are the squares of the entries of~$D$,
+so $D^2$ cannot be the zero matrix. 
+Thus $N$ is not diagonalizable.
+%</ex:NotDiagonalizable>
+\end{example}
+
+So not every similarity class contains a diagonal matrix.
+We now characterize when a matrix is diagonalizable.
+% However, some similarity classes do contain a diagonal matrix and 
+% the canonical form that we are developing has the property that if
+% a matrix can be diagonalized then the diagonal matrix is the canonical
+% representative of its similarity class. 
 
 \begin{lemma} \label{lm:DiagIffBasisOfEigens}
 %<*lm:DiagIffBasisOfEigens>
@@ -1487,53 +1527,13 @@ giving this diagonalization.
 \end{equation*}
 \end{example}
 
-In the next subsection we will expand on that example by considering 
-more closely the property of \nearbylemma{lm:DiagIffBasisOfEigens}.
-This includes seeing a 
+The rest of this section expands on that example by considering 
+more closely the property of \nearbylemma{lm:DiagIffBasisOfEigens},
+including seeing a 
 streamlined way to find the $\lambda$'s.
-
-We end with a caution that not every matrix is similar to a diagonal matrix,
-so diagonal form will not suffice as a 
-canonical form for similarity.
-
-\begin{example}  \label{ex:MatrixNotDiagonalizable}
-%<*ex:NotDiagonalizable>
-This matrix is not diagonalizable.
-\begin{equation*}
-  N=\begin{mat}[r]
-       0  &0  \\
-       1  &0
-    \end{mat}
-\end{equation*}
-The fact that $N$ is not the zero matrix means that 
-it cannot be similar to
-the zero matrix, because the zero matrix is similar only to itself.
-Thus if $N$ were to be similar to a diagonal matrix~$D$ then 
-$D$ would have at least one nonzero entry on its diagonal.
-
-The square of $N$ is the zero matrix.
-This implies that for any map~$n$ represented by \( N \) 
-with respect to some $B,B$, 
-the composition \( \composed{n}{n} \) is the zero map.
-This in turn implies that
-any matrix representing~$n$ 
-with respect to some $\hat{B},\hat{B}$ has a square that is the zero matrix.
-But the square of a nonzero diagonal matrix~$D$ 
-cannot be the zero matrix, because the entries of~$D^2$ 
-are the squares of the entries of~$D$. 
-Thus $N$ is not diagonalizable.
-%</ex:NotDiagonalizable>
-\end{example}
-
-So not every similarity class contains a diagonal matrix.
-% However, some similarity classes do contain a diagonal matrix and 
-% the canonical form that we are developing has the property that if
-% a matrix can be diagonalized then the diagonal matrix is the canonical
-% representative of its similarity class. 
-The rest of this section studies maps and matrices that can be diagonalized.
-The section after that expands on the prior example, to understand
-whan can prevent diagonalization.
-The final section puts these two together, to produce a canonical form that
+The section after that expands on \nearbyexample{ex:MatrixNotDiagonalizable}, 
+to understand what can prevent diagonalization.
+Then the final section puts these two together, to produce a canonical form that
 is in some sense as simple as possible.
 
 \begin{exercises}
@@ -2155,9 +2155,8 @@ is in some sense as simple as possible.
          linear system.
       \partsitem By considering solutions for that system, find the 
          trouble.
-         (Consider separately the system in the $x=0$ and 
-         $x\neq 0$ cases.
-         Also, recall that the zero vector cannot be a member of a basis.)
+         (Consider separately the $x=0$ and 
+         $x\neq 0$ cases.)
     \end{exparts}
     \begin{answer}
       \begin{exparts}
