@@ -2078,30 +2078,32 @@ TODO: Describe this as equivalent to a basis of disjoint strings.
 
 \begin{proof}
 This proof is closely related to that of
-Four.III.\ref{th:NilMapHasStrBas}, that any nilpotent transformation
+Five.III.\ref{th:NilMapHasStrBas}, that any nilpotent transformation
 has a basis of disjoint $t$-strings.
 
 We will do induction on~$n$.
 The $n=1$ base case is trivial since any $\nbyn{1}$ matrix is in Jordan form.
-So for the inductive step assume that there is a Jordan form
-represenation of every transformation of $\C^1$, \ldots, $\C^{n-1}$
+For the inductive step assume that 
+every transformation of $\C^1$, \ldots, $\C^{n-1}$ has a Jordan form
+representation,
 and fix $\map{t}{\C^n}{\C^n}$.
 
 This transformation has at least one eigenvalue~$\lambda_1$ because
 every transformation has a minimal polynomial and every minimal polynomial
 has at least one root over the complex numbers.
 Since $\lambda_1$ is an eigenvalue, there is an associated 
-eigenvector~$\vec{v}\neq\zero$ where $(t-\lambda_1)(\vec{v})=\zero$,
+eigenvector~$\vec{v}\neq\zero$ where $(t-\lambda_1)(\vec{v})=\zero$
 and so the null space of $t-\lambda_1$ is nontrivial.
 Thus the dimension of $\nullspace{t-\lambda_1}$, the nullity,
 and is greater than zero.
 Since the rank plus the nullity equals the dimension of the domain,
-the rank, the dimension of $\rangespace{t-\lambda_1}$,
+the rank
 is strictly less than~$n$.
-Write $W$ for $\rangespace{t-\lambda_1}$.
+Write $W$ for $\rangespace{t-\lambda_1}$ and write
+$r$ for the rank, the dimension of $W$.
 
 Note that $W$ is $t-\lambda_1$~invariant because if 
-$\vec{w}\in\rangespace{t-\lambda_1}$ then $\vec{w}\in\C^n$ and so
+$\vec{w}\in W=\rangespace{t-\lambda_1}$ then $\vec{w}\in\C^n$ and so
 $(t-\lambda_1)(\vec{w})\in\rangespace{t-\lambda_1}$.
 Thus the restriction of $t-\lambda_1$ to~$w$ induces a transformation of~$W$, 
 which we shall also call $t-\lambda_1$.
@@ -2131,6 +2133,77 @@ which below we will write as $t-\lambda_i$.
 \end{equation*}
 (These strings may have differing lengths; 
 for instance, perhaps $n_1\neq n_k$.)
+
+The list of strings shows some of them as being associated with
+$t-\lambda_1$ (that is, with $\hat{\lambda}=0$).
+Observe that the rightmost non-$\zero$ vector in each string 
+is in the null space of the associated 
+map:~$(t-\lambda_1)(\vec{w}_{1,1})=\zero$, \ldots, 
+$(t-\lambda_i)(\vec{w}_{k,1})=\zero$.
+The number of strings associated with $t-\lambda_1$,
+denoted $q$ in the above diagram, is thus
+equal to the dimension of $W\cap\nullspace{t-\lambda_1}$.
+
+The string basis above is for $W=\rangespace{t-\lambda_1}$.
+We will now expand it to make it a basis for~$\C_n$.
+First, because 
+each of the $q$-many vectors $\vec{w}_{1,n_1}$, \ldots, $\vec{w}_{q,n_q}$
+is an element of~$\rangespace{t-\lambda_1}$, they are the images of 
+vectors~$\vec{x}_1$, \ldots, $\vec{x}_{q}$ from~$\C^n$.
+We adjoin those vectors to the strings.
+Second, since the dimension of $W\cap\nullspace{t-\lambda_1}$ is~$q$,
+and the dimension of~$W$ is~$r$, to make the bookkeeping come out
+we add $r-q$-many vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}$
+that are elements of $\nullspace{t-\lambda_1}$.
+\begin{equation*}
+\begin{strings}{*{10}{c}}
+  \vec{x}_1  &\xmapsto{t-\lambda_1} 
+     &\vec{w}_{1,n_1} &\xmapsto{t-\lambda_1} &\cdots 
+     &\xmapsto{t-\lambda_1} &\vec{w}_{1,1} &\xmapsto{t-\lambda_1} &\zero \\
+     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                   \\
+  \vec{x}_q  &\xmapsto{t-\lambda_1}  
+     &\vec{w}_{q,n_q} &\xmapsto{t-\lambda_1} &\cdots 
+     &\xmapsto{t-\lambda_1} &\vec{w}_{q,1} &\xmapsto{t-\lambda_1} &\zero \\
+  \vec{w}_{q+1,n_{q+1}} &\xmapsto{t-\lambda_2} &\cdots 
+     &\xmapsto{t-\lambda_2} &\vec{w}_{q+1,1} &\xmapsto{t-\lambda_2} &\zero \\
+     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                              \\
+  \vec{w}_{k,n_k} &\xmapsto{t-\lambda_i} &\cdots 
+     &\xmapsto{t-\lambda_i} &\vec{w}_{k,1} &\xmapsto{t-\lambda_i} &\zero \\
+     \vec{y}_1  &\xmapsto{t-\lambda_i} &\zero \\
+     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                              \\
+     \vec{y}_{r-q}  &\xmapsto{t-\lambda_i} &\zero \\
+\end{strings}
+\end{equation*}
+This is the desired string basis.
+
+Because it has the right number of elements, we will be done if we verify that
+its elements are linearly independent.
+Assume
+\begin{equation*}
+  \zero
+  =a_1\vec{x}_1+\cdots+a_q\vec{x}_q
+    +b_{1,n_1}\vec{w}_{1,n_1}+\cdots+b_{k,1}\vec{w}_{k,1}
+    +c_1\vec{y}_1+\cdots+c_{r-q}\vec{y}_{r-q}
+\end{equation*}
+and apply $t-\lambda_1$ to both sides.
+All of the vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}$ map to~$\zero$.
+As to the $\vec{w}$'s,
+we have that $(t-\lambda_1)(\vec{w}_{1,n_1})=\vec{w}_{1,n_1-1}$, 
+\ldots,  $(t-\lambda_1)(\vec{w}_{q,n_q})=\vec{w}_{q,n_q-1}$. 
+For the other~$\vec{w}$'s,
+for each~$i,j$ we have this.
+\begin{equation*}
+  (t-\lambda_1)(\vec{w}_{i,j})
+    =(t-(\lambda_1-\hat{\lambda})+\hat{\lambda})(\vec{w}_{i,j})
+    =\vec{w}_{i,j-1}+\hat{\lambda}\cdot\vec{w}_{i,j} 
+\end{equation*}
+Thus applying $t-\lambda_1$ to the above equation gives a linear combination
+of $\vec{w}$'s.
+As they are linearly independent (they form a basis for~$W$),
+the coefficients are~$0$.
+In particular, $a_1$, \ldots, $a_q$ are zero. 
+
+
 \end{proof}
 
 
