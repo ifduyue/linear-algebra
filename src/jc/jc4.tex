@@ -1912,9 +1912,12 @@ form for \( t \).
 \end{equation*}
 \end{example}
 
+\begin{definition}
 An array that is all zeroes, except for some number $\lambda$
 down the diagonal and blocks of subdiagonal ones, is a 
 \definend{Jordan block}.\index{Jordan block}
+\end{definition}
+
 We have shown that Jordan block matrices are
 canonical representatives of the similarity classes of single-eigenvalue
 matrices.
@@ -1955,27 +1958,82 @@ adopted the convention of ordering the blocks of subdiagonal ones from the
 longest block to the shortest.
 \end{example}
 
-We will finish the program of this chapter by extending this work to 
+We are now set up to finish the program of this chapter.
+Here is a review of what we so far know about 
+transformations $\map{t}{\C^n}{\C^n}$.
+
+First is the diagonalizable case.
+If~$t$ has~$n$ distinct eigenvalues 
+$\lambda_1$, \ldots $\lambda_n$ then there is a basis
+$\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$ where 
+$\vec{\beta}_i$ is an eigenvector associated with the eigenvalue~$\lambda_i$.
+In the example below, 
+$n=3$ and the three eigenvalues are $\lambda_1=1$, $\lambda_2=3$,
+and $\lambda_3=-1$.
+It shows the canonical representative matrix and the associated basis.
+\begin{equation*}
+  T=\begin{mat}
+    1  &0  &0  \\
+    0  &3  &0  \\
+    0  &0  &-1
+  \end{mat}
+  \qquad
+    \begin{array}{r}
+    \vec{\beta}_1\mapsunder{t-1}\zero  \\
+    \vec{\beta}_2\mapsunder{t-3}\zero  \\
+    \vec{\beta}_3\mapsunder{t+1}\zero
+    \end{array}  
+\end{equation*}
+
+Next is the nilpotent case.
+If $t$ has a single eigenvalue then there is a basis of
+associated eigenvectors that form disjoint strings.
+This example has $n=10$ and the single eigenvalue~$\lambda=2$.
+\begin{equation*}
+  T=\begin{mat}
+    2  &0  &0  &0 &0 &0 &0 &0 &0 &0 \\
+    1  &2  &0  &0 &0 &0 &0 &0 &0 &0 \\
+    0  &1  &2  &0 &0 &0 &0 &0 &0 &0 \\
+    0  &0  &0  &2 &0 &0 &0 &0 &0 &0 \\
+    0  &0  &0  &1 &2 &0 &0 &0 &0 &0 \\
+    0  &0  &0  &0 &1 &2 &0 &0 &0 &0 \\
+    0  &0  &0  &0 &0 &0 &2 &0 &0 &0 \\
+    0  &0  &0  &0 &0 &0 &1 &2 &0 &0 \\
+    0  &0  &0  &0 &0 &0 &0 &0 &2 &0 \\
+    0  &0  &0  &0 &0 &0 &0 &0 &0 &2 \\
+  \end{mat}
+  \qquad
+  {\renewcommand{\arraystretch}{2}
+    \begin{array}{r}
+    \vec{\beta}_1\mapsunder{t-2}\vec{\beta}_2\mapsunder{t-2}\vec{\beta}_3\mapsunder{t-2}\zero  \\
+    \vec{\beta}_4\mapsunder{t-2}\vec{\beta}_5\mapsunder{t-2}\vec{\beta}_6\mapsunder{t-2}\zero  \\
+    \vec{\beta}_7\mapsunder{t-2}\vec{\beta}_8\mapsunder{t-2}\zero  \\
+    \vec{\beta}_9\mapsunder{t-2}\zero  \\
+    \vec{\beta}_{10}\mapsunder{t-2}\zero
+    \end{array}}  
+\end{equation*}
+
+We can think of the diagonalizable case as a specialization 
+of the nilpotent case,
+where the Jordan blocks have different diagonal eigenvalues and 
+are of size one (and therefore have no subdiagonal $1$'s). 
+This shows how to
 cover maps and matrices with multiple eigenvalues.
-The best possibility for general maps and matrices would be
-if we could break them into a part involving 
-their first eigenvalue \( \lambda_1 \) 
-(which we represent using its Jordan block),
-a part with \( \lambda_2 \), etc.
+% The best possibility for general maps and matrices would be
+% if we could break them into a part involving 
+% their first eigenvalue \( \lambda_1 \) 
+% (which we represent using its Jordan block),
+% a part with \( \lambda_2 \), etc.
+% This best possibility is what happens.
 
-This best possibility is what happens.
-For any transformation \( \map{t}{V}{V} \),
-we shall break the space \( V \) into the direct sum of a part on which
-\( t-\lambda_1 \) is nilpotent, a part on which \( t-\lambda_2 \)
-is nilpotent, etc.
-% More precisely, we shall take three steps to get to this section's major
-% theorem and the third step shows that
-% \( V=\gennullspace{t-\lambda_1}\directsum\cdots\directsum
-%        \gennullspace{t-\lambda_z} \)
-% where \( \lambda_1,\ldots,\lambda_z \) are \( t \)'s eigenvalues.
+% For any transformation \( \map{t}{V}{V} \),
+% we shall break the space \( V \) into the direct sum of a part on which
+% \( t-\lambda_1 \) is nilpotent, a part on which \( t-\lambda_2 \)
+% is nilpotent, etc.
 
-Suppose that \( \map{t}{V}{V} \) is a linear transformation.
-The restriction %\appendrefs{restrictions of functions}\spacefactor=1000  %
+For that, 
+suppose that \( \map{t}{V}{V} \) is a linear transformation.
+The restriction\appendrefs{restrictions of functions}\spacefactor=1000  %
 of \( t \) to a subspace \( M \) need not be a linear transformation on \( M \)
 because there may be an \( \vec{m}\in M \)
 with \( t(\vec{m})\not\in M \) (for instance, the transformation 
@@ -1993,7 +2051,91 @@ A subspace \( M \) is \definend{$t$ invariant}%
 if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
 (shorter: \( t(M)\subseteq M \)).
 \end{definition}
- 
+
+\begin{theorem}
+\index{Jordan form!represents similarity classes}\index{similar!canonical form}
+\index{canonical form!for similarity}\index{transformation!Jordan form for}
+Any transformation $\map{t}{\C^n}{\C^n}$ can be represented in 
+\definend{Jordan form} 
+\begin{equation*}
+  \begin{mat}
+    J_{\lambda_1}  &            &\text{\textit{--zeroes--}}                 \\
+               &J_{\lambda_2}                                              \\
+               &     &\ddots                                     \\
+                &     &                           &J_{\lambda_{k-1}} &     \\
+               &     &\text{\textit{--zeroes--}} &            &J_{\lambda_{k}}
+  \end{mat}
+\end{equation*}
+where each \( J_{\lambda} \) is the Jordan block associated with an
+eigenvalue $\lambda$ of the original matrix. 
+That is, each \( J_{\lambda} \)
+is all zeroes except for
+\( \lambda \)'s down the diagonal and some subdiagonal ones.
+Restated, any $\nbyn{n}$ matrix is similar to one in this form. 
+\end{theorem}
+
+TODO: Describe this as equivalent to a basis of disjoint strings.
+
+\begin{proof}
+This proof is closely related to that of
+Four.III.\ref{th:NilMapHasStrBas}, that any nilpotent transformation
+has a basis of disjoint $t$-strings.
+
+We will do induction on~$n$.
+The $n=1$ base case is trivial since any $\nbyn{1}$ matrix is in Jordan form.
+So for the inductive step assume that there is a Jordan form
+represenation of every transformation of $\C^1$, \ldots, $\C^{n-1}$
+and fix $\map{t}{\C^n}{\C^n}$.
+
+This transformation has at least one eigenvalue~$\lambda_1$ because
+every transformation has a minimal polynomial and every minimal polynomial
+has at least one root over the complex numbers.
+Since $\lambda_1$ is an eigenvalue, there is an associated 
+eigenvector~$\vec{v}\neq\zero$ where $(t-\lambda_1)(\vec{v})=\zero$,
+and so the null space of $t-\lambda_1$ is nontrivial.
+Thus the dimension of $\nullspace{t-\lambda_1}$, the nullity,
+and is greater than zero.
+Since the rank plus the nullity equals the dimension of the domain,
+the rank, the dimension of $\rangespace{t-\lambda_1}$,
+is strictly less than~$n$.
+Write $W$ for $\rangespace{t-\lambda_1}$.
+
+Note that $W$ is $t-\lambda_1$~invariant because if 
+$\vec{w}\in\rangespace{t-\lambda_1}$ then $\vec{w}\in\C^n$ and so
+$(t-\lambda_1)(\vec{w})\in\rangespace{t-\lambda_1}$.
+Thus the restriction of $t-\lambda_1$ to~$w$ induces a transformation of~$W$, 
+which we shall also call $t-\lambda_1$.
+By the prior paragraph the dimension of~$W$ is less than~$n$ 
+so the inductive hypothesis applies, and
+we get a basis for~$W$ consisting of disjoint strings.
+
+These strings are associated with the eigenvalues of $t-\lambda_1$ 
+on~$W$.
+Note that is $\hat{\lambda}$ is an eigenvalue of~$t-\lambda_1$ then
+the transformation of the basis elements will be 
+$(t-\lambda_1)-\hat{\lambda}=t-(\lambda_1-\hat{\lambda})$,
+which below we will write as $t-\lambda_i$. 
+\begin{equation*}
+\begin{strings}{*{10}{l}}
+  \vec{w}_{1,n_1} &\xmapsto{t-\lambda_1} &\cdots 
+     &\xmapsto{t-\lambda_1} &\vec{w}_{1,1} &\xmapsto{t-\lambda_1} &\zero \\
+     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                   \\
+  \vec{w}_{q,n_q} &\xmapsto{t-\lambda_1} &\cdots 
+     &\xmapsto{t-\lambda_1} &\vec{w}_{q,1} &\xmapsto{t-\lambda_1} &\zero \\
+  \vec{w}_{q+1,n_{q+1}} &\xmapsto{t-\lambda_2} &\cdots 
+     &\xmapsto{t-\lambda_2} &\vec{w}_{q+1,1} &\xmapsto{t-\lambda_2} &\zero \\
+     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                              \\
+  \vec{w}_{k,n_k} &\xmapsto{t-\lambda_i} &\cdots 
+     &\xmapsto{t-\lambda_i} &\vec{w}_{k,1} &\xmapsto{t-\lambda_i} &\zero \\
+\end{strings}
+\end{equation*}
+(These strings may have differing lengths; 
+for instance, perhaps $n_1\neq n_k$.)
+\end{proof}
+
+
+
+
 Recall that Lemma~III.\ref{le:RangeAndNullChains} shows that for any
 transformation~$t$ on an $n$~dimensional space
 the range spaces of iterates are stable 
