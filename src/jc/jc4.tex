@@ -1783,19 +1783,12 @@ The characteristic polynomial of
       1  &4
     \end{mat}
 \end{equation*}
-is \( (x-3)^2 \) and so \( T \) has only the single eigenvalue \( 3 \).
-Thus for 
-\begin{equation*}
-  T-3I=\begin{mat}[r]
-     -1  &-1  \\
-      1  &1
-    \end{mat}
-\end{equation*}
-the only eigenvalue is \( 0 \), and the \( T-3I \) is nilpotent.
-Finding the null spaces is routine; to ease this computation we take 
-$T$ to represent a transformation $\map{t}{\C^2}{\C^2}$ with respect to
-the standard basis (we shall do this
-for the rest of the chapter). 
+is \( (x-3)^2 \) and so \( T \) has a single eigenvalue, \( 3 \).
+Hence $T-3I$ has the single eigenvalue of \( 0 \) and so is nilpotent.
+
+To get the canonical form for~$T$ we start by 
+finding a string basis for $T-3I$, computing the powers of the matrix 
+and the null spaces of those powers.
 \begin{center}
   \begin{tabular}{c|cc}
     \multicolumn{1}{c}{\textit{power} \( p \)}  &\( (T-3I)^p \)  &\( \nullspace{(T-3I)^p}  \)   \\  
@@ -1818,21 +1811,33 @@ for the rest of the chapter).
                                x,y\in\C}  \)   \\
   \end{tabular}
 \end{center}
-The dimensions of each null space
-shows that the action of the map $t-3$ on a string basis is
-$\vec{\beta}_1\mapsto\vec{\beta}_2\mapsto\zero$.
-Thus, here is the canonical form for $t-3$.
+The null space of $t-3$ has dimension one
+and the null space of $(t-3)^2$ has dimension two.
+So this is the canonical representation matrix and the form of the
+associated string basis~$B$ for $t-3$.
 \begin{equation*}
   \rep{t-3}{B,B}
-  =N
-  =\begin{mat}[r]
+  =N=
+  \begin{mat}[r]
       0  &0   \\
       1  &0
-    \end{mat}
+  \end{mat}
   \qquad
-  B=\sequence{\colvec[r]{1 \\ 1},\colvec[r]{-2 \\ 2}}
+  \begin{array}{r}
+    \vec{\beta}_1\xmapsto{t-3}\vec{\beta}_2\xmapsto{t-3}\zero  \\
+  \end{array}  
 \end{equation*}
-By \nearbylemma{le:SimRespAddScalar}, \( T \) is similar to
+Find elements for a basis
+by taking a $\vec{\beta}_2$ that is mapped to~$\zero$
+by $t-3$ (that is, pick an element of $\nullspace{t-3}$ given in the table),
+and then taking a $\vec{\beta}_1$ that is mapped to~$\zero$ by $(t-3)^2$.
+Here are two such vectors, chosen to make a linearly independent set.
+\begin{equation*}
+  \vec{\beta}_1=\colvec[r]{1 \\ 1}
+  \quad
+  \vec{\beta}_2=\colvec[r]{-2 \\ 2}
+\end{equation*}
+With that, \nearbylemma{le:SimRespAddScalar} says that \( T \) is similar to
 this matrix.
 \begin{equation*}
   \rep{t}{B,B}=
@@ -1842,9 +1847,12 @@ this matrix.
      1  &3
   \end{mat}
 \end{equation*}
-We can produce the similarity computation.
-Recall how to find the change of
-basis matrices $P$ and $P^{-1}$ to express \( N \) as \( P(T-3I)P^{-1} \).
+To exhibit the similarity computation
+take 
+$T$ to represent a transformation $\map{t}{\C^2}{\C^2}$ with respect to
+the standard basis (as we shall do for the rest of the chapter). 
+% Recall how to find the change of
+% basis matrices $P$ and $P^{-1}$ to express \( N \) as \( P(T-3I)P^{-1} \).
 The similarity diagram
 \begin{equation*}
   \begin{CD}
@@ -1875,13 +1883,8 @@ this matrix.
       -1/4 &1/4
    \end{mat}
 \end{equation*}
-So this equation expresses the similarity.
+So this equation shows the similarity.
 \begin{equation*}
-  \begin{mat}[r]
-     3  &0  \\
-     1  &3
-  \end{mat}
-  =
   \begin{mat}[r]
       1/2  &1/2  \\
       -1/4 &1/4
@@ -1894,6 +1897,11 @@ So this equation expresses the similarity.
         1  &-2  \\
         1  &2
      \end{mat}
+  =
+  \begin{mat}[r]
+     3  &0  \\
+     1  &3
+  \end{mat}
 \end{equation*}
 \end{example}
 
@@ -1977,11 +1985,16 @@ form for \( t \).
     0  &0  &0  &4
    \end{mat}
    \qquad
-  \begin{strings}{*{10}{l}}
-    \vec{\beta}_{1} &\xmapsto{t-4} &\vec{\beta}_{2}
-     &\xmapsto{t-4} &\vec{\beta}_{3} &\xmapsto{t-4} &\zero \\
-   \vec{\beta}_{4} &\xmapsto{t-4} &\zero \\
-  \end{strings}
+  \begin{array}{r}
+    \vec{\beta}_{1}\xmapsto{t-4}\vec{\beta}_{2}
+       \xmapsto{t-4}\vec{\beta}_{3}\xmapsto{t-4}\zero \\
+   \vec{\beta}_{4}\xmapsto{t-4}\zero \\
+  \end{array}  
+  % \begin{strings}{*{10}{l}}
+  %   \vec{\beta}_{1} &\xmapsto{t-4} &\vec{\beta}_{2}
+  %    &\xmapsto{t-4} &\vec{\beta}_{3} &\xmapsto{t-4} &\zero \\
+  %  \vec{\beta}_{4} &\xmapsto{t-4} &\zero \\
+  % \end{strings}
 \end{equation*}
 The four basis elements are chosen from the null spaces.
 The vectors $\vec{\beta}_3$ and~$\vec{\beta}_4$ are mapped to~$\zero$
@@ -1997,13 +2010,15 @@ $\vec{\beta}_1$ is mapped to~$\zero$ by~$(t-4)^3$.
   \quad
   \vec{\beta}_4=\colvec{0 \\ 0 \\ 1 \\ 0}
 \end{equation*}
-Of course we have to choose the four to be linearly independent.
+Of course, we chose these four to not have any linear dependences.
 \end{example}
 
 \begin{definition}
-An array that is all zeroes, except for some number $\lambda$
-down the diagonal and blocks of subdiagonal ones, is a 
-\definend{Jordan block}.\index{Jordan block}
+A \definend{Jordan block}\index{Jordan block}
+is a square array, or a square block of entries inside of an array
+that is all zeroes, except that on the diagonal is some number $\lambda$
+and on the subdiagonal are $1$'s.
+(If the block is $\nbyn{1}$ then there are no subdiagonal~$1$'s.)
 \end{definition}
 
 We have shown that Jordan block matrices are
@@ -2041,9 +2056,9 @@ In particular, this matrix
      0    &1    &1/2
    \end{mat}
 \end{equation*}
-belongs to the similarity class represented by the middle one, because we have
-adopted the convention of ordering the blocks of subdiagonal ones from the 
-longest block to the shortest.
+belongs to the similarity class represented by the middle one, because we will
+adopt the rule of ordering the blocks of subdiagonal ones from the 
+longest to the shortest.
 \end{example}
 
 We are now set up to finish the program of this chapter.
@@ -2167,7 +2182,7 @@ if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
 \index{similar!canonical form}%
 \index{canonical form!for similarity}\index{transformation!Jordan form for}
 Any transformation $\map{t}{\C^n}{\C^n}$ can be represented in 
-this form. 
+this form, where each $J_{\lambda}$ is a Jordan block.\index{Jordan block}
 \begin{equation*}
   \begin{mat}
     J_{\lambda_1}  &            &\text{\textit{--zeroes--}}                 \\
@@ -2177,15 +2192,10 @@ this form.
                &     &\text{\textit{--zeroes--}} &            &J_{\lambda_{k}}
   \end{mat}
 \end{equation*}
-Each \( J_{\lambda} \) block is square, has  diagonal $\lambda$'s 
-where $\lambda$ is an eigenvalue of~$t$, and has subdiagonal $1$'s 
-(if a block is $\nbyn{1}$ then it has no subdiagonal $1$'s).
 Restated, any $\nbyn{n}$ matrix is similar to one in this form. 
 \end{theorem}
 
 This form is \definend{Jordan form}.\index{Jordan form!represents similarity classes}\index{Jordan form!definition}
-Each square block $J_\lambda$
-is a \definend{Jordan block}.\index{Jordan block} 
 The strings in the associated basis are 
 \definend{Jordan strings}\index{Jordan string}\index{basis!Jordan string} 
 or \definend{Jordan chains}.\index{Jordan chain}\index{basis!Jordan chain}
@@ -4401,27 +4411,28 @@ Therefore
        The answer to the second half is `no': \( x^2 \) is even while
        \( 2x \) is odd.  
      \end{answer}
-  \item 
-    \nearbylemma{le:InvCompSubspSplitTrans} says that if \( M \) and
-    \( N \) are
-    invariant complements then \( t \) has a representation in the given
-    block form (with respect to the same ending as starting basis, of course).
-    Does the implication reverse?
-    \begin{answer}
-      Yes.
-      If \( \rep{t}{B,B} \) has the given block form, take \( B_M \) to
-      be the first \( j \) vectors of \( B \), where \( J \) is the
-      \( \nbyn{j} \) upper left submatrix.
-      Take \( B_N \) to be the remaining \( k \) vectors in \( B \).
-      Let \( M \) and \( N \) be the spans of \( B_M \) and \( B_N \).
-      Clearly \( M \) and \( N \) are complementary.
-      To see \( M \) is invariant (\( N \) works the same way), represent
-      any \( \vec{m}\in M \) with respect to \( B \), note the last
-      \( k \) components are zeroes, and multiply by the given block
-      matrix.
-      The final \( k \) components of the result are zeroes, so that
-      result is again in \( M \). 
-     \end{answer}
+  % Lemma gone when moved to new JF presentation
+  % \item 
+  %   \nearbylemma{le:InvCompSubspSplitTrans} says that if \( M \) and
+  %   \( N \) are
+  %   invariant complements then \( t \) has a representation in the given
+  %   block form (with respect to the same ending as starting basis, of course).
+  %   Does the implication reverse?
+  %   \begin{answer}
+  %     Yes.
+  %     If \( \rep{t}{B,B} \) has the given block form, take \( B_M \) to
+  %     be the first \( j \) vectors of \( B \), where \( J \) is the
+  %     \( \nbyn{j} \) upper left submatrix.
+  %     Take \( B_N \) to be the remaining \( k \) vectors in \( B \).
+  %     Let \( M \) and \( N \) be the spans of \( B_M \) and \( B_N \).
+  %     Clearly \( M \) and \( N \) are complementary.
+  %     To see \( M \) is invariant (\( N \) works the same way), represent
+  %     any \( \vec{m}\in M \) with respect to \( B \), note the last
+  %     \( k \) components are zeroes, and multiply by the given block
+  %     matrix.
+  %     The final \( k \) components of the result are zeroes, so that
+  %     result is again in \( M \). 
+  %    \end{answer}
    \item 
      A matrix \( S \) is the \definend{square root}\index{square root}
      of another \( T \) if \( S^2=T \).
