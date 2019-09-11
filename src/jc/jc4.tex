@@ -1752,15 +1752,6 @@ That holds if and only if $t$'s only eigenvalue is $\lambda$, because
 only if \( (t-\lambda)\,(\vec{v})=0\cdot\vec{v} \).
 \end{proof}
 
-We already have the canonical form that we want for 
-the case of nilpotent matrices, 
-that is, for each matrix whose only eigenvalue is zero.
-Corollary~III.\ref{cor:NilpotentMatCanonForm} says that each 
-such matrix is similar to one that is all
-zeroes except for blocks of subdiagonal ones.
-% (To make this representation unique we can fix some arrangement of
-% the blocks, perhaps from longest to shortest.)
-
 \begin{lemma}   \label{le:SimRespAddScalar}
 If the matrices \( T-\lambda I \) and \( N \) are similar 
 then \( T \) and \( N+\lambda I \) are also similar,
@@ -1775,6 +1766,21 @@ and so \( N=PTP^{-1}-\lambda I \).
 Therefore \( N+\lambda I=PTP^{-1} \).
 \end{proof}
 
+We already have the canonical form for 
+the case of nilpotent matrices, 
+that is, the case of matrices whose only eigenvalue is zero.
+By Corollary~III.\ref{cor:NilpotentMatCanonForm}, each 
+such matrix is similar to one that is all
+zeroes except for blocks of subdiagonal ones.
+% (To make this representation unique we can fix some arrangement of
+% the blocks, perhaps from longest to shortest.)
+The prior results let us extend this to all
+matrices that have a single eigenvalue~$\lambda$.
+In the new form,
+besides blocks of subdiagonal ones, all of the entries on the diagonal 
+are~$\lambda$.
+(See \nearbydefinition{def:JordanBlock} below.)
+
 \begin{example}   \label{ex:SingJordBlock}
 The characteristic polynomial of
 \begin{equation*}
@@ -1784,10 +1790,22 @@ The characteristic polynomial of
     \end{mat}
 \end{equation*}
 is \( (x-3)^2 \) and so \( T \) has a single eigenvalue, \( 3 \).
-Hence $T-3I$ has the single eigenvalue of \( 0 \) and so is nilpotent.
+% We can find a matrix similar to $T$ that is simple in 
+% the way that our canonical form for nilpotent matrices is simple.
+% The form is described in \nearbydefinition{def:JordanBlock} below but
+% as a preview here the new matrix.
+% \begin{equation*}
+%   \begin{mat}[r]
+%       3  &0  \\
+%       1  &3
+%     \end{mat}
+% \end{equation*}
 
-To get the canonical form for~$T$ we start by 
-finding a string basis for $T-3I$, computing the powers of the matrix 
+Because $3$ is the only eigenvalue, 
+$T-3I$ has the single eigenvalue of \( 0 \) and is therefore nilpotent.
+To get the canonical form of~$T$, start by
+finding a string basis for $T-3I$
+as in the prior section, computing the powers of this matrix 
 and the null spaces of those powers.
 \begin{center}
   \begin{tabular}{c|cc}
@@ -1827,11 +1845,14 @@ associated string basis~$B$ for $t-3$.
     \vec{\beta}_1\xmapsto{t-3}\vec{\beta}_2\xmapsto{t-3}\zero  \\
   \end{array}  
 \end{equation*}
-Find elements for a basis
+Find example elements for such a basis
 by taking a $\vec{\beta}_2$ that is mapped to~$\zero$
-by $t-3$ (that is, pick an element of $\nullspace{t-3}$ given in the table),
-and then taking a $\vec{\beta}_1$ that is mapped to~$\zero$ by $(t-3)^2$.
-Here are two such vectors, chosen to make a linearly independent set.
+by $t-3$ (that is, pick an element of 
+the null space $\nullspace{t-3}$ given in the table).
+Then choose a $\vec{\beta}_1$ that is mapped to~$\zero$ by $(t-3)^2$.
+The only restriction on the choice, besides membership in the null space,
+is that the two vectors need to form a linearly independent set.
+Here is a choice of two such vectors.
 \begin{equation*}
   \vec{\beta}_1=\colvec[r]{1 \\ 1}
   \quad
@@ -1847,8 +1868,9 @@ this matrix.
      1  &3
   \end{mat}
 \end{equation*}
-To exhibit the similarity computation
-take 
+
+We can exhibit the similarity computation.
+Take 
 $T$ to represent a transformation $\map{t}{\C^2}{\C^2}$ with respect to
 the standard basis (as we shall do for the rest of the chapter). 
 % Recall how to find the change of
@@ -1974,15 +1996,14 @@ and so has the single eigenvalue $4$.
 \end{center}
 The null space of $t-4$ has dimension two, the null space of $(t-4)^2$
 has dimension three, and the null space of $(t-4)^3$ has dimension four.
-This gives the canonical form $N$ for $t-4$, which in turn gives the
-form for \( t \).
+This gives the canonical form for $t-4$.
 \begin{equation*}
-  T=N+4I=
+  N=\rep{t-4}{B,B}=
   \begin{mat}[r]
-    4  &0  &0  &0   \\
-    1  &4  &0  &0   \\
-    0  &1  &4  &0   \\
-    0  &0  &0  &4
+    0  &0  &0  &0   \\
+    1  &0  &0  &0   \\
+    0  &1  &0  &0   \\
+    0  &0  &0  &0
    \end{mat}
    \qquad
   \begin{array}{r}
@@ -1990,17 +2011,12 @@ form for \( t \).
        \xmapsto{t-4}\vec{\beta}_{3}\xmapsto{t-4}\zero \\
    \vec{\beta}_{4}\xmapsto{t-4}\zero \\
   \end{array}  
-  % \begin{strings}{*{10}{l}}
-  %   \vec{\beta}_{1} &\xmapsto{t-4} &\vec{\beta}_{2}
-  %    &\xmapsto{t-4} &\vec{\beta}_{3} &\xmapsto{t-4} &\zero \\
-  %  \vec{\beta}_{4} &\xmapsto{t-4} &\zero \\
-  % \end{strings}
 \end{equation*}
-The four basis elements are chosen from the null spaces.
-The vectors $\vec{\beta}_3$ and~$\vec{\beta}_4$ are mapped to~$\zero$
+For the four basis elements, choose a
+$\vec{\beta}_3$ and~$\vec{\beta}_4$ that are mapped to~$\zero$
 by~$t-4$.
-The vector~$\vec{\beta}_2$ is mapped to~$\zero$ by~$(t-4)^2$ and 
-$\vec{\beta}_1$ is mapped to~$\zero$ by~$(t-4)^3$.
+Also choose a~$\vec{\beta}_2$ that is mapped to~$\zero$ by~$(t-4)^2$ 
+and a $\vec{\beta}_1$ is mapped to~$\zero$ by~$(t-4)^3$.
 \begin{equation*}
   \vec{\beta}_1=\colvec{1 \\ 0 \\ 0 \\ 0}
   \quad
@@ -2010,20 +2026,40 @@ $\vec{\beta}_1$ is mapped to~$\zero$ by~$(t-4)^3$.
   \quad
   \vec{\beta}_4=\colvec{0 \\ 0 \\ 1 \\ 0}
 \end{equation*}
-Of course, we chose these four to not have any linear dependences.
+Of course, we choose these four to not have any linear dependences.
+That gives the canonical form matrix similar to~$T$.
+\begin{equation*}
+  \rep{t}{B,B}
+  =N+4I=
+  \begin{mat}[r]
+    4  &0  &0  &0   \\
+    1  &4  &0  &0   \\
+    0  &1  &4  &0   \\
+    0  &0  &0  &4
+   \end{mat}
+\end{equation*}
 \end{example}
 
-\begin{definition}
+\begin{definition}  \label{def:JordanBlock}
 A \definend{Jordan block}\index{Jordan block}
-is a square array, or a square block of entries inside of an array
-that is all zeroes, except that on the diagonal is some number $\lambda$
-and on the subdiagonal are $1$'s.
-(If the block is $\nbyn{1}$ then there are no subdiagonal~$1$'s.)
+is a square matrix, or a square block of entries inside of a matrix,
+that is all zeroes except that 
+there is a number $\lambda\in\C$ such that 
+every diagonal entry is $\lambda$,
+and that every the subdiagonal entries is~$1$.
+(If the block is $\nbyn{1}$ then it has no subdiagonal~$1$'s.)
 \end{definition}
 
-We have shown that Jordan block matrices are
+The strings in the associated basis are 
+\definend{Jordan strings}\index{Jordan string}\index{basis!Jordan string} 
+or \definend{Jordan chains}.\index{Jordan chain}\index{basis!Jordan chain}
+
+The above examples illustrate that Jordan block matrices are
 canonical representatives of the similarity classes of single-eigenvalue
 matrices.
+When we construct canonical representatives of single-eigenvalue matrices,
+to make them unique we arrange that the blocks of subdiagonal ones go from
+longest to shortest (reading left to right).
 
 \begin{example}
 The \( \nbyn{3} \) matrices whose only eigenvalue is \( 1/2 \) separate into
@@ -2056,9 +2092,8 @@ In particular, this matrix
      0    &1    &1/2
    \end{mat}
 \end{equation*}
-belongs to the similarity class represented by the middle one, because we will
-adopt the rule of ordering the blocks of subdiagonal ones from the 
-longest to the shortest.
+belongs to the similarity class represented by the middle one, because of 
+the convention of ordering the blocks of subdiagonal ones.
 \end{example}
 
 We are now set up to finish the program of this chapter.
@@ -2067,11 +2102,12 @@ transformations $\map{t}{\C^n}{\C^n}$.
 
 The diagonalizable case is where
 $t$ has~$n$ distinct eigenvalues 
-$\lambda_1$, \ldots $\lambda_n$. 
+$\lambda_1$, \ldots $\lambda_n$, that is, where the number of eigenvalues
+equals the dimension of the space. 
 In this case there is a basis
 $\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$ where 
 $\vec{\beta}_i$ is an eigenvector associated with the eigenvalue~$\lambda_i$.
-In the example below, 
+The example below has 
 $n=3$ and the three eigenvalues are $\lambda_1=1$, $\lambda_2=3$,
 and $\lambda_3=-1$.
 It shows the canonical representative matrix and the associated basis.
@@ -2091,8 +2127,8 @@ It shows the canonical representative matrix and the associated basis.
 We saw a diagonalization example in 
 Five.II.\ref{ex:SummaryOfDiagonalizable}.
 
-Next is the nilpotent case.
-If $t$ has a single eigenvalue then there is a basis of
+The case where $t$ has a single eigenvalue leverages 
+the results on nilpotency to get a basis of
 associated eigenvectors that form disjoint strings.
 This example has $n=10$ and the single eigenvalue~$\lambda=2$.
 \begin{equation*}
@@ -2118,14 +2154,14 @@ This example has $n=10$ and the single eigenvalue~$\lambda=2$.
     \vec{\beta}_{10}\mapsunder{t-2}\zero
     \end{array}}  
 \end{equation*}
-We saw a full nilpotent example as 
+We saw a full example as 
 \nearbyexample{ex:FullNilpotentCase}.
 
-We will extend the two cases
-by having the canonical form have
-blocks with different diagonal eigenvalues. 
-This example is for $n=6$. 
-The eigenvalues are $3$, $2$, and~$-1$ 
+We will extend to arbitrary matrices.
+The canonical form (see {th:JordanForm} below) consists of
+Jordan blocks containing the eigenvalues. 
+This example is for $n=6$ with 
+eigenvalues that are $3$, $2$, and~$-1$. 
 \begin{equation*}
   T=\begin{mat}
     3  &0  &0  &0 &0 &0 \\
@@ -2144,21 +2180,10 @@ The eigenvalues are $3$, $2$, and~$-1$
     \vec{\beta}_6\mapsunder{t+1}\zero  \\
     \end{array}}  
 \end{equation*}
-Note that there are four blocks, two of them associated with the eigenvalue~$3$.
+Note that there are four blocks, two of them
+associated with the eigenvalue~$3$.
 
-% The best possibility for general maps and matrices would be
-% if we could break them into a part involving 
-% their first eigenvalue \( \lambda_1 \) 
-% (which we represent using its Jordan block),
-% a part with \( \lambda_2 \), etc.
-% This best possibility is what happens.
-
-% For any transformation \( \map{t}{V}{V} \),
-% we shall break the space \( V \) into the direct sum of a part on which
-% \( t-\lambda_1 \) is nilpotent, a part on which \( t-\lambda_2 \)
-% is nilpotent, etc.
-
-For the proof we need a definition. 
+We first need a definition. 
 Let \( \map{t}{V}{V} \) be a linear transformation.
 The restriction\appendrefs{restrictions of functions}\spacefactor=1000  %
 of \( t \) to a subspace \( M\subseteq V \) 
@@ -2178,11 +2203,12 @@ if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
 (shorter: \( t(M)\subseteq M \)).
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}  \label{th:JordanForm}
 \index{similar!canonical form}%
 \index{canonical form!for similarity}\index{transformation!Jordan form for}
 Any transformation $\map{t}{\C^n}{\C^n}$ can be represented in 
-this form, where each $J_{\lambda}$ is a Jordan block.\index{Jordan block}
+\definend{Jordan form},\index{Jordan form!represents similarity classes}\index{Jordan form!definition}
+where each $J_{\lambda}$ is a Jordan block.\index{Jordan block}
 \begin{equation*}
   \begin{mat}
     J_{\lambda_1}  &            &\text{\textit{--zeroes--}}                 \\
@@ -2194,11 +2220,6 @@ this form, where each $J_{\lambda}$ is a Jordan block.\index{Jordan block}
 \end{equation*}
 Restated, any $\nbyn{n}$ matrix is similar to one in this form. 
 \end{theorem}
-
-This form is \definend{Jordan form}.\index{Jordan form!represents similarity classes}\index{Jordan form!definition}
-The strings in the associated basis are 
-\definend{Jordan strings}\index{Jordan string}\index{basis!Jordan string} 
-or \definend{Jordan chains}.\index{Jordan chain}\index{basis!Jordan chain}
  
 \begin{proof}
 This proof is closely related to that of
@@ -2245,12 +2266,12 @@ which below we will write as $t-\lambda_i$.
 \begin{strings}{*{10}{l}}
   \vec{w}_{1,n_1} &\xmapsto{t-\lambda_1} &\cdots 
      &\xmapsto{t-\lambda_1} &\vec{w}_{1,1} &\xmapsto{t-\lambda_1} &\zero \\
-     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                   \\
+     \vdotswithin{\xmapsto{t-\lambda_1}}                   \\
   \vec{w}_{q,n_q} &\xmapsto{t-\lambda_1} &\cdots 
      &\xmapsto{t-\lambda_1} &\vec{w}_{q,1} &\xmapsto{t-\lambda_1} &\zero \\
   \vec{w}_{q+1,n_{q+1}} &\xmapsto{t-\lambda_2} &\cdots 
      &\xmapsto{t-\lambda_2} &\vec{w}_{q+1,1} &\xmapsto{t-\lambda_2} &\zero \\
-     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                              \\
+     \vdotswithin{\xmapsto{t-\lambda_1}}                              \\
   \vec{w}_{k,n_k} &\xmapsto{t-\lambda_i} &\cdots 
      &\xmapsto{t-\lambda_i} &\vec{w}_{k,1} &\xmapsto{t-\lambda_i} &\zero \\
 \end{strings}
@@ -2288,17 +2309,17 @@ from $\nullspace{t-\lambda_1}$.
   \vec{x}_1  &\xmapsto{t-\lambda_1} 
      &\vec{w}_{1,n_1} &\xmapsto{t-\lambda_1} &\cdots 
      &\xmapsto{t-\lambda_1} &\vec{w}_{1,1} &\xmapsto{t-\lambda_1} &\zero \\
-     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                   \\
+     \vdotswithin{\xmapsto{t-\lambda_1}}                   \\
   \vec{x}_q  &\xmapsto{t-\lambda_1}  
      &\vec{w}_{q,n_q} &\xmapsto{t-\lambda_1} &\cdots 
      &\xmapsto{t-\lambda_1} &\vec{w}_{q,1} &\xmapsto{t-\lambda_1} &\zero \\
   \vec{w}_{q+1,n_{q+1}} &\xmapsto{t-\lambda_2} &\cdots 
      &\xmapsto{t-\lambda_2} &\vec{w}_{q+1,1} &\xmapsto{t-\lambda_2} &\zero \\
-     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                              \\
+     \vdotswithin{\xmapsto{t-\lambda_1}}                              \\
   \vec{w}_{k,n_k} &\xmapsto{t-\lambda_i} &\cdots 
      &\xmapsto{t-\lambda_i} &\vec{w}_{k,1} &\xmapsto{t-\lambda_i} &\zero \\
      \vec{y}_1  &\xmapsto{t-\lambda_i} &\zero \\
-     &\shortvdotswithin{\xmapsto{t-\lambda_1}}                              \\
+     \vdotswithin{\xmapsto{t-\lambda_1}}                              \\
      \vec{y}_{r-q}  &\xmapsto{t-\lambda_i} &\zero \\
 \end{strings}
 \end{equation*}
@@ -2786,18 +2807,18 @@ Consequently the $b$'s and $c$'s are all~$0$.
 % matrix.
 % \end{corollary}
 
-For Jordan form to be a canonical form for 
-matrix similarity,\index{representative!of similarity classes}
-strictly speaking it must be unique.
-That is, for any square matrix there needs to be one and only one matrix $J$
-similar to it and of the specified form.
-As stated the theorem allows us to rearrange the Jordan blocks.
-We could make this form unique, say 
-by arranging the Jordan blocks so the eigenvalues are in 
-order, and then arranging
-the blocks of subdiagonal ones from 
-longest to shortest.
-Below, we won't bother with that.
+% For Jordan form to be a canonical form for 
+% matrix similarity,\index{representative!of similarity classes}
+% strictly speaking it must be unique.
+% That is, for any square matrix there needs to be one and only one matrix $J$
+% similar to it and of the specified form.
+% As stated the theorem allows us to rearrange the Jordan blocks.
+% We could make this form unique, say 
+% by arranging the Jordan blocks so the eigenvalues are in 
+% order, and then arranging
+% the blocks of subdiagonal ones from 
+% longest to shortest.
+% Below, we won't bother with that.
 
 \begin{example} \label{ex:FirstJordForm}
 This matrix 
@@ -2908,6 +2929,10 @@ the Jordan form of \( T \) is
    \end{mat}
 \end{equation*}
 where \( B \) is the concatenation of $B_2$ and $B_6$.
+(If we want to be careful about getting a unique Jordan form then
+we could, for instance, rearrange the basis elements to have the eigenvalues
+in descending order.
+But, ascending order is fine also.)
 \end{example}
 
 \begin{example}  \label{SecJordanForm}
