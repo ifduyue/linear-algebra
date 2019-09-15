@@ -2232,15 +2232,28 @@ application of \( t-\lambda_j \) leaves
 
 \begin{definition} \label{def:invariant}
 Let \( \map{t}{V}{V} \) be a transformation.
-A subspace \( M \) is \definend{$t$ invariant}%
+A subspace \( M\subseteq V \) is \definend{$t$ invariant}%
 \index{invariant subspace}\index{subspace!invariant}
 if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
 (shorter: \( t(M)\subseteq M \)).
 \end{definition}
 
-Note that the generalized null space~$\gennullspace{t-\lambda}$ 
+The generalized null space~$\gennullspace{t-\lambda}$ 
 and range space~$\genrangespace{t-\lambda}$ are $t-\lambda$
 invariant.
+For the verification, suppose that $\map{t}{\C^n}{\C^n}$ and 
+that $\lambda\in\C$ is an eigenvalue.
+If $\vec{v}\in\gennullspace{t-\lambda}$ then 
+$(t-\lambda)^n(\vec{v})=\zero$ and it follows that
+$(t-\lambda)^n(\,(t-\lambda)(\vec{v})\,)=(t-\lambda)^{n+1}(\vec{v})=\zero$ 
+also. 
+As to the generalized range space,
+Lemma Five.III.\ref{le:RangeAndNullChains} and its proof show that
+$\genrangespace{t-\lambda}
+  =\rangespace{(t-\lambda)^n}
+  =\rangespace{(t-\lambda)^{n+1}}$ 
+and so $\vec{v}\in\genrangespace{t-\lambda}$ implies that
+$(t-\lambda)(\vec{v})\in\genrangespace{t-\lambda}$ also.
 
 \begin{lemma} \label{le:tInvIfftMinLambdaInv}
 A subspace is \( t \) invariant if and only if 
@@ -2309,20 +2322,20 @@ Since $\lambda_1$ is an eigenvalue, there is an associated
 eigenvector~$\vec{v}\neq\zero$ where $(t-\lambda_1)(\vec{v})=\zero$
 and so the null space of $t-\lambda_1$ is nontrivial.
 Thus the dimension of $\nullspace{t-\lambda_1}$, the nullity,
-and is greater than zero.
+is greater than zero.
 Since the rank plus the nullity equals the dimension of the domain,
 the rank
 is strictly less than~$n$.
 Write $W$ for $\rangespace{t-\lambda_1}$ and write
 $r$ for the rank, the dimension of $W$.
 
-Note that $W$ is $t-\lambda_1$~invariant because if 
+The space $W$ is $t-\lambda_1$~invariant because if 
 $\vec{w}\in W=\rangespace{t-\lambda_1}$ then $\vec{w}\in\C^n$ and so
 $(t-\lambda_1)(\vec{w})\in\rangespace{t-\lambda_1}$.
 Thus the restriction of $t-\lambda_1$ to~$w$ induces a transformation of~$W$, 
 which we shall also call $t-\lambda_1$.
 By the prior paragraph the dimension of~$W$ is less than~$n$ 
-so the inductive hypothesis applies, and
+so the inductive hypothesis applies and
 we get a basis for~$W$ consisting of disjoint strings.
 
 These strings are associated with the eigenvalues of $t-\lambda_1$ 
@@ -2330,7 +2343,10 @@ on~$W$.
 For any $\lambda$ that is an eigenvalue of~$t-\lambda_1$,
 the transformation of the basis elements will be 
 $(t-\lambda_1)-\lambda=t-(\lambda_1-\lambda)$,
-which below we will write as $t-\lambda_1$, \ldots{}, $t-\lambda_i$. 
+which we will write as $t-\lambda_s$.
+The following diagram covers the case of strings for $t-\lambda_1$, that is
+where $\lambda=0$;
+the argument remains valid if there are no such strings.
 \begin{equation*}
 \begin{strings}{*{10}{l}}
   \vec{w}_{1,n_1} &\xmapsto{t-\lambda_1} &\cdots 
@@ -2348,29 +2364,27 @@ which below we will write as $t-\lambda_1$, \ldots{}, $t-\lambda_i$.
 (These strings may have differing lengths; 
 for instance, perhaps $n_1\neq n_k$.)
 
-The list of strings shows some of them as being associated with
-$t-\lambda_1$ (that is, with $\hat{\lambda}=0$).
-Observe that the rightmost non-$\zero$ vector in each string 
+The rightmost non-$\zero$ vector in each string 
 is in the null space of the associated 
 map:~$(t-\lambda_1)(\vec{w}_{1,1})=\zero$, \ldots, 
 $(t-\lambda_i)(\vec{w}_{k,1})=\zero$.
-The number of strings associated with $t-\lambda_1$,
-denoted $q$ in the above diagram, is thus
+Thus the number of strings associated with $t-\lambda_1$,
+denoted $q$ in the above diagram, is
 equal to the dimension of $W\cap\nullspace{t-\lambda_1}$.
 
 The string basis above is for $W=\rangespace{t-\lambda_1}$.
-We now expand it to make it a basis for~$\C_n$.
+We now expand it to make it a basis for all of~$\C_n$.
 First, because 
-each of the $q$-many vectors $\vec{w}_{1,n_1}$, \ldots, $\vec{w}_{q,n_q}$
-is an element of~$\rangespace{t-\lambda_1}$, they are the images of 
-vectors~$\vec{x}_1$, \ldots, $\vec{x}_{q}$ from~$\C^n$.
-We adjoin those vectors to the strings.
+each of the $q$-many vectors $\vec{w}_{1,n_1}$, or \ldots,~$\vec{w}_{q,n_q}$
+is an element of~$\rangespace{t-\lambda_1}$, each is the image of 
+a vector~$\vec{x}_1$, or \ldots, $\vec{x}_{q}$ from~$\C^n$.
+Add these as prefixes to the strings.
 Second, the dimension of $W\cap\nullspace{t-\lambda_1}$ is~$q$,
 and the dimension of~$W$ is~$r$, 
 so the bookkeeping requires that there be a $r-q$-dimensional subspace~$Y$
-of $\nullspace{t-\lambda_1}$ whose intersects with $W$ is~$\set{\zero}$.
+of $\nullspace{t-\lambda_1}$ whose intersection with $W$ is~$\set{\zero}$.
 Consequently, 
-we add $r-q$-many vectors linearly independent
+add $r-q$-many linearly independent
 vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}$, all
 from $\nullspace{t-\lambda_1}$.
 \begin{equation*}
@@ -2392,9 +2406,9 @@ from $\nullspace{t-\lambda_1}$.
      \vec{y}_{r-q}  &\xmapsto{t-\lambda_1} &\zero \\
 \end{strings}
 \end{equation*}
-We will show that this is the desired basis.
+We will show that this is the desired basis for~$\C^n$.
 
-Because this number of vectors in this set 
+Because the number of vectors in the set
 is equal to the dimension of the space, 
 we will be done if we verify that its elements are linearly independent.
 Assume that this is equal to~$\zero$
@@ -2404,7 +2418,7 @@ Assume that this is equal to~$\zero$
     +c_1\vec{y}_1+\cdots+c_{r-q}\vec{y}_{r-q}
   \tag{$*$}
 \end{equation*}
-We first show that uner this assumption we have that
+We first show that this assumption implies that
 all of the $a$'s are zero.
 Apply $t-\lambda_1$ to~($*$).
 The vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}$ 
@@ -2426,10 +2440,10 @@ linear combination of $\vec{w}$'s.
 These vectors are linearly independent because
 they form a basis for~$W$ and so in this linear combination 
 the coefficients are~$0$.
-We will be done showing that the $a$'s are all zero if
-we show that 
+We will be done showing that all the $a$'s are zero if
+we verify that 
 the coefficient of $\vec{w}_{i,n_i}$ is $a_i$ for $i=1,\ldots,q$.
-That's true because for $i=1,\ldots,q$, 
+But that's true because for $i=1,\ldots,q$, 
 equation~($**$) has $\hat{\lambda}=0$
 and so $\vec{w}_{i,n_i}$ is the image of $x_{i}$ alone.
 Thus $a_1$, \ldots, $a_q$ are zero. 
