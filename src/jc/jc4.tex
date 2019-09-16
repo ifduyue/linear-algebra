@@ -2237,54 +2237,7 @@ A subspace \( M\subseteq V \) is \definend{$t$ invariant}%
 if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
 (shorter: \( t(M)\subseteq M \)).
 \end{definition}
-
-The generalized null space~$\gennullspace{t-\lambda}$ 
-and range space~$\genrangespace{t-\lambda}$ are $t-\lambda$
-invariant.
-For the verification, suppose that $\map{t}{\C^n}{\C^n}$ and 
-that $\lambda\in\C$ is an eigenvalue.
-If $\vec{v}\in\gennullspace{t-\lambda}$ then 
-$(t-\lambda)^n(\vec{v})=\zero$ and it follows that
-$(t-\lambda)^n(\,(t-\lambda)(\vec{v})\,)=(t-\lambda)^{n+1}(\vec{v})=\zero$ 
-also. 
-As to the generalized range space,
-Lemma Five.III.\ref{le:RangeAndNullChains} and its proof show that
-$\genrangespace{t-\lambda}
-  =\rangespace{(t-\lambda)^n}
-  =\rangespace{(t-\lambda)^{n+1}}$ 
-and so $\vec{v}\in\genrangespace{t-\lambda}$ implies that
-$(t-\lambda)(\vec{v})\in\genrangespace{t-\lambda}$ also.
-
-\begin{lemma} \label{le:tInvIfftMinLambdaInv}
-A subspace is \( t \) invariant if and only if 
-it is \( t-\lambda \) invariant for all scalars \( \lambda \).
-In particular, 
-if \( \lambda_i,\lambda_j\in\C \) are eigenvalues of
-\( t \) then
-the spaces \( \gennullspace{t-\lambda_i} \) 
-and \( \genrangespace{t-\lambda_i} \)
-are \( t-\lambda_j \) invariant.
-\end{lemma}
-
-\begin{proof}
-For the first sentence the `if' half is easy:~if 
-the subspace is $t-\lambda$ invariant for 
-all scalars $\lambda$ then using $\lambda=0$ 
-shows that it is $t$ invariant.
-For `only if' suppose that the subspace is $t$ invariant,
-so that if $\vec{m}\in M$ then $t(\vec{m})\in M$, and let $\lambda$ be 
-a scalar.
-The subspace $M$ is closed under linear combinations and so if 
-$t(\vec{m})\in M$ then $t(\vec{m})-\lambda\vec{m}\in M$.
-Thus if $\vec{m}\in M$ then $(t-\lambda)\,(\vec{m})\in M$.
-
-The lemma's second sentence follows from its first.
-The
-two spaces are $t-\lambda_i$~invariant, so they are \( t \)~invariant,
-and applying the first sentence again gives that 
-they are also \( t-\lambda_j \) invariant.
-\end{proof}
-
+ 
 \begin{theorem}  \label{th:JordanForm}
 \index{similar!canonical form}%
 \index{canonical form!for similarity}\index{transformation!Jordan form for}
@@ -2901,22 +2854,80 @@ Consequently the $b$'s and $c$'s are all~$0$.
 % matrix.
 % \end{corollary}
 
-% For Jordan form to be a canonical form for 
-% matrix similarity,\index{representative!of similarity classes}
-% strictly speaking it must be unique.
-% That is, for any square matrix there needs to be one and only one matrix $J$
-% similar to it and of the specified form.
-% As stated the theorem allows us to rearrange the Jordan blocks.
-% We could make this form unique, say 
-% by arranging the Jordan blocks so the eigenvalues are in 
-% order, and then arranging
-% the blocks of subdiagonal ones from 
-% longest to shortest.
-% Below, we won't bother with that.
+\begin{remark}
+For Jordan form to be a canonical form for 
+matrix similarity,\index{representative!of similarity classes}
+strictly speaking it must be unique.
+That is, for any square matrix there needs to be one and only one 
+Jordan form matrix
+similar to it.
+As stated, the theorem allows us to rearrange the Jordan blocks.
+We could make this form unique, 
+by arranging the Jordan blocks so the eigenvalues are in 
+some specified order and then arranging
+the blocks of subdiagonal ones from 
+longest to shortest.
+Below, we won't bother with that.
+\end{remark}
+
+The examples below we start with a matrix and calculate 
+a Jordan form matrix similar to it.
+For instance in the first example we find the eigenvalues are $2$ 
+and~$6$ and to pick basis elements we find the null spaces of $t-2$ and~$t-6$. 
+We want that the calculation for each map does not affect the calculation
+for the other.
+
+So before those examples, 
+suppose that $\map{t}{\C^n}{\C^n}$ is a transformation and 
+that $\lambda\in\C$ is an eigenvalue.
+Note that the generalized null space~$\gennullspace{t-\lambda}$ 
+and range space~$\genrangespace{t-\lambda}$ are $t-\lambda$
+invariant spaces.
+For the generalized null space, 
+if $\vec{v}\in\gennullspace{t-\lambda}$ then 
+$(t-\lambda)^n(\vec{v})=\zero$ and it follows that
+$(t-\lambda)^n(\,(t-\lambda)(\vec{v})\,)=(t-\lambda)^{n+1}(\vec{v})=\zero$ 
+also. 
+As to the generalized range space,
+Lemma Five.III.\ref{le:RangeAndNullChains} and its proof show that
+$\genrangespace{t-\lambda}
+  =\rangespace{(t-\lambda)^n}
+  =\rangespace{(t-\lambda)^{n+1}}$ 
+and so $\vec{v}\in\genrangespace{t-\lambda}$ implies that
+$(t-\lambda)(\vec{v})\in\genrangespace{t-\lambda}$ also.
+
+\begin{lemma} \label{le:tInvIfftMinLambdaInv}
+A subspace is \( t \) invariant if and only if 
+it is \( t-\lambda \) invariant for all scalars \( \lambda \).
+In particular, 
+if \( \lambda_i,\lambda_j\in\C \) are eigenvalues of
+\( t \) then
+the spaces \( \gennullspace{t-\lambda_i} \) 
+and \( \genrangespace{t-\lambda_i} \)
+are \( t-\lambda_j \) invariant.
+\end{lemma}
+
+\begin{proof}
+The right-to-left half of the first sentence is easy:~if 
+the subspace is $t-\lambda$ invariant for 
+all scalars $\lambda$ then taking $\lambda=0$ 
+shows that it is $t$ invariant.
+For the other half suppose that the subspace is $t$~invariant,
+so that if $\vec{m}\in M$ then $t(\vec{m})\in M$, and let $\lambda$ be 
+a scalar.
+The subspace $M$ is closed under linear combinations and so if 
+$t(\vec{m})\in M$ then $t(\vec{m})-\lambda\vec{m}\in M$.
+Thus if $\vec{m}\in M$ then $(t-\lambda)\,(\vec{m})\in M$.
+
+The lemma's second sentence follows from its first.
+The
+two spaces are $t-\lambda_i$~invariant, so they are \( t \)~invariant,
+and applying the first sentence again gives that 
+they are also \( t-\lambda_j \) invariant.
+\end{proof}
 
 \begin{example} \label{ex:FirstJordForm}
 This matrix 
-has the characteristic polynomial \( (x-2)^2(x-6) \).
 \begin{equation*}
    T=
    \begin{mat}[r]
@@ -2924,6 +2935,16 @@ has the characteristic polynomial \( (x-2)^2(x-6) \).
      0  &6  &2  \\
      0  &0  &2
    \end{mat}
+\end{equation*}
+has the characteristic polynomial \( (x-2)^2(x-6) \).
+\begin{equation*}
+   |T-xI|=
+   \begin{vmat}
+     2-x  &0    &1  \\
+     0    &6-x  &2  \\
+     0    &0    &2-x
+   \end{vmat}
+   =(x-2)^2(x-6)
 \end{equation*}
 First we do the eigenvalue~$2$.
 Computation of the powers of $T-2I$, and of the null spaces and nullities, 
@@ -4480,7 +4501,7 @@ Therefore
       Yes, the sum of two invariant subspaces is invariant.
       The check is easy.  
     \end{answer}
-  \item 
+  \item  \label{exer:OrderC}
      Give a way to order the Jordan blocks if some of the eigenvalues
      are complex numbers.
      That is, suggest a reasonable ordering for the complex numbers.
