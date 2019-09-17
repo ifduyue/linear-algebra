@@ -436,7 +436,7 @@ beginfig(16) % vector description of a line
   % label.urt(btex {\small 
   %      \ $\colvec{2 \\ -1}$} etex,.5[z3,z4]);  
   label.urt(btex {\small 
-       \ $\set{\colvec{1 \\ 2}+t\colvec{2 \\ -1}\suchthat i\in\R}$} etex,.5[z3,z4]);  
+       \ $\set{\colvec{1 \\ 2}+t\colvec{2 \\ -1}\suchthat t\in\R}$} etex,.5[z3,z4]);  
 endfig;
 
 

@@ -28,6 +28,8 @@ leaves extra space at start of first sentence.
 ** Better Topic on graphics
 ** Get source for four_minute_mile.pdf, moneyball.pdf
 ** For proof that every basis si the same size, put the coordinate-bound one on the slides
+** Make linearalgebra use cm-super for Concrete fonts (else metafont starts up).
+** Add to slides for vs1 comments about generic linear combos for soem of the spaces, to get across that the point of vector spaces is linear combos. 
 * Refactor some code 
 ** Move Range space and Null space to after the definition of Computing Linear Maps
 ** Change vector look?

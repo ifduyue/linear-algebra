@@ -162,7 +162,7 @@ This subset of \( \Re^2 \) is a line through the origin.
   L=\set{ \colvec{x \\ y}  \suchthat y=3x}
 \end{equation*}
 We shall verify that it is a
-a vector space, under the usual meaning of `+' and `\(\cdot\)'.
+vector space under the usual meaning of `+' and `\(\cdot\)'.
 \begin{equation*}
   \colvec{x_1 \\ y_1}
   +
@@ -176,7 +176,7 @@ a vector space, under the usual meaning of `+' and `\(\cdot\)'.
   \colvec{rx \\ ry}
 \end{equation*}
 These operations
-are just the ones of \( \Re^2 \), reused on its subset $L$.
+are just the ordinary ones, reused on its subset $L$.
 We say that \( L \) \definend{inherits\/}\index{inherited operations} 
 these operations from \( \Re^2 \).
 
@@ -1571,7 +1571,7 @@ But from now on our primary objects of study will be vector spaces.
       \partsitem This set
         \begin{equation*}
           \set{\colvec{x \\ y \\ z \\ w}\in\Re^4
-               \suchthat x+y+w=1}
+               \suchthat x+y+z+w=1}
         \end{equation*}
       \partsitem The set of functions
         \( \set{\map{f}{\Re}{\Re}\suchthat df/dx+2f=0} \)
@@ -1579,15 +1579,53 @@ But from now on our primary objects of study will be vector spaces.
         \( \set{\map{f}{\Re}{\Re}\suchthat df/dx+2f=1} \)
     \end{exparts}
     \begin{answer}
-      For each ``yes'' answer, you must give a check of all the 
-      conditions given in the
-      definition of a vector space.
+      For each ``yes'' answer, you can just check a couple of 
+      linear combinations in the space.
       For each ``no'' answer, give a specific example of the failure 
       of one of the
       conditions.
       \begin{exparts}
         \partsitem Yes.
+          One linear combination picked out of the air is this.
+          \begin{equation*}
+            2\cdot\begin{mat}
+              3  &0 \\
+              0  &4
+            \end{mat}
+            +5\cdot\begin{mat}
+              6  &0 \\
+              0  &7
+            \end{mat}
+          \end{equation*}
+          The key point about the collection being a vector space is that
+          the result is a diagonal matrix.
+          \begin{equation*}
+            =\begin{mat}
+              36 &0 \\
+              0  &43
+            \end{mat}
+          \end{equation*}
         \partsitem Yes.
+          Here is a linear combination.
+          \begin{equation*}
+            10\cdot\begin{mat}
+              1  &3  \\
+              3  &2
+            \end{mat}
+            +11\cdot\begin{mat}
+              3  &7  \\
+              7  &4
+            \end{mat}
+          \end{equation*}
+          We look for the result to follow the form that the upper left 
+          and lower right entries add to make the upper right entry, and
+          also the lower left.
+          \begin{equation*}
+            =\begin{mat}
+               43  &107  \\
+              107  &64
+            \end{mat}
+          \end{equation*}
         \partsitem No, this set is not closed under the natural addition
           operation.
           The vector of all $1/4$'s is a member of this set 
@@ -1808,7 +1846,7 @@ But from now on our primary objects of study will be vector spaces.
     \end{answer}
   \item 
     \begin{exparts}
-      \partsitem Prove that every point, line, or plane thru the origin in 
+      \partsitem Prove that every point, line, or plane through the origin in 
          \( \Re^3 \) is a vector space under the inherited operations.
       \partsitem What if it doesn't contain the origin?
     \end{exparts}
@@ -2338,13 +2376,13 @@ which linear combinations ``make sense.''
 % The proof above checks that the subspace satisfies these 
 % eight non-closure conditions because they hold in the
 % surrounding vector space, provided that the nonempty set $S$ satisfies
-% \nearbytheorem{th:SubspIffClosed}'s statement~(2) 
+% \nearbylemma{th:SubspIffClosed}'s statement~(2) 
 % (e.g., commutativity of addition in $S$ follows right from
 % commutativity of addition in $V$).
 % There is a second way in which we can regard vector spaces as structures in 
 % which linear combinations are ``sensible.''
 % It has to do with the closure conditions.
-\nearbytheorem{th:SubspIffClosed}'s statements (1)-(3) 
+\nearbylemma{th:SubspIffClosed}'s statements (1)-(3) 
 say that we can always make sense of 
 an expression like
 $r_1\vec{s}_1+r_2\vec{s}_2$
@@ -2393,7 +2431,7 @@ so this is a linear combination of linear combinations.
 \end{equation*}
 The Linear Combination Lemma, Lemma~One.III.\ref{lm:LinearCombinationLemma},
 shows that the total is a linear combination of the two vectors
-and so \nearbytheorem{th:SubspIffClosed}'s statement~(2) is satisfied.
+and so \nearbylemma{th:SubspIffClosed}'s statement~(2) is satisfied.
 \end{example}
 
 \begin{example} \label{ex:ParamSubspace}
@@ -3749,8 +3787,8 @@ The next section studies spanning sets that are minimal.
         \( A\intersection B \) be a subspace?
         Always?  Sometimes?  Never?
       \partsitem Must the union \( A\union B \) be a subspace?
-      \partsitem If \( A \) is a subspace, must
-        its complement be a subspace?
+      \partsitem If \( A \) is a subspace of some~$V$, must
+        its set complement $V-A$ be a subspace?
     \end{exparts}
     (\textit{Hint.}   Try some test subspaces from 
     \nearbyexample{ex:SubspRThree}.)
@@ -3799,8 +3837,8 @@ The next section studies spanning sets that are minimal.
           Hence the sum is not an element of \( A\union B \), and so the union
           is not a subspace.
         \partsitem Never.
-          As \( A \) is a subspace, it contains the zero vector, and therefore
-          the set that is $A$'s complement does not.
+          As \( A \) is a subspace it contains the zero vector and therefore
+          the set that is $A$'s complement, $V-A$, does not.
           Without the zero vector, the complement cannot be a vector space.
       \end{exparts}  
     \end{answer}

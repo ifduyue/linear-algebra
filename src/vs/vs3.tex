@@ -4325,36 +4325,50 @@ Where there are \( r \) independent equations, the general solution involves
               4  &3  &5
             \end{mat}
           \end{equation*}
-        \partsitem Assume that \( A \) and \( B \) are matrices with equal
-          row spaces.
-          Construct a matrix \( C \) with the rows of \( A \) above the rows
-          of \( B \), and another matrix \( D \) with the rows of \( B \)
-          above the rows of \( A \).
-          \begin{equation*}
-            C=\begin{mat}
-                 A \\ B
-              \end{mat}
-            \qquad
-            D=\begin{mat}
-                 B \\ A
-              \end{mat}
-          \end{equation*}
-          Observe that \( C \) and \( D \) are row-equivalent (via a sequence
-          of row-swaps) and so Gauss-Jordan reduce to the same reduced
-          echelon form matrix.
+        \partsitem 
+          % We give two proofs.
+          % The first is a bit lower-level but more constructive.
+          % The second is higher level.
 
-          Because the row spaces are equal, the rows of \( B \)
-          are linear combinations of the rows of \( A \) so Gauss-Jordan
-          reduction on \( C \) simply turns the rows of \( B \) to zero rows
-          and thus the nonzero rows of $C$ are just the nonzero rows obtained
-          by Gauss-Jordan reducing \( A \).
-          The same can be said for the matrix \( D \)\Dash Gauss-Jordan
-          reduction on \( D \) gives the same non-zero rows as are produced
-          by reduction on \( B \) alone.
-          Therefore, 
-          \( A \) yields the same nonzero rows as \( C  \), which yields
-          the same nonzero rows as \( D \), which yields the same nonzero
-          rows as \( B \).
+          % \textit{First proof.}
+          % Assume that \( A \) and \( B \) are matrices with equal row spaces.
+          % Construct a matrix \( C \) with the rows of \( A \) above the rows
+          % of \( B \), and another matrix \( D \) with the rows of \( B \)
+          % above the rows of \( A \).
+          % \begin{equation*}
+          %   C=\begin{mat}
+          %        A \\ B
+          %     \end{mat}
+          %   \qquad
+          %   D=\begin{mat}
+          %        B \\ A
+          %     \end{mat}
+          % \end{equation*}
+          % Observe that \( C \) and \( D \) are row-equivalent (via a sequence
+          % of row-swaps) and so Gauss-Jordan reduce to the same reduced
+          % echelon form matrix.
+
+          % Because the row spaces are equal, the rows of \( B \)
+          % are linear combinations of the rows of \( A \) so Gauss-Jordan
+          % reduction on \( C \) simply turns the rows of \( B \) to zero rows
+          % and thus the nonzero rows of $C$ are just the nonzero rows obtained
+          % by Gauss-Jordan reducing \( A \).
+          % The same can be said for the matrix \( D \)\Dash Gauss-Jordan
+          % reduction on \( D \) gives the same non-zero rows as are produced
+          % by reduction on \( B \) alone.
+          % Therefore, 
+          % \( A \) yields the same nonzero rows as \( C  \), which yields
+          % the same nonzero rows as \( D \), which yields the same nonzero
+          % rows as \( B \).
+
+          % \textit{Second proof (N~Schenker).}
+          Because the row spaces of \( A \) and \( B \) are equal, 
+          the two are row equivalent. 
+          Because each row equivalence class contains 
+          a unique reduced echelon form 
+          (Theorem One.III.\ref{th:ReducedEchelonFormIsUnique}), 
+          the reduced echelon form of \( A \) 
+          must equal the reduced echelon form of \( B \).
       \end{exparts}  
     \end{answer}
   \item 
@@ -5086,6 +5100,11 @@ The same argument works for any $\vec{w}_2$.
 \begin{example}
 In $\Re^2$ the \( x \)-axis and the \( y \)-axis are complements,
 that is, $\Re^2=\text{$x$-axis}\directsum\text{$y$-axis}$.
+This points out that subspace complement is slightly different 
+than set complement;~the $x$ and~$y$ axes are not set complements 
+because their intersection
+is not the empty set. 
+
 A space can have more than one pair of complementary subspaces;
 another pair for~$\Re^2$ are the subspaces consisting of the 
 lines \( y=x \) and \( y=2x \).
@@ -5335,7 +5354,7 @@ at the end of the Chapter Five.
 %In \( \Re^3 \), the \( xy \)-plane and the \( yz \)-planes are not
 %complements, because they have a nontrivial intersection.
 %One complement of the \( xy \)-plane is the \( z \)-axis.
-%A complement of the \( yz \)-plane is the line thru \( (1,1,1) \).
+%A complement of the \( yz \)-plane is the line through \( (1,1,1) \).
 %\end{example}
 
 %\begin{lemma}
