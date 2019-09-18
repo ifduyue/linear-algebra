@@ -24,6 +24,9 @@ my $compile_dir = getcwd;
 ensure_path( 'TEXINPUTS', "$compile_dir//" ); 
 ensure_path( 'MPINPUTS', "$compile_dir//" );
 
+# (To compile a MetaPost file on its own do something like this.
+#     TEXINPUTS=../..//:$TEXINPUTS MPINPUTS=../..//:$MPINPUTS mpost ch4 )
+
 # reproduce: ASYMPTOTE_DIR="/home/ftpmaint/Documents/linear-algebra.git/src/asy:/home/ftmpaint/Documents/linear-algebra.git/src/asy/asy-graphtheory-master/:/home/ftmpaint/Documents/linear-algebra.git/src/asy/asy-graphtheory-master/modules" 
 ensure_path( 'ASYMPTOTE_DIR', "$compile_dir/asy/" );
 ensure_path( 'ASYMPTOTE_DIR', "$compile_dir/asy/asy-graphtheory-master/" );

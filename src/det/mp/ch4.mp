@@ -2592,25 +2592,28 @@ endfig;
 
 
 % FIGURE 44
-%   Area of a box, half of contradiction, to be calcualted.  det2
+%   Area of a box, half of contradiction, to be calculated.  det2
 beginfig(44);
   numeric u;  %scaling factor
   numeric v;  %vertical scaling factor
   numeric w;  %horizontal scaling factor
   path pgram;
 
+  show "about to run 44";
   u:=10pt; v:=u; w:=v;
   
   %axes
   pickup pencircle scaled line_width_light;
   linecap:=squared;
-  draw (-.5w,0v)--(8.5w,0v); %x-axis
+  draw (-.5w,0v)--(7.5w,0v); %x-axis
   draw (0w,-.5v)--(0w,2.5v); %y-axis
-     updown_ticks(8,(1w,0v),(1w,0v));    
+     updown_ticks(7,(1w,0v),(1w,0v));    
      sidetoside_ticks(2,(0w,1v),(0w,1v));
 
   % parallelogram
-  z0=(3w,1v); z1=(8w,1v); z2=(3w,2v); z3=(8w,2v); 
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  z0=(4w,1v); z1=(7w,1v); z2=(4w,2v); z3=(7w,2v); 
   pickup pencircle scaled line_width_dark;
   %linecap:=squared;
   pgram = z0--z1--z3--z2--cycle;

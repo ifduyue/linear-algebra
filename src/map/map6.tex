@@ -2471,7 +2471,7 @@ prior example and taking the natural basis for the $xy$-plane gives this.
 If $M$ is a subspace of $\Re^n$ then its
 orthogonal complement $M^\perp$ is also a subspace.
 The space is the direct sum of the two \( \Re^n=M\directsum M^\perp \).
-And, for any $\vec{v}\in\Re^n$
+For any $\vec{v}\in\Re^n$
 the vector $\vec{v}-\proj{\vec{v}\,}{M}$ is perpendicular to every
 vector in $M$. 
 \end{lemma}
@@ -2483,16 +2483,17 @@ namely the null space of the orthogonal projection map.
  
 To show that the space~$\R^n$ is the direct sum of the two,
 start with  any basis \( B_M=\sequence{\vec{\mu}_1,\dots,\vec{\mu}_k} \) 
-for \( M \) and expand it to a basis
+for \( M \). 
+Expand it to a basis
 %\( B=\sequence{\vec{\mu}_1,\dots,\vec{\mu}_k,
 %   \vec{\nu}_1,\dots,\vec{\nu}_{n-k} } \)
-for the entire space.
-Apply the Gram-Schmidt process to get an orthogonal basis
+for the entire space and then
+apply the Gram-Schmidt process to get an orthogonal basis
 \( K=\sequence{\vec{\kappa}_1,\dots,\vec{\kappa}_n} \) for \( \Re^n \).
 This $K$ is the concatenation of two bases: 
 \( \sequence{\vec{\kappa}_1,\dots,\vec{\kappa}_k} \) 
-with the same number of members~$k$ as $B_M$, and
-\( \sequence{\vec{\kappa}_{k+1},\dots,\vec{\kappa}_n} \).
+with the same number of members,~$k$, as $B_M$, and
+\( D=\sequence{\vec{\kappa}_{k+1},\dots,\vec{\kappa}_n} \).
 The first is a basis for $M$ so if we show that the second is a
 basis for \( M^\perp \) then we will have that
 the entire space is the direct sum. 
@@ -2519,20 +2520,22 @@ and solve to get
 $r_i=(\vec{v}\dotprod\vec{\kappa}_i)/(\vec{\kappa}_i\dotprod\vec{\kappa}_i)$,
 as desired.
 
-Since obviously any member of the span of
-\( \sequence{\vec{\kappa}_{k+1},\dots,\vec{\kappa}_n} \)
-is orthogonal to any vector in $M$, to show that this is a basis for $M^\perp$
+Any member of the span of
+\( D \) %\sequence{\vec{\kappa}_{k+1},\dots,\vec{\kappa}_n} \)
+is orthogonal to any vector in $M$ 
+so the span of \( D \) is a subset of \( M^\perp \).
+To show that \( D \) is a basis for $M^\perp$
 we need only show the other 
-containment\Dash that any $\vec{w}\in M^\perp$ is in
-the span of this basis.
-The prior paragraph does this.
+containment, that any $\vec{w}\in M^\perp$ is an element of
+the span of~\( D \).
+The prior paragraph works for this.
 Any $\vec{w}\in M^\perp$ gives this
 on projections into basis vectors from $M$:
 $\proj{\vec{w}\,}{\spanof{\vec{\kappa}_1}}=\zero,
 \dots,\,\proj{\vec{w}\,}{\spanof{\vec{\kappa}_k}}=\zero$.
 Therefore equation~($*$) gives that $\vec{w}$ is a linear combination of 
 \( \vec{\kappa}_{k+1},\dots,\vec{\kappa}_n \).
-Thus this is a basis for $M^\perp$ and
+Thus \( D \) is a basis for $M^\perp$ and
 $\Re^n$ is the direct sum of the two.
 
 The final sentence of the lemma
@@ -2540,8 +2543,8 @@ is proved in much the same way.
 Write $\vec{v}=\proj{\vec{v}\,}{\spanof{\vec{\kappa}_1}}
            +\dots+\proj{\vec{v}\,}{\spanof{\vec{\kappa}_n}}$.
 Then $\proj{\vec{v}\,}{M}$ keeps only the $M$ part and
-drops the $M^\perp$ part
-$\proj{\vec{v}\,}{M}=\proj{\vec{v}\,}{\spanof{\vec{\kappa}_{k+1}}}
+drops the $M^\perp$ part:
+$\proj{\vec{v}\,}{M}=\proj{\vec{v}\,}{\spanof{\vec{\kappa}_{1}}}
                        +\dots+\proj{\vec{v}\,}{\spanof{\vec{\kappa}_k}}$.
 Therefore $\vec{v}-\proj{\vec{v}\,}{M}$ consists of a linear combination
 of elements of $M^\perp$ and so is perpendicular to every vector in $M$.

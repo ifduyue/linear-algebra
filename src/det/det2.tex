@@ -80,9 +80,9 @@ The definition of determinants contains four properties that we know
 lead to a unique function for each dimension~$n$.
 We shall argue that these properties 
 make good postulates for a function 
-that measure the size of boxes in $n$-space.\index{size}
+that measures the size of boxes in $n$-space.\index{size}
 
-For instance, a function that measures the size of the box
+For instance, such a function 
 should have the property that multiplying one of the box-defining vectors by
 a scalar
 will multiply the size by that scalar.
@@ -392,10 +392,15 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
       \end{exparts*}
     \end{answer}
   \recommended \item 
-    Why doesn't this picture contradict
+    In this picture
+    the rectangle on the left is defined by the points $(3,1)$ and
+    $(1,2)$.  
+    Apply the matrix to get the rectangle on the right, defined by 
+    $(7,1)$ and $(4,2)$.
+    Why doesn't this contradict
     \nearbytheorem{th:MatChVolByDetMat}?
     \begin{center}
-      \begin{tabular}{ccc}
+      \begin{tabular}{c@{\hspace*{2em}}c@{\hspace*{2em}}c}
         \includegraphics{det/mp/ch4.43}
         &\raisebox{12pt}{\( \grstep{\bigl(\begin{smallmatrix}
                                         2  &1 \\
@@ -404,7 +409,7 @@ $1=\deter{I}=\deter{TT^{-1}}=\deter{T}\cdot\deter{T^{-1}}$
         &\includegraphics{det/mp/ch4.44}                                 \\
         area is $2$
         &determinant is $2$
-        &area is $5$
+        &area is $3$
       \end{tabular}
     \end{center}
     \begin{answer}

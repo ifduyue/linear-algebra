@@ -218,32 +218,42 @@ def near_toward(expr ptone, pttwo) =
 enddef;
 %............TICKS....................
 % defaults
-numeric ticklength, tickwidth; ticklength:=2pt; tickwidth:=.4pt;
+numeric ticklength, tickwidth; ticklength:=2pt; tickwidth:=0.4pt;
 % modify defaults of graph package
 path Gtemplate.itick, Gtemplate.otick;
 Gtemplate.itick = origin--(2pt,0);
 Gtemplate.otick = (-2pt,0)--origin;
 %end of modification of graph package
 pen updown_tick, sidetoside_tick;
-    updown_tick:=pensquare shifted (-.5,0) xscaled ticklength yscaled tickwidth
-                     rotated 90;
-    sidetoside_tick:=pensquare shifted (-.5,0)
-		       xscaled ticklength yscaled tickwidth;
+    % updown_tick:=pensquare shifted (-.5,0) xscaled ticklength yscaled tickwidth
+      %                rotated 90;
+    % 2019-Sep-18 These should be pensquare but I think there is a bug and it
+    % disappears
+    updown_tick:=pencircle shifted (-.5,0) scaled tickwidth;
+    sidetoside_tick:=pencircle shifted (-0.5,0) scaled tickwidth;
 % Make ticks that go up and down (e.g. for 2D x-axis or 3D z-axis).
 def updown_ticks(expr numticks, first, offset) =
   begingroup
+    % show "inside updown_ticks";
+    % show "ticklength=", ticklength;
+    % show "tickwidth=", tickwidth;
+    % show "first=", first;
     save currentpen; pen currentpen; currentpen = updown_tick;
     for i=0 upto (numticks-1):
-      drawdot first shifted (i*offset);
+      %  This used to work.
+      % drawdot first shifted (i*offset) withcolor (1,0,0);
+      draw (first shifted (i*offset))--(first shifted ((i*offset)+(0,ticklength)));
     endfor
   endgroup
 enddef;
 % Make ticks that go side to side (y-axis or 3D x-axis).
 def sidetoside_ticks(expr numticks, first, offset) =
   begingroup
-    save currentpen; pen currentpen; currentpen = sidetoside_tick;
+    save currentpen; pen currentpen; currentpen = sidetoside_tick; 
     for i=0 upto (numticks-1):
-      drawdot first shifted (i*offset);
+      % This used to work
+      % drawdot first shifted (i*offset);
+      draw (first shifted (i*offset))--(first shifted ((i*offset)+(ticklength,0)));
     endfor
   endgroup
 enddef;

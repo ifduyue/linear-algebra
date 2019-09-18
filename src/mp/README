@@ -1,0 +1,11 @@
+The .mp files are MetaPost.
+
+The .tex file is useful for showing the output of running MetaPost.  Copy the
+.tex file to the directory you are interested in and run something like this.
+
+cp src/mp/test.tex src/det/mp
+cd src/det/mp
+TEXINPUTS=../..//:$TEXINPUTS MPINPUTS=../..//:$MPINPUTS mpost ch4
+(edit test.tex and change the extension to what you want to see)
+TEXINPUTS=../..//:$TEXINPUTS MPINPUTS=../..//:$MPINPUTS pdflatex test
+(result is a .pdf)
