@@ -429,7 +429,7 @@ if and only if they have the same rank).
       \partsitem Draw the arrow diagram, specialized for this case.
       \partsitem Compute $T=\rep{t}{B,B}$.
       \partsitem Compute $\hat{T}=\rep{t}{D,D}$.
-      \partsitem Compute the matrices for other the two sides of the arrow 
+      \partsitem Compute the matrices for the other two sides of the arrow 
          square.
     \end{exparts}
     \begin{answer}
@@ -2926,20 +2926,21 @@ Then the action of this transformation $t$ is simple.
 \begin{equation*}
   \colvec{x \\ y}\mapsunder{t}\colvec{2x \\ 0}
 \end{equation*}
+
 Of course, $\hat{T}$ represents the same transformation but with 
 respect to a different basis~$B$.
-We can easily find this basis.
-The arrow diagram
+We can find this basis.
+Following the arrow diagram from the lower left to the upper left
 \begin{equation*}
   \begin{CD}
-    V_{\wrt{\stdbasis_3}}            @>t>T>        V_{\wrt{\stdbasis_3}}       \\
+    V_{\wrt{\stdbasis_2}}            @>t>T>        V_{\wrt{\stdbasis_2}}       \\
     @V{\scriptstyle\identity} VV              @V{\scriptstyle\identity} VV \\
     V_{\wrt{B}}                   @>t>\hat{T}>        V_{\wrt{B}}       
   \end{CD}
 \end{equation*}
-shows that $P^{-1}=\rep{\identity}{B,\stdbasis_3}$.
+shows that $P^{-1}=\rep{\identity}{B,\stdbasis_2}$.
 By the definition of the matrix representation of a map, its first column is 
-$\rep{\identity(\vec{\beta}_1)}{\stdbasis_3}=\rep{\vec{\beta}_1}{\stdbasis_3}$.
+$\rep{\identity(\vec{\beta}_1)}{\stdbasis_2}=\rep{\vec{\beta}_1}{\stdbasis_2}$.
 With respect to the standard basis any vector is represented by itself, 
 so the first basis element $\vec{\beta}_1$ is the first column of $P^{-1}$.
 The same goes for the other one.
@@ -2973,7 +2974,7 @@ That is, when the matrix representing the transformation is
 column vectors are 
 representations with respect to \( \stdbasis_2 \).
 However \( \hat{T}=\rep{t}{B,B} \) ``assumes'' that column vectors 
-are representations with respect to \( B \), and
+are representations with respect to \( B \) and
 so the column vectors that get doubled 
 are different.
 \end{example}
@@ -3270,7 +3271,7 @@ that the combination is also an element of  $V_{\lambda}$.
 % \( t(\zero)=\lambda\cdot\zero=\zero \)).
 
 The space~$V_\lambda$ contains more than just the zero vector
-because by definition $\lambda$ is an eigenvector only if  
+because by definition $\lambda$ is an eigenvalue only if  
 $t(\vec{\zeta}\,)=\lambda\vec{\zeta}$ has solutions for $\vec{\zeta}$
 other than $\zero$.
 %</pf:EigSpaceIsSubSp>
@@ -4615,7 +4616,7 @@ In the next section we study matrices that cannot be diagonalized.
   \recommended \item 
     \begin{exparts}
       \partsitem Show that any non-\( \zero \) vector in any nontrivial 
-        vector space can be a eigenvector.
+        vector space can be an eigenvector.
         That is, given a \( \vec{v}\neq\zero \) from a nontrivial \( V \),
         show that there is a transformation \( \map{t}{V}{V} \) having a scalar
         eigenvalue \( \lambda\in\Re \) such that \( \vec{v}\in V_{\lambda} \).

@@ -69,16 +69,19 @@ nilpotency:~the powers
 of a square matrix cannot climb forever without a ``repeat.''
 
 \begin{example}  \label{ex:PolySendRotMatToZ}
-Rotation of plane vectors \( \pi/6 \)~radians counterclockwise is represented
+Rotation of plane vectors \( 2\pi/3 \)~radians counterclockwise is represented
 with respect to the standard basis by
 \begin{equation*}
   T=
   \begin{mat}[r]
-     \sqrt{3}/2  &-1/2  \\
-     1/2         &\sqrt{3}/2
+     -1/2        &\sqrt{3}/2  \\
+     \sqrt{3}/2  &1/2
   \end{mat}
 \end{equation*}
-and verifying that \( 0T^4+0T^3+1T^2-2T-1I \) equals the zero matrix is easy.
+and verifying that \( T^4-T \) equals the zero matrix is easy.
+(Geometrically, rotating by \( 2\pi/3\) four times gives 
+a roation of \( 8\pi/3 \),
+which equals a rotation of \( 2\pi/3 \).)
 \end{example}
 
 \begin{definition}

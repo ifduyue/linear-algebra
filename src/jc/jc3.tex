@@ -127,7 +127,7 @@ and the null spaces form an ascending chain.
 \begin{equation*}
   \set{\vec{0}}\subseteq\nullspace{t}\subseteq\nullspace{t^2}\subseteq\cdots
 \end{equation*}
-Further, there is a \( k \) such that
+Further, there is a \( k>0 \) such that
 for powers less than $k$ the subsets are proper
 so that if $j<k$ then $\rangespace{t^j}\supset\rangespace{t^{j+1}}$
 and 
@@ -137,6 +137,9 @@ if $j\geq k$ then $\rangespace{t^j}=\rangespace{t^{j+1}}$
 and 
 $\nullspace{t^j}=\nullspace{t^{j+1}}$).  
 \end{lemma}
+
+\noindent (The $k=1$ case can happen, for example if $t$ is the identity map,
+so that none of the subsets are proper subsets.)
 
 \begin{proof}
 First recall that for any map the dimension of its range space
@@ -909,9 +912,9 @@ isn't another basis that consists of disjoint strings.
 
 To produce such a basis for this map 
 we will first find the number and lengths of its strings.
-Observer that $t$'s index of nilpotency is two.
-\nearbylemma{le:LongestTowerIsIndex} says that 
-at least one string in a disjoint string basis has length two.
+Observe that $t$'s index of nilpotency is two.
+\nearbylemma{le:LongestTowerIsIndex} says that in a disjoint string basis 
+at least one string has length two.
 There are five basis elements so if there is a disjoint string basis then
 the map must act in one of these ways.
 \begin{equation*}
@@ -1173,10 +1176,10 @@ For the change of basis matrices, recall the similarity diagram.
   \begin{CD}
     \C^2_{\wrt{\stdbasis_2}}      @>m>M>        \C^2_{\wrt{\stdbasis_2}}     \\
     @V\scriptstyle\identity V\scriptstyle PV  @V\scriptstyle\identity V\scriptstyle PV \\
-    C^2_{\wrt{B}}                 @>m>N>         \C^2_{\wrt{B}}
+    \C^2_{\wrt{B}}                 @>m>N>         \C^2_{\wrt{B}}
   \end{CD}
 \end{equation*}
-The canonical form equals \( \rep{m}{B,B}=PMP^{-1} \), where
+The canonical form is \( \rep{m}{B,B}=PMP^{-1} \), where
 \begin{equation*}
    P^{-1} %=\bigl(\rep{\identity}{\stdbasis_2,B}\bigr)^{-1}
          =\rep{\identity}{B,\stdbasis_2}
