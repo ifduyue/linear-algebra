@@ -68,6 +68,29 @@ Therefore every transformation has a kind of generalized
 nilpotency:~the powers
 of a square matrix cannot climb forever without a ``repeat.''
 
+\begin{definition}
+Let \( t \) be a linear transformation of a vector space~\( V \).
+Where \( f(x)=c_nx^n+\dots+c_1x+c_0 \) is a polynomial,
+\( f(t) \) is the
+transformation \( c_nt^n+\dots+c_1t+c_0(\identity) \) on~\( V \).
+In the same way, if \( T \) is a square matrix
+then
+\( f(T) \) is the matrix \( c_nT^n+\dots+c_1T+c_0I \).
+\end{definition}
+
+\noindent The polynomial of the matrix represents the polynomial of the map:~if 
+\( T=\rep{t}{B,B} \) then \( f(T)=\rep{f(t)}{B,B} \).
+This is because \( T^j=\rep{t^j}{B,B} \),
+and \( cT=\rep{ct}{B,B} \), and \( T_1+T_2 =\rep{t_1+t_2}{B,B} \).
+
+\begin{remark}
+We shall write the matrix polynomial slightly differently than the 
+map polynomial. 
+For instance, if  \( f(x)=x-3 \) then 
+we shall write the identity matrix, as in~\( f(T)=T-3I \),
+but not write the identity map, as in~\( f(t)=t-3 \).
+\end{remark}
+
 \begin{example}  \label{ex:PolySendRotMatToZ}
 Rotation of plane vectors \( \pi/3 \)~radians counterclockwise is represented
 with respect to the standard basis by
@@ -93,35 +116,11 @@ On \( \vec{e}_2 \) it gives \( \binom{0}{-1} \).
 So \( T^2-T=-I \).)
 \end{example}
 
-\begin{definition}
-Let \( t \) be a linear transformation of a vector space~\( V \).
-Where \( f(x)=c_nx^n+\dots+c_1x+c_0 \) is a polynomial,
-\( f(t) \) is the
-transformation \( c_nt^n+\dots+c_1t+c_0(\identity) \) on~\( V \).
-In the same way, if \( T \) is a square matrix
-then
-\( f(T) \) is the matrix \( c_nT^n+\dots+c_1T+c_0I \).
-\end{definition}
-
-\noindent The polynomial of the matrix represents the polynomial of the map:~if 
-\( T=\rep{t}{B,B} \) then \( f(T)=\rep{f(t)}{B,B} \).
-This is because \( T^j=\rep{t^j}{B,B} \),
-and \( cT=\rep{ct}{B,B} \), and \( T_1+T_2 =\rep{t_1+t_2}{B,B} \).
-
-\begin{remark}
-Most authors write the matrix polynomial slightly differently than the 
-map polynomial. 
-For instance, if  \( f(x)=x-3 \) then 
-most authors explicitly write the identity matrix~\( f(T)=T-3I \)
-but don't write the identity map~\( f(t)=t-3 \).
-We shall follow this convention.
-\end{remark}
-
-Consider again \nearbyexample{ex:PolySendRotMatToZ}.
-The space $\matspace_{\nbyn{2}}$ has dimension four so we know that for any
+In that example,
+the space $\matspace_{\nbyn{2}}$ has dimension four so we know that for any
 \( \nbyn{2} \) matrix there is a fourth degree polynomial \( f  \) such that
 \( f(T) \) equals the zero matrix. 
-But for the \( T \) in that example  
+But for that \( T \)  
 we exhibited a polynomial of degree less than four that gives the zero matrix. 
 So while
 degree~$n^2$ always suffices, in some cases  
@@ -132,14 +131,14 @@ The \definend{minimal polynomial}\index{polynomial!minimal}%
 \index{minimal polynomial}
 \( m(x) \) of a transformation \( t \)\index{transformation!minimal polynomial}
 or a square matrix \( T \)\index{matrix!minimal polynomial} is the
-polynomial of least degree and with leading coefficient one
+non-zero polynomial of least degree and with leading coefficient~\( 1 \)
 such that \( m(t) \) is the zero map or \( m(T) \) is the zero matrix.
 \end{definition}
 
 \noindent A minimal
-polynomial cannot be the zero polynomial because 
+polynomial cannot be a constant polynomial because 
 of the restriction on the leading coefficient.
-Obviously no other constant polynomial would do, so a minimal
+So a minimal
 polynomial must have degree at least one.
 Thus, the zero matrix has minimal polynomial $p(x)=x$ while the 
 identity matrix has minimal polynomial $\hat{p}(x)=x-1$.
@@ -149,14 +148,13 @@ Any transformation or square matrix has a unique minimal polynomial.
 \end{lemma}
 
 \begin{proof}
-We first prove existence.
+First we prove existence.
 By the earlier observation 
 that degree~$n^2$ suffices, there is at least one 
-polynomial $p(x)=c_kx^k+\cdots+c_0$ that
-takes the map or matrix to zero, and 
-it is not the zero polynomial by the prior paragraph.
+nonzero polynomial $p(x)=c_kx^k+\cdots+c_0$ that
+takes the map or matrix to zero.
 From among all such polynomials
-there must be at least one with minimal degree.
+there must be at least one with smallest degree.
 Divide this polynomial by its leading coefficient~$c_k$ to get a leading~$1$.
 Hence any map or matrix has a minimal polynomial.
 
@@ -166,23 +164,22 @@ Suppose that
 are both of 
 minimal degree and are thus of equal degree, 
 and both have a leading~$1$.
-Subtract: \( d(x)=m(x)-\hat{m}(x) \).
-This polynomial takes the map or matrix to zero
-and since the leading terms of $m$ and~$\hat{m}$ cancel,
-$d$ is of smaller degree than the other two.
-If $d$ were to have a nonzero leading coefficient then we could divide
-by it to get a polynomial that takes the map or matrix to zero and
-has leading coefficient~$1$.
-This would contradict the minimality of the degree
+Consider the difference, \( m(x)-\hat{m}(x) \).
+If it is not the zero polynomial then it has a nonzero leading coefficient
+and dividing through by
+that leading coefficient would make it a polynomial that takes
+the map or matrix to zero, has leading 
+coefficient~\( 1\), and is of 
+smaller degree than $m$ and $\hat{m}$ (because their leading \( 1\)'s cancel).
+That would contradict the minimality of the degree
 of $m$ and $\hat{m}$. 
-Thus the leading coefficient of $d$ is zero,
-so \( m(x)-\hat{m}(x) \) is the zero polynomial, 
-and so the two are equal.
+Thus \( m(x)-\hat{m}(x) \) is zero
+and they are equal.
 \end{proof}
 
 \begin{example}  \label{ex:MinPolyForRotMat}
 One way to compute the minimal polynomial for the matrix of
-\nearbyexample{ex:PolySendRotMatToZ} is by finding the powers of $T$
+\nearbyexample{ex:PolySendRotMatToZ} is to find the powers of $T$
 up to $n^2=4$.
 \begin{equation*}
    T^2=
@@ -263,10 +260,11 @@ Setting the leading coefficient to~\( c_2=1 \)
 gives $x^2-x+1$. 
 \end{example}
 
-Using the method of that example to find the minimal polynomial of a
-\( \nbyn{3} \) matrix 
-would mean doing Gaussian reduction on
-a system with nine equations in ten unknowns.
+% Using the method of that example to find the minimal polynomial of a
+% \( \nbyn{3} \) matrix 
+% would mean doing Gaussian reduction on
+% a system with nine equations in ten unknowns.
+That computation is awkward.
 We shall develop an alternative.
 % To begin, note that we can break a polynomial of a map or a matrix into
 % its components.
