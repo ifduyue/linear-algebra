@@ -8,13 +8,13 @@ subsections:~Combining Subspaces, Determinants Exist, and
 Laplace's Expansion.}
 
 We began this chapter
-by remembering that every linear map $\map{h}{V}{W}$ can
-be represented by a partial identity matrix with respect to some
-bases $B\subset V$ and $D\subset W$.
-That is, the partial identity form is a canonical form for 
+by recalling that every linear map $\map{h}{V}{W}$ can
+be represented with respect to some
+bases $B\subset V$ and $D\subset W$ by a partial identity matrix.
+Restated, the partial identity form is a canonical form for 
 matrix equivalence. 
-This chapter considers transformations where
-the codomain equals the domain, so 
+This chapter considers the case where
+the codomain equals the domain so 
 we naturally ask what is possible when the
 two bases are equal, when we have $\rep{t}{B,B}$.
 In short, we want a canonical form for matrix similarity.
@@ -26,18 +26,19 @@ forms of interest to the natural generalization,
 diagonal matrices, and
 showed that a transformation or square matrix can be diagonalized
 if its eigenvalues are distinct.
-But at the same time we gave an example of a 
+But we also gave an example of a 
 square matrix that cannot be diagonalized
-(because it is nilpotent)
+because it is nilpotent,
 and thus diagonal form won't suffice as the canonical form 
 for matrix similarity. 
 
 The prior section developed that example
-to get a canonical form, subdiagonal ones, for nilpotent matrices.
+to get a canonical form for nilpotent matrices, subdiagonal ones.
 
 This section finishes our program by
 showing that for any linear transformation there is
-a basis such that the matrix representation $\rep{t}{B,B}$ is the sum of a 
+a basis~\( B \) 
+such that the matrix representation $\rep{t}{B,B}$ is the sum of a 
 diagonal matrix and a nilpotent matrix.
 This is Jordan canonical form.
 
@@ -56,7 +57,7 @@ and that
 %the unit matrices\Dash all entries are zero except
 %for a single entry, which is one\Dash form a basis, so 
 this space has dimension \( n^2 \).
-Thus, for any \( \nbyn{n} \) matrix $T$ the
+Thus for any \( \nbyn{n} \) matrix $T$ the
 \( n^2+1 \)-member set \( \set{I,T,T^2,\dots,T^{n^2} } \) is linearly
 dependent and so there are scalars \( c_0,\dots,c_{n^2} \),
 not all zero, such that
@@ -64,9 +65,9 @@ not all zero, such that
   c_{n^2}T^{n^2}+\dots+c_1T+c_0I
 \end{equation*}
 is the zero matrix.
-Therefore every transformation has a kind of generalized 
-nilpotency:~the powers
-of a square matrix cannot climb forever without a ``repeat.''
+Therefore every transformation has a sort of generalized 
+nilpotency\Dash the powers
+of a square matrix cannot climb forever without a kind of repeat.
 
 \begin{definition}
 Let \( t \) be a linear transformation of a vector space~\( V \).
@@ -116,15 +117,12 @@ On \( \vec{e}_2 \) it gives \( \binom{0}{-1} \).
 So \( T^2-T=-I \).)
 \end{example}
 
-In that example,
-the space $\matspace_{\nbyn{2}}$ has dimension four so we know that for any
-\( \nbyn{2} \) matrix there is a fourth degree polynomial \( f  \) such that
-\( f(T) \) equals the zero matrix. 
-But for that \( T \)  
-we exhibited a polynomial of degree less than four that gives the zero matrix. 
-So while
-degree~$n^2$ always suffices, in some cases  
-a smaller-degree polynomial works.
+The space $\matspace_{\nbyn{2}}$ has dimension four so we know that for any
+\( \nbyn{2} \) matrix~\( T \) there is a fourth degree polynomial 
+\( f  \) such that \( f(T)=Z \). 
+But in that example we exhibited a degree two polynomial that works. 
+So while degree~$n^2$ always suffices, in some cases  
+a smaller-degree polynomial is enough.
 
 \begin{definition}
 The \definend{minimal polynomial}\index{polynomial!minimal}%
@@ -140,7 +138,7 @@ polynomial cannot be a constant polynomial because
 of the restriction on the leading coefficient.
 So a minimal
 polynomial must have degree at least one.
-Thus, the zero matrix has minimal polynomial $p(x)=x$ while the 
+The zero matrix has minimal polynomial $p(x)=x$ while the 
 identity matrix has minimal polynomial $\hat{p}(x)=x-1$.
 
 \begin{lemma}
@@ -154,9 +152,9 @@ that degree~$n^2$ suffices, there is at least one
 nonzero polynomial $p(x)=c_kx^k+\cdots+c_0$ that
 takes the map or matrix to zero.
 From among all such polynomials
-there must be at least one with smallest degree.
+take one with the smallest degree.
 Divide this polynomial by its leading coefficient~$c_k$ to get a leading~$1$.
-Hence any map or matrix has a minimal polynomial.
+Hence any map or matrix has at least one minimal polynomial.
 
 Now for uniqueness.
 Suppose that 
@@ -165,16 +163,17 @@ are both of
 minimal degree and are thus of equal degree, 
 and both have a leading~$1$.
 Consider the difference, \( m(x)-\hat{m}(x) \).
-If it is not the zero polynomial then it has a nonzero leading coefficient
-and dividing through by
+If it is not the zero polynomial then it has a nonzero leading coefficient.
+Dividing through by
 that leading coefficient would make it a polynomial that takes
 the map or matrix to zero, has leading 
 coefficient~\( 1\), and is of 
-smaller degree than $m$ and $\hat{m}$ (because their leading \( 1\)'s cancel).
+smaller degree than $m$ and $\hat{m}$ 
+(because in the subtraction the leading \( 1\)'s cancel).
 That would contradict the minimality of the degree
 of $m$ and $\hat{m}$. 
-Thus \( m(x)-\hat{m}(x) \) is zero
-and they are equal.
+Thus \( m(x)-\hat{m}(x) \) is the zero polynomial and
+the two are equal.
 \end{proof}
 
 \begin{example}  \label{ex:MinPolyForRotMat}
@@ -219,13 +218,13 @@ Put \( c_4T^4+c_3T^3+c_2T^2+c_1T+c_0I \) equal to the zero matrix.
          &+ &(\sqrt{3}/2)c_1  
         &   &            &=  &0      \\
      -(1/2)c_4  
-         &-  c_3             
+         &-  &c_3             
          &- &(1/2)c_2
          &+ &(1/2)c_1  
          &+  &c_0  &=  &0
    \end{linsys}
 \end{equation*}
-Gauss' Method simplifies the relationships among the coefficients.
+Apply Gauss' Method.
 \begin{equation*}
   \begin{linsys}{5}
      -(1/2)c_4  
@@ -239,11 +238,12 @@ Gauss' Method simplifies the relationships among the coefficients.
          &+ &\sqrt{3}c_0 &=  &0
    \end{linsys} 
 \end{equation*}
-This won't allow a degree one minimal polynomial because
+With an eye toward making the degree of the polynomial as small as 
+possible, note that
 setting \( c_4 \), \( c_3 \), and \( c_2 \) to zero forces \( c_1 \) and
-\( c_0 \) to also come out as zero.
-Instead, set \( c_4 \) and \( c_3 \) to zero
-to get a quadratic polynomial.
+\( c_0 \) to also come out as zero
+so the equations won't allow a degree one minimal polynomial.
+Instead, set \( c_4 \) and \( c_3 \) to zero.
 The system
 \begin{equation*}
   \begin{linsys}{3}           
@@ -256,15 +256,15 @@ The system
    \end{linsys} 
 \end{equation*}
 has the solution set \( c_1=-c_0 \) and \( c_2=c_0 \).
-Setting the leading coefficient to~\( c_2=1 \) 
-gives $x^2-x+1$. 
+Taking the leading coefficient to be~\( c_2=1 \) 
+gives the minimal polynomial $x^2-x+1$. 
 \end{example}
 
 % Using the method of that example to find the minimal polynomial of a
 % \( \nbyn{3} \) matrix 
 % would mean doing Gaussian reduction on
 % a system with nine equations in ten unknowns.
-That computation is awkward.
+That computation is ungainly.
 We shall develop an alternative.
 % To begin, note that we can break a polynomial of a map or a matrix into
 % its components.
