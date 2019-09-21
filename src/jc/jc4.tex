@@ -295,8 +295,8 @@ but we will give its sense with the degree~two case.
 
 A quadratic polynomial factors into two
 linear terms \( f(x)=k(x-\lambda_1)\cdot(x-\lambda_2)
-                    =k(x^2+(-\lambda_1-\lambda_2)x+\lambda_1\lambda_2) \)
-(the roots $\lambda_1$ and $\lambda_2$ could be equal).
+                    =k(x^2+(-\lambda_1-\lambda_2)x+\lambda_1\lambda_2) \).
+% (the roots $\lambda_1$ and $\lambda_2$ could be equal).
 Substituting \( t \) 
 for \( x \) in the factored and
 unfactored versions gives the same map.
@@ -309,8 +309,8 @@ unfactored versions gives the same map.
           +\lambda_1\lambda_2\vec{v}\bigr)                    \\
    &=k\cdot(t^2-(\lambda_1+\lambda_2)t+\lambda_1\lambda_2)\>(\vec{v})
 \end{align*}
-The third equality holds because the scalar $\lambda_2$  comes out of the
-second term, because \( t \) is linear.
+The third equality uses linearity of \( t \) to bring $\lambda_2$ out of the
+second term.
 \end{proof}
 
 % In particular, if a minimal polynomial for a transformation $t$ 
@@ -331,14 +331,14 @@ second term, because \( t \) is linear.
 % (\nearbyexercise{exer:SomeRootsMinPolyAreEigs} expands on this.)
 
 The next result is that
-every root of the minimal polynomial is an eigenvalue, and further
-that every eigenvalue is a root of the minimal polynomial 
-(that is, below it says `$1\leq q_i$' and 
-not just `$0\leq q_i$').
-For that result, recall that to find eigenvalues
+every root of the minimal polynomial is an eigenvalue and
+that every eigenvalue is a root of the minimal polynomial. 
+(That is, the resule says `$1\leq q_i$' and 
+not just `$0\leq q_i$'.)
+For that, recall that to find eigenvalues
 we solve $\deter{T-xI}=0$ and 
 this determinant gives a polynomial in $x$, 
-called the characteristic polynomial, 
+the characteristic polynomial, 
 whose roots are the eigenvalues.
 
 \begin{theorem}[Cayley-Hamilton]
@@ -358,10 +358,10 @@ where \( 1\leq q_i \leq p_i \) for each \( i \) between \( 1 \) and \( z \).
 \end{theorem}
 
 \noindent The proof takes up the next three lemmas.
-We will state them in matrix terms but they apply equally
+We will state them in matrix terms 
+because that version is convenient 
+for the first proof but they apply equally
 well to maps.
-(The matrix version is convenient 
-for the first proof.)
 
 The first result is the key.
 For the proof, observe that we can view
@@ -457,7 +457,7 @@ Add.
 The left is 
 \( c_nT^n+c_{n-1}T^{n-1}+\cdots+c_0I \). 
 The right telescopes;
-for instance $-C_{n-1}T^n$ from the first line combines with the 
+for instance, $-C_{n-1}T^n$ from the first line combines with the 
 $C_{n-1}T^n$ half of the second line. 
 The total on the right is the zero matrix.
 \end{proof}
@@ -468,16 +468,16 @@ matrix or map
 its characteristic polynomial.
 
 \begin{lemma} \label{le:tSatisImpMinPolyDivides}
-Where \( f(x) \) is a polynomial, if \( f(T) \) is the zero matrix 
-then \( f(x) \) is divisible by the minimal polynomial of \( T \).
-That is, any polynomial that is satisfied by \( T \) is divisible by
+Any polynomial that is satisfied by \( T \) is divisible by
 \( T \)'s minimal polynomial.
+That is, for a polynomial \( f(x) \), if \( f(T) \) is the zero matrix 
+then \( f(x) \) is divisible by the minimal polynomial of \( T \).
 \end{lemma}
 
 \begin{proof}
 Let \( m(x) \) be minimal for \( T \).
 The Division Theorem for Polynomials gives
-\( f(x)=q(x)m(x)+r(x) \)
+\( f(x)=q(x)\cdot m(x)+r(x) \)
 where the degree of \( r \) is strictly less than the degree of \( m \).
 Because $T$ satisfies both $f$ and $m$, plugging $T$ into that equation gives
 that \( r(T) \) is the zero matrix.
@@ -490,14 +490,18 @@ divides the characteristic polynomial.
 Thus
 any root of the minimal polynomial is also a root of the characteristic
 polynomial. 
-That is, so far we have that if 
+
+Thus so far we have that if the minimal polynomial factors as
 \( m(x)=(x-\lambda_1)^{q_1}\cdots(x-\lambda_i)^{q_i} \) then
-\( c(x) \) has the form
-\( (x-\lambda_1)^{p_1}\cdots(x-\lambda_i)^{p_i}
-     (x-\lambda_{i+1})^{p_{i+1}}\cdots(x-\lambda_z)^{p_z} \) where
-each \( q_j \) is less than or equal to \( p_j \).
+the characteristic polynomial also has the roots \( \lambda_1\), \ldots, 
+\( \lambda_i \).
+But as far as what we have established to this point, 
+the characteristic polynomial might have additional roots: 
+\( c(x)=(x-\lambda_1)^{p_1}\cdots(x-\lambda_i)^{p_i}
+     (x-\lambda_{i+1})^{p_{i+1}}\cdots(x-\lambda_z)^{p_z} \), where
+\( 1\leq q_j\leq p_j \) for \( 1\leq j \leq i \).
 We finish the proof of the Cayley-Hamilton Theorem by showing that 
-the characteristic polynomial has no additional roots, that is,
+the characteristic polynomial has no additional roots so that 
 there are no $\lambda_{i+1}$, $\lambda_{i+2}$, etc.
 
 \begin{lemma}
@@ -506,32 +510,34 @@ is also a linear factor of the minimal polynomial.
 \end{lemma}
 
 \begin{proof}
-Let \( T \) be a square matrix with minimal polynomial \( m(x) \) and 
+Let \( T \) be a square matrix with minimal polynomial \( m(x) \) 
+of degree~\( n \) and 
 assume that \( x-\lambda \) is a factor of the characteristic polynomial of 
-\( T \), that \( \lambda \) is an eigenvalue of \( T \).
-We must show that $x-\lambda$ is a factor of $m$, i.e., that 
-$m(\lambda)=0$.
+\( T \), so that \( \lambda \) is an eigenvalue of \( T \).
+We will show that $m(\lambda)=0$, i.e., that $x-\lambda$ is a factor of $m$.
 
-Suppose that $\lambda$ is an eigenvalue of $T$ with associated 
-eigenvector~$\vec{v}$.
-Then
-$T\cdot T\vec{v}=T\cdot\lambda\vec{v}=\lambda T\vec{v}=\lambda^2\vec{v}$.
-Similarly, $T^n\vec{v}=\lambda^n\vec{v}$.
-With that, we have that 
+Assume that $\lambda$ is associated with the eigenvector~$\vec{v}$ and
+consider the powers $T^2(\vec{v})$, \ldots, \( T^n(\vec{v}) \).
+We have
+$T^2(\vec{v})
+=T\cdot\lambda\vec{v}=\lambda\cdot T\vec{v}=\lambda^2\vec{v}$.
+The same happens for all of the powers: 
+$T^i\vec{v}=\lambda^i\vec{v}\,$ for \( 1\leq i \leq n \).
+Thus
 for any polynomial function \( p(x) \), application of the matrix \( p(T) \)
 to \( \vec{v} \) equals the result of multiplying \( \vec{v} \) by the scalar
 \( p(\lambda) \).
 \begin{multline*}
-  p(T)\cdot\vec{v}
-  =(c_kT^k+\dots+c_1T+c_0I)\cdot\vec{v}
+  p(T)\,\vec{v}
+  =(c_kT^k+\dots+c_1T+c_0I)\,\vec{v}
   =c_kT^k\vec{v}+\dots+c_1T\vec{v}+c_0\vec{v}  \\
   =c_k\lambda^k\vec{v}+\dots+c_1\lambda\vec{v}+c_0\vec{v}
   =p(\lambda)\cdot\vec{v}
 \end{multline*}
 Since \( m(T) \) is the zero matrix,
-\( \zero=m(T)(\vec{v})=m(\lambda)\cdot\vec{v} \)
-for all $\vec{v}$, and
-hence \( m(\lambda)=0 \).
+\( \zero=m(T)(\vec{v})=m(\lambda)\cdot\vec{v} \) and
+hence \( m(\lambda)=0 \), as \( \vec{v}\neq\zero \) 
+because it is an eigenvector.
 \end{proof}
 
 That concludes the proof of the Cayley-Hamilton Theorem.
