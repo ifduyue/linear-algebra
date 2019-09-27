@@ -555,8 +555,8 @@ this matrix.
    \end{mat}
 \end{equation*}
 First we find its characteristic polynomial \( c(x)=(x-1)(x-2)^3 \)
-with the usual determinant.
-Now, the Cayley-Hamilton Theorem says that 
+with the usual determinant $\deter{T-xI}$.
+With that, the Cayley-Hamilton Theorem says that 
 \( T \)'s minimal polynomial is either
 \( (x-1)(x-2) \) or
 \( (x-1)(x-2)^2 \) or
@@ -611,7 +611,7 @@ and so \( m(x)=(x-1)(x-2)^2 \).
 \end{example}
 
 
-
+% ==================================
 \begin{exercises}
   \recommended \item 
     What are the possible minimal polynomials if a matrix has
@@ -649,6 +649,83 @@ and so \( m(x)=(x-1)(x-2)^2 \).
           the degree of $m_3$ is four, and the degree of $m_4$ is five.
       \end{exparts}
     \end{answer}
+  \item For this matrix
+    \begin{equation*}
+      \begin{mat}
+        0 &1 &0 &1 \\
+        1 &0 &1 &0 \\
+        0 &1 &0 &1 \\
+        1 &0 &1 &0 \\
+      \end{mat}
+    \end{equation*}
+    find the characteristic polynomial and the minimal polynomial.
+    \begin{answer}
+    The characteristic polynomial
+    \begin{equation*}
+      \deter{T-xI}=
+      \begin{vmat}
+        -x &1  &0  &1 \\
+         1 &-x &1  &0 \\
+         0 &1  &-x &1 \\
+         1 &0  &1  &-x \\
+      \end{vmat}
+    \end{equation*}
+    is $x^2(x^2-4)$.
+
+    By the Caley-Hamilton Theorem, all of the distinct roots of the 
+    characteristic polynomial are also roots of the minimal polynomial so 
+    the minimal polynomial has roots $0$, $2$, and~$-2$.
+    Thus the minimal polynomial is either $x(x^2-4)$ or $x^2(x^2-4)$.
+    
+    One way to find the minimal polynomial is to try the matrix in the two
+    expressions until we find the zero matrix.
+    \begin{equation*}
+      T(T^2-4I)=
+      \begin{mat}
+        0 &1 &0 &1 \\
+        1 &0 &1 &0 \\
+        0 &1 &0 &1 \\
+        1 &0 &1 &0 \\
+      \end{mat}
+      \begin{mat}
+        -2 &0  &1  &0 \\
+        0  &-2 &0  &2 \\
+        2  &0  &-2 &0 \\
+        0  &2  &0  &-2 \\
+      \end{mat}
+      =
+      \begin{mat}
+        0 &0 &0 &0 \\
+        0 &0 &0 &0 \\
+        0 &0 &0 &0 \\
+        0 &0 &0 &0 \\
+      \end{mat}
+    \end{equation*}
+    So the minimal polynomial is $x(x^2-4)$.
+    \end{answer}
+   \item 
+     Find the minimal polynomial of this matrix.
+     \begin{equation*}
+        \begin{mat}[r]
+           0  &1  &0  \\
+           0  &0  &1  \\
+           1  &0  &0
+        \end{mat}
+     \end{equation*}
+     \begin{answer}
+       Its characteristic polynomial has complex roots.
+       \begin{equation*}
+          \begin{vmat}
+                   -x  &1  &0  \\
+                    0  &-x &1  \\
+                    1  &0  &-x
+          \end{vmat}
+          =(1-x)\cdot (x-(-\frac{1}{2}+\frac{\sqrt{3}}{2}i))
+                \cdot (x-(-\frac{1}{2}-\frac{\sqrt{3}}{2}i))
+       \end{equation*}
+       As the roots are distinct, the characteristic polynomial equals the
+       minimal polynomial. 
+     \end{answer}
   \recommended \item 
     Find the minimal polynomial of each matrix.
     \begin{exparts*}
@@ -1022,29 +1099,6 @@ and so \( m(x)=(x-1)(x-2)^2 \).
          The minimal polynomial is \( m(x)=(x-3)^2(x+1) \).
       \end{exparts} 
     \end{answer}
-   \item 
-     Find the minimal polynomial of this matrix.
-     \begin{equation*}
-        \begin{mat}[r]
-           0  &1  &0  \\
-           0  &0  &1  \\
-           1  &0  &0
-        \end{mat}
-     \end{equation*}
-     \begin{answer}
-       Its characteristic polynomial has complex roots.
-       \begin{equation*}
-          \begin{vmat}
-                   -x  &1  &0  \\
-                    0  &-x &1  \\
-                    1  &0  &-x
-          \end{vmat}
-          =(1-x)\cdot (x-(-\frac{1}{2}+\frac{\sqrt{3}}{2}i))
-                \cdot (x-(-\frac{1}{2}-\frac{\sqrt{3}}{2}i))
-       \end{equation*}
-       As the roots are distinct, the characteristic polynomial equals the
-       minimal polynomial. 
-     \end{answer}
   \recommended \item 
      What is the minimal polynomial of the differentiation
      operator $d/dx$ on \( \polyspace_n \)?
@@ -1219,7 +1273,7 @@ and so \( m(x)=(x-1)(x-2)^2 \).
   \item 
      What is wrong with this claimed proof of
      \nearbylemma{le:MatSatItsCharPoly}:
-      ``if \( c(x)=\deter{T-xI} \) then \( c(T)=\deter{T-TI}=0 \)''?
+      ``if \( c(x)=\deter{T-xI} \) then \( c(T)=\deter{T-TI}=0 \,\)''\,?
      \cite{Cullen}
      \begin{answer}
        The \( x \) must be a scalar, not a matrix.
@@ -1316,15 +1370,7 @@ and so \( m(x)=(x-1)(x-2)^2 \).
          A zero map or matrix has minimal polynomial \( m(x)=x \), and an
          identity map or matrix has minimal polynomial \( m(x)=x-1 \). 
        \end{answer}
-  \recommended \item 
-     Interpret the minimal polynomial of 
-     \nearbyexample{ex:PolySendRotMatToZ} geometrically.
-     \begin{answer}
-       We can interpret the polynomial can geometrically as, ``a \( \degs{60} \)
-       rotation minus two rotations of \( \degs{30} \) equals the
-       identity.''
-     \end{answer}
-   \item 
+   \recommended \item 
      What is the minimal polynomial of a diagonal matrix?
      \begin{answer}
        For a diagonal matrix
@@ -1764,14 +1810,15 @@ is nilpotent if and only if its only eigenvalue is zero.
 \end{lemma}
 
 \begin{proof}
-Let the linear transformation be $\map{t}{V}{V}$.
-If $t$ is nilpotent then there is an $n$ such that $t^n$ is the zero map,
+If the linear transformation $t$ on a nontrivial vector space
+is nilpotent then there 
+is an $n$ such that $t^n$ is the zero map,
 so $t$ satisfies the polynomial $p(x)=x^n=(x-0)^n$.
 By \nearbylemma{le:tSatisImpMinPolyDivides} the minimal polynomial of 
-$t$ divides $p$, so the minimal polynomial has only zero for a root.
+$t$ divides $p$, so the minimal polynomial's only root is zero.
 By Cayley-Hamilton, \nearbytheorem{th:CayHam},
-the characteristic polynomial has only zero for a root.
-Thus the only eigenvalue of $t$ is zero.
+the characteristic polynomial's only root is zero.
+Thus $t$'s only eigenvalue is zero.
 
 Conversely, if a transformation \( t \) on an
 \( n \)-dimensional space has only the single eigenvalue of zero 
@@ -1795,7 +1842,7 @@ $t$'s only eigenvalue is $\lambda$.
 The transformation \( t-\lambda \) is nilpotent if and only if
 $t-\lambda$'s only eigenvalue is \( 0 \).
 That holds if and only if $t$'s only eigenvalue is $\lambda$, because
-\( t(\vec{v})=\lambda\vec{v} \) if and 
+\( t(\vec{v})=\lambda\vec{v} \,\) if and 
 only if \( (t-\lambda)\,(\vec{v})=0\cdot\vec{v} \).
 \end{proof}
 
@@ -1808,14 +1855,14 @@ via the same change of basis matrices.
 \begin{proof}
 With \( N=P(T-\lambda I)P^{-1}=PTP^{-1}-P(\lambda I)P^{-1} \)
 we have $N=PTP^{-1}-PP^{-1}(\lambda I)$
-since the diagonal matrix \( \lambda I \) commutes with anything, 
-and so \( N=PTP^{-1}-\lambda I \).
-Therefore \( N+\lambda I=PTP^{-1} \).
+because the diagonal matrix \( \lambda I \) commutes with anything. 
+Thus \( N=PTP^{-1}-\lambda I \),
+and therefore \( N+\lambda I=PTP^{-1} \).
 \end{proof}
 
 We already have the canonical form for 
 the case of nilpotent matrices, 
-that is, the case of matrices whose only eigenvalue is zero.
+that is, for the case of matrices whose only eigenvalue is zero.
 By Corollary~III.\ref{cor:NilpotentMatCanonForm}, each 
 such matrix is similar to one that is all
 zeroes except for blocks of subdiagonal ones.
@@ -1892,14 +1939,15 @@ associated string basis~$B$ for $t-3$.
     \vec{\beta}_1\xmapsto{t-3}\vec{\beta}_2\xmapsto{t-3}\zero  \\
   \end{array}  
 \end{equation*}
-Find example elements for such a basis
-by taking a $\vec{\beta}_2$ that is mapped to~$\zero$
+Find such a basis
+by first picking a $\vec{\beta}_2$ that is mapped to~$\zero$
 by $t-3$ (that is, pick an element of 
 the null space $\nullspace{t-3}$ given in the table).
 Then choose a $\vec{\beta}_1$ that is mapped to~$\zero$ by $(t-3)^2$.
 The only restriction on the choice, besides membership in the null space,
-is that the two vectors need to form a linearly independent set.
-Here is a choice of two such vectors.
+is that $\vec{\beta}_1$ and $\vec{\beta}_2$ 
+need to form a linearly independent set.
+Here is one possible choice.
 \begin{equation*}
   \vec{\beta}_1=\colvec[r]{1 \\ 1}
   \quad
@@ -1975,7 +2023,7 @@ So this equation shows the similarity.
 \end{example}
 
 \begin{example}  \label{ex:FullNilpotentCase}
-This matrix has characteristic polynomial \( (x-4)^4 \) 
+This matrix  
 \begin{equation*}
   T=
   \begin{mat}[r]
@@ -1985,7 +2033,8 @@ This matrix has characteristic polynomial \( (x-4)^4 \)
     1  &0  &0  &5
    \end{mat}
 \end{equation*}
-and so has the single eigenvalue $4$.
+has characteristic polynomial \( (x-4)^4 \) 
+and so has the single eigenvalue~$4$.
 \begin{center}
   \begin{tabular}{c|cc}
     \multicolumn{1}{c}{\textit{power} \( p \)}  &\( (T-4I)^p \)  &\( \nullspace{(T-4I)^p}  \)   \\  
@@ -2059,7 +2108,7 @@ This gives the canonical form for $t-4$.
    \vec{\beta}_{4}\xmapsto{t-4}\zero \\
   \end{array}  
 \end{equation*}
-For the four basis elements, choose a
+To produce such a basis, choose a
 $\vec{\beta}_3$ and~$\vec{\beta}_4$ that are mapped to~$\zero$
 by~$t-4$.
 Also choose a~$\vec{\beta}_2$ that is mapped to~$\zero$ by~$(t-4)^2$ 
@@ -2073,8 +2122,8 @@ and a $\vec{\beta}_1$ is mapped to~$\zero$ by~$(t-4)^3$.
   \quad
   \vec{\beta}_4=\colvec{0 \\ 0 \\ 1 \\ 0}
 \end{equation*}
-Of course, we choose these four to not have any linear dependences.
-That gives the canonical form matrix similar to~$T$.
+Note that these four were chosen to not have any linear dependences.
+This is the canonical form matrix similar to~$T$.
 \begin{equation*}
   \rep{t}{B,B}
   =N+4I=
@@ -2093,7 +2142,7 @@ is a square matrix, or a square block of entries inside of a matrix,
 that is all zeroes except that 
 there is a number $\lambda\in\C$ such that 
 every diagonal entry is $\lambda$,
-and that every the subdiagonal entries is~$1$.
+and that every subdiagonal entry is~$1$.
 (If the block is $\nbyn{1}$ then it has no subdiagonal~$1$'s.)
 \end{definition}
 
@@ -2101,12 +2150,13 @@ The strings in the associated basis are
 \definend{Jordan strings}\index{Jordan string}\index{basis!Jordan string} 
 or \definend{Jordan chains}.\index{Jordan chain}\index{basis!Jordan chain}
 
-The above examples illustrate that Jordan block matrices are
-canonical representatives of the similarity classes of single-eigenvalue
-matrices.
-When we construct canonical representatives of single-eigenvalue matrices,
-to make them unique we arrange that the blocks of subdiagonal ones go from
-longest to shortest (reading left to right).
+The above examples illustrate that for single-eigenvalue
+matrices, the 
+Jordan block matrices are
+canonical representatives of the similarity classes.
+We can make this matrix form unique by
+arranging the basis elements so that the blocks of subdiagonal ones go from
+longest to shortest, reading left to right.
 
 \begin{example}
 The \( \nbyn{3} \) matrices whose only eigenvalue is \( 1/2 \) separate into
@@ -2144,12 +2194,12 @@ the convention of ordering the blocks of subdiagonal ones.
 \end{example}
 
 We are now set up to finish the program of this chapter.
-First we review of what we so far know about 
+First we review of what we have so far about 
 transformations $\map{t}{\C^n}{\C^n}$.
 
 The diagonalizable case is where
 $t$ has~$n$ distinct eigenvalues 
-$\lambda_1$, \ldots $\lambda_n$, that is, where the number of eigenvalues
+$\lambda_1$, \ldots, $\lambda_n$, that is, where the number of eigenvalues
 equals the dimension of the space. 
 In this case there is a basis
 $\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$ where 
@@ -2171,13 +2221,14 @@ It shows the canonical representative matrix and the associated basis.
     \vec{\beta}_3\mapsunder{t+1}\zero
     \end{array}  
 \end{equation*}
-We saw a diagonalization example in 
+One diagonalization example is 
 Five.II.\ref{ex:SummaryOfDiagonalizable}.
 
 The case where $t$ has a single eigenvalue leverages 
 the results on nilpotency to get a basis of
 associated eigenvectors that form disjoint strings.
-This example has $n=10$ and the single eigenvalue~$\lambda=2$.
+This example has $n=10$, a single eigenvalue~$\lambda=2$,
+and five Jordan blocks.
 \begin{equation*}
   T_2=\begin{mat}
     2  &0  &0  &0 &0 &0 &0 &0 &0 &0 \\
@@ -2204,7 +2255,8 @@ This example has $n=10$ and the single eigenvalue~$\lambda=2$.
 We saw a full example as 
 \nearbyexample{ex:FullNilpotentCase}.
 
-\nearbytheorem{th:JordanForm} extends to arbitrary
+\nearbytheorem{th:JordanForm} below extends these two 
+to any transformation
 $\map{t}{\C^n}{\C^n}$.
 The canonical form consists of
 Jordan blocks containing the eigenvalues. 
@@ -2229,61 +2281,35 @@ eigenvalues $3$, $2$, and~$-1$
     \vec{\beta}_6\mapsunder{t+1}\zero  \\
     \end{array}}  
 \end{equation*}
-It has four blocks, two of them
-associated with the eigenvalue~$3$.
+It has four blocks, two
+associated with the eigenvalue~$3$, and one each with \( 2 \) and~\( -1 \).
 
 As in the nilpotent cases earlier in this section,
-we will determine the structure of the basis 
-associated with~$T_3$ by applying
-the maps $t-3$ and~$(t-3)^2$, as well as $t-2$ and~$(t-2)^2$, and 
-also~$t+1$.
+to find the structure of the basis 
+associated with~$T_3$ we apply
+the maps $t-3$ and~$(t-3)^2$, the maps $t-2$ and~$(t-2)^2$, and 
+the map~$t+1$.
 For instance,
-the basis has three elements that are all mapped to~$\zero$
-if we apply $t-3$ twice.
+the basis has a total of three elements that are mapped to~$\zero$
+when we apply $t-3$ twice.
 It has two elements
 that are sent to~$\zero$ on two applications of~$t-2$.
-And it has an element that is sent to~$\zero$ by
-one application of~$t+1$.
-That is, we will find the elements of this basis in  
+And it has one element sent to~$\zero$ by~$t+1$.
+Restated, to find the elements of this basis we look at applications of
+the iterated maps, that is, we look in  
 the generalized null spaces $\gennullspace{t-3}$, $\gennullspace{t-2}$,
 and~$\gennullspace{t+1}$.
 
-The idea of the theorem's proof is that applying the
-map $t-3$ will send two of the basis vectors, 
+Observe that if we pick an eigenvalue, such as \( 3\),
+and apply
+$t-3$ to the basis element, then we will send two of the basis vectors, 
 $\vec{\beta}_2$ and~$\vec{\beta}_3$, to~$\zero$.
-That is, these two are eigenvectors associated with the 
-eigenvalue~$\lambda_1=3$.
-This suggests using induction,
+% (so these two are eigenvectors associated with the 
+% eigenvalue~$\lambda_1=3$).
+This suggests using induction for the proof
 since the dimension of the range space~$\rangespace{t-3}$
 is less than that of the starting space.
 
-Before the theorem, we first will show that applying $t-3$ 
-won't do something awkward to the basis elements not in 
-$\gennullspace{t-3}$, the vectors~$\vec{\beta}_4$, 
-$\vec{\beta}_5$, and~$\vec{\beta}_6$. 
-Here, awkward means that
-where \( \map{t}{V}{V} \) is a linear transformation,
-the restriction\appendrefs{restrictions of functions}\spacefactor=1000  %
-of \( t \) to a subspace \( M\subseteq V \) 
-need not be a linear transformation on \( M \):~there
-may be an \( \vec{m}\in M \)
-with \( t(\vec{m})\not\in M \). 
-An example is where $t$ is the transformation 
-that rotates the plane by
-a quarter turn and $M$ is the $x=y$ line; the vector $\binom{1}{1}$
-is rotated away from the subspace.
-We next show this does not happen in the special case of 
-eigenvalues;~if $j\neq i$ then 
-application of \( t-\lambda_j \) leaves 
-\( t-\lambda_i \)'s part unchanged.
-
-\begin{definition} \label{def:invariant}
-Let \( \map{t}{V}{V} \) be a transformation.
-A subspace \( M\subseteq V \) is \definend{$t$ invariant}%
-\index{invariant subspace}\index{subspace!invariant}
-if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
-(shorter: \( t(M)\subseteq M \)).
-\end{definition}
  
 \begin{theorem}  \label{th:JordanForm}
 \index{similar!canonical form}%
@@ -2329,10 +2355,10 @@ is strictly less than~$n$.
 Write $W$ for $\rangespace{t-\lambda_1}$ and write
 $r$ for the rank, the dimension of $W$.
 
-The space $W$ is $t-\lambda_1$~invariant because if 
+Observe that if 
 $\vec{w}\in W=\rangespace{t-\lambda_1}$ then $\vec{w}\in\C^n$ and so
 $(t-\lambda_1)(\vec{w})\in\rangespace{t-\lambda_1}$.
-Thus the restriction of $t-\lambda_1$ to~$w$ induces a transformation of~$W$, 
+Thus the restriction of $t-\lambda_1$ to~$W$ induces a transformation of~$W$, 
 which we shall also call $t-\lambda_1$.
 By the prior paragraph the dimension of~$W$ is less than~$n$ 
 so the inductive hypothesis applies and
@@ -2902,22 +2928,20 @@ Consequently the $b$'s and $c$'s are all~$0$.
 % \end{corollary}
 
 \begin{remark}
-For Jordan form to be a canonical form for 
+To be a canonical form for 
 matrix similarity,\index{representative!of similarity classes}
-strictly speaking it must be unique.
-That is, for any square matrix there needs to be one and only one 
-Jordan form matrix
-similar to it.
-As stated, the theorem allows us to rearrange the Jordan blocks.
-We could make this form unique, 
+Jordan form must be unique.
+That is, for any square matrix there should be one and only one 
+matrix similar to it that is in Jordan form.
+We could make the theorem's form unique 
 by arranging the Jordan blocks so the eigenvalues are in 
-some specified order and then arranging
+some specified order, and then arranging
 the blocks of subdiagonal ones from 
 longest to shortest.
 Below, we won't bother with that.
 \end{remark}
 
-The examples below we start with a matrix and calculate 
+The examples to follow start with a matrix and calculate 
 a Jordan form matrix similar to it.
 For instance in the first example we find the eigenvalues are $2$ 
 and~$6$ and to pick basis elements we find the null spaces of $t-2$ and~$t-6$. 
@@ -2942,6 +2966,35 @@ $\genrangespace{t-\lambda}
   =\rangespace{(t-\lambda)^{n+1}}$ 
 and so $\vec{v}\in\genrangespace{t-\lambda}$ implies that
 $(t-\lambda)(\vec{v})\in\genrangespace{t-\lambda}$ also.
+% Before the theorem, we first will show that applying $t-\lambda$ 
+% won't do something awkward to the basis elements not in 
+% $\gennullspace{t-\lambda}$.
+% For instance, in the prior example we want that applying
+% $t-3$ won't do something awkward to~$\vec{\beta}_4$, 
+% $\vec{\beta}_5$, and~$\vec{\beta}_6$. 
+% Here, awkward means that
+% where \( \map{t}{V}{V} \) is a linear transformation,
+% the restriction\appendrefs{restrictions of functions}\spacefactor=1000  %
+% of \( t \) to a subspace \( M\subseteq V \) 
+% need not be a linear transformation on \( M \):~there
+% may be an \( \vec{m}\in M \)
+% with \( t(\vec{m})\not\in M \). 
+% An example is where $t$ is the transformation 
+% that rotates the plane by
+% a quarter turn and $M$ is the $x=y$ line; the vector $\binom{1}{1}$
+% is rotated away from the subspace.
+% We next show this does not happen in the special case of 
+% eigenvalues;~if $j\neq i$ then 
+% application of \( t-\lambda_j \) leaves 
+% \( t-\lambda_i \)'s part unchanged.
+
+\begin{definition} \label{def:invariant}
+Let \( \map{t}{V}{V} \) be a transformation.
+A subspace \( M\subseteq V \) is \definend{$t$ invariant}%
+\index{invariant subspace}\index{subspace!invariant}
+if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
+(shorter: \( t(M)\subseteq M \)).
+\end{definition}
 
 \begin{lemma} \label{le:tInvIfftMinLambdaInv}
 A subspace is \( t \) invariant if and only if 
