@@ -2284,32 +2284,6 @@ eigenvalues $3$, $2$, and~$-1$
 It has four blocks, two
 associated with the eigenvalue~$3$, and one each with \( 2 \) and~\( -1 \).
 
-As in the nilpotent cases earlier in this section,
-to find the structure of the basis 
-associated with~$T_3$ we apply
-the maps $t-3$ and~$(t-3)^2$, the maps $t-2$ and~$(t-2)^2$, and 
-the map~$t+1$.
-For instance,
-the basis has a total of three elements that are mapped to~$\zero$
-when we apply $t-3$ twice.
-It has two elements
-that are sent to~$\zero$ on two applications of~$t-2$.
-And it has one element sent to~$\zero$ by~$t+1$.
-Restated, to find the elements of this basis we look at applications of
-the iterated maps, that is, we look in  
-the generalized null spaces $\gennullspace{t-3}$, $\gennullspace{t-2}$,
-and~$\gennullspace{t+1}$.
-
-Observe that if we pick an eigenvalue, such as \( 3\),
-and apply
-$t-3$ to the basis element, then we will send two of the basis vectors, 
-$\vec{\beta}_2$ and~$\vec{\beta}_3$, to~$\zero$.
-% (so these two are eigenvectors associated with the 
-% eigenvalue~$\lambda_1=3$).
-This suggests using induction for the proof
-since the dimension of the range space~$\rangespace{t-3}$
-is less than that of the starting space.
-
  
 \begin{theorem}  \label{th:JordanForm}
 \index{similar!canonical form}%
@@ -2322,55 +2296,61 @@ where each $J_{\lambda}$ is a Jordan block.\index{Jordan block}
     J_{\lambda_1}  &            &\text{\textit{--zeroes--}}                 \\
                &J_{\lambda_2}                                              \\
                &     &\ddots                                     \\
-                &     &                           &J_{\lambda_{k-1}} &     \\
+             %    &     &                           &J_{\lambda_{k-1}} &     \\
                &     &\text{\textit{--zeroes--}} &            &J_{\lambda_{k}}
   \end{mat}
 \end{equation*}
 Restated, any $\nbyn{n}$ matrix is similar to one in this form. 
-\end{theorem}
- 
-\begin{proof}
-This proof is closely related to that of
-Five.III.\ref{th:NilMapHasStrBas}, that any nilpotent transformation
-has a basis of disjoint $t$-strings.
+\end{theorem} 
 
+In the prior example, if we apply
+$t-3$ to the basis then it will send two elements, 
+$\vec{\beta}_2$ and~$\vec{\beta}_3$, to~$\zero$.
+This suggests doing the proof by induction 
+since the dimension of the range space~$\rangespace{t-3}$
+is less than that of the starting space.
+
+\begin{proof}
+% This proof is closely related to that of
+% Five.III.\ref{th:NilMapHasStrBas}, that any nilpotent transformation
+% has a basis of disjoint $t$-strings.
+%
 We will do induction on~$n$.
 The $n=1$ base case is trivial since any $\nbyn{1}$ matrix is in Jordan form.
 For the inductive step assume that 
 every transformation of $\C^1$, \ldots, $\C^{n-1}$ has a Jordan form
-representation,
+representation
 and fix $\map{t}{\C^n}{\C^n}$.
 
-This transformation has at least one eigenvalue~$\lambda_1$ because
-every transformation has a minimal polynomial and every minimal polynomial
+Any transformation has at least one eigenvalue~$\lambda_1$ because
+it has a minimal polynomial, which
 has at least one root over the complex numbers.
-Since $\lambda_1$ is an eigenvalue, there is an associated 
-eigenvector~$\vec{v}\neq\zero$ where $(t-\lambda_1)(\vec{v})=\zero$
-and so the null space of $t-\lambda_1$ is nontrivial.
-Thus the dimension of $\nullspace{t-\lambda_1}$, the nullity,
+That eigenvalue has a nonzero 
+eigenvector~$\vec{v}$, so that $(t-\lambda_1)(\vec{v})=\zero$.
+% and so the null space of $t-\lambda_1$ is nontrivial.
+Thus the dimension of $\nullspace{t-\lambda_1}$, the map's nullity,
 is greater than zero.
 Since the rank plus the nullity equals the dimension of the domain,
-the rank
+the rank of $t-\lambda_1$
 is strictly less than~$n$.
-Write $W$ for $\rangespace{t-\lambda_1}$ and write
-$r$ for the rank, the dimension of $W$.
+Write $W$ for the range space $\rangespace{t-\lambda_1}$ and write
+$r$ for the rank, its dimension.
 
-Observe that if 
+If 
 $\vec{w}\in W=\rangespace{t-\lambda_1}$ then $\vec{w}\in\C^n$ and so
 $(t-\lambda_1)(\vec{w})\in\rangespace{t-\lambda_1}$.
 Thus the restriction of $t-\lambda_1$ to~$W$ induces a transformation of~$W$, 
 which we shall also call $t-\lambda_1$.
-By the prior paragraph the dimension of~$W$ is less than~$n$ 
+The dimension of~$W$ is less than~$n$ and
 so the inductive hypothesis applies and
-we get a basis for~$W$ consisting of disjoint strings.
-
-These strings are associated with the eigenvalues of $t-\lambda_1$ 
+we get a basis for~$W$ consisting of disjoint strings that
+are associated with the eigenvalues of $t-\lambda_1$ 
 on~$W$.
 For any $\lambda$ that is an eigenvalue of~$t-\lambda_1$,
 the transformation of the basis elements will be 
 $(t-\lambda_1)-\lambda=t-(\lambda_1-\lambda)$,
 which we will write as $t-\lambda_s$.
-The following diagram covers the case of strings for $t-\lambda_1$, that is
+This diagram shows some strings for $t-\lambda_1$, that is,
 where $\lambda=0$;
 the argument remains valid if there are no such strings.
 \begin{equation*}
@@ -2387,32 +2367,38 @@ the argument remains valid if there are no such strings.
      &\xmapsto{t-\lambda_i} &\vec{w}_{k,1} &\xmapsto{t-\lambda_i} &\zero \\
 \end{strings}
 \end{equation*}
-(These strings may have differing lengths; 
-for instance, perhaps $n_1\neq n_k$.)
+These strings may have differing lengths; 
+for instance, perhaps $n_1\neq n_k$.
 
-The rightmost non-$\zero$ vector in each string 
-is in the null space of the associated 
-map:~$(t-\lambda_1)(\vec{w}_{1,1})=\zero$, \ldots, 
+The rightmost non-$\zero$ vectors  
+$\vec{w}_{1,1}$, \ldots, 
+$\vec{w}_{k,1}$
+are in the null space of the associated 
+maps,~$(t-\lambda_1)(\vec{w}_{1,1})=\zero$, \ldots, 
 $(t-\lambda_i)(\vec{w}_{k,1})=\zero$.
 Thus the number of strings associated with $t-\lambda_1$,
 denoted $q$ in the above diagram, is
 equal to the dimension of $W\cap\nullspace{t-\lambda_1}$.
 
-The string basis above is for $W=\rangespace{t-\lambda_1}$.
-We now expand it to make it a basis for all of~$\C_n$.
+The string basis above is for the space $W=\rangespace{t-\lambda_1}$.
+We now expand it to make it a basis for all of~$\C^n$.
 First, because 
-each of the $q$-many vectors $\vec{w}_{1,n_1}$, or \ldots,~$\vec{w}_{q,n_q}$
+each of the vectors $\vec{w}_{1,n_1}$, \ldots,~$\vec{w}_{q,n_q}$
 is an element of~$\rangespace{t-\lambda_1}$, each is the image of 
-a vector~$\vec{x}_1$, or \ldots, $\vec{x}_{q}$ from~$\C^n$.
-Add these as prefixes to the strings.
+some vector from~$\C^n$.
+Prefix each string with one such vector, 
+\( \vec{x}_1 \), \ldots, \( \vec{x}_q \),
+as shown below.
 Second, the dimension of $W\cap\nullspace{t-\lambda_1}$ is~$q$,
 and the dimension of~$W$ is~$r$, 
-so the bookkeeping requires that there be a $r-q$-dimensional subspace~$Y$
-of $\nullspace{t-\lambda_1}$ whose intersection with $W$ is~$\set{\zero}$.
+so the bookkeeping requires that there be a  subspace
+$Y\subseteq\nullspace{t-\lambda_1}$ with dimension $r-q$ 
+whose intersection with $W$ is~$\set{\zero}$.
 Consequently, 
-add $r-q$-many linearly independent
-vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}$, all
-from $\nullspace{t-\lambda_1}$.
+pick $r-q$ linearly independent
+vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}\in\nullspace{t-\lambda_1}$ 
+and incorporate them into the list of strings,
+again as shown below.
 \begin{equation*}
 \begin{strings}{*{10}{c}}
   \vec{x}_1  &\xmapsto{t-\lambda_1} 
@@ -2422,29 +2408,29 @@ from $\nullspace{t-\lambda_1}$.
   \vec{x}_q  &\xmapsto{t-\lambda_1}  
      &\vec{w}_{q,n_q} &\xmapsto{t-\lambda_1} &\cdots 
      &\xmapsto{t-\lambda_1} &\vec{w}_{q,1} &\xmapsto{t-\lambda_1} &\zero \\
-  \vec{w}_{q+1,n_{q+1}} &\xmapsto{t-\lambda_2} &\cdots 
+  &&\vec{w}_{q+1,n_{q+1}} &\xmapsto{t-\lambda_2} &\cdots 
      &\xmapsto{t-\lambda_2} &\vec{w}_{q+1,1} &\xmapsto{t-\lambda_2} &\zero \\
-     \vdotswithin{\xmapsto{t-\lambda_1}}                              \\
-  \vec{w}_{k,n_k} &\xmapsto{t-\lambda_i} &\cdots 
+     &&\vdotswithin{\xmapsto{t-\lambda_1}}                              \\
+  &&\vec{w}_{k,n_k} &\xmapsto{t-\lambda_i} &\cdots 
      &\xmapsto{t-\lambda_i} &\vec{w}_{k,1} &\xmapsto{t-\lambda_i} &\zero \\
-     \vec{y}_1  &\xmapsto{t-\lambda_1} &\zero \\
-     \vdotswithin{\xmapsto{t-\lambda_1}}                              \\
-     \vec{y}_{r-q}  &\xmapsto{t-\lambda_1} &\zero \\
+     &&&&&&\vec{y}_1  &\xmapsto{t-\lambda_1} &\zero \\
+     &&&&&&\vdotswithin{\xmapsto{t-\lambda_1}}                              \\
+     &&&&&&\vec{y}_{r-q}  &\xmapsto{t-\lambda_1} &\zero \\
 \end{strings}
 \end{equation*}
 We will show that this is the desired basis for~$\C^n$.
 
-Because the number of vectors in the set
-is equal to the dimension of the space, 
+Because of the bookkeeping the number of vectors in the set
+is equal to the dimension of the space, so 
 we will be done if we verify that its elements are linearly independent.
-Assume that this is equal to~$\zero$
+Assume that this is equal to~$\zero$.
 \begin{equation*}
   a_1\vec{x}_1+\cdots+a_q\vec{x}_q   
     +b_{1,n_1}\vec{w}_{1,n_1}+\cdots+b_{k,1}\vec{w}_{k,1} 
     +c_1\vec{y}_1+\cdots+c_{r-q}\vec{y}_{r-q}
   \tag{$*$}
 \end{equation*}
-We first show that this assumption implies that
+We first show that that
 all of the $a$'s are zero.
 Apply $t-\lambda_1$ to~($*$).
 The vectors $\vec{y}_1$, \ldots, $\vec{y}_{r-q}$ 
@@ -2452,8 +2438,8 @@ go to~$\zero$.
 Each of the vectors $\vec{x}_i$ is sent to 
 $\vec{w}_{i,n_i}$.
 As to the $\vec{w}$'s, they have the property that
-$(t-\lambda_k)\vec{w}_{i,j}=\vec{w}_{i,j-1}$ 
-for some eigenvalue~$\lambda_k$.
+$(t-\lambda_k)\,\vec{w}_{i,j}=\vec{w}_{i,j-1}$ 
+for some~$\lambda_k$.
 Write $\hat{\lambda}$ for $\lambda_1-\lambda_k$ to get this.
 \begin{equation*}
   (t-\lambda_1)(\vec{w}_{i,j})
@@ -2466,24 +2452,28 @@ linear combination of $\vec{w}$'s.
 These vectors are linearly independent because
 they form a basis for~$W$ and so in this linear combination 
 the coefficients are~$0$.
-We will be done showing that all the $a$'s are zero if
-we verify that 
-the coefficient of $\vec{w}_{i,n_i}$ is $a_i$ for $i=1,\ldots,q$.
+We will be done showing that $a_i=0$ for $i=1,\ldots,q$ are zero if
+we verify that after we apply $t-\lambda_1$ to~($*$) then
+the coefficient of $\vec{w}_{i,n_i}$ is $a_i$.
 But that's true because for $i=1,\ldots,q$, 
 equation~($**$) has $\hat{\lambda}=0$
 and so $\vec{w}_{i,n_i}$ is the image of $x_{i}$ alone.
-Thus $a_1$, \ldots, $a_q$ are zero. 
+% Thus $a_1$, \ldots, $a_q$ are zero. 
 
-What remains of~($*$) is this equation.
+With the $a$'s equal to zero, what remains of~($*$) is this.
 \begin{equation*}
   \zero
   =
     b_{1,n_1}\vec{w}_{1,n_1}+\cdots+b_{k,1}\vec{w}_{k,1}
     +c_1\vec{y}_1+\cdots+c_{r-q}\vec{y}_{r-q}
 \end{equation*}
-The $\vec{w}$'s are from~$W$ while the $\vec{y}$'s are from~$Y$, and the
+Rewrite as $-(b_{1,n_1}\vec{w}_{1,n_1}+\cdots+b_{k,1}\vec{w}_{k,1})=
+    c_1\vec{y}_1+\cdots+c_{r-q}\vec{y}_{r-q}$.
+The $\vec{w}$'s are from~$W$ while the $\vec{y}$'s are from~$Y$ and the
 two spaces have only a trivial intersection.
-Consequently the $b$'s and $c$'s are all~$0$.
+Consequently $b_{1,n_1}\vec{w}_{1,n_1}+\cdots+b_{k,1}\vec{w}_{k,1}=\zero$
+and $c_1\vec{y}_1+\cdots+c_{r-q}\vec{y}_{r-q}=\zero$,
+and the $b$'s and $c$'s are all zero.
 \end{proof}
 
 
@@ -2941,31 +2931,54 @@ longest to shortest.
 Below, we won't bother with that.
 \end{remark}
 
+% As in the nilpotent cases earlier in this section,
+% to find the structure of the basis 
+% associated with~$T_3$ we apply
+% the maps $t-3$ and~$(t-3)^2$, the maps $t-2$ and~$(t-2)^2$, and 
+% the map~$t+1$.
+% For instance,
+% the basis has a total of three elements that are mapped to~$\zero$
+% when we apply $t-3$ twice.
+% It has two elements
+% that are sent to~$\zero$ on two applications of~$t-2$.
+% And it has one element sent to~$\zero$ by~$t+1$.
+% That is, to find the elements of this basis we want to
+% iterate the maps, so we look in  
+% the generalized null spaces $\gennullspace{t-3}$, $\gennullspace{t-2}$,
+% and~$\gennullspace{t+1}$.
+
 The examples to follow start with a matrix and calculate 
 a Jordan form matrix similar to it.
-For instance in the first example we find the eigenvalues are $2$ 
-and~$6$ and to pick basis elements we find the null spaces of $t-2$ and~$t-6$. 
-We want that the calculation for each map does not affect the calculation
-for the other.
+Before those we will make one more point.
+For instance, in the first example belos we find that the eigenvalues are $2$ 
+and~$6$. 
+To pick the basis elements related to~\( 2\) we find the null spaces of 
+$t-2$, \( (t-2)^2 \) and~\( (t-2)^3\). 
+That is, to find the elements of this example's basis we will
+look in the generalized null spaces $\gennullspace{t-2}$ 
+and~$\gennullspace{t-6}$.
+But we need to be sure that the calculation for each map does not 
+affect the calculation for the other.
 
-So before those examples, 
-suppose that $\map{t}{\C^n}{\C^n}$ is a transformation and 
-that $\lambda\in\C$ is an eigenvalue.
-Note that the generalized null space~$\gennullspace{t-\lambda}$ 
-and range space~$\genrangespace{t-\lambda}$ are $t-\lambda$
-invariant spaces.
-For the generalized null space, 
-if $\vec{v}\in\gennullspace{t-\lambda}$ then 
-$(t-\lambda)^n(\vec{v})=\zero$ and it follows that
-$(t-\lambda)^n(\,(t-\lambda)(\vec{v})\,)=(t-\lambda)^{n+1}(\vec{v})=\zero$ 
-also. 
-As to the generalized range space,
-Lemma Five.III.\ref{le:RangeAndNullChains} and its proof show that
-$\genrangespace{t-\lambda}
-  =\rangespace{(t-\lambda)^n}
-  =\rangespace{(t-\lambda)^{n+1}}$ 
-and so $\vec{v}\in\genrangespace{t-\lambda}$ implies that
-$(t-\lambda)(\vec{v})\in\genrangespace{t-\lambda}$ also.
+% So before those examples, 
+% suppose that $\map{t}{\C^n}{\C^n}$ is a transformation and 
+% that $\lambda\in\C$ is an eigenvalue.
+% Note that the generalized null space~$\gennullspace{t-\lambda}$ 
+% and range space~$\genrangespace{t-\lambda}$ are $t-\lambda$
+% invariant spaces.
+% For the generalized null space, 
+% if $\vec{v}\in\gennullspace{t-\lambda}$ then 
+% $(t-\lambda)^n(\vec{v})=\zero$ and it follows that
+% $(t-\lambda)^n(\,(t-\lambda)(\vec{v})\,)=(t-\lambda)^{n+1}(\vec{v})=\zero$ 
+% also. 
+% As to the generalized range space,
+% Lemma Five.III.\ref{le:RangeAndNullChains} and its proof show that
+% $\genrangespace{t-\lambda}
+%   =\rangespace{(t-\lambda)^n}
+%   =\rangespace{(t-\lambda)^{n+1}}$ 
+% and so $\vec{v}\in\genrangespace{t-\lambda}$ implies that
+% $(t-\lambda)(\vec{v})\in\genrangespace{t-\lambda}$ also.
+
 % Before the theorem, we first will show that applying $t-\lambda$ 
 % won't do something awkward to the basis elements not in 
 % $\gennullspace{t-\lambda}$.
@@ -3000,7 +3013,7 @@ if whenever \( \vec{m}\in M \) then \( t(\vec{m})\in M \)
 A subspace is \( t \) invariant if and only if 
 it is \( t-\lambda \) invariant for all scalars \( \lambda \).
 In particular, 
-if \( \lambda_i,\lambda_j\in\C \) are eigenvalues of
+if \( \lambda_i,\lambda_j\in\C \) are unequal eigenvalues of
 \( t \) then
 the spaces \( \gennullspace{t-\lambda_i} \) 
 and \( \genrangespace{t-\lambda_i} \)
@@ -3008,7 +3021,7 @@ are \( t-\lambda_j \) invariant.
 \end{lemma}
 
 \begin{proof}
-The right-to-left half of the first sentence is easy:~if 
+The right-to-left half of the first sentence is trivial:~if 
 the subspace is $t-\lambda$ invariant for 
 all scalars $\lambda$ then taking $\lambda=0$ 
 shows that it is $t$ invariant.
@@ -3019,10 +3032,10 @@ The subspace $M$ is closed under linear combinations and so if
 $t(\vec{m})\in M$ then $t(\vec{m})-\lambda\vec{m}\in M$.
 Thus if $\vec{m}\in M$ then $(t-\lambda)\,(\vec{m})\in M$.
 
-The lemma's second sentence follows from its first.
+The second sentence follows from the first.
 The
-two spaces are $t-\lambda_i$~invariant, so they are \( t \)~invariant,
-and applying the first sentence again gives that 
+two spaces are $t-\lambda_i$~invariant, so they are \( t \)~invariant.
+Applying the first sentence again gives that 
 they are also \( t-\lambda_j \) invariant.
 \end{proof}
 
@@ -3049,7 +3062,7 @@ has the characteristic polynomial \( (x-2)^2(x-6) \).
 First we do the eigenvalue~$2$.
 Computation of the powers of $T-2I$, and of the null spaces and nullities, 
 is routine.
-(Recall from \nearbyexample{ex:SingJordBlock} our convention
+(Recall our convention
 of taking $T$ to represent a transformation $\map{t}{\C^3}{\C^3}$
 with respect to the standard basis.)
 \begin{center}
@@ -3106,7 +3119,7 @@ Thus we can represent the restriction in the canonical form
 \end{equation*}
 (other choices of basis are possible).
 Consequently, the action of the restriction of $t$ to 
-$\gennullspace{t-2}$ is represented by this matrix.
+$\gennullspace{t-2}$ is represented by this Jordan block.
 \begin{equation*}
   J_2=N_2+2I=\rep{t}{B_2,B_2}=
   \begin{mat}[r]
@@ -3127,7 +3140,8 @@ Its action on a string basis must be $\vec{\beta}_3\mapsto\zero$ and
 since it is the zero map, its canonical form $N_6$ 
 is the $\nbyn{1}$ zero matrix.
 Consequently, the canonical form $J_6$ for the action of $t$ on 
-$\gennullspace{t-6}$ is the $\nbyn{1}$ matrix with the single entry $6$.
+$\gennullspace{t-6}$ is the $\nbyn{1}$ Jordan block 
+matrix with the single entry $6$.
 For the basis we can use any nonzero vector from the generalized null space.  
 \begin{equation*}
    B_6=\sequence{\colvec[r]{0 \\ 1 \\ 0}}
@@ -3151,7 +3165,7 @@ But, ascending order is fine also.)
 \end{example}
 
 \begin{example}  \label{SecJordanForm}
-As a contrast, this matrix
+This matrix
 has the same characteristic polynomial 
 as the prior example, \( (x-2)^2(x-6) \).
 \begin{equation*}
@@ -3236,12 +3250,11 @@ Alternatively, we can just compute it.
    &\textit{--same--}
  \end{tabular}
 \end{center}
-Either way, the restriction of $t-6$ to $\gennullspace{t-6}$ is nilpotent of 
-index one.
-Thus $t-6$'s canonical form $N_6$ is the $\nbyn{1}$ zero matrix,
-and the associated Jordan block $J_6$ is the $\nbyn{1}$ matrix with entry $6$.
+Either way, on $\gennullspace{t-6}$ the restriction $t-6$'s 
+canonical form $N_6$ is the $\nbyn{1}$ zero matrix.
+The Jordan block $J_6$ is the $\nbyn{1}$ matrix with entry $6$.
  
-Therefore the Jordan form for $T$ is a diagonal matrix, so this is a 
+Therefore the Jordan form for $T$ is a diagonal matrix and so~\( t \) is a 
 diagonalizable transformation.
 \begin{equation*}
   \rep{t}{B,B}=
