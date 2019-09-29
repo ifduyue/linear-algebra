@@ -227,3 +227,9 @@ General:
   Evan Wallace  Correction to figure in One.II.
   Nathaniel Schenker A large number of excellent comments and corrections.
   Wolf Holzmann  Write-up of proof of Jordan form existence.
+  Elmir Jagudin Typo in exercise.
+  Wlodek Bryc  Extensive an helpful comments on compiling under Windows (this
+    is pre-latexmk; I switched to try to make things better).
+  Shishir Agrawal (and Michael Bennett)  Several corrections in Two and Three.
+  Joseph O'Brien  Correction to t-string basis definition.
+  Bradley J Ballinger   Comment about wording of vector space definition. 

@@ -2918,7 +2918,7 @@ and the $b$'s and $c$'s are all zero.
 % \end{corollary}
 
 \begin{remark}
-To be a canonical form for 
+Technically, to be a canonical form for 
 matrix similarity,\index{representative!of similarity classes}
 Jordan form must be unique.
 That is, for any square matrix there should be one and only one 
@@ -2928,7 +2928,7 @@ by arranging the Jordan blocks so the eigenvalues are in
 some specified order, and then arranging
 the blocks of subdiagonal ones from 
 longest to shortest.
-Below, we won't bother with that.
+In the examples below, we won't address that.
 \end{remark}
 
 % As in the nilpotent cases earlier in this section,
@@ -3833,7 +3833,7 @@ Therefore
               \nullspace{t-4}=\set{\colvec{0 \\ z \\ z}
                                       \suchthat z\in\C}
               \qquad
-              \nullspace{(t-4)^2}=\set{\colvec{y-z \\ y \\ z}
+              \nullspace{(t-4)^2}=\set{\colvec{z-y \\ y \\ z}
                                           \suchthat y,z\in\C}
             \end{equation*}
             (The null space of $(t-4)^3$ is the same, as it must be because
@@ -3867,7 +3867,8 @@ Therefore
         \partsitem The characteristic polynomial is 
             \( c(x)=(-2-x)(4-x)^2=-1\cdot (x+2)(x-4)^2 \).
 
-            For the eigenvalue $\lambda_{-2}$, calculation of the
+            For the eigenvalue $\lambda_{-2}$
+            (the subscript there is \( -2\)), calculation of the
             powers of $T+2I$ yields this.
             \begin{equation*}
               \nullspace{t+2}=\set{\colvec{z \\ z \\ z}
