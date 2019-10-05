@@ -97,9 +97,12 @@ sub asy2x   {
     # If an .asy file with this name exists, go with it.  OW, if there is a
     # file with the same name but the trailing digits stripped, then
     # go for that one.
+    print "!!!!! about to test whether fn exists; fn=","$name.asy","\n";
     if (! -e "$name.asy") {
          $name =~ s/\d+$//;  # strip trailing digits
      	 print "!!!!! file name with trailing digits stripped is ",$name,"\n";
+      } else {
+        print "!!!!! $name.asy exists\n";
       }
     my $asy_string = "ASYMPTOTE_DIR=\"/home/ftpmaint/Documents/linear-algebra.git/src/asy/asy-graphtheory-master/modules:/home/ftpmaint/Documents/linear-algebra.git/src/asy\"";
     # -nosafe gets around GhostScript error when using opacity:
