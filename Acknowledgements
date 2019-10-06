@@ -232,4 +232,6 @@ General:
     is pre-latexmk; I switched to try to make things better).
   Shishir Agrawal (and Michael Bennett)  Several corrections in Two and Three.
   Joseph O'Brien  Correction to t-string basis definition.
-  Bradley J Ballinger   Comment about wording of vector space definition. 
+  Bradley J Ballinger   Comment about wording of vector space definition.
+  Brett Presnell  Typo in slide five_i.
+  John W. Hoggard  Slide compilation.
