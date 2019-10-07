@@ -27,7 +27,7 @@
 \title[Spaces and their subspaces] % (optional, use only with long paper titles)
 {Spaces and their subspaces}
 
-\author{\textit{Linear Algebra} \\ {\small Jim Hef{}feron}}
+\author{\textit{Linear Algebra}, edition four \\ {\small Jim Hef{}feron}}
 \institute{
   \texttt{http://joshua.smcvt.edu/linearalgebra}
 }
@@ -73,7 +73,7 @@ On the top level, the space is $3$-space.
 \begin{equation*}
   P=\set{\colvec{x \\ y \\ z}\suchthat x+y+z=0}
 \end{equation*}
-Take the condition $x+y+z=0$ as a one-equation linear system
+Take the condition $x+y+z=0$ to be a one-equation linear system
 and parametrize.
 \begin{equation*}
   P=\set{\colvec{-y-z \\ y \\ z}\suchthat y,z\in\Re}
@@ -87,10 +87,17 @@ Thus the plane is this span.
 \end{frame}
 \begin{frame}
 This shows~$P$.
+It is a place passing through the origin. 
 \begin{center}
   \includegraphics{asy/two_i_a_plane.pdf}
 \end{center}
-The two vectors from the spanning set are in red.
+The two vectors from the spanning set 
+\begin{equation*}
+  \colvec{-1 \\ 1 \\ 0} 
+  \quad\text{and}\quad 
+  \colvec{-1 \\ 0 \\ 1}
+\end{equation*}
+are in red.
 For each, its entire body lies in the plane.
 \end{frame}
 
@@ -154,17 +161,18 @@ gives this.
 \end{equation*}
 \end{frame}
 \begin{frame}
-Here is the line, in yellow. 
-The axes are blue.
+Here the line, the subspace, is  in yellow. 
+In red is the vector used in the description. 
 \begin{center}
   \includegraphics{asy/two_i_a_line.pdf}
 \end{center}
-The spanning vector is red
+In red is the vector used in the description.
 \begin{equation*}
   \colvec{-2 \\ -1 \\ 1}
 \end{equation*}
-(its endpoint lies behind the plane of the screen, where $x$ and~$y$
-are negative).
+Its endpoint lies behind the plane of the screen, in the
+octant where $x$ and~$y$
+are negative and $z$ is positive.
 \end{frame}
 
 
@@ -307,7 +315,7 @@ The set of constant polynomials is similar.
 
 \begin{frame}
 \ex
-Paramatrize $P=\set{ax^2+bx+c\suchthat a+b+c=0}$ 
+Parametrize $P=\set{ax^2+bx+c\suchthat a+b+c=0}$ 
 in much the same way as for subspaces of real three-space:
 treat the restriction as a one-equation linear system and parametrize.
 \begin{align*}

@@ -30,7 +30,7 @@
 \title[Basis and Dimension] % (optional, use only with long paper titles)
 {Two.III Basis and Dimension}
 
-\author[Jim Hefferon]{\textit{Linear Algebra} \\ {\small Jim Hef{}feron}}
+\author[Jim Hefferon]{\textit{Linear Algebra}, edition four \\ {\small Jim Hef{}feron}}
 \institute{
   \texttt{http://joshua.smcvt.edu/linearalgebra}
 }
@@ -209,7 +209,7 @@ and refer to it as a set.
 
 
 \begin{frame}
-\ex Consider the vector space $\Re^3$ and this vector and basis.
+\ex This is a vector and basis for the vector space $\Re^3$.
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2 \\ 3}\in\Re^3
   \qquad
@@ -228,7 +228,7 @@ $c_1\vec{\beta}_1+c_2\vec{\beta}_2+c_3\vec{\beta}_3$ by solving this system.
   \end{linsys}
 \end{equation*}
 By eye we see just what the Theorem says we will see:
-there is one, and only one, solution $c_1=3$, $c_2=-1$, and~$c_3=-1$.
+there is one and only one solution $c_1=3$, $c_2=-1$, and~$c_3=-1$.
 \end{frame}
 
 
@@ -236,6 +236,20 @@ there is one, and only one, solution $c_1=3$, $c_2=-1$, and~$c_3=-1$.
 \begin{frame}
 \df[def:RepresentingVectors]
 \ExecuteMetaData[\vsdir vs3.tex]{df:RepresentingVectors}
+
+\pause\medskip
+The prior slide shows that where
+\begin{equation*}
+  \vec{v}=\colvec{1 \\ 2 \\ 3}
+  \qquad
+  B=\sequence{\colvec{1 \\ 1 \\ 1},
+              \colvec{1 \\ 1 \\ 0},
+              \colvec{1 \\ 0 \\ 0}}
+\end{equation*}
+we have this.
+\begin{equation*}
+  \rep{\vec{v}}{B}=\colvec{3 \\ -1 \\ -1}_B
+\end{equation*}
 \end{frame}
 
 
@@ -879,7 +893,33 @@ shows that the column space is the entire vector space $\Re^2$.
 \lm[le:RowOpsNoChngColRnk]
 \ExecuteMetaData[\vsdir vs3.tex]{lm:RowOpsNoChngColRnk}
 
-\pause
+\medskip
+In this matrix, the second column minus the first is equal to the third.
+\begin{equation*}
+  \begin{mat}
+    1  &2  &1  \\
+    0  &3  &3  \\
+    2  &6  &4
+  \end{mat}
+\end{equation*}
+That continues to hold as we perform row operations.
+\begin{equation*}
+  \grstep{-2\rho_1+\rho_3}
+  \begin{mat}
+    1  &2  &1  \\
+    0  &3  &3  \\
+    0  &2  &2
+  \end{mat}
+  \grstep{-(2/3)\rho_2+\rho_3}
+  \begin{mat}
+    1  &2  &1  \\
+    0  &3  &3  \\
+    0  &0  &0
+  \end{mat}
+\end{equation*}
+\end{frame}
+
+\begin{frame}
 \pf
 \ExecuteMetaData[\vsdir vs3.tex]{pf:RowOpsNoChngColRnk}
 \qed
