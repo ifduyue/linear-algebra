@@ -28,7 +28,7 @@
 \title[Reduced Echelon Form] % (optional, use only with long paper titles)
 {One.III Reduced Echelon Form}
 
-\author{\textit{Linear Algebra} \\ {\small Jim Hef{}feron}}
+\author{\textit{Linear Algebra}, edition four \\ {\small Jim Hef{}feron}}
 \institute{
   \texttt{http://joshua.smcvt.edu/linearalgebra}
 }
@@ -236,7 +236,7 @@ gives the parametrized description of the solution set.
   \pause
   \ExecuteMetaData[\grdir gr3.tex]{pf:ReducesToIsEqRel2}
   \qed}{%
-  The book has the full proof.  
+  The book has the proof.  
   For the intuition, consider
   this Gauss's method application.
   \begin{equation*}
@@ -351,6 +351,16 @@ So: Gauss's method acts by taking linear combinations of rows.
 \begin{frame}{Linear Combination Lemma} 
 \lm[lm:LinearCombinationLemma]
 \ExecuteMetaData[\grdir gr3.tex]{lm:LinearCombinationLemma}
+
+For instance, $4x_1+5x_2$ and $7x_1+8x_2$ are linear combinations,
+of $x_1$ and~$x_2$.
+A linear combination of those
+\begin{equation*}
+  3\cdot (4x_1+5x_2)+6\cdot (7x_1+8x_2)
+\end{equation*}
+yields another combination, 
+$54x_1+63x_2$, of $x_1$ and~$x_2$.
+
 \pause
 \pf
 \ExecuteMetaData[\grdir gr3.tex]{pf:LinearCombinationLemma}
@@ -450,7 +460,7 @@ gives an impossibility.
 % ..........
 \begin{frame}
 Summarizing the prior two lemmas:
-Gauss's method takes linear combinations of the rows, 
+Gauss's method acts by taking linear combinations of the rows, 
 systematically eliminating any linear relationship among those rows. 
 \ex
 In this non-echelon form matrix 
