@@ -25,15 +25,16 @@ real BEAMERPAPERHEIGHT = 9.6cm;
 
 pen FILLCOLOR=rgb("fff0ca");
 
+real MAINPEN_WIDTH=0.4pt;
 pen MAINPEN=linecap(0)
-             +linewidth(0.4pt);
+             +linewidth(MAINPEN_WIDTH);
 pen VECTORPEN=linecap(0)
-              +linewidth(0.8pt);
+              +linewidth(2*MAINPEN_WIDTH);
 real VECTORHEADSIZE=5;
 pen THINPEN=linecap(0)
              +linewidth(0.25pt);
 pen DASHPEN=linecap(0)
-             +linewidth(0.4pt)
+             +linewidth(MAINPEN_WIDTH)
              +linetype(new real[] {8,8});
 pen FCNPEN=linecap(0)
              +gray(0.3)
@@ -41,14 +42,14 @@ pen FCNPEN=linecap(0)
              +opacity(.5,"Normal");
 pen AXISPEN=linecap(0)
              +gray(0.3)
-             +linewidth(0.4pt)
+             +linewidth(MAINPEN_WIDTH)
              +opacity(.5,"Normal");
 pen DXPEN=linecap(0)
              +red
              +linewidth(1pt);
 pen CURVEPEN=MAINPEN;
-pen LIGHTPEN=linewidth(0.4pt);  // matches mpost line_width_light
-pen DARKPEN=linewidth(0.8pt);   //    line_width_dark
+pen LIGHTPEN=linewidth(MAINPEN_WIDTH);  // matches mpost line_width_light
+pen DARKPEN=linewidth(2*MAINPEN_WIDTH);   //    line_width_dark
 
 // texpreamble("\usepackage{linalgjh}\usepackage{conc}");
 
