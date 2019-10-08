@@ -892,37 +892,44 @@ shows that the column space is the entire vector space $\Re^2$.
 \begin{frame}
 \lm[le:RowOpsNoChngColRnk]
 \ExecuteMetaData[\vsdir vs3.tex]{lm:RowOpsNoChngColRnk}
+\iftoggle{showallproofs}{
+  \pf
+  \ExecuteMetaData[\vsdir vs3.tex]{pf:RowOpsNoChngColRnk}
+  \qed
+}{
+  \medskip\par
+  The reason is that row operations do not change linear relationships between
+  the columns.
+  So row operations do not change
+  the number of linearly unrelated columns.
 
-\medskip
-In this matrix, the second column minus the first is equal to the third.
-\begin{equation*}
-  \begin{mat}
-    1  &2  &1  \\
-    0  &3  &3  \\
-    2  &6  &4
-  \end{mat}
-\end{equation*}
-That continues to hold as we perform row operations.
-\begin{equation*}
-  \grstep{-2\rho_1+\rho_3}
-  \begin{mat}
-    1  &2  &1  \\
-    0  &3  &3  \\
-    0  &2  &2
-  \end{mat}
-  \grstep{-(2/3)\rho_2+\rho_3}
-  \begin{mat}
-    1  &2  &1  \\
-    0  &3  &3  \\
-    0  &0  &0
-  \end{mat}
-\end{equation*}
-\end{frame}
-
-\begin{frame}
-\pf
-\ExecuteMetaData[\vsdir vs3.tex]{pf:RowOpsNoChngColRnk}
-\qed
+  The book has the full proof; here is an example.
+  In this matrix, the second column minus the first is equal to the third.
+  \begin{equation*}
+    \begin{mat}
+      1  &2  &1  \\
+      0  &3  &3  \\
+      2  &6  &4
+    \end{mat}
+  \end{equation*}
+  As we perform row operations
+  that relationship between the columns
+  continues to hold.
+  \begin{equation*}
+    \grstep{-2\rho_1+\rho_3}
+    \begin{mat}
+      1  &2  &1  \\
+      0  &3  &3  \\
+      0  &2  &2
+    \end{mat}
+    \grstep{-(2/3)\rho_2+\rho_3}
+    \begin{mat}
+      1  &2  &1  \\
+      0  &3  &3  \\
+      0  &0  &0
+    \end{mat}
+  \end{equation*}
+}
 \end{frame}
 
 

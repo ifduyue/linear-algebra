@@ -290,16 +290,20 @@ with solution $r_3=c$, $r_2=(1/2)a+(1/2)b$ and $r_1=(1/2)a-(1/2)b-c$.)
 \co[th:AlwaysAnLDSubset]
 \ExecuteMetaData[\vsdir vs2.tex]{th:AlwaysAnLDSubset}
 
-\pause
-\pf
-\ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset0}
+\iftoggle{showallproofs}{
+  \pause
+  \pf
+  \ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset0}
 
-\pause
-\ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset1}
+  \ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset1}
 
-\pause
-\ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset2}
-\qed
+  \ExecuteMetaData[\vsdir vs2.tex]{pf:AlwaysAnLDSubset2}
+  \qed
+}{
+  \medskip\par
+  The book has a proof.  
+  Instead, consider the example on the next slide.
+}
 \end{frame}
 \begin{frame}
 \ex
@@ -323,17 +327,17 @@ The linear relationship
   % \tag{*}
 \end{equation*}
 gives a system of equations.
-\begin{multline*}
+\begin{equation*}
    \begin{linsys}{5}
       2r_1 &+ &3r_2 &+ &r_3  &  &    &+ &r_5 &=  &0 \\
       2r_1 &+ &3r_2 &+ &4r_3 &- &r_4 &- &r_5 &=  &0 
-    \end{linsys}                                           \\                 
+    \end{linsys}       %                                     \\                 
     \grstep{-\rho_1+\rho_2}
     \begin{linsys}{5}
       2r_1 &+ &3r_2 &+ &r_3   &  &    &+ &r_5  &=  &0 \\
            &  &     &+ &3r_3 &- &r_4  &- &2r_5 &=  &0 
     \end{linsys}
-\end{multline*}
+\end{equation*}
 \end{frame}
 \begin{frame}
 \noindent
@@ -359,18 +363,17 @@ $r_1=-5/6$ and $r_3=2/3$,
 \end{equation*}
 showing that  
 $\vec{s}_5$ is in the span of the set $\set{\vec{s}_1,\vec{s}_3}$.
-\pause
+
 Similarly, setting $r_4=1$ and the other parameters to~$0$ shows
 $\vec{s}_4$ is in the span of the set $\set{\vec{s}_1,\vec{s}_3}$.
 Also, setting $r_2=1$ and the other parameters to~$0$ shows
 $\vec{s}_2$ is in the span of the same set.
-\pause
-So we can omit the vectors $\vec{s}_2$, $\vec{s}_4$, $\vec{s}_5$
-associated with the free variables without shrinking the span.  
-% \end{frame}
-% \begin{frame}
-\pause
-The set $\set{\vec{s}_1,\vec{s}_3}$ is linearly independent
+
+So without shrinking the span 
+we can omit the vectors $\vec{s}_2$, $\vec{s}_4$, $\vec{s}_5$
+associated with the free variables.  
+The set of vectors associated with the leading variables,
+$\set{\vec{s}_1,\vec{s}_3}$, is linearly independent
 and so we cannot omit any members without shrinking the span.
 % (In ($*$) note that $\vec{s}_2$ is linearly dependent on $\vec{s}_1$
 % and $r_2$ did not end as a leading variable.)

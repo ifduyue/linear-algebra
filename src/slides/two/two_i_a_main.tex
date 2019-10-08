@@ -69,27 +69,37 @@ On the top level, the space is $3$-space.
 
 
 \begin{frame}{Express subspaces as spans}
-\ex Consider the plane.
+\ex This is a subset of $\R^3$.
 \begin{equation*}
   P=\set{\colvec{x \\ y \\ z}\suchthat x+y+z=0}
 \end{equation*}
-Take the condition $x+y+z=0$ to be a one-equation linear system
+Here are three members of this set, and an equation showing that the third is a linear combination of the first two,
+illustrating that it is a vector space.
+\begin{equation*}
+  \vec{v}_1=\colvec{1 \\ 2 \\ -3},
+  \vec{v}_2=\colvec{-2 \\ -5 \\ 7},
+  \vec{v}_3=\colvec{1 \\ 1 \\ -2},
+  \qquad
+  3\vec{v}_1+\vec{v}_2=\vec{v}_3
+\end{equation*}
+
+To get a more useful description, 
+take the condition $x+y+z=0$ to be a one-equation linear system
 and parametrize.
 \begin{equation*}
   P=\set{\colvec{-y-z \\ y \\ z}\suchthat y,z\in\Re}
    =\set{\colvec{-1 \\ 1 \\ 0}y+\colvec{-1 \\ 0 \\ 1}z\suchthat y,z\in\Re}
 \end{equation*}
-Thus the plane is this span.
-\begin{equation*}
-  P=\spanof{\,\set{\colvec{-1 \\ 1 \\ 0}, 
-            \colvec{-1 \\ 0 \\ 1}}\,}
-\end{equation*}
+Thus the plane is the span of those two vectors.
 \end{frame}
 \begin{frame}
-This shows~$P$.
-It is a place passing through the origin. 
+The subspace~$P\subseteq\R^3$ is
+a plane passing through the origin. 
 \begin{center}
-  \includegraphics{asy/two_i_a_plane.pdf}
+  $P=\spanof{\,\set{\colvec{-1 \\ 1 \\ 0}, 
+            \colvec{-1 \\ 0 \\ 1}}\,}$
+  \qquad
+  \vcenteredhbox{\includegraphics{asy/two_i_a_plane.pdf}}
 \end{center}
 The two vectors from the spanning set 
 \begin{equation*}
