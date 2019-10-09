@@ -46,7 +46,8 @@ for ($extension = 2 ; $extension < 100 ; $extension++) {
 
 # This is adapted from the version that comes with latexmk.  The change
 # is to cd to the directory containing the .mp file so it can write
-# and read the .mpx file, etc. 
+# and read the .mpx file, etc.
+
 sub mpost {
     my $file = $_[0];
     my ($name, $path) =  fileparse( $file );
@@ -80,9 +81,7 @@ sub mpost {
 # produces wilber001.pdf, wilber002.pdf etc.  This is convenient because
 # they share common code.  But this is not compatible with latexmk, which
 # does not allow add_cus_dep("asy","000.pdf",0,"asy2pdf"); (I have written
-# J Collins the maintainer of latexmk about it.)  So the first graphic that
-# appears in the file has to be named <asybasename>.pdf.  Awkward, but
-# not a show stopper.
+# J Collins the maintainer of latexmk about it.)
 
 add_cus_dep("asy","pdf",0,"asy2pdf");
 
@@ -148,14 +147,7 @@ sub asy2x   {
 
 
 
-# ================== slides =====================
-
-
-
-# ============ For debugging =========
-# for debugging
-# show_cus_dep();
-
+# ================== slides ===============
 
 # ============ Declare files to compile ====
 # Use these to create this file

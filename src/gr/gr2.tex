@@ -693,124 +693,6 @@ namely by any particular solution.
       \end{exparts}  
     \end{answer}
   \item 
-    When a plane does not pass through the origin, performing
-    operations on vectors whose bodies lie in it
-    is more complicated than when
-    the plane does pass through the origin.
-    Consider the picture in this subsection of the plane 
-    \begin{equation*}
-      \set{\colvec[r]{2 \\ 0 \\ 0}
-            +\colvec[r]{-0.5 \\ 1 \\ 0} y
-            +\colvec[r]{-0.5 \\ 0 \\ 1} z
-            \suchthat y,z\in\Re}
-    \end{equation*}
-    and the three vectors with endpoints
-    $(2,0,0)$, $(1.5,1,0)$, and $(1.5,0,1)$.
-    \begin{exparts}
-      \partsitem Redraw the picture, including the vector starting at $(2,0,0)$ 
-        whose body is in the plane, and that is twice as long as the vector
-        shown in the plane whose endpoint is $(1.5,1,0)$.
-        The endpoint of this vector is not $(3,2,0)$; what is it?
-      \partsitem Redraw the picture, including the parallelogram 
-        in the plane that shows the sum of the vectors 
-        ending at $(1.5,0,1)$ and $(1.5,1,0)$.
-        The endpoint of the sum, on the diagonal, is not $(3,1,1)$; what is it?
-    \end{exparts}
-    \begin{answer}
-      \begin{exparts}
-        \partsitem The vector shown
-          \begin{center}
-            \includegraphics{gr/mp/ch1.32}
-          \end{center}
-          is not the result of doubling
-          \begin{equation*}
-            \colvec[r]{2 \\ 0 \\ 0}
-              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1
-            =\colvec[r]{1.5 \\ 1 \\ 0}
-          \end{equation*}
-          instead it is the result of doubling the parameter. 
-          \begin{equation*}
-            \colvec[r]{2 \\ 0 \\ 0}
-              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 2
-            =\colvec[r]{1 \\ 2 \\ 0}
-          \end{equation*}
-          (Comparing the lengths
-          \begin{equation*}
-            \sqrt{1^2+2^2+0^2}
-            =\sqrt{(2\cdot 0.5)^2 + (2\cdot 1)^2+ (2\cdot 0)^2}
-            =\sqrt{2^2\cdot(0.5^2+1^2+0^2)}
-            =2\cdot\sqrt{0.5^2+1^2+0^2}
-          \end{equation*}
-           is easy; the length formula is from the next subsection.)
-        \partsitem The vector
-          \begin{center}
-            \includegraphics{gr/mp/ch1.19}
-          \end{center}
-          is not the result of adding
-          \begin{equation*}
-            (\colvec[r]{2 \\ 0 \\ 0}
-              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1)
-            +
-            (\colvec[r]{2 \\ 0 \\ 0}
-              +\colvec[r]{-0.5 \\ 0 \\ 1}\cdot 1)
-          \end{equation*}
-          instead it is 
-          \begin{equation*}
-            \colvec[r]{2 \\ 0 \\ 0}
-              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1
-              +\colvec[r]{-0.5 \\ 0 \\ 1}\cdot 1
-            =\colvec[r]{1 \\ 1 \\ 1}
-          \end{equation*}
-          which adds the parameters.
-      \end{exparts}
-    \end{answer}
-  \item 
-    Show that the line segments
-    \( \overline{(a_1,a_2)(b_1,b_2)} \) and
-    \( \overline{(c_1,c_2)(d_1,d_2)} \)
-    have the same lengths and slopes if
-    \(  b_1-a_1=d_1-c_1 \) and \( b_2-a_2=d_2-c_2 \).
-    Is that only if?
-    \begin{answer}
-      The ``if'' half is straightforward.
-      If \( b_1-a_1=d_1-c_1 \) and \( b_2-a_2=d_2-c_2 \) then
-      \begin{equation*}
-        \sqrt{(b_1-a_1)^2+(b_2-a_2)^2}
-        =\sqrt{(d_1-c_1)^2+(d_2-c_2)^2}
-      \end{equation*}
-      so they have the same lengths, and the slopes are just as easy:
-      \begin{equation*}
-        \frac{b_2-a_2}{b_1-a_1}
-        =\frac{d_2-c_2}{d_1-a_1}
-      \end{equation*}
-      (if the denominators are \( 0 \) they both have undefined slopes).
-
-     For ``only if'', assume that
-     the two segments have the same length and slope
-     (the case of undefined slopes is easy; we will do the case where both
-     segments have a slope \( m \)).
-     Also assume, without loss of generality, that $a_1<b_1$ and that
-     $c_1<d_1$.
-     The first segment is
-     \( \overline{(a_1,a_2)(b_1,b_2)}=
-     \set{(x,y)\suchthat y=mx+n_1,\; x\in [a_1..b_1]} \)
-     (for some intercept $n_1$)
-     and the second segment is \( \overline{(c_1,c_2)(d_1,d_2)}=
-     \set{(x,y)\suchthat y=mx+n_2,\; x\in [c_1..d_1]} \)
-     (for some $n_2$).
-     Then the lengths of those segments are
-     \begin{equation*}
-     \sqrt{(b_1-a_1)^2+((mb_1+n_1)-(ma_1+n_1))^2}
-       =\sqrt{(1+m^2)(b_1-a_1)^2}
-     \end{equation*}
-     and, similarly, \( \sqrt{(1+m^2)(d_1-c_1)^2} \).
-     Therefore, \( \absval{b_1-a_1}=\absval{d_1-c_1} \).
-     Thus, as we assumed that \( a_1<b_1 \) and \( c_1<d_1 \), we have
-     that \( b_1-a_1=d_1-c_1 \).
-
-     The other equality is similar.   
-   \end{answer}
-  \item 
       How should we define $\Re^0$?
       \begin{answer}
         We shall later define it to be a set with one element\Dash an
@@ -1338,7 +1220,7 @@ Not every vector in each is orthogonal to all vectors in the other.
        \partsitem Associate?
        \partsitem How does it interact with scalar multiplication?
     \end{exparts}
-    As always, you must back any assertion with either a proof or an example.
+    As always, you must back any assertion with a suitable argument.
     \begin{answer}
       In each item below, assume that the vectors 
       \( \vec{u},\vec{v},\vec{w}\in\Re^n \) 
@@ -1552,45 +1434,162 @@ Not every vector in each is orthogonal to all vectors in the other.
       For `equal to', note that \( \vec{u}\dotprod\vec{u}=1 \).  
     \end{answer}
   \item 
-    Prove that
-    \(
-      \absval{\vec{u}+\vec{v}\,}^2+\absval{\vec{u}-\vec{v}\,}^2
-      =2\absval{\vec{u}\,}^2+2\absval{\vec{v}\,}^2.
-    \)
+    When a plane does not pass through the origin, performing
+    operations on vectors whose bodies lie in it
+    is more complicated than when
+    the plane does pass through the origin.
+    Consider the picture in this subsection of the plane 
+    \begin{equation*}
+      \set{\colvec[r]{2 \\ 0 \\ 0}
+            +\colvec[r]{-0.5 \\ 1 \\ 0} y
+            +\colvec[r]{-0.5 \\ 0 \\ 1} z
+            \suchthat y,z\in\Re}
+    \end{equation*}
+    and the three vectors with endpoints
+    $(2,0,0)$, $(1.5,1,0)$, and $(1.5,0,1)$.
+    \begin{exparts}
+      \partsitem Redraw the picture, including the vector starting at $(2,0,0)$ 
+        whose body is in the plane, and that is twice as long as the vector
+        shown in the plane whose endpoint is $(1.5,1,0)$.
+        The endpoint of this vector is not $(3,2,0)$; what is it?
+      \partsitem Redraw the picture, including the parallelogram 
+        in the plane that shows the sum of the vectors 
+        ending at $(1.5,0,1)$ and $(1.5,1,0)$.
+        The endpoint of the sum, on the diagonal, is not $(3,1,1)$; what is it?
+    \end{exparts}
     \begin{answer}
-      Write
-      \begin{equation*}
-        \vec{u}=\colvec{u_1 \\ \vdotswithin{u_1} \\ u_n}
-        \qquad
-        \vec{v}=\colvec{v_1 \\ \vdotswithin{v_1} \\ v_n}
-      \end{equation*}
-      and then this computation works.
-      \begin{align*}
-        \absval{\vec{u}+\vec{v}\,}^2+\absval{\vec{u}-\vec{v}\,}^2
-        &=(u_1+v_1)^2+\cdots+(u_n+v_n)^2   \\
-        &\quad +(u_1-v_1)^2+\cdots+(u_n-v_n)^2     \\
-        &={u_1}^2+2u_1v_1+{v_1}^2+\cdots+{u_n}^2+2u_nv_n+{v_n}^2       \\
-        &\quad +{u_1}^2-2u_1v_1+{v_1}^2+\cdots+{u_n}^2-2u_nv_n+{v_n}^2 \\
-        &=2({u_1}^2+\cdots+{u_n}^2)+2({v_1}^2+\cdots+{v_n}^2) \\
-        &=2\absval{\vec{u}\,}^2+2\absval{\vec{v}\,}^2
-     \end{align*}   
+      \begin{exparts}
+        \partsitem The vector shown
+          \begin{center}
+            \includegraphics{gr/mp/ch1.32}
+          \end{center}
+          is not the result of doubling
+          \begin{equation*}
+            \colvec[r]{2 \\ 0 \\ 0}
+              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1
+            =\colvec[r]{1.5 \\ 1 \\ 0}
+          \end{equation*}
+          instead it is the result of doubling the parameter. 
+          \begin{equation*}
+            \colvec[r]{2 \\ 0 \\ 0}
+              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 2
+            =\colvec[r]{1 \\ 2 \\ 0}
+          \end{equation*}
+          This compares the lengths. 
+          \begin{equation*}
+            \sqrt{1^2+2^2+0^2}
+            =\sqrt{(2\cdot 0.5)^2 + (2\cdot 1)^2+ (2\cdot 0)^2}
+            =\sqrt{2^2\cdot(0.5^2+1^2+0^2)}
+            =2\cdot\sqrt{0.5^2+1^2+0^2}
+          \end{equation*}
+        \partsitem The vector
+          \begin{center}
+            \includegraphics{gr/mp/ch1.19}
+          \end{center}
+          is not the result of adding
+          \begin{equation*}
+            (\colvec[r]{2 \\ 0 \\ 0}
+              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1)
+            +
+            (\colvec[r]{2 \\ 0 \\ 0}
+              +\colvec[r]{-0.5 \\ 0 \\ 1}\cdot 1)
+          \end{equation*}
+          instead it is 
+          \begin{equation*}
+            \colvec[r]{2 \\ 0 \\ 0}
+              +\colvec[r]{-0.5 \\ 1 \\ 0}\cdot 1
+              +\colvec[r]{-0.5 \\ 0 \\ 1}\cdot 1
+            =\colvec[r]{1 \\ 1 \\ 1}
+          \end{equation*}
+          which adds the parameters.
+      \end{exparts}
     \end{answer}
   \item 
-    Show that if \( \vec{x}\dotprod\vec{y}=0 \) for every \( \vec{y} \)
-    then \( \vec{x}=\zero \).
+    Show that the line segments
+    \( \overline{(a_1,a_2)(b_1,b_2)} \) and
+    \( \overline{(c_1,c_2)(d_1,d_2)} \)
+    have the same lengths and slopes if
+    \(  b_1-a_1=d_1-c_1 \) and \( b_2-a_2=d_2-c_2 \).
+    Is that only if?
     \begin{answer}
-      We will prove this demonstrating that the contrapositive
-      statement holds:~if \( \vec{x}\neq\zero \) then there
-      is a \( \vec{y} \) with \( \vec{x}\dotprod\vec{y}\neq 0 \).
+      The ``if'' half is straightforward.
+      If \( b_1-a_1=d_1-c_1 \) and \( b_2-a_2=d_2-c_2 \) then
+      \begin{equation*}
+        \sqrt{(b_1-a_1)^2+(b_2-a_2)^2}
+        =\sqrt{(d_1-c_1)^2+(d_2-c_2)^2}
+      \end{equation*}
+      so they have the same lengths, and the slopes are just as easy:
+      \begin{equation*}
+        \frac{b_2-a_2}{b_1-a_1}
+        =\frac{d_2-c_2}{d_1-a_1}
+      \end{equation*}
+      (if the denominators are \( 0 \) they both have undefined slopes).
 
-      Assume that \( \vec{x}\in\Re^n \).
-      If \( \vec{x}\neq\zero \) then it has a nonzero component, say the
-      \( i \)-th one \( x_i \).
-      But the vector \( \vec{y}\in\Re^n \) that is all zeroes except for
-      a one in component~$i$ gives
-      \( \vec{x}\dotprod\vec{y}=x_i \).  
-      (A slicker proof just considers $\vec{x}\dotprod\vec{x}$.)
-    \end{answer}
+     For ``only if'', assume that
+     the two segments have the same length and slope
+     (the case of undefined slopes is easy; we will do the case where both
+     segments have a slope \( m \)).
+     Also assume, without loss of generality, that $a_1<b_1$ and that
+     $c_1<d_1$.
+     The first segment is
+     \( \overline{(a_1,a_2)(b_1,b_2)}=
+     \set{(x,y)\suchthat y=mx+n_1,\; x\in [a_1..b_1]} \)
+     (for some intercept $n_1$)
+     and the second segment is \( \overline{(c_1,c_2)(d_1,d_2)}=
+     \set{(x,y)\suchthat y=mx+n_2,\; x\in [c_1..d_1]} \)
+     (for some $n_2$).
+     Then the lengths of those segments are
+     \begin{equation*}
+     \sqrt{(b_1-a_1)^2+((mb_1+n_1)-(ma_1+n_1))^2}
+       =\sqrt{(1+m^2)(b_1-a_1)^2}
+     \end{equation*}
+     and, similarly, \( \sqrt{(1+m^2)(d_1-c_1)^2} \).
+     Therefore, \( \absval{b_1-a_1}=\absval{d_1-c_1} \).
+     Thus, as we assumed that \( a_1<b_1 \) and \( c_1<d_1 \), we have
+     that \( b_1-a_1=d_1-c_1 \).
+
+     The other equality is similar.   
+   \end{answer}
+  % \item 
+  %   Prove that
+  %   \(
+  %     \absval{\vec{u}+\vec{v}\,}^2+\absval{\vec{u}-\vec{v}\,}^2
+  %     =2\absval{\vec{u}\,}^2+2\absval{\vec{v}\,}^2.
+  %   \)
+  %   \begin{answer}
+  %     Write
+  %     \begin{equation*}
+  %       \vec{u}=\colvec{u_1 \\ \vdotswithin{u_1} \\ u_n}
+  %       \qquad
+  %       \vec{v}=\colvec{v_1 \\ \vdotswithin{v_1} \\ v_n}
+  %     \end{equation*}
+  %     and then this computation works.
+  %     \begin{align*}
+  %       \absval{\vec{u}+\vec{v}\,}^2+\absval{\vec{u}-\vec{v}\,}^2
+  %       &=(u_1+v_1)^2+\cdots+(u_n+v_n)^2   \\
+  %       &\quad +(u_1-v_1)^2+\cdots+(u_n-v_n)^2     \\
+  %       &={u_1}^2+2u_1v_1+{v_1}^2+\cdots+{u_n}^2+2u_nv_n+{v_n}^2       \\
+  %       &\quad +{u_1}^2-2u_1v_1+{v_1}^2+\cdots+{u_n}^2-2u_nv_n+{v_n}^2 \\
+  %       &=2({u_1}^2+\cdots+{u_n}^2)+2({v_1}^2+\cdots+{v_n}^2) \\
+  %       &=2\absval{\vec{u}\,}^2+2\absval{\vec{v}\,}^2
+  %    \end{align*}   
+  %   \end{answer}
+  % \item 
+  %   Show that if \( \vec{x}\dotprod\vec{y}=0 \) for every \( \vec{y} \)
+  %   then \( \vec{x}=\zero \).
+  %   \begin{answer}
+  %     We will prove this demonstrating that the contrapositive
+  %     statement holds:~if \( \vec{x}\neq\zero \) then there
+  %     is a \( \vec{y} \) with \( \vec{x}\dotprod\vec{y}\neq 0 \).
+  %
+  %     Assume that \( \vec{x}\in\Re^n \).
+  %     If \( \vec{x}\neq\zero \) then it has a nonzero component, say the
+  %     \( i \)-th one \( x_i \).
+  %     But the vector \( \vec{y}\in\Re^n \) that is all zeroes except for
+  %     a one in component~$i$ gives
+  %     \( \vec{x}\dotprod\vec{y}=x_i \).  
+  %     (A slicker proof just considers $\vec{x}\dotprod\vec{x}$.)
+  %   \end{answer}
   \item 
     Is
     \( \absval{\vec{u}_1+\cdots+\vec{u}_n} \leq
@@ -1829,33 +1828,33 @@ Not every vector in each is orthogonal to all vectors in the other.
       \end{align*}  
       as required.
     \end{answer}
-  \item 
-    The \definend{geometric mean}\index{mean!geometric} 
-    of two positive reals \( x, y \) is \( \sqrt{xy} \).
-    It is analogous to the \definend{arithmetic mean}\index{mean!arithmetic} 
-    \( (x+y)/2 \).
-    Use the Cauchy-Schwarz inequality to show that
-    the geometric mean of any \( x,y\in\Re \) is less
-    than or equal to the arithmetic mean.
-    \begin{answer}
-      For \( x,y\in\Re^+ \), set
-      \begin{equation*}
-        \vec{u}=\colvec{\sqrt{x} \\ \sqrt{y}}
-        \qquad
-        \vec{v}=\colvec{\sqrt{y} \\ \sqrt{x}}
-      \end{equation*}
-      so that the Cauchy-Schwarz inequality asserts that (after squaring)
-      \begin{align*}
-        (\sqrt{x}\sqrt{y}+\sqrt{y}\sqrt{x})^2
-        &\leq(\sqrt{x}\sqrt{x}+\sqrt{y}\sqrt{y})(\sqrt{y}\sqrt{y}
-                                              +\sqrt{x}\sqrt{x})   \\
-        (2\sqrt{x}\sqrt{y})^2
-        &\leq(x+y)^2                            \\
-        \sqrt{xy}
-        &\leq\frac{x+y}{2}
-      \end{align*}
-      as desired.  
-    \end{answer}
+  % \item 
+  %   The \definend{geometric mean}\index{mean!geometric} 
+  %   of two positive reals \( x, y \) is \( \sqrt{xy} \).
+  %   It is analogous to the \definend{arithmetic mean}\index{mean!arithmetic} 
+  %   \( (x+y)/2 \).
+  %   Use the Cauchy-Schwarz inequality to show that
+  %   the geometric mean of any \( x,y\in\Re \) is less
+  %   than or equal to the arithmetic mean.
+  %   \begin{answer}
+  %     For \( x,y\in\Re^+ \), set
+  %     \begin{equation*}
+  %       \vec{u}=\colvec{\sqrt{x} \\ \sqrt{y}}
+  %       \qquad
+  %       \vec{v}=\colvec{\sqrt{y} \\ \sqrt{x}}
+  %     \end{equation*}
+  %     so that the Cauchy-Schwarz inequality asserts that (after squaring)
+  %     \begin{align*}
+  %       (\sqrt{x}\sqrt{y}+\sqrt{y}\sqrt{x})^2
+  %       &\leq(\sqrt{x}\sqrt{x}+\sqrt{y}\sqrt{y})(\sqrt{y}\sqrt{y}
+  %                                             +\sqrt{x}\sqrt{x})   \\
+  %       (2\sqrt{x}\sqrt{y})^2
+  %       &\leq(x+y)^2                            \\
+  %       \sqrt{xy}
+  %       &\leq\frac{x+y}{2}
+  %     \end{align*}
+  %     as desired.  
+  %   \end{answer}
   \puzzle \item 
     \cite{Cleary}
     Astrologers claim to be able to recognize trends in personality and 
