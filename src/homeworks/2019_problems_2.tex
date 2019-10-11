@@ -1,0 +1,199 @@
+\documentclass[answers]{examjh}
+\usepackage{../sty/linalgjh}
+
+\renewcommand{\legalesetext}{
+  While you are working on these questions
+  you may confer with others in the class, 
+  or talk to someone who had the course before, etc.
+  % or look at the book or in the library or online, etc.
+  However, when you write up the answer, you must write on your own.
+  Note also: \textit{you must show your work}.}
+\examhead{MA~213 homework two}{Due: 2019-Oct-07}
+
+\begin{document}
+
+\begin{questions}
+\question Verify that each is a vector space.   
+\begin{parts}   
+  \item The collection of $\nbyn{2}$ matrices with $0$'s in the
+     upper right and lower left entries.     
+     \begin{equation*}       
+       \set{         
+         \begin{mat}           
+           a  &0  \\ 
+           0  &b          
+        \end{mat}         
+        \suchthat a,b\in\Re}     
+     \end{equation*}
+   \begin{solution}
+   This is a subset of the vector space of all $\nbyn{2}$ matrices. 
+   So
+   to verify that it is a subspace we need only check that this set
+   is closed under addition and scalar multiplication.
+   It is closed under addition because the sum of two diagonal matrices
+   is another diagonal matrix.
+   \begin{equation*}
+      \begin{mat}           
+        a_1  &0  \\ 
+        0    &b_1          
+      \end{mat}
+      +
+      \begin{mat}           
+        a_2  &0  \\ 
+        0    &b_2          
+      \end{mat}
+      =
+      \begin{mat}           
+        a_1+a_2  &0        \\ 
+        0        &b_1+b_2          
+      \end{mat}         
+   \end{equation*}
+   The scalar multiple of a diagonal matrix
+   is a diagonal matrix.
+   \begin{equation*}
+      r\cdot\begin{mat}           
+        a  &0  \\ 
+        0  &b          
+      \end{mat}
+      =
+      \begin{mat}           
+        ra    &0        \\ 
+        0     &rb          
+      \end{mat}         
+   \end{equation*}
+   \end{solution}
+  \item The collection $S=\set{a_0+a_1x+a_3x^3 \suchthat a_0,a_1,a_3\in\Re}$
+      of cubic polynomials with no quadratic term.
+    \begin{solution}
+      This is a subset of the vector space $\polyspace_3$ so to show it is a 
+      subspace we need only
+      check closure under addition and scalar multiplication.
+      The sum of two members of~$S$ is another member of~$S$.
+      \begin{equation*}
+        (a_0+a_1x+a_3x^3)
+        +(b_0+b_1x+b_3x^3)
+        =(a_0+b_0)+(a_1+b_1)x+(a_3+b_3)x^3
+      \end{equation*}
+      A scalar multiple of such a polynomial is another such polynomial.
+      \begin{equation*}
+        r\cdot(a_0+a_1x+a_3x^3)
+        =(ra_0)+(ra_1)x+(ra_3)x^3
+      \end{equation*}
+    \end{solution}
+\end{parts} 
+
+\question Determine if each set is linearly independent, in the natural vector space.   
+  \begin{parts}   
+    \item $\set{\colvec{1 \\ 2 \\ 0},
+               \colvec{-1 \\ 1 \\ 0}}$
+    \begin{solution}
+    This set is linearly independent because the second vector is not
+    a multiple of the first, by inspection.
+    Or, we can set up the equation.
+    \begin{equation*}
+      c_1\colvec{1 \\ 2 \\ 0}+c_2\colvec{-1 \\ 1 \\ 0}=\colvec{0 \\ 0 \\ 0}
+    \end{equation*}
+    Here is the solution.
+    \begin{equation*}
+      \begin{linsys}{2}
+        c_1 &- &c_2 &= &0 \\
+       2c_1 &+ &c_2 &= &0 \\
+            &  &0   &= &0
+      \end{linsys}
+      \grstep{-2\rho_1+\rho_2}
+      \begin{linsys}{2}
+        c_1 &- &c_2  &= &0 \\
+            &  &3c_2 &= &0 \\
+            &  &0    &= &0
+      \end{linsys}
+    \end{equation*}
+    The only solution is the trivial one $c_1=c_2=0$ so the set is
+    linearly independent.
+    \end{solution}
+    \item $\set{\rowvec{1 &3 &1}, \rowvec{-1 &4 &3}, \rowvec{-1 &11 &7}}$
+    \begin{solution}
+    By eye we can spot that two times the second vector plus the first
+    equals the third, so this set is linearly dependent.
+    Or, we can set up the system
+    \begin{equation*}
+      c_1\rowvec{1 &3 &1}+c_2\rowvec{-1 &4 &3}+c_3\rowvec{-1 &11 &7}
+      =\rowvec{0 &0 &0}
+    \end{equation*}
+    and solve.
+    \begin{equation*}
+      \begin{linsys}{3}
+        c_1 &- &c_2  &- &c_3   &= &0 \\
+       3c_1 &+ &4c_2 &+ &11c_3 &= &0 \\
+        c_1 &+ &3c_2 &+ &7c_3  &= &0
+      \end{linsys}
+      \grstep[-\rho_1+\rho_3]{-3\rho_1+\rho_2}
+      \begin{linsys}{3}
+        c_1 &- &c_2  &- &c_3   &= &0 \\
+            &  &7c_2 &+ &14c_3 &= &0 \\
+            &  &4c_2 &+ &8c_3  &= &0
+      \end{linsys}
+      \grstep{-(4/7)\rho_2+\rho_3}
+      \begin{linsys}{3}
+        c_1 &- &c_2  &- &c_3   &= &0 \\
+            &  &7c_2 &+ &14c_3 &= &0 \\
+            &  &     &  &0     &= &0
+      \end{linsys}
+    \end{equation*}
+    This system has infinitely many solutions, so it has more than just one
+    solution, so the original set is linearly dependent.
+    \end{solution}
+    \item $\set{\begin{mat}
+                 5 &4 \\
+                 1 &2
+               \end{mat},
+               \begin{mat}
+                 0 &0 \\
+                 0 &0
+               \end{mat},
+               \begin{mat}
+                 1 &0 \\
+                -1 &4
+               \end{mat}
+            }$
+       \begin{solution}
+         Any set containing the zero element is linearly dependent.     
+       \end{solution}
+   \end{parts} 
+
+\question Is the vector in the span of the set?   
+  \begin{equation*}
+     \colvec{1 \\ 0 \\ 3}
+     \quad
+     \set{\colvec{2 \\ 1 \\ -1},          
+     \colvec{1 \\ -1 \\ 1}}   
+  \end{equation*}
+ \begin{solution}
+ Set up the equation
+ \begin{equation*}
+   \colvec{1 \\ 0 \\ 3}=c_1\colvec{2 \\ 1 \\ -1}  +c_2\colvec{1 \\ -1 \\ 1}
+ \end{equation*}
+ and solve.
+ \begin{equation*}
+   \begin{linsys}{2}
+     2c_1 &+ &c_2  &= &1  \\
+      c_1 &- &c_2  &= &0  \\
+     -c_1 &+ &c_2  &= &3  \\
+   \end{linsys}
+   \grstep[(1/2)\rho_1+\rho_3]{-(1/2)\rho_1+\rho_2}
+   \begin{linsys}{2}
+     2c_1 &+ &c_2        &= &1  \\
+          &  &-(3/2)c_2  &= &0  \\
+          &  &(3/2)c_2   &= &7/2  \\
+   \end{linsys}
+   \grstep{\rho_2+\rho_3}
+   \begin{linsys}{2}
+     2c_1 &+ &c_2       &= &0    \\
+          &  &-(3/2)c_2  &= &0    \\
+          &  &0          &= &7/2  \\
+   \end{linsys}
+ \end{equation*}
+ Because there is no solution, the vector is not in the span.
+ \end{solution}
+\end{questions}
+\end{document}
+
