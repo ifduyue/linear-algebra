@@ -47,27 +47,112 @@ ASYMPTOTE_CMD := $(TEXINPUTS) $(ASYMPTOTE_DIR) asy -nosafe -vv
 
 vpath %.tex src cover pref gr vs map det jc appen bib
 
-.PHONY: all clean book slides lab cover_asy
+.PHONY : all clean book slides lab cover_asy \
+           gr_mp vs_mp map_mp det_asy det_mp jc_asy jc_mp appen_asy
 
-all: book slides lab
+all : book slides lab
 
-book: book.pdf
+book : book.pdf
 
-book.pdf: book.tex cover pref gr vs map det jc appen bib
+book.pdf : book.tex cover pref gr vs map det jc appen bib
+	$(LATEX_CMD) book
 
-cover: cover/*.tex cover_asy
+# Cover and Preface
+cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
 
-cover_asy: cover/asy/%.pdf
+cover_asy : cover/asy/axes.pdf cover/asy/shadow.pdf
 
-cover/asy/%.pdf: cover/asy/%.pdf 
-	echo "dollar sign at-sign is " $@
-	# cd $(dir $@);\
-        # $(ASYMPTOTE_CMD) $@ 
+cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy 
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $^ 
 
-default:
+pref : pref.tex
+
+
+# Chapter One
+#  Need to compile what is in gr/bin?
+gr : gr/*.tex gr_mp
+
+gr_mp : gr/mp/ch1.1
+
+gr/mp/ch1.1 : gr/mp/ch1.mp 
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+
+# Chapter Two
+vs : vs/*.tex vs_mp
+
+vs_mp : vs/mp/ch2.1 vs/mp/voting.1
+
+vs/mp/ch2.1 : vs/mp/ch2.mp
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+vs/mp/voting.1 : vs/mp/voting.mp
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+
+# Chapter Three
+#  Need to compile what is in map/bin?
+map : map/*.tex map_mp
+
+map_mp : map/mp/ch3.1
+
+map/mp/ch3.1 : map/mp/ch3.mp
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+
+# Chapter Four
+det : det/*.tex det_asy det_mp
+
+det_asy : det/asy/ppiped.pdf 
+
+det/asy/ppiped.pdf : det/asy/ppiped.asy 
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $^ 
+
+det_mp : det/mp/ch4.1
+
+det/mp/ch4.1 : det/mp/ch4.mp
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+
+# Chapter Five
+jc : jc/*.tex jc_asy jc_mp
+
+jc_asy : jc/asy/wilber.pdf
+
+jc/asy/wilber.pdf : jc/asy/wilber.asy 
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $^ 
+
+jc_mp : jc/mp/ch5.1
+
+jc/mp/ch5.1 : jc/mp/ch5.mp
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+
+# Appendix and Bibliography
+appen: appen/appen.tex appen_asy
+
+appen_asy: appen/mp/appen.1
+
+appen/mp/appen.1 : appen/mp/appen.mp
+	cd $(dir $@);\
+        $(METAPOST_CMD) $^ 
+
+bib : bib/bib.tex
+
+
+
+default :
 	@echo $(ASYMPTOTE_DIR)
 	@echo $(TEXINPUTS)
-
 
 
 
