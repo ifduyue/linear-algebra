@@ -11,14 +11,14 @@ SRC_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 #  Note that because SRC_DIR ends with a slash, the slash here makes there
 # be two slashes, which causes TeX to search all subdirs of SRC_DIR.  Note
 # also that here the "$(TEXINPUTS)" refers to the environment variable.
-TEXINPUTS := "$(SRC_DIR)/:$(TEXINPUTS)"
+TEXINPUTS := "TEXINPUTS=$(SRC_DIR)/:$(TEXINPUTS)"
 
 # ASYMPTOTE_DIR
 #  Asymptote uses this to look for config and imported files.
 #  Note that because SRC_DIR ends with a slash, the slash here makes there
 # be two slashes, which causes a search of all subdirs of SRC_DIR.   Note
 # also that here the "$(ASYMPTOTE_DIR)" refers to the environment variable.
-ASYMPTOTE_DIR := "$(SRC_DIR)/asy//:$(ASYMPTOTE_DIR)"
+ASYMPTOTE_DIR := "ASYMPTOTE_DIR=$(SRC_DIR)/asy//:$(ASYMPTOTE_DIR)"
 
 # LaTeX compiler
 LATEX := pdflatex
