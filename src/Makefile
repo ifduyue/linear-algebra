@@ -30,7 +30,7 @@ LATEX_CMD := $(LATEX)
 
 # MetaPost environment variable
 # (SRC_DIR has an ending /)
-MPINPUTS := "MPINPUTS=$(SRC_DIR)mp//:$(MPINPUTS)"
+MPINPUTS := "MPINPUTS=$(SRC_DIR)mp//:"
 
 # Metapost command line.
 #   Metapost makes graphics. I used to use it exclusively but lately
@@ -79,7 +79,7 @@ gr : gr/*.tex gr_mp
 gr_mp : gr/mp/ch1.1
 
 gr/mp/ch1.1 : gr/mp/ch1.mp
-	$(MPINPUTS) \
+	$(MPINPUTS)\
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
