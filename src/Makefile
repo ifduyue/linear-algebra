@@ -29,7 +29,7 @@ LATEX := pdflatex
 LATEX_CMD := $(LATEX) 
 
 # MetaPost environment variable
-# MPINPUTS := ""
+MPINPUTS := "MPINPUTS=$(SRC_DIR)/mp//:$(MPINPUTS)"
 
 # Metapost command line.
 #   Metapost makes graphics. I used to use it exclusively but lately
@@ -55,6 +55,7 @@ all : book slides lab
 book : book.pdf
 
 book.pdf : book.tex cover pref gr vs map det jc appen bib
+	$(TEXINPUTS) \
 	$(LATEX_CMD) book
 
 # Cover and Preface
@@ -63,7 +64,7 @@ cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
 cover_asy : cover/asy/axes.pdf cover/asy/shadow.pdf
 
 cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy 
-	 $(TEXINPUTS) $(ASYMPTOTE_DIR) \
+	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
         cd $(dir $@);\
         $(ASYMPTOTE_CMD) $^ 
 
@@ -76,7 +77,8 @@ gr : gr/*.tex gr_mp
 
 gr_mp : gr/mp/ch1.1
 
-gr/mp/ch1.1 : gr/mp/ch1.mp 
+gr/mp/ch1.1 : gr/mp/ch1.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
@@ -87,10 +89,12 @@ vs : vs/*.tex vs_mp
 vs_mp : vs/mp/ch2.1 vs/mp/voting.1
 
 vs/mp/ch2.1 : vs/mp/ch2.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
 vs/mp/voting.1 : vs/mp/voting.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
@@ -102,6 +106,7 @@ map : map/*.tex map_mp
 map_mp : map/mp/ch3.1
 
 map/mp/ch3.1 : map/mp/ch3.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
@@ -112,12 +117,14 @@ det : det/*.tex det_asy det_mp
 det_asy : det/asy/ppiped.pdf 
 
 det/asy/ppiped.pdf : det/asy/ppiped.asy 
+	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $^ 
 
 det_mp : det/mp/ch4.1
 
 det/mp/ch4.1 : det/mp/ch4.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
@@ -128,12 +135,14 @@ jc : jc/*.tex jc_asy jc_mp
 jc_asy : jc/asy/wilber.pdf
 
 jc/asy/wilber.pdf : jc/asy/wilber.asy 
+	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $^ 
 
 jc_mp : jc/mp/ch5.1
 
 jc/mp/ch5.1 : jc/mp/ch5.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
@@ -144,6 +153,7 @@ appen: appen/appen.tex appen_asy
 appen_asy: appen/mp/appen.1
 
 appen/mp/appen.1 : appen/mp/appen.mp
+	$(MPINPUTS) \
 	cd $(dir $@);\
         $(METAPOST_CMD) $^ 
 
