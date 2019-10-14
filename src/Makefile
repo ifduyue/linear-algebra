@@ -29,7 +29,8 @@ LATEX := pdflatex
 LATEX_CMD := $(LATEX) 
 
 # MetaPost environment variable
-MPINPUTS := "MPINPUTS=$(SRC_DIR)/mp//:$(MPINPUTS)"
+# (SRC_DIR has an ending /)
+MPINPUTS := "MPINPUTS=$(SRC_DIR)mp//:$(MPINPUTS)"
 
 # Metapost command line.
 #   Metapost makes graphics. I used to use it exclusively but lately
