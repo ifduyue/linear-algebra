@@ -11,14 +11,14 @@ SRC_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 #  Note that because SRC_DIR ends with a slash, the slash here makes there
 # be two slashes, which causes TeX to search all subdirs of SRC_DIR.  Note
 # also that here the "$(TEXINPUTS)" refers to the environment variable.
-TEXINPUTS := "TEXINPUTS=$(SRC_DIR)/:$(TEXINPUTS)"
+TEXINPUTS := TEXINPUTS=$(SRC_DIR)/:$(TEXINPUTS)
 
 # ASYMPTOTE_DIR
 #  Asymptote uses this to look for config and imported files.
 #  Note that because SRC_DIR ends with a slash, the slash here makes there
 # be two slashes, which causes a search of all subdirs of SRC_DIR.   Note
 # also that here the "$(ASYMPTOTE_DIR)" refers to the environment variable.
-ASYMPTOTE_DIR := "ASYMPTOTE_DIR=$(SRC_DIR)/asy//:$(ASYMPTOTE_DIR)"
+ASYMPTOTE_DIR := ASYMPTOTE_DIR=$(SRC_DIR)/asy//:$(ASYMPTOTE_DIR)
 
 # LaTeX compiler
 LATEX := pdflatex
@@ -30,7 +30,7 @@ LATEX_CMD := $(LATEX)
 
 # MetaPost environment variable
 # (SRC_DIR has an ending /)
-MPINPUTS := "MPINPUTS=$(SRC_DIR)mp//:"
+MPINPUTS := MPINPUTS=$(SRC_DIR)mp//:
 
 # Metapost command line.
 #   Metapost makes graphics. I used to use it exclusively but lately
@@ -56,8 +56,7 @@ all : book slides lab
 book : book.pdf
 
 book.pdf : book.tex cover pref gr vs map det jc appen bib
-	$(TEXINPUTS) \
-	$(LATEX_CMD) book
+	$(TEXINPUTS) $(LATEX_CMD) book.tex
 
 # Cover and Preface
 cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
@@ -67,7 +66,7 @@ cover_asy : cover/asy/axes.pdf cover/asy/shadow.pdf
 cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy 
 	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
         cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $^ 
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
 
 pref : pref.tex
 
@@ -79,9 +78,8 @@ gr : gr/*.tex gr_mp
 gr_mp : gr/mp/ch1.1
 
 gr/mp/ch1.1 : gr/mp/ch1.mp
-	$(MPINPUTS)\
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+	$(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD) $(notdir $(basename $@)) 
 
 
 # Chapter Two
@@ -90,14 +88,12 @@ vs : vs/*.tex vs_mp
 vs_mp : vs/mp/ch2.1 vs/mp/voting.1
 
 vs/mp/ch2.1 : vs/mp/ch2.mp
-	$(MPINPUTS) \
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
 vs/mp/voting.1 : vs/mp/voting.mp
-	$(MPINPUTS) \
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Chapter Three
@@ -107,9 +103,8 @@ map : map/*.tex map_mp
 map_mp : map/mp/ch3.1
 
 map/mp/ch3.1 : map/mp/ch3.mp
-	$(MPINPUTS) \
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Chapter Four
@@ -125,9 +120,8 @@ det/asy/ppiped.pdf : det/asy/ppiped.asy
 det_mp : det/mp/ch4.1
 
 det/mp/ch4.1 : det/mp/ch4.mp
-	$(MPINPUTS) \
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Chapter Five
@@ -143,9 +137,8 @@ jc/asy/wilber.pdf : jc/asy/wilber.asy
 jc_mp : jc/mp/ch5.1
 
 jc/mp/ch5.1 : jc/mp/ch5.mp
-	$(MPINPUTS) \
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Appendix and Bibliography
@@ -154,9 +147,8 @@ appen: appen/appen.tex appen_asy
 appen_asy: appen/mp/appen.1
 
 appen/mp/appen.1 : appen/mp/appen.mp
-	$(MPINPUTS) \
 	cd $(dir $@);\
-        $(METAPOST_CMD) $^ 
+        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
 bib : bib/bib.tex
 
