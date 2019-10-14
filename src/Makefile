@@ -26,7 +26,7 @@ LATEX := pdflatex
 # LaTeX command line
 #  The command line used to invoke LaTeX.  Set the environment, then call
 # the program.
-LATEX_CMD := $(TEXINPUTS); $(LATEX) 
+LATEX_CMD := $(LATEX) 
 
 # MetaPost environment variable
 # MPINPUTS := ""
@@ -43,7 +43,7 @@ METAPOST_CMD := mpost
 #   -nosafe gets around GhostScript error when using opacity:
 #      https://github.com/vectorgraphics/asymptote/issues/77
 #  -vv makes it talk more
-ASYMPTOTE_CMD := $(TEXINPUTS); $(ASYMPTOTE_DIR); asy -nosafe -vv
+ASYMPTOTE_CMD := asy -nosafe -vv
 
 vpath %.tex src cover pref gr vs map det jc appen bib
 
@@ -63,7 +63,8 @@ cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
 cover_asy : cover/asy/axes.pdf cover/asy/shadow.pdf
 
 cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy 
-	cd $(dir $@);\
+	 $(TEXINPUTS) $(ASYMPTOTE_DIR) \
+        cd $(dir $@);\
         $(ASYMPTOTE_CMD) $^ 
 
 pref : pref.tex
