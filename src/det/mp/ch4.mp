@@ -1983,7 +1983,7 @@ beginfig(28)
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,0.618v);
-    gdraw "detspeed.dat" plot drawn_point;
+    gdraw "../bin/detspeed.dat" plot drawn_point;
     %setrange(whatever,whatever,whatever,whatever);
     frame.llft;
   endgraph;
