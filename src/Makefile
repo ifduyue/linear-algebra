@@ -46,21 +46,23 @@ METAPOST_CMD := mpost
 #  -vv makes it talk more
 ASYMPTOTE_CMD := asy -nosafe -vv
 
-vpath %.tex src cover pref gr vs map det jc appen bib
+# vpath %.tex src cover pref gr vs map det jc appen bib
 
-.PHONY : all clean book slides lab cover_asy \
-           gr_mp vs_mp map_mp det_asy det_mp jc_asy jc_mp appen_asy
 
-all : book slides lab
+.PHONY : all
+all : book.pdf slides lab
 
-book : book.pdf
+# .PHONY : book
+# book : book.pdf
 
 book.pdf : book.tex cover pref gr vs map det jc appen bib
 	$(TEXINPUTS) $(LATEX_CMD) book.tex
 
 # Cover and Preface
+.PHONY : cover
 cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
 
+.PHONY : cover_asy
 cover_asy : cover/asy/axes.pdf cover/asy/shadow.pdf
 
 cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy 
@@ -68,13 +70,17 @@ cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy
         cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
 
-pref : pref.tex
+.PHONY : pref
+pref : pref/pref.tex
 
+pref/pref.tex :
 
 # Chapter One
 #  Need to compile what is in gr/bin?
+.PHONY : gr
 gr : gr/*.tex gr_mp
 
+.PHONY : gr_mp
 gr_mp : gr/mp/ch1.1
 
 gr/mp/ch1.1 : gr/mp/ch1.mp
@@ -83,8 +89,10 @@ gr/mp/ch1.1 : gr/mp/ch1.mp
 
 
 # Chapter Two
+.PHONY : vs
 vs : vs/*.tex vs_mp
 
+.PHONY : vs_mp
 vs_mp : vs/mp/ch2.1 vs/mp/voting.1
 
 vs/mp/ch2.1 : vs/mp/ch2.mp
@@ -98,8 +106,10 @@ vs/mp/voting.1 : vs/mp/voting.mp
 
 # Chapter Three
 #  Need to compile what is in map/bin?
+.PHONY : map
 map : map/*.tex map_mp
 
+.PHONY : map_mp
 map_mp : map/mp/ch3.1
 
 map/mp/ch3.1 : map/mp/ch3.mp
@@ -108,8 +118,10 @@ map/mp/ch3.1 : map/mp/ch3.mp
 
 
 # Chapter Four
+.PHONY : det
 det : det/*.tex det_asy det_mp
 
+.PHONY : det_asy
 det_asy : det/asy/ppiped.pdf 
 
 det/asy/ppiped.pdf : det/asy/ppiped.asy 
@@ -117,6 +129,7 @@ det/asy/ppiped.pdf : det/asy/ppiped.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $^ 
 
+.PHONY : det_mp
 det_mp : det/mp/ch4.1
 
 det/mp/ch4.1 : det/mp/ch4.mp
@@ -125,8 +138,10 @@ det/mp/ch4.1 : det/mp/ch4.mp
 
 
 # Chapter Five
+.PHONY : jc
 jc : jc/*.tex jc_asy jc_mp
 
+.PHONY : jc_asy
 jc_asy : jc/asy/wilber.pdf
 
 jc/asy/wilber.pdf : jc/asy/wilber.asy 
@@ -134,6 +149,7 @@ jc/asy/wilber.pdf : jc/asy/wilber.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $^ 
 
+.PHONY : jc_mp
 jc_mp : jc/mp/ch5.1
 
 jc/mp/ch5.1 : jc/mp/ch5.mp
@@ -142,15 +158,20 @@ jc/mp/ch5.1 : jc/mp/ch5.mp
 
 
 # Appendix and Bibliography
+.PHONY : appen
 appen: appen/appen.tex appen_asy
 
+.PHONY : appen_asy
 appen_asy: appen/mp/appen.1
 
 appen/mp/appen.1 : appen/mp/appen.mp
 	cd $(dir $@);\
         $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
 
+.PHONY : bib
 bib : bib/bib.tex
+
+bib/bib.tex :
 
 
 

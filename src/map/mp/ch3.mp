@@ -4029,7 +4029,7 @@ beginfig(85) % exercise: fairness of a coin
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs1.dat" plot drawn_point;
+    gdraw "../bin/lstsqs1.dat" plot drawn_point;
     setrange(0,0,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4044,7 +4044,7 @@ beginfig(86) % exercise: mens mile, full data
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs2.dat" plot drawn_point;
+    gdraw "../bin/lstsqs2.dat" plot drawn_point;
     setrange(1850,210,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4061,7 +4061,7 @@ beginfig(87) % exercise: mens 1500 metre, full data
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs3.dat" plot drawn_point;
+    gdraw "../bin/lstsqs3.dat" plot drawn_point;
     setrange(whatever,200,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4078,7 +4078,7 @@ beginfig(88) % exercise: women's mile, full data
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs4.dat" plot drawn_point;
+    gdraw "../bin/lstsqs4.dat" plot drawn_point;
     setrange(1900,210,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4095,8 +4095,8 @@ beginfig(89) % exercise: mens and women's mile, full data
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs2.dat" dashed evenly;
-    gdraw "lstsqs4.dat" dashed evenly scaled .5;
+    gdraw "../bin/lstsqs2.dat" dashed evenly;
+    gdraw "../bin/lstsqs4.dat" dashed evenly scaled .5;
     setrange(1850,210,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4113,7 +4113,7 @@ beginfig(90) % exercise: launch temp vs o-ring failure
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs5.dat" plot drawn_point;
+    gdraw "../bin/lstsqs5.dat" plot drawn_point;
     setrange(32,0,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4132,7 +4132,7 @@ beginfig(91) % exercise: planet index vs dist from sun
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs6.dat" plot drawn_point;
+    gdraw "../bin/lstsqs6.dat" plot drawn_point;
     setrange(0,0,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4150,7 +4150,7 @@ beginfig(92) % exercise: planet index vs log_10 (dist from sun)
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs7.dat" plot drawn_point;
+    gdraw "../bin/lstsqs7.dat" plot drawn_point;
     setrange(0,whatever,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4167,7 +4167,7 @@ beginfig(93) % exercise: planet index vs log_10 (dist from sun)
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs8.dat" plot drawn_point;
+    gdraw "../bin/lstsqs8.dat" plot drawn_point;
     setrange(0,whatever,whatever,whatever);
     frame.llft;
     endgraph;
@@ -4183,7 +4183,7 @@ beginfig(94) % exercise: TV hours vs SAT scores
 
   pickup pencircle scaled line_width_light;
   draw begingraph(w,.618w);
-    gdraw "lstsqs9.dat" plot drawn_point;
+    gdraw "../bin/lstsqs9.dat" plot drawn_point;
     %setrange(whatever,whatever,whatever,whatever);
     frame.llft;
     endgraph;
