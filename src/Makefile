@@ -125,9 +125,8 @@ det : det/*.tex det_asy det_mp
 det_asy : det/asy/ppiped.pdf 
 
 det/asy/ppiped.pdf : det/asy/ppiped.asy 
-	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
 	cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $^ 
+        $(TEXINPUTS) $(ASYMPTOTE_DIR) $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
 .PHONY : det_mp
 det_mp : det/mp/ch4.1
@@ -145,9 +144,8 @@ jc : jc/*.tex jc_asy jc_mp
 jc_asy : jc/asy/wilber.pdf
 
 jc/asy/wilber.pdf : jc/asy/wilber.asy 
-	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
 	cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $^ 
+        $(TEXINPUTS) $(ASYMPTOTE_DIR) $(ASYMPTOTE_CMD)  $(notdir $(basename $@))
 
 .PHONY : jc_mp
 jc_mp : jc/mp/ch5.1
