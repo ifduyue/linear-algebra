@@ -1,4 +1,4 @@
-This is _Linear Algebra_ by Jim Hefferon.  The release date is 2016.
+This is _Linear Algebra_ by Jim Hefferon.  The release date is 2019.
 You are free to use this material, either under the GNU Free Documentation
 license or under a Creative Commons Share Alike license.
 
@@ -7,32 +7,27 @@ is less than it would take for me to run it off from the PDF at a local copy
 shop.  (Make sure that you are getting the latest date as there are old versions
 also for sale.  The newer version costs the same, and is better.)
 
-For more information, see 1st_readme.pdf, or the web site
+For more information, see the web site.
   http://joshua.smcvt.edu/linearalgebra 
-.
 
 
 INSTALL
 
 Put book.pdf and jhanswer.pdf in the same directory.  Point your pdf reader
-at it.
+at book.pdf.
 
 
 COMPILING
 
 Why?
 
-Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 18).
+Sigh.  OK.  These instructions are for Linux, Ubuntu 18.  Probably they
+work on Macs but I could not say.  If you have either Mac or Windows
+then I cannot help you, I'm sorry.
 
 0) Install TeX Live.  You can get it from https://tug.org/texlive/ but
-I just did
+I just did this in a terminal.
   sudo apt-get install texlive-full
-
-# 0) Install the Debian TeX Live (that is, the packages from the archive).
-#   (I'd rather go with TeX Live from tug.org but I had to get Sage and
-#   Asymptote also and they required me to get the Debian packages and ..)
-
-#   Also install Asymptote.
 
 1) Clone the linear-algebra archive.  
   cd ~/Documents
@@ -45,30 +40,14 @@ I just did
   sudo texlua install-getnonfreefonts
   sudo getnonfreefonts --sys --all
 
-3) I had to get updated packages from ctan becuase the Debian stuff is old:
-    thmtools, geometry, mh
-   and install them in /usr/local/share/tex/latex/ .  Then I had to generate 
-   the .sty files
-     cd  /usr/local/share/tex/latex/thmtools
-     sudo pdflatex thmtools.ins
-     cd  /usr/local/share/tex/latex/geometry
-     sudo pdflatex geometry.ins
-   and, just for a change of pace,
-     cd  /usr/local/share/tex/latex/mh
-     sudo tex mhsetup
-     sudo tex breqn.dtx
-     sudo tex empheq
-     sudo tex flexisym
-     sudo tex mathstyle
-     sudo tex mathtools
-
-4) Now I can run the shell script that generates the book.  
+3) Now I can run the shell script that generates the book.  
     cd ~/Documents/linear-algebra
-    ./make_book_for_web.sh
-(if it fails with something about ul9r8r then see the note in instruction 2). 
+    make
+(if it fails with a question mark prompt then probably you get out by
+typing `x' and return). 
 
-At the end, you'll have book.pdf and jhanswer.pdf.  Put them
-in the same directory.  You could have just skipped the compiling, you know.
+At the end, you'll have book.pdf and jhanswer.pdf. You could have just
+skipped the compiling, you know.
 
 To compile the version that is published in paper, change lines 10 and 11 in
 bookjhconcrete.sty to be this.
@@ -77,8 +56,6 @@ bookjhconcrete.sty to be this.
 Then run ./make_book_for_web.sh.  You might also want to run this.
   pdflatex cover
 
-If you want projector slides, cd slides and run make_slides.sh.  This can take 
-some time, maybe ten minutes.
 
 Jim
 jhefferon@smcvt.edu
