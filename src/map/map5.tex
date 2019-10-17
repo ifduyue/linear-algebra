@@ -1506,8 +1506,25 @@ form.
 %<*pf:CanonFormForMatEquiv>
 Gauss-Jordan reduce the given matrix
 and combine all the row reduction matrices to make \( P \).
-Then use the leading entries to do column reduction and
-finish by swapping the columns to put the leading ones on the diagonal.
+Then, do column reduction to ensure that each
+entry to the right of a leading entry is $0$:
+\begin{equation*}
+\begin{pmat}{ccccc}
+\cdots & 1 & \cdots & x & \cdots
+\end{pmat}
+\grstep{}
+\begin{pmat}{ccccc}
+\cdots & 1 & \cdots & 0 & \cdots
+\end{pmat}
+\end{equation*}
+by a column operation that subtracts $x$ times the column
+with the leading entry from the column with the $x$.
+(This operation does not affect any other entries, as
+the leading entry is the only nonzero entry in its
+column.)
+Now, the only nonzero entry in each row is its leading
+entry.
+Finish by swapping the columns to put the leading ones on the diagonal.
 Combine the column reduction matrices into
 \( Q \). 
 %</pf:CanonFormForMatEquiv>
