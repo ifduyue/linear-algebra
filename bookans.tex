@@ -22532,7 +22532,7 @@ sage: solve(system, x,y)
 \begin{ans}{Three.VI.3.29}
       For any matrix $M$ we have that $\trans{(M^{-1})}=(\trans{M})^{-1}$,
       and for any two matrices $M$, $N$ we have that
-      $\trans{MN}=\trans{N}\trans{M}$ (provided, of course,
+      $\trans{(MN)}=\trans{N}\trans{M}$ (provided, of course,
       that the inverse and product are defined).
       Applying these two gives that the matrix equals its transpose.
       \begin{multline*}
@@ -27651,7 +27651,7 @@ octave:6> gplot z
       two summations.
       Since the \( j,i \) minor of \( \trans{T} \) is the transpose
       of the \( i,j \) minor of \( T \), the inductive hypothesis
-      gives \( \deter{(\trans{T})_{i,j}}=\deter{T_{i,j}} \).
+      gives \( (\trans{T})_{j,i}=T_{i,j} \).
     
 \end{ans}
 \begin{ans}{Four.III.1.29}
