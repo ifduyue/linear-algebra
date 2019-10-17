@@ -18063,13 +18063,14 @@ sage: solve(system, x,y)
      \textit{Chapter Five gives a less computational reason\Dash the
      trace of a matrix is the second coefficient in its characteristic
      polynomial\Dash but for now we can use indices.}
-     We have
+     Say that $G$ is an $n\times m$-matrix, and $H$ an $m\times n$-matrix.
+     Then,
      \begin{align*}
        \trace (GH)
-       &=(g_{1,1}h_{1,1}+g_{1,2}h_{2,1}+\dots+g_{1,n}h_{n,1})  \\
-       &\text{}\quad+(g_{2,1}h_{1,2}+g_{2,2}h_{2,2}+\dots+g_{2,n}h_{n,2}) \\
+       &=(g_{1,1}h_{1,1}+g_{1,2}h_{2,1}+\dots+g_{1,m}h_{m,1})  \\
+       &\text{}\quad+(g_{2,1}h_{1,2}+g_{2,2}h_{2,2}+\dots+g_{2,m}h_{m,2}) \\
        &\text{}\quad
-        +\cdots+(g_{n,1}h_{1,n}+g_{n,2}h_{2,n}+\dots+g_{n,n}h_{n,n})
+        +\cdots+(g_{n,1}h_{1,n}+g_{n,2}h_{2,n}+\dots+g_{n,m}h_{m,n})
      \end{align*}
      while
      \begin{align*}
@@ -18077,7 +18078,7 @@ sage: solve(system, x,y)
        &=(h_{1,1}g_{1,1}+h_{1,2}g_{2,1}+\dots+h_{1,n}g_{n,1})  \\
        &\text{}\quad+(h_{2,1}g_{1,2}+h_{2,2}g_{2,2}+\dots+h_{2,n}g_{n,2}) \\
        &\text{}\quad
-         +\cdots+(h_{n,1}g_{1,n}+h_{n,2}g_{2,n}+\dots+h_{n,n}g_{n,n})
+         +\cdots+(h_{m,1}g_{1,m}+h_{m,2}g_{2,m}+\dots+h_{m,n}g_{n,m})
      \end{align*}
      and the two are equal.
     
