@@ -26,7 +26,7 @@ LATEX := pdflatex
 # LaTeX command line
 #  The command line used to invoke LaTeX.  Set the environment, then call
 # the program.
-LATEX_CMD := $(LATEX) 
+LATEX_CMD := $(TEXINPUTS) $(LATEX) 
 
 # MetaPost environment variable
 # (SRC_DIR has an ending /)
@@ -35,7 +35,7 @@ MPINPUTS := MPINPUTS=$(SRC_DIR)mp//:
 # Metapost command line.
 #   Metapost makes graphics. I used to use it exclusively but lately
 # use Asymptote.  Still, there is a lot of MetaPost in here.
-METAPOST_CMD := mpost
+METAPOST_CMD := $(TEXINPUTS) $(MPINPUTS) mpost
 
 # Asymptote command line.
 # Asymptote to make graphics (newer and especially 3D graphics)
@@ -44,7 +44,7 @@ METAPOST_CMD := mpost
 #   -nosafe gets around GhostScript error when using opacity:
 #      https://github.com/vectorgraphics/asymptote/issues/77
 #  -vv makes it talk more
-ASYMPTOTE_CMD := asy -nosafe -vv
+ASYMPTOTE_CMD := $(TEXINPUTS) $(ASYMPTOTE_DIR) asy -nosafe -vv
 
 # vpath %.tex src cover pref gr vs map det jc appen bib
 
@@ -56,7 +56,7 @@ all : book.pdf slides lab
 # book : book.pdf
 
 book.pdf : book.tex cover pref gr vs map det jc appen bib
-	$(TEXINPUTS) $(LATEX_CMD) book.tex
+	$(LATEX_CMD) book.tex
 
 # Cover and Preface
 .PHONY : cover
@@ -85,7 +85,7 @@ gr_mp : gr/mp/ch1.1
 
 gr/mp/ch1.1 : gr/mp/ch1.mp
 	cd $(dir $@);\
-	$(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD) $(notdir $(basename $@)) 
+	$(METAPOST_CMD) $(notdir $(basename $@)) 
 
 
 # Chapter Two
@@ -97,11 +97,11 @@ vs_mp : vs/mp/ch2.1 vs/mp/voting.1
 
 vs/mp/ch2.1 : vs/mp/ch2.mp
 	cd $(dir $@);\
-        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
+        $(METAPOST_CMD)  $(notdir $(basename $@))
 
 vs/mp/voting.1 : vs/mp/voting.mp
 	cd $(dir $@);\
-        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
+        $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Chapter Three
@@ -114,7 +114,7 @@ map_mp : map/mp/ch3.1
 
 map/mp/ch3.1 : map/mp/ch3.mp
 	cd $(dir $@);\
-        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
+        $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Chapter Four
@@ -126,14 +126,14 @@ det_asy : det/asy/ppiped.pdf
 
 det/asy/ppiped.pdf : det/asy/ppiped.asy 
 	cd $(dir $@);\
-        $(TEXINPUTS) $(ASYMPTOTE_DIR) $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
 .PHONY : det_mp
 det_mp : det/mp/ch4.1
 
 det/mp/ch4.1 : det/mp/ch4.mp
 	cd $(dir $@);\
-        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
+        $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Chapter Five
@@ -145,14 +145,14 @@ jc_asy : jc/asy/wilber.pdf
 
 jc/asy/wilber.pdf : jc/asy/wilber.asy 
 	cd $(dir $@);\
-        $(TEXINPUTS) $(ASYMPTOTE_DIR) $(ASYMPTOTE_CMD)  $(notdir $(basename $@))
+        $(ASYMPTOTE_CMD)  $(notdir $(basename $@))
 
 .PHONY : jc_mp
 jc_mp : jc/mp/ch5.1
 
 jc/mp/ch5.1 : jc/mp/ch5.mp
 	cd $(dir $@);\
-        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
+        $(METAPOST_CMD)  $(notdir $(basename $@))
 
 
 # Appendix and Bibliography
@@ -164,12 +164,71 @@ appen_asy: appen/mp/appen.1
 
 appen/mp/appen.1 : appen/mp/appen.mp
 	cd $(dir $@);\
-        $(TEXINPUTS) $(MPINPUTS) $(METAPOST_CMD)  $(notdir $(basename $@))
+        $(METAPOST_CMD)  $(notdir $(basename $@))
 
 .PHONY : bib
 bib : bib/bib.tex
 
 bib/bib.tex :
+
+
+# =============== Slides =====================
+
+# Slides come in groups of three.  For instance, slides/one_i.pdf is the
+# slide deck I use, where in some cases I substitute an example for a proof.
+# And, slides/one_i_allproofs.pdf is the deck with the proofs put back in.
+# Then, slides/one_i_handout.pdf is the deck with the \pause command
+# turned off, for people to print out.
+define compile-slides
+  cd $(dir $@);\
+  $(LATEX_CMD) $(notdir $(basename $@));\
+  $(LATEX_CMD) $(notdir $(basename $@))_allproofs;\
+  $(LATEX_CMD) $(notdir $(basename $@))_handout
+endef
+
+slides : slides_one slides_two slides_three slides_four slides_five zip_slides
+
+# Slides for Chapter One
+slides_one : slides_one_asy slides/one/one_i.pdf slides/one/one_ii.pdf\
+  slides/one/one_iii.pdf
+
+slides_one_asy : slides/one/asy/one_ii_plane.pdf
+
+slides/one/asy/one_ii_plane.pdf : slides/one/asy/one_ii_plane.asy
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/one/one_i.pdf : slides/one/one_i.tex
+	$(compile-slides)
+
+slides/one/one_ii.pdf : slides/one/one_i.tex
+	$(compile-slides)
+
+slides/one/one_iii.pdf : slides/one/one_i.tex
+	$(compile-slides)
+
+# Slides for Chapter Two
+slides_two : slides_two_asy slides/two/two_i.pdf  \
+  slides/two/two_i_a.pdf \
+  slides/two/two_ii.pdf \
+  slides/two/two_iii.pdf
+
+slides_two_asy : slides/two/asy/p2_subspaces.pdf \
+  slides/two/asy/two_i_a_plane.pdf \
+  slides/two/asy/p2_subspaces_spans.pdf \
+  slides/two/asy/two_i_line_slope_two.pdf \
+  slides/two/asy/r3_subspaces.pdf \
+  slides/two/asy/two_i_plane.pdf \
+  slides/two/asy/r3_subspaces_spans.pdf \
+  slides/two/asy/two_i_spanplane.pdf \
+  slides/two/asy/two_i_a_line.pdf
+
+slides/two/asy/%.pdf : slides/two/asy/%.asy
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/two/%.pdf : slides/two/%.tex
+	$(compile-slides)
 
 
 
