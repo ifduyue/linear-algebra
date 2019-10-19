@@ -18,7 +18,7 @@ import texcolors;
 // }
 // 2019-Oct-19 JH set to dummy because Makefile uses env variables for this.
 // And, because of dirname linear-algebra.git vs linear-algebra. 
-string settexpreamble() { return("") }
+string settexpreamble() { return(""); }
 settexpreamble();
 
 // This is a 4:3 ratio, set by geometry package 
