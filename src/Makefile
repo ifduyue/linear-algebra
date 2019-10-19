@@ -18,7 +18,7 @@ TEXINPUTS := TEXINPUTS=$(SRC_DIR)/:$(TEXINPUTS)
 #  Note that because SRC_DIR ends with a slash, the slash here makes there
 # be two slashes, which causes a search of all subdirs of SRC_DIR.   Note
 # also that here the "$(ASYMPTOTE_DIR)" refers to the environment variable.
-ASYMPTOTE_DIR := ASYMPTOTE_DIR=$(SRC_DIR)/asy//:$(ASYMPTOTE_DIR)
+ASYMPTOTE_DIR := ASYMPTOTE_DIR=$(SRC_DIR)/asy//:$(SRC_DIR)/asy/asy-graphtheory-master/modules//:$(ASYMPTOTE_DIR)
 
 # LaTeX compiler
 LATEX := pdflatex
