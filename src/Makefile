@@ -207,6 +207,7 @@ slides/one/one_ii.pdf : slides/one/one_i.tex
 slides/one/one_iii.pdf : slides/one/one_i.tex
 	$(compile-slides)
 
+
 # Slides for Chapter Two
 slides_two : slides_two_asy slides/two/two_i.pdf  \
   slides/two/two_i_a.pdf \
@@ -228,6 +229,101 @@ slides/two/asy/%.pdf : slides/two/asy/%.asy
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
 slides/two/%.pdf : slides/two/%.tex
+	$(compile-slides)
+
+
+# Slides for Chapter Three
+slides_three : slides_three_asy slides/three/three_i.pdf  \
+  slides/three/three_ii.pdf \
+  slides/three/three_ii_a.pdf \
+  slides/three/three_iii.pdf \
+  slides/three/three_iv.pdf \
+  slides/three/three_v.pdf \
+  slides/three/three_vi.pdf
+
+slides_three_asy : slides/three/asy/three_ii_3dproj1.pdf \
+  slides/three/asy/three_ii_3dproj2.pdf \
+  slides/three/asy/three_ii_3dproj3.pdf \
+  slides/three/asy/three_ii_dims.pdf \
+  slides/three/asy/three_ii_inv_img00.pdf \
+  slides/three/asy/three_ii_inv_img01.pdf \
+  slides/three/asy/three_ii_inv_img02.pdf \
+  slides/three/asy/three_ii_inv_img03.pdf \
+  slides/three/asy/three_ii_inv_img04.pdf \
+  slides/three/asy/three_ii_inv_img05.pdf \
+  slides/three/asy/three_ii_inv_img06.pdf \
+  slides/three/asy/three_ii_kernel.pdf \
+  slides/three/asy/three_ii_proj_2d00.pdf \
+  slides/three/asy/three_ii_proj_2d01.pdf \
+  slides/three/asy/three_ii_proj_2d02.pdf \
+  slides/three/asy/three_ii_proj_2d03.pdf \
+  slides/three/asy/three_ii_proj_2d04.pdf \
+  slides/three/asy/three_ii_proj_2d05.pdf \
+  slides/three/asy/three_ii_proj_2d06.pdf \
+  slides/three/asy/three_ii_rotate_basis.pdf \
+  slides/three/asy/three_ii_rotate_prod_after.pdf \
+  slides/three/asy/three_ii_rotate_prod_before.pdf \
+  slides/three/asy/three_ii_rotate_sum_after.pdf \
+  slides/three/asy/three_ii_rotate_sum_before.pdf \
+  slides/three/asy/three_i_line.pdf \
+  slides/three/asy/three_i_plane.pdf \
+  slides/three/asy/three_vi_2dmutuallyortho.pdf \
+  slides/three/asy/three_vi_3dgramschmidt0.pdf \
+  slides/three/asy/three_vi_3dgramschmidt1.pdf \
+  slides/three/asy/three_vi_3dprojtoline.pdf 
+
+slides/three/asy/%.pdf : slides/three/asy/%.asy
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/three/%.pdf : slides/three/%.tex
+	$(compile-slides)
+
+
+# Slides for Chapter Four
+slides_four : slides_four_asy \
+  slides/four/four_i.pdf \
+  slides/four/four_ii.pdf \
+  slides/four/four_iii.pdf 
+
+slides_four_asy : slides/four/asy/four_ii_2dtransedsizea.pdf \
+  slides/four/asy/four_ii_2dtransedsizeb.pdf \
+  slides/four/asy/four_ii_negvolbox.pdf \
+  slides/four/asy/four_ii_orientation_neg0.pdf \
+  slides/four/asy/four_ii_orientation_neg10.pdf \
+  slides/four/asy/four_ii_orientation_neg1.pdf \
+  slides/four/asy/four_ii_orientation_neg2.pdf \
+  slides/four/asy/four_ii_orientation_neg3.pdf \
+  slides/four/asy/four_ii_orientation_neg4.pdf \
+  slides/four/asy/four_ii_orientation_neg5.pdf \
+  slides/four/asy/four_ii_orientation_neg6.pdf \
+  slides/four/asy/four_ii_orientation_neg7.pdf \
+  slides/four/asy/four_ii_orientation_neg8.pdf \
+  slides/four/asy/four_ii_orientation_neg9.pdf \
+  slides/four/asy/four_ii_orientation.pdf \
+  slides/four/asy/four_ii_orientation_pos.pdf
+
+slides/four/asy/%.pdf : slides/four/asy/%.asy
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/four/%.pdf : slides/four/%.tex
+	$(compile-slides)
+
+
+# Slides for Chapter Five
+slides_five : slides_five_asy \
+  slides/five/five_i.pdf \
+  slides/five/five_ii.pdf \
+  slides/five/five_ii_a.pdf 
+
+# slides_five_asy :
+
+# slides/five/asy/%.pdf : slides/five/asy/%.asy
+# 	cd $(dir $@);\
+#         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/five/%.pdf : slides/five/%.tex
 	$(compile-slides)
 
 
