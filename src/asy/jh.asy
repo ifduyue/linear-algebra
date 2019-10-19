@@ -4,21 +4,22 @@ import fontsize;
 defaultpen(fontsize(9.24994pt));
 import texcolors;
 
+// .sty files to import, to get fonts and macros like in the book.
 // Copied from settexpreamble.asy just to make one less file to import
-// string settexpreamble() {
-//   // Get the current directory
-//   string current_dir = cd("");
-//   int project_part_of_path_dex = rfind(current_dir, "/linear-algebra/");
-//   string path_prefix = substr(current_dir, 0, project_part_of_path_dex);
-//   // write(stdout, "Path prefix is "+path_prefix+"<-- ");
-//   // this causes an error (openout_any = p) because TeX wants to be in same dir as included file; must call tex with openany=a: texpreamble("\include{"+path_prefix+"/computing/src/colorscheme}\usepackage{"+path_prefix+"/computing/src/computingfonts}\usepackage{"+path_prefix+"/computing/src/contentmacros}");
-//   texpreamble("\usepackage{"+path_prefix+"/linear-algebra.git/src/sty/conc}\usepackage{"+path_prefix+"/linear-algebra.git/src/sty/linalgjh}");
-//   // write(stdout, " ... returning");
-//   return(path_prefix);
-// }
+string settexpreamble() {
+  // Get the current directory
+  string current_dir = cd("");
+  int project_part_of_path_dex = rfind(current_dir, "/linear-algebra/");
+  string path_prefix = substr(current_dir, 0, project_part_of_path_dex);
+  // write(stdout, "Path prefix is "+path_prefix+"<-- ");
+  // this causes an error (openout_any = p) because TeX wants to be in same dir as included file; must call tex with openany=a: texpreamble("\include{"+path_prefix+"/computing/src/colorscheme}\usepackage{"+path_prefix+"/computing/src/computingfonts}\usepackage{"+path_prefix+"/computing/src/contentmacros}");
+  texpreamble("\usepackage{"+path_prefix+"/linear-algebra.git/src/sty/conc}\usepackage{"+path_prefix+"/linear-algebra.git/src/sty/linalgjh}");
+  // write(stdout, " ... returning");
+  return(path_prefix);
+}
 // 2019-Oct-19 JH set to dummy because Makefile uses env variables for this.
 // And, because of dirname linear-algebra.git vs linear-algebra. 
-string settexpreamble() { return(""); }
+// string settexpreamble() { return(""); }
 settexpreamble();
 
 // This is a 4:3 ratio, set by geometry package 
