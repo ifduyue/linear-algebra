@@ -21,9 +21,9 @@ COMPILING
 
 Why?
 
-Sigh.  OK.  These instructions are for Linux, Ubuntu 18.  Probably they
-work on Macs but I could not say.  If you have either Mac or Windows
-then I cannot help you, I'm sorry.
+Sigh.  OK.  These instructions are for Linux, Ubuntu 18.  I am the last
+person you want giving you advice on how to handle your system so if you
+have some other system, such as Mac or Windows, then I cannot help, I'm sorry.
 
 0) Install TeX Live.  You can get it from https://tug.org/texlive/ but
 I just did this in a terminal.
@@ -32,6 +32,8 @@ I just did this in a terminal.
 1) Clone the linear-algebra archive.  
   cd ~/Documents
   git clone https://gitlab.com/jim.hefferon/linear-algebra.git
+
+Note that the subdirectory is called linear-algebra.  The scripts expect that.
 
 2) Install the luximono font.
 
