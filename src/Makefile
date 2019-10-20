@@ -213,7 +213,7 @@ slides/one/one_iii.pdf : slides/one/one_i.tex
 # Slides for Chapter Two
 .PHONY : slides_two
 slides_two : slides_two_asy slides/two/two_i.pdf  \
-  slides/two/two_i_a.pdf \
+  # slides/two/two_i_a.pdf \
   slides/two/two_ii.pdf \
   slides/two/two_iii.pdf
 
@@ -240,7 +240,7 @@ slides/two/%.pdf : slides/two/%.tex
 .PHONY : slides_three
 slides_three : slides_three_asy slides/three/three_i.pdf  \
   slides/three/three_ii.pdf \
-  slides/three/three_ii_a.pdf \
+  # slides/three/three_ii_a.pdf \
   slides/three/three_iii.pdf \
   slides/three/three_iv.pdf \
   slides/three/three_v.pdf \
@@ -335,8 +335,8 @@ slides/four/%.pdf : slides/four/%.tex
 .PHONY : slides_five
 slides_five : slides_five_asy \
   slides/five/five_i.pdf \
-  slides/five/five_ii.pdf \
-  slides/five/five_ii_a.pdf 
+  slides/five/five_ii.pdf # \
+#   slides/five/five_ii_a.pdf 
 
 # .PHONY : slides_five_asy
 # slides_five_asy :
