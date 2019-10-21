@@ -98,7 +98,7 @@ $\nbyn{n}$ magic squares
 $\magicsquares_n$ is a vector space, a subspace of $\matspace_{\nbyn{n}}$.
 This Topic shows that for $n\geq 3$ the 
 dimension of
-$\magicsquares_n$ is $n^2-n$.
+$\magicsquares_n$ is $n^2-2n$.
 The set $\magicsquares_{n,0}$ of $\nbyn{n}$~magic squares with magic number~$0$ 
 is another subspace and we will verify the formula for its dimension also:
 $n^2-2n-1$ when $n\geq 3$.
@@ -107,7 +107,7 @@ We will first prove that $\dim\magicsquares_n=\dim\magicsquares_{n,0}+1$.
 Define the 
 \definend{trace}\index{trace}\index{matrix!trace} of a matrix to be
 the sum down its upper-left to lower-right diagonal
-$\trace (M)=m_{1,1}+\cdots+m_{n,n}$.
+$\trace (M)=m_{1,1}+m_{2,2}+\cdots+m_{n,n}$.
 Consider the restriction of the trace to the magic squares
 $\map{\trace}{\magicsquares_n}{\Re}$. 
 The null space $\nullspace{\trace}$ is the set of magic squares with magic
@@ -379,10 +379,10 @@ The proof given here began with \cite{Ward}.
     \end{answer}
   \item   \label{exer:TraceIsLinear}
     Let the \definend{trace} function be 
-    $\trace (M)=m_{1,1}+\cdots+m_{n,n}$.
+    $\trace (M)=m_{1,1}+m_{2,2}+\cdots+m_{n,n}$.
     Define also
     the sum down the other diagonal
-    $\trace^* (M)=m_{1,n}+\cdots+m_{n,1}$.
+    $\trace^* (M)=m_{1,n}+m_{2,n-1}+\cdots+m_{n,1}$.
     \begin{exparts}
       \partsitem 
         Show that the two functions 
