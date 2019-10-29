@@ -2,10 +2,10 @@ This is _Linear Algebra_ by Jim Hefferon.  The release date is 2019.
 You are free to use this material, either under the GNU Free Documentation
 license or under a Creative Commons Share Alike license.
 
-Please note that you can buy a hardcopy of this book on Amazon, at a cost that
-is less than it would take for me to run it off from the PDF at a local copy 
-shop.  (Make sure that you are getting the latest date as there are old versions
-also for sale.  The newer version costs the same, and is better.)
+If you want a hard copy then you can buy one on Amazon at basically
+the cost of media; google "amazon hefferon". (Make sure that you are
+getting edition four. There are old versions for sale but the new
+version costs the same and is better.)
 
 For more information, see the web site.
   http://joshua.smcvt.edu/linearalgebra 
@@ -21,9 +21,9 @@ COMPILING
 
 Why?
 
-Sigh.  OK.  These instructions are for Linux, Ubuntu 18.  I am the last
-person you want giving you advice on how to handle your system so if you
-have some other system, such as Mac or Windows, then I cannot help, I'm sorry.
+Sigh.  This is what I did for Linux, Ubuntu 18.  If you have some
+other system such as Mac or Windows then I am unable to help, sorry.  For that
+matter, if you have Linux then I will not help you either, sorry.
 
 0) Install TeX Live.  You can get it from https://tug.org/texlive/ but
 I just did this in a terminal.
@@ -42,14 +42,14 @@ Note that the subdirectory is called linear-algebra.  The scripts expect that.
   sudo texlua install-getnonfreefonts
   sudo getnonfreefonts --sys --all
 
-3) Now I can run the shell script that generates the book.  
+3) Now you can make the book.  
     cd ~/Documents/linear-algebra
     make
-(if it fails with a question mark prompt then probably you get out by
-typing `x' and return). 
+(If it fails with a question mark prompt then probably you get out by
+typing `x' and <return>.) 
 
 At the end, you'll have book.pdf and jhanswer.pdf. You could have just
-skipped the compiling, you know.
+skipped the compiling.
 
 To compile the version that is published in paper, change lines 10 and 11 in
 bookjhconcrete.sty to be this.

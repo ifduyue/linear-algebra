@@ -1,15 +1,21 @@
+%%% Local Variables: 
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% End: 
 \documentclass{lab}
 
-\includeonly{cover,
-              preface,
-              sageintro,
-              gauss,
-              spaces,
-              matrices,
-              maps,
-              svd,
-              geometry,   
-              eigen,
+\includeonly{% 
+               cover,
+               preface,
+               sageintro,
+%               gauss,
+%               spaces,
+%               matrices,
+%               maps,
+%               svd,
+%               geometry,   
+%               eigen,
 }
 % 2012-Sep-26 JH \bullet too big, and causes unicodemath to complain: 
 \newcommand{\smblkcircle}{\scalebox{3}{.}}  
@@ -19,6 +25,7 @@
 \renewcommand{\dotprod}{\mathbin{\raisebox{.5\hgtcdot}{%
           \makebox[\wdtcdot]{$\scalebox{2}{.}$}}}}}
 
+\usepackage{lipsum}
 \begin{document}
 \include{cover}\clearemptydoublepage
 \frontmatter
