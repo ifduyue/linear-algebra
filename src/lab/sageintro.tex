@@ -1,44 +1,26 @@
 \chapter{\python{} and \Sage{}}
 
 To work through the Linear Algebra in this manual
-you must be acquainted with running \Sage. 
+you must know how to run \Sage. 
 \Sage{} uses the computer language \python{} so we'll start with that.
 
 
 \section{\python}
 \python{} is a popular computer language\footnote{Written by a fan of
 Monty Python.} 
-that is often used for scripting and
-is appealing for its simple style and powerful libraries.
-The significance of `scripting' is that \Sage{} uses it in this way,
-as a glue to bring together separate parts.
+with a simple style and powerful libraries.
+It is often used for scripting, as a glue to bring together separate parts.
+\Sage{} uses it in this way.
 
 \python{} is Free.
-If your operating system doesn't provide it then go to the home 
-page \href{http://www.python.org}{\url{www.python.org}} and follow the
+Probably your operating system provides it but if not then go to 
+\href{http://www.python.org}{\url{www.python.org}} and follow the
 download and installation instructions.
-Also at that site is \python's excellent tutorial.
+Also there is \python's excellent tutorial.
 That tutorial is thorough; 
 here you will see only enough \python{} to get started.
 For a more comprehensive introduction see \cite{PythonTeam12b}.
 
-\smallskip
-\textit{Comment.}
-\python{} comes in two versions, \python~2 and \python~3.
-The new version is better and the old version sunsets very soon, and
-\Sage{} is migrating from \python~2 over to \python~3, so we will
-work with \python~3. 
-The main difference for us is that in \python~2 you write
-\inlinecode{print 1+2} while in \python~3 it is \inlinecode{print(1+2)}. 
-The examples below were produced directly 
-from \python{} and \Sage{} when this document was generated so they should be 
-exactly what you see, 
-unless your software version is quite different than mine.
-Here is my version of \python. 
-\begin{pyconsole}
-import sys
-print(sys.version)
-\end{pyconsole}
 
 \subsection{Basics}
 Start \python, for instance by entering 
@@ -51,7 +33,7 @@ characters.
 >>>   
 \end{lstlisting}
 This is a prompt.
-It lets you experiment:~if you type 
+If you type 
 \python{} code and \keyboardkey{Enter} then the system
 will read your code, evaluate it, and print the result.
 We will see below how to write and run whole programs
@@ -59,27 +41,27 @@ but for now we will experiment.
 You can always leave the prompt with \textit{\keyboardkey{Ctrl}-D}.
 
 Try entering these expressions (double star is exponentiation).
-\begin{pyconsole}
+\begin{pythonconsole}
 2 - (-1)
 1 + 2*3
 2**3  
-\end{pyconsole}
+\end{pythonconsole}
 
 Part of \python's appeal is that doing simple things tends to be simple.
 Here is how you print something to the screen.
-\begin{pyconsole}
+\begin{pythonconsole}
 print(1, "plus", 2, "equals", 3)
-\end{pyconsole}
+\end{pythonconsole}
 Often you can debug just by putting in commands to print things, 
 and having a straightforward print operator helps with that. 
 
 As in any other computer language, variables give you a place to keep values.
 The first line below puts one in the place called \inlinecode{i}
 and the second line uses that.
-\begin{pyconsole}
+\begin{pythonconsole}
 i = 1
 i + 1
-\end{pyconsole}
+\end{pythonconsole}
 In some programming languages you must declare the `type' of a variable
 before you use it; for instance you would have to declare 
 that $i$ is an integer before you could set $i=1$.
@@ -88,19 +70,19 @@ based on what you do to it\Dash above we assigned $1$ to $i$
 so \python{} figured that it must be an integer.
 Further, we can change how we use the variable and \python{} will 
 go along; here we change what is in $x$ from an integer to a string.
-\begin{pyconsole}
+\begin{pythonconsole}
 x = 1
 x
 x = 'a'
 x
-\end{pyconsole}
+\end{pythonconsole}
 
 \python{} lets you assign multiple values simultaneously.
-\begin{pyconsole}
+\begin{pythonconsole}
 first_day, last_day = 0, 365
 first_day
 last_day   
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 \python{} computes the right side, left to right, and then assigns 
 those values to the variables on the left.
@@ -109,17 +91,17 @@ We will often use this construct.
 \python{} complains by \textit{raising an exception} and giving an error 
 message.
 For instance, we cannot combine a string and an integer. 
-\begin{pyconsole}
+\begin{pythonconsole}
 'a'+1
-\end{pyconsole}
+\end{pythonconsole}
 \noindent The error message's bottom line is the useful one.
 
 Make a comment of the rest of the line with a hash mark \inlinecode{\#}.
-\begin{pyconsole}
+\begin{pythonconsole}
 t = 2.2
 d = (0.5) * 9.8 * (t**2)  # d in meters
 d
-\end{pyconsole}
+\end{pythonconsole}
 \noindent (Comments are more useful in a program than at the prompt.)
 Programmers often comment an entire line by starting 
 that line with a hash. 
@@ -140,10 +122,10 @@ command \protect\inlinecode{import sys} followed by
 However, while the issue of representation is fascinating\protect\Dash
 see \protect\cite{PythonTeam12a} and \protect\cite{Goldberg91}\protect\Dash
 we shall ignore it and just call them integers and reals.}
-\begin{pyconsole}
+\begin{pythonconsole}
 5.774 * 3
 (3+2j) - (1-4j)
-\end{pyconsole}
+\end{pythonconsole}
 \noindent As engineers do, \python{} uses~$j$ for the square
 root of~$-1$, not~$i$ as is traditional in Mathematics.\footnote{Athough
 \protect\Sage{} lets you use $i$.}
@@ -156,31 +138,31 @@ Division has an awkward point.
 when at least one of the two numbers is real.
 However between two integers the division bar was taken to mean 
 a quotient, as in ``$2$ goes into $5$ with quotient~$2$ and remainder~$1$.''
-\begin{pyconsole}
+\begin{pythonconsole}
 5.2 / 2.0
 5.2 / 2
 5 / 2
-\end{pyconsole}
+\end{pythonconsole}
 Experience shows this was a mistake. 
 One of the changes in \python~3
 is that the quotient operation has become \inlinecode{//}
 while the single-slash operator is always real division.
 In the \python~2 we are using, you must make sure that at least one
 number in a division is real.
-\begin{pyconsole}
+\begin{pythonconsole}
 x = 5
 y = 2
 (1.0*x) / y
-\end{pyconsole}
+\end{pythonconsole}
 \noindent Incidentally, 
 the integer remainder operation (sometimes called `modulus')  
 uses a percent character:~\inlinecode{5 \% 2} returns 1.
 
 Variables can also represent truth values; these are \textit{Booleans}.
-\begin{pyconsole}
+\begin{pythonconsole}
 yankees_stink = True
 yankees_stink
-\end{pyconsole}
+\end{pythonconsole}
 \noindent You need the initial capital:
 \inlinecode{True}
 or \inlinecode{False}, not
@@ -192,17 +174,17 @@ You can use either single quotes or double quotes, as long as you use
 the same at both ends of the string. 
 Here \inlinecode{x} and \inlinecode{y}
 are double-quoted, which makes sense because they contain apostrophes. 
-\begin{pyconsole}
+\begin{pythonconsole}
 x = "I'm Popeye the sailor man"
 y = "I yam what I yam and that's all what I yam"
 x + ', ' + y
-\end{pyconsole}
+\end{pythonconsole}
 \noindent The \inlinecode{+} operation concatenates strings.
 Inside a double-quoted string use slash-\textit{n} \inlinecode{\\n} to
 get a newline.
 
 A string marked by three sets of quotes can contain line breaks.
-\begin{pyconsole}
+\begin{pythonconsole}
 a = """THE ROAD TO WISDOM
  
 The road to wisdom?
@@ -214,7 +196,7 @@ and err again
 but less
 and less
 and less. --Piet Hein"""
-\end{pyconsole}
+\end{pythonconsole}
 \noindent 
 The three dots at the start of lines after the first
 is \python's
@@ -227,12 +209,12 @@ That is, it is a finite
 set of ordered pairs $\langle\textit{key},\textit{value}\rangle$ subject 
 to the restriction that no key can appear twice.
 Dictionaries are a simple database.
-\begin{pyconsole}
+\begin{pythonconsole}
 english_words = {'one': 1, 'two': 2, 'three': 3}
 english_words['one']
 english_words['four'] = 4  
 english_words
-\end{pyconsole}
+\end{pythonconsole}
 \noindent Don't be mislead by this example, 
 the words do not always just come in the reverse of the order
 in which you entered them.
@@ -240,63 +222,63 @@ A dictionary's elements will be listed in
 no apparently-sensible order.
 
 If you assign to an existing key then that will replace the previous value. 
-\begin{pyconsole}[d,0,1]
+\begin{pythonconsole}[d,0,1]
 english_words = {'one': 1, 'two': 2, 'three': 3, 'four': 4}
 english_words['one'] = 5
 english_words
-\end{pyconsole}
+\end{pythonconsole}
 \noindent 
 Dictionaries are central to \python, in part because looking up values 
 in a dictionary is very fast.
 
 While dictionaries are unordered, a \textit{list} is ordered.
-\begin{pyconsole}
+\begin{pythonconsole}
 a = ['alpha', 'beta', 'gamma']
 b = []
 c = ['delta']
 a
 a+b+c
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 Get an element from a list by specifying its index, its place in the list,
 inside square brackets.
 Lists are \textit{zero-offset} indexed, that is, the initial element of the
 list is numbered~$0$.
 Count from the back by using negative indices.
-\begin{pyconsole}
+\begin{pythonconsole}
 a = ['alpha', 'beta', 'gamma']
 a[0]
 a[1]
 a[-1]
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 Specifying two indices separated by a colon gets a \textit{slice} 
 of the list. 
-\begin{pyconsole} 
+\begin{pythonconsole} 
 a = ['alpha', 'beta', 'gamma']
 a[1:3]
 a[1:2]
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 You can add to a list.
-\begin{pyconsole}
+\begin{pythonconsole}
 c = ['delta']
 c.append('epsilon')
 c
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 Lists can contain anything, including other lists.
-\begin{pyconsole}
+\begin{pythonconsole}
 x = 4
 a = ['alpha', [True, x]]
 a
-\end{pyconsole}
+\end{pythonconsole}
 
 The function \pythoncmd{range} returns a list of numbers.
-\begin{pyconsole}
+\begin{pythonconsole}
 range(10)
 range(1,10)
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 By default \pythoncmd{range} starts at $0$, which
 is good because lists are zero-indexed.
@@ -306,29 +288,29 @@ This makes \inlinecode{range(10)+range(10,20)} give
 the same list as \inlinecode{range(20)}.
 
 A \textit{tuple} is like a list in that it is ordered.
-\begin{pyconsole}
+\begin{pythonconsole}
 a = ('fee', 'fie', 'foe', 'fum')
 a
 a[0]
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 However it is unlike a list 
 in that a tuple is not \textit{mutable}\Dash it cannot change.
-\begin{pyconsole}[d,0,1]
+\begin{pythonconsole}[d,0,1]
 a = ('fee', 'fie', 'foe', 'fum')
 a[0] = 'phooey'
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 One reason this is useful is that because of it
 tuples can be keys in dictionaries while
 list cannot.
-\begin{pyconsole}
+\begin{pythonconsole}
 a = ['ke1az', 5418]
 b = ('ke1az', 5418)
 d = {a: 'active'}
 d = {b: 'active'}
 d
-\end{pyconsole}
+\end{pythonconsole}
 
 \python{} has a special value \inlinecode{None} for
 when there is no sensible value for a variable.
@@ -342,7 +324,7 @@ apartment.
 \subsection{Flow of control}
 \python{} supports the traditional ways of affecting the order of 
 statement execution, with a twist.
-\begin{pyconsole}
+\begin{pythonconsole}
 x = 4
 if (x == 0):
     y = 1
@@ -350,7 +332,7 @@ else:
     y = 0
 
 y
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 The twist is that while many languages use braces or some other syntax to
 mark a block of code, \python{} uses indentation.
@@ -365,16 +347,16 @@ means ``$x$ is assigned the value~$4$.''
 
 \python{} has two variants on the above \pythoncmd{if} statement.
 It could have only one branch
-\begin{pyconsole}
+\begin{pythonconsole}
 x = 4
 y = 0
 if (x == 0):
     y = 1
 
 y
-\end{pyconsole}
+\end{pythonconsole}
 or it could have more than two branches.
-\begin{pyconsole}
+\begin{pythonconsole}
 x = 2
 if (x == 0):
     y = 1
@@ -384,17 +366,17 @@ else:
     y = -1
 
 y
-\end{pyconsole}
+\end{pythonconsole}
 
 Computers excel at iteration, looping through the same steps.
-\begin{pyconsole}
+\begin{pythonconsole}
 for i in range(5):
     print i, "squared is", i**2
 
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 A \pythoncmd{for} loop often involves a \pythoncmd{range}.
-\begin{pyconsole}
+\begin{pythonconsole}
 x = [4, 0, 3, 0]
 for i in range(len(x)):
     if (x[i] == 0):
@@ -402,7 +384,7 @@ for i in range(len(x)):
     else:
         print "item",i,"is nonzero"
 
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 An experienced \python{} person who was not trying just to illustrate 
 \pythoncmd{range}
@@ -414,7 +396,7 @@ A \pythoncmd{for} loop is designed to execute a certain
 number of times.
 The natural way to write a loop that will run an uncertain number of times
 is \pythoncmd{while}.
-\begin{pyconsole}
+\begin{pythonconsole}
 n, i = 27, 0
 while (n != 1):
     if (n % 2 == 0):  # if n is even
@@ -424,7 +406,7 @@ while (n != 1):
     i = i + 1
     print("i=", i)
 
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 (This listing is incomplete; it takes $111$ steps to finish.)\footnote{The 
 \protect\textit{Collatz conjecture} is 
@@ -433,22 +415,22 @@ terminate; no one knows if it is true.}
 Note that ``not equal'' is \lstinline[style=inline]@!=@. 
 
 The \inlinecode{break} command gets you out of a loop right away.
-\begin{pyconsole}
+\begin{pythonconsole}
 for i in range(10):
     if (i == 3):
         break
     print("i is", i)
 
-\end{pyconsole}
+\end{pythonconsole}
 
 A common loop construct is to run through a list
 performing an action on each entry.
 \python{} has a shortcut, \textit{list comprehension}.
-\begin{pyconsole}
+\begin{pythonconsole}
 a = [2**i for i in range(4)]
 a
 [i-1 for i in a]
-\end{pyconsole}
+\end{pythonconsole}
 
 
 
@@ -456,7 +438,7 @@ a
 A \textit{function} is a group of statements that executes when it is called,
 and can return values to the caller.
 Here is a naive version of the quadratic formula.
-\begin{pyconsole}
+\begin{pythonconsole}
 def quad_formula(a, b, c):
     discriminant = (b**2 - 4*a*c)**(0.5)
     r1=(-1*b+discriminant) / (2.0*a)
@@ -465,10 +447,10 @@ def quad_formula(a, b, c):
 
 quad_formula(1,0,-9)
 quad_formula(1,2,1)
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 (One way that it is naive is that it doesn't handle complex roots gracefully.)
-% \begin{pyconsole}[d,0,6]
+% \begin{pythonconsole}[d,0,6]
 % def quad_formula(a, b, c):
 %     discriminant = (b**2 - 4*a*c)**(0.5)
 %     r1=(-1*b+discriminant) / (2.0*a)
@@ -476,7 +458,7 @@ quad_formula(1,2,1)
 %     return (r1, r2)
 %
 % quad_formula(1,1,1)
-% \end{pyconsole}
+% \end{pythonconsole}
 
 Functions organize code into blocks. 
 These blocks of code may be 
@@ -488,13 +470,13 @@ the function's \textit{parameters}.
 These can take values 
 passed in by the caller.
 Functions can have \textit{optional parameters} that have a default value.
-\begin{pyconsole}
+\begin{pythonconsole}
 def hello(name="Jim"):
     print("Hello,", name)
 
 hello("Fred")
 hello()
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 \Sage{} uses this aspect of \python{} heavily.
 
@@ -513,7 +495,7 @@ such as addition and multiplication.
 \python{} is \textit{object-oriented}, which means that we can similarly bundle
 together data and actions (in this context the functions are called 
 \textit{methods}).
-\begin{pyconsole}
+\begin{pythonconsole}
 class DatabaseRecord(object):
     def __init__(self, name, age):
         self.name = name
@@ -527,7 +509,7 @@ a.age
 a.salutation()
 b = DatabaseRecord("Fred",109)
 b.salutation()
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 This creates two \textit{instances} of the object 
 \inlinecode{DatabaseRecord}.
@@ -554,23 +536,23 @@ but you will be using ones from
 the libraries of code that others have written, including the
 code for \Sage, so you must know how to use the classes of others. 
 For instance, \python{} has a library, or \textit{module}, for math.
-\begin{pyconsole}
+\begin{pythonconsole}
 import math
 math.pi
 math.factorial(5)
 math.cos(math.pi)
-\end{pyconsole}
+\end{pythonconsole}
 \noindent
 The \inlinecode{import} statement gets the module and makes
 its contents available.
 
 % Another library is for random numbers.
-% \begin{pyconsole}
+% \begin{pythonconsole}
 % import random
 % while (random.randint(1,10) != 1):
 %     print("wrong")
 
-% \end{pyconsole}
+% \end{pythonconsole}
 
 
 

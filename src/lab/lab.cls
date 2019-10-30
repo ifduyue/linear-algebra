@@ -67,12 +67,18 @@
 \fi
 \typeout{FontDir is \FontDir.}
 
-\usepackage{beton,euler}  % eulervm gives an error Paragraph ended before \@tempb was complete. 
+%\usepackage{beton,euler}  % eulervm gives an error Paragraph ended before \@tempb was complete. 
+\usepackage{ccfonts}
+\usepackage{euler}
 \usepackage{berasans}
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
   % \defaultfontfeatures{Ligatures=TeX} % causes " and ' to go away
-\setmainfont{SFORM10}  % Concrete
+\setmainfont[Ligatures=TeX,  % CM-Super Concrete
+             % Path = /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/,
+             Path = /usr/share/texmf/fonts/type1/public/cm-super/,
+             ItalicFont = sfoti10.pfb,
+             SmallCapsFont = sfocc10]{sform10.pfb}  % Concrete
 % font for code listings
 \newfontface\listingsfont[Path=\FontDir,
                           Scale=1]{ProggyClean.ttf}
@@ -345,22 +351,57 @@
 % Because of a bug in newfloat you want to load pythontex before sagetex,
 % which loads listings, which loads newfloat. 
 % See https://tex.stackexchange.com/a/416739/121234
-\usepackage{pythontex}
-  \setpythontexpyglexer{text}
+\usepackage[pygopt={style=bw}]{pythontex}
+  \setpythontexpyglexer{text} 
+  \setpythontexpygopt{style=bw} 
+  % \setpythontexprettyprinter{fancyvrb}  
 % \usepackage[prettyprinter=fancyvrb]{pythontex}
 % pythontex loads a version of fancyvrb.
 % Give general settings for fancyvrb-formatted text.
+% The fancyvrb package does not allow background color.  This patches
+% it to allow that.  https://tex.stackexchange.com/a/39631/121234
+\newif\ifFV@bgcolor
+\newbox\FV@bgbox
+\define@key{FV}{bgcolor}{\FV@bgcolortrue\def\FV@bgcolor{#1}}
+
+\def\FV@BeginVBox{%
+  \leavevmode\ifFV@bgcolor\setbox\FV@bgbox=\fi
+  \hbox\ifx\FV@boxwidth\relax\else to\FV@boxwidth\fi\bgroup
+  \ifcase\FV@baseline\vbox\or\vtop\or$\vcenter\fi\bgroup}
+\def\FV@EndVBox{\egroup\ifmmode$\fi\hfil\egroup
+  \ifFV@bgcolor\colorbox{\FV@bgcolor}{\box\FV@bgbox}\fi}
 % Apparently to set the font you have to look through a 
 % .log file from a prior run and find the name that fontspec gave the font
 % (a number is appended in case it is taken in with italics, ...).  Why
 % you can't say \listingsfont, I don't know.
 \fvset{fontfamily=ProggyClean.ttf(0),
-  baselinestretch=0.8} 
+  baselinestretch=0.7,
+  bgcolor=pythoncolor} 
 % Change spacing above and below the verbatim envs.
 % From https://tex.stackexchange.com/a/43336/339
 % \preto{\@verbatim}{\topsep=-10pt \partopsep=0pt }
 
+% These environments wrap PythonTeX's environments to give colored boxes.
+% They use mdframed for the color, because PythonTeX's author G Poore
+% uses mdframed in an example on CTAN.  Note that to wrap a verbatim
+% environment need to start with the declaration \VerbatimEnvironment
+\usepackage{mdframed}
+\mdfdefinestyle{jhmdstyle}{%
+  hidealllines=true,  % no lines around the box
+  innerrightmargin=0pt,innerleftmargin=0pt,  % no horiz padding at start or end
+  innertopmargin=3pt,innerbottommargin=3pt,
+  backgroundcolor=pythoncolor, % color of background
+  roundcorner=0pt,  % square corners
+  splitbottomskip=6pt,splittopskip=6pt  % if box gets split across pages
+}
 
+\newenvironment{pythonconsole}{\VerbatimEnvironment% See https://tex.stackexchange.com/a/455300/121234
+  \begin{mdframed}[style=jhmdstyle]
+  \begin{pyconsole}
+}{%
+  \end{pyconsole}
+  \end{mdframed}
+}
 
 
 
@@ -429,44 +470,45 @@
 
 % Copied and modified from sagetex
 % Was:
-% \lstdefinelanguage{Sage}[]{Python}
-%   {morekeywords={False,sage,True},sensitive=true}
-% \lstdefinelanguage{SageOutput}[]{}
-%   {morekeywords={False,True},sensitive=true}
-% \lstdefinestyle{DefaultSageInputOutput}{
-%   nolol,
-%   identifierstyle=,
-%   name=sagecommandline,
-%   xleftmargin=5pt,
-%   numbersep=5pt,
-%   aboveskip=0pt,
-%   belowskip=0pt,
-%   breaklines=true,
-%   numberstyle=\footnotesize,
-%   numbers=right
-% }
-% \lstdefinestyle{DefaultSageInput}{
-%   language=Sage,
-%   style=DefaultSageInputOutput,
-%   basicstyle={\ttfamily\bfseries},
-%   commentstyle={\ttfamily\color{dgreencolor}},
-%   keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
-%   stringstyle={\ttfamily\color{dgraycolor}\bfseries},
-% }
-% \lstdefinestyle{DefaultSageOutput}{
-%   language=SageOutput,
-%   style=DefaultSageInputOutput,
-%   basicstyle={\ttfamily},
-%   commentstyle={\ttfamily\color{dgreencolor}},
-%   keywordstyle={\ttfamily\color{dbluecolor}},
-%   stringstyle={\ttfamily\color{dgraycolor}},
-% }
-% \lstdefinestyle{SageInput}{
-%   style=DefaultSageInput,
-% }
-% \lstdefinestyle{SageOutput}{
-%   style=DefaultSageOutput,
-% }
+\lstdefinelanguage{Sage}[]{Python}
+  {morekeywords={False,sage,True},sensitive=true}
+\lstdefinelanguage{SageOutput}[]{}
+  {morekeywords={False,True},sensitive=true}
+\lstdefinestyle{DefaultSageInputOutput}{
+  backgroundcolor=\color{pythoncolor}
+  nolol,
+  identifierstyle=,
+  name=sagecommandline,
+  xleftmargin=5pt,
+  numbersep=5pt,
+  aboveskip=0pt,
+  belowskip=0pt,
+  breaklines=true,
+  numberstyle=\footnotesize,
+  numbers=right
+}
+\lstdefinestyle{DefaultSageInput}{
+  language=Sage,
+  style=DefaultSageInputOutput,
+  basicstyle={\ttfamily\bfseries},
+  commentstyle={\ttfamily\color{dgreencolor}},
+  keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
+  stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+}
+\lstdefinestyle{DefaultSageOutput}{
+  language=SageOutput,
+  style=DefaultSageInputOutput,
+  basicstyle={\ttfamily},
+  commentstyle={\ttfamily\color{dgreencolor}},
+  keywordstyle={\ttfamily\color{dbluecolor}},
+  stringstyle={\ttfamily\color{dgraycolor}},
+}
+\lstdefinestyle{SageInput}{
+  style=DefaultSageInput,
+}
+\lstdefinestyle{SageOutput}{
+  style=DefaultSageOutput,
+}
 \lstdefinelanguage{Sage}[]{Python}
   {morekeywords={False,sage,True},sensitive=true}
 \lstdefinelanguage{SageOutput}[]{}

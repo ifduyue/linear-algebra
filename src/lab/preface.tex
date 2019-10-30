@@ -70,8 +70,8 @@ In
 \textit{Open Source Mathematical Software\,} \citep{JoynerStein07}\footnote{See 
 \protect\url{http://www.ams.org/notices/200710/tx071001279p.pdf} for the 
 full text.}
-the authors argue that for Mathematics the best way forward
-is to use software that is Open Source.
+the authors argue that the best way forward for Mathematics 
+is to use software that is licensed correctly.
 
 \begin{quotation}\small
 Suppose Jane is a well-known mathematician who announces
@@ -94,14 +94,14 @@ software on which Jane’s result builds.
 \end{quotation}  
 Professionals choose their tools by balancing many factors but
 this argument is persuasive.
-We use \Sage{} because it is both very capable 
-so that students can 
+We use \Sage{} both because it is very capable 
+so students can 
 learn a great deal from it,
 and because it is 
 Free\footnote{The Free Software Foundation page 
 \protect\url{http://www.gnu.org/philosophy/free-sw.html} 
 gives background and a definition.} 
-and Open Source.\footnote{See \protect\url{http://opensource.org/osd.html} 
+and Open.\footnote{See \protect\url{http://opensource.org/osd.html} 
 for a definition.} 
 
 
@@ -116,14 +116,21 @@ I am glad to get feedback, especially from instructors
 who have class-tested the material.
 My contact information is on the same page. 
 
-The computer output included here is generated automatically 
-(I have automatically edited some lines).
-You should see what is shown, unless your version differs
-greatly from mine.
-This is my \Sage.
+\textbf{A note on accuracy:}~to guarantee that the examples 
+show exactly the result of interacting with \python{} and \Sage{},
+\LaTeX{} grabs the output as part of generating this document.  
+So what you see should be exact,
+unless your software version is very different from mine.
+This is my \Sage
 \begin{sagecommandline}
 sage: version()  
 \end{sagecommandline}
+And this is my \python{}. 
+\begin{pyconsole}
+import sys
+print(sys.version)
+\end{pyconsole}
+
 
 
 
