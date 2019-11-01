@@ -351,10 +351,9 @@
 % Because of a bug in newfloat you want to load pythontex before sagetex,
 % which loads listings, which loads newfloat. 
 % See https://tex.stackexchange.com/a/416739/121234
-\usepackage[pygopt={style=bw}]{pythontex}
+\usepackage{pythontex}
   \setpythontexpyglexer{text} 
   \setpythontexpygopt{style=bw} 
-  % \setpythontexprettyprinter{fancyvrb}  
 % \usepackage[prettyprinter=fancyvrb]{pythontex}
 % pythontex loads a version of fancyvrb.
 % Give general settings for fancyvrb-formatted text.
