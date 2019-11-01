@@ -374,7 +374,7 @@
 % (a number is appended in case it is taken in with italics, ...).  Why
 % you can't say \listingsfont, I don't know.
 \fvset{fontfamily=ProggyClean.ttf(0),
-  baselinestretch=0.7,
+  % baselinestretch=0.5pt,
   bgcolor=pythoncolor} 
 % Change spacing above and below the verbatim envs.
 % From https://tex.stackexchange.com/a/43336/339
@@ -436,7 +436,8 @@
 \makeatother
 \lstloadlanguages{TeX,bash,Python}
 \lstset{basicstyle=\listingsfont,
-   lineskip=-.25ex,
+   columns=flexible,
+   % lineskip=10pt,
    % aboveskip=\medskipamount,
    % belowskip=\medskipamount,
    showstringspaces=false,

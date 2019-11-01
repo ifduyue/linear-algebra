@@ -3,10 +3,10 @@
 
 
 This collection supplements the text \nocite{Hefferon12}
-\textit{Linear Algebra}\footnote{The text's home page 
-\protect\url{http://joshua.smcvt.edu/linearalgebra} 
+\textit{Linear Algebra}.\footnote{The home page of this text, 
+\protect\url{http://joshua.smcvt.edu/linearalgebra}, 
 has the PDF, the ancillary materials, and the \protect\LaTeX{} source.}
-with explorations to help students
+It helps students
 solidify and extend their understanding of the subject, 
 using the mathematical software \Sage{}.\footnote{See 
 \url{http://www.sagemath.org} for the software and documentation.}
@@ -16,10 +16,9 @@ toward a higher-level, more abstract, grasp of the subject.
 For instance, Calculus classes work on elaborate computations
 while later courses spend more effort on concepts and proofs, focusing
 less on the details of calculations.  
-
 The text \textit{Linear Algebra} fits into
 this development process.
-Its presentation works to bring students to a deeper understanding, 
+It works to bring students to a deeper understanding, 
 but it does so by expecting
 that for them at this point a good bit of calculation helps the process. 
 Naturally it uses examples and practice problems
@@ -30,14 +29,14 @@ question with twenty by twenty matrices
 of ten decimal place numbers would be badgering. 
 
 However, an instructor can worry that this misses a chance 
-to make the point that Linear Algebra is widely applied,
+to make the point that the subject is widely applied,
 or to develop students's understanding through explorations that are not 
-hindered by the mechanics of paper and pencil. 
-Mathematical software can mitigate these concerns by extending the reach of
+hindered by the limitations of paper and pencil. 
+Mathematical software can spread the reach of
 what is reasonable 
 to bigger systems, harder numbers, and longer computations.
-This manual's goal is to extends students's ability to do problems in that way.
-For instance, an advantage of learning how to automate work and
+This manual's goal is to extends students's abilities in that way.
+One advantage of learning how to automate work and
 handle larger jobs is that 
 this is more like what a student must do when applying Linear 
 Algebra to other areas.
@@ -47,29 +46,25 @@ runtime growth measures.
 Well then, why 
 not teach straight from the computer?
 
-Our goal is to 
-develop a higher-level understanding of the material so we 
-keep the focus on vector spaces and linear maps.
+Our goal is to develop a higher-level understanding of the material. 
+So we keep the focus on vector spaces and linear maps.
 The exposition here takes computation to be
 a tool to develop that understanding, not the main object.
 
-Some instructors will find 
-that their students are best served by
+Some instructors will find that their students are best served by
 keeping a tight focus on the
 core material and leaving aside altogether 
-the work in this manual. 
+the work here. 
 Other instructors
-have students who will benefit from the increased reach that the software
-provides.
-This manual's existence, and status as a separate book, gives teachers the 
-freedom to make the choice that suits their class.
+have students who will benefit by using the software.
+Because this manual is a supplement, it allows 
+teachers to choose what suits their class.
 
 
 \section{Why \Sage?}
 In 
-\textit{Open Source Mathematical Software\,} \citep{JoynerStein07}\footnote{See 
-\protect\url{http://www.ams.org/notices/200710/tx071001279p.pdf} for the 
-full text.}
+\textit{Open Source Mathematical Software\,} \citep{JoynerStein07}\footnote{The full text of this is at
+\protect\url{http://www.ams.org/notices/200710/tx071001279p.pdf}.}
 the authors argue that the best way forward for Mathematics 
 is to use software that is licensed correctly.
 
@@ -107,18 +102,25 @@ for a definition.}
 
 
 \section{This manual}
-This is Free.
+This manual is Free.
 Get the latest version from 
-\url{http://joshua.smcvt.edu/linearalgebra}.
-Also see that page for the license details and for 
-the \LaTeX{} source.
+\url{http://joshua.smcvt.edu/linearalgebra}.\footnote{%
+  Also see that page for the license details.}
 I am glad to get feedback, especially from instructors
 who have class-tested the material.
-My contact information is on the same page. 
+My current contact information is on the same page.
 
-\textbf{A note on accuracy:}~to guarantee that the examples 
-show exactly the result of interacting with \python{} and \Sage{},
-\LaTeX{} grabs the output as part of generating this document.  
+Also Free are the computer systems that we use to explore the subject,
+\python{} and \Sage{}.
+Probably your operating system provides these but if not then visit 
+\href{http://www.python.org}{\url{www.python.org}}
+and 
+\href{https://www.sagemath.org}{\url{www.sagemath.org}}.
+
+\textbf{A note on accuracy:}~the examples 
+show code for \python{} and \Sage{} and the computer's responses.
+To ensure that what you see is what actually happens,
+\LaTeX{} grabs the interaction as part of generating this document.  
 So what you see should be exact,
 unless your software version is very different from mine.
 This is my \Sage
@@ -135,7 +137,8 @@ print(sys.version)
 
 
 \section{Reading this manual}
-Here I don't define all of the terms or prove all of the results.
+Because this supplements the text, 
+I don't define all of the terms or prove all of the results.
 A student should work through the material here after covering the associated
 chapter in the book, using that for reference.
 
@@ -159,12 +162,14 @@ since they do not have stand-alone exercises.
 
 
 \section{Acknowledgments}
-I am glad for this chance to thank the \Sage{} Development Team.
+I am glad for this chance to thank the \python{} and
+\Sage{} development teams.
 In particular,
 without \citep{SageTeam12ref} this work would not have happened.
 I am glad also for the chance to mention 
 \citep{Beezer11} as an inspiration.
-Finally, I am grateful to Saint Michael's College for the time to work on this.
+Finally, I am grateful to Saint Michael's College for the 
+release time to write this document.
 
 
 
