@@ -436,14 +436,16 @@
 \makeatother
 \lstloadlanguages{TeX,bash,Python}
 \lstset{basicstyle=\listingsfont,
-   columns=flexible,
+   columns=flexible,  % Stop the horrifying space adjustment
+   breaklines=true,  % These two lines insert a hook when the line breaks
+   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
    % lineskip=10pt,
    % aboveskip=\medskipamount,
    % belowskip=\medskipamount,
    showstringspaces=false,
    xleftmargin=0pt,                      
    numberfirstline=true,           % first line gets numbered always
-   numbers=left,                   % where to put the line-numbers
+   numbers=none,                   % where to put the line-numbers
    numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
    stepnumber=1,                   % the step between two line-numbers.
    numbersep=5pt,                  % how far the line-numbers are from the code

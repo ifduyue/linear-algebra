@@ -1,75 +1,69 @@
 \chapter{\python{} and \Sage{}}
 
-To work through the Linear Algebra in this manual
-you must know how to run \Sage. 
-\Sage{} uses the computer language \python{} so we'll start with that.
-
-
-\section{\python}
-\python{} is a popular computer language\footnote{Written by a fan of
+% To do the Linear Algebra in this manual
+% you must know how to run \Sage. 
+\Sage{} is based on the computer language \python{} so we'll start with that.
+\python{} is a popular language\footnote{Written by a fan of
 Monty Python.} 
 with a simple style and powerful libraries.
 It is often used for scripting, as a glue to bring together separate parts.
 \Sage{} uses it in this way.
 
-\python{} is Free.
-Probably your operating system provides it but if not then go to 
-\href{http://www.python.org}{\url{www.python.org}} and follow the
-download and installation instructions.
-Also there is \python's excellent tutorial.
-That tutorial is thorough; 
-here you will see only enough \python{} to get started.
-For a more comprehensive introduction see \cite{PythonTeam12b}.
+Here you will see enough \python{} to get started.
+For a more comprehensive introduction, see \python's excellent tutorial,
+\cite{PythonTeam12b}.
+
 
 
 \subsection{Basics}
-Start \python, for instance by entering 
+Start \python, for instance by giving the command
 \inlinecode{python}
 at a command line.
-You'll get a couple of lines of 
-information followed by three greater-than
+You'll get a couple of lines of initial
+information followed by a prompt, three greater-than
 characters.
 \begin{lstlisting}[style=python]
 >>>   
 \end{lstlisting}
-This is a prompt.
 If you type 
 \python{} code and \keyboardkey{Enter} then the system
 will read your code, evaluate it, and print the result.
 We will see below how to write and run whole programs
-but for now we will experiment.
-You can always leave the prompt with \textit{\keyboardkey{Ctrl}-D}.
+but for now we will experiment using this interpreter.
+When you are done, leave this prompt with \textit{\keyboardkey{Ctrl}-D}.
 
 Try entering these expressions (double star is exponentiation).
+You'll get the results shown.
 \begin{pythonconsole}
 2 - (-1)
 1 + 2*3
 2**3  
 \end{pythonconsole}
 
-Part of \python's appeal is that doing simple things tends to be simple.
+Part of \python's appeal is that simple things tends to be simple to do.
 Here is how you print something to the screen.
 \begin{pythonconsole}
 print(1, "plus", 2, "equals", 3)
 \end{pythonconsole}
-Often you can debug just by putting in commands to print things, 
-and having a straightforward print operator helps with that. 
+% Often you can debug just by putting in commands to print things, 
+% and having a straightforward print operator helps with that. 
 
-As in any other computer language, variables give you a place to keep values.
-The first line below puts one in the place called \inlinecode{i}
-and the second line uses that.
+As in any other computer language, 
+variables give you a named place to keep values.
+The first line below puts $1$ in the place called \inlinecode{i}
+and the second line involves fetching that $1$.
 \begin{pythonconsole}
 i = 1
 i + 1
 \end{pythonconsole}
 In some programming languages you must declare the `type' of a variable
-before you use it; for instance you would have to declare 
-that $i$ is an integer before you could set $i=1$.
-In contrast, \python{} deduces the type of a variable 
-based on what you do to it\Dash above we assigned $1$ to $i$ 
+before you use it; for instance above you would have to declare 
+that \inlinecode{i} is an integer before you could set \inlinecode{i=1}.
+In contrast, \python{} deduces the type 
+based on what you do to it\Dash above we assigned $1$ to \inlinecode{i} 
 so \python{} figured that it must be an integer.
-Further, we can change how we use the variable and \python{} will 
-go along; here we change what is in $x$ from an integer to a string.
+If we change how we use a variable then \python{} will 
+rethink; here we change what is kept in $x$ from an integer to a string.
 \begin{pythonconsole}
 x = 1
 x
@@ -88,23 +82,13 @@ last_day
 those values to the variables on the left.
 We will often use this construct.
 
+If you do something not allowed then 
 \python{} complains by \textit{raising an exception} and giving an error 
 message.
-For instance, we cannot combine a string and an integer. 
 \begin{pythonconsole}
 'a'+1
 \end{pythonconsole}
-\noindent The error message's bottom line is the useful one.
-
-Make a comment of the rest of the line with a hash mark \inlinecode{\#}.
-\begin{pythonconsole}
-t = 2.2
-d = (0.5) * 9.8 * (t**2)  # d in meters
-d
-\end{pythonconsole}
-\noindent (Comments are more useful in a program than at the prompt.)
-Programmers often comment an entire line by starting 
-that line with a hash. 
+\noindent In an error message, often the bottom line is the most useful.
 
 As in the listing above, we can get real 
 numbers 
@@ -131,40 +115,40 @@ we shall ignore it and just call them integers and reals.}
 root of~$-1$, not~$i$ as is traditional in Mathematics.\footnote{Athough
 \protect\Sage{} lets you use $i$.}
 
-The examples above show addition, subtraction, multiplication, 
-and exponentiation. 
-Division has an awkward point.
-\python{} was originally designed to have the division bar
-\inlinecode{/} mean real number division 
-when at least one of the two numbers is real.
-However between two integers the division bar was taken to mean 
-a quotient, as in ``$2$ goes into $5$ with quotient~$2$ and remainder~$1$.''
-\begin{pythonconsole}
-5.2 / 2.0
-5.2 / 2
-5 / 2
-\end{pythonconsole}
-Experience shows this was a mistake. 
-One of the changes in \python~3
-is that the quotient operation has become \inlinecode{//}
-while the single-slash operator is always real division.
-In the \python~2 we are using, you must make sure that at least one
-number in a division is real.
-\begin{pythonconsole}
-x = 5
-y = 2
-(1.0*x) / y
-\end{pythonconsole}
-\noindent Incidentally, 
-the integer remainder operation (sometimes called `modulus')  
-uses a percent character:~\inlinecode{5 \% 2} returns 1.
+% The examples above show addition, subtraction, multiplication, 
+% and exponentiation. 
+% Division has an awkward point.
+% \python{} was originally designed to have the division bar
+% \inlinecode{/} mean real number division 
+% when at least one of the two numbers is real.
+% However between two integers the division bar was taken to mean 
+% a quotient, as in ``$2$ goes into $5$ with quotient~$2$ and remainder~$1$.''
+% \begin{pythonconsole}
+% 5.2 / 2.0
+% 5.2 / 2
+% 5 / 2
+% \end{pythonconsole}
+% Experience shows this was a mistake. 
+% One of the changes in \python~3
+% is that the quotient operation has become \inlinecode{//}
+% while the single-slash operator is always real division.
+% In the \python~2 we are using, you must make sure that at least one
+% number in a division is real.
+% \begin{pythonconsole}
+% x = 5
+% y = 2
+% (1.0*x) / y
+% \end{pythonconsole}
+% \noindent Incidentally, 
+% the integer remainder operation (sometimes called `modulus')  
+% uses a percent character:~\inlinecode{5 \% 2} returns 1.
 
 Variables can also represent truth values; these are \textit{Booleans}.
 \begin{pythonconsole}
 yankees_stink = True
 yankees_stink
 \end{pythonconsole}
-\noindent You need the initial capital:
+\noindent You need the initial capital letter\Dash
 \inlinecode{True}
 or \inlinecode{False}, not
 \inlinecode{true}
@@ -180,11 +164,13 @@ x = "I'm Popeye the sailor man"
 y = "I yam what I yam and that's all what I yam"
 x + ', ' + y
 \end{pythonconsole}
-\noindent The \inlinecode{+} operation concatenates strings.
-Inside a double-quoted string use slash-\textit{n} \inlinecode{\\n} to
-get a newline.
+\noindent The final line shows that you concatenate strings with 
+\inlinecode{+}.
 
-A string marked by three sets of quotes can contain line breaks.
+To get a newline you can use use slash-\textit{n}, \inlinecode{\\n}, 
+inside a double-quoted string.
+Or, 
+you can put explicite line breaks inside a string marked by triple quotes.
 \begin{pythonconsole}
 a = """THE ROAD TO WISDOM
  
@@ -201,36 +187,29 @@ and less. --Piet Hein"""
 \noindent 
 The three dots at the start of lines after the first
 is \python's
-read-eval-print prompt telling you that what you have typed is not complete.
-We'll see below that a common use for
-triple-quoted strings is as documentation.
+read-eval-print telling you that what you have typed is not complete,
+that you've started a string but not finished it.
 
 A \python{} \textit{dictionary} is a finite function.
 That is, it is a finite
 set of ordered pairs $\langle\textit{key},\textit{value}\rangle$ subject 
 to the restriction that no key can appear twice.
-Dictionaries are a simple database.
+\python{} programmers often use a dictionary as a simple database.
 \begin{pythonconsole}
 english_words = {'one': 1, 'two': 2, 'three': 3}
 english_words['one']
 english_words['four'] = 4  
 english_words
-\end{pythonconsole}
-\noindent Don't be mislead by this example, 
-the words do not always just come in the reverse of the order
-in which you entered them.
-A dictionary's elements will be listed in 
-no apparently-sensible order.
-
-If you assign to an existing key then that will replace the previous value. 
-\begin{pythonconsole}[d,0,1]
-english_words = {'one': 1, 'two': 2, 'three': 3, 'four': 4}
 english_words['one'] = 5
 english_words
 \end{pythonconsole}
 \noindent 
 Dictionaries are central to \python, in part because looking up values 
-in a dictionary is very fast.
+in a dictionary is very fast, due to the way that they are 
+organized internally.
+But because of that internal organization,
+if you ask to see a dictionary then \python{} may show its pairs in 
+some jumbled-up order.
 
 While dictionaries are unordered, a \textit{list} is ordered.
 \begin{pythonconsole}
@@ -243,7 +222,7 @@ a+b+c
 \noindent
 Get an element from a list by specifying its index, its place in the list,
 inside square brackets.
-Lists are \textit{zero-offset} indexed, that is, the initial element of the
+Lists are zero-offset indexed, that is, the initial element of the
 list is numbered~$0$.
 Count from the back by using negative indices.
 \begin{pythonconsole}
@@ -282,10 +261,10 @@ range(1,10)
 \end{pythonconsole}
 \noindent
 By default \pythoncmd{range} starts at $0$, which
-is good because lists are zero-indexed.
+fits with the fact that lists are zero-indexed.
 Observe also that $9$ is the highest number in the list
 given by \inlinecode{range(10)}.
-This makes \inlinecode{range(10)+range(10,20)} give 
+This is convenient because it makes \inlinecode{range(10)+range(10,20)} give 
 the same list as \inlinecode{range(20)}.
 
 A \textit{tuple} is like a list in that it is ordered.
@@ -295,8 +274,8 @@ a
 a[0]
 \end{pythonconsole}
 \noindent
-However it is unlike a list 
-in that a tuple is not \textit{mutable}\Dash it cannot change.
+However a tuple is unlike a list 
+in that it is not \textit{mutable}\Dash it cannot change.
 \begin{pythonconsole}[d,0,1]
 a = ('fee', 'fie', 'foe', 'fum')
 a[0] = 'phooey'
@@ -372,7 +351,7 @@ y
 Computers excel at iteration, looping through the same steps.
 \begin{pythonconsole}
 for i in range(5):
-    print i, "squared is", i**2
+    print(i, "squared is", i**2)
 
 \end{pythonconsole}
 \noindent
@@ -381,14 +360,14 @@ A \pythoncmd{for} loop often involves a \pythoncmd{range}.
 x = [4, 0, 3, 0]
 for i in range(len(x)):
     if (x[i] == 0):
-        print "item",i,"is zero"
+        print("item",i,"is zero")
     else:
-        print "item",i,"is nonzero"
+        print("item",i,"is nonzero")
 
 \end{pythonconsole}
 \noindent
-An experienced \python{} person who was not trying just to illustrate 
-\pythoncmd{range}
+A \python{} person who was not trying just to illustrate 
+the command \pythoncmd{range}
 would instead write \inlinecode{for c in x:} since
 the \pythoncmd{for} loop can iterate over any sequence, not just
 a sequence of integers.
@@ -397,23 +376,24 @@ A \pythoncmd{for} loop is designed to execute a certain
 number of times.
 The natural way to write a loop that will run an uncertain number of times
 is \pythoncmd{while}.
+Note that ``not equal'' is \lstinline[style=inline]@!=@. 
 \begin{pythonconsole}
-n, i = 27, 0
+n, i = 12, 0
 while (n != 1):
-    if (n % 2 == 0):  # if n is even
-        n = n / 2
+    if (n % 2 == 0):  
+        n = n // 2
     else:
         n = 3*n + 1
     i = i + 1
-    print("i=", i)
+    print("i=", i, "n=", n)
 
 \end{pythonconsole}
 \noindent
-(This listing is incomplete; it takes $111$ steps to finish.)\footnote{The 
+The \inlinecode{//} operation is division between two integers, which
+throws away the remainder.\footnote{The 
 \protect\textit{Collatz conjecture} is 
 that for any starting~$n$ this loop will 
 terminate; no one knows if it is true.}
-Note that ``not equal'' is \lstinline[style=inline]@!=@. 
 
 The \inlinecode{break} command gets you out of a loop right away.
 \begin{pythonconsole}
@@ -438,10 +418,14 @@ a
 \subsection{Functions}
 A \textit{function} is a group of statements that executes when it is called,
 and can return values to the caller.
-Here is a naive version of the quadratic formula.
+Here is a naive version of the quadratic formula.\footnote{%
+  One way that it is naive is that it doesn't handle complex roots gracefully.}
 \begin{pythonconsole}
 def quad_formula(a, b, c):
-    discriminant = (b**2 - 4*a*c)**(0.5)
+    """Find roots of a quadratic 
+      a, b, c  real numbers for ax^2 + bx + c
+    """
+    discriminant = (b**2 - 4*a*c)**(0.5)  # power 0.5 is square root
     r1=(-1*b+discriminant) / (2.0*a)
     r2=(-1*b-discriminant) / (2.0*a)
     return (r1, r2)
@@ -449,21 +433,9 @@ def quad_formula(a, b, c):
 quad_formula(1,0,-9)
 quad_formula(1,2,1)
 \end{pythonconsole}
-\noindent
-(One way that it is naive is that it doesn't handle complex roots gracefully.)
-% \begin{pythonconsole}[d,0,6]
-% def quad_formula(a, b, c):
-%     discriminant = (b**2 - 4*a*c)**(0.5)
-%     r1=(-1*b+discriminant) / (2.0*a)
-%     r2=(-1*b-discriminant) / (2.0*a)
-%     return (r1, r2)
-%
-% quad_formula(1,1,1)
-% \end{pythonconsole}
-
-Functions organize code into blocks. 
-These blocks of code may be 
-run a number of different times, or may belong together conceptually. 
+Functions group code into blocks that may be 
+run together a number of different times, 
+or that may belong together conceptually. 
 In a \python{} program most code is in functions. 
 
 At the end of the \inlinecode{def} line, in parentheses, are
@@ -486,6 +458,19 @@ if a function never executes a \inlinecode{return} then it will
 return the value \inlinecode{None}.
 They can also contain multiple \inlinecode{return} statements, for instance 
 one for an \inlinecode{if} branch and one for an \inlinecode{else}.
+
+Finally, about comments.
+The \inlinecode{quad_formula} function has two kinds of comments.
+After the \inlinecode{def} line is a triple-quoted string that
+first briefly describes
+what the function does and then lists its parameters both by type and meaning.
+Although \python{} does not require this, every one of your functions
+should have such a comment.
+Inside the code, inline 
+comments start with a hash mark, \inlinecode{\#}.
+\python{} programmers sometimes comment an entire line by starting 
+that line with a hash. 
+
 
 
 
@@ -584,7 +569,7 @@ A test program for Python.
 import datetime
  
 current = datetime.datetime.now()  # get a datetime object
-print "the month number is", current.month
+print("the month number is", current.month)
 \end{lstlisting}
 Run it through \python{} (for instance, from the command line
 run \inlinecode{python test.py}) and you should see
