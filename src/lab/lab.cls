@@ -472,78 +472,85 @@
 
 % Copied and modified from sagetex
 % Was:
+% \lstdefinelanguage{Sage}[]{Python}
+%   {morekeywords={False,sage,True},sensitive=true}
+% \lstdefinelanguage{SageOutput}[]{}
+%   {morekeywords={False,True},sensitive=true}
+% \lstdefinestyle{DefaultSageInputOutput}{
+%   backgroundcolor=\color{pythoncolor}
+%   nolol,
+%   identifierstyle=,
+%   name=sagecommandline,
+%   xleftmargin=5pt,
+%   numbersep=5pt,
+%   aboveskip=0pt,
+%   belowskip=0pt,
+%   breaklines=true,
+%   numberstyle=\footnotesize,
+%   numbers=right
+% }
+% \lstdefinestyle{DefaultSageInput}{
+%   language=Sage,
+%   style=DefaultSageInputOutput,
+%   basicstyle={\ttfamily\bfseries},
+%   commentstyle={\ttfamily\color{dgreencolor}},
+%   keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
+%   stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+% }
+% \lstdefinestyle{DefaultSageOutput}{
+%   language=SageOutput,
+%   style=DefaultSageInputOutput,
+%   basicstyle={\ttfamily},
+%   commentstyle={\ttfamily\color{dgreencolor}},
+%   keywordstyle={\ttfamily\color{dbluecolor}},
+%   stringstyle={\ttfamily\color{dgraycolor}},
+% }
+% \lstdefinestyle{SageInput}{
+%   style=DefaultSageInput,
+% }
+% \lstdefinestyle{SageOutput}{
+%   style=DefaultSageOutput,
+% }
 \lstdefinelanguage{Sage}[]{Python}
   {morekeywords={False,sage,True},sensitive=true}
 \lstdefinelanguage{SageOutput}[]{}
   {morekeywords={False,True},sensitive=true}
 \lstdefinestyle{DefaultSageInputOutput}{
-  backgroundcolor=\color{pythoncolor}
-  nolol,
-  identifierstyle=,
-  name=sagecommandline,
-  xleftmargin=5pt,
-  numbersep=5pt,
-  aboveskip=0pt,
-  belowskip=0pt,
-  breaklines=true,
-  numberstyle=\footnotesize,
-  numbers=right
-}
-\lstdefinestyle{DefaultSageInput}{
-  language=Sage,
-  style=DefaultSageInputOutput,
-  basicstyle={\ttfamily\bfseries},
-  commentstyle={\ttfamily\color{dgreencolor}},
-  keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
-  stringstyle={\ttfamily\color{dgraycolor}\bfseries},
-}
-\lstdefinestyle{DefaultSageOutput}{
-  language=SageOutput,
-  style=DefaultSageInputOutput,
-  basicstyle={\ttfamily},
-  commentstyle={\ttfamily\color{dgreencolor}},
-  keywordstyle={\ttfamily\color{dbluecolor}},
-  stringstyle={\ttfamily\color{dgraycolor}},
-}
-\lstdefinestyle{SageInput}{
-  style=DefaultSageInput,
-}
-\lstdefinestyle{SageOutput}{
-  style=DefaultSageOutput,
-}
-\lstdefinelanguage{Sage}[]{Python}
-  {morekeywords={False,sage,True},sensitive=true}
-\lstdefinelanguage{SageOutput}[]{}
-  {morekeywords={False,True},sensitive=true}
-\lstdefinestyle{DefaultSageInputOutput}{
+   % basicstyle=\listingsfont,
+   % columns=flexible,  % Stop the horrifying space adjustment
+   % breaklines=true,  % These two lines insert a hook when the line breaks
+   % postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
   numbers=none,
   lineskip=-2ex
 }
 \lstdefinestyle{DefaultSageInput}{
   language=Sage,
   style=DefaultSageInputOutput,
-  basicstyle={\ttfamily\bfseries},
-  commentstyle={\ttfamily\color{dgreencolor}},
-  keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
-  stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+  % basicstyle={\ttfamily\listingsfont},
+  % commentstyle={\ttfamily},
+  % keywordstyle={\ttfamily},
+  % stringstyle={\ttfamily},
 }
-\lstdefinestyle{DefaultSageOutput}{
+\lstdefinestyle{DefaultSageOutput}{basicstyle=\listingsfont,
+   columns=flexible,  % Stop the horrifying space adjustment
+   breaklines=true,  % These two lines insert a hook when the line breaks
+   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
   language=SageOutput,
   style=DefaultSageInputOutput,
-  basicstyle={\ttfamily},
-  commentstyle={\ttfamily\color{dgreencolor}},
-  keywordstyle={\ttfamily\color{dbluecolor}},
-  stringstyle={\ttfamily\color{dgraycolor}},
+  % basicstyle={\ttfamily},
+  % commentstyle={\ttfamily},
+  % keywordstyle={\ttfamily},
+  % stringstyle={\ttfamily},
 }
 \lstdefinestyle{SageInput}{
-  % style=DefaultSageInput,
+   style=DefaultSageInput,
    aboveskip=0ex,
    belowskip=0ex,
    numbers=none,
    lineskip=0ex,
 }
 \lstdefinestyle{SageOutput}{
-  % style=DefaultSageOutput,
+   style=DefaultSageOutput,
    aboveskip=0ex,
    belowskip=0ex,
    numbers=none,

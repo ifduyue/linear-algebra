@@ -366,30 +366,45 @@ for i in range(len(x)):
 
 \end{pythonconsole}
 \noindent
-A \python{} person who was not trying just to illustrate 
+A \python{} person who was not trying to illustrate 
 the command \pythoncmd{range}
 would instead write \inlinecode{for c in x:} since
 the \pythoncmd{for} loop can iterate over any sequence, not just
 a sequence of integers.
+Here is a simple text formatter that fills a line with words until
+it would exceed 40 characters, and then
+prints that line and starts a new one.
 \begin{pythonconsole}
 quote = """Victorious warriors win first and then go to war, 
 while defeated warriors go to war first and then seek to win. 
 --Sun Tzu"""
-line, current_line_length = [], 0
+line, line_length = [], 0
 for wd in quote.split():
-    if current_line_length+len(wd) > 40:
-        print((" ".join(line)) + "\n")
+    if line_length+len(wd) > 40:
+        print(" ".join(line))
+        line, line_length = [], 0
+    line_length = line_length + len(wd) + 1
     line.append(wd)
 
 if line:
-    print((" ".join(line)) + "\n")
+    print(" ".join(line))
+
 \end{pythonconsole}
+\python{} has lots of string functions; here,
+the \inlinecode{quote.split()} divides the string into separate words while
+\inlinecode{" ".join(line)} makes a string of the words in the list 
+\inlinecode{line} by putting spaces between them.
+The final \inlinecode{if line:} ejects what's left of the line
+when the text is finished.
 
 A \pythoncmd{for} loop is designed to execute a certain
 number of times.
-The natural way to write a loop that will run an uncertain number of times
-is \pythoncmd{while}.
-Note that ``not equal'' is \lstinline[style=inline]@!=@. 
+For a loop that will run an uncertain number of times
+you can use \pythoncmd{while}.\footnote{The 
+\protect\textit{Collatz conjecture} is 
+that this loop will 
+terminate for any starting~$n$.
+No one knows if the conjecture is true.}
 \begin{pythonconsole}
 n, i = 12, 0
 while (n != 1):
@@ -402,13 +417,11 @@ while (n != 1):
 
 \end{pythonconsole}
 \noindent
+Note that ``not equal'' is \inlinecode{!=}. 
 The \inlinecode{//} operation is division between two integers, which
-throws away the remainder.\footnote{The 
-\protect\textit{Collatz conjecture} is 
-that for any starting~$n$ this loop will 
-terminate; no one knows if it is true.}
+throws away the remainder.
 
-The \inlinecode{break} command gets you out of a loop right away.
+Get out of a loop right away with the \inlinecode{break} command.
 \begin{pythonconsole}
 for i in range(10):
     if (i == 3):
@@ -429,7 +442,7 @@ a
 
 
 \subsection{Functions}
-A \textit{function} is a group of statements that executes when it is called,
+A \textit{function} is a group of statements that executes when it is called
 and can return values to the caller.
 Here is a naive version of the quadratic formula.\footnote{%
   One way that it is naive is that it doesn't handle complex roots gracefully.}
@@ -453,18 +466,21 @@ In a \python{} program most code is in functions.
 
 At the end of the \inlinecode{def} line, in parentheses, are
 the function's \textit{parameters}. 
-These can take values 
-passed in by the caller.
-Functions can have \textit{optional parameters} that have a default value.
+These take the values 
+passed into the function by the caller.
+Functions can also have \textit{optional parameters} that have a default value.
 \begin{pythonconsole}
-def hello(name="Jim"):
+def salutation(name="Jim"):
+    """Print a greeting
+      name  string  Person's name
+    """
     print("Hello,", name)
 
-hello("Fred")
-hello()
+salutation("Fred")
+salutation()
 \end{pythonconsole}
 \noindent
-\Sage{} uses this aspect of \python{} heavily.
+\Sage{}  heavily uses this feature of \python{}.
 
 Functions always return something; 
 if a function never executes a \inlinecode{return} then it will
@@ -474,15 +490,16 @@ one for an \inlinecode{if} branch and one for an \inlinecode{else}.
 
 Finally, about comments.
 The \inlinecode{quad_formula} function has two kinds of comments.
-After the \inlinecode{def} line is a triple-quoted string that
+Inside the code, inline comments start with a hash mark, \inlinecode{\#}
+(\python{} programmers sometimes comment an entire line by starting 
+it with a hash). 
+The second kind is that
+after the \inlinecode{def} line is a triple-quoted string that
 first briefly describes
 what the function does and then lists its parameters both by type and meaning.
-Although \python{} does not require this, every one of your functions
-should have such a comment.
-Inside the code, inline 
-comments start with a hash mark, \inlinecode{\#}.
-\python{} programmers sometimes comment an entire line by starting 
-that line with a hash. 
+Although \python{} does not require this, in practice every function
+of more than two or three lines should have such a comment.
+
 
 
 
@@ -496,6 +513,8 @@ together data and actions (in this context the functions are called
 \textit{methods}).
 \begin{pythonconsole}
 class DatabaseRecord(object):
+    """Hold information about a person.
+    """
     def __init__(self, name, age):
         self.name = name
         self.age = age
@@ -511,22 +530,19 @@ b.salutation()
 \end{pythonconsole}
 \noindent
 This creates two \textit{instances} of the object 
-\inlinecode{DatabaseRecord}.
-The \inlinecode{class} code describes what these consist of.
-The above example uses the \textit{dot notation}:
-to get the age data for the instance \inlinecode{a}
+\inlinecode{DatabaseRecord} named \inlinecode{a} and~\inlinecode{b}.
+To get the age data for~\inlinecode{a}
 you write 
 \inlinecode{a.age}.
 (The \protect\inlinecode{self} variable 
 can  be puzzling.
-It is how a method refers to the instance it is part of.
 Suppose that at the prompt you type \inlinecode{a.name="James"}.
-Then you've used the name \inlinecode{a} 
-to refer to the instance so you can
+Then you've used the name~\inlinecode{a} 
+for the instance so that you can
 make the change.
 In contrast,
 inside the \inlinecode{class} description code there isn't any fixed instance. 
-The \inlinecode{self} gives you a way to, for example, 
+So \inlinecode{self} gives you a way to, for example, 
 get the \inlinecode{name} attribute
 of the current instance.)
 
@@ -574,18 +590,14 @@ Note the triple-quoted documentation string at the top of the file;
 include such documentation in everything that you write.
 \begin{lstlisting}[style=python]
 # test.py
-"""test
-
-A test program for Python. 
+"""A test program for Python. 
 """
-
 import datetime
- 
 current = datetime.datetime.now()  # get a datetime object
 print("the month number is", current.month)
 \end{lstlisting}
 Run it through \python{} (for instance, from the command line
-run \inlinecode{python test.py}) and you should see
+run \inlinecode{python3 test.py}) and you should see
 output like \inlinecode{the month number is 9}.
 
 Next is a small game. 
@@ -657,6 +669,9 @@ In \python{}, and also in \Sage, good practice is
 to always include documentation
 that is accessible with the \inlinecode{help} command.
 All of \Sage's built-in routines do this.
+
+
+
 
 
 %----------------------------------
