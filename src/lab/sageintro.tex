@@ -275,8 +275,8 @@ a[0]
 \end{pythonconsole}
 \noindent
 However a tuple is unlike a list 
-in that it is not \textit{mutable}\Dash it cannot change.
-\begin{pythonconsole}[d,0,1]
+in that it is not mutable, it cannot change.
+\begin{pythonconsole}
 a = ('fee', 'fie', 'foe', 'fum')
 a[0] = 'phooey'
 \end{pythonconsole}
@@ -292,12 +292,12 @@ d = {b: 'active'}
 d
 \end{pythonconsole}
 
-\python{} has a special value \inlinecode{None} for
+\python{} has a special value, \inlinecode{None}, for
 when there is no sensible value for a variable.
 For instance, if your program keeps track of a person's address and
-includes a variable \pythoncmd{apartment} then \inlinecode{None} is
+includes a variable \pythoncmd{apartment} then 
 the right value for that variable when the person does not live in an
-apartment.
+apartment is \inlinecode{None}.
 
 
 
@@ -371,6 +371,19 @@ the command \pythoncmd{range}
 would instead write \inlinecode{for c in x:} since
 the \pythoncmd{for} loop can iterate over any sequence, not just
 a sequence of integers.
+\begin{pythonconsole}
+quote = """Victorious warriors win first and then go to war, 
+while defeated warriors go to war first and then seek to win. 
+--Sun Tzu"""
+line, current_line_length = [], 0
+for wd in quote.split():
+    if current_line_length+len(wd) > 40:
+        print((" ".join(line)) + "\n")
+    line.append(wd)
+
+if line:
+    print((" ".join(line)) + "\n")
+\end{pythonconsole}
 
 A \pythoncmd{for} loop is designed to execute a certain
 number of times.
