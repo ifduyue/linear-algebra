@@ -9,7 +9,8 @@ with a simple style and powerful libraries.
 It is often used for scripting, as a glue to bring together separate parts.
 \Sage{} uses it in this way.
 
-Here you will see enough \python{} to get started.
+Here you will see enough \python{} to get started; this assumes you already
+know some programming.
 For a more comprehensive introduction, see \python's excellent tutorial,
 \cite{PythonTeam12b}.
 
@@ -222,7 +223,7 @@ a+b+c
 \noindent
 Get an element from a list by specifying its index, its place in the list,
 inside square brackets.
-Lists are zero-offset indexed, that is, the initial element of the
+Lists are zero-based indexed, that is, the initial element of the
 list is numbered~$0$.
 Count from the back by using negative indices.
 \begin{pythonconsole}
@@ -254,23 +255,9 @@ a = ['alpha', [True, x]]
 a
 \end{pythonconsole}
 
-The function \pythoncmd{range} returns a list of numbers.
-\begin{pythonconsole}
-range(10)
-range(1,10)
-\end{pythonconsole}
-\noindent
-By default \pythoncmd{range} starts at $0$, which
-fits with the fact that lists are zero-indexed.
-Observe also that $9$ is the highest number in the list
-given by \inlinecode{range(10)}.
-This is convenient because it makes \inlinecode{range(10)+range(10,20)} give 
-the same list as \inlinecode{range(20)}.
-
 A \textit{tuple} is like a list in that it is ordered.
 \begin{pythonconsole}
 a = ('fee', 'fie', 'foe', 'fum')
-a
 a[0]
 \end{pythonconsole}
 \noindent
@@ -281,9 +268,8 @@ a = ('fee', 'fie', 'foe', 'fum')
 a[0] = 'phooey'
 \end{pythonconsole}
 \noindent
-One reason this is useful is that because of it
-tuples can be keys in dictionaries while
-list cannot.
+One reason that non-mutability is useful is that 
+tuples can be keys in dictionaries while lists cannot be keys.
 \begin{pythonconsole}
 a = ['ke1az', 5418]
 b = ('ke1az', 5418)
@@ -293,17 +279,20 @@ d
 \end{pythonconsole}
 
 \python{} has a special value, \inlinecode{None}, for
-when there is no sensible value for a variable.
-For instance, if your program keeps track of a person's address and
-includes a variable \pythoncmd{apartment} then 
-the right value for that variable when the person does not live in an
-apartment is \inlinecode{None}.
+when a variable has no sensible value.
+Suppose that your program keeps track of a person's address and
+includes a variable \inlinecode{apartmentno}.  
+If a person does not live in an
+apartment then the right value for that variable is \inlinecode{None}.
 
 
 
 \subsection{Flow of control}
-\python{} supports the traditional ways of affecting the order of 
+\python{} supports the traditional ways of changing the order of 
 statement execution, with a twist.
+The twist is that while many languages use braces or some other syntax to
+mark a block of code, \python{} uses indentation.
+(Always indent with four spaces.)
 \begin{pythonconsole}
 x = 4
 if (x == 0):
@@ -314,19 +303,16 @@ else:
 y
 \end{pythonconsole}
 \noindent
-The twist is that while many languages use braces or some other syntax to
-mark a block of code, \python{} uses indentation.
-(Always indent with four spaces.)
-Here, \python{} executes the single-line block \inlinecode{y = 1} if $x$
+Here, \python{} executes \inlinecode{y = 1} if $x$
 equals $0$, otherwise \python{} sets $y$ to~$0$. 
 
-Notice also that double equals \inlinecode{==} means ``is equal to.'' 
-In contrast, we have already seen that single equals is the assignment
-operation so that \inlinecode{x = 4} 
+Notice that double equals, \inlinecode{==}, means ``is equal to.'' 
+In contrast, we have already seen that single equals is assignment,
+so that \inlinecode{x = 4} 
 means ``$x$ is assigned the value~$4$.'' 
 
-\python{} has two variants on the above \pythoncmd{if} statement.
-It could have only one branch
+\python{} has two variants on the \inlinecode{if} statement.
+It could have a single branch
 \begin{pythonconsole}
 x = 4
 y = 0
@@ -349,28 +335,44 @@ y
 \end{pythonconsole}
 
 Computers excel at iteration, looping through the same steps.
+A \inlinecode{for} loop often involves a \inlinecode{range}.
 \begin{pythonconsole}
-for i in range(5):
+for i in range(4):
     print(i, "squared is", i**2)
 
 \end{pythonconsole}
 \noindent
-A \pythoncmd{for} loop often involves a \pythoncmd{range}.
+By default the lowest number produced by \inlinecode{range} is $0$, which
+fits with the fact that list numbering is zero-based.
+But you can change the initial number by calling \inlinecode{range} 
+with two arguments.
+\begin{pythonconsole}
+for i in range(1, 4):
+    print(i, "cubed is", i**3)
+
+\end{pythonconsole}
+The highest number produced by \inlinecode{range} is one less than the 
+argument, so that the highest number
+given by \inlinecode{range(4)} or \inlinecode{range(1,4)} is $3$.
+This makes \inlinecode{range(4)+range(4,10)} give 
+the same list as \inlinecode{range(10)}.
+
+You can iterate over a list by working with element indices.
 \begin{pythonconsole}
 x = [4, 0, 3, 0]
 for i in range(len(x)):
     if (x[i] == 0):
-        print("item",i,"is zero")
+        print("item", i, "is zero")
     else:
-        print("item",i,"is nonzero")
+        print("item", i, "is nonzero")
 
 \end{pythonconsole}
 \noindent
-A \python{} person who was not trying to illustrate 
-the command \pythoncmd{range}
+However, an experienced  \python{} person who was not trying to illustrate 
+the \inlinecode{range} command
 would instead write \inlinecode{for c in x:} since
-the \pythoncmd{for} loop can iterate over any sequence, not just
-a sequence of integers.
+the \inlinecode{for} loop can iterate over any sequence, not just
+a list of numbers.
 Here is a simple text formatter that fills a line with words until
 it would exceed 40 characters, and then
 prints that line and starts a new one.
@@ -395,12 +397,12 @@ the \inlinecode{quote.split()} divides the string into separate words while
 \inlinecode{" ".join(line)} makes a string of the words in the list 
 \inlinecode{line} by putting spaces between them.
 The final \inlinecode{if line:} ejects what's left of the line
-when the text is finished.
+when the quote is finished.
 
-A \pythoncmd{for} loop is designed to execute a certain
+A \inlinecode{for} loop is designed to execute a certain
 number of times.
 For a loop that will run an uncertain number of times
-you can use \pythoncmd{while}.\footnote{The 
+you can use \inlinecode{while}.\footnote{The 
 \protect\textit{Collatz conjecture} is 
 that this loop will 
 terminate for any starting~$n$.
@@ -417,11 +419,11 @@ while (n != 1):
 
 \end{pythonconsole}
 \noindent
-Note that ``not equal'' is \inlinecode{!=}. 
+Note that  \inlinecode{!=} is `not equal'. 
 The \inlinecode{//} operation is division between two integers, which
 throws away the remainder.
 
-Get out of a loop right away with the \inlinecode{break} command.
+Exit from a loop immediately with the \inlinecode{break} command.
 \begin{pythonconsole}
 for i in range(10):
     if (i == 3):
@@ -442,27 +444,46 @@ a
 
 
 \subsection{Functions}
-A \textit{function} is a group of statements that executes when it is called
-and can return values to the caller.
-Here is a naive version of the quadratic formula.\footnote{%
+You can declare your own \textit{function} 
+as a group of statements that you can later call.
+Here is a naive version of the quadratic formula, which 
+inputs the coefficients in a quadratic expression and returns the 
+roots.\footnote{%
   One way that it is naive is that it doesn't handle complex roots gracefully.}
 \begin{pythonconsole}
 def quad_formula(a, b, c):
     """Find roots of a quadratic 
-      a, b, c  real numbers for ax^2 + bx + c
+      a, b, c  real numbers Coefficients as in ax^2 + bx + c
     """
     discriminant = (b**2 - 4*a*c)**(0.5)  # power 0.5 is square root
-    r1=(-1*b+discriminant) / (2.0*a)
-    r2=(-1*b-discriminant) / (2.0*a)
+    r1 = (-1*b+discriminant) / (2.0*a)
+    r2 = (-1*b-discriminant) / (2.0*a)
     return (r1, r2)
 
 quad_formula(1,0,-9)
 quad_formula(1,2,1)
 \end{pythonconsole}
-Functions group code into blocks that may be 
-run together a number of different times, 
-or that may belong together conceptually. 
-In a \python{} program most code is in functions. 
+Functions organize code into manageable parts.
+When you write in \python{}, most of what you write
+is inside of functions. 
+
+Functions always return something; 
+if a function never executes a \inlinecode{return} then it will
+return the value \inlinecode{None}.
+They can also contain multiple \inlinecode{return} statements, for instance 
+one for an \inlinecode{if} branch and one for an \inlinecode{else}.
+
+About comments:~the \inlinecode{quad_formula} function has two kinds of 
+comments.
+Inside the code, inline comments start with a hash mark, \inlinecode{\#}
+(you can comment an entire line by starting 
+it with a hash). 
+The second kind is that
+after the \inlinecode{def} line is a triple-quoted string that
+first briefly describes
+what the function does and then lists its parameters both by type and meaning.
+Although \python{} does not require this, in practice every function
+of more than two or three lines should have such a comment.
 
 At the end of the \inlinecode{def} line, in parentheses, are
 the function's \textit{parameters}. 
@@ -472,7 +493,7 @@ Functions can also have \textit{optional parameters} that have a default value.
 \begin{pythonconsole}
 def salutation(name="Jim"):
     """Print a greeting
-      name  string  Person's name
+      name  string Person's name
     """
     print("Hello,", name)
 
@@ -482,23 +503,6 @@ salutation()
 \noindent
 \Sage{}  heavily uses this feature of \python{}.
 
-Functions always return something; 
-if a function never executes a \inlinecode{return} then it will
-return the value \inlinecode{None}.
-They can also contain multiple \inlinecode{return} statements, for instance 
-one for an \inlinecode{if} branch and one for an \inlinecode{else}.
-
-Finally, about comments.
-The \inlinecode{quad_formula} function has two kinds of comments.
-Inside the code, inline comments start with a hash mark, \inlinecode{\#}
-(\python{} programmers sometimes comment an entire line by starting 
-it with a hash). 
-The second kind is that
-after the \inlinecode{def} line is a triple-quoted string that
-first briefly describes
-what the function does and then lists its parameters both by type and meaning.
-Although \python{} does not require this, in practice every function
-of more than two or three lines should have such a comment.
 
 
 

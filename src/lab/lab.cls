@@ -437,8 +437,8 @@
 \lstloadlanguages{TeX,bash,Python}
 \lstset{basicstyle=\listingsfont,
    columns=flexible,  % Stop the horrifying space adjustment
-   breaklines=true,  % These two lines insert a hook when the line breaks
-   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+   % breaklines=true,  % These two lines insert a hook when the line breaks
+   % postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
    % lineskip=10pt,
    % aboveskip=\medskipamount,
    % belowskip=\medskipamount,
@@ -534,7 +534,7 @@
 \lstdefinestyle{DefaultSageOutput}{basicstyle=\listingsfont,
    columns=flexible,  % Stop the horrifying space adjustment
    breaklines=true,  % These two lines insert a hook when the line breaks
-   postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+   % postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
   language=SageOutput,
   style=DefaultSageInputOutput,
   % basicstyle={\ttfamily},
