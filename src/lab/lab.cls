@@ -84,6 +84,10 @@
                           Scale=1]{ProggyClean.ttf}
 \newfontface\listingsinlinefont[Path=\FontDir,
                                 Scale=MatchLowercase]{ProggyClean.ttf}
+\newfontface\sagelistingsfont[Path=\FontDir,
+                          Scale=1]{ProggyCleanSage.ttf}
+\newfontface\sagelistingsinlinefont[Path=\FontDir,
+                                Scale=MatchLowercase]{ProggyCleanSage.ttf}
 
 \setmonofont[Scale=MatchLowercase]{Courier}  
 
@@ -435,7 +439,7 @@
   \@empty\z@\@empty
 \makeatother
 \lstloadlanguages{TeX,bash,Python}
-\lstset{basicstyle=\listingsfont,
+\lstset{basicstyle=\sagelistingsfont,
    columns=flexible,  % Stop the horrifying space adjustment
    % breaklines=true,  % These two lines insert a hook when the line breaks
    % postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
@@ -531,7 +535,7 @@
   % keywordstyle={\ttfamily},
   % stringstyle={\ttfamily},
 }
-\lstdefinestyle{DefaultSageOutput}{basicstyle=\listingsfont,
+\lstdefinestyle{DefaultSageOutput}{basicstyle=\sagelistingsfont,
    columns=flexible,  % Stop the horrifying space adjustment
    breaklines=true,  % These two lines insert a hook when the line breaks
    % postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
@@ -542,15 +546,19 @@
   % keywordstyle={\ttfamily},
   % stringstyle={\ttfamily},
 }
-\lstdefinestyle{SageInput}{
-   style=DefaultSageInput,
+\lstdefinestyle{SageInput}{basicstyle=\sagelistingsfont,
+   columns=flexible,  % Stop the horrifying space adjustment
+   breaklines=true,  % These two lines insert a hook when the line breaks
+   % style=DefaultSageInput,
    aboveskip=0ex,
    belowskip=0ex,
    numbers=none,
    lineskip=0ex,
 }
-\lstdefinestyle{SageOutput}{
-   style=DefaultSageOutput,
+\lstdefinestyle{SageOutput}{basicstyle=\sagelistingsfont,
+   columns=flexible,  % Stop the horrifying space adjustment
+   breaklines=true,  % These two lines insert a hook when the line breaks
+   % style=DefaultSageOutput,
    aboveskip=0ex,
    belowskip=0ex,
    numbers=none,
