@@ -3,13 +3,13 @@
 %%% mode: latex
 %%% TeX-engine: xetex
 %%% End: 
-\documentclass{lab}
+\documentclass[rerun=allways]{lab}
 
 \includeonly{% 
                cover,
                preface,
                sageintro,
-               % gauss,
+               gauss,
                spaces,
                matrices,
                maps,
@@ -35,7 +35,7 @@
 \mainmatter
 \pagestyle{followingpage}
 \include{sageintro}
-% \include{gauss}
+\include{gauss}
 \include{spaces}
 \include{matrices}
 \include{maps}

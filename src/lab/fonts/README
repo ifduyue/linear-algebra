@@ -1,10 +1,13 @@
 README for src/lab/fonts
 
 2019-Nov-04 JH  From Linear Algebra by Jim Hefferon
+     Nov-05 JH  Copied micto glyph to glyph for Greek mu
 
 The lab uses the programming font ProggyClean for code, from
 https://proggyfonts.net/.  The author is Tristan Grimmer and License.txt
 says I can restribute it.
 
 Sage lowers asterisks, so I modified it to a new font ProggyCleanSage,
-by moving the asterisk up 350 units.  No other changes.
+by moving the asterisk up 350 units.  I also copied the micro symbol at
+code point 00B5 to the code point 03BC, greek small letter mu, because
+Sage mistakenly uses the latter.

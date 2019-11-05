@@ -28,6 +28,10 @@
 \PassOptionsToClass{11pt}{book}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
+\DeclareOption{rerun}{%
+  \PassOptionsToPackage{rerun}{pythontex}%
+  }
+
 % --- Class structure: execution of options part
 % ---
 \ProcessOptions \relax
@@ -431,7 +435,7 @@
 \definecolor{latexrulecolor}{HTML}{E6E6E6}   
 \definecolor{rulecolor}{HTML}{3D2B22}   
 \definecolor{shellcolor}{HTML}{D1A298}  
-\RequirePackage{listings}
+\RequirePackage{listingsutf8}
 % make hyphens show up as hyphens; http://tex.stackexchange.com/a/33188
 \makeatletter
   \def\lst@filenamerpl{_\textunderscore $\textdollar} % keep emacs's coloring: $
@@ -446,6 +450,8 @@
    % lineskip=10pt,
    % aboveskip=\medskipamount,
    % belowskip=\medskipamount,
+   % inputencoding=utf8,
+   extendedchars=true,
    showstringspaces=false,
    xleftmargin=0pt,                      
    numberfirstline=true,           % first line gets numbered always
