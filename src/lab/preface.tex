@@ -3,67 +3,68 @@
 
 
 This collection supplements the text \nocite{Hefferon12}
-\textit{Linear Algebra}.\footnote{The home page of this text, 
+\textit{Linear Algebra}.\footnote{The home page of the text, 
 \protect\url{http://joshua.smcvt.edu/linearalgebra}, 
 has the PDF, the ancillary materials, and the \protect\LaTeX{} source.}
 It helps students
 solidify and extend their understanding of the subject, 
-using the mathematical software \Sage{}.\footnote{See 
-\url{http://www.sagemath.org} for the software and documentation.}
+using the mathematical software \Sage{}.% \footnote{See 
+% \url{http://www.sagemath.org} for the software and documentation.}
 
 A major goal of any undergraduate Mathematics program is to move students 
-toward a higher-level, more abstract, grasp of the subject.
-For instance, Calculus classes work on elaborate computations
-while later courses spend more effort on concepts and proofs, focusing
-less on the details of calculations.  
-The text \textit{Linear Algebra} fits into
-this development process.
+toward a higher-level grasp of the subject.
+At the start students take Calculus classes that play down 
+rigor in favor of practicing algorithms to get the answers, while
+later courses spend more effort on concepts and proofs.
+\textit{Linear Algebra} fits into this developmental process.
 It works to bring students to a deeper understanding, 
 but it does so by expecting
-that for them at this point a good bit of calculation helps the process. 
-Naturally it uses examples and practice problems
+that for them at this point a good bit of calculation helps that process
+by reinforcing the concepts. 
+Naturally it uses examples and homework problems
 that are small-sized and have manageable numbers:~an 
 assignment to by-hand multiply a pair of three by three matrices
-of small integers will build intuition, whereas asking students to do that same 
-question with twenty by twenty matrices
+of small integers will build intuition, whereas asking students to do that
+with twenty by twenty matrices
 of ten decimal place numbers would be badgering. 
 
-However, an instructor can worry that this misses a chance 
+However, an instructor can worry that this misses a chance
 to make the point that the subject is widely applied,
-or to develop students's understanding through explorations that are not 
+or to enhance students's understanding through explorations that are not 
 hindered by the limitations of paper and pencil. 
+
 Mathematical software can spread the reach of
 what is reasonable 
 to bigger systems, harder numbers, and longer computations.
-This manual's goal is to extends students's abilities in that way.
-One advantage of learning how to automate work and
+This manual extends what students can do in that way.
+Besides helping develop students's understanding of the concepts,
+an advantage of learning how to automate work and
 handle larger jobs is that 
-this is more like what a student must do when applying Linear 
-Algebra to other areas.
+this is more like what a student must do in applications.
 Another advantage is that students see new ideas such as 
 runtime growth measures.
 
 Well then, why 
 not teach straight from the computer?
 
-Our goal is to develop a higher-level understanding of the material. 
-So we keep the focus on vector spaces and linear maps.
+Our goal is to develop a higher-level understanding of the subject. 
+For that, we keep the focus on vector spaces and linear maps.
 The exposition here takes computation to be
 a tool to develop that understanding, not the main object.
 
-Some instructors will find that their students are best served by
-keeping a tight focus on the
-core material and leaving aside altogether 
-the work here. 
+Some instructors find that their students are best served by
+sticking to the
+core material.
 Other instructors
-have students who will benefit by using the software.
-Because this manual is a supplement, it allows 
-teachers to choose what suits their class.
+have students who will benefit from the kind of work that
+we do here.
+Because this manual is a supplement, it allows different 
+teachers to make different choices.
 
 
 \section{Why \Sage?}
 In 
-\textit{Open Source Mathematical Software\,} \citep{JoynerStein07}\footnote{The full text of this is at
+\textit{Open Source Mathematical Software\,} \citep{JoynerStein07}\footnote{The full text is at
 \protect\url{www.ams.org/notices/200710/tx071001279p.pdf}.}
 the authors argue that the best way forward for Mathematics 
 is to use software that is licensed correctly.
@@ -90,10 +91,10 @@ software on which Jane’s result builds.
 Professionals choose their tools by balancing many factors but
 this argument is persuasive.
 We use \Sage{} both because it is very capable 
-so students can 
+so that students can 
 learn a great deal from it,
 and because it is 
-Free\footnote{The Free Software Foundation page 
+Free\footnote{The page 
 \protect\url{www.gnu.org/philosophy/free-sw.html} 
 gives background and a definition.} 
 and Open.\footnote{See \protect\url{opensource.org/osd.html} 
@@ -112,7 +113,8 @@ My current contact information is on the same page.
 
 Also Free are the computer systems that we use to explore the subject,
 \python{} and \Sage{}.
-Probably your operating system provides these but if not then visit 
+Probably your operating system provides these but if not then 
+you can get them from  
 \href{http://www.python.org}{\url{www.python.org}}
 and 
 \href{https://www.sagemath.org}{\url{www.sagemath.org}}.
@@ -126,11 +128,11 @@ document \LaTeX{} grabs the interaction.\footnote{%
   With a couple of exceptions, because bugs.}
 So what you see should be exact,
 unless your software version is very different from mine.
-This is my \Sage
+This is my \Sage.
 \begin{sagecommandline}
 sage: version()  
 \end{sagecommandline}
-and this is my \python{}. 
+This is my \python{}. 
 \begin{pythonconsole}
 import sys
 print(sys.version)
@@ -145,7 +147,7 @@ it doesn't define the terms or prove the results.
 A student should work through the material here after covering the associated
 chapter in the book, using that for reference.
 
-The association between chapters here and chapters in the book is:
+The association between chapters here and chapters in the text is:
 \textit{Python and Sage} does not depend on the
 book,
 \textit{Gauss’s Method} works with Chapter One,
@@ -156,7 +158,7 @@ book,
 \textit{Geometry of Linear Maps} goes best with Chapter Four,
 and \textit{Eigenvalues} fits with Chapter Five
 (it mentions Jordan Form but only relies on the material up to 
-Diagonalization.)
+diagonalization.)
 
 An instructor may want to make up Jupyter notebooks for the chapters here
 since they do not have stand-alone exercises.
@@ -172,7 +174,7 @@ without \citep{SageTeam12ref} this work would not have happened.
 I am glad also for the chance to mention 
 \citep{Beezer11} as an inspiration.
 Finally, I am grateful to Saint Michael's College for the 
-release time to write this document.
+time to write this document.
 
 
 

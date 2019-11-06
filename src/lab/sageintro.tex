@@ -12,7 +12,7 @@ It is often used for scripting, as a glue to bring together separate parts.
 Here you will see enough \python{} to get started; this assumes you already
 know some programming.
 For a more comprehensive introduction, see \python's excellent tutorial,
-\cite{PythonTeam12b}.
+\cite{PythonTeam19b}.
 
 
 
@@ -26,12 +26,14 @@ characters.
 \begin{lstlisting}[style=python]
 >>>   
 \end{lstlisting}
+This is the \python{} interpreter.
 If you type 
 \python{} code and \keyboardkey{Enter} then the system
 will read your code, evaluate it, and print the result.
 We will see below how to write and run whole programs
-but for now we will experiment using this interpreter.
-When you are done, leave this prompt with \textit{\keyboardkey{Ctrl}-D}.
+but for now we will experiment in the interpreter.
+When you are done, you can 
+leave this prompt with \textit{\keyboardkey{Ctrl}-D}.
 
 Try entering these expressions (double star is exponentiation).
 You'll get the results shown.
@@ -42,7 +44,13 @@ You'll get the results shown.
 \end{pythonconsole}
 
 Part of \python's appeal is that simple things tends to be simple to do.
-Here is how you print something to the screen.
+Here is how you print something to the screen.\footnote{%
+  \protect\python{} comes in two versions.
+  Version~3 is what we use.
+  Version~2 is quite old but you may still see it, for example if
+  you look in a search engine for code.
+  One difference between the two is that in version~2 the
+  print statement did not have parentheses.}
 \begin{pythonconsole}
 print(1, "plus", 2, "equals", 3)
 \end{pythonconsole}
@@ -61,10 +69,10 @@ In some programming languages you must declare the `type' of a variable
 before you use it; for instance above you would have to declare 
 that \inlinecode{i} is an integer before you could set \inlinecode{i=1}.
 In contrast, \python{} deduces the type 
-based on what you do to it\Dash above we assigned $1$ to \inlinecode{i} 
-so \python{} figured that it must be an integer.
+based on what you do to it\Dash above we assigned $1$ to it
+so \python{} figured that \inlinecode{i} must be a place to put an integer.
 If we change how we use a variable then \python{} will 
-rethink; here we change what is kept in $x$ from an integer to a string.
+refigure; here we change what is kept in $x$ from an integer to a string.
 \begin{pythonconsole}
 x = 1
 x
@@ -84,31 +92,31 @@ those values to the variables on the left.
 We will often use this construct.
 
 If you do something not allowed then 
-\python{} complains by \textit{raising an exception} and giving an error 
+\python{} complains, signaling its unhappiness by 
+raising an exception and giving an error 
 message.
 \begin{pythonconsole}
 'a'+1
 \end{pythonconsole}
-\noindent In an error message, often the bottom line is the most useful.
+% \noindent In an error message, often the bottom line is the most useful.
 
-As in the listing above, we can get real 
-numbers 
-and even complex numbers.\footnote{Of course these aren't actual 
+Besides integers, we can get real numbers 
+and even complex numbers.\footnote{Obviously these aren't actual 
 real numbers; instead they are floating points, a system 
 built into your computer's hardware that
 models the reals.
-In the prior example the distinction leaks through
-since its bottom line ends in $000000000005$, marking where
-the computer's binary approximation does not perfectly match
-the real that you expect.
-Similarly \protect\python's integers aren't the integers that you studied
-in grade school since there is a largest one (give \python{} the 
+In the example the distinction leaks through
+since the decimal for $1/3$ is not perfectly accurate.
+For that matter, \protect\python's integers aren't the integers that you studied
+in grade school since there is a largest one (try giving \python{} the 
 command \protect\inlinecode{import sys} followed by 
 \protect\inlinecode{sys.maxint}). 
-However, while the issue of representation is fascinating\protect\Dash
-see \protect\cite{PythonTeam12a} and \protect\cite{Goldberg91}\protect\Dash
-we shall ignore it and just call them integers and reals.}
+While all of this stuff is fascinating\protect\Dash
+see \protect\cite{PythonTeam19a} and \protect\cite{Goldberg91}\protect\Dash
+we shall ignore the issue of representation and just call these 
+integers, reals, and complex numbers.}
 \begin{pythonconsole}
+1/3
 5.774 * 3
 (3+2j) - (1-4j)
 \end{pythonconsole}
@@ -155,7 +163,10 @@ or \inlinecode{False}, not
 \inlinecode{true}
 or \inlinecode{false}.
  
-Above we saw a string consisting of text between single quotes.
+Above we saw a couple of strings consisting of text between single quotes
+(actually they were just had a single character, \inlinecode{a},
+but \python{} doesn't worry about the difference between a length one
+string and a character).
 You can use either single quotes or double quotes, as long as you use
 the same at both ends of the string. 
 Here \inlinecode{x} and \inlinecode{y}
@@ -165,13 +176,15 @@ x = "I'm Popeye the sailor man"
 y = "I yam what I yam and that's all what I yam"
 x + ', ' + y
 \end{pythonconsole}
-\noindent The final line shows that you concatenate strings with 
-\inlinecode{+}.
+\noindent The last of those three shows that you concatenate strings with 
+\inlinecode{+}. 
+% and also shows that you can mix single-quote strings
+%with double-quoted ones.
 
 To get a newline you can use use slash-\textit{n}, \inlinecode{\\n}, 
 inside a double-quoted string.
-Or, 
-you can put explicite line breaks inside a string marked by triple quotes.
+If you need a lot of newlines, 
+you can put explicit line breaks inside a string marked by triple quotes.
 \begin{pythonconsole}
 a = """THE ROAD TO WISDOM
  
@@ -201,7 +214,7 @@ english_words = {'one': 1, 'two': 2, 'three': 3}
 english_words['one']
 english_words['four'] = 4  
 english_words
-english_words['one'] = 5
+english_words['one'] = 3
 english_words
 \end{pythonconsole}
 \noindent 

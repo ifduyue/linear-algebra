@@ -134,7 +134,7 @@
 \usepackage[square,colon]{natbib}
 % Change the look of footnotes
 \usepackage[perpage,para]{footmisc}
-\footglue=0.7em plus.3em minus.2em\relax % gap between footnotes 
+\footglue=0.5em plus.2em minus.1em\relax % gap between footnotes 
 % Change horiz room between fn mark and fn hskip (was .5em) 
 \makeatletter
 \long\def\@makefntext#1{\leavevmode
