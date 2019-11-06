@@ -134,11 +134,12 @@
 \usepackage[square,colon]{natbib}
 % Change the look of footnotes
 \usepackage[perpage,para]{footmisc}
-% Change horiz room between fn mark and fn hskip from .5em 
+\footglue=0.7em plus.3em minus.2em\relax % gap between footnotes 
+% Change horiz room between fn mark and fn hskip (was .5em) 
 \makeatletter
 \long\def\@makefntext#1{\leavevmode
 \@makefnmark\nobreak
-\hskip.05em\relax#1%
+\hspace{0.05em plus 0.01em}\relax#1%
 }
 
 
@@ -435,7 +436,7 @@
 \definecolor{latexrulecolor}{HTML}{E6E6E6}   
 \definecolor{rulecolor}{HTML}{3D2B22}   
 \definecolor{shellcolor}{HTML}{D1A298}  
-\RequirePackage{listingsutf8}
+\RequirePackage{listings}
 % make hyphens show up as hyphens; http://tex.stackexchange.com/a/33188
 \makeatletter
   \def\lst@filenamerpl{_\textunderscore $\textdollar} % keep emacs's coloring: $
@@ -451,7 +452,8 @@
    % aboveskip=\medskipamount,
    % belowskip=\medskipamount,
    % inputencoding=utf8,
-   extendedchars=true,
+   % extendedchars=true,
+   % literate={µ}{{${\mu}$}}1 {μ}{{${\mu}$}}1,  % convert the utf to the latex; enter unicode with <Ctl>-x 8<ret> followed by code point number in hex
    showstringspaces=false,
    xleftmargin=0pt,                      
    numberfirstline=true,           % first line gets numbered always
