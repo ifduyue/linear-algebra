@@ -1,7 +1,5 @@
 \chapter{\python{} and \Sage{}}
 
-% To do the Linear Algebra in this manual
-% you must know how to run \Sage. 
 \Sage{} is based on the computer language \python{} so we'll start with that.
 \python{} is a popular language\footnote{Written by a fan of
 Monty Python.} 
@@ -163,10 +161,10 @@ or \inlinecode{False}, not
 \inlinecode{true}
 or \inlinecode{false}.
  
-Above we saw a couple of strings consisting of text between single quotes
-(actually they were just had a single character, \inlinecode{a},
+Above we saw a couple of strings consisting of text between single quotes.
+(They were just had a single character, \inlinecode{a},
 but \python{} doesn't worry about the difference between a length one
-string and a character).
+string and a character.)
 You can use either single quotes or double quotes, as long as you use
 the same at both ends of the string. 
 Here \inlinecode{x} and \inlinecode{y}
@@ -176,8 +174,8 @@ x = "I'm Popeye the sailor man"
 y = "I yam what I yam and that's all what I yam"
 x + ', ' + y
 \end{pythonconsole}
-\noindent The last of those three shows that you concatenate strings with 
-\inlinecode{+}. 
+\noindent The last of those three shows that the \inlinecode{+} operator 
+concatenates strings. 
 % and also shows that you can mix single-quote strings
 %with double-quoted ones.
 
@@ -199,10 +197,10 @@ and less
 and less. --Piet Hein"""
 \end{pythonconsole}
 \noindent 
-The three dots at the start of lines after the first
+The three dots that start the lines after the first
 is \python's
-read-eval-print telling you that what you have typed is not complete,
-that you've started a string but not finished it.
+interpreter prompting you that what you have typed is not complete,
+that you've started a string but not yet finished it.
 
 A \python{} \textit{dictionary} is a finite function.
 That is, it is a finite
@@ -214,7 +212,7 @@ english_words = {'one': 1, 'two': 2, 'three': 3}
 english_words['one']
 english_words['four'] = 4  
 english_words
-english_words['one'] = 3
+english_words['two'] = -1
 english_words
 \end{pythonconsole}
 \noindent 
@@ -223,15 +221,14 @@ in a dictionary is very fast, due to the way that they are
 organized internally.
 But because of that internal organization,
 if you ask to see a dictionary then \python{} may show its pairs in 
-some jumbled-up order.
+a jumbled-up order.
 
 While dictionaries are unordered, a \textit{list} is ordered.
 \begin{pythonconsole}
 a = ['alpha', 'beta', 'gamma']
 b = []
 c = ['delta']
-a
-a+b+c
+a, b, c
 \end{pythonconsole}
 \noindent
 Get an element from a list by specifying its index, its place in the list,
@@ -242,8 +239,17 @@ Count from the back by using negative indices.
 \begin{pythonconsole}
 a = ['alpha', 'beta', 'gamma']
 a[0]
+a[0] = 'Alpha'
+a[0]
 a[1]
 a[-1]
+\end{pythonconsole}
+\noindent
+Lists can contain anything, including other lists.
+\begin{pythonconsole}
+x = 4
+a = ['alpha', [True, x]]
+a
 \end{pythonconsole}
 \noindent
 Specifying two indices separated by a colon gets a \textit{slice} 
@@ -254,18 +260,13 @@ a[1:3]
 a[1:2]
 \end{pythonconsole}
 \noindent
-You can add to a list.
+You can lengthen a list.
 \begin{pythonconsole}
 c = ['delta']
 c.append('epsilon')
 c
-\end{pythonconsole}
-\noindent
-Lists can contain anything, including other lists.
-\begin{pythonconsole}
-x = 4
-a = ['alpha', [True, x]]
-a
+a = ['alpha', 'beta', 'gamma']
+a+c
 \end{pythonconsole}
 
 A \textit{tuple} is like a list in that it is ordered.
@@ -291,12 +292,12 @@ d = {b: 'active'}
 d
 \end{pythonconsole}
 
-\python{} has a special value, \inlinecode{None}, for
-when a variable has no sensible value.
-Suppose that your program keeps track of a person's address and
-includes a variable \inlinecode{apartmentno}.  
-If a person does not live in an
-apartment then the right value for that variable is \inlinecode{None}.
+\python{} has a special value, \inlinecode{None}, that
+means something has no sensible value.
+For instance, if your program keeps track of a person's address and
+includes a variable \inlinecode{apartmentno} then   
+for a person who does not live in an
+apartment you should say \inlinecode{apartmentno = None}.
 
 
 
@@ -309,45 +310,45 @@ mark a block of code, \python{} uses indentation.
 \begin{pythonconsole}
 x = 4
 if (x == 0):
-    y = 1
+    delta = 1
 else:
-    y = 0
+    delta = 0
 
-y
+delta
 \end{pythonconsole}
 \noindent
-Here, \python{} executes \inlinecode{y = 1} if $x$
-equals $0$, otherwise \python{} sets $y$ to~$0$. 
+Here, \python{} sets \inlinecode{delta} to  $1$ if $x$
+equals $0$, otherwise \python{} sets $delta$ to~$0$. 
 
-Notice that double equals, \inlinecode{==}, means ``is equal to.'' 
-In contrast, we have already seen that single equals is assignment,
-so that \inlinecode{x = 4} 
-means ``$x$ is assigned the value~$4$.'' 
+Notice that after \inlinecode{delta = 0} you must enter one more line, 
+a blank line, so \python{} knows there is nothing more in that block.
+Notice also that double equals, \inlinecode{==}, means ``is equal to.'' 
+We cannot use just a single equals because, as we have already seen, 
+\inlinecode{x = 0} 
+means ``$x$ is assigned the value~$0$.'' 
 
-\python{} has two variants on the \inlinecode{if} statement.
+\python{} has two more variants on the \inlinecode{if} statement.
 It could have a single branch
 \begin{pythonconsole}
-x = 4
-y = 0
+x = 0
 if (x == 0):
-    y = 1
+    print("Division by x not allowed.")
 
-y
 \end{pythonconsole}
 or it could have more than two branches.
 \begin{pythonconsole}
 x = 2
 if (x == 0):
-    y = 1
-elif (x == 1):
-    y = 0
+    sgn = 0
+elif (x > 0):
+    sgn = 1
 else:
-    y = -1
+    sgn = -1
 
-y
+sgn
 \end{pythonconsole}
 
-Computers excel at iteration, looping through the same steps.
+Computers excel at iteration, at looping through a sequence of statements.
 A \inlinecode{for} loop often involves a \inlinecode{range}.
 \begin{pythonconsole}
 for i in range(4):
@@ -367,7 +368,7 @@ for i in range(1, 4):
 The highest number produced by \inlinecode{range} is one less than the 
 argument, so that the highest number
 given by \inlinecode{range(4)} or \inlinecode{range(1,4)} is $3$.
-This makes \inlinecode{range(4)+range(4,10)} give 
+This is convenient because it makes \inlinecode{range(4)+range(4,10)} give 
 the same list as \inlinecode{range(10)}.
 
 You can iterate over a list by working with element indices.
@@ -383,7 +384,8 @@ for i in range(len(x)):
 \noindent
 However, an experienced  \python{} person who was not trying to illustrate 
 the \inlinecode{range} command
-would instead write \inlinecode{for c in x:} since
+would replace \inlinecode{for i in range(len(x))}
+with \inlinecode{for c in x} because
 the \inlinecode{for} loop can iterate over any sequence, not just
 a list of numbers.
 Here is a simple text formatter that fills a line with words until
