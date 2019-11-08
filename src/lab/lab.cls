@@ -608,7 +608,7 @@
 \newcommand{\Sagecmd}[1]{\texttt{#1}}
 \newcommand{\python}{Python}
 \newcommand{\pythoncmd}[1]{\texttt{#1}}
-\newcommand{\inlinecode}[1]{\hspace{0.1em}\lstinline[style=inline]!#1!\hspace{0.1em}}
+\newcommand{\inlinecode}[1]{\hspace{0.1em}\lstinline[style=inline]~#1~\hspace{0.1em}} % use ~ because don't use it in any inline code
 
 \newcommand{\noterightmult}{Recall that 
 \protect\Sage{} prefers to do matrix-vector 

@@ -434,7 +434,7 @@ while (n != 1):
 
 \end{pythonconsole}
 \noindent
-Note that  \inlinecode{!=} is `not equal'. 
+Note that \inlinecode{!=} is `not equal'. 
 The \inlinecode{//} operation is division between two integers, which
 throws away the remainder.
 
@@ -447,9 +447,9 @@ for i in range(10):
 
 \end{pythonconsole}
 
-A common loop construct is to run through a list
-performing an action on each entry.
-\python{} has a shortcut, \textit{list comprehension}.
+A common loop construct is to perform some action
+on each list element.
+\python{} has a shortcut for this, \textit{list comprehension}.
 \begin{pythonconsole}
 a = [2**i for i in range(4)]
 a
@@ -459,8 +459,9 @@ a
 
 
 \subsection{Functions}
-You can declare your own \textit{function} 
-as a group of statements that you can later call.
+You are not limited to the functions that \python{}
+provides.  
+You can define your own.
 Here is a naive version of the quadratic formula, which 
 inputs the coefficients in a quadratic expression and returns the 
 roots.\footnote{%
@@ -468,18 +469,17 @@ roots.\footnote{%
 \begin{pythonconsole}
 def quad_formula(a, b, c):
     """Find roots of a quadratic 
-      a, b, c  real numbers Coefficients as in ax^2 + bx + c
+      a, b, c  real numbers Coefficients, as in ax^2 + bx + c
     """
     discriminant = (b**2 - 4*a*c)**(0.5)  # power 0.5 is square root
-    r1 = (-1*b+discriminant) / (2.0*a)
-    r2 = (-1*b-discriminant) / (2.0*a)
+    r1 = (-1*b-discriminant) / (2.0*a)
+    r2 = (-1*b+discriminant) / (2.0*a)
     return (r1, r2)
 
-quad_formula(1,0,-9)
+quad_formula(1,-6,5)
 quad_formula(1,2,1)
 \end{pythonconsole}
-Functions organize code into manageable parts.
-When you write in \python{}, most of what you write
+When you write programs in \python{}, most of what you write
 is inside of functions. 
 
 Functions always return something; 
@@ -491,29 +491,29 @@ one for an \inlinecode{if} branch and one for an \inlinecode{else}.
 About comments:~the \inlinecode{quad_formula} function has two kinds of 
 comments.
 Inside the code, inline comments start with a hash mark, \inlinecode{\#}
-(you can comment an entire line by starting 
-it with a hash). 
+(programmers often write comments that take up an entire line, by starting 
+that line with a hash). 
 The second kind is that
 after the \inlinecode{def} line is a triple-quoted string that
-first briefly describes
-what the function does and then lists its parameters both by type and meaning.
-Although \python{} does not require this, in practice every function
-of more than two or three lines should have such a comment.
+briefly describes
+what the function does and lists its parameters.
+% Although \python{} does not require this, in practice every function
+% of more than two or three lines should have such a comment.
 
 At the end of the \inlinecode{def} line, in parentheses, are
-the function's \textit{parameters}. 
+the function's parameters. 
 These take the values 
 passed into the function by the caller.
-Functions can also have \textit{optional parameters} that have a default value.
+Functions can also have optional parameters that have a default value.
 \begin{pythonconsole}
-def salutation(name="Jim"):
-    """Print a greeting
-      name  string Person's name
+def greet(name="sir or madam"):
+    """Say hello.
+      name  string  Person's name
     """
-    print("Hello,", name)
+    print("Hello", name+".")
 
-salutation("Fred")
-salutation()
+greet("Fred")
+greet()
 \end{pythonconsole}
 \noindent
 \Sage{}  heavily uses this feature of \python{}.
@@ -525,11 +525,12 @@ salutation()
 
 
 \subsection{Objects and modules}
-In Mathematics, the real numbers is a set associated with some operations
-such as addition and multiplication.
+In Mathematics, a structure is a set of things that have associated operations.
+For example, a vector space is a set with the operations
+of addition and scalar multiplication.
 \python{} is \textit{object-oriented}, which means that we can similarly bundle
-together data and actions (in this context the functions are called 
-\textit{methods}).
+together data and actions (in this context the actions, the functions, 
+are called methods).
 \begin{pythonconsole}
 class DatabaseRecord(object):
     """Hold information about a person.
@@ -540,36 +541,38 @@ class DatabaseRecord(object):
     def salutation(self):
         print("Dear", self.name)
 
-a = DatabaseRecord("Jim", 53)
+a = DatabaseRecord("Jim", 61)
 a.name
 a.age
 a.salutation()
-b = DatabaseRecord("Fred",109)
+b = DatabaseRecord("Fred", 16)
 b.salutation()
 \end{pythonconsole}
 \noindent
-This creates two \textit{instances} of the object 
-\inlinecode{DatabaseRecord} named \inlinecode{a} and~\inlinecode{b}.
-To get the age data for~\inlinecode{a}
+This creates two instances of 
+\inlinecode{DatabaseRecord}, named \inlinecode{a} and~\inlinecode{b}.
+To get the age data for instance~\inlinecode{a}
 you write 
 \inlinecode{a.age}.
 (The \protect\inlinecode{self} variable 
 can  be puzzling.
 Suppose that at the prompt you type \inlinecode{a.name="James"}.
 Then you've used the name~\inlinecode{a} 
-for the instance so that you can
+for the instance so that the computer knows where to
 make the change.
 In contrast,
 inside the \inlinecode{class} description code there isn't any fixed instance. 
-So \inlinecode{self} gives you a way to, for example, 
-get the \inlinecode{name} attribute
-of the current instance.)
+So \inlinecode{self} gives you a way to refer to the current instance. 
+For example, if you are working with the instance \inlinecode{a} then 
+in the \inlinecode{salutation} the \inlinecode{self.name} refers
+to \inlinecode{a.name}.)
 
 You won't be writing your own classes here 
 but you will be using ones from
 the libraries of code that others have written, including the
 code for \Sage, so you must know how to use the classes of others. 
-For instance, \python{} has a library, or \textit{module}, for math.
+For instance, for mathematics \python{} has a library, 
+sometimes called a module.
 \begin{pythonconsole}
 import math
 math.pi
@@ -580,44 +583,45 @@ math.cos(math.pi)
 The \inlinecode{import} statement gets the module and makes
 its contents available.
 
-% Another library is for random numbers.
-% \begin{pythonconsole}
-% import random
-% while (random.randint(1,10) != 1):
-%     print("wrong")
+Another library is for random numbers.
+\begin{pythonconsole}
+import random
+print(random.randint(1,10))
 
-% \end{pythonconsole}
+\end{pythonconsole}
 
 
 
 \subsection{Programs}
 The read-eval-print loop is great for small experiments but
-for more than four or five lines you 
+for code with more than a few lines, or code that you want to
+keep, you 
 want to put your work in a separate file and run it as a standalone program.
 
-To write the code, use a text editor (one example is 
-\texttt{Emacs}).\footnote{It may come with your operating system or 
-see \protect\url{http://www.gnu.org/software/emacs}.}
-Use an editor with support for \python{} such as
-automatic indentation, and  
+To write the code, use a text editor.
+Use one with support for \python{}, including
+automatic indentation and  
 syntax highlighting, where the editor colors your code to make it easier to
 read.
+One good example is \texttt{Emacs}.\footnote{%
+  It may come with your operating system or 
+  see \protect\url{http://www.gnu.org/software/emacs}.}
+
 
 Here is a first example of a \python{} program.
 Start your editor, open a file called \path{test.py}, and enter these lines.
-Note the triple-quoted documentation string at the top of the file; 
-include such documentation in everything that you write.
+(Note the triple-quoted documentation string at the top of the file.)
 \begin{lstlisting}[style=python]
 # test.py
-"""A test program for Python. 
+"""A first Python program. 
 """
 import datetime
 current = datetime.datetime.now()  # get a datetime object
-print("the month number is", current.month)
+print("The month number is", current.month)
 \end{lstlisting}
 Run it through \python{} (for instance, from the command line
 run \inlinecode{python3 test.py}) and you should see
-output like \inlinecode{the month number is 9}.
+output like \inlinecode{The month number is 9}.
 
 Next is a small game. 
 (It uses the \python{} function \inlinecode{raw_input} that prompts the user
