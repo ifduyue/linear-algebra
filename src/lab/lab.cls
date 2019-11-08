@@ -469,7 +469,7 @@
    rulecolor=\color{rulecolor},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
    tabsize=2,                      % sets default tabsize to 2 spaces
 }
-\lstdefinestyle{inline}{basicstyle=\listingsinlinefont,texcl=true}
+\lstdefinestyle{inline}{basicstyle=\sagelistingsinlinefont,texcl=true}
 \lstdefinestyle{shell}{backgroundcolor=\color{shellcolor}}
 \lstdefinestyle{python}{backgroundcolor=\color{pythoncolor},
   language=Python,

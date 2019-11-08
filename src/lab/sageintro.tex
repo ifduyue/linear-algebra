@@ -528,7 +528,7 @@ greet()
 In Mathematics, a structure is a set of things that have associated operations.
 For example, a vector space is a set with the operations
 of addition and scalar multiplication.
-\python{} is \textit{object-oriented}, which means that we can similarly bundle
+\python{} is object-oriented, which means that we can similarly bundle
 together data and actions (in this context the actions, the functions, 
 are called methods).
 \begin{pythonconsole}
@@ -550,7 +550,8 @@ b.salutation()
 \end{pythonconsole}
 \noindent
 This creates two instances of 
-\inlinecode{DatabaseRecord}, named \inlinecode{a} and~\inlinecode{b}.
+\inlinecode{DatabaseRecord}, instance \inlinecode{a} and
+instance~\inlinecode{b}.
 To get the age data for instance~\inlinecode{a}
 you write 
 \inlinecode{a.age}.
@@ -599,14 +600,16 @@ keep, you
 want to put your work in a separate file and run it as a standalone program.
 
 To write the code, use a text editor.
+Don't use a word processor; instead an editor has the right features for 
+writing programs and will output your work in a form suitable for
+input to \python .
 Use one with support for \python{}, including
 automatic indentation and  
 syntax highlighting, where the editor colors your code to make it easier to
 read.
-One good example is \texttt{Emacs}.\footnote{%
+There are many excellent editors; one is Emacs.\footnote{%
   It may come with your operating system or 
   see \protect\url{http://www.gnu.org/software/emacs}.}
-
 
 Here is a first example of a \python{} program.
 Start your editor, open a file called \path{test.py}, and enter these lines.
@@ -619,79 +622,63 @@ import datetime
 current = datetime.datetime.now()  # get a datetime object
 print("The month number is", current.month)
 \end{lstlisting}
-Run it through \python{} (for instance, from the command line
-run \inlinecode{python3 test.py}) and you should see
+Run it through \python{},
+One way is to open a command line terminal,
+change to the directory containing \inlinecode{test.py},  
+type \inlinecode{python3 test.py}, and hit \keyboardkey{Enter}. 
+You should see
 output like \inlinecode{The month number is 9}.
 
 Next is a small game. 
-(It uses the \python{} function \inlinecode{raw_input} that prompts the user
+(It uses the \python{} function \inlinecode{input} that prompts the user
 and then collects their response.).
-\begin{lstlisting}[style=python]
-# guessing_game.py
-"""guessing_game
-
-A toy game for demonstration.
-"""
-import random
-CHOICE = random.randint(1,10)
-
-def test_guess(guess):
-    """Decide if the guess is correct and print a message.
-    """
-    if (guess < CHOICE):
-        print("  Sorry, your guess is too low")
-        return False
-    elif (guess > CHOICE):
-        print("  Sorry, your guess is too high")
-        return False
-    print("  You are right!")
-    return True
-
-flag = False
-while (not flag):
-    guess = int(raw_input("Guess an integer between 1 and 10: "))
-    flag = test_guess(guess)
-\end{lstlisting}
-Here is the output resulting from running this game once at the command line.
+\lstinputlisting{python/guessing_game.py}
+Here is output from running this game.
 \begin{lstlisting}
-$ python guessing_game.py
-Guess an integer between 1 and 10: 5
+$ python3 guessing_game.py
+Guess an integer between 1 and 10: 3
   Sorry, your guess is too low
 Guess an integer between 1 and 10: 8
   Sorry, your guess is too high
-Guess an integer between 1 and 10: 6
-  Sorry, your guess is too low
-Guess an integer between 1 and 10: 7
+Guess an integer between 1 and 10: 5
   You are right!
 \end{lstlisting}  % $
 
 As earlier, note the triple-quoted documentation strings both for the 
 file as a whole and for the function.
-They provide information on how to use the \path{guessing_game.py}
-program as a whole,
-and how to use the function inside the program. 
+Besides being useful to a programmer editing the file, 
+they integrate with \python's help system. 
 Go to the directory containing \path{guessing_game.py} and start 
-the \python{} read-eval-print loop.
+the \python{} interpreter.
 At the \inlinecode{>>>} prompt enter \inlinecode{import guessing_game}.
 You will play through a round of the game (there is a way to avoid this
 but it doesn't matter here).
-You are using \inlinecode{guessing_game} as a module.
+You are now using \inlinecode{guessing_game} as a module.
 Type
 \inlinecode{help("guessing_game")}.
-You will see the documentation, including these lines.
+You will see documentation on \inlinecode{guessing_game}, 
+including these lines
+(to get out of this viewer use \keyboardkey{Ctrl-q}).
 \begin{lstlisting}
+Help on module guessing_game:
+
+NAME
+    guessing_game - guessing_game.py
+
 DESCRIPTION
-    A toy game for demonstration.
+    Guess the number between 1 and 10.
 
 FUNCTIONS
     test_guess(guess)
-        Decide if the guess is correct and print a message. 
+        Decide if the guess is correct and print a message.
 \end{lstlisting}
-Obviously, \python{} got this from the file's documentation strings.
-In \python{}, and also in \Sage, good practice is 
-to always include documentation
-that is accessible with the \inlinecode{help} command.
-All of \Sage's built-in routines do this.
+\python{} got this information from the documentation strings.
+Good practice in \python{}, and also in \Sage,  is 
+to include documentation in this way.
+\Sage's programmers follow this practice and so 
+you can use \inlinecode{help(...)} 
+whenever you need more information on one of 
+\Sage's routines.
 
 
 
@@ -699,13 +686,10 @@ All of \Sage's built-in routines do this.
 
 %----------------------------------
 \section{\Sage}
-Learning what \Sage{} can do is the goal of much of this book 
-so this is only a brief walk-through of preliminaries.
-See also \citep{SageTeam12} for a more broad-based introduction.
-
-First, if your system does not already supply it then install \Sage{} 
-by following the directions at
-\href{http://www.sagemath.org}{www.sagemath.org}.
+Learning about \Sage's capabilities is the goal of much of this manual.
+But \Sage{} is built on \python{} and so a brief comparison makes sense.
+See \citep{SageTeam19} for a more broad-based introduction, and 
+be aware of the comprehensive reference \citep{SageTeam19ref}.
 
 
 
@@ -714,26 +698,14 @@ by following the directions at
 mathematical work.
 First start \Sage,
 for instance, enter \inlinecode{sage} into a command line window.
-You get some initial text and then a prompt
-(leave the prompt by typing \inlinecode{exit}
-and \keyboardkey{Enter}.)
+You get some initial text and a prompt.
 \begin{lstlisting}[style=python]
 sage:  
 \end{lstlisting}
+Leave the prompt with the command \inlinecode{exit}
+followed by \keyboardkey{Enter}.
 
-Experiment with some expressions.
-% \begin{lstlisting}[style=python]
-% sage: 2**3                                                                           
-% 8
-% sage: 2^3
-% 8
-% sage: 3*1 + 4*2
-% 11
-% sage: 5 == 3+3
-% False
-% sage: sin(pi/3)
-% 1/2*sqrt(3)
-% \end{lstlisting}
+You can use this interpreter to experiment with some expressions.
 \begin{sagecommandline}
 sage: 2**3                                                                      
 sage: 2^3
@@ -744,18 +716,16 @@ sage: sin(pi/3)
 The second expression 
 shows that \Sage{} provides a convenient shortcut for exponentiation over
 \python's \inlinecode{2**3}.
-The fourth expression
+The final one
 shows that \Sage{} sometimes returns exact results rather than an
 approximation.
 You can still get the approximation; here are three equivalent ways.
 \begin{sagecommandline}
 sage: sin(pi/3).numerical_approx()
-sage: sin(pi/3).n()
-sage: n(sin(pi/3))  
+sage: sin(pi/3).n(digits=4)
+sage: n(sin(pi/3), digits=4)  
 \end{sagecommandline}
-\noindent
-The function \inlinecode{n()} is an abbreviation for 
-\inlinecode{numerical_approx()}.
+The last two limit the number of digits.
 
 
 \subsection{Script}
@@ -763,25 +733,15 @@ You can group \Sage{} commands together in a file.
 This way you can test the commands, 
 and also reuse them without having to retype.
 
-Create a file with the extension \path{.sage}, such as \path{sage_normal.sage}.
-Enter this function and save the file.
+Create the \path{sage_normal.sage}, 
+enter this function and save the file.
+\lstinputlisting{sage/normal_curve.sage}
+\noindent
+Start \Sage{} and bring the file in with \inlinecode{load(...)}.
 \begin{lstlisting}[style=python]
-def normal_curve(upper_limit):
-    """Approximate area under the Normal curve from 0 to upper_limit.
-    """
-    stdev = 1.0
-    mu = 0.0
-    area=numerical_integral((1/sqrt(2*pi) * e^(-0.5*(x)^2)),
-                             0, upper_limit)    
-    print("area is", area[0])
-\end{lstlisting}
-Bring in the file with a \Sagecmd{load} command
-and then you can use the commands defined there.
-% sageoutput is a problem: http://ask.sagemath.org/question/25360/sagetexs-sage-file-gives-runfile-is-not-defined/
-% Briefly, runfile won't work and load gives a "discouraged" message
-\begin{lstlisting}[style=python]
-sage: load("sage_normal.sage")
-sage: normal_curve(1.0)   
+sage: load("normal_curve.sage")
+sage: normal_curve(1.0)
+0.34134474606854304
 \end{lstlisting}
 
 

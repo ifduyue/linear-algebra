@@ -1,7 +1,7 @@
 # guessing_game.py
-"""guessing_game
+"""guessing_game.py
 
-A toy game for demonstration.
+Guess the number between 1 and 10.
 """
 import random
 CHOICE = random.randint(1,10)
@@ -10,15 +10,15 @@ def test_guess(guess):
     """Decide if the guess is correct and print a message.
     """
     if (guess < CHOICE):
-        print "  Sorry, your guess is too low"
+        print("  Sorry, your guess is too low")
         return False
     elif (guess > CHOICE):
-        print "  Sorry, your guess is too high"
+        print("  Sorry, your guess is too high")
         return False
-    print "  You are right!"
+    print("  You are right!")
     return True
 
 flag = False
 while (not flag):
-    guess = int(raw_input("Guess an integer between 1 and 10: "))
+    guess = int(input("Guess an integer between 1 and 10: "))
     flag = test_guess(guess)
