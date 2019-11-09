@@ -3,18 +3,17 @@
 \Sage{} can operate with vector spaces, for example by finding a basis for
 a space.
 
-In this chapter vector spaces take scalars from the reals numbers $\Re$
-(the book's final chapter uses the complex numbers).
-You can choose from two models of the real numbers.
+In this chapter vector spaces take scalars from the reals numbers $\Re$.
+\Sage{} lets you choose from two models of the real numbers.
 One is \Sagecmd{RDF}, the computer's built-in floating point
-model of real numbers.\footnote{This computer uses
-IEEE~754 double-precision binary floating-point numbers;  
-if you have programmed then you may know this number model as binary64.}  
-The other is \Sagecmd{RR}, an arbitrary precision model of 
-reals.\footnote{It defaults to $53$~bits of precision to reproduce 
-double-precision computations.}
-The second model is useful in some circumstances but the first runs faster
-and is more widely used in practice so that is what we will use here.
+model of real numbers.\footnote{%
+  This computer uses
+  IEEE~754 double-precision binary floating-point numbers;  
+  if you have programmed then you may know this number model as binary64.}  
+The other is \Sagecmd{RR}, which gives arbitrary precision 
+reals.
+The first model runs faster
+and is more widely used in practice so it is what we will use here.
  
 
 
@@ -55,20 +54,26 @@ You can describe it as a span.
   =\set{\colvec{2 \\ 1 \\ 0}y+\colvec[r]{-2 \\ 0 \\ 1}z
         \suchthat y,z\in\Re}
 \end{equation*}
-In addition to creating that subspace,
-you can test membership.
+You can create that subspace as a span.
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,3) 
+sage: V = VectorSpace(RDF,3)
 sage: v1 = vector(RDF, [2, 1, 0])
 sage: v2 = vector(RDF, [-2, 0, 1])
 sage: W = V.span([v1, v2])
+sage: W
+\end{sagecommandline}
+As part of creating it,
+\Sage{} has identified the dimension of the subspace and found
+a basis containing one vector (it prefers vectors with leading~$1$'s).
+You can test membership in this subspace. 
+\begin{sagecommandline}
 sage: v3 = vector(RDF, [0, 1, 1])
 sage: v3 in W
 sage: v4 = vector(RDF, [1, 0, 0])
 sage: v4 in W
 \end{sagecommandline}
 
-For a closer look at what's happening, look at this subspace of $\Re^4$.
+As another example, here is a one-dimensional subspace of $\Re^4$.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: V
@@ -76,41 +81,25 @@ sage: v1 = vector(RR, [2, 0, -1, 0])
 sage: W = V.span([v1])
 sage: W
 \end{sagecommandline}
-As part of creating it,
-\Sage{} has identified the dimension of the subspace and found
-a basis containing one vector (it prefers the vector with a leading~$1$).
-
-As earlier, the membership set relation works here.
-\begin{sagecommandline}
-sage: V = VectorSpace(RDF,4)
-sage: v1 = vector(RDF, [2, 0, -1, 0])
-sage: W = V.span([v1])
-sage: v2 = vector(RDF, [2, 1, -1, 0])
-sage: v2 in W
-sage: v3 = vector(RDF, [-4, 0, 2, 0])
-sage: v3 in W
-\end{sagecommandline}
 
 
 
 \subsection{Basis}
-\Sage{} has a command to retrieve a basis for a space.
+Given a space, \Sage{} will retrieve a basis for it.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,2)
+sage: V.basis()
 sage: v = vector(RDF, [1, -1])
 sage: W = V.span([v])     
 sage: W.basis()
 \end{sagecommandline}
 \noindent
-This is the basis you will see if you ask for a description of $W$.
+This is the same basis that you see if you ask for a description of $W$.
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,2)
-sage: v = vector(RDF, [1, -1])
-sage: W = V.span([v])     
 sage: W  
 \end{sagecommandline}
 
-Of course, there are subspaces with bases of size greater than one.
+Here is a subspace whose basis has two vectors.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)               
 sage: v1 = vector(RDF, [1, -1, 0]) 
@@ -118,8 +107,8 @@ sage: v2 = vector(RDF, [1, 1, 0])
 sage: W = V.span([v1, v2])       
 sage: W.basis()
 \end{sagecommandline}
-Adding a linearly dependent vector $\vec{v}_3$ to the spanning
-set doesn't change the space.
+Adding a linearly dependent vector $\vec{v}_3$ to the subspace that
+is the spanning set doesn't change that subspace.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)               
 sage: v1 = vector(RDF, [1, -1, 0]) 
