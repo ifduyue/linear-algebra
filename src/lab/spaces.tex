@@ -7,7 +7,7 @@ In this chapter vector spaces take scalars from the reals numbers $\Re$.
 \Sage{} lets you choose from two models of the real numbers.
 One is \Sagecmd{RDF}, the computer's built-in floating point
 model of real numbers.\footnote{%
-  This computer uses
+  The computer used to make this manual has
   IEEE~754 double-precision binary floating-point numbers;  
   if you have programmed then you may know this number model as binary64.}  
 The other is \Sagecmd{RR}, which gives arbitrary precision 
@@ -22,130 +22,123 @@ and is more widely used in practice so it is what we will use here.
 %========================================
 \section{Real $n$-spaces}
 
-\Sage{} allows us to create vector spaces.
-Here is~$\Re^3$.
+\Sage{} lets you create vector spaces.
+Here is $\Re^4$.
+\begin{sagecommandline}
+sage: V = VectorSpace(RDF,4)
+sage: V
+\end{sagecommandline}
+You can also create subspaces.
+Here is a one-dimensional subspace of $\Re^4$, described as the span
+of a set with one vector.
+\begin{sagecommandline}
+sage: V = VectorSpace(RDF,4)
+sage: V
+sage: v1 = vector(RR, [1, 1, -3, 0])
+sage: W = V.span([v1])
+sage: W
+\end{sagecommandline}
+
+You can ask \Sage{} about this subspace; for instance, you can 
+test for membership. 
+\begin{sagecommandline}
+sage: v3 = vector(RDF, [2, 2, -6, 0])
+sage: v3 in W
+sage: v4 = vector(RDF, [1, 0, 0, 5])
+sage: v4 in W
+\end{sagecommandline}
+
+Another example is~$\Re^3$.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)
 sage: V
+sage: v1 = vector(RDF, [1, 2, 3])
+sage: v1 in V
+sage: v2 = vector(RDF, [1, 2, 3, 4])
+sage: v2 in V
 \end{sagecommandline}
-% Omit this until the bug is fixed.
-% https://groups.google.com/forum/#!topic/sage-support/ObKhoCN3KCs
-% and
-% http://trac.sagemath.org/ticket/17576
-% ............. 
-% You can test for membership.
-% \begin{sagecommandline}
-% sage: V = VectorSpace(RDF,3)
-% sage: v1 = vector(RDF, [1, 2, 3])
-% sage: v1
-% sage: v1 in V
-% sage: v2 = vector(RDF, [1, 2, 3, 4])
-% sage: v2 in V
-% \end{sagecommandline}
 
-Next we can try subspaces.
+Here also we can create a subspace as a span.
+\begin{sagecommandline}
+sage: V = VectorSpace(RDF,3)
+sage: v1 = vector(RDF, [1, 0, 3])
+sage: v2 = vector(RDF, [0, 1, 1])
+sage: W = V.span([v1, v2])
+sage: W
+sage: v3 = vector(RDF, [2, 2, 8])
+sage: v3 in W
+\end{sagecommandline}
+
+
+
+\subsection{Basis}
+\Sage{} will retrieve a basis for a vector space or subspace.
+\begin{sagecommandline}
+sage: V = VectorSpace(RDF,3)
+sage: V.basis()
+sage: v1 = vector(RDF, [2, -1, -3])
+sage: v2 = vector(RDF, [1, 1, 0])
+sage: W = V.span([v1, v2])     
+sage: W.basis()
+\end{sagecommandline}
+Notice that the basis you got back is not the same as the set of two linearly
+independent vectors that you put in.
+
+To get the basis, \Sage{} takes the vectors from the spanning set 
+as the rows of a matrix,
+brings that matrix to reduced echelon form, and reports the nonzero 
+rows as the basis.
+Each matrix has one and only one reduced echelon form so each 
+subspace of real $n$-space has one and only one such basis;
+this is the canonical basis for the space.
+
+It is this basis that \Sage{} shows when you ask for a description
+of the space.
+\begin{sagecommandline}
+sage: W  
+\end{sagecommandline}
+
 The plane through the origin in $\Re^3$ described by the equation
 $x-2y+2z=0$
 is a subspace of $\Re^3$.
-You can describe it as a span.
 \begin{equation*}
   W=\set{\colvec{x \\ y \\ z}
     \suchthat x=2y-2z}
   =\set{\colvec{2 \\ 1 \\ 0}y+\colvec[r]{-2 \\ 0 \\ 1}z
         \suchthat y,z\in\Re}
 \end{equation*}
-You can create that subspace as a span.
-\begin{sagecommandline}
-sage: V = VectorSpace(RDF,3)
-sage: v1 = vector(RDF, [2, 1, 0])
-sage: v2 = vector(RDF, [-2, 0, 1])
-sage: W = V.span([v1, v2])
-sage: W
-\end{sagecommandline}
-As part of creating it,
-\Sage{} has identified the dimension of the subspace and found
-a basis containing one vector (it prefers vectors with leading~$1$'s).
-You can test membership in this subspace. 
-\begin{sagecommandline}
-sage: v3 = vector(RDF, [0, 1, 1])
-sage: v3 in W
-sage: v4 = vector(RDF, [1, 0, 0])
-sage: v4 in W
-\end{sagecommandline}
-
-As another example, here is a one-dimensional subspace of $\Re^4$.
-\begin{sagecommandline}
-sage: V = VectorSpace(RDF,4)
-sage: V
-sage: v1 = vector(RR, [2, 0, -1, 0])
-sage: W = V.span([v1])
-sage: W
-\end{sagecommandline}
-
-
-
-\subsection{Basis}
-Given a space, \Sage{} will retrieve a basis for it.
-\begin{sagecommandline}
-sage: V = VectorSpace(RDF,2)
-sage: V.basis()
-sage: v = vector(RDF, [1, -1])
-sage: W = V.span([v])     
-sage: W.basis()
-\end{sagecommandline}
-\noindent
-This is the same basis that you see if you ask for a description of $W$.
-\begin{sagecommandline}
-sage: W  
-\end{sagecommandline}
-
-Here is a subspace whose basis has two vectors.
+Here is that subspace.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)               
-sage: v1 = vector(RDF, [1, -1, 0]) 
-sage: v2 = vector(RDF, [1, 1, 0]) 
+sage: v1 = vector(RDF, [2, 1, 0]) 
+sage: v2 = vector(RDF, [-2, 0, 1]) 
 sage: W = V.span([v1, v2])       
 sage: W.basis()
 \end{sagecommandline}
-Adding a linearly dependent vector $\vec{v}_3$ to the subspace that
-is the spanning set doesn't change that subspace.
+If you add a linearly independent vector~$\vec{v}_3$ to the spanning set 
+then it generates a three dimensional subspace of $\Re^3$, 
+which is all of $\Re^3$.
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,3)               
-sage: v1 = vector(RDF, [1, -1, 0]) 
-sage: v2 = vector(RDF, [1, 1, 0]) 
-sage: W = V.span([v1, v2])       
 sage: v3 = vector(RDF, [2, 3, 0])
 sage: W_prime = V.span([v1, v2, v3])
 sage: W_prime.basis()
 \end{sagecommandline}
 
-In the prior example, notice that \Sage{} does not simply
-give you back the linearly independent
-vectors that you gave it.
-Instead, by default \Sage{} takes the vectors from the spanning set 
-as the rows of a matrix,
-brings that matrix to reduced echelon form, and reports the nonzero 
-rows as the members of the basis.
-Because each matrix has one and only one reduced echelon form, each 
-vector subspace of real $n$-space has one and only one such
-basis;
-this is the \textit{canonical basis} for the space.
-
-It is this basis that \Sage{} shows when you ask for a description
-of the space.
+On the other hand, if you add a linearly dependent vector then
+it doesn't change the subspace that is generated.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)               
-sage: v1 = vector(RDF, [1, -1, 0]) 
-sage: v2 = vector(RDF, [1, 1, 0]) 
+sage: v1 = vector(RDF, [2, 1, 0]) 
+sage: v2 = vector(RDF, [-2, 0, 1]) 
 sage: W = V.span([v1, v2])       
-sage: W
-sage: v3 = vector(RDF, [2, 3, 0])
+sage: W.basis()
+sage: v3 = vector(RDF, [0, 1, 1])
 sage: W_prime = V.span([v1, v2, v3])
-sage: W_prime
+sage: W_prime.basis()
 \end{sagecommandline}
 
-If you are keen on your own basis then \Sage{} will
-accommodate you.
+If you are keen on using your own basis then \Sage{} will
+accommodate.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)
 sage: v1 = vector(RDF, [1, 2, 3])
@@ -160,7 +153,7 @@ sage: W
 
 \subsection{Equality}
 
-You can test whether spaces are equal.
+\Sage{} can compare spaces.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [1, 0, 0, 0])
@@ -169,9 +162,13 @@ sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [2, 1, 0, 0])
 sage: W13 = V.span([v1, v3])  
 \end{sagecommandline}
-\noindent
-One way to assure yourself that the two spaces $W_{1,2}$ and $W_{1,3}$ 
+One way to test that the two spaces $W_{1,2}$ and $W_{1,3}$ 
 are equal is to use set membership.
+If the vectors used to make the spanning set of  $W_{1,2}$ are 
+members of  $W_{1,3}$ then  $W_{1,2}\subseteq W_{1,3}$.
+And, if the vectors used to make the spanning set of  $W_{1,3}$ are 
+members of  $W_{1,2}$ we have inclusion in the other direction and 
+$W_{1,2}=W_{1,3}$.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [1, 0, 0, 0])
@@ -179,14 +176,13 @@ sage: v2 = vector(RDF, [1, 1, 0, 0])
 sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [2, 1, 0, 0])
 sage: W13 = V.span([v1, v3])  
-sage: v3 in W12
 sage: v2 in W13
+sage: v3 in W12
 \end{sagecommandline}
-\noindent
-Then, since obviously $\vec{v}_1\in W_{1,2}$ and $\vec{v}_1\in W_{1,3}$, the two
-spans are equal.
+Since both $\vec{v}_1\in W_{1,2}$ and $\vec{v}_1\in W_{1,3}$, the
+two subspaces are equal.
 
-But the more straightforward way to test equality is to just ask \Sage{}.
+However, the more straightforward way to test equality is to just ask \Sage{}.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [1, 0, 0, 0])
@@ -197,15 +193,10 @@ sage: W13 = V.span([v1, v3])
 sage: W12 == W13
 \end{sagecommandline}
 \noindent
-The exercise of \inlinecode{==} equality 
-would be half-hearted without a test of inequality. 
+This exercise of the equality operator, \inlinecode{==}, 
+would be half-hearted without trying it on two spaces that are
+unequal. 
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,4)
-sage: v1 = vector(RDF, [1, 0, 0, 0])
-sage: v2 = vector(RDF, [1, 1, 0, 0])
-sage: W12 = V.span([v1, v2])
-sage: v3 = vector(RDF, [2, 1, 0, 0])
-sage: W13 = V.span([v1, v3])  
 sage: v4 = vector(RDF, [1, 1, 1, 1])
 sage: W14 = V.span([v1, v4])
 sage: v2 in W14
@@ -224,6 +215,11 @@ But \Sage{} does something different.
 For each space it maintains the canonical basis
 and it checks for equality of spaces
 just by checking whether they have the same canonical bases.
+\begin{sagecommandline}
+sage: W12.basis()
+sage: W13.basis()
+sage: W14.basis()
+\end{sagecommandline}
 These two algorithms 
 have the same external behavior, in that both decide whether
 two spaces are equal.
