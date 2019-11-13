@@ -200,24 +200,21 @@ unequal.
 sage: v4 = vector(RDF, [1, 1, 1, 1])
 sage: W14 = V.span([v1, v4])
 sage: v2 in W14
-sage: v3 in W14                                 
 sage: v4 in W12
-sage: v4 in W13
-sage: W12 == W14                                                              
-sage: W13 == W14
+sage: W12 == W14
 \end{sagecommandline}
 
 This illustrates a point about algorithms.
-\Sage{} could check for equality of two spans 
-by checking whether every member of the first spanning set is in the
-second space and vice versa (since the two spanning sets are finite). 
+\Sage{} could check for equality of two spans in a number of ways.
+One way is to check whether every member of the first spanning set is in the
+second space, and whether every member of the second spanning set is in the 
+first space. 
 But \Sage{} does something different.
-For each space it maintains the canonical basis
+For each space it maintains a canonical basis
 and it checks for equality of spaces
 just by checking whether they have the same canonical bases.
 \begin{sagecommandline}
 sage: W12.basis()
-sage: W13.basis()
 sage: W14.basis()
 \end{sagecommandline}
 These two algorithms 
@@ -275,7 +272,6 @@ sage: W3 = V.span([v3])
 sage: W5 = W12 + W3
 sage: W5.basis()
 sage: W5 == V
-sage: W5
 \end{sagecommandline}
 
 
@@ -286,19 +282,19 @@ sage: W5
 %========================================
 \section{Other spaces}
 
-These computations extend to
-vector spaces that aren't a subspace of some $\Re^n$
-by finding a real space that is just like the one you have.
-
-Consider this vector space of quadratic polynomials,
-under the usual operations of polynomial addition and scalar multiplication.
+\Sage{} can also do vector spaces that aren't a subspace of some $\Re^n$,
+by finding a real space that is just like the desired one.
+Consider this subspace of 
+$\polyspace_2$.
 \begin{equation*}
   \set{ a_2x^2+a_1x+a_0\suchthat a_2=a_0+a_1}           
    =\set{ (a_1+a_0)x^2+a_1x+a_0 \suchthat a_1,a_0\in\Re}
 \end{equation*}
 It is just like
-this subspace of $\Re^3$.\footnote{The textbook's chapter on Maps Between Spaces makes 
-``just like'' precise.}
+this subspace of $\Re^3$.\footnote{%
+  The textbook's 
+  third chapter, Maps Between Spaces, makes 
+  ``just like'' precise.}
 \begin{equation*}
   \set{\colvec{a_1+a_0 \\ a_1 \\ a_0}\suchthat a_1,a_0\in\Re}
   =\set{\colvec{1 \\ 1 \\ 0}a_1+\colvec{1 \\ 0 \\ 1}a_0\suchthat a_1,a_0\in\Re}
@@ -319,7 +315,7 @@ Similarly you can represent this space of $\nbyn{2}$ matrices
        \end{mat}\suchthat \text{$a-b+c=0$ and $b+d=0$}}
 \end{equation*}
 by finding a real $n$-space just like it.
-Rewrite the given space
+Parametrize
 \begin{equation*}
   \set{\begin{mat}
          a  &b \\
@@ -336,7 +332,7 @@ Rewrite the given space
        \end{mat}d
        \suchthat c,d\in\Re}
 \end{equation*}
-and then here is a natural matching real space.
+and then give \Sage{} the matching real space.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [-1, 0, 1, 0])
@@ -344,8 +340,8 @@ sage: v2 = vector(RDF, [-1, -1, 0, 1])
 sage: W = V.span([v1, v2])
 sage: W.basis()
 \end{sagecommandline}
-You could have gotten another matching space by going down the columns 
-instead of across the rows.  
+You could have gotten another matching space by reading the matrix
+down the columns instead of across the rows.  
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [-1, 1, 0, 0])
@@ -358,7 +354,7 @@ There are still other ways to produce a matching space.
 They look different than each other
 but the important things about the spaces, such as dimension, are 
 unaffected by their look.
-That is the subject of the book's third chapter.
+Much more on this is in the book's third chapter.
 
 \endinput
 

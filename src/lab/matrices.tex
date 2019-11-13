@@ -1,15 +1,21 @@
 \chapter{Matrices}
 
-Matrix operations are mechanical, and are therefore perfectly suited for 
-mechanizing.
+Matrix operations such as addition and multiplication
+are mechanical, and are therefore perfectly suited for 
+a computer.
 
 
 
 %========================================
 \section{Defining}
-To define a matrix 
-you can use real number entries, or complex entries, or 
-entries from other number systems such as the rationals. 
+Define a matrix with \Sage's \inlinecode{matrix} function.
+It of course takes the entries of the matrix, written as lists of rows.
+It also takes the number field.
+As we did with vector spaces we can use \inlinecode{RDF} for 
+floating point number entries, 
+or we can use \inlinecode{CDF} to get complex number entries $a+bi$ where 
+$a$ and~$b$ are floating points,
+or we can fall back to the rational numbers.
 \begin{sagecommandline}
 sage: A = matrix(RDF, [[1, 2], [3, 4]])
 sage: A
@@ -20,20 +26,15 @@ sage: A = matrix(QQ, [[1, 2], [3, 4]])
 sage: A                           
 \end{sagecommandline}
 \noindent
-Here we represent reals with the model connected to the computer's hardware
-floating point implementation. 
-For the complex
-numbers we've again 
-used floating points but there is an additional consideration.
-By default \Sage{} uses $i$ for the square root of $-1$ (in contrast with 
-\python, which uses~$j$).
-Note that before working with complex numbers we reset~$i$ 
-because that letter is used for many things\Dash perhaps earlier in 
-a session we used it for the index of an array and we want it to lose that
-prior value\Dash so 
-resetting is a good practice.
+For the complex numbers,
+by default \Sage{} uses $i$ for the square root of $-1$, in contrast with 
+\python{} which uses~$j$.
+But the letter~$i$ is used for many things\Dash perhaps earlier in 
+a session we used it for the index of an array\Dash so before using it
+for the complex numbers
+resetting it with \inlinecode{CDF(i)} is a good practice.
 
-Unless we have a reason to do otherwise, in this chapter
+In this chapter, unless we have reason to do otherwise
 we'll use rational numbers because the matrices are easier to 
 read\Dash $1$ is easier than $1.0$\Dash and 
 because the matrices in the book usually have rational entries.
