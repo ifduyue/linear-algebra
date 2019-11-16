@@ -1,21 +1,19 @@
 \chapter{Singular Value Decomposition}
 \label{chap:SingularValueDecomposition}
 
-We will produce a way of picturing the action of linear maps,
+We will produce a way of picturing the action of a linear map,
 specifically, of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
 That will connect with an important way to factor matrices.
 
 
 \section{Action on the unit circle}
-A defining properties of a linear map is that 
+A defining property of linear maps is that 
 $h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
 Recall that a line through the origin in $\Re^n$ is 
 $\set{r\cdot \vec{v}\suchthat r\in\Re}$. 
-The scalar multiplication property  
-imposes
-uniformity on the map:~the action of $h$ on any 
-line through the origin
-is determined by its action
+Thus the scalar multiplication property  
+imposes a uniformity condition on a linear map:~its action on any 
+line through the origin is determined by its action
 on any nonzero vector in that line.
 
 For instance, consider the line~$y=2x$ in the plane
@@ -32,14 +30,14 @@ and suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by this matrix.
   \end{mat}
 \end{equation*}
 Then here is the effect of $t$ on one of the line's vectors,
-calculating as \Sage{} prefers with the vector on the 
-left, $\vec{v}T$.\footnote{\noterightmult}
+taking the representation calculation as \Sage{} prefers it, 
+with the vector on the left, $\vec{v}T$.\footnote{\noterightmult}
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{7 \\ 10}
 \end{equation*}
-Then the 
-the map $t$ has twice the effect on $2\vec{v}$, three times the
-effect on $3\vec{v}$, etc.
+Then on $2\vec{v}$ the 
+the map $t$ has twice the effect, on  $3\vec{v}$ it has three times the
+effect, etc.
 \begin{equation*}
   \colvec{2 \\ 4}\mapsunder{t}\colvec{14 \\ 20}
   \qquad
@@ -49,17 +47,18 @@ effect on $3\vec{v}$, etc.
 \end{equation*}
 We will use this observation to illustrate the action of 
 linear transformations of the plane $\map{t}{\Re^2}{\Re^2}$
-(we will look at the plane just because the pictures are 
+(we look at the plane just because the pictures are 
 easy to draw). 
 
 Because of the $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship,
-one way to describe a transformation's action is to pick 
+we can show a transformation's action by fixing 
 a set containing one nonzero vector element from each line through the origin
-and then show where the transformation takes each of 
-those  elements.
-One set that contains one nonzero vector from each line through the
-origin is the upper half of the unit circle
-(the reason for the colors is below).
+and then showing where the transformation takes each of 
+that set's elements.
+The natural such set is the upper half of the unit circle
+(the colors are explained below).
+Every line through the origin intersects this set in exactly 
+one nonzero vector.
 % \begin{sagecommandline}
 % sage: load("plot_action.sage")
 % sage: p = plot_circle_action(1,0,0,1) 
@@ -79,12 +78,29 @@ p.save("graphics/svd000.pdf")
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
+Note that the point $(1,0)$ is included in that set but
+$(-1,0)$ is not included, which is why there is an open circle
+there.
 
-\Sage{} can compute the effect of this simple transformation
-on that set. 
+To start we take a simple transformation.
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{2x \\ y}
 \end{equation*}
+\Sage{} can compute the effect of this simple transformation
+on that set. 
+The code below inputs the file \inlinecode{plot_action.sage}
+to get access to the routine
+\inlinecode{plot_circle_action(a,b,c,d)}, which 
+finds the output curve by multipling points on 
+the input upper half unit circle by this matrix.
+\begin{equation*}
+  \begin{mat}
+    a &b \\
+    c &d
+  \end{mat}
+\end{equation*}
+The source code of \inlinecode{plot_action.sage} is 
+at the end of this chapter.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
@@ -103,18 +119,6 @@ sage: p.save("graphics/svd001b.pdf")
 % p.set_axes_range(-2, 2, -1, 2) 
 % p.save("graphics/svd001b.pdf")
 % \end{sagesilent}
-That inputs the file \inlinecode{plot_action.sage}, whose
-source code is 
-at the end of this chapter but briefly, it contains the routine
-\inlinecode{plot_circle_action(a,b,c,d)}, which 
-multiplies points on 
-the unit circle by this matrix.
-\begin{equation*}
-  \begin{mat}
-    a &b \\
-    c &d
-  \end{mat}
-\end{equation*}
 Here is the before and after, the upper half circle 
 and the associated output.
 The colors show the association\Dash which 
@@ -125,8 +129,8 @@ on the right.
   \quad\mapsunder{\big (\begin{smallmatrix} 2 &0 \\ 0 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd001b.pdf}}
 \end{equation*}
-\Sage{} drew the unit circle by plotting the action of the identity
-and then \Sage{} drew the effect of the transformation by plotting the
+\Sage{} drew the unit circle by plotting the action of the identity map.
+Then \Sage{} drew the effect of the transformation by plotting the
 action of this matrix.
 \begin{equation*}
 \begin{mat}
@@ -136,11 +140,11 @@ action of this matrix.
 \end{equation*}
 
 The next before and after picture shows
-the effect of the transformation 
+the effect of the map
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{-x \\ 3y}
 \end{equation*}
-that triples the $y$~component and multiplies the 
+that triples the $y$~component and also multiplies the 
 $x$~component by $-1$. 
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
@@ -164,16 +168,22 @@ sage: p.save("graphics/svd002b.pdf")
   \quad\mapsunder{\big (\begin{smallmatrix} -1 &0 \\ 0 &3 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd002b.pdf}}
 \end{equation*}
-Now the colors have their say.
-When you traverse the input circle counterclockwise, the colors go from 
+Now the colors really have something to say.
+On the input circle, when you move counterclockwise, the colors go from 
 red to orange, then to green, blue, indigo, and 
 finally violet.
 But the output does the opposite: to move from red to violet, you
 move clockwise.
-This transformation changes the \textit{orientation} 
-(or \textit{sense}) of the curve. 
+This transformation changes the orientation,
+or sense, of the curve. 
 
-The next transformation is a skew.
+The next transformation is a shear.\footnote{%
+  A dictionary definition of a shear is that it is when 
+  two parts of a body  
+  slide relatively to each other in a direction parallel to their 
+  plane of contact.  
+  Thus, when you write on a paper the flakes of pencil 
+  graphite shear off the pencil.}
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
 \end{equation*}
