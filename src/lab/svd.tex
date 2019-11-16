@@ -1,20 +1,28 @@
 \chapter{Singular Value Decomposition}
 \label{chap:SingularValueDecomposition}
 
+We will produce a way of picturing the action of linear maps,
+specifically, of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
+That will connect with an important way to factor matrices.
+
+
+\section{Action on the unit circle}
+A defining properties of a linear map is that 
+$h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
 Recall that a line through the origin in $\Re^n$ is 
 $\set{r\cdot \vec{v}\suchthat r\in\Re}$. 
-One of the defining properties of a linear map is that 
-$h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
-So the action of $h$ on any 
+The scalar multiplication property  
+imposes
+uniformity on the map:~the action of $h$ on any 
 line through the origin
-is determined by the action
-of $h$ on any nonzero vector in that line.
+is determined by its action
+on any nonzero vector in that line.
 
-For instance, consider the line~$y=2x$ in the plane,
+For instance, consider the line~$y=2x$ in the plane
 \begin{equation*}
   \set{r\cdot\colvec{1 \\ 2}\suchthat r\in\Re}
 \end{equation*}
-suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by the matrix
+and suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by this matrix.
 \begin{equation*}
   \rep{t}{\stdbasis_2,\stdbasis_2}
   =
@@ -23,15 +31,13 @@ suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by the matrix
     3 &4
   \end{mat}
 \end{equation*}
-then here is the effect of $t$ on one of the line's vectors
-(calculating with the vector on the left $\vec{v}T$).\footnote{\noterightmult}
+Then here is the effect of $t$ on one of the line's vectors,
+calculating as \Sage{} prefers with the vector on the 
+left, $\vec{v}T$.\footnote{\noterightmult}
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{7 \\ 10}
 \end{equation*}
-The point is that the 
-scalar multiplication property in the definition of linear map 
-imposes a simple
-uniformity on its action on lines through the origin:
+Then the 
 the map $t$ has twice the effect on $2\vec{v}$, three times the
 effect on $3\vec{v}$, etc.
 \begin{equation*}
@@ -41,28 +47,25 @@ effect on $3\vec{v}$, etc.
   \qquad
   \colvec{r \\ 2r}\mapsunder{t}\colvec{7r \\ 10r}
 \end{equation*}
-The action of of a linear map on any vector in a 
-line through the origin
-is determined by the action
-of that map on any single nonzero vector in that line.
+We will use this observation to illustrate the action of 
+linear transformations of the plane $\map{t}{\Re^2}{\Re^2}$
+(we will look at the plane just because the pictures are 
+easy to draw). 
 
-
-
-\section{Unit circle}
-Consider transformations of the plane $\Re^2$.
-Because of $t(r\cdot\vec{v})=r\cdot t(\vec{v})$,
+Because of the $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship,
 one way to describe a transformation's action is to pick 
-a set containing one nonzero vector from each line through the origin
-and describe where the transformation maps those elements.
-
-A natural set that contains one nonzero element from each line through the
-origin is the upper half unit circle.
-\begin{sagecommandline}
-sage: load("plot_action.sage")
-sage: p = plot_circle_action(1,0,0,1) 
-sage: p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
-sage: p.save("graphics/svd000.pdf")
-\end{sagecommandline}
+a set containing one nonzero vector element from each line through the origin
+and then show where the transformation takes each of 
+those  elements.
+One set that contains one nonzero vector from each line through the
+origin is the upper half of the unit circle
+(the reason for the colors is below).
+% \begin{sagecommandline}
+% sage: load("plot_action.sage")
+% sage: p = plot_circle_action(1,0,0,1) 
+% sage: p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
+% sage: p.save("graphics/svd000.pdf")
+% \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 p = plot_circle_action(1,0,0,1) 
@@ -76,37 +79,12 @@ p.save("graphics/svd000.pdf")
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
-The above 
-graph came from  using a routine that draws the effect of a transformation 
-on the unit circle
-and then specifying the identity transformation.
-% \begin{sagecommandline}
-% sage: load("plot_action.sage")
-% sage: p = plot_circle_action(1,0,0,1)  # identity matrix
-% sage: p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
-% sage: p.save("graphics/svd000.pdf")
-% \end{sagecommandline}
-Its source code is 
-at the end of this chapter but in short 
-\inlinecode{plot_circle_action(a,b,c,d)}
-multiplies points on 
-the unit circle by this matrix.
-\begin{equation*}
-  \begin{mat}
-    a &b \\
-    c &d
-  \end{mat}
-\end{equation*}
-(The reason for the colors is given below.)
 
-Here is the effect of 
-the transformation 
+\Sage{} can compute the effect of this simple transformation
+on that set. 
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{2x \\ y}
 \end{equation*}
-that doubles the $x$~component of input vectors. 
-It shows before and after, the upper half circle domain
-and the output codomain.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
@@ -116,19 +94,45 @@ sage: p = plot_circle_action(2,0,0,1)
 sage: p.set_axes_range(-2, 2, -1, 2) 
 sage: p.save("graphics/svd001b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 2, -1, 2) 
-q.save("graphics/svd001a.pdf")
-p = plot_circle_action(2,0,0,1) 
-p.set_axes_range(-2, 2, -1, 2) 
-p.save("graphics/svd001b.pdf")
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_circle_action(1,0,0,1) 
+% q.set_axes_range(-2, 2, -1, 2) 
+% q.save("graphics/svd001a.pdf")
+% p = plot_circle_action(2,0,0,1) 
+% p.set_axes_range(-2, 2, -1, 2) 
+% p.save("graphics/svd001b.pdf")
+% \end{sagesilent}
+That inputs the file \inlinecode{plot_action.sage}, whose
+source code is 
+at the end of this chapter but briefly, it contains the routine
+\inlinecode{plot_circle_action(a,b,c,d)}, which 
+multiplies points on 
+the unit circle by this matrix.
+\begin{equation*}
+  \begin{mat}
+    a &b \\
+    c &d
+  \end{mat}
+\end{equation*}
+Here is the before and after, the upper half circle 
+and the associated output.
+The colors show the association\Dash which 
+points on the left are mapped to which points 
+on the right.
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd001a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 2 &0 \\ 0 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd001b.pdf}}
+\end{equation*}
+\Sage{} drew the unit circle by plotting the action of the identity
+and then \Sage{} drew the effect of the transformation by plotting the
+action of this matrix.
+\begin{equation*}
+\begin{mat}
+  2  &0  \\
+  0  &1
+\end{mat}
 \end{equation*}
 
 The next before and after picture shows
@@ -139,7 +143,6 @@ the effect of the transformation
 that triples the $y$~component and multiplies the 
 $x$~component by $-1$. 
 \begin{sagecommandline}
-sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 2, -4, 4) 
 sage: q.save("graphics/svd002a.pdf")
@@ -147,25 +150,25 @@ sage: p = plot_circle_action(-1,0,0,3)
 sage: p.set_axes_range(-2, 2, -4, 4) 
 sage: p.save("graphics/svd002b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 2, -4, 4) 
-q.save("graphics/svd002a.pdf")
-p = plot_circle_action(-1,0,0,3) 
-p.set_axes_range(-2, 2, -4, 4) 
-p.save("graphics/svd002b.pdf")
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_circle_action(1,0,0,1) 
+% q.set_axes_range(-2, 2, -4, 4) 
+% q.save("graphics/svd002a.pdf")
+% p = plot_circle_action(-1,0,0,3) 
+% p.set_axes_range(-2, 2, -4, 4) 
+% p.save("graphics/svd002b.pdf")
+% \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd002a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} -1 &0 \\ 0 &3 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd002b.pdf}}
 \end{equation*}
-Now the colors come in.
-The input circle moves 
-counterclockwise from red to orange, then to green, blue, indigo, and 
-finally to violet.
-But the output does the opposite: to move from red to violet you
+Now the colors have their say.
+When you traverse the input circle counterclockwise, the colors go from 
+red to orange, then to green, blue, indigo, and 
+finally violet.
+But the output does the opposite: to move from red to violet, you
 move clockwise.
 This transformation changes the \textit{orientation} 
 (or \textit{sense}) of the curve. 
@@ -177,7 +180,6 @@ The next transformation is a skew.
 The output's first component is affected
 by the input vector's distance from the $y$-axis.
 \begin{sagecommandline}
-sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 3, -1, 2) 
 sage: q.save("graphics/svd003a.pdf")
@@ -185,15 +187,15 @@ sage: p = plot_circle_action(1,0,2,1)
 sage: p.set_axes_range(-2, 3, -1, 2) 
 sage: p.save("graphics/svd003b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 3, -1, 2) 
-q.save("graphics/svd003a.pdf")
-p = plot_circle_action(1,0,2,1) 
-p.set_axes_range(-2, 3, -1, 2) 
-p.save("graphics/svd003b.pdf")
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_circle_action(1,0,0,1) 
+% q.set_axes_range(-2, 3, -1, 2) 
+% q.save("graphics/svd003a.pdf")
+% p = plot_circle_action(1,0,2,1) 
+% p.set_axes_range(-2, 3, -1, 2) 
+% p.save("graphics/svd003b.pdf")
+% \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd003a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &0 \\ 2 &1 \end{smallmatrix}\big )}\quad
@@ -205,7 +207,6 @@ In this case the output's
 second component is affected by the input's distance from 
 the $x$-axis.
 \begin{sagecommandline}
-sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 2, -2, 2) 
 sage: q.save("graphics/svd004a.pdf")
@@ -213,15 +214,15 @@ sage: p = plot_circle_action(1,1/2,0,1)
 sage: p.set_axes_range(-2, 2, -2, 2) 
 sage: p.save("graphics/svd004b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 2, -2, 2) 
-q.save("graphics/svd004a.pdf")
-p = plot_circle_action(1,1/2,0,1) 
-p.set_axes_range(-2, 2, -2, 2) 
-p.save("graphics/svd004b.pdf")
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_circle_action(1,0,0,1) 
+% q.set_axes_range(-2, 2, -2, 2) 
+% q.save("graphics/svd004a.pdf")
+% p = plot_circle_action(1,1/2,0,1) 
+% p.set_axes_range(-2, 2, -2, 2) 
+% p.save("graphics/svd004b.pdf")
+% \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd004a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &1/2 \\ 0 &1 \end{smallmatrix}\big )}\quad
@@ -231,7 +232,6 @@ p.save("graphics/svd004b.pdf")
 And here is a generic transformation.
 It changes orientation also.
 \begin{sagecommandline}
-sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 4, -3, 6) 
 sage: q.save("graphics/svd005a.pdf")
@@ -239,15 +239,15 @@ sage: p = plot_circle_action(1,2,3,4)
 sage: p.set_axes_range(-2, 4, -3, 6) 
 sage: p.save("graphics/svd005b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-2, 4, -3, 6) 
-q.save("graphics/svd005a.pdf",figsize=3)
-p = plot_circle_action(1,2,3,4) 
-p.set_axes_range(-2, 4, -3, 6) 
-p.save("graphics/svd005b.pdf",figsize=3)
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_circle_action(1,0,0,1) 
+% q.set_axes_range(-2, 4, -3, 6) 
+% q.save("graphics/svd005a.pdf",figsize=3)
+% p = plot_circle_action(1,2,3,4) 
+% p.set_axes_range(-2, 4, -3, 6) 
+% p.save("graphics/svd005b.pdf",figsize=3)
+% \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd005a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
@@ -322,15 +322,15 @@ sage: p = plot_circle_action(1,2,3,4,full_circle=True)
 sage: p.set_axes_range(-4, 4, -5, 6) 
 sage: p.save("graphics/svd101b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_circle_action(1,0,0,1,full_circle=True) 
-q.set_axes_range(-2, 2, -5, 6) 
-q.save("graphics/svd101a.pdf")
-p = plot_circle_action(1,2,3,4,full_circle=True) 
-p.set_axes_range(-4, 4, -5, 6) 
-p.save("graphics/svd101b.pdf")
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_circle_action(1,0,0,1,full_circle=True) 
+% q.set_axes_range(-2, 2, -5, 6) 
+% q.save("graphics/svd101a.pdf")
+% p = plot_circle_action(1,2,3,4,full_circle=True) 
+% p.set_axes_range(-4, 4, -5, 6) 
+% p.save("graphics/svd101b.pdf")
+% \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd101a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
@@ -376,27 +376,27 @@ sage: Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s)
 sage: Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
 sage: Q.save("graphics/svd102b.pdf",figsize=4.467)
 \end{sagecommandline}
-\begin{sagesilent}
-M = matrix(RDF, [[1, 2], [3, 4]])
-U,Sigma,V = M.SVD()
-beta_1 = vector(RDF, [U[0][0], U[1][0]])
-beta_2 = vector(RDF, [U[0][1], U[1][1]])
-delta_1 = vector(RDF, [V[0][0], V[1][0]])
-delta_2 = vector(RDF, [V[0][1], V[1][1]])
-plot.options['axes_pad'] = 0.05
-plot.options['fontsize'] = 7
-plot.options['aspect_ratio'] = 1
-arrowsize = 2
-C = circle((0,0), 1)
-P = C + plot(beta_1,arrowsize=arrowsize) + plot(beta_2,arrowsize=arrowsize)
-P.save("graphics/svd102a.pdf", figsize=1, axes_pad=0.05)
-image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
-Q = C + plot(beta_1*M, width=3, arrowsize=arrowsize, color=image_color) 
-Q = Q + plot(delta_1,width=1.4, arrowsize=arrowsize,color='blue') 
-Q = Q + plot(beta_2*M,width=3, arrowsize=arrowsize,color=image_color) 
-Q = Q + plot(delta_2,width=1.4, arrowsize=arrowsize,color='blue')
-Q.save("graphics/svd102b.pdf", figsize=2.2335, axes_pad=0.05)
-\end{sagesilent}
+% \begin{sagesilent}
+% M = matrix(RDF, [[1, 2], [3, 4]])
+% U,Sigma,V = M.SVD()
+% beta_1 = vector(RDF, [U[0][0], U[1][0]])
+% beta_2 = vector(RDF, [U[0][1], U[1][1]])
+% delta_1 = vector(RDF, [V[0][0], V[1][0]])
+% delta_2 = vector(RDF, [V[0][1], V[1][1]])
+% plot.options['axes_pad'] = 0.05
+% plot.options['fontsize'] = 7
+% plot.options['aspect_ratio'] = 1
+% arrowsize = 2
+% C = circle((0,0), 1)
+% P = C + plot(beta_1,arrowsize=arrowsize) + plot(beta_2,arrowsize=arrowsize)
+% P.save("graphics/svd102a.pdf", figsize=1, axes_pad=0.05)
+% image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
+% Q = C + plot(beta_1*M, width=3, arrowsize=arrowsize, color=image_color) 
+% Q = Q + plot(delta_1,width=1.4, arrowsize=arrowsize,color='blue') 
+% Q = Q + plot(beta_2*M,width=3, arrowsize=arrowsize,color=image_color) 
+% Q = Q + plot(delta_2,width=1.4, arrowsize=arrowsize,color='blue')
+% Q.save("graphics/svd102b.pdf", figsize=2.2335, axes_pad=0.05)
+% \end{sagesilent}
 % was: Q.save("graphics/svd102b.pdf", figsize=4.467, axes_pad=0.05)
 In the picture below the domain's 
 blue $\vec{\beta}$'s on the left map to the codomain's light red 

@@ -612,9 +612,9 @@
 
 \newcommand{\noterightmult}{Recall that 
 \protect\Sage{} prefers to do matrix-vector 
-multiplication as $\vec{v}M$ (here $\vec{v}$ is a row vector).
+multiplication as $\vec{v}\mkern2mu M$, where $\vec{v}$ is a row vector.
 Translate to the book's convention by transposing,
-$\trans{M}\trans{\vec{v}}$.
+$\trans{M}\mkern-1mu\trans{\vec{v}}$.
 See the discussion on page~\protect\pageref{sec:leftright}. 
 % Can't get LaTeX to take the equation* environment, although a test file does fine.
 % Thus, for the $\protect\nbyn{2}$ case \protect\Sage's way 
