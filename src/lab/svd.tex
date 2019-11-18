@@ -728,11 +728,14 @@ retaining some of the singular values.
 
 To illustrate that you can succeed in retaining at least some aspects of data
 we will do image compression.
-Meet Lenna.
-This top third of a pinup is a standard test image
-\cite{wiki:Lenna}.
+% Meet Lenna.
+% This top third of a pinup is a standard test image
+% \cite{wiki:Lenna}.
+% \begin{center}
+%   \includegraphics[width=.95\textwidth]{pix/Lenna.png} % from http://en.wikipedia.org/wiki/File:Lenna.png
+% \end{center}
 \begin{center}
-  \includegraphics[width=.95\textwidth]{pix/Lenna.png} % from http://en.wikipedia.org/wiki/File:Lenna.png
+  \includegraphics[width=.95\textwidth]{pix/greatwave.png} % from http://en.wikipedia.org/wiki/File:Lenna.png
 \end{center}
 
 The code we will use is in the \inlinecode{img_squeeze} routine 
@@ -741,25 +744,45 @@ The code breaks the picture into three matrices, for the red data, the
 green data, and the blue data.
 In that code we have a peek at the eight largest singular
 values in the red matrix:
-  $93233.7882139$, 
-  $11193.1186308$, 
-  $8660.12549856$, 
-  $7054.38662024$, 
-  $5916.89456484$, 
-  $5742.14618029$, 
-  $4125.16604075$, and
-  $3879.15303685$.
-We retain the terms for the largest $10\%$ of the singular values. 
+  % $93233.7882139$, 
+  % $11193.1186308$, 
+  % $8660.12549856$, 
+  % $7054.38662024$, 
+  % $5916.89456484$, 
+  % $5742.14618029$, 
+  % $4125.16604075$, and
+  % $3879.15303685$.
+  $192773.40$,
+  $26258.04$,
+  $20055.53$,
+  $16881.59$,
+  $13394.8$,
+  $12875.31$,
+  $11064.42$, and
+  $10250.95$.
+We retain the terms for the largest $10\%$ of the singular values,
+up to the $92$-nd. 
 The code reports that
-the singular value where we make that cutoff is $606.389279688$.
+the singular value where we make that cutoff is 
+$2240.98$.
+% $606.389279688$.
 It also gives the eight smallest:
-  $0.547288023466$, 
-  $0.470266870056$, 
-  $0.1988515109$, 
-with five more that are so small they are essentially 
-zero.\footnote{These are four values of 
-$1.024\,723\,452\,83\protect\times 10^{-11}$
-and one of $2.325\,339\,864\,91\protect\times 10^{-12}$.}
+  $11.22$,
+  $10.8$,
+  $9.0$,
+  $8.26$,
+  $8.08$,
+  $7.29$,
+  $6.55$, and
+  $5.88$.
+
+%   $0.547288023466$, 
+%   $0.470266870056$, 
+%   $0.1988515109$, 
+% with five more that are so small they are essentially 
+% zero.\footnote{These are four values of 
+% $1.024\,723\,452\,83\protect\times 10^{-11}$
+% and one of $2.325\,339\,864\,91\protect\times 10^{-12}$.}
 % \begin{lstlisting}
 % sigma_RD 0 = 93233.7882139
 % sigma_RD 1 = 11193.1186308
@@ -795,8 +818,11 @@ sage: load("img_squeeze.sage")
 sage: img_squeeze("Lenna.png", "Lenna_squeezed.png", 0.10)
 \end{lstlisting}
 Below is the squeezed image.
+% \begin{center}
+%   \includegraphics[width=.95\textwidth]{pix/Lenna_squeezed.png}
+% \end{center}
 \begin{center}
-  \includegraphics[width=.95\textwidth]{pix/Lenna_squeezed.png}
+  \includegraphics[width=.95\textwidth]{pix/greatwave_squeezed.png}
 \end{center}
 It definitely shows loss.
 The colors are not as good, the edges are not sharp, and there are 
