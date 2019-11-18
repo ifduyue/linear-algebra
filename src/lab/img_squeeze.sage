@@ -37,6 +37,7 @@ def img_squeeze(fn_in, fn_out, percent):
     # for i in range(Sigma_RD.nrows()-8,Sigma_RD.nrows()):
     #     print " at bottom, sigma_RD",i,"=",Sigma_RD[i][i]
     # Compute sigma_1 u_1 v_1^trans+ ..
+    dim_bound = min(rows, cols)  # for non-square images
     a=[]
     for i in range(rows):     
         a.append([])
@@ -45,21 +46,30 @@ def img_squeeze(fn_in, fn_out, percent):
     A_RD, A_GR, A_BL = matrix(RDF, a), matrix(RDF, a), matrix(RDF, a)
     for i in range(cutoff):
         sigma_i = Sigma_RD[i][i]
-        u_i = matrix(RDF, U_RD.column(i).transpose())
-        v_i = matrix(RDF, V_RD.column(i))
+	print "Sigma_RD.nrows()=",Sigma_RD.nrows(),"Sigma_RD.ncols()=",Sigma_RD.ncols() 
+	print "about to find sigma_i U_RD.column(i).transpose()"
+	# print "   U_RD.column(i)=", U_RD.column(i) 
+	# print "   U_RD.column(i).column().transpose()=", U_RD.column(i).column().transpose() 
+        u_i = matrix(RDF, U_RD.column(i).column())
+	print "u_i.nrows()=",u_i.nrows()," .ncols()=",u_i.ncols() 
+	print "   just found sigma_i U_RD.column(i).transpose()"
+        v_i = matrix(RDF, V_RD.column(i).column().transpose())
+	print "v_i.nrows()=",v_i.nrows()," .ncols()=",v_i.ncols() 
         A_RD = copy(A_RD)+sigma_i*u_i*v_i
+	print "Finished RD; about to do GR"
         sigma_i = Sigma_GR[i][i]
-        u_i = matrix(RDF, U_GR.column(i).transpose())
-        v_i = matrix(RDF, V_GR.column(i))
+        u_i = matrix(RDF, U_GR.column(i).column()[:dim_bound])
+        v_i = matrix(RDF, V_GR.column(i).column()[:dim_bound].transpose())
         A_GR = copy(A_GR)+sigma_i*u_i*v_i
+	print "about to do BL"
         sigma_i = Sigma_BL[i][i]
-        u_i = matrix(RDF, U_BL.column(i).transpose())
-        v_i = matrix(RDF, V_BL.column(i))
+        u_i = matrix(RDF, U_BL.column(i).column()[:dim_bound])
+        v_i = matrix(RDF, V_BL.column(i).column()[:dim_bound].transpose())
         A_BL = copy(A_BL)+sigma_i*u_i*v_i
     # Make a new image
     img_squoze = Image.new("RGB", img.size)
     for row in range(rows):
-        print "transferring over row=", row
+        print "transferring row=", row, "out of", rows
         for col in range(cols):
             p = (int(A_RD[row][col]), 
                  int(A_GR[row][col]), 

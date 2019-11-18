@@ -1,5 +1,8 @@
 linear-algebra/lab/asy/README
 
-These were produced with asymptote.  I ran this.
+These were produced with Asymptote.  I ran this.
 
-  asy -render=0 -f pdf -noprc ellipsoid 
+  asy -nosafe ellipsoid1
+
+(The -nosafe is to get around an opacity bug in Ghostscript with the version
+of Asymptote that I have.)

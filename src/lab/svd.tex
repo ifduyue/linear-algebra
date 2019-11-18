@@ -6,7 +6,7 @@ specifically, of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
 That will connect with an important way to factor matrices.
 
 
-\section{Action on the unit circle}
+\section{Drawing the action}
 A defining property of linear maps is that 
 $h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
 Recall that a line through the origin in $\Re^n$ is 
@@ -212,7 +212,7 @@ sage: p.save("graphics/svd003b.pdf")
   \vcenteredhbox{\includegraphics{graphics/svd003b.pdf}}
 \end{equation*}
 
-Here is another skew.
+Here is another shear.
 In this case the output's 
 second component is affected by the input's distance from 
 the $x$-axis.
@@ -279,23 +279,23 @@ the distance from the center to the furthest-away point on the ellipse,
 and write $\sigma_2$ for the length of the semi-minor axis.
 \begin{sagecommandline}
 sage: plot.options['axes_pad'] = 0.5
-sage: plot.options['fontsize'] = 5
+sage: plot.options['fontsize'] = 4
 sage: plot.options['aspect_ratio'] = 1
 sage: sigma_1=3
 sage: sigma_2=1
 sage: E = ellipse((0,0), sigma_1, sigma_2)
-sage: E.save("graphics/svd100.pdf",figsize=4)
+sage: E.save("graphics/svd100.pdf",figsize=3)
 \end{sagecommandline}
 \begin{sagesilent}
 plot.options['axes_pad'] = 0.5
-plot.options['fontsize'] = 5
+plot.options['fontsize'] = 2
 plot.options['aspect_ratio'] = 1
 plot.options['figsize'] = 1
 sigma_1=3
 sigma_2=1
 E = ellipse((0,0), sigma_1, sigma_2)
 # E.save("graphics/svd100.pdf", axes_pad=0.075, dpi=1200, fontsize=7, ticks=([-3,-2,-1,1,2,3],[-1,1]), figsize=1.5)
-E.save("graphics/svd100.pdf", axes_pad=0.075, figsize=4)
+E.save("graphics/svd100.pdf", axes_pad=0.075, figsize=3)
 \end{sagesilent}
 \begin{center}
   \includegraphics{graphics/svd100.pdf}
@@ -436,13 +436,13 @@ Note also that the two bases are \textit{orthonormal}\Dash the unit circles help
 us see that the bases are comprised of unit vectors and further,
 the two members of each basis are orthogonal.
 
-Compare this diagram to the one before it 
+Compare this diagram to the one before it, 
 labeled~($*$), which shows the effect of the matrix
 on the unit circle.
 We used the whole circle in~($*$) to spotlight the ellipse and 
 to make clearer that in~($**$)
-the longest red vector is a
-semi-major axis of that ellipse and the shortest red vector is a 
+the long red vector is a
+semi-major axis of that ellipse and the short red vector is a 
 semi-minor axis.
 
 
@@ -457,7 +457,7 @@ book that is optional.
 In addition, we'll consider only the case of a nonsingular matrix and map;
 it shows the main idea, which is the point of a sketch.}
 
-Consider an~$\nbyn{n}$ matrix~$T$ that is nonsingular, and the
+Consider an~$\nbyn{n}$ matrix~$T$ that is nonsingular and the
 nonsingular transformation~$\map{t}{\Re^n}{\Re^n}$ represented by
 $T$ with respect to the standard bases.
 
