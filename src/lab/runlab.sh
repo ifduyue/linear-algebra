@@ -9,5 +9,5 @@ PYTHONTEX_DIR="/usr/local/share/texmf/tex/latex/pythontex"
 TEXINPUTS=${TEXINPUTS} xelatex "./${FN}"
 python3 ${PYTHONTEX_DIR}/pythontex.py "${FN}"
 sage ${FN}.sagetex.sage
-# bibtex lab
+bibtex lab
 TEXINPUTS=${TEXINPUTS} xelatex "./${FN}"

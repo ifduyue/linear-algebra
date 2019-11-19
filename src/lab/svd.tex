@@ -72,9 +72,9 @@ p.set_axes_range(-1.5, 1.5, -0.5, 1.5)
 p.save("graphics/svd000.pdf")
 \end{sagesilent}
 \begin{equation*}
-  U=\set{\colvec{x \\ y}
+  U=\set{\colvec{\cos(t) \\ \sin(t)}
          \suchthat 
-         \text{$x=\cos(t)$, $y=\sin(t)$, $0\leq t<\pi$}}
+         0\leq t<\pi}
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
@@ -412,8 +412,11 @@ In the picture below the domain's
 blue $\vec{\beta}$'s on the left map to the codomain's light red 
 $t(\vec{\beta})$'s on the right.
 Also on the right, in blue, are the $\vec{\delta}$'s.
-The red $t(\vec{\beta}_1)$ does look about $5.5$ times $\vec{\delta}_1$,
-and $t(\vec{\beta}_2)$ looks about $0.4$ times~$\vec{\delta}_2$. 
+The diagonal entries of $\Sigma$ tell us about the
+red vectors:~$t(\vec{\beta}_1)$ is about $5.5$ times $\vec{\delta}_1$
+while $t(\vec{\beta}_2)$ is about $0.4$ times~$\vec{\delta}_2$.
+Thus, in the diagram~($*$) showing the action of this generic matrix,
+that is the length of the semimajor and semiminor axes. 
 \begin{equation*}
   % \setlength{\fboxsep}{0in} % used to set box heights by eye; surrounded each picture env with a fbox
   \setlength{\unitlength}{1in}
@@ -734,15 +737,20 @@ we will do image compression.
 % \begin{center}
 %   \includegraphics[width=.95\textwidth]{pix/Lenna.png} % from http://en.wikipedia.org/wiki/File:Lenna.png
 % \end{center}
+This is \textit{The Great Wave off Kanagawa} by Hokusai, ca~1830
+\cite{wiki:GreatWave}.
+It depicts an rogue wave threatening three boats off the coast of 
+what is today Yokohama, with Mount Fuji in the background. 
 \begin{center}
-  \includegraphics[width=.95\textwidth]{pix/greatwave.png} % from http://en.wikipedia.org/wiki/File:Lenna.png
+  \includegraphics[width=.95\textwidth]{pix/greatwave.png} % 
 \end{center}
 
-The code we will use is in the \inlinecode{img_squeeze} routine 
-listed at the end of this chapter.
+The code we will use is in \inlinecode{img_squeeze.sage}, 
+listed at the end of the chapter.
 The code breaks the picture into three matrices, for the red data, the 
 green data, and the blue data.
-In that code we have a peek at the eight largest singular
+It gives us some insight into what we are omitting with  
+a peek at the eight largest singular
 values in the red matrix:
   % $93233.7882139$, 
   % $11193.1186308$, 
@@ -760,12 +768,6 @@ values in the red matrix:
   $12875.31$,
   $11064.42$, and
   $10250.95$.
-We retain the terms for the largest $10\%$ of the singular values,
-up to the $92$-nd. 
-The code reports that
-the singular value where we make that cutoff is 
-$2240.98$.
-% $606.389279688$.
 It also gives the eight smallest:
   $11.22$,
   $10.8$,
@@ -775,6 +777,15 @@ It also gives the eight smallest:
   $7.29$,
   $6.55$, and
   $5.88$.
+We retain the terms for the largest $10\%$ of the singular values. 
+The code reports that
+the $92$-nd singular value is 
+$2240.98$.\footnote{%
+  The image file,
+  generously made available by The Art Institute of Chicago, 
+  is $1497\times 922$.}
+% $606.389279688$.
+
 
 %   $0.547288023466$, 
 %   $0.470266870056$, 
@@ -804,9 +815,9 @@ It also gives the eight smallest:
 % sigma_RD 510 = 1.02472345283e-11
 % sigma_RD 511 = 2.32533986491e-12  
 % \end{lstlisting}
-The large singular values are much larger than the small singular values,
-even setting aside the ones at the end
-that are zero except for numerical issues.
+% The large singular values are much larger than the small singular values,
+% even setting aside the ones at the end
+% that are zero except for numerical issues.
 
 We want to see how badly the image degrades for various cutoffs.
 The code below sets the cutoff at $10$\%.
@@ -815,9 +826,9 @@ with the first $51$ singular
 values.
 \begin{lstlisting}
 sage: load("img_squeeze.sage")                                 
-sage: img_squeeze("Lenna.png", "Lenna_squeezed.png", 0.10)
+sage: img_squeeze("pix/greatwave.png", "pix/greatwave_squeezed.png", 0.10)
 \end{lstlisting}
-Below is the squeezed image.
+Below is the resulting squeezed image.
 % \begin{center}
 %   \includegraphics[width=.95\textwidth]{pix/Lenna_squeezed.png}
 % \end{center}
@@ -826,24 +837,26 @@ Below is the squeezed image.
 \end{center}
 It definitely shows loss.
 The colors are not as good, the edges are not sharp, and there are 
-a few artifacts, including a horizontal line across the top of 
-Lenna's forehead and another halfway up her hat.
-But certainly the image is entirely recognizable.
+a few artifacts, including horizontal line across writing on the 
+upper left.
+But certainly the image is entirely recognizable\Dash not bad fro omiting
+$90$~percent of the information.
 
-Where the image is $\nbyn{n}$, every additional term in the summation
+Again considering a square image, $\nbyn{n}$, 
+every additional term in the summation
 adds to the storage and transmission requirements by about $2n$ reals.
-The original image requires $n^2$ reals so we want to choose a cutoff value 
+The starting image requires $n^2$ reals so we want to choose a cutoff value 
 less than $0.50$.
 The above image with a cutoff of $0.10$ has the advantage is that it needs 
 only $20\%$ of the storage
-and transmission requirements of the original image.
-However, its quality may not be acceptable.
+and transmission requirements of the original image,
+although its quality may not be acceptable.
 That is, selecting a cutoff parameter is an engineering decision where
 on a fidelity versus resource-consumption continuum 
 you choose a value appropriate for your application.
  
 Experimenting shows that setting
-the cutoff parameter to $0.20$ is enough to make the output image hard to tell
+the cutoff parameter to $0.20$ can make the output image hard to tell
 from the original.
 Below is the picture of Suzy 
 from this manual's cover.
@@ -861,79 +874,77 @@ and on the right it is squeezed using a parameter value of~$0.20$.
 
 The \inlinecode{plot_circle_action}
 routine that we call above takes the four entries of the $\nbyn{2}$
-matrix and returns a list of graphics.
+matrix and returns a list of two graphics, showing the input and the
+output.
 Other parameters are the number of colors, and a flag giving whether
-to plot a full circle or whether to plot just the top half circle (this
-is the default).
+to plot a full circle or whether to plot just the top half circle (the 
+default is to show the top half).
 
-This routine determines the list of colors and 
+The driver routine determines the list of colors and 
 calls a helper \inlinecode{color_circle_list}, 
 given below, which returns a list of graphics.
-Finally, this routine plots those graphics.
+Finally, the routine plots those graphics.
 \lstinputlisting[firstline=38,lastline=49]{plot_action.sage}
 
-The helper does the heavy lifting.
-It produces a parametrized curve $(x(t),y(t))$, and uses \Sage's
-\inlinecode{parametric_plot} function to get the resulting graphic.
-\lstinputlisting[firstline=4,lastline=35]{plot_action.sage}
-If this routine is plotting the upper half circle then it adds a
-small empty circle at the end to show that the image of $(-1,0)$
-is not part of the graph.
-
+The helper routine does the heavy lifting.
 There are two global values to set graphic values.
 The variable \inlinecode{CIRCLE_THICKNESS} sets the thickness of 
 the plotted curve, in points (a printer's unit, here $1/72$~inch).
 Similarly \inlinecode{DOT_SIZE} sets the size of the small empty circle.
+This routine produces a parametrized curve $(x(t),y(t))$ and uses \Sage's
+\inlinecode{parametric_plot} function to get the resulting graphic.
+\lstinputlisting[firstline=4,lastline=35]{plot_action.sage}
+If this routine is plotting the upper half circle then it adds the
+small empty circle at the end to show that the image of $(-1,0)$
+is not part of the graph.
+
 
 
 
 \section{Source of img\_squeeze.sage}
-We will use the Python Image Library for reading the figure.
+We use the Python Image Library for reading and writing the graphic.
+\lstinputlisting[firstline=2,lastline=2]{img_squeeze.sage}
 The function
 \inlinecode{img_squeeze}
-takes three arguments, the names of the input and output functions, and
-a real number between $0$ and $1$ which determines the percentage 
-of the singular values to include in the sum before the cutoff.
-\lstinputlisting[firstline=1,lastline=7]{img_squeeze.sage} % omit closing quotes
+takes three arguments:~the names of the two files, and
+the cutoff real number between $0$ and~$1$ the gives the percentage 
+of the singular values to retain in the sum.
+\lstinputlisting[firstline=4,lastline=8]{img_squeeze.sage}
 
 This function first brings the input data to a format where each
 pixel is a triple 
 $(\text{red}, \text{green},\text{blue})$ of integers that range from 
 $0$ to~$255$.
-It uses those numbers to gradually build 
+It uses those numbers to build 
 three Python arrays \inlinecode{rd}, \inlinecode{gr},
 and \inlinecode{bl}, which then initialize the 
 three \Sage{} matrices \inlinecode{RD},
 \inlinecode{GR}, and~\inlinecode{BL}.
-\lstinputlisting[firstline=9,lastline=24]{img_squeeze.sage}
+\lstinputlisting[firstline=9,lastline=25]{img_squeeze.sage}
 
 The next step finds the Singular Value Decomposition of those three.
-Out of curiosity, we have a peek at the eight largest singular
+Out of curiosity, we have a look at the eight largest singular
 values in the red matrix, the singular value where we make the cutoff,
 and the eight smallest.
-\lstinputlisting[firstline=25,lastline=34]{img_squeeze.sage}
+\lstinputlisting[firstline=26,lastline=38]{img_squeeze.sage}
 
 Finally, for each matrix we compute the sum
 $\sigma_1\cdot\vec{u}_1\trans{\vec{v}}_1+\sigma_2\cdot\vec{u}_2\trans{\vec{v}}_2
    +\cdots$
 up through the cutoff index.
 \lstinputlisting[firstline=39,lastline=58]{img_squeeze.sage}
-The code asks for the transpose of the
-\protect\inlinecode{U_RD.column(i)}, etc., which may seem to be a mistake.
-Remember that \protect\Sage{} favors rows for vectors, so this is how we
-make the $\vec{u}$ vector a column, while $\vec{v}$ is already a row.
-Because of this operation on the vector, the first time you run this
-code in a \protect\Sage{} session you may get a depreciation warning.
+% The code asks for the transpose of the
+% \protect\inlinecode{U_RD.column(i)}, etc., which may seem to be a mistake.
+% Remember that \protect\Sage{} favors rows for vectors, so this is how we
+% make the $\vec{u}$ vector a column, while $\vec{v}$ is already a row.
+% Because of this operation on the vector, the first time you run this
+% code in a \protect\Sage{} session you may get a depreciation warning.
 
-To finish, we put the data in the \path{.png} format and save it to 
-disk.\lstinputlisting[firstline=59,lastline=68]{img_squeeze.sage}
+To finish, we put the data in the PNG format and save it to 
+disk.
+\lstinputlisting[firstline=59,lastline=67]{img_squeeze.sage}
 This part of the routine takes a long time, in part because
-the code is intended to be easy to read rather than fast.
-Consequently, in the source there are some status lines to
-convince a user that it is still working; 
-those busy-work lines are left out of 
-some of the earlier output listings.
-
+the code is written to be easy to read rather than to be fast to run.
 
 \endinput
 
@@ -941,5 +952,7 @@ some of the earlier output listings.
 TODO:
 1) mention Sage matrices are not mutable in matrix introduction.
 Is mutable discussed in Intro?
+
+2) vectors have to be forced to be row or col
 
 2) Need int() fcns?  copy() fcn?

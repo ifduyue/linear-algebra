@@ -9,7 +9,7 @@ def color_circle_list(a, b, c, d, colors, full_circle=False):
     colored a different color.
       a, b, c, d  reals  entries of the matrix ul, ur, ll, lr
       colors  list of rgb tuples; len of this list is how many chunks
-      full_circle=False  Show a full circle instead of a half circle.
+      full_circle=False  Show a full circle instead
     """
     r = []
     if full_circle:
