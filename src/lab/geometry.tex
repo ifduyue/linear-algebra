@@ -1,9 +1,9 @@
 \chapter{Geometry of Linear Maps}
 
-\Sage{} can illustrate the geometric effect of linear transformations.
-In this chapter we will picture their effect on the unit square.
-The graphs here show transformations of the plane~$\Re^2$
-because those fit on the paper but the principles extend to 
+To illustrate the geometric effect of linear transformations 
+we will use \Sage to picture how they transform the unit square.
+We will show transformations of the plane,~$\Re^2$,
+because they fit on the paper, but the principles extend to 
 higher-dimensional spaces.
 
 
@@ -14,21 +14,18 @@ higher-dimensional spaces.
 The prior chapter points out that 
 the condition $h(r\vec{v})=r\cdot h(\vec{v})$ in the definition
 of linear map means that
-linear maps send lines through the origin to lines through the origin.
-We can extend that to show that under a linear map, the image of any line
-at all in the domain is a line in the range.
-Fix a domain space~$\Re^d$ and codomain space~$\Re^c$, along with
-the linear map~$h$ between them.
-Get a line in the domain by fixing a vector of slopes~$\vec{m}\in\Re^d$
-and a vector of offsets from the origin~$\vec{b}\in\Re^d$, so  
-$\ell = \set{\vec{v}=\vec{m}\cdot s +\vec{b}\suchthat s\in\Re}$.
-The image of~$\ell$ is this set.
+these maps transform lines through the origin to lines through the origin.
+What about lines not through the origin?
+Fix a linear map $\map{h}{\Re^d}{\Re^c}$.
+A line in the domain has the form 
+$\ell = \set{\vec{m}\cdot s +\vec{b}\suchthat s\in\Re}$
+for~$\vec{m}, \vec{b}\in\Re^d$.
+The image of~$\ell$
 \begin{equation*}
   h(\ell)=\set{h(\vec{m}\cdot s+\vec{b})\suchthat s\in\Re}
   =\set{h(\vec{m})\cdot s+h(\vec{b})\suchthat s\in\Re}
 \end{equation*}
-This is a line in the codomain with the vector of 
-slopes~$h(\vec{m})$ and the vector of offsets~$h(\vec{b})$. 
+is a line in the codomain. 
 
 For example, consider the transformation $\map{t}{\Re^2}{\Re^2}$ 
 that rotates vectors counterclockwise by 
@@ -48,29 +45,45 @@ $\pi/6$~radians.\footnote{\noterightmult}
 \end{equation*}
 This is the line $y=3x+2$.
 \begin{equation*}
-  \ell=\set{\colvec{x \\ y}=\colvec{3 \\ 1}\cdot s+\colvec{2 \\ 0}\suchthat s\in\Re}
+  \ell=
+  \set{\colvec{x \\ y}=\colvec{1 \\ 3}\cdot s+\colvec{0 \\ 2}\suchthat s\in\Re}
 \end{equation*}
-Under the action of~$t$ that line becomes this set.
+Under the action of~$t$ 
+\begin{equation*}
+  \rowvec{1  &3}
+  \begin{mat}
+    \sqrt{3}/2   &1/2 \\
+    -1/2          &\sqrt{3}/2
+  \end{mat}
+  =
+  \rowvec{(\sqrt{3}-3)/2  &(1-3\sqrt{3})/2}
+  \qquad
+  \rowvec{0  &2}
+  \begin{mat}
+    \sqrt{3}/2   &1/2 \\
+    -1/2          &\sqrt{3}/2
+  \end{mat}
+  =
+  \rowvec{-1  &\sqrt{3}}
+\end{equation*}
+that line becomes this set.
 \begin{equation*}
   t(\ell)
   =
-  \set{\colvec{x \\ y}=\frac{1}{2}\colvec{3\sqrt{3}-1 \\ 3+\sqrt{3}}\cdot s
-                                  +\colvec{\sqrt{3} \\ 1}\suchthat s\in\Re}
+  \set{\colvec{x \\ y}=\colvec{(\sqrt{3}-3)/2 \\ (1-3\sqrt{3})/2}\cdot s
+                          +\colvec{-1 \\ \sqrt{3}}\suchthat s\in\Re}
 \end{equation*}
 \begin{sagecommandline}
 sage: s = var('s')
-sage: plot.options['figsize'] = 2.5
-sage: plot.options['axes_pad'] = 0.05
-sage: plot.options['fontsize'] = 7
-sage: plot.options['dpi'] = 1200
-sage: plot.options['aspect_ratio'] = 1
-sage: ell = parametric_plot((3*s+2,1*s), (s, -10, 10))
-sage: ell.set_axes_range(-4, 4, -4, 4)
+sage: ell = parametric_plot((s, 3*s+2), (s, -10, 10))
+sage: d = circle((0,2), 0.1, rgbcolor=(1,0,0))
+sage: ell = ell+d
 sage: ell.save("graphics/geo000a.pdf")
-sage: t_x(s) = ((3*sqrt(3)-1)/2)*s+sqrt(3)
-sage: t_y(s) = ((3+sqrt(3))/2)*s+1
+sage: t_x(s) = ((sqrt(3)-3)/2)*s-1
+sage: t_y(s) = ((1-3*sqrt(3))/2)*s+sqrt(3)
 sage: t_ell = parametric_plot((t_x(s), t_y(s)), (s, -10, 10))
-sage: t_ell.set_axes_range(-4, 4, -4, 4)
+sage: d = circle((-1,sqrt(3)), 0.1, rgbcolor=(1,0,0))
+sage: t_ell = t_ell+d
 sage: t_ell.save("graphics/geo000b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
@@ -80,39 +93,75 @@ plot.options['axes_pad'] = 0.05
 plot.options['fontsize'] = 7
 plot.options['dpi'] = 1200
 plot.options['aspect_ratio'] = 1
-ell = parametric_plot((3*s+2,1*s), (s, -10, 10))
+ell = parametric_plot((s, 3*s+2), (s, -10, 10))
+d = circle((0,2), 0.1, rgbcolor=(1,0,0))
+ell = ell+d
 ell.set_axes_range(-4, 4, -4, 4)
 ell.save("graphics/geo000a.pdf", fontsize=7)
-t_x(s) = ((3*sqrt(3)-1)/2)*s+sqrt(3)
-t_y(s) = ((3+sqrt(3))/2)*s+1
+t_x(s) = ((sqrt(3)-3)/2)*s-1
+t_y(s) = ((1-3*sqrt(3))/2)*s+sqrt(3)
 t_ell = parametric_plot((t_x(s), t_y(s)), (s, -10, 10))
+d = circle((-1,sqrt(3)), 0.1, rgbcolor=(1,0,0))
+t_ell = t_ell+d
 t_ell.set_axes_range(-4, 4, -4, 4)
 t_ell.save("graphics/geo000b.pdf", fontsize=7)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo000a.pdf}}
-  \quad\mapsvia{t}\quad
+  \quad\mapsvia{\makebox[1.5em][c]{\scriptsize $t$}}\quad
   \vcenteredhbox{\includegraphics{graphics/geo000b.pdf}}
 \end{equation*}
-(The limits on the parameter~$s$ of $10$ and~$-10$ are arbitrary, just
+(As with plots from earlier chapters, we've left out some of the code to 
+set the font size, etc.
+For that, see this manual's source.
+Also, the limits on the parameter~$s$ of $10$ and~$-10$ are arbitrary, just
 chosen to be large enough that the line segment covers the entire 
 domain and codomain intervals shown, from $-4$ to~$4$.)
-One instance is that the vector that ends at $(2,0)$ is rotated to the vector
-that ends at $(\sqrt{3},1)$.
+One example of a rotation is that the vector that ends at $(0,2)$ 
+is rotated to the vector that ends at $(-1,\sqrt{3})$.
+Those are shown as red dots.
 
 
 
 
 %========================================
 \section{The unit square}
-We can show the effect of plane transformations 
+The prior chapter illustrated
+the effect of plane transformations 
 $\map{t}{\Re^2}{\Re^2}$ 
 by applying them to
-the unit square.
+the unit circle.
+In this chapter we use the unit sqaure.
+
+The observation
+that linear maps send lines to lines makes it easy:~we find the
+action of a matrix 
+% \begin{equation*}
+% \begin{mat}
+%   a  &b  \\
+%   c  &d
+% \end{mat}
+% \end{equation*}
+by finding what it does to the four corners.
+% \begin{equation*}
+%   \colvec{0 \\ 0}\mapsto\colvec{0 \\ 0}
+%   \quad
+%   \colvec{1 \\ 0}\mapsto\colvec{a \\ b}
+%   \quad
+%   \colvec{1 \\ 1}\mapsto\colvec{a+c \\ b+d}
+%   \quad
+%   \colvec{0 \\ 1}\mapsto\colvec{c \\ d}
+% \end{equation*}
+Then we connect the four corners with line segments.
+That is, linear transformations map squares to
+parallelograms.
+
+We start by ploting the unit square unchanged.
+The colors will play the same role here as in the prior chapter;
+more below.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: p = plot_square_action(1,0,0,1)  # identity matrix
-sage: p.set_axes_range(-0.25, 1.5, -0.25, 1.5) 
 sage: p.save("graphics/geo100.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
@@ -138,33 +187,14 @@ matrix with entries $a$, $b$, $c$, and~$d$.
   =
   \rowvec{ax+cy &bx+dy}
 \end{equation*}
-The routine's source is at the end of this chapter but
-the observation
-that linear maps send lines to lines makes it easy:
-the matrix 
-does this to the four corners of the square 
-\begin{equation*}
-  \colvec{0 \\ 0}\mapsunder{t}\colvec{0 \\ 0}\quad
-  \colvec{1 \\ 0}\mapsunder{t}\colvec{a \\ b}\quad
-  \colvec{1 \\ 1}\mapsunder{t}\colvec{a+c \\ b+d}\quad
-  \colvec{0 \\ 1}\mapsunder{t}\colvec{c \\ d}
-\end{equation*}
-and the square's sides between those corners map to the line segments between
-those image points\Dash that is, linear transformations map squares to
-parallelograms.
-So, the routine just plots the four line segments connecting those corners.
-In the \Sage{} session above, that routine is given the identity matrix,
-so it plots the unit square unchanged.
+The source coude is at the end of the chapter.
 
 That routine gives
 these pictures of the effect of the generic matrix.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-6, 6, -1, 6) 
-sage: q.save("graphics/geo101a.pdf")
 sage: p = plot_square_action(1,2,3,4) 
-sage: p.set_axes_range(-6, 6, -1, 6) 
 sage: p.save("graphics/geo101b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
