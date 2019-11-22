@@ -87,7 +87,7 @@
 \newfontface\listingsfont[Path=\FontDir,
                           Scale=1]{ProggyClean.ttf}
 \newfontface\listingsinlinefont[Path=\FontDir,
-                                Scale=MatchLowercase]{ProggyClean.ttf}
+                                Scale=MatchLowercase]{ProggyClean.ttf} % shrink scale even more?
 \newfontface\sagelistingsfont[Path=\FontDir,
                           Scale=1]{ProggyCleanSage.ttf}
 \newfontface\sagelistingsinlinefont[Path=\FontDir,
