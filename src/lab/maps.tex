@@ -13,43 +13,56 @@ and are more pleasant to work with.
 
 %========================================
 \section{Linear functions} \label{sec:linearfunctions}
-Consider
-this linear transformation $\map{t}{\Re^2}{\Re^3}$.
+\Sage{} can work with functions.
 \begin{equation*}
   t(\colvec{a \\ b})
   =\colvec{a+2b \\ a+2b}
 \end{equation*}
-\Sage{} can work with functions.
 \begin{sagecommandline}
 sage: a, b = var('a, b')   
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
 sage: t_symbolic       
+sage: t_symbolic(1,3)       
 \end{sagecommandline}
-The map gives the expected output.
+
+\Sage{} can add add two functions or find a scalar multiple of a function.
+\begin{sagecommandline}
+sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
+sage: f_symbolic = 3 * t_symbolic
+sage: f_symbolic
+sage: f_symbolic(4, 2)
+sage: s_symbolic(a,b) = [a+b, a-b]
+sage: g_symbolic = s_symbolic + t_symbolic
+sage: g_symbolic
+sage: g_symbolic(1, 5) 
+\end{sagecommandline}
+\Sage{} can also find the composition of two functions.
+\begin{sagecommandline}
+sage: s_symbolic * f_symbolic
+sage: s_symbolic * f_symbolic (1,2)
+\end{sagecommandline}
+
+We used the oddball names, 
+\inlinecode{t_symbolic}, \inlinecode{s_symbolic}, etc.,
+because these are not functions in that we have not described a domain
+and codomain; rather they are prototypes for functions.  
+We can use one to produce a linear transformation $\map{t}{\Re^2}{\Re^3}$.
+\begin{sagecommandline} 
+sage: a, b = var('a, b')   
+sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
+sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic)
+\end{sagecommandline}
+With the transformation~$t$ we expect this
 \begin{equation*}
   t(\colvec{1 \\ 3})
   =\colvec{7 \\ 7}
 \end{equation*}
+and \Sage{} delivers.
 \begin{sagecommandline}
-sage: t_symbolic(1,3)       
+sage: v = vector(QQ, [1, 3])
+sage: t(v)
 \end{sagecommandline}
 
-\Sage{} can add linear functions, or find scalar multiples.
-\begin{sagecommandline}
-sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
-sage: f = 3 * t_symbolic
-sage: f
-sage: f(4, 2)
-sage: s(a,b) = [a+b, a-b]
-sage: g = s + t_symbolic
-sage: g
-sage: g(1, 5) 
-\end{sagecommandline}
-\Sage{} can also find the composition of two functions.
-\begin{sagecommandline}
-sage: s * f
-sage: s * f (1,2)
-\end{sagecommandline}
 
 
 %========================================
@@ -57,158 +70,160 @@ sage: s * f (1,2)
 By default, \Sage{} represents linear
 maps differently than the book does.
 An example explains it best.
-
-
-
-
-To represent that map, we can use the canonical bases $\stdbasis_2\subset\Re^2$.
-Because we have these
+Consider again this transformation $\map{t}{\Re^2}{\Re^2}$.
+\begin{equation*}
+  t(\colvec{a \\ b})
+  =\colvec{a+2b \\ a+2b}
+\end{equation*}
+To represent it with respect to $B,D\subset\Re^2$, 
+we can use the canonical bases $B=\stdbasis_2$, $D=\stdbasis_2$.
+We find the effect of~$t$ on the elements of~$B$ and represent the
+results with respect to~$D$.
 \begin{equation*}
   \colvec{1 \\ 0}\mapsunder{t}\colvec{1 \\ 1}
+  \text{\ gives\ }
+  \rep{\colvec{1 \\ 1}}{D}=\colvec{1 \\ 1}
   \qquad
   \colvec{0 \\ 1}\mapsunder{t}\colvec{2 \\ 2}
+  \text{\ gives\ }
+  \rep{\colvec{2 \\ 2}}{D}=\colvec{2 \\ 2}
 \end{equation*}
-and because with respect
+Thus the book gets this matrix
+\begin{equation*}
+  % \hspace*{3em}
+  \rep{t}{B,D}=
+  \begin{mat}
+    1  &2  \\
+    1  &2
+  \end{mat}
+\end{equation*}
+but \Sage{} shows a different one.
+\begin{sagecommandline}
+sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
+sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic)  # see discussion of 'side' below
+sage: t
+\end{sagecommandline}
+What's happening?
 
-With respect to these we get  
-a matrix~$T=\rep{t}{\stdbasis_2,\stdbasis_3}$ representing the map 
-and a vector $\vec{w}=\rep{\vec{v}}{\stdbasis_2}$ representing
-the domain element.
-The book represents 
-the map application~$t(\vec{v})$ 
-with this matrix-vector product~$T\vec{w}$.
+Remember that the point of a matrix representation is to
+use the representation of $t$ and $\vec{v}$ to compute
+the representation of $h(\vec{v})$.
+The book has
 \begin{equation*}
-  \begin{mat}
-    1 &1 \\
-    1 &-1 \\
-    0 &1
-  \end{mat}
-  \colvec{1 \\ 3}
-  =
-  \colvec{4 \\ -2 \\ 3}
+  \rep{t}{B,D}\,\rep{\vec{v}}{B}=\rep{t(\vec{v})}{D}
 \end{equation*}
-That is, the book is write-right:~its notation puts the vector on the right 
-of the matrix.
-However, by default \Sage{} instead
-uses a row vector and multiplies the matrix from the left
-(where you'd expect if the vector were a one-row matrix),
-as here.
-\begin{equation*}
-  \rowvec{1 &3}
-  \begin{mat}
-    1 &1  &0 \\
-    1 &-1 &1
-  \end{mat}
-  =
-  \rowvec{4 &-2 &3}
-\end{equation*}
-Notice that \Sage{}'s matrix and vector are the transposes of 
-the book's matrix and vector.
+with the column vector on the right of the matrix.
+\Sage{}, on the other hand, by default instead has the vector on the left, as a 
+row vector.
+The translation is that, compared to the book's~$T\vec{v}$,
+\Sage{}'s default is:~$\trans{\vec{v}}\;\trans{T}$.
+That's why above \Sage{}'s matrix is the transpose of the book's matrix.
 
 Obviously the difference is cosmetic.
-Rather than quarrel with the tool, in this manual we will do it
-\Sage's way.
-The translation is that, compared to the book's~$T\vec{w}$,
-\Sage{} prefers~$\trans{\vec{w}}\;\trans{T}$.
-
+To get \Sage{} to conform to the book's convention we need to do two 
+things.
+We need to define the linear transformation using the
+option \inlinecode{side='right'}, and when we show the
+matrix we need to use the same option.
+Here is how we will do that for the above transformation.
+\begin{sagecommandline}
+sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
+sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic, side='right')  
+sage: t.matrix(side='right')
+\end{sagecommandline}
+Now it agrees with the text.
 
 
   
 
 %========================================
 \section{Defining}
-We will see two different ways to define a linear transformation.
+We can define a linear map in a number of ways.
+We'll describe two of them here.
 
 \subsection{Symbolically}
-We first define a map that takes two inputs and returns three outputs.
+Above we've seen defining a map by formula.
 \begin{sagecommandline}
 sage: a, b = var('a, b')   
-sage: T_symbolic(a, b) = [a+b, a-b, b]         
-sage: T_symbolic       
+sage: h_symbolic(a, b) = [a+b, a-b, b]         
+sage: h_symbolic       
+sage: h = linear_transformation(QQ^2, QQ^3, h_symbolic, side='right')
+sage: h.matrix(side='right') 
 \end{sagecommandline}
-We have not yet defined a domain and codomain 
-so this not a function\Dash instead it is a prototype for a function.
-Make an instance of a function by applying $T_{\textit{symbolic}}$ on a 
-particular domain and codomain.  % ;s,7,68,62;s,8,70,62]
-\begin{sagecommandline} 
-sage: T = linear_transformation(QQ^2, QQ^3, T_symbolic)
-sage: T                                              
-\end{sagecommandline}
-\noindent Note again the left/right issue as discussed above:~\Sage's matrix is 
-the transpose of the matrix that the book would use.
-
 Evaluating this function on a member of the domain gives a member
 of the codomain. 
 \begin{sagecommandline}
 sage: v = vector(QQ, [1, 3])  
-sage: v
-sage: T(v)
+sage: h(v)
 \end{sagecommandline}
 
 If the vector isn't a member of the domain
 \begin{lstlisting}
 sage: v1 = vector(QQ, [1,2,3,4])
-sage: T(v1)
+sage: h(v1)
 \end{lstlisting}
-then \Sage{} gives an error message.
-This is its final line.
+then \Sage{} gives an error message
+with this final line.
 \begin{lstlisting}
-TypeError: (1, 2, 3, 4) fails to convert into the map's domain Vector space 
-  of dimension 2 over Rational Field, but a `pushforward` method is not 
-  properly implemented
+TypeError: (1, 2, 3, 4) fails to convert into the map's domain 
+  Vector space of dimension 2 over Rational Field, 
+  but a `pushforward` method is not properly implemented
 \end{lstlisting}
 
 \Sage{} can find the null space 
 and range space, using the equivalent 
 terms \textit{kernel} and \textit{image}.
 \begin{sagecommandline}
-sage: T.kernel()                                       
-sage: T.image()                                        
+sage: h.kernel()                                       
+sage: h.image()                                        
 \end{sagecommandline}
-The null space is the trivial subspace of the domain,
-$\set{\zero}$, the $0$-dimensional
-subspace, so \Sage{} reports that its basis is empty.
-Therefore the map that the matrix represents, $t$, is one-to-one.
+\Sage{} has found that 
+the null space $\nullspace{h}$ is the trivial subspace of the domain,
+$\set{\zero}$.
+This is a $0$-dimensional
+subspace so \Sage{} reports that its basis is empty.
+\Sage{} found that the range space $\rangespace{h}$ is $2$-dimensional. 
 
-The range space is $2$-dimensional. 
-Since the codomain is $3$-dimensional, the map~$t$ is not onto.
-Note also that this fits with the theorem that
+Because the null space is trivial, the map is one-to-one. 
+Because the range space is $2$-dimensional but 
+the codomain is $3$-dimensional, the map~$t$ is not onto.
+Note also that \Sage's findings fit with the theorem that
 the dimension of the null space plus the dimension of the 
 range space equals to the dimension of the domain.
 
 For contrast consider a map that is not one-to-one.
 \begin{sagecommandline}
-sage: S_symbolic(a, b) = [a+2*b, a+2*b]
-sage: S_symbolic
-sage: S = linear_transformation(QQ^2, QQ^2, S_symbolic)
-sage: S
+sage: t_symbolic(a, b) = [a+2*b, a+2*b]
+sage: t_symbolic
+sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic, side='right')
+sage: t.matrix(side='right')
 sage: v = vector(QQ, [1, 3])  
-sage: S(v)
+sage: t(v)
 \end{sagecommandline}
 This map is not one-to-one since we can get two inputs
 to map to the same output, 
 as here.  
 \begin{sagecommandline}
-sage: S_symbolic(a, b) = [a+2*b, a+2*b]
-sage: S = linear_transformation(QQ^2, QQ^2, S_symbolic)
-sage: S(vector(QQ, [2, 0]))
-sage: S(vector(QQ, [0, 1]))
+sage: t(vector(QQ, [2, 0]))
+sage: t(vector(QQ, [0, 1]))
 \end{sagecommandline}
 \noindent
 Another way to tell that the map is not one-to-one is to look at the 
 null space.
 \begin{sagecommandline}
-sage: S.kernel()
-sage: S.image()
+sage: t.kernel()
 \end{sagecommandline}
 The null space has nonzero dimension, namely it 
 has dimension~$1$,
 so \Sage{} agrees that the map is not one-to-one.
 
-Without looking at the range space we know that its dimension must be~$1$ 
-because the dimensions of the null and range spaces add to
-the dimension of the domain.
+Before looking at the range space, we know that its dimension must be~$1$ 
+because the dimensions of the null space plus the dimension of the 
+range space equals the dimension of the domain.
 \Sage{} confirms that.
+\begin{sagecommandline}
+sage: t.image()
+\end{sagecommandline}
 
 
 
@@ -218,51 +233,39 @@ the matrix representing its action.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
 sage: M
-sage: m = linear_transformation(M)
-sage: m  
+sage: m = linear_transformation(M, side='right')
 \end{sagecommandline}
-Again, \Sage{} prefers the 
-representation where the vector multiplies
-from the left.
+Because the matrix has rational entries, \Sage{} takes the
+domain and codomain spaces to have rational entries.
 \begin{sagecommandline}
-sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-sage: m = linear_transformation(M)
-sage: v = vector(QQ, [7, 8, 9])
+sage: v = vector(QQ, [7, 8])
 sage: v
 sage: m(v)  
 \end{sagecommandline}
-\Sage{} has done this calculation.
-\begin{equation*}
-  \colvec{7 &8 &9}
-  \begin{mat}
-    1 &2 \\
-    3 &4 \\
-    5 &6
-  \end{mat}
-  =\colvec{76 &100}
-\end{equation*}
 
-If you have a matrix intended for a vector-on-the-right
-calculation (as in the book) then \Sage{} can make the necessary adjustment.
-\begin{sagecommandline}
-sage: N = matrix(QQ, [[1, 3, 5], [2, 4, 6]])
-sage: n = linear_transformation(N, side='right')
-sage: n
-sage: v = vector(QQ, [7, 8, 9])
-sage: v
-sage: n(v)  
-\end{sagecommandline}
-\noindent Although we gave it a \inlinecode{side='right'} option, 
+Note again that by default \Sage{} prefers the 
+representation where the vector multiplies
+from the left.
+Leaving out \inlinecode{side='right'} and then multiplying 
+by the two-element vector gives an error message
+complaining that the vector is not in the map's domain
+of dimension~$3$.
+Also, although we defined the linear map with
+\inlinecode{side='right'}, 
 the matrix that \Sage{} shows by default is for 
 \inlinecode{side='left'}.
+\begin{sagecommandline}
+sage: m     # does not conform to the book
+sage: m.matrix(side='right')
+\end{sagecommandline}
 
 Despite that we specified them differently, 
 these two transformations are the same.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-sage: m = linear_transformation(M)
-sage: N = matrix(QQ, [[1, 3, 5], [2, 4, 6]])
-sage: n = linear_transformation(N, side='right')
+sage: m = linear_transformation(M, side='right')
+sage: n_symbolic(a, b) = [a+2*b, 3*a+4*b, 5*a+6*b]
+sage: n = linear_transformation(QQ^2, QQ^3, n_symbolic, side='right')
 sage: m == n  
 \end{sagecommandline}
 
@@ -270,7 +273,7 @@ We can ask the same questions of linear transformations created from
 matrices that we asked of linear transformations created from functions.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
-sage: m = linear_transformation(M)
+sage: m = linear_transformation(QQM)
 sage: m.kernel() 
 \end{sagecommandline}
 
