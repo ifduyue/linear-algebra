@@ -132,7 +132,6 @@ $\map{t}{\Re^2}{\Re^2}$
 by applying them to
 the unit circle.
 In this chapter we use the unit sqaure.
-
 The observation
 that linear maps send lines to lines makes it easy:~we find the
 action of a matrix 
@@ -142,7 +141,7 @@ action of a matrix
 %   c  &d
 % \end{mat}
 % \end{equation*}
-by finding what it does to the four corners.
+by finding what it does to the four input corners.
 % \begin{equation*}
 %   \colvec{0 \\ 0}\mapsto\colvec{0 \\ 0}
 %   \quad
@@ -152,13 +151,10 @@ by finding what it does to the four corners.
 %   \quad
 %   \colvec{0 \\ 1}\mapsto\colvec{c \\ d}
 % \end{equation*}
-Then we connect the four corners with line segments.
-That is, linear transformations map squares to
-parallelograms.
+Then we connect the four output corners with line segments.
 
-We start by ploting the unit square unchanged.
-The colors will play the same role here as in the prior chapter;
-more below.
+We start with the unit square.
+Note the colors; they will play the same role here as in the prior chapter.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: p = plot_square_action(1,0,0,1)  # identity matrix
@@ -173,10 +169,11 @@ p.save("graphics/geo100.pdf")
 \begin{center}
   \includegraphics{graphics/geo100.pdf}
 \end{center}
-The \inlinecode{plot_square_action(a,b,c,d)} routine plots  
-the result of applying to a unit square the 
+The \inlinecode{plot_square_action(a,b,c,d)} routine applies to 
+that unit square the 
 transformation represented with respect to the standard basis by the 
 matrix with entries $a$, $b$, $c$, and~$d$.
+(The source code is at the end of the chapter.)
 \begin{equation*}
   % \rep{t}{\stdbasis_2,\stdbasis_2}=
   \rowvec{x  &y}
@@ -187,13 +184,9 @@ matrix with entries $a$, $b$, $c$, and~$d$.
   =
   \rowvec{ax+cy &bx+dy}
 \end{equation*}
-The source coude is at the end of the chapter.
-
-That routine gives
-these pictures of the effect of the generic matrix.
+This pictures of the effect of the generic matrix.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
-sage: q = plot_square_action(1,0,0,1) 
 sage: p = plot_square_action(1,2,3,4) 
 sage: p.save("graphics/geo101b.pdf")
 \end{sagecommandline}
@@ -211,11 +204,13 @@ p.save("graphics/geo101b.pdf")
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo101b.pdf}}
 \end{equation*}
-The colors show another effect of transformations, beyond shape-changing
-while line-preserving.
+Obviously, it  changes the input square into an output parallelogram.
+
+The colors show another effect of transformations, beyond shape-changing.
 Take the colors in their natural order of red, orange, 
 green, and blue.
-Then the domain square has a counterclockwise orientation while the codomain's
+Then the domain square has a counterclockwise orientation. 
+But the codomain's
 figure is clockwise, so the colors illustrate whether the transformation 
 preserves or reverses orientation.
 
