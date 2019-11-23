@@ -369,57 +369,15 @@ sage: M = matrix(QQ, [[1, 2], [3, 4]])
 sage: m = linear_transformation(QQ^2, QQ^2, M, side='right')
 sage: N = matrix(QQ, [[5, -1], [0, 7]])
 sage: n = linear_transformation(QQ^2, QQ^2, N, side='right')
-sage: m*n
+sage: (m*n).matrix(side='right')
 \end{sagecommandline}
 
-\textit{Note:} there is a left/right issue here.
-As the book emphasizes, matrix multiplication is about 
-representing the composition of the maps.
-The composition $\composed{m}{n}$ is the map $\vec{v}\mapsto m(n(\vec{v}))$, 
-with $n$ applied first. 
-% We can walk through the calculation of applying $n$ first and then~$m$
-% \begin{equation*}
-%   \colvec{1 \\ 2}
-%    \mapsunder{n}
-%   \colvec{5 \\ 13}
-%    \mapsunder{m}
-%   \colvec{44 \\ 62}
-% \end{equation*}
-% via these matrix multiplications.
-% \begin{equation*}
-%   \rowvec{1 &2}
-%   \begin{mat}
-%     5 &-1 \\ 
-%     0 &7
-%   \end{mat}
-%   =\rowvec{5 &13}
-%   \quad\text{followed by}\quad
-%   \rowvec{5 &13}
-%   \begin{mat}
-%     1 &2 \\ 
-%     3 &4
-%   \end{mat}
-%   =\rowvec{44 &62}
-% \end{equation*}
-% \Sage{} prefers the representing vector on the left so to be the 
-% first matrix used, $N$ must come left-most: $\composed{m}{n}$ is represented 
-% by $NM$.
-Here \Sage{} does the map application.
+As the book emphasizes, 
+to represent linear map composition, use
+matrix multiplication.
 \begin{sagecommandline}
-sage: M = matrix(QQ, [[1, 2], [3, 4]])
-sage: N = matrix(QQ, [[5, -1], [0, 7]])
 sage: M*N
-sage: N*M
-sage: m = linear_transformation(QQ^2, QQ^2, M, side='right')
-sage: n = linear_transformation(QQ^2, QQ^2, N, side='right')
-sage: t = m*n
-sage: t.matrix(side='right')
-sage: v = vector(QQ, [1, 2])
-sage: t(v)
 \end{sagecommandline}
-Again, as this shows,
-to compute $\composed{m}{n}$ using the two matrices
-you must take the matrix multiplication in the $NM$ order. 
 
 
 
