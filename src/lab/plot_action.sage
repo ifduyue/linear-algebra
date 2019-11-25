@@ -20,8 +20,10 @@ def color_circle_list(a, b, c, d, colors, full_circle=False):
     n = len(colors)
     for i in range(n):
         color = colors[i]
-        x(t) = a*cos(t)+c*sin(t)
-        y(t) = b*cos(t)+d*sin(t)
+        # x(t) = a*cos(t)+c*sin(t)
+        # y(t) = b*cos(t)+d*sin(t)
+        x(t) = a*cos(t)+b*sin(t)
+        y(t) = c*cos(t)+d*sin(t)
         g = parametric_plot((x(t), y(t)), 
                             (t, p*i/n, p*(i+1)/n), 
                             color = color, thickness=CIRCLE_THICKNESS)
@@ -113,8 +115,10 @@ def point_list(a, b, c, d, pts, colors=None):
     r = []
     for dex, pt in enumerate(pts):
         x, y = pt
-        f_x = a*x + c*y 
-        f_y = b*x + d*y   
+        # f_x = a*x + c*y 
+        # f_y = b*x + d*y   
+        f_x = a*x + b*y 
+        f_y = c*x + d*y   
         if colors:
             color = colors[dex]
         else:
@@ -165,7 +169,8 @@ def before_after_list(a, b, c, d, pts, colors=None):
         x, y = pt
         v = vector(RDF, pt)
         M = matrix(RDF, [[a, b], [c, d]])
-        f_x, f_y = v*M
+        # f_x, f_y = v*M
+        f_x, f_y = M*v
         if colors:
             color = colors[dex]
         else:
@@ -215,7 +220,8 @@ def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
             continue
         pt = (cos(t), sin(t))
         v = vector(RDF, pt)
-        w = v*M
+        # w = v*M
+        w = M*v
         try:
             dot = v[0]*w[0] + v[1]*w[1]  # dot product
 	    det = v[0]*w[1] - v[1]*w[0]  # determinant

@@ -2,95 +2,110 @@
 
 In Chapter~\ref{chap:SingularValueDecomposition} on 
 Singular Value Decomposition we studied how
-transformations resize vectors; the maximum resizing factors
-are the singular values.
-In this chapter we consider another geometric effect.
+transformations resize vectors.
+%  the maximum resizing factors
+% are the singular values.
+In this chapter we return to plotting the image of
+the unit circle, to consider another geometric effect.
 
 
 \section{Turning}
-Consider again the geometry of the action of a skew map on the unit 
-circle.\footnote{\noterightmult}
+% Consider again the geometry of the action of a skew map on the unit 
+% circle.
+Recall that a linear map has the same effect on 
+all vectors that lie on the same line through the origin.
+So we can see its
+action by plotting what it does to one point on each such line,
+using the routine \inlinecode{plot_circle_action}.
+\footnote{\noterightmult}
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: q = plot_circle_action(1,0,0,1) 
-sage: q.set_axes_range(-3, 3, -3, 3) 
-sage: q.save("graphics/eigen000a.pdf")
-sage: p = plot_circle_action(2,2,0,2) 
-sage: p.set_axes_range(-3, 3, -3, 3) 
+q.set_axes_range(-3, 3, -3, 3) 
+sage: q.save("graphics/eigen000a.pdf") 
+sage: p = plot_circle_action(2,0,2,2) 
+q.set_axes_range(-3, 3, -3, 3) 
 sage: p.save("graphics/eigen000b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 q = plot_circle_action(1,0,0,1) 
 q.set_axes_range(-3, 3, -3, 3) 
-q.save("graphics/eigen000a.pdf")
-p = plot_circle_action(2,2,0,2) 
+q.save("graphics/eigen000a.pdf", figsize=2.65)
+p = plot_circle_action(2,0,2,2) 
 p.set_axes_range(-3, 3, -3, 3) 
 p.save("graphics/eigen000b.pdf")
 \end{sagesilent}
 \begin{equation*} \label{gr:firstgraphic}
   \vcenteredhbox{\includegraphics{graphics/eigen000a.pdf}}
-  \quad\mapsunder{\big (\begin{smallmatrix} 2 &2 \\ 0 &2 \end{smallmatrix}\big )}\quad
+  \qquad\mapsunder{\big (\begin{smallmatrix} 2 &0 \\ 2 &2 \end{smallmatrix}\big )}\qquad
   \vcenteredhbox{\includegraphics{graphics/eigen000b.pdf}}
   \tag{$*$}
 \end{equation*}
-On the left plot, going counterclockwise, 
+On the left, proceeding counterclockwise, 
 the curve begins with red at $(x,y)=(1,0)$.
 On the right plot it begins with red at $(1,2)$.
 Here are the before and after vectors for that red point.
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
-sage: p = plot_before_after_action(2,2,0,2, [(1,0)], ['red']) 
+sage: p = plot_before_after_action(2,0,2,2, [(1,0)], ['red']) 
 sage: p.set_axes_range(-0.5, 2, -0.5, 2) 
 sage: p.save("graphics/eigen001.pdf", ticks=([1,2],[1,2]))
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
-p = plot_before_after_action(2,2,0,2, [(1,0)], ['red']) 
+p = plot_before_after_action(2,0,2,2, [(1,0)], ['red']) 
 p.set_axes_range(-0.5, 2, -0.5, 2) 
 p.save("graphics/eigen001.pdf", ticks=([1,2],[1,2]), figsize=2)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/eigen001.pdf}}
 \end{equation*}
-The matrix's action on the red vector is to both resize and rotate.
+On the red vector, the matrix's action is to both resize and rotate.
 \begin{sagecommandline}
 sage: v = vector(RR, [1,0])
-sage: M = matrix(RR, [[2, 2], [0, 2]])
-sage: w = v*M
+sage: M = matrix(RR, [[2, 0], [2, 2]])
+sage: w = M*v
 sage: w.norm(), v.norm() 
-sage: angle = arccos(w*v/(w.norm()*v.norm())) 
-sage: angle 
+sage: angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
+sage: angle_in_rads 
 \end{sagecommandline}
-\noindent The map resizes and rotates the violet vector at the other end of the 
-half circle, at $(-1,0)$, by the
-same amount as it does the red vector ending at $(1,0)$. 
-This is because a linear map has the same action on 
-all vectors that lie on the same line through the origin.
-
-But other vectors may be resized and rotated by the other
+But the action of a linear map is not uniform across the upper half circle; on
+other vectors this same map will resize and rotate by other
 amounts.
 Here is the effect of the transformation on the point
-one sixth of the way around the half-circle.
+one sixth of the way around the half circle.
 \begin{sagecommandline}
 sage: v = vector(RR, [cos(pi/6),sin(pi/6)])
-sage: M = matrix(RR, [[2, 2], [0, 2]])
-sage: w = v*M
+sage: w = M*v
 sage: w.norm(), v.norm() 
-sage: angle = arccos(w*v/(w.norm()*v.norm())) 
-sage: angle 
+sage: angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
+sage: angle_in_rads 
 \end{sagecommandline}
+\begin{sagesilent}
+load("plot_action.sage")  
+p = plot_before_after_action(2,0,2,2, [(1,0), (cos(pi/6),sin(pi/6))], rainbow(12)) 
+p.set_axes_range(-0.5, 2, -0.5, 2.65) 
+p.save("graphics/eigen001a.pdf", ticks=([1,2],[1,2]), figsize=2)
+\end{sagesilent}
+This shows again the before-and-after effect of the map on the red 
+input~$(1,0)$, 
+and overlays the effect of the map on the orange 
+input~$(\cos(\pi/6),\sin(\pi/6))$. 
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{graphics/eigen001a.pdf}}
+\end{equation*}
+The orange output is not as long and is not rotated from the input as much.
 
 \Sage{} will compute for us the rotations of the vectors.
 At the end of this chapter is the source for a routine 
 \inlinecode{plot_color_angles} that
-picks many vectors in the 
-half circle, applies the transformation to each, 
+applies the transformation to vectors in the 
+half circle, 
 computes the angle by which that
-vector is rotated, and draws a scatter plot. 
-That scatter plot shows the points using
-the colors of the input vectors.
-Because there are many points, the result looks like a smooth curve.
+vector is rotated, and draws a graph. 
+That graph colors the input and output vectors,
+making a visual match.
 % was:
 % angles = find_angles(2,2,0,2,12)
 % angles[0:2]
@@ -100,13 +115,13 @@ Because there are many points, the result looks like a smooth curve.
 % p.save("graphics/eigen002.pdf", figsize=2.5, tick_formatter=pi)
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
-sage: p = plot_color_angles(2,2,0,2)
+sage: p = plot_color_angles(2,0,2,2)
 sage: p.set_axes_range(0,pi,0,pi)
 sage: p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
-p = plot_color_angles(2,2,0,2)
+p = plot_color_angles(2,0,2,2)
 p.set_axes_range(0,pi,0,pi)
 p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{sagesilent}
@@ -152,8 +167,8 @@ p.save("graphics/eigen100b.pdf")
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/eigen100b.pdf}}
 \end{equation*}
-This graphs the angle between the each before arrow and its associated after
-arrows.
+This graphs the angle between the each input vector and its associated output
+vector.
 % was:
 % angles = find_angles(1,2,3,4,50)
 % ticks = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])
@@ -162,13 +177,13 @@ arrows.
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: p = plot_color_angles(1,2,3,4)
-sage: p.set_axes_range(0,pi,0,pi)
+sage: p.set_axes_range(0,pi,-1*pi,pi)
 sage: p.save("graphics/eigen101.pdf", tick_formatter=[pi,pi])
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 p = plot_color_angles(1,2,3,4)
-p.set_axes_range(0,pi,0,pi)
+p.set_axes_range(0,pi,-1*pi,pi)
 p.save("graphics/eigen101.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{sagesilent}
 \begin{equation*}
@@ -192,18 +207,18 @@ For an eigenvalue~$\lambda$, the set of vectors associated with
 it is an \textit{eigenspace}.
 \begin{sagecommandline}
 sage: M = matrix(RDF, [[1, 2], [3, 4]])
-sage: evs = M.eigenvectors_left()
+sage: evs = M.eigenvectors_right()
 sage: evs
 sage: evs[0] 
 sage: evs[1]
 \end{sagecommandline}
 \noindent
 A matrix has the same eigenvalues whether we are taking multiplication 
-by vectors to come from the left $\vec{v}M$ or from the 
-right~$M\vec{v}$.  
-But the eigenvectors will be different. 
-The \Sage{} operation \inlinecode{eigenvectors_left} covers the 
-$\vec{v}M$ case and naturally \inlinecode{eigenvectors_right}
+by vectors to come from the 
+right~$M\vec{v}$ or from the left, $\vec{v}M$.  
+But the eigenvectors will be different in general. 
+The \Sage{} operation \inlinecode{eigenvectors_right} covers the 
+$M\vec{v}=\lambda\vec{v}$ case, and naturally \inlinecode{eigenvectors_left}
 covers the other.
 
 When computing the eigenvectors and eigenvalues, \Sage{} gives a list
@@ -242,28 +257,27 @@ domain to the codomain is to turn the vector around.
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: M = matrix(RDF, [[1, 2], [3, 4]])
-sage: evs = M.eigenvectors_left()  
+sage: evs = M.eigenvectors_right()  
 sage: p1 = plot_before_after_action(1,2,3,4, [evs[0][1][0]], ['red']) 
 sage: p2 = plot_before_after_action(1,2,3,4, [evs[1][1][0]], ['blue']) 
 sage: p = p1+p2
-sage: p.set_axes_range(-4, 1, -4.5, 1) 
+sage: p.set_axes_range(-3, 1, -5, 1) 
 sage: p.save("graphics/eigen102.pdf", figsize=3.25)
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
 M = matrix(RDF, [[1, 2], [3, 4]])
-evs = M.eigenvectors_left()  
+evs = M.eigenvectors_right()  
 p1 = plot_before_after_action(1,2,3,4, [evs[0][1][0]], ['red']) 
 p2 = plot_before_after_action(1,2,3,4, [evs[1][1][0]], ['blue']) 
 p = p1+p2
-p.set_axes_range(-4, 1, -4.5, 1) 
+p.set_axes_range(-3, 1, -5, 1) 
 p.save("graphics/eigen102.pdf", figsize=3.25)
 \end{sagesilent}
 \noindent
-This picture has two pair of before and after vectors.
-One pair is in blue and one is in red.
-Each before vector is a unit vector so it is easy to pick it from among the
-two.
+This picture has two pairs of before and after vectors, one in blue
+and the other in red
+(each before vector is a unit vector).
 Again we see that 
 the after vector is scaled from the before vector, 
 in the blue case by the positive factor $\lambda_2\approx 5.37$ and
@@ -271,6 +285,65 @@ in the red case by the negative factor $\lambda_1\approx -0.37$.
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/eigen102.pdf}}
 \end{equation*}
+
+
+
+\subsection{Plane rotation}
+We know the $\nbyn{2}$~matrix that rotates all vectors counterclockwise.
+\begin{equation*}
+  \begin{mat}
+    \cos\theta  &-\sin\theta  \\
+    \sin\theta  &\cos\theta
+  \end{mat}
+\end{equation*}
+Here is its action on the upper half circle with $\theta=\pi/3$.
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 2, -2, 2) 
+sage: q.save("graphics/eigen200a.pdf")
+sage: p = plot_circle_action(cos(pi/3),-sin(pi/3),sin(pi/3),cos(pi/3)) 
+sage: p.set_axes_range(-2, 2, -2, 2) 
+sage: p.save("graphics/eigen200b.pdf")
+\end{sagecommandline}
+\begin{sagesilent}
+load("plot_action.sage")
+q = plot_circle_action(1,0,0,1) 
+q.set_axes_range(-1.25, 1.25, -1.25, 1.25) 
+q.save("graphics/eigen200a.pdf", figsize=2.5)
+p = plot_circle_action(cos(pi/3),-sin(pi/3),sin(pi/3),cos(pi/3))
+p.set_axes_range(-1.25, 1.25, -1.25, 1.25) 
+p.save("graphics/eigen200b.pdf", figsize=2.5)
+\end{sagesilent}
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{graphics/eigen200a.pdf}}
+  \quad\mapsunder{\big (\begin{smallmatrix} \cos(\pi/3) &-\sin(\pi/3) \\ \sin(\pi/3) &\cos(\pi/3) \end{smallmatrix}\big )}\quad
+  \vcenteredhbox{\includegraphics{graphics/eigen200b.pdf}}
+\end{equation*}
+Obviously, the action of this map is to turn every input vector.
+Here is the graph giving the angle between each 
+input and output.
+% was:
+% angles = find_angles(1,2,3,4,50)
+% ticks = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])
+% p = scatter_plot(angles, marker='.', ticks=ticks)
+% p.save("graphics/eigen101.pdf", figsize=2.5, tick_formatter=pi)
+\begin{sagecommandline}
+sage: load("plot_action.sage")  
+sage: p = plot_color_angles(cos(pi/3),-sin(pi/3),sin(pi/3),cos(pi/3))
+sage: p.set_axes_range(0,pi,-0.25*pi,pi)
+sage: p.save("graphics/eigen201.pdf", tick_formatter=[pi,pi])
+\end{sagecommandline}
+\begin{sagesilent}
+load("plot_action.sage")  
+p = plot_color_angles(cos(pi/3),-sin(pi/3),sin(pi/3),cos(pi/3))
+p.set_axes_range(0,pi,-0.15*pi,pi)
+p.save("graphics/eigen201.pdf", figsize=2, tick_formatter=[pi,pi])
+\end{sagesilent}
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{graphics/eigen201.pdf}}
+\end{equation*}
+This transformation has no real number eigenvalues.
 
 
 % \subsection{Points}
