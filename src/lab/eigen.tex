@@ -17,7 +17,6 @@ all vectors that lie on the same line through the origin.
 So we can see its
 action by plotting what it does to one point on each such line,
 using the routine \inlinecode{plot_circle_action}.
-\footnote{\noterightmult}
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: q = plot_circle_action(1,0,0,1) 
@@ -291,7 +290,7 @@ in the red case by the negative factor $\lambda_1\approx -0.37$.
 \subsection{Plane rotation}
 We know the $\nbyn{2}$~matrix that rotates all vectors counterclockwise.
 \begin{equation*}
-  \begin{mat}
+  R=\begin{mat}
     \cos\theta  &-\sin\theta  \\
     \sin\theta  &\cos\theta
   \end{mat}
@@ -400,17 +399,25 @@ sage: M.minpoly()
 sage: M.charpoly().factor()
 sage: M.minpoly().factor()
 \end{sagecommandline}
-\noindent
-Note here that \Sage{} has trouble there telling whether $2$ is a repeated 
+Note that \Sage{} has trouble there telling whether $2$ is a repeated 
 root.
-If we do an exact calculation using 
-rational numbers then we get the right answer.  
+Do ingan exact calculation using 
+rational numbers gets the right answer.  
 \begin{sagecommandline}
 sage: M =  matrix(QQ, [[2, 2, 3], [0, 4, -1], [0, 0, 2]]) 
 sage: M.charpoly()
 sage: M.minpoly()
 sage: M.charpoly().factor()
 sage: M.minpoly().factor()
+\end{sagecommandline}
+
+The rotation matrix from above that has no real number eigenvalues does have 
+complex eigenvalues.
+\begin{sagecommandline}
+sage: R = matrix(RDF, [[cos(pi/3), -sin(pi/3)], [sin(pi/3), cos(pi/3)]])
+sage: R.minpoly()
+sage: R.eigenvalues()
+sage: R.eigenvectors_right()
 \end{sagecommandline}
 
 
@@ -458,7 +465,7 @@ sage: T
 sage: T*JF*T^(-1)
 \end{sagecommandline}
 
-We can find the Jordan form of any matrix.
+This is the Jordan form of a non-diagonalizable matrix.
 \begin{sagecommandline}
 sage: M =  matrix(QQ, [[2, -1], [1, 4]])  
 sage: M.jordan_form()
@@ -468,13 +475,13 @@ sage: M.jordan_form()
 
 \section{Source of plot\_color\_angles}
 This routine gathers graphic instances and returns the plot of that list.
-\lstinputlisting[firstline=246, lastline=257]{plot_action.sage}
+\lstinputlisting[firstline=252, lastline=262]{plot_action.sage}
 
 \section{Source of color\_angles\_list}
 This finds the angles for the effect of the transformation on the vectors,
 and draws a scatter plot of those points.
 It draws them in the color of the input vector.
-\lstinputlisting[firstline=224, lastline=244]{plot_action.sage}
+\lstinputlisting[firstline=230, lastline=250]{plot_action.sage}
 
 \section{Source of find\_angles}
 This routine uses a formula for the angle between two vectors that 
@@ -482,14 +489,14 @@ always gives a positive value, that is, it is the angle without orientiation.
 That's fine for purpose here, which is to use the graph to 
 roughly locate places where the action of the matrix does not turn the
 vector. 
-\lstinputlisting[firstline=197, lastline=222]{plot_action.sage}
+\lstinputlisting[firstline=200, lastline=227]{plot_action.sage}
 
 
 \section{Source of plot\_before\_after\_action}
 The only perhaps unexpected point in this routine and its helper routine
 is that if the vector is not mapped very far then the helper
 routine does not show an arrow but instead shows a circle.
-\lstinputlisting[firstline=154, lastline=195]{plot_action.sage}
+\lstinputlisting[firstline=155, lastline=195]{plot_action.sage}
 
 
 \endinput

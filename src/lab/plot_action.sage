@@ -1,5 +1,6 @@
 # plot_action.sage
 # 2012-Dec-04 JH
+# 2019-Nov-25 JH
 
 DOT_SIZE = .02
 CIRCLE_THICKNESS = 2
@@ -20,8 +21,6 @@ def color_circle_list(a, b, c, d, colors, full_circle=False):
     n = len(colors)
     for i in range(n):
         color = colors[i]
-        # x(t) = a*cos(t)+c*sin(t)
-        # y(t) = b*cos(t)+d*sin(t)
         x(t) = a*cos(t)+b*sin(t)
         y(t) = c*cos(t)+d*sin(t)
         g = parametric_plot((x(t), y(t)), 
@@ -115,8 +114,6 @@ def point_list(a, b, c, d, pts, colors=None):
     r = []
     for dex, pt in enumerate(pts):
         x, y = pt
-        # f_x = a*x + c*y 
-        # f_y = b*x + d*y   
         f_x = a*x + b*y 
         f_y = c*x + d*y   
         if colors:
@@ -158,8 +155,7 @@ def plot_point_action(a, b, c, d, pts,colors=None):
 BA_THICKNESS = 1.5
 def before_after_list(a, b, c, d, pts, colors=None):
     """Show the action of the matrix with entries a, b, c, d on the
-    points by showning the vector before and the vector after in the
-    same color.
+    points by showning the vector before and after in the same color.
       a, b, c, d  reals  Upper left, ur, ll, lr or matrix.
       pts  list of pairs of reals
       colors = None  list of colors
@@ -169,7 +165,6 @@ def before_after_list(a, b, c, d, pts, colors=None):
         x, y = pt
         v = vector(RDF, pt)
         M = matrix(RDF, [[a, b], [c, d]])
-        # f_x, f_y = v*M
         f_x, f_y = M*v
         if colors:
             color = colors[dex]
@@ -220,7 +215,6 @@ def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
             continue
         pt = (cos(t), sin(t))
         v = vector(RDF, pt)
-        # w = v*M
         w = M*v
         try:
             dot = v[0]*w[0] + v[1]*w[1]  # dot product
@@ -231,33 +225,6 @@ def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
         r.append((t,angle))
     return r
 
-# This finds the positive angle between the vectors.
-# def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
-#     """Apply the matrix to points around the upper half circle, and 
-#     return the angle between the input and output vectors.
-#       a, b, c, d  reals  Upper left, ur, ll, lr of matrix.
-#       num_pts  positive integer  number of points
-#       lower_limit=0, upper_limit=pi  ignore angles outside these limits
-#     """
-#     if lower_limit is None:
-#         lower_limit=0
-#     if upper_limit is None:
-#         upper_limit=pi
-#     r = []
-#     M = Matrix(RDF, [[a, b], [c, d]])
-#     for i in range(num_pts):
-#         t = i*pi/num_pts
-#         if ((t<lower_limit) or (t>upper_limit)):
-#             continue
-#         pt = (cos(t), sin(t))
-#         v = vector(RDF, pt)
-#         w = v*M
-#         try:
-#             angle_size = arccos(w*v/(1.0*w.norm()*v.norm()))
-#         except:
-#             angle = None
-#         r.append((t,angle))
-#     return r
 
 MARKERSIZE = 2
 TICKS = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])
@@ -287,7 +254,6 @@ def plot_color_angles(a, b, c, d, num_points=1000):
      a, b, c, d  reals  Entries are upper left, ur, ll, lr.
      num_points=1000  Number of points along half circle to plot
     """
-    # colors = rainbow(num_points*1.5)[:num_points]   # just a hack
     colors = rainbow(6)
     G = Graphics()  # holds graph parts until they are to be shown
     for g_part in color_angles_list(a,b,c,d,num_points,colors):
