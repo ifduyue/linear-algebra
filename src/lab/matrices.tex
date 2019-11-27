@@ -1,7 +1,7 @@
 \chapter{Matrices}
 
 Matrix operations such as addition and multiplication
-are mechanical, and are therefore perfectly suited for 
+are mechanical and are therefore perfectly suited for doing on 
 a computer.
 
 
@@ -10,12 +10,12 @@ a computer.
 \section{Constructing matrices}
 Define a matrix with \Sage's \inlinecode{matrix} function.
 It of course takes the entries of the matrix, written as lists of rows.
-It also takes the number field.
-As we did with vector spaces we can use \inlinecode{RDF} for 
+It also takes the set of numbers that will form the entries.
+As we did with vector spaces we can use \Sagecmd{RDF} for 
 floating point number entries, 
-or we can use \inlinecode{CDF} to get complex number entries $a+bi$ where 
+or we can use \Sagecmd{CDF} to get complex number entries $a+bi$ where 
 $a$ and~$b$ are floating points,
-or we can fall back to the rational numbers.
+or we can fall back to the rational numbers, \Sagecmd{QQ}.
 \begin{sagecommandline}
 sage: A = matrix(RDF, [[1, 2], [3, 4]])
 sage: A
@@ -25,12 +25,10 @@ sage: A
 sage: A = matrix(QQ, [[1, 2], [3, 4]])
 sage: A                           
 \end{sagecommandline}
-\noindent
-By default \Sage's symbol for the square root of $-1$ is $i$ 
-while in contrast \python{} uses~$j$.
-Because the letter~$i$ is used for many things in programming,
+(\Sage's default symbol for the square root of $-1$ is $i$. 
+Because~$i$ is used for many things in programming,
 before using it for the complex numbers
-resetting it with \inlinecode{CDF(i)} is a good practice.
+resetting it with \inlinecode{CDF(i)} is a good practice.)
 
 In this chapter, unless we have reason to do otherwise
 we'll use rational numbers, \inlinecode{QQ}, 
@@ -52,36 +50,33 @@ sage: B = matrix(QQ, 3, 3, [[1, 1, 1], [2, 2, 2]])
 \Sage's error says
 \inlinecode{Number of rows does not match up with specified number}.
 
-Until now we've let \Sage{} figure out the matrix's 
-number of rows and columns size from the entries but
-a shortcut to get the zero matrix 
-is to put the number zero in the place of the entries, and there you
-must say which size you want.
+You also want to put in the
+number of rows and columns when you are doing 
+this shortcut to get an identity matrix, where you
+put the number $1$ in the place of the list of rows.
 \begin{sagecommandline}
-sage: B = matrix(QQ, 2, 3, 0)                     
-sage: B
+sage: I = matrix(QQ, 3, 3, 1)                     
+sage: I
 \end{sagecommandline}
-\noindent
-Another place where specifying the size is a convenience is 
-\Sage's shortcut to get an identity matrix.
+You can use the same
+shortcut to get a zero matrix.
 \begin{sagecommandline}
-sage: B = matrix(QQ, 2, 2, 1)
-sage: B
+sage: Z = matrix(QQ, 2, 2, 0)
+sage: Z
 \end{sagecommandline}
-\noindent
 The difference between this shortcut and the prior one is that 
 \inlinecode{matrix(QQ, 3, 2, 1)} gives an error because 
 an identity matrix must be square.
 \Sage{} has another way to create an identity matrix 
 that can't lead to this error.
 \begin{sagecommandline}
-sage: I = identity_matrix(4)
+sage: I = identity_matrix(3)
 sage: I
 \end{sagecommandline}
 
 \Sage{} has many more methods on matrices.
 For instance, you can transpose the rows to columns or test if the 
-matrix is \textit{symmetric},
+matrix is symmetric,
 unchanged by transposition.
 \begin{sagecommandline}
 sage: A = matrix(QQ, [[1, 2], [3, 4]])
@@ -103,20 +98,17 @@ with floating points between 0 and 1.
 sage: random_matrix(RDF, 3, min=0, max=1)
 \end{sagecommandline}
 (Note the \inlinecode{RDF}.
-For making random matrices we prefer floating points because
+We prefer floating points for this because
 \Sage's \inlinecode{random_matrix} 
 is more straightforward than in the  
-rational entry case.
-But one thing that the output 
-illustrates is why we prefer rational number entries where they
-make sense.)
+rational entry case.)
 
 
 
 
 %========================================
 \section{Linear combinations}
-Addition and subtraction are natural.
+Addition and subtraction of matrices are natural operations.
 \begin{sagecommandline}
 sage: A = matrix(QQ, [[1, 2], [3, 4]])
 sage: B = matrix(QQ, [[1, 1], [2, -2]])
@@ -131,19 +123,13 @@ sage: A = matrix(QQ, [[1, 2], [3, 4]])
 sage: C = matrix(QQ, [[0, 0, 2], [3, 2, 1]])
 sage: A+C
 \end{lstlisting}
-You get a long error.
-As usual the final line is the most useful.
-It says this (\Sage{} has it all on one line).
-\begin{lstlisting}
-TypeError: unsupported operand parent(s) for +: 
-  'Full MatrixSpace of 2 by 2 dense matrices over Rational Field' 
-  and 'Full MatrixSpace of 2 by 3 dense matrices over Rational Field'
-\end{lstlisting}
+You get an error whose final line contains 
+\inlinecode{unsupported operand parent(s) for +}.
 In short, \inlinecode{+} is not defined between a
 $\nbyn{2}$~matrix and a $\nbym{2}{3}$~matrix.
 
 Scalar multiplication is also natural,
-so you have linear combinations.
+so you can have linear combinations.
 \begin{sagecommandline}[d,0,2]
 sage: A = matrix(QQ, [[1, 2], [3, 4]])
 sage: B = matrix(QQ, [[1, 1], [2, -2]])
@@ -161,46 +147,30 @@ Matrix-vector multiplication works the way that you would guess.
 \begin{sagecommandline}
 sage: A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
 sage: v = vector(QQ, [1, 2, 3, 4])
+sage: A, v
 sage: A*v
 \end{sagecommandline}
-\noindent
 The $\nbym{2}{4}$~matrix $A$ multiplies the 
-$\nbym{4}{1}$~column vector~$\vec{v}$, with the vector on the right side,
+$\nbym{4}{1}$~column vector~$\vec{v}$ with the vector on the right side,
 as $A\vec{v}$.
 
-You can only multiply with the vector on the right.
+You can only combine this matrix by this vector with the vector on the right.
 This
+gives an error saying 
+\inlinecode{unsupported operand parent(s) for *}.
 \begin{lstlisting}
-sage: A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
-sage: v = vector(QQ, [1, 2, 3, 4])
 sage: v*A
 \end{lstlisting}
-gives an error.
-\begin{lstlisting}
-TypeError: unsupported operand parent(s) for *: 
-  'Vector space of dimension 4 over Rational Field' 
-  and 'Full MatrixSpace of 2 by 4 dense matrices over Rational Field'
-\end{lstlisting}
-As in the earlier error message, 
-this is the final line and it is wrapped twice to show it all.
 
-Of course you can multiply from the left by a vector if it has a size that 
+Of course you can multiply with the vector on the left
+if the vector has a size that 
 matches the matrix.
-\begin{sagecommandline}[d,0,1]
-sage: A = matrix(QQ, [[1, 3, 5, 9], [0, 2, 4, 6]])
+Here, the two-row~$A$ works with a two-entry vector.
+\begin{sagecommandline}
 sage: w = vector(QQ, [3, 5])
 sage: w*A
 \end{sagecommandline}
 
-% In practice you will sometimes 
-% see matrix-vector multiplications done with vectors
-% on the left, and sometimes on the right.
-% The textbook has the vector on the right, 
-% to have the product
-% $H\vec{x}$ fit visually with the map application $h(x)$.
-% \Sage{} will do either, if the sizes are correct, 
-% although it has something of a preference
-% for the vector on the left (as we will see in Chapter~\ref{chapter:maps}).
 
 
 
@@ -212,29 +182,28 @@ sage: B = matrix(QQ, [[5, 6, 7], [8, 9, 10]])
 sage: A*B
 \end{sagecommandline}
 Trying $\inlinecode{B*A}$ gives 
-\inlinecode{TypeError: unsupported operand parent(s) for '*'}, reflecting that
-the product operation in this order is undefined.
+\inlinecode{unsupported operand parent(s) for '*'} since $BA$ is undefined.
 % \begin{sagecommandline}
 % sage: A = matrix(QQ, [[2, 1], [4, 3]])
 % sage: B = matrix(QQ, [[5, 6, 7], [8, 9, 10]]) 
 % sage: B*A
 % \end{sagecommandline}
 
-Same-sized square matrices have the product defined in either order.
+Square matrices of the same size have the product defined in either order.
 \begin{sagecommandline}
 sage: A = matrix(QQ, [[1, 2], [3, 4]])
 sage: B = matrix(QQ, [[4, 5], [6, 7]])
 sage: A*B
 sage: B*A
 \end{sagecommandline}
-\noindent
-They are different; matrix multiplication is not commutative.
+Note that the two results are
+different; matrix multiplication is not commutative.
 \begin{sagecommandline}[d,0,2]
 sage: A*B == B*A
 \end{sagecommandline}
 
 In fact, matrix multiplication is very non-commutative 
-in that if you produce two $\nbyn{n}$~matrices
+in the sense that if you produce two $\nbyn{n}$~matrices
 at random then they almost surely don't commute.
 % Bug in sagecommandline is it won't take the empty continuation line
 % \begin{lstlisting}
@@ -269,11 +238,11 @@ sage: number_commuting
 
 \subsection{Inverse}
 If $A$ is a nonsingular matrix then its inverse $A^{-1}$
-is the matrix such that $AA^{-1}=A^{-1}A$ is the identity matrix. 
+is the matrix such that $A^{-1}A=AA^{-1}$ is the identity matrix. 
 % For $\nbyn{2}$ matrix inverses we have a formula.
-In the book to do by-hand inverses 
+In the book, to do by-hand inverses 
 we write the original matrix next to the identity 
-and then do Gauss-Jordan reduction.
+and then perform Gauss-Jordan reduction.
 \begin{sagecommandline}
 sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
 sage: A.is_singular()
@@ -283,15 +252,14 @@ sage: B
 sage: C = B.rref()
 sage: C
 \end{sagecommandline}
-\noindent
 The inverse is the matrix on the right.
-To separate out that matrix 
+To separate it out, 
 \Sage{} has a \inlinecode{matrix_from_columns} method.
 \begin{sagecommandline}
 sage: A_inv = C.matrix_from_columns([3, 4, 5])
 sage: A_inv
-sage: A*A_inv
 sage: A_inv*A
+sage: A*A_inv == identity_matrix(3)
 \end{sagecommandline}
 
 \Sage{} users often want to find a matrix inverse so there is a
@@ -326,7 +294,7 @@ These three systems
 have the same matrix of coefficients on the left sides 
 but different right sides.
 If you calculate the inverse of that matrix
-then solving each system requires only a matrix-vector product.
+then solving each system requires only a single matrix-vector product.
 \begin{sagecommandline}
 sage: A = matrix(QQ, [[1, 3, 1], [2, 1, 0], [4, -1, 0]])
 sage: A_inv = A.inverse()
@@ -346,24 +314,19 @@ engineering.
 Since computers are fast and accurate
 they open up the possibility of solving problems
 that we never could hope to do by hand.
-In this section we will suggest what limits there are to how big the 
-problems can get and still be solvable.
 
-One limit on just how large a problem we can do is how quickly 
-the computer can give us the answer.
-(There are other limits such as how much memory the data takes but 
-time is the key one.)
-Naturally computers take longer to perform operations 
+But even with computers, one limit on just how large a problem we can do is 
+how quickly the machine can find the answer.
+Naturally, computers take longer to perform operations 
 on matrices that are larger.
-But it may be that the time the program takes to compute the answer
-grows more quickly than does the size of the problem; for instance, 
-perhaps when the size of the problem doubles then the time to 
-do the job more than doubles.
+Comparing the size of a problem to the time that an algorithm takes to 
+solve it is an important way to gauge the usefulness of 
+that algorithm.
 
 The matrix inverse operation is a good illustration.
-This is an important operation; for instance, if we could do large matrix 
-inverses
-quickly then as show above we could quickly solve large linear systems.
+% This is an important operation; for instance, if we could do large matrix 
+% inverses
+% quickly then as show above we could quickly solve large linear systems.
 (The entries in these matrices are floating points 
 because these are the most common in applications.)
 % Timing gives bad output.  It has extra mu's in there.  I don't
@@ -386,22 +349,20 @@ False
 sage: timeit('A.inverse()')
 625 loops, best of 3: 62.7 μs per loop
 \end{lstlisting}
-\noindent
-\Sage's \inlinecode{timeit} makes a best guess about how long
-the operation takes.
+\Sage's \inlinecode{timeit} tells you how long
+an operation takes.
 It reports the wall time, not the time the CPU
-spent but rather how long it took when timed
-by watching a clock on the wall.
-It runs the command 
-a number of times to mitigate agains the
+spent but rather how long you would find it took it you timed
+it with a clock on the wall.
+It improves its estimate by running the command 
+a number of times, to mitigate against the
 computer being slowed down by a 
 disk write or other interruption.
 The bottom line says it did three batches of running the command 
 $625$ times each and the average time in the fastest batch
 was $62.7$~microseconds.\footnote{% from cat /proc/cpuinfo
-  The machine on which these timings was done
-  identifies as: Intel(R) Core(TM) i7-6820HQ CPU \@ 2.70GHz.}
-The inverse operation took.
+  The machine on which these timings were done
+  identifies as: Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz.}
 A microsecond is 
 $0.000\,001$~seconds.
 That's fast, but then $A$ is only a $\nbyn{3}$ matrix.
@@ -423,7 +384,6 @@ sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
 sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
 625 loops, best of 3: 86.6 μs per loop
 \end{lstlisting}
-Each of these is of the order of hundreds of microseconds.
 
 One issue with this performance data is that
 we can't tell
@@ -507,7 +467,7 @@ is not constant
 since the data clearly does not lie on a line.
 
 Here is some more data.
-The times are big enough that this computer had to run overnight.
+The times are big enough that the computer was left to run overnight.
 \begin{lstlisting}
 sage: for size in [500, 750, 1000]:                             
 ....:         print "size=",size
