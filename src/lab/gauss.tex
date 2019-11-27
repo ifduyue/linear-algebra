@@ -83,7 +83,7 @@ We declare the kind of number at the start.
 In the book mostly we think of the entries as being real numbers
 but the examples and exercises use rational numbers, which are
 easier to read.
-\Sage{} uses `QQ' for the set of rational numbers.
+\Sage{} uses \Sagecmd{QQ} for the set of rational numbers.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 sage: M
@@ -187,8 +187,9 @@ sage: solve(eqns, x, y, z)
 \end{sagecommandline}
 
 Of course, performing the sequence of row operations
-is mechanical. 
-\Sage{} has a routine to give echelon form in a single operation.
+is mechanical, that is, we follow an algorithm to do Gauss's Method. 
+\Sage{} computes the echelon form of a 
+matrix in one command.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[0, 2, 1], [2, 0, 4], [2 ,-1/2, 3]])
 sage: v = vector(QQ, [2, 1, -1/2])                        

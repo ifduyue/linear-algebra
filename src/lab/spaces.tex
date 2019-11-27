@@ -6,10 +6,11 @@ a space.
 In this chapter vector spaces take scalars from the reals numbers $\Re$.
 \Sage{} lets you choose from two models of the real numbers.
 One is \Sagecmd{RDF}, the computer's built-in floating point
-model of real numbers.\footnote{%
-  The computer used to make this manual has
-  IEEE~754 double-precision binary floating-point numbers;  
-  if you have programmed then you may know this number model as binary64.}  
+model of real numbers.
+% \footnote{%
+%   The computer used to make this manual has
+%   IEEE~754 double-precision binary floating-point numbers;  
+%   if you have programmed then you may know this number model as binary64.}  
 The other is \Sagecmd{RR}, which gives arbitrary precision 
 reals.
 The first model runs faster
@@ -20,7 +21,7 @@ and is more widely used in practice so it is what we will use here.
 
 
 %========================================
-\section{Real $n$-spaces}
+\section{Real spaces}
 
 \Sage{} lets you create vector spaces.
 Here is $\Re^4$.
@@ -39,7 +40,7 @@ sage: W = V.span([v1])
 sage: W
 \end{sagecommandline}
 
-You can ask \Sage{} about this subspace; for instance, you can 
+You can ask \Sage{} questions about this subspace; for instance, you can 
 test for membership. 
 \begin{sagecommandline}
 sage: v3 = vector(RDF, [2, 2, -6, 0])
@@ -81,26 +82,25 @@ sage: v2 = vector(RDF, [1, 1, 0])
 sage: W = V.span([v1, v2])     
 sage: W.basis()
 \end{sagecommandline}
-Notice that the basis you got back is not the same as the set of two linearly
-independent vectors that you put in.
-
-To get the basis, \Sage{} takes the vectors from the spanning set 
+Notice that the basis that \Sage{} gives  
+back is not the same as the set of two linearly
+independent vectors $\set{\vec{v}_1, \vec{v}_2}$.
+To get the new basis, \Sage{} takes the vectors from the spanning set 
 as the rows of a matrix,
 brings that matrix to reduced echelon form, and reports the nonzero 
 rows as the basis.
 Each matrix has one and only one reduced echelon form so each 
-subspace of real $n$-space has one and only one such basis;
-this is the canonical basis for the space.
+subspace of~$V$ has one and only one such basis;
+this is the canonical basis for the subspace.
 
-It is this basis that \Sage{} shows when you ask for a description
-of the space.
+\Sage{} shows this basis when you ask for a description
+of the subspace.
 \begin{sagecommandline}
 sage: W  
 \end{sagecommandline}
 
-The plane through the origin in $\Re^3$ described by the equation
-$x-2y+2z=0$
-is a subspace of $\Re^3$.
+Another subspace of $\Re^3$ is the plane described by the equation
+$x-2y+2z=0$.
 \begin{equation*}
   W=\set{\colvec{x \\ y \\ z}
     \suchthat x=2y-2z}
@@ -115,7 +115,8 @@ sage: v2 = vector(RDF, [-2, 0, 1])
 sage: W = V.span([v1, v2])       
 sage: W.basis()
 \end{sagecommandline}
-If you add a linearly independent vector~$\vec{v}_3$ to the spanning set 
+If you add a vector~$\vec{v}_3$ to the spanning set that is linearly
+independent of $\vec{v}_1$ and~$\vec{v}_2$ 
 then it generates a three dimensional subspace of $\Re^3$, 
 which is all of $\Re^3$.
 \begin{sagecommandline}
@@ -123,13 +124,10 @@ sage: v3 = vector(RDF, [2, 3, 0])
 sage: W_prime = V.span([v1, v2, v3])
 sage: W_prime.basis()
 \end{sagecommandline}
-
-On the other hand, if you add a linearly dependent vector then
-it doesn't change the subspace that is generated.
+If, on the other hand, you add to the spanning set a vector~$\vec{v}_3$ 
+that is linearly dependent on the other two then
+it doesn't change the subspace.
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,3)               
-sage: v1 = vector(RDF, [2, 1, 0]) 
-sage: v2 = vector(RDF, [-2, 0, 1]) 
 sage: W = V.span([v1, v2])       
 sage: W.basis()
 sage: v3 = vector(RDF, [0, 1, 1])
@@ -145,7 +143,6 @@ sage: v1 = vector(RDF, [1, 2, 3])
 sage: v2 = vector(RDF, [2, 1, 3])
 sage: W = V.span_of_basis([v1, v2])
 sage: W.basis()
-sage: W
 \end{sagecommandline}
 
 
@@ -154,6 +151,7 @@ sage: W
 \subsection{Equality}
 
 \Sage{} can compare spaces.
+Here we make two versions of the $xy$-plane subspace of $\Re^4$.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [1, 0, 0, 0])
@@ -162,37 +160,30 @@ sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [2, 1, 0, 0])
 sage: W13 = V.span([v1, v3])  
 \end{sagecommandline}
-One way to test that the two spaces $W_{1,2}$ and $W_{1,3}$ 
-are equal is to use set membership.
-If the vectors used to make the spanning set of  $W_{1,2}$ are 
+We could test that the two spaces $W_{1,2}$ and $W_{1,3}$ 
+are equal by using set membership.
+If both vectors used to make the spanning set of $W_{1,2}$ are 
 members of  $W_{1,3}$ then  $W_{1,2}\subseteq W_{1,3}$.
 And, if the vectors used to make the spanning set of  $W_{1,3}$ are 
-members of  $W_{1,2}$ we have inclusion in the other direction and 
-$W_{1,2}=W_{1,3}$.
+members of  $W_{1,2}$ then we have inclusion in the other direction and 
+the two spaces are equal.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
-sage: v1 = vector(RDF, [1, 0, 0, 0])
-sage: v2 = vector(RDF, [1, 1, 0, 0])
+sage: v1, v2 = vector(RDF, [1, 0, 0, 0]), vector(RDF, [1, 1, 0, 0])
 sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [2, 1, 0, 0])
 sage: W13 = V.span([v1, v3])  
 sage: v2 in W13
 sage: v3 in W12
 \end{sagecommandline}
-Since both $\vec{v}_1\in W_{1,2}$ and $\vec{v}_1\in W_{1,3}$, the
-two subspaces are equal.
+Since both $\vec{v}_1,\vec{v}_3\in W_{1,2}$ and 
+$\vec{v}_1,\vec{v}_2\in W_{1,3}$, the two subspaces are equal.
 
-However, the more straightforward way to test equality is to just ask \Sage{}.
+However, the more straightforward way to test equality is to just ask \Sage{}
+directly.
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,4)
-sage: v1 = vector(RDF, [1, 0, 0, 0])
-sage: v2 = vector(RDF, [1, 1, 0, 0])
-sage: W12 = V.span([v1, v2])
-sage: v3 = vector(RDF, [2, 1, 0, 0])
-sage: W13 = V.span([v1, v3])  
 sage: W12 == W13
 \end{sagecommandline}
-\noindent
 This exercise of the equality operator, \inlinecode{==}, 
 would be half-hearted without trying it on two spaces that are
 unequal. 
@@ -202,6 +193,7 @@ sage: W14 = V.span([v1, v4])
 sage: v2 in W14
 sage: v4 in W12
 sage: W12 == W14
+sage: W12 != W14
 \end{sagecommandline}
 
 This illustrates a point about algorithms.
@@ -210,8 +202,7 @@ One way is to check whether every member of the first spanning set is in the
 second space, and whether every member of the second spanning set is in the 
 first space. 
 But \Sage{} does something different.
-For each space it maintains a canonical basis
-and it checks for equality of spaces
+It checks for equality of spaces
 just by checking whether they have the same canonical bases.
 \begin{sagecommandline}
 sage: W12.basis()
@@ -220,12 +211,14 @@ sage: W14.basis()
 These two algorithms 
 have the same external behavior, in that both decide whether
 two spaces are equal.
-But the algorithms differ internally, and as a result the second is faster.
+But the algorithms differ internally and the second is faster, 
+in part because \Sage{} can pre-compute the canonical basis for a space
+and then use it as many times as desired.
 Finding the fastest way to do jobs is an important research area of computing.
 
 
 \subsection{Operations}
-\Sage{} finds the intersection of two spaces.
+\Sage{} can find the intersection of two spaces.
 Consider these members of $\Re^3$.
 \begin{equation*}
   \vec{v}_1=\colvec{1 \\ 0 \\ 0}
@@ -248,11 +241,15 @@ sage: W = W12.intersection(W23)
 sage: W.basis()
 \end{sagecommandline}
 
+If you try to intersect two spaces where the operation makes no sense,
+such as if you try to intersect $\Re^3$ and~$\Re^4$, then \Sage{}
+gives an error message whose final line contains the string
+\inlinecode{self and other must have the same ambient space.}
+
 Remember that the trivial space $\set{\zero}$ is the span of the empty set.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)
-sage: v1 = vector(RDF, [1, 0, 0])
-sage: v2 =  vector(RDF, [0, 1, 0])
+sage: v1, v2 = vector(RDF, [1, 0, 0]), vector(RDF, [0, 1, 0])
 sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [1, 1, 1])
 sage: W3 = V.span([v3])
@@ -264,13 +261,12 @@ sage: W4.basis()
 \Sage{} will also find the sum of spaces, the span of their union.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,3)
-sage: v1 = vector(RDF, [1, 0, 0])
-sage: v2 =  vector(RDF, [0, 1, 0])
+sage: v1, v2 = vector(RDF, [1, 0, 0]), vector(RDF, [0, 1, 0])
 sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [1, 1, 1])
 sage: W3 = V.span([v3])
 sage: W5 = W12 + W3
-sage: W5.basis()
+sage: W5
 sage: W5 == V
 \end{sagecommandline}
 (The text covers this in an optional section.)
@@ -282,10 +278,10 @@ sage: W5 == V
 %========================================
 \section{Other spaces}
 
-\Sage{} can also do vector spaces that aren't a subspace of some $\Re^n$.
+The book has vector spaces that aren't a subspace of some $\Re^n$.
 There are more sophisticated things that you can do but
-one straightforward way is 
-by using a real space that is just like the desired one.
+one straightforward thing is 
+using a real space that is just like the desired one.
 Consider this subspace of 
 $\polyspace_2$.
 \begin{equation*}
@@ -316,8 +312,7 @@ Similarly you can represent this space of $\nbyn{2}$ matrices
          c  &d
        \end{mat}\suchthat \text{$a-b+c=0$ and $b+d=0$}}
 \end{equation*}
-by finding a real $n$-space just like it.
-Parametrize
+by parametrizing
 \begin{equation*}
   \set{\begin{mat}
          a  &b \\
@@ -334,7 +329,7 @@ Parametrize
        \end{mat}d
        \suchthat c,d\in\Re}
 \end{equation*}
-and then give \Sage{} the matching real space.
+and then giving \Sage{} the matching real space.
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [-1, 0, 1, 0])
@@ -342,8 +337,9 @@ sage: v2 = vector(RDF, [-1, -1, 0, 1])
 sage: W = V.span([v1, v2])
 sage: W.basis()
 \end{sagecommandline}
-You could have gotten another matching space by reading the matrix
-down the columns instead of across the rows.  
+That example gets the vectors by reading across the matrix rows.
+You could also read
+down the columns.  
 \begin{sagecommandline}
 sage: V = VectorSpace(RDF,4)
 sage: v1 = vector(RDF, [-1, 1, 0, 0])
@@ -351,7 +347,6 @@ sage: v2 = vector(RDF, [-1, 0, -1, 1])
 sage: W = V.span([v1, v2])
 sage: W.basis()
 \end{sagecommandline}
-\noindent
 There are still other ways to produce a matching space.
 They look different than each other
 but the important things about the spaces, such as dimension, are 
