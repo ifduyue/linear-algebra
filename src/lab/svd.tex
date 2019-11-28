@@ -1,16 +1,17 @@
 \chapter{Singular Value Decomposition}
 \label{chap:SingularValueDecomposition}
 
-We will produce a way of picturing the action of a linear map,
-specifically, of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
-That will connect with an important way to factor matrices.
+We will picture the action of a linear map,
+specifically, the action of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
+That will connect with an important way to factor matrices
+and an interesting application.
 
 
 \section{Drawing the action}
 A defining property of linear maps is that 
 $h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
-Recall that a line through the origin in $\Re^n$ is 
-$\set{r\cdot \vec{v}\suchthat r\in\Re}$. 
+Recall that a line through the origin in $\Re^n$ has the form 
+$\set{r\cdot \vec{v}\suchthat r\in\Re}$ for some~$\vec{v}$. 
 Thus the scalar multiplication property  
 imposes a uniformity condition on a linear map:~its action on any 
 line through the origin is determined by its action
@@ -29,36 +30,35 @@ and suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by this matrix.
     3 &4
   \end{mat}
 \end{equation*}
-Then here is the effect of $t$ on one of the line's vectors,
-taking the representation calculation as \Sage{} prefers it, 
-with the vector on the left, $\vec{v}T$.\footnote{\noterightmult}
+Then the map $t$ has this effect on one of the line's vectors.
 \begin{equation*}
-  \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{7 \\ 10}
+  \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{5 \\ 11}
 \end{equation*}
-Then on $2\vec{v}$ the 
-the map $t$ has twice the effect, on  $3\vec{v}$ it has three times the
+On $2\vec{v}$ the 
+map has twice the effect, on  $3\vec{v}$ it has three times the
 effect, etc.
 \begin{equation*}
-  \colvec{2 \\ 4}\mapsunder{t}\colvec{14 \\ 20}
+  \colvec{2 \\ 4}\mapsunder{t}\colvec{10 \\ 22}
   \qquad
-  \colvec{-3 \\ -6}\mapsunder{t}\colvec{-21 \\ -30}
+  \colvec{3 \\ 6}\mapsunder{t}\colvec{15 \\ 33}
   \qquad
-  \colvec{r \\ 2r}\mapsunder{t}\colvec{7r \\ 10r}
+  \colvec{r \\ 2r}\mapsunder{t}\colvec{5r \\ 11r}
 \end{equation*}
 We will use this observation to illustrate the action of 
-linear transformations of the plane $\map{t}{\Re^2}{\Re^2}$
+linear transformations of the plane, $\map{t}{\Re^2}{\Re^2}$
 (we look at the plane just because the pictures are 
 easy to draw). 
 
-Because of the $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship,
-we can show a transformation's action by fixing 
-a set containing one nonzero vector element from each line through the origin
-and then showing where the transformation takes each of 
-that set's elements.
-The natural such set is the upper half of the unit circle
+The $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship says that
+a linear map has the same effect on all vectors in a line through the
+origin.
+So to show a transformation's action we can fix 
+one nonzero vector element from each line through the origin
+and then show where the transformation takes each of 
+those vectors.
+The natural set containing one point from each plane line through the origin 
+is the upper half of the unit circle, shown here
 (the colors are explained below).
-Every line through the origin intersects this set in exactly 
-one nonzero vector.
 % \begin{sagecommandline}
 % sage: load("plot_action.sage")
 % sage: p = plot_circle_action(1,0,0,1) 
@@ -78,27 +78,27 @@ p.save("graphics/svd000.pdf")
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
-Note that the point $(1,0)$ is included in that set but
-$(-1,0)$ is not included, which is why there is an open circle
-there.
+The point $(1,0)$ is included in that set but
+$(-1,0)$ is not, which is why there is an open circle.
 
-To start we take a simple transformation.
+The first illustration is for a simple transformation.
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{2x \\ y}
 \end{equation*}
-\Sage{} can compute the effect of this simple transformation
-on that set. 
+\Sage{} can compute the effect of this transformation
+on the upper half circle. 
 The code below inputs the file \inlinecode{plot_action.sage}
 to get access to the routine
-\inlinecode{plot_circle_action(a,b,c,d)}, which 
-finds the output curve by multipling points on 
-the input upper half unit circle by this matrix.
+\inlinecode{plot_circle_action(a,b,c,d)}. 
+This finds the output curve by multipling points on 
+the input upper half unit circle by this matrix
 \begin{equation*}
   \begin{mat}
     a &b \\
     c &d
   \end{mat}
 \end{equation*}
+and then connecting those output dots to get the output curve.
 The source code of \inlinecode{plot_action.sage} is 
 at the end of this chapter.
 \begin{sagecommandline}
@@ -145,30 +145,35 @@ the effect of the map
   \colvec{x \\ y} \mapsto \colvec{-x \\ 3y}
 \end{equation*}
 that triples the $y$~component and also multiplies the 
-$x$~component by $-1$. 
+$x$~component by $-1$.\footnote{%
+  As in other chapters, some of the graphics here are drawn with  
+  some options that are not shown.
+  In this case, the \protect\inlinecode{p.save(...)} has
+  the \protect{ticks\_integer=True} option.
+  This just reduces clutter that isn't linear algebra.}
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
-sage: q.set_axes_range(-2, 2, -4, 4) 
+sage: q.set_axes_range(-2, 2, -1.25, 3.25) 
 sage: q.save("graphics/svd002a.pdf")
 sage: p = plot_circle_action(-1,0,0,3) 
-sage: p.set_axes_range(-2, 2, -4, 4) 
+sage: p.set_axes_range(-2, 2, -1.25, 3.25) 
 sage: p.save("graphics/svd002b.pdf")
 \end{sagecommandline}
-% \begin{sagesilent}
-% load("plot_action.sage")
-% q = plot_circle_action(1,0,0,1) 
-% q.set_axes_range(-2, 2, -4, 4) 
-% q.save("graphics/svd002a.pdf")
-% p = plot_circle_action(-1,0,0,3) 
-% p.set_axes_range(-2, 2, -4, 4) 
-% p.save("graphics/svd002b.pdf")
-% \end{sagesilent}
+\begin{sagesilent}
+load("plot_action.sage")
+q = plot_circle_action(1,0,0,1) 
+q.set_axes_range(-2, 2, -1.25, 3.25) 
+q.save("graphics/svd002a.pdf", ticks_integer=True)
+p = plot_circle_action(-1,0,0,3) 
+p.set_axes_range(-2, 2, -1.25, 3.25) 
+p.save("graphics/svd002b.pdf", ticks_integer=True)
+\end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd002a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} -1 &0 \\ 0 &3 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd002b.pdf}}
 \end{equation*}
-Now the colors really have something to say.
+This is where the colors have something to say.
 On the input circle, when you move counterclockwise, the colors go from 
 red to orange, then to green, blue, indigo, and 
 finally violet.
@@ -180,7 +185,7 @@ or sense, of the curve.
 The next transformation is a shear.\footnote{%
   A dictionary definition of a shear is that it is when 
   two parts of a body  
-  slide relatively to each other in a direction parallel to their 
+  slide relatively to each other, in a direction parallel to their 
   plane of contact.  
   Thus, when you write on a paper the flakes of pencil 
   graphite shear off the pencil.}
@@ -191,21 +196,21 @@ The output's first component is affected
 by the input vector's distance from the $y$-axis.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
-sage: q.set_axes_range(-2, 3, -1, 2) 
+sage: q.set_axes_range(-1.5, 1.5, -2.25, 2.25) 
 sage: q.save("graphics/svd003a.pdf")
 sage: p = plot_circle_action(1,0,2,1) 
-sage: p.set_axes_range(-2, 3, -1, 2) 
+sage: p.set_axes_range(-1.5, 1.5, -2.25, 2.25) 
 sage: p.save("graphics/svd003b.pdf")
 \end{sagecommandline}
-% \begin{sagesilent}
-% load("plot_action.sage")
-% q = plot_circle_action(1,0,0,1) 
-% q.set_axes_range(-2, 3, -1, 2) 
-% q.save("graphics/svd003a.pdf")
-% p = plot_circle_action(1,0,2,1) 
-% p.set_axes_range(-2, 3, -1, 2) 
-% p.save("graphics/svd003b.pdf")
-% \end{sagesilent}
+\begin{sagesilent}
+load("plot_action.sage")
+q = plot_circle_action(1,0,0,1) 
+q.set_axes_range(-1.5, 1.5, -2.25, 2.25, ticks_integer=True) 
+q.save("graphics/svd003a.pdf")
+p = plot_circle_action(1,0,2,1) 
+p.set_axes_range(-1.5, 1.5, -2.25, 2.25, ticks_integer=True) 
+p.save("graphics/svd003b.pdf")
+\end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd003a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &0 \\ 2 &1 \end{smallmatrix}\big )}\quad
