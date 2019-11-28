@@ -149,7 +149,7 @@ $x$~component by $-1$.\footnote{%
   As in other chapters, some of the graphics here are drawn with  
   some options that are not shown.
   In this case, the \protect\inlinecode{p.save(...)} has
-  the \protect{ticks\_integer=True} option.
+  the \protect\inlinecode{ticks\_integer=True} option.
   This just reduces clutter that isn't linear algebra.}
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
@@ -173,75 +173,99 @@ p.save("graphics/svd002b.pdf", ticks_integer=True)
   \quad\mapsunder{\big (\begin{smallmatrix} -1 &0 \\ 0 &3 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd002b.pdf}}
 \end{equation*}
-This is where the colors have something to say.
+Tripling the $y$ component is easy to understand.
+As for taking the negative of the $x$ component, 
+this is where the colors have something to say.
 On the input circle, when you move counterclockwise, the colors go from 
-red to orange, then to green, blue, indigo, and 
-finally violet.
-But the output does the opposite: to move from red to violet, you
-move clockwise.
+red to orange, to green, blue, indigo, and then violet.
+But the output does the opposite:~moving counterclockwise it
+passes from violet to red.
 This transformation changes the orientation,
-or sense, of the curve. 
+or `sense', of the curve. 
+
+This is rotation, clockwise by $\pi/4$~radians.
+\begin{equation*}
+  \colvec{x \\ y} \mapsto \colvec{\cos(-\pi/4)-\sin(-\pi/4) \\ \sin(-\pi/4)+\cos(-\pi/4)}
+\end{equation*}
+\begin{sagecommandline}
+sage: q = plot_circle_action(1,0,0,1) 
+sage: q.set_axes_range(-1.5, 1.5, -1, 1.5) 
+sage: q.save("graphics/svd003a.pdf")
+sage: p = plot_circle_action(cos(-pi/4),-sin(-pi/4),sin(-pi/4),cos(-pi/4)) 
+sage: p.set_axes_range(-1.5, 1.5, -1, 1.5) 
+sage: p.save("graphics/svd003b.pdf")
+\end{sagecommandline}
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{graphics/svd003a.pdf}}
+  \quad\mapsunder{\big (\begin{smallmatrix} \cos(-\pi/4) &-\sin(-\pi/4) \\ \sin(-\pi/4) &\cos(-\pi/4) \end{smallmatrix}\big )}\quad
+  \vcenteredhbox{\includegraphics{graphics/svd003b.pdf}}
+\end{equation*}
 
 The next transformation is a shear.\footnote{%
   A dictionary definition of a shear is that it is when 
   two parts of a body  
   slide relatively to each other, in a direction parallel to their 
   plane of contact.  
-  Thus, when you write on a paper the flakes of pencil 
+  Thus, when you write on a paper the flakes of
   graphite shear off the pencil.}
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
 \end{equation*}
-The output's first component is affected
-by the input vector's distance from the $y$-axis.
+The first component of the output is affected
+by the input's distance from the $y$-axis.
+Input vectors higher up in the picture have their first component affected more
+than do input vectors near the $x$-axis.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
-sage: q.set_axes_range(-1.5, 1.5, -2.25, 2.25) 
-sage: q.save("graphics/svd003a.pdf")
-sage: p = plot_circle_action(1,0,2,1) 
-sage: p.set_axes_range(-1.5, 1.5, -2.25, 2.25) 
-sage: p.save("graphics/svd003b.pdf")
+sage: q.set_axes_range(-1.5, 2.5, -.25, 1.25) 
+sage: q.save("graphics/svd004a.pdf")
+sage: p = plot_circle_action(1,2,0,1) 
+sage: p.set_axes_range(-1.5, 2.5, -.25, 1.25) 
+sage: p.save("graphics/svd004b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-1.5, 1.5, -2.25, 2.25, ticks_integer=True) 
-q.save("graphics/svd003a.pdf")
-p = plot_circle_action(1,0,2,1) 
-p.set_axes_range(-1.5, 1.5, -2.25, 2.25, ticks_integer=True) 
-p.save("graphics/svd003b.pdf")
+q.set_axes_range(-1.5, 2.5, -.25, 2.25) 
+q.save("graphics/svd004a.pdf", ticks_integer=True)
+p = plot_circle_action(1,2,0,1) 
+p.set_axes_range(-1.5, 2.5, -.25, 2.25) 
+p.save("graphics/svd004b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
-  \vcenteredhbox{\includegraphics{graphics/svd003a.pdf}}
-  \quad\mapsunder{\big (\begin{smallmatrix} 1 &0 \\ 2 &1 \end{smallmatrix}\big )}\quad
-  \vcenteredhbox{\includegraphics{graphics/svd003b.pdf}}
+  \vcenteredhbox{\includegraphics{graphics/svd004a.pdf}}
+  \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 0 &1 \end{smallmatrix}\big )}\quad
+  \vcenteredhbox{\includegraphics{graphics/svd004b.pdf}}
 \end{equation*}
 
 Here is another shear.
 In this case the output's 
 second component is affected by the input's distance from 
 the $x$-axis.
+\begin{equation*}
+  \colvec{x \\ y} \mapsto \colvec{x \\ (1/2)x+y}
+\end{equation*}
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
-sage: q.set_axes_range(-2, 2, -2, 2) 
-sage: q.save("graphics/svd004a.pdf")
-sage: p = plot_circle_action(1,1/2,0,1) 
-sage: p.set_axes_range(-2, 2, -2, 2) 
-sage: p.save("graphics/svd004b.pdf")
+sage: q.set_axes_range(-1.25, 1.25, -0.75, 1.5) 
+sage: q.save("graphics/svd005a.pdf")
+sage: p = plot_circle_action(1,0,1/2,1) 
+sage: p.set_axes_range(-1.25, 1.25, -0.75, 1.5) 
+sage: p.save("graphics/svd005b.pdf")
 \end{sagecommandline}
 % \begin{sagesilent}
 % load("plot_action.sage")
 % q = plot_circle_action(1,0,0,1) 
 % q.set_axes_range(-2, 2, -2, 2) 
-% q.save("graphics/svd004a.pdf")
-% p = plot_circle_action(1,1/2,0,1) 
+% q.save("graphics/svd005a.pdf")
+% p = plot_circle_action(1,0,1/2,1) 
 % p.set_axes_range(-2, 2, -2, 2) 
-% p.save("graphics/svd004b.pdf")
+% p.save("graphics/svd005b.pdf")
 % \end{sagesilent}
 \begin{equation*}
-  \vcenteredhbox{\includegraphics{graphics/svd004a.pdf}}
-  \quad\mapsunder{\big (\begin{smallmatrix} 1 &1/2 \\ 0 &1 \end{smallmatrix}\big )}\quad
-  \vcenteredhbox{\includegraphics{graphics/svd004b.pdf}}
+  \vcenteredhbox{\includegraphics{graphics/svd005a.pdf}}
+  \quad\mapsunder{\big (\begin{smallmatrix} 1 &0 \\ 1/2 &1 \end{smallmatrix}\big )}\quad
+  \vcenteredhbox{\includegraphics{graphics/svd005b.pdf}}
 \end{equation*}
 
 And here is a generic transformation.
@@ -249,24 +273,24 @@ It changes orientation also.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 4, -3, 6) 
-sage: q.save("graphics/svd005a.pdf")
+sage: q.save("graphics/svd006a.pdf")
 sage: p = plot_circle_action(1,2,3,4) 
 sage: p.set_axes_range(-2, 4, -3, 6) 
-sage: p.save("graphics/svd005b.pdf")
+sage: p.save("graphics/svd006b.pdf")
 \end{sagecommandline}
 % \begin{sagesilent}
 % load("plot_action.sage")
 % q = plot_circle_action(1,0,0,1) 
 % q.set_axes_range(-2, 4, -3, 6) 
-% q.save("graphics/svd005a.pdf",figsize=3)
+% q.save("graphics/svd006a.pdf",figsize=3)
 % p = plot_circle_action(1,2,3,4) 
 % p.set_axes_range(-2, 4, -3, 6) 
-% p.save("graphics/svd005b.pdf",figsize=3)
+% p.save("graphics/svd006b.pdf",figsize=3)
 % \end{sagesilent}
 \begin{equation*}
-  \vcenteredhbox{\includegraphics{graphics/svd005a.pdf}}
+  \vcenteredhbox{\includegraphics{graphics/svd006a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
-  \vcenteredhbox{\includegraphics{graphics/svd005b.pdf}}
+  \vcenteredhbox{\includegraphics{graphics/svd006b.pdf}}
 \end{equation*}
 
 
@@ -275,7 +299,8 @@ sage: p.save("graphics/svd005b.pdf")
 The above pictures show the unit circle mapping to ellipses.
 Recall that in $\Re^2$ an ellipse has a \textit{major axis}, 
 the longer one, and a 
-\textit{minor axis}.\footnote{If the two axes have the same length 
+\textit{minor axis}.\footnote{If the two axes have the same length,
+as in the output of the rotation map, 
 then the ellipse is a circle.
 If one axis has length zero then the ellipse is a line segment 
 and if both have length zero then it is a point.}
@@ -305,8 +330,8 @@ E.save("graphics/svd100.pdf", axes_pad=0.075, figsize=3)
 \begin{center}
   \includegraphics{graphics/svd100.pdf}
 \end{center}
-In an ellipse the two axes are orthogonal.
-In the above graph the major axis lies along the $x$-axis while the
+The two axes are orthogonal.
+In the above, the major axis lies along the $x$-axis while the
 minor axis lies along the $y$-axis.
 
 Under any linear map $\map{t}{\Re^n}{\Re^m}$ the 
@@ -317,8 +342,7 @@ for any linear map $\map{t}{\Re^m}{\Re^n}$ there are bases
 $B=\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_m}$ for the domain and
 $D=\sequence{\vec{\delta}_1,\ldots,\vec{\delta}_n}$ for the codomain
 such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i$, where the
-\textit{singular values}
-$\sigma_i$ are scalars.
+scalars $\sigma_i$ are 'singular values'.
 The next section sketches a proof
 but we first illustrate this result by using an example matrix.
 \Sage{} will find the two bases $B$ and~$D$ and will picture how the 
@@ -457,17 +481,16 @@ semi-minor axis.
 
 \section{Proof sketch}
 
-\textit{This argument, 
-from \cite{BlankKrikorianSpring89},
-is a sketch because it uses results that a typical reader has only 
-seen in a less general version and because it relies on material from the
-book that is optional.
-In addition, we'll consider only the case of a nonsingular matrix and map;
-it shows the main idea, which is the point of a sketch.}
-
 Consider an~$\nbyn{n}$ matrix~$T$ that is nonsingular and the
 nonsingular transformation~$\map{t}{\Re^n}{\Re^n}$ represented by
-$T$ with respect to the standard bases.
+$T$ with respect to the standard bases.\footnote{%
+  This argument, 
+  from \protect\cite{BlankKrikorianSpring89},
+  is a sketch because it uses results that a typical reader has only 
+  seen in a less general version and because it relies on material from the
+  book that is optional.
+  In addition, we'll consider only the case of a nonsingular matrix and map;
+  it shows the main idea, which is the point of a sketch.}
 
 Recall Calculus~I's Extreme Value Theorem: for a continuous
 function~$f$, if a subset $D\subset \Re$ of the real line 
