@@ -3,15 +3,15 @@
 
 We will picture the action of a linear map,
 specifically, the action of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
-That will connect with an important way to factor matrices
-and an interesting application.
+That will connect with an important way to factor matrices, and lead to
+an interesting application.
 
 
 \section{Drawing the action}
 A defining property of linear maps is that 
 $h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
 Recall that a line through the origin in $\Re^n$ has the form 
-$\set{r\cdot \vec{v}\suchthat r\in\Re}$ for some~$\vec{v}$. 
+$\set{r\cdot \vec{v}\suchthat r\in\Re}$ for some~$\vec{v}\in\Re^n$. 
 Thus the scalar multiplication property  
 imposes a uniformity condition on a linear map:~its action on any 
 line through the origin is determined by its action
@@ -52,10 +52,10 @@ easy to draw).
 The $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship says that
 a linear map has the same effect on all vectors in a line through the
 origin.
-So to show a transformation's action we can fix 
-one nonzero vector element from each line through the origin
-and then show where the transformation takes each of 
-those vectors.
+So to picture a transformation's action we will fix 
+one nonzero vector~$\vec{v}$ from each line through the origin,
+and show where the transformation takes each such 
+vector, $t(\vec{v})$.
 The natural set containing one point from each plane line through the origin 
 is the upper half of the unit circle, shown here
 (the colors are explained below).
@@ -72,14 +72,14 @@ p.set_axes_range(-1.5, 1.5, -0.5, 1.5)
 p.save("graphics/svd000.pdf")
 \end{sagesilent}
 \begin{equation*}
-  U=\set{\colvec{\cos(t) \\ \sin(t)}
+  U=\set{\vec{v}=\colvec{\cos(t) \\ \sin(t)}
          \suchthat 
          0\leq t<\pi}
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
 The point $(1,0)$ is included in that set but
-$(-1,0)$ is not, which is why there is an open circle.
+$(-1,0)$ is not, which is why that point has an open circle.
 
 The first illustration is for a simple transformation.
 \begin{equation*}
@@ -121,8 +121,8 @@ sage: p.save("graphics/svd001b.pdf")
 % \end{sagesilent}
 Here is the before and after, the upper half circle 
 and the associated output.
-The colors show the association\Dash which 
-points on the left are mapped to which points 
+The colors show the association\Dash which of the 
+points on the left are mapped to which of the points 
 on the right.
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd001a.pdf}}
@@ -146,7 +146,7 @@ the effect of the map
 \end{equation*}
 that triples the $y$~component and also multiplies the 
 $x$~component by $-1$.\footnote{%
-  As in other chapters, some of the graphics here are drawn with  
+  As in other chapters, some of the graphics are drawn using 
   some options that are not shown.
   In this case, the \protect\inlinecode{p.save(...)} has
   the \protect\inlinecode{ticks\_integer=True} option.
@@ -202,7 +202,7 @@ sage: p.save("graphics/svd003b.pdf")
 \end{equation*}
 
 The next transformation is a shear.\footnote{%
-  A dictionary definition of a shear is that it is when 
+  In general, a shear is when 
   two parts of a body  
   slide relatively to each other, in a direction parallel to their 
   plane of contact.  
@@ -211,7 +211,7 @@ The next transformation is a shear.\footnote{%
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
 \end{equation*}
-The first component of the output is affected
+Here, the first component of the output is affected
 by the input's distance from the $y$-axis.
 Input vectors higher up in the picture have their first component affected more
 than do input vectors near the $x$-axis.
@@ -238,8 +238,8 @@ p.save("graphics/svd004b.pdf", ticks_integer=True)
   \vcenteredhbox{\includegraphics{graphics/svd004b.pdf}}
 \end{equation*}
 
-Here is another shear.
-In this case the output's 
+Next is a shear
+where the output's 
 second component is affected by the input's distance from 
 the $x$-axis.
 \begin{equation*}
