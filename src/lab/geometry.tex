@@ -20,12 +20,13 @@ Fix a linear map $\map{h}{\Re^d}{\Re^c}$.
 A line in the domain has the form 
 $\ell = \set{\vec{m}\cdot s +\vec{b}\suchthat s\in\Re}$
 for~$\vec{m}, \vec{b}\in\Re^d$.
-The image of~$\ell$
+Its image
 \begin{equation*}
   h(\ell)=\set{h(\vec{m}\cdot s+\vec{b})\suchthat s\in\Re}
   =\set{h(\vec{m})\cdot s+h(\vec{b})\suchthat s\in\Re}
 \end{equation*}
-is a line in the codomain, so linear maps send lines to lines. 
+is a line in the codomain.
+So a linear map sends any line to a line. 
 
 For example, consider the transformation $\map{t}{\Re^2}{\Re^2}$ 
 that rotates vectors counterclockwise by 
@@ -34,43 +35,43 @@ $\pi/6$~radians.
   \rep{t}{\stdbasis_2,\stdbasis_2}
   =
   \begin{mat}
-    \cos(\pi/6)  &\sin(\pi/6) \\
-    -\sin(\pi/6)  &\cos(\pi/6)
+    \cos(\pi/6)  &-\sin(\pi/6) \\
+    \sin(\pi/6)  &\cos(\pi/6)
   \end{mat}
   = 
   \begin{mat}
-    \sqrt{3}/2   &1/2 \\
-    -1/2          &\sqrt{3}/2
+    \sqrt{3}/2   &-1/2 \\
+    1/2          &\sqrt{3}/2
   \end{mat}
 \end{equation*}
-This is the line $y=3x+2$.
+And consider the line $y=3x+2$.
 \begin{equation*}
   \ell=
   \set{\colvec{x \\ y}=\colvec{1 \\ 3}\cdot s+\colvec{0 \\ 2}\suchthat s\in\Re}
 \end{equation*}
 Under the action of~$t$ 
 \begin{equation*}
-  \rowvec{1  &3}
   \begin{mat}
-    \sqrt{3}/2   &1/2 \\
-    -1/2          &\sqrt{3}/2
+    \sqrt{3}/2   &-1/2 \\
+    1/2          &\sqrt{3}/2
   \end{mat}
+  \colvec{1  \\ 3}
   =
-  \rowvec{(\sqrt{3}-3)/2  &(1-3\sqrt{3})/2}
+  \colvec{(\sqrt{3}-3)/2  \\ (1+3\sqrt{3})/2}
   \qquad
-  \rowvec{0  &2}
   \begin{mat}
-    \sqrt{3}/2   &1/2 \\
-    -1/2          &\sqrt{3}/2
+    \sqrt{3}/2    &-1/2 \\
+    1/2          &\sqrt{3}/2
   \end{mat}
+  \colvec{0  \\ 2}
   =
-  \rowvec{-1  &\sqrt{3}}
+  \colvec{-1  \\ \sqrt{3}}
 \end{equation*}
 that line becomes this set.
 \begin{equation*}
   t(\ell)
   =
-  \set{\colvec{x \\ y}=\colvec{(\sqrt{3}-3)/2 \\ (1-3\sqrt{3})/2}\cdot s
+  \set{\colvec{x \\ y}=\colvec{(\sqrt{3}-3)/2 \\ (1+3\sqrt{3})/2}\cdot s
                           +\colvec{-1 \\ \sqrt{3}}\suchthat s\in\Re}
 \end{equation*}
 \begin{sagecommandline}
@@ -80,7 +81,7 @@ sage: d = circle((0,2), 0.1, rgbcolor=(1,0,0))
 sage: ell = ell+d
 sage: ell.save("graphics/geo000a.pdf")
 sage: t_x(s) = ((sqrt(3)-3)/2)*s-1
-sage: t_y(s) = ((1-3*sqrt(3))/2)*s+sqrt(3)
+sage: t_y(s) = ((1+3*sqrt(3))/2)*s+sqrt(3)
 sage: t_ell = parametric_plot((t_x(s), t_y(s)), (s, -10, 10))
 sage: d = circle((-1,sqrt(3)), 0.1, rgbcolor=(1,0,0))
 sage: t_ell = t_ell+d
@@ -99,7 +100,7 @@ ell = ell+d
 ell.set_axes_range(-4, 4, -4, 4)
 ell.save("graphics/geo000a.pdf", fontsize=7)
 t_x(s) = ((sqrt(3)-3)/2)*s-1
-t_y(s) = ((1-3*sqrt(3))/2)*s+sqrt(3)
+t_y(s) = ((1+3*sqrt(3))/2)*s+sqrt(3)
 t_ell = parametric_plot((t_x(s), t_y(s)), (s, -10, 10))
 d = circle((-1,sqrt(3)), 0.1, rgbcolor=(1,0,0))
 t_ell = t_ell+d
@@ -119,7 +120,7 @@ chosen to be large enough that the line segment covers the entire
 domain and codomain intervals shown, from $-4$ to~$4$.)
 One example of a rotation is that the vector that ends at $(0,2)$ 
 is rotated to the vector that ends at $(-1,\sqrt{3})$.
-Those are shown as red dots.
+Those vectors are shown as red dots.
 
 
 
@@ -131,27 +132,12 @@ the effect of plane transformations
 $\map{t}{\Re^2}{\Re^2}$ 
 by applying them to
 the unit circle.
-In this chapter we use the unit sqaure.
+In this chapter we use the unit square.
 The observation
 that linear maps send lines to lines makes it easy:~we find the
-action of a matrix 
-% \begin{equation*}
-% \begin{mat}
-%   a  &b  \\
-%   c  &d
-% \end{mat}
-% \end{equation*}
-by finding what it does to the four input corners.
-% \begin{equation*}
-%   \colvec{0 \\ 0}\mapsto\colvec{0 \\ 0}
-%   \quad
-%   \colvec{1 \\ 0}\mapsto\colvec{a \\ b}
-%   \quad
-%   \colvec{1 \\ 1}\mapsto\colvec{a+c \\ b+d}
-%   \quad
-%   \colvec{0 \\ 1}\mapsto\colvec{c \\ d}
-% \end{equation*}
-Then we connect the four output corners with line segments.
+action of a matrix on four corners of the input.
+That makes four output corners.
+Then we connect those four with line segments.
 
 We start with the unit square.
 Note the colors; they will play the same role here as in the prior chapter.
@@ -175,67 +161,74 @@ transformation represented with respect to the standard basis by the
 matrix with entries $a$, $b$, $c$, and~$d$.
 (The source code is at the end of the chapter.)
 \begin{equation*}
-  % \rep{t}{\stdbasis_2,\stdbasis_2}=
-  \rowvec{x  &y}
   \begin{mat}
     a &b \\
     c &d
   \end{mat}
+  \colvec{x  \\ y}
   =
-  \rowvec{ax+cy &bx+dy}
+  \colvec{ax+by \\ cx+dy}
 \end{equation*}
 This pictures of the effect of the generic matrix.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-1, 4, -1, 7) 
+sage: q.save("graphics/geo101a.pdf")
 sage: p = plot_square_action(1,2,3,4) 
+sage: p.set_axes_range(-1, 4, -1, 7) 
 sage: p.save("graphics/geo101b.pdf")
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-6, 6, -1, 6) 
-q.save("graphics/geo101a.pdf")
-p = plot_square_action(1,2,3,4) 
-p.set_axes_range(-6, 6, -1, 6) 
-p.save("graphics/geo101b.pdf")
-\end{sagesilent}
+% \begin{sagesilent}
+% load("plot_action.sage")
+% q = plot_square_action(1,0,0,1) 
+% q.set_axes_range(-1, 4, -1, 7) 
+% q.save("graphics/geo101a.pdf")
+% p = plot_square_action(1,2,3,4) 
+% p.set_axes_range(-1, 4, -1, 7) 
+% p.save("graphics/geo101b.pdf")
+% \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo101a.pdf}}
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo101b.pdf}}
 \end{equation*}
-Obviously, it  changes the input square into an output parallelogram.
+It transforms the input square into an output parallelogram.
 
-The colors show another effect of transformations, beyond shape-changing.
-Take the colors in their natural order of red, orange, 
-green, and blue.
-Then the domain square has a counterclockwise orientation. 
+The colors show another effect of the transformations, beyond shape-changing.
+Taking the colors in their natural order of red, orange, 
+green, and blue,
+the the domain square has a counterclockwise orientation. 
 But the codomain's
-figure is clockwise, so the colors illustrate whether the transformation 
-preserves or reverses orientation.
+figure is clockwise. 
+So the colors illustrate that this transformation 
+reverses orientation.
 
 We can develop an understanding of complex behavior by 
-building on an understanding of simple behavior.
+building upon an understanding of simple behavior.
 This transformation doubles the $x$~components of all 
-vectors.\footnote{In the rest of this section we'll omit the fiddly
-lines that load the script file, set the axis ranges, etc.} 
+vectors.\footnote{%
+  As in other chapters, some of the graphics are drawn using 
+  some fiddly options that are not shown.
+  In this case, the \protect\inlinecode{p.save(...)} has
+  the \protect\inlinecode{ticks\_integer=True} option.}
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.set_axes_range(-1, 3, -1, 2) 
 sage: q.save("graphics/geo102a.pdf")
 sage: p = plot_square_action(2,0,0,1)  
-sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.set_axes_range(-1, 3, -1, 2) 
 sage: p.save("graphics/geo102b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo102a.pdf")
+q.set_axes_range(-1, 3, -1, 2) 
+q.save("graphics/geo102a.pdf", ticks_integer=True)
 p = plot_square_action(2,0,0,1)  
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo102b.pdf")
+p.set_axes_range(-1, 3, -1, 2) 
+p.save("graphics/geo102b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo102a.pdf}}
@@ -243,7 +236,6 @@ p.save("graphics/geo102b.pdf")
   \vcenteredhbox{\includegraphics{graphics/geo102b.pdf}}
   \tag{$*$}
 \end{equation*}
-\noindent
 Linear maps send the zero vector to the zero vector, and the input
 square is anchored at the origin, so 
 the output shape is also anchored at the origin.
@@ -258,20 +250,20 @@ What about if you take $-1$~times the $x$-coordinate?
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.set_axes_range(-2, 2, -1, 2) 
 sage: q.save("graphics/geo103a.pdf")
 sage: p = plot_square_action(-1,0,0,1) 
-sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.set_axes_range(-2, 2, -1, 2) 
 sage: p.save("graphics/geo103b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo103a.pdf")
+q.set_axes_range(-2, 2, -1, 2) 
+q.save("graphics/geo103a.pdf", ticks_integer=True)
 p = plot_square_action(-1,0,0,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo103b.pdf")
+p.set_axes_range(-2, 2, -1, 2) 
+p.save("graphics/geo103b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo103a.pdf}}
@@ -279,13 +271,12 @@ p.save("graphics/geo103b.pdf")
   \vcenteredhbox{\includegraphics{graphics/geo103b.pdf}}
   \tag{$**$}
 \end{equation*}
-\noindent
 It changes the orientation.
 
 We say that the above shape has an \textit{oriented area}
 of $-1$.
 The motivation for taking the area with a sign 
-is:~imagine starting with the right-hand figure 
+is continuity:~imagine starting with the right-hand figure 
 from the example before this one
 and slide the orange side in from the right, from $2$ to~$1$, to~$0$ and
 then to~$-1$.
@@ -302,20 +293,20 @@ $x$~components by $-1$.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.set_axes_range(-2, 2, -1, 4) 
 sage: q.save("graphics/geo104a.pdf")
 sage: p = plot_square_action(-1,0,0,3) 
-sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.set_axes_range(-2, 2, -1, 4) 
 sage: p.save("graphics/geo104b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo104a.pdf")
+q.set_axes_range(-2, 2, -1, 4) 
+q.save("graphics/geo104a.pdf", ticks_integer=True)
 p = plot_square_action(-1,0,0,3) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo104b.pdf")
+p.set_axes_range(-2, 2, -1, 4) 
+p.save("graphics/geo104b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo104a.pdf}}
@@ -329,20 +320,20 @@ What if we change the orientation twice?
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -4, 2) 
+sage: q.set_axes_range(-3, 2, -4, 2) 
 sage: q.save("graphics/geo105a.pdf")
 sage: p = plot_square_action(-2,0,0,-3) 
-sage: p.set_axes_range(-4, 4, -4, 2) 
+sage: p.set_axes_range(-3, 2, -4, 2) 
 sage: p.save("graphics/geo105b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -4, 2) 
-q.save("graphics/geo105a.pdf")
+q.set_axes_range(-3, 2, -4, 2) 
+q.save("graphics/geo105a.pdf", ticks_integer=True)
 p = plot_square_action(-2,0,0,-3) 
-p.set_axes_range(-4, 4, -4, 2) 
-p.save("graphics/geo105b.pdf")
+p.set_axes_range(-3, 2, -4, 2) 
+p.save("graphics/geo105b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo105a.pdf}}
@@ -357,28 +348,27 @@ We next show the effect of putting in off-diagonal entries.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.set_axes_range(-1, 3, -1, 2) 
 sage: q.save("graphics/geo106a.pdf")
 sage: p = plot_square_action(1,0,2,1) 
-sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.set_axes_range(-1, 3, -1, 2) 
 sage: p.save("graphics/geo106b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo106a.pdf")
-p = plot_square_action(1,0,2,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo106b.pdf")
+q.set_axes_range(-1, 3, -1, 2) 
+q.save("graphics/geo106a.pdf", ticks_integer=True)
+p = plot_square_action(1,2,0,1) 
+p.set_axes_range(-1, 3, -1, 2) 
+p.save("graphics/geo106b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo106a.pdf}}
-  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 2 &1 \end{smallmatrix}\big )}\quad
+  \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 0 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo106b.pdf}}
 \end{equation*}
-This transformation is a \textit{skew}\footnote{The word skew means ``to distort from a symmetrical form.''}
-(or \textit{shear}).
+This transformation is a 'shear'.
 The line segment sides of the original square 
 map to line segments, but the sides are not at right angles.
 The action
@@ -391,32 +381,32 @@ a starting vector with a $y$~component of~$2$ is shifted right by~$4$, so
 vectors are shifted depending on how far they are above or below the
 $x$-axis.
 This transformation preserves orientation and the output shape has a base of~$1$
-with a height of~$1$ so its oriented area is~$1$.
+with a height of~$1$, so its oriented area is~$1$.
 
 Putting a nonzero value in the other off-diagonal entry of the matrix,
-the upper right, has the same effect except that it skews parallel
+the upper right, has the same effect except that it shears parallel
 to the $y$-axis.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -3, 2) 
+sage: q.set_axes_range(-1, 3, -3, 2) 
 sage: q.save("graphics/geo107a.pdf")
-sage: p = plot_square_action(1,-2,0,1) 
-sage: p.set_axes_range(-4, 4, -3, 2) 
+sage: p = plot_square_action(1,0,-2,1) 
+sage: p.set_axes_range(-1, 3, -3, 2) 
 sage: p.save("graphics/geo107b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -3, 2) 
+q.set_axes_range(-1, 3, -3, 2) 
 q.save("graphics/geo107a.pdf")
-p = plot_square_action(1,-2,0,1) 
-p.set_axes_range(-4, 4, -3, 2) 
+p = plot_square_action(1,0,-2,1) 
+p.set_axes_range(-1, 3, -3, 2) 
 p.save("graphics/geo107b.pdf")
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo107a.pdf}}
-  \quad\mapsvia{\big (\begin{smallmatrix} 1 &-2 \\ 0 &1 \end{smallmatrix}\big )}\quad
+  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ -2 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo107b.pdf}}
 \end{equation*}
 The action
@@ -425,7 +415,8 @@ The action
 \end{equation*}
 means that vectors are shifted depending on how far they are from the
 $x$~axis.
-For instance, a vector with an $x$~component of~$1$ is shifted by~$-2$.
+For instance, an input vector with an $x$~component of~$1$ is shifted by~$-2$
+while if the $x$~component is~$2$ then it is shifted by~$-4$.
 The oriented area of the output shape is~$1$.
 
 
@@ -444,26 +435,26 @@ In ($*$) the matrix has determinant~$2$ and it doubles the oriented area.
 In ($**$) the matrix multiplies the oriented area by~$-1$.
 
 One advantage of starting these before/after pictures with a unit
-square is that then the output shape has oriented area equal to the
+square is that then the oriented area of the output shape equals the
 determinant of the matrix. 
 
 For instance, this matrix is singular, so it has determinant~$0$.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 6) 
+sage: q.set_axes_range(-1, 4, -1, 6) 
 sage: q.save("graphics/geo200a.pdf")
 sage: p = plot_square_action(1,2,2,4) 
-sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.set_axes_range(-1, 4, -1, 4) 
 sage: p.save("graphics/geo200b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 6) 
+q.set_axes_range(-1, 4, -1, 6) 
 q.save("graphics/geo200a.pdf")
 p = plot_square_action(1,2,2,4) 
-p.set_axes_range(-4, 4, -1, 6) 
+p.set_axes_range(-1, 4, -1, 6) 
 p.save("graphics/geo200b.pdf")
 \end{sagesilent}
 \begin{equation*}
@@ -471,7 +462,6 @@ p.save("graphics/geo200b.pdf")
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 2 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo200b.pdf}}
 \end{equation*}
-\noindent
 The output shape has zero content.
 
 
@@ -509,29 +499,29 @@ row operation $2\rho_1+\rho_2$.
   \end{mat}
 \end{equation*}
 
-In general, as described in the book, the  
-\definend{elementary reduction matrices}
+Ss described in the book, the  
+elementary reduction matrices
 come in three types $M_i(k)$, $P_{i,j}$, and~$C_{i,j}(k)$, and
 arise from applying a row operation to an identity matrix.
 \begin{center}
-$I\grstep{k\rho_i}M_i(k)$ for \( k\neq 0 \)
+$I\grstep{k\rho_i}M_i(k)$ where \( k\neq 0 \)
 \qquad
-\( I\grstep{\rho_i\leftrightarrow\rho_j}P_{i,j} \) for \( i\neq j \)
+\( I\grstep{\rho_i\leftrightarrow\rho_j}P_{i,j} \) where \( i\neq j \)
 \qquad
-\( I\grstep{k\rho_i+\rho_j}C_{i,j}(k) \) for \( i\neq j \)
+\( I\grstep{k\rho_i+\rho_j}C_{i,j}(k) \) where \( i\neq j \)
 \end{center}
 For a matrix~$H$ you can do row scaling~\( k\rho_i \) 
-with \( M_i(k)H \), 
-you can swap rows \( \rho_i\leftrightarrow\rho_j \) with \( P_{i,j}H \), 
+with \( M_i(k)\,H \), 
+you can swap rows \( \rho_i\leftrightarrow\rho_j \) with \( P_{i,j}\,H \), 
 and you can add a multiple of one row to another
-\( k\rho_i+\rho_j \) with \( C_{i,j}(k)H \). 
+\( k\rho_i+\rho_j \) with \( C_{i,j}(k)\,H \). 
 The prior paragraph used the $\nbyn{3}$
 matrix $C_{1,2}(2)$.
-(We are focused on transformations so we will assume all of these
-matrices are same-sized and square.)
+(We will focus on transformations so we will take all of these
+matrices to be same-sized and square.)
 
-You can continue the Gauss's Method started in the equation above
-and use $C_{2,3}(-1)$ to perform $-\rho_2+\rho_3$,
+You can continue the Gauss's Method started in the matrix equation above.
+Use $C_{2,3}(-1)$ to perform $-\rho_2+\rho_3$,
 producing echelon form.
 \begin{equation*}
   \begin{mat}
@@ -557,20 +547,20 @@ producing echelon form.
   \end{mat}
   \tag{$*$}
 \end{equation*}
-As in this example, matrix multiplication by these elementary matrices 
-suffices to do Gauss's Method and produce echelon form.
+% As in this example, matrix multiplication by these elementary matrices 
+% suffices to do Gauss's Method and produce echelon form.
 
-Observe further that if the starting matrix is such that
+Observe that if the starting matrix is such that
 you don't need any row swapping then 
 you can stick with the operations~\( k\rho_i+\rho_j \) where 
-$j>i$ (that is, where a row operates on a row below it). 
+$j>i$. 
 The elementary
-matrices that perform those operations are \textit{lower triangular}
+matrices that perform those operations are `lower triangular'
 since all of their nonzero entries are in the lower left.
 (Matrices with all of their nonzero entries in the upper right are 
-\textit{upper triangular}.)
-Thus your factorization so far is into a product of lower triangular elementary
-matrices and an echelon form matrix.
+`upper triangular'.)
+% Thus the factorization so far is into a product of lower triangular elementary
+% matrices and an echelon form matrix.
 
 You can go further.
 Use a diagonal matrix to make the 
@@ -666,12 +656,15 @@ is undone with $-2\rho_1+\rho_2$),
 Thus each of those lower triangular matrices
 has an inverse.
 Likewise, each upper-triangular matrix has an inverse.
+That means we can do the algebra to move things to the left side of the 
+equation.
 Therefore, 
 if you don't need any swaps in a Gauss-Jordan reduction of a matrix~$A$ 
-then you have this factorization.
+then you get a factorization of the starting matrix.
 \begin{equation*} 
   A = L_k^{-1}\cdots L_1^{-1}\cdot D\cdot U_r^{-1}\cdots U_1^{-1}
 \end{equation*}
+
 To fix the swap issue you can pre-swap:
 before factoring the starting matrix, first swap its rows
 with a permutation matrix~$P$.
@@ -680,11 +673,12 @@ with a permutation matrix~$P$.
   \tag{$*{*}*$}
 \end{equation*}
 
-A product of lower triangular matrices is lower-triangular,
-and a product of upper triangular matrices is 
-upper-triangular
-so you can combine all the $L$'s and all the $U$'s, and
-the formula~($*{*}*$) is often known as $PA=LDU$.
+The coup de gras is:~the product of lower triangular matrices is 
+lower triangular,
+and the product of upper triangular matrices is 
+upper triangular,
+so you can combine all the $L$'s and all the $U$'s in~($*{*}*$), 
+to get that $PA=LDU$.
 
 We illustrate with the generic $\nbyn{2}$ transformation of $\Re^2$ represented 
 with respect to the standard basis in this way.
@@ -749,38 +743,42 @@ sage: L*D*U
 We got into this to understand 
 the geometric effect of the generic transformation.
 \begin{equation*}
-  \rowvec{x &y}
   \begin{mat}
    1 &2 \\
    3 &4 
   \end{mat}
+  \colvec{x \\ y}
 \end{equation*}
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 6) 
+sage: q.set_axes_range(-2, 4, -1, 7) 
 sage: q.save("graphics/geo300a.pdf")
 sage: p = plot_square_action(1,2,3,4) 
-sage: p.set_axes_range(-4, 4, -1, 6) 
+sage: p.set_axes_range(-2, 4, -1, 7) 
 sage: p.save("graphics/geo300b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 6) 
+q.set_axes_range(-2, 4, -1, 7) 
 q.save("graphics/geo300a.pdf")
 p = plot_square_action(1,2,3,4) 
-p.set_axes_range(-4, 4, -1, 6) 
+p.set_axes_range(-2, 4, -1, 7) 
 p.save("graphics/geo300b.pdf")
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo300a.pdf}}
-  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 3 &1 \end{smallmatrix}\big )}\quad
+  \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo300b.pdf}}
 \end{equation*}
 \noindent Expand it using the above $LDU$~factorization. 
 \begin{equation*}
-  \rowvec{x &y}
+  \begin{mat}
+    1 &2 \\
+    3 &4
+  \end{mat}
+  =
   \begin{mat}
    1 &0 \\
    3 &1 
@@ -793,79 +791,31 @@ p.save("graphics/geo300b.pdf")
     1 &2 \\
     0 &1
   \end{mat}  
+  \colvec{x \\ y}
 \end{equation*}
 We will look twice at the effects these three.
-First we will see the effect of each of $L$, $D$, and~$U$ separately.
-Then we will look at the cumulative effect: that of~$L$, then of~$LD$, 
+First we will see the effect of each of $U$, $D$, and~$L$ separately.
+Then we will look at the cumulative effect: that of~$U$, then of~$DU$, 
 and finally~$LDU$.
 
-The first matrix is a skew parallel to the $x$-axis.
+The matrix applied first, the rightmost matrix~$U$, 
+is a skew parallel to the $x$-axis.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 4) 
-sage: q.save("graphics/geo301a.pdf")
-sage: p = plot_square_action(1,0,3,1) 
-sage: p.set_axes_range(-4, 4, -1, 4) 
-sage: p.save("graphics/geo301b.pdf")
-\end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
-q.save("graphics/geo301a.pdf")
-p = plot_square_action(1,0,3,1) 
-p.set_axes_range(-4, 4, -1, 4) 
-p.save("graphics/geo301b.pdf")
-\end{sagesilent}
-\begin{equation*}
-  \vcenteredhbox{\includegraphics{graphics/geo301a.pdf}}
-  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 3 &1 \end{smallmatrix}\big )}\quad
-  \vcenteredhbox{\includegraphics{graphics/geo301b.pdf}}
-\end{equation*}
-\noindent
-The second matrix rescales and changes the orientation.
-\begin{sagecommandline}
-sage: load("plot_action.sage")
-sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -3, 2) 
-sage: q.save("graphics/geo302a.pdf")
-sage: p = plot_square_action(1,0,0,-2) 
-sage: p.set_axes_range(-4, 4, -3, 2) 
-sage: p.save("graphics/geo302b.pdf")
-\end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")
-q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -3, 2) 
-q.save("graphics/geo302a.pdf")
-p = plot_square_action(1,0,0,-2) 
-p.set_axes_range(-4, 4, -3, 2) 
-p.save("graphics/geo302b.pdf")
-\end{sagesilent}
-\begin{equation*}
-  \vcenteredhbox{\includegraphics{graphics/geo302a.pdf}}
-  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 0 &-2 \end{smallmatrix}\big )}\quad
-  \vcenteredhbox{\includegraphics{graphics/geo302b.pdf}}
-\end{equation*}
-\noindent
-Finally, the third matrix is a skew parallel to the $y$-axis.
-\begin{sagecommandline}
-sage: load("plot_action.sage")
-sage: q = plot_square_action(1,0,0,1) 
-sage: q.set_axes_range(-4, 4, -1, 4) 
+sage: q.set_axes_range(-2, 4, -2.25, 4.25) 
 sage: q.save("graphics/geo303a.pdf")
 sage: p = plot_square_action(1,2,0,1) 
-sage: p.set_axes_range(-4, 4, -1, 4) 
+sage: p.set_axes_range(-2, 4, -2.25, 4.25) 
 sage: p.save("graphics/geo303b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
-q.set_axes_range(-4, 4, -1, 4) 
+q.set_axes_range(-2, 4, -2.25, 4.25) 
 q.save("graphics/geo303a.pdf")
 p = plot_square_action(1,2,0,1) 
-p.set_axes_range(-4, 4, -1, 4) 
+p.set_axes_range(-2, 4, -2.25, 4.25) 
 p.save("graphics/geo303b.pdf")
 \end{sagesilent}
 \begin{equation*}
@@ -873,13 +823,62 @@ p.save("graphics/geo303b.pdf")
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 0 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo303b.pdf}}
 \end{equation*}
+The second matrix~$D$ rescales and changes the orientation.
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 4, -2.25, 4.25) 
+sage: q.save("graphics/geo302a.pdf")
+sage: p = plot_square_action(1,0,0,-2) 
+sage: p.set_axes_range(-2, 4, -2.25, 4.25) 
+sage: p.save("graphics/geo302b.pdf")
+\end{sagecommandline}
+\begin{sagesilent}
+load("plot_action.sage")
+q = plot_square_action(1,0,0,1) 
+q.set_axes_range(-2, 4, -2.25, 4.25) 
+q.save("graphics/geo302a.pdf")
+p = plot_square_action(1,0,0,-2) 
+p.set_axes_range(-2, 4, -2.25, 4.25) 
+p.save("graphics/geo302b.pdf")
+\end{sagesilent}
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{graphics/geo302a.pdf}}
+  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 0 &-2 \end{smallmatrix}\big )}\quad
+  \vcenteredhbox{\includegraphics{graphics/geo302b.pdf}}
+\end{equation*}
+
+The leftmost matrix, $L$, is a skew parallel to the $y$-axis.
+\begin{sagecommandline}
+sage: load("plot_action.sage")
+sage: q = plot_square_action(1,0,0,1) 
+sage: q.set_axes_range(-2, 4, -2.25, 4.25) 
+sage: q.save("graphics/geo301a.pdf")
+sage: p = plot_square_action(1,0,3,1) 
+sage: p.set_axes_range(-2, 4, -2.25, 4.25) 
+sage: p.save("graphics/geo301b.pdf")
+\end{sagecommandline}
+\begin{sagesilent}
+load("plot_action.sage")
+q = plot_square_action(1,0,0,1) 
+q.set_axes_range(-2, 4, -2.25, 4.25) 
+q.save("graphics/geo301a.pdf")
+p = plot_square_action(1,0,3,1) 
+p.set_axes_range(-2, 4, -2.25, 4.25) 
+p.save("graphics/geo301b.pdf")
+\end{sagesilent}
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{graphics/geo301a.pdf}}
+  \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 3 &1 \end{smallmatrix}\big )}\quad
+  \vcenteredhbox{\includegraphics{graphics/geo301b.pdf}}
+\end{equation*}
   
 The lower-triangular and upper-triangular matrices do not
 change orientation.
 Any orientation changing in $LDU$ happens via diagonal entries that are 
 negative.
 (\textit{Comment.}
-However, if a matrix requires row swaps~$PA=LDU$ then the situation is 
+However, if a matrix requires row swaps, $PA=LDU$, then the situation is 
 more subtle.
 Each row swap toggles the orientation, from counterclockwise to clockwise or
 from clockwise to counterclockwise.
@@ -893,62 +892,62 @@ For example, here is the cumulative effect of the maps on the
 unit square's upper right corner.
 \begin{equation*}
   \colvec{1 \\ 1}
-  \mapsunder{L}
-  \colvec{4 \\ 1}
-  \mapsunder{D}
-  \colvec{4 \\ -2}
   \mapsunder{U}
-  \colvec{4 \\ 6}
+  \colvec{3 \\ 1}
+  \mapsunder{D}
+  \colvec{3 \\ -2}
+  \mapsunder{L}
+  \colvec{3 \\ 7}
 \end{equation*}
 
 \begin{sagecommandline}
 sage: L = matrix(QQ, [[1, 0], [3, 1]])
 sage: D = matrix(QQ, [[1, 0], [0, -2]])
 sage: U = matrix(QQ, [[1, 2], [0, 1]])
-sage: LD = L*D
-sage: LDU = LD*U  
+sage: DU = D*U
+sage: LDU = L*DU  
 sage: load("plot_action.sage")
 sage: p = plot_square_action(1,0,0,1) 
-sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p.set_axes_range(-4, 4, -2, 7) 
 sage: p.save("graphics/geo304a.pdf")
-sage: p = plot_square_action(L[0][0], L[0][1], L[1][0], L[1][1]) 
-sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p = plot_square_action(U[0][0], U[0][1], U[1][0], U[1][1]) 
+sage: p.set_axes_range(-4, 4, -2, 7) 
 sage: p.save("graphics/geo304b.pdf")
-sage: p = plot_square_action(LD[0][0], LD[0][1], LD[1][0], LD[1][1]) 
-sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p = plot_square_action(DU[0][0], DU[0][1], DU[1][0], DU[1][1]) 
+sage: p.set_axes_range(-4, 4, -2, 7) 
 sage: p.save("graphics/geo304c.pdf")
 sage: p = plot_square_action(LDU[0][0], LDU[0][1], LDU[1][0],LDU[1][1]) 
-sage: p.set_axes_range(-4, 4, -2, 6) 
+sage: p.set_axes_range(-4, 4, -2, 7) 
 sage: p.save("graphics/geo304d.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 L = matrix(QQ, [[1, 0], [3, 1]])
 D = matrix(QQ, [[1, 0], [0, -2]])
 U = matrix(QQ, [[1, 2], [0, 1]])
-LD = L*D
-LDU = LD*U  
+DU = D*U
+LDU = L*DU  
 load("plot_action.sage")
 p = plot_square_action(1,0,0,1) 
-p.set_axes_range(-4, 4, -2, 6) 
+p.set_axes_range(-4, 4, -2, 7) 
 p.save("graphics/geo304a.pdf")
-p = plot_square_action(L[0][0], L[0][1], L[1][0], L[1][1]) 
-p.set_axes_range(-4, 4, -2, 6) 
+p = plot_square_action(U[0][0], U[0][1], U[1][0], U[1][1]) 
+p.set_axes_range(-4, 4, -2, 7) 
 p.save("graphics/geo304b.pdf")
-p = plot_square_action(LD[0][0], LD[0][1], LD[1][0], LD[1][1]) 
-p.set_axes_range(-4, 4, -2, 6) 
+p = plot_square_action(DU[0][0], DU[0][1], DU[1][0], DU[1][1]) 
+p.set_axes_range(-4, 4, -2, 7) 
 p.save("graphics/geo304c.pdf")
 p = plot_square_action(LDU[0][0], LDU[0][1], LDU[1][0], LDU[1][1]) 
-p.set_axes_range(-4, 4, -2, 6) 
+p.set_axes_range(-4, 4, -2, 7) 
 p.save("graphics/geo304d.pdf")
 \end{sagesilent}
 \begin{center}
   \begin{tabular}{rcl}
     \vcenteredhbox{\includegraphics{graphics/geo304a.pdf}}
-    &$\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 3 &1 \end{smallmatrix}\big )}$
+    &$\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 0 &1 \end{smallmatrix}\big )}$
     &\vcenteredhbox{\includegraphics{graphics/geo304b.pdf}}  \\
     &$\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 0 &-2 \end{smallmatrix}\big )}$
     &\vcenteredhbox{\includegraphics{graphics/geo304c.pdf}}  \\
-    &$\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 0 &1 \end{smallmatrix}\big )}$
+    &$\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ 3 &1 \end{smallmatrix}\big )}$
     &\vcenteredhbox{\includegraphics{graphics/geo304d.pdf}} 
   \end{tabular} 
 \end{center}

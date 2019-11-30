@@ -62,26 +62,26 @@ def color_square_list(a, b, c, d, colors):
     r = []
     t = var('t')
     # Four sides, ccw around square from origin
-    r.append(parametric_plot((a*t, b*t), (t, 0, 1), 
+    r.append(parametric_plot((a*t, c*t), (t, 0, 1), 
                              color = colors[0], zorder=ZORDER, 
                              thickness = SQUARE_THICKNESS))
-    r.append(parametric_plot((a+c*t, b+d*t), (t, 0, 1), 
+    r.append(parametric_plot((a+b*t, c+d*t), (t, 0, 1), 
                              color = colors[1], zorder=ZORDER, 
                              thickness = SQUARE_THICKNESS))
-    r.append(parametric_plot((a*(1-t)+c, b*(1-t)+d), (t, 0, 1), 
+    r.append(parametric_plot((a*(1-t)+b, c*(1-t)+d), (t, 0, 1), 
                               color = colors[2], zorder=ZORDER, 
                               thickness = SQUARE_THICKNESS))
-    r.append(parametric_plot((c*(1-t), d*(1-t)), (t, 0, 1), 
+    r.append(parametric_plot((b*(1-t), d*(1-t)), (t, 0, 1), 
                              color = colors[3], zorder=ZORDER, 
                              thickness = SQUARE_THICKNESS))
     # Dots make a cleaner join between edges
-    r.append(circle((a, b), DOT_SIZE, 
+    r.append(circle((a, c), DOT_SIZE, 
                     color = colors[0], zorder = 2*ZORDER, 
                     thickness = SQUARE_THICKNESS*1.25, fill =  True))
-    r.append(circle((a+c, b+d), DOT_SIZE, 
+    r.append(circle((a+b, c+d), DOT_SIZE, 
                     color = colors[1], zorder = 2*ZORDER+1, 
                     thickness = SQUARE_THICKNESS*1.25, fill =  True))
-    r.append(circle((c, d), DOT_SIZE, 
+    r.append(circle((b, d), DOT_SIZE, 
                     color = colors[2], zorder = ZORDER+1, 
                     thickness = SQUARE_THICKNESS*1.25, fill =  True))
     r.append(circle((0, 0), DOT_SIZE, 
