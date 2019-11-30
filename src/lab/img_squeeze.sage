@@ -29,13 +29,12 @@ def img_squeeze(fn_in, fn_out, percent):
     U_BL,Sigma_BL,V_BL = BL.SVD()
     # Have a look
     for i in range(8):
-        print "sigma_RD",i, "=", round(Sigma_RD[i][i], 2)
+        print "sigma_RD",i, "=%0.2f" % Sigma_RD[i][i]
     print "    :"  # vdots
-    print "sigma_RD",cutoff,"=", round(Sigma_RD[cutoff][cutoff], 2)
-    print "    :"
-    print "Sigma_RD.nrows()", Sigma_RD.nrows()
+    print "sigma_RD",cutoff,"=%0.2f" % Sigma_RD[cutoff][cutoff]
+    print "    :"  # vdots
     for i in range(dim_bound-8, dim_bound):
-        print " at bottom, sigma_RD", i ,"=", round(Sigma_RD[i][i], 2)
+        print " at bottom: sigma_RD", i, "=%0.2f" % Sigma_RD[i][i]
     # Compute sigma_1 u_1 v_1^trans+ ..
     a=[]
     for i in range(rows):     

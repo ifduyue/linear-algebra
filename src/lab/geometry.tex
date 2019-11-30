@@ -1,7 +1,7 @@
 \chapter{Geometry of Linear Maps}
 
 To illustrate the geometric effect of linear transformations 
-we will use \Sage to picture how they transform the unit square.
+we will picture how they transform the unit square.
 We will show transformations of the plane,~$\Re^2$,
 because they fit on the paper, but the principles extend to 
 higher-dimensional spaces.
@@ -14,7 +14,7 @@ higher-dimensional spaces.
 The prior chapter points out that 
 the condition $h(r\vec{v})=r\cdot h(\vec{v})$ in the definition
 of linear map means that
-these maps transform lines through the origin to lines through the origin.
+these maps send lines through the origin to lines through the origin.
 What about lines not through the origin?
 Fix a linear map $\map{h}{\Re^d}{\Re^c}$.
 A line in the domain has the form 
@@ -25,7 +25,7 @@ The image of~$\ell$
   h(\ell)=\set{h(\vec{m}\cdot s+\vec{b})\suchthat s\in\Re}
   =\set{h(\vec{m})\cdot s+h(\vec{b})\suchthat s\in\Re}
 \end{equation*}
-is a line in the codomain. 
+is a line in the codomain, so linear maps send lines to lines. 
 
 For example, consider the transformation $\map{t}{\Re^2}{\Re^2}$ 
 that rotates vectors counterclockwise by 
@@ -113,7 +113,7 @@ t_ell.save("graphics/geo000b.pdf", fontsize=7)
 \end{equation*}
 (As with plots from earlier chapters, we've left out some of the code to 
 set the font size, etc.
-For that, see this manual's source.
+For the full call see this manual's source.
 Also, the limits on the parameter~$s$ of $10$ and~$-10$ are arbitrary, just
 chosen to be large enough that the line segment covers the entire 
 domain and codomain intervals shown, from $-4$ to~$4$.)
@@ -962,7 +962,7 @@ matrix and returns a list of graphics.
 Most of the heavy lifting here
 is done by the helper \inlinecode{color_square_list}, 
 given below.
-\lstinputlisting[firstline=91,lastline=102]{plot_action.sage}
+\lstinputlisting[firstline=92,lastline=103]{plot_action.sage}
 
 There are two technical points about the helper routine that could do with 
 explanation. 
@@ -971,7 +971,7 @@ First is \inlinecode{ZORDER}, which determines the order in which
 after the axes (so its colors will be visible).
 The second is that the way line segments butt against each other is ugly 
 so we cover the butt with a dot.
-\lstinputlisting[firstline=52,lastline=89]{plot_action.sage}
+\lstinputlisting[firstline=53,lastline=90]{plot_action.sage}
 
 
 \endinput

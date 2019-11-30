@@ -296,7 +296,7 @@ sage: p.save("graphics/svd006b.pdf")
 
 
 \section{SVD}
-The above pictures show the unit circle mapping to ellipses.
+In the above pictures the image of the unit circle is always an ellipse.
 Recall that in $\Re^2$ an ellipse has a \textit{major axis}, 
 the longer one, and a 
 \textit{minor axis}.\footnote{If the two axes have the same length,
@@ -350,26 +350,26 @@ vectors $\vec{\beta}_i$
 are mapped to the $\sigma_i\vec{\delta}_i$.
 
 So consider again the generic matrix.
-Here is its action again, this time shown
+Here is its action again, shown
 on a full circle.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1,full_circle=True) 
-sage: q.set_axes_range(-2, 2, -5, 6) 
+sage: q.set_axes_range(-3, 3, -5, 5) 
 sage: q.save("graphics/svd101a.pdf")
 sage: p = plot_circle_action(1,2,3,4,full_circle=True) 
-sage: p.set_axes_range(-4, 4, -5, 6) 
+sage: p.set_axes_range(-3, 3, -5, 5) 
 sage: p.save("graphics/svd101b.pdf")
 \end{sagecommandline}
-% \begin{sagesilent}
-% load("plot_action.sage")
-% q = plot_circle_action(1,0,0,1,full_circle=True) 
-% q.set_axes_range(-2, 2, -5, 6) 
-% q.save("graphics/svd101a.pdf")
-% p = plot_circle_action(1,2,3,4,full_circle=True) 
-% p.set_axes_range(-4, 4, -5, 6) 
-% p.save("graphics/svd101b.pdf")
-% \end{sagesilent}
+\begin{sagesilent}
+load("plot_action.sage")
+q = plot_circle_action(1,0,0,1,full_circle=True) 
+q.set_axes_range(-3, 3, -5, 5) 
+q.save("graphics/svd101a.pdf", ticks_integer=True)
+p = plot_circle_action(1,2,3,4,full_circle=True) 
+p.set_axes_range(-3, 3, -5, 5) 
+p.save("graphics/svd101b.pdf", ticks_integer=True)
+\end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd101a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
@@ -401,51 +401,44 @@ sage: beta_1 = vector(RDF, [U[0][0], U[1][0]])
 sage: beta_2 = vector(RDF, [U[0][1], U[1][1]])
 sage: delta_1 = vector(RDF, [V[0][0], V[1][0]])
 sage: delta_2 = vector(RDF, [V[0][1], V[1][1]])
-sage: plot.options['axes_pad'] = 0.05
-sage: plot.options['fontsize'] = 7
-sage: plot.options['aspect_ratio'] = 1
-sage: s = 2  # uniform arrowsize
 sage: C = circle((0,0), 1)
-sage: P = C + plot(beta_1,arrowsize=s) + plot(beta_2,arrowsize=s)
-sage: P.save("graphics/svd102a.pdf",figsize=2)
+sage: P = C + plot(beta_1) + plot(beta_2)
+sage: P.save("graphics/svd102a.pdf")
 sage: image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
-sage: Q = C + plot(beta_1*M, width=3,color=image_color,arrowsize=s) 
-sage: Q = Q + plot(delta_1,width=1.4,color='blue',arrowsize=s) 
-sage: Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s) 
-sage: Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
-sage: Q.save("graphics/svd102b.pdf",figsize=4.467)
+sage: Q = C + plot(beta_1*M, width=3) 
+sage: Q = Q + plot(delta_1,width=1.4) 
+sage: Q = Q + plot(beta_2*M,width=3) 
+sage: Q = Q + plot(delta_2,width=1.4)
+sage: Q.save("graphics/svd102b.pdf")
 \end{sagecommandline}
-% \begin{sagesilent}
-% M = matrix(RDF, [[1, 2], [3, 4]])
-% U,Sigma,V = M.SVD()
-% beta_1 = vector(RDF, [U[0][0], U[1][0]])
-% beta_2 = vector(RDF, [U[0][1], U[1][1]])
-% delta_1 = vector(RDF, [V[0][0], V[1][0]])
-% delta_2 = vector(RDF, [V[0][1], V[1][1]])
-% plot.options['axes_pad'] = 0.05
-% plot.options['fontsize'] = 7
-% plot.options['aspect_ratio'] = 1
-% arrowsize = 2
-% C = circle((0,0), 1)
-% P = C + plot(beta_1,arrowsize=arrowsize) + plot(beta_2,arrowsize=arrowsize)
-% P.save("graphics/svd102a.pdf", figsize=1, axes_pad=0.05)
-% image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
-% Q = C + plot(beta_1*M, width=3, arrowsize=arrowsize, color=image_color) 
-% Q = Q + plot(delta_1,width=1.4, arrowsize=arrowsize,color='blue') 
-% Q = Q + plot(beta_2*M,width=3, arrowsize=arrowsize,color=image_color) 
-% Q = Q + plot(delta_2,width=1.4, arrowsize=arrowsize,color='blue')
-% Q.save("graphics/svd102b.pdf", figsize=2.2335, axes_pad=0.05)
-% \end{sagesilent}
-% was: Q.save("graphics/svd102b.pdf", figsize=4.467, axes_pad=0.05)
-In the picture below the domain's 
+\begin{sagesilent}
+M = matrix(RDF, [[1, 2], [3, 4]])
+U,Sigma,V = M.SVD()
+beta_1 = vector(RDF, [U[0][0], U[1][0]])
+beta_2 = vector(RDF, [U[0][1], U[1][1]])
+delta_1 = vector(RDF, [V[0][0], V[1][0]])
+delta_2 = vector(RDF, [V[0][1], V[1][1]])
+plot.options['axes_pad'] = 0.05
+plot.options['fontsize'] = 7
+plot.options['aspect_ratio'] = 1
+s = 2  # uniform arrowsize
+C = circle((0,0), 1)
+P = C + plot(beta_1,arrowsize=s) + plot(beta_2,arrowsize=s)
+P.save("graphics/svd102a.pdf",figsize=2, ticks_integer=True)
+image_color=Color(1,0.5,0.5)   # color for t(beta_1), t(beta_2)
+Q = C + plot(beta_1*M, width=3,color=image_color,arrowsize=s) 
+Q = Q + plot(delta_1,width=1.4,color='blue',arrowsize=s) 
+Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s) 
+Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
+Q.save("graphics/svd102b.pdf",figsize=4.467, ticks_integer=True)
+\end{sagesilent}
+Below, the domain's 
 blue $\vec{\beta}$'s on the left map to the codomain's light red 
 $t(\vec{\beta})$'s on the right.
 Also on the right, in blue, are the $\vec{\delta}$'s.
 The diagonal entries of $\Sigma$ tell us about the
 red vectors:~$t(\vec{\beta}_1)$ is about $5.5$ times $\vec{\delta}_1$
 while $t(\vec{\beta}_2)$ is about $0.4$ times~$\vec{\delta}_2$.
-Thus, in the diagram~($*$) showing the action of this generic matrix,
-that is the length of the semimajor and semiminor axes. 
 \begin{equation*}
   % \setlength{\fboxsep}{0in} % used to set box heights by eye; surrounded each picture env with a fbox
   \setlength{\unitlength}{1in}
@@ -464,33 +457,33 @@ that is the length of the semimajor and semiminor axes.
   \end{picture}
   \tag*{\raisebox{2.5in}{($**$)}}
 \end{equation*}
-Note also that the two bases are \textit{orthonormal}\Dash the unit circles help
-us see that the bases are comprised of unit vectors and further,
+Note also that the two bases are \textit{orthonormal}\Dash in
+the pictures, the unit circles illustrate
+that the bases are comprised of unit vectors and further,
 the two members of each basis are orthogonal.
 
 Compare this diagram to the one before it, 
-labeled~($*$), which shows the effect of the matrix
-on the unit circle.
-We used the whole circle in~($*$) to spotlight the ellipse and 
-to make clearer that in~($**$)
-the long red vector is a
-semi-major axis of that ellipse and the short red vector is a 
+labeled~($*$).
+Note that~($**$)'s
+long red vector is a
+semi-major axis while its short red vector is a 
 semi-minor axis.
 
 
 
 \section{Proof sketch}
 
-Consider an~$\nbyn{n}$ matrix~$T$ that is nonsingular and the
-nonsingular transformation~$\map{t}{\Re^n}{\Re^n}$ represented by
+Consider an~$\nbyn{n}$ matrix~$T$ that is nonsingular.
+Let $\map{t}{\Re^n}{\Re^n}$ be the
+nonsingular transformation represented by
 $T$ with respect to the standard bases.\footnote{%
   This argument, 
   from \protect\cite{BlankKrikorianSpring89},
-  is a sketch because it uses results that a typical reader has only 
-  seen in a less general version and because it relies on material from the
-  book that is optional.
-  In addition, we'll consider only the case of a nonsingular matrix and map;
-  it shows the main idea, which is the point of a sketch.}
+  is a sketch because it uses results that a reader may have seen only 
+  seen only in a form not as strong as needed by the theorem, 
+  and because it relies on material from the book that is optional.
+  In addition, we'll consider only the case of a nonsingular matrix and map.
+  This gives the main idea, which is the point of a sketch.}
 
 Recall Calculus~I's Extreme Value Theorem: for a continuous
 function~$f$, if a subset $D\subset \Re$ of the real line 
@@ -499,11 +492,11 @@ its image $f(D)=\set{f(d)\suchthat d\in D}$
 is also closed and bounded (see \cite{wiki:ExtremeValueThm}).
 A generalization of that result gives that because the unit sphere in $\Re^n$
 is closed and bounded then its image under~$t$ is closed and bounded.
-Although we won't prove this, the image is an ellipsoid
+Although we won't prove this, the image is a hyperellipse
 so we will call it that. 
 
-Because this ellipsoid is closed and bounded it has a 
-point furthest from the origin (it may have more than one but we just pick one).
+Because this hyperellipse is closed and bounded it has a 
+point furthest from the origin (if it has more than one then just pick one).
 Let $\vec{w}$ be a vector extending from the origin to that furthest point.
 Let $\vec{v}$ be the member of the unit sphere that maps to $\vec{w}$.
 Let $P$ be the plane tangent to the sphere at the endpoint of $\vec{v}$.
@@ -513,16 +506,16 @@ Since $t$ is one-to-one, $Q$ touches the ellipsoid only at~$\vec{w}$.
   \includegraphics{asy/ellipsoid1.pdf}
 \end{center}
 
-The picture illustrates that if we slide~$P$ along the 
+As the illustration suggests, if we slide~$P$ along the 
 vector~$\vec{v}$ to
-the origin then we can recognize it as 
+the origin then the result is 
 the subspace of $\Re^n$ of vectors perpendicular
 to~$\vec{v}$.
 This subspace has dimension~$n-1$. 
 We will argue in the next paragraph 
 that similarly $Q$ contains only
 vectors perpendicular to~$\vec{w}$.
-With that we will have what we need for an argument by induction:~we 
+With that we can complete an argument by induction:~we 
 start constructing the 
 bases~$B$ and~$D$ by taking $\vec{\beta}_1$ to be~$\vec{v}$, taking
 $\sigma_1$ to be the length $\norm{\vec{w}}$, and taking
@@ -537,14 +530,14 @@ would be a second plane, besides~$P$,
 that touches the sphere only at~$\vec{v}$, which is impossible (since it is a
 sphere).
 To see that $Q$ is perpendicular to~$\vec{w}$ consider a sphere in the codomain
-centered at the origin whose radius is $\norm{\vec{w}}$.
+centered at the origin whose radius is the length, $\norm{\vec{w}}$.
 This sphere has a plane tangent at the endpoint of~$\vec{w}$ 
 that is perpendicular
 to $\vec{w}$.
 Because $\vec{w}$ ends at a point on the ellipsoid furthest from the origin,
 the ellipsoid is entirely contained in this sphere, so its tangent plane 
 touches the ellipsoid only at~$\vec{w}$.
-Therefore, from the second sentence of this paragraph, 
+Therefore
 this tangent plane is~$Q$. 
 That ends the argument.
 
@@ -558,12 +551,12 @@ We can express those geometric ideas in an algebraic form
 The \textit{singular value decomposition} of an $\nbym{m}{n}$ matrix~$A$
 is a factorization $A=U\Sigma \trans{V}$.
 The $\nbym{m}{n}$ matrix $\Sigma$ 
-is all zeroes except for diagonal entries, the singular values, 
+is all zeroes except for diagonal entries, the `singular values', 
 $\sigma_1\geq \sigma_2 \geq \cdots \geq \sigma_r> 0$ where $r$ is the
 rank of~$A$.
 The $\nbyn{m}$ matrix~$U$ and the $\nbyn{n}$ matrix~$V$ are unitary, meaning
 that their columns form an orthogonal basis of unit vectors, the left and 
-right \textit{singular vectors} for~$A$, respectively. 
+right `singular vectors' for~$A$, respectively. 
 \begin{sagecommandline}
 sage: M = matrix(RDF, [[0, 1, 2], [3, 4, 5]])
 sage: U,Sigma,V = M.SVD()
@@ -571,9 +564,9 @@ sage: U
 sage: Sigma
 sage: V  
 \end{sagecommandline}
-% The number of singular values is the rank of the matrix.
-% Here \Sage{} gets a $\sigma_2$ that is not quite zero because of numerical 
-% issues. 
+The number of singular values is the row rank of the matrix.
+Here \Sage{} gets a $\sigma_2$ that is not quite \( 1 \) because of numerical 
+issues. 
 % \begin{sagecommandline}
 % sage: M = matrix(RDF, [[0, 1, 2], [0, 2, 4]])
 % sage: U,Sigma,V = M.SVD()
@@ -583,7 +576,7 @@ sage: V
 % \end{sagecommandline}
 
 The product $U\Sigma\trans{V}$ simplifies.
-To see how,
+For instance, 
 consider the case where all three matrices are $\nbyn{2}$.
 Write $\vec{u}_1$, $\vec{u}_2$ for the columns of~$U$
 and $\vec{v}_1$, $\vec{v_2}$ for the columns of~$V$,
@@ -602,8 +595,8 @@ $\trans{\vec{v}}_2$.
   \begin{mat}
     \trans{\vec{v}}_1 \\[.75ex]
     \trans{\vec{v}}_2
-  \end{mat}             \\[.5ex]
-  &=
+  \end{mat}             % \\[.5ex]
+  =
   \begin{mat}
     \vec{u}_1 &\vec{u}_2
   \end{mat}
@@ -739,143 +732,111 @@ where the vectors have unit size and the $\sigma_i$'s decrease in size.
 Suppose that the matrix is $\nbyn{n}$.
 To work with it\Dash for example, 
 to store it in a computer's memory or to transmit it over the Internet\Dash 
-we must work with $n^2$ real numbers
-(that is, floating point numbers).
-For instance, if $n=500$ then we have $50^2=250\,000$~reals.
-If we instead express the matrix as a sum then
+we must work with $n^2$-many floating points.
+For instance, if $n=500$ then it has $50^2=250\,000$~floats.
+If we express the matrix as a sum then
 each term requires 
-$n$~real numbers for $\vec{u}_i$, another $n$ reals for~$\vec{v}_i$, and one
-more real for $\sigma_i$.
-So keeping all the terms would require $500\cdot(2\cdot 500+1)=500\,500$~reals,
-which is twice the data of the original matrix.
+$n$~numbers for $\vec{u}_i$, another~$n$ for~$\vec{v}_i$, and one
+more for $\sigma_i$.
+If $n=500$ that's $500\cdot(2\cdot 500+1)=500\,500$~floats,
+about twice the size of the original matrix,
+which is a lot of data.
 
-But keeping only some of the terms, say the first $50$ of them, 
-would be a savings:~$50\cdot (2\cdot 50+1)=50\,050$ reals 
-is about $20\%$ of the $500^2$~real size of the full matrix.
-Thus, if you have data as a matrix then you can hope to compress it
-with that summation formula by dropping terms with small $\sigma$'s.  
-The question is whether you lose too much information by only 
+But the sum form does have an advantage.
+If we keep only some of the terms, say the first $50$ of them, 
+then we get a big savings:~$50\cdot (2\cdot 50+1)=50\,050$ floats 
+is about $20\%$ of the size of the full matrix.
+
+In short, if you have data as a matrix then you can hope to compress it
+with the summation formula by dropping terms with smaller $\sigma$'s.  
+The question, though, is whether you lose too much information by only 
 retaining some of the singular values.
 
 To illustrate that you can succeed in retaining at least some aspects of data
 we will do image compression.
-% Meet Lenna.
-% This top third of a pinup is a standard test image
-% \cite{wiki:Lenna}.
-% \begin{center}
-%   \includegraphics[width=.95\textwidth]{pix/Lenna.png} % from http://en.wikipedia.org/wiki/File:Lenna.png
-% \end{center}
 This is \textit{The Great Wave off Kanagawa} by Hokusai, ca~1830
-\cite{wiki:GreatWave}.
-It depicts an rogue wave threatening three boats off the coast of 
+\cite{wiki:GreatWave}.\footnote{%
+  The image file,
+  generously made available by The Art Institute of Chicago, 
+  is $1497\times 922$.}
+It depicts an rogue wave threatening three boats off 
 what is today Yokohama, with Mount Fuji in the background. 
 \begin{center}
   \includegraphics[width=.95\textwidth]{pix/greatwave.png} % 
 \end{center}
 
-The code we will use is in \inlinecode{img_squeeze.sage}, 
+The image compression code we will use is in \inlinecode{img_squeeze.sage}, 
 listed at the end of the chapter.
-The code breaks the picture into three matrices, for the red data, the 
+It breaks the picture into three matrices, for the red data, the 
 green data, and the blue data.
+% It gives us some insight into what we are omitting with  
+% a peek at the eight largest singular
+% values in the red matrix:
+%   $192773.40$,
+%   $26258.04$,
+%   $20055.53$,
+%   $16881.59$,
+%   $13394.80$,
+%   $12875.31$,
+%   $11064.42$, and
+%   $10250.95$.
+% It also gives the eight smallest:
+%   $11.22$,
+%   $10.80$,
+%   $9.00$,
+%   $8.26$,
+%   $8.08$,
+%   $7.29$,
+%   $6.55$, and
+%   $5.88$.
+We want to see how badly the image degrades for various cutoffs.
+The code below sets the cutoff at $10$\%,
+so it sums terms associated
+with the first $92$ singular values.
 It gives us some insight into what we are omitting with  
 a peek at the eight largest singular
-values in the red matrix:
-  % $93233.7882139$, 
-  % $11193.1186308$, 
-  % $8660.12549856$, 
-  % $7054.38662024$, 
-  % $5916.89456484$, 
-  % $5742.14618029$, 
-  % $4125.16604075$, and
-  % $3879.15303685$.
-  $192773.40$,
-  $26258.04$,
-  $20055.53$,
-  $16881.59$,
-  $13394.8$,
-  $12875.31$,
-  $11064.42$, and
-  $10250.95$.
-It also gives the eight smallest:
+values in the red matrix.
+\begin{lstlisting}
+sage: load("img_squeeze.sage")                                 
+sage: img_squeeze("pix/greatwave.png", "pix/greatwave_squeezed.png", 0.10)
+image has 1497 rows and 922 columns
+sigma_RD 0 =192773.40
+sigma_RD 1 =26258.04
+sigma_RD 2 =20055.53
+sigma_RD 3 =16881.59
+sigma_RD 4 =13394.80
+sigma_RD 5 =12875.31
+sigma_RD 6 =11064.42
+sigma_RD 7 =10250.95
+    :
+sigma_RD 92 =2240.98
+\end{lstlisting}
+(It also gives the eight smallest singular values:
   $11.22$,
-  $10.8$,
-  $9.0$,
+  $10.80$,
+  $9.00$,
   $8.26$,
   $8.08$,
   $7.29$,
   $6.55$, and
-  $5.88$.
-We retain the terms for the largest $10\%$ of the singular values. 
-The code reports that
-the $92$-nd singular value is 
-$2240.98$.\footnote{%
-  The image file,
-  generously made available by The Art Institute of Chicago, 
-  is $1497\times 922$.}
-% $606.389279688$.
-
-
-%   $0.547288023466$, 
-%   $0.470266870056$, 
-%   $0.1988515109$, 
-% with five more that are so small they are essentially 
-% zero.\footnote{These are four values of 
-% $1.024\,723\,452\,83\protect\times 10^{-11}$
-% and one of $2.325\,339\,864\,91\protect\times 10^{-12}$.}
-% \begin{lstlisting}
-% sigma_RD 0 = 93233.7882139
-% sigma_RD 1 = 11193.1186308
-% sigma_RD 2 = 8660.12549856
-% sigma_RD 3 = 7054.38662024
-% sigma_RD 4 = 5916.89456484
-% sigma_RD 5 = 5742.14618029
-% sigma_RD 6 = 4125.16604075
-% sigma_RD 7 = 3879.15303685
-%   :
-% sigma_RD 51 = 606.389279688
-%   :
-% sigma_RD 504 = 0.547288023466
-% sigma_RD 505 = 0.470266870056
-% sigma_RD 506 = 0.1988515109
-% sigma_RD 507 = 1.02472345283e-11
-% sigma_RD 508 = 1.02472345283e-11
-% sigma_RD 509 = 1.02472345283e-11
-% sigma_RD 510 = 1.02472345283e-11
-% sigma_RD 511 = 2.32533986491e-12  
-% \end{lstlisting}
-% The large singular values are much larger than the small singular values,
-% even setting aside the ones at the end
-% that are zero except for numerical issues.
-
-We want to see how badly the image degrades for various cutoffs.
-The code below sets the cutoff at $10$\%.
-This image is $\nbyn{512}$ so that will sum the terms associated
-with the first $51$ singular 
-values.
-\begin{lstlisting}
-sage: load("img_squeeze.sage")                                 
-sage: img_squeeze("pix/greatwave.png", "pix/greatwave_squeezed.png", 0.10)
-\end{lstlisting}
-Below is the resulting squeezed image.
-% \begin{center}
-%   \includegraphics[width=.95\textwidth]{pix/Lenna_squeezed.png}
-% \end{center}
+  $5.88$.)
+Below is the result.
 \begin{center}
   \includegraphics[width=.95\textwidth]{pix/greatwave_squeezed.png}
 \end{center}
-It definitely shows loss.
+This picture shows loss.
 The colors are not as good, the edges are not sharp, and there are 
-a few artifacts, including horizontal line across writing on the 
+artifacts, including horizontal line across the writing on the 
 upper left.
-But certainly the image is entirely recognizable\Dash not bad fro omiting
+Basically, Fiji has gotten a little fuzzy.
+But certainly the image is entirely recognizable\Dash not bad for omiting
 $90$~percent of the information.
 
-Again considering a square image, $\nbyn{n}$, 
-every additional term in the summation
-adds to the storage and transmission requirements by about $2n$ reals.
-The starting image requires $n^2$ reals so we want to choose a cutoff value 
-less than $0.50$.
-The above image with a cutoff of $0.10$ has the advantage is that it needs 
+Every additional term in the summation
+adds to the storage and transmission requirements by about $2n$ floats.
+% The starting image requires $n^2$ floats so we save space is 
+% choose a cutoff value less than $0.50$.
+The above cutoff of $0.10$ needs 
 only $20\%$ of the storage
 and transmission requirements of the original image,
 although its quality may not be acceptable.
@@ -889,30 +850,42 @@ from the original.
 Below is the picture of Suzy 
 from this manual's cover.
 On the left is the original image
-and on the right it is squeezed using a parameter value of~$0.20$.
+and on the right it is squeezed using a parameter value of~$0.20$
+(both are shown at $40$\% of their full size).
 \begin{center}
   \vcenteredhbox{\includegraphics[width=.4\textwidth]{pix/suzy_cover.png}}
   \quad
   \vcenteredhbox{\includegraphics[width=.4\textwidth]{pix/suzy_cover_squeezed.png}}
 \end{center}
-
+(The top singular value is 
+$291533.51$.
+% $39038.59$,
+% $30526.84$,
+% $19983.01$,
+% $13946.40$,
+% $11523.07$,
+% $9354.02$, and
+% $8067.98$.
+The twenty percent cutoff is $129.23$. 
+The smallest of the $1739$ singular values is $3.36$.)
+The picture on the left is $4$~megabytes, 
+while the right is~$3.4$.
 
 
 \section{Source of plot\_action.sage}
 
 The \inlinecode{plot_circle_action}
-routine that we call above takes the four entries of the $\nbyn{2}$
+routine takes the four entries of the $\nbyn{2}$
 matrix and returns a list of two graphics, showing the input and the
 output.
-Other parameters are the number of colors, and a flag giving whether
-to plot a full circle or whether to plot just the top half circle (the 
-default is to show the top half).
+Other parameters are the number of colors and a flag giving whether
+to plot a full circle or just the top half circle.
 
-The driver routine determines the list of colors and 
+The driver routine computes the list of colors and 
 calls a helper \inlinecode{color_circle_list}, 
 given below, which returns a list of graphics.
 Finally, the routine plots those graphics.
-\lstinputlisting[firstline=38,lastline=49]{plot_action.sage}
+\lstinputlisting[firstline=39,lastline=50]{plot_action.sage}
 
 The helper routine does the heavy lifting.
 There are two global values to set graphic values.
@@ -921,7 +894,7 @@ the plotted curve, in points (a printer's unit, here $1/72$~inch).
 Similarly \inlinecode{DOT_SIZE} sets the size of the small empty circle.
 This routine produces a parametrized curve $(x(t),y(t))$ and uses \Sage's
 \inlinecode{parametric_plot} function to get the resulting graphic.
-\lstinputlisting[firstline=4,lastline=35]{plot_action.sage}
+\lstinputlisting[firstline=5,lastline=36]{plot_action.sage}
 If this routine is plotting the upper half circle then it adds the
 small empty circle at the end to show that the image of $(-1,0)$
 is not part of the graph.
