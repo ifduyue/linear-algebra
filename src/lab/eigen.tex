@@ -1,12 +1,12 @@
 \chapter{Eigenvalues}
 
-In Chapter~\ref{chap:SingularValueDecomposition} on 
-Singular Value Decomposition we studied how
-transformations resize vectors.
-%  the maximum resizing factors
-% are the singular values.
+In the chapter on 
+Singular Value Decomposition we considered the factor by which 
+transformations resize vectors, and found that
+the maximum resizing factors are the singular values.
 In this chapter we return to plotting the image of
-the unit circle, to consider another geometric effect.
+the unit circle to consider another geometric effect,
+the amount by which vectors are rotated.
 
 
 \section{Turning}
@@ -18,10 +18,10 @@ using the routine \inlinecode{plot_circle_action}.
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-3, 3, -3, 3) 
+q.set_axes_range(-3, 3, -2, 3) 
 sage: q.save("graphics/eigen000a.pdf") 
 sage: p = plot_circle_action(2,0,2,2) 
-q.set_axes_range(-3, 3, -3, 3) 
+q.set_axes_range(-3, 3, -2, 3) 
 sage: p.save("graphics/eigen000b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
@@ -31,7 +31,7 @@ q.set_axes_range(-3, 3, -3, 3)
 q.save("graphics/eigen000a.pdf", figsize=2.65)
 p = plot_circle_action(2,0,2,2) 
 p.set_axes_range(-3, 3, -3, 3) 
-p.save("graphics/eigen000b.pdf")
+p.save("graphics/eigen000b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*} \label{gr:firstgraphic}
   \vcenteredhbox{\includegraphics{graphics/eigen000a.pdf}}
@@ -67,27 +67,26 @@ sage: w.norm(), v.norm()
 sage: angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
 sage: angle_in_rads 
 \end{sagecommandline}
-But the action of a linear map is not uniform across the upper half circle; on
+But on
 other vectors this same map will resize and rotate by other
 amounts.
+So the action of a linear map is not uniform across the upper half circle.
 Here is the effect of the transformation on the point
-one sixth of the way around the half circle.
+one sixth of the way around.
 \begin{sagecommandline}
 sage: v = vector(RR, [cos(pi/6),sin(pi/6)])
 sage: w = M*v
 sage: w.norm(), v.norm() 
 sage: angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
 sage: angle_in_rads 
+sage: load("plot_action.sage")  
+sage: p = plot_before_after_action(2,0,2,2, [(1,0), (cos(pi/6),sin(pi/6))], rainbow(12)) 
+sage: p.set_axes_range(-0.5, 2, -0.5, 2.65) 
+sage: p.save("graphics/eigen001a.pdf", ticks=([1,2],[1,2]), figsize=2)
 \end{sagecommandline}
-\begin{sagesilent}
-load("plot_action.sage")  
-p = plot_before_after_action(2,0,2,2, [(1,0), (cos(pi/6),sin(pi/6))], rainbow(12)) 
-p.set_axes_range(-0.5, 2, -0.5, 2.65) 
-p.save("graphics/eigen001a.pdf", ticks=([1,2],[1,2]), figsize=2)
-\end{sagesilent}
-This shows again the before-and-after effect of the map on the red 
+This shows again the before-and-after on the red 
 input~$(1,0)$, 
-and overlays the effect of the map on the orange 
+and then overlays the same effect on the orange 
 input~$(\cos(\pi/6),\sin(\pi/6))$. 
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/eigen001a.pdf}}
@@ -111,10 +110,9 @@ making a visual match.
 % p.set_axes_range(0, pi, 0, pi) 
 % p.save("graphics/eigen002.pdf", figsize=2.5, tick_formatter=pi)
 \begin{sagecommandline}
-sage: load("plot_action.sage")  
 sage: p = plot_color_angles(2,0,2,2)
 sage: p.set_axes_range(0,pi,0,pi)
-sage: p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
+sage: p.save("graphics/eigen003.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")  
@@ -126,14 +124,15 @@ p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
 \begin{center}
   \vcenteredhbox{\includegraphics{graphics/eigen003.pdf}}
 \end{center}
-The most interesting point on this graph is where the output angle is $0$,
+This graph this chapter's first graphic, the input/output one labeled~($*$)
+on page~\pageref{gr:firstgraphic}.
+Its most interesting point is where the output angle is $0$,
 at the input angle of~$\pi/2$.
-This is a input vector that the transformation does not turn at all. 
-It is resized but not rotated.
-This appears in this chapter's first graphic, the one labeled~($*$)
-on page~\pageref{gr:firstgraphic}, 
-as the green input vector lying on the $y$-axis
-that is associated with the green output that also lies on the $y$-axis.
+This is a input vector that the transformation does not turn at all\Dash 
+it is resized but not rotated.
+On the input/output graphic, it is
+the green input vector lying on the $y$-axis, whose
+associated green output also lies on the $y$-axis.
 
 
 
@@ -142,22 +141,21 @@ that is associated with the green output that also lies on the $y$-axis.
 We can do the same analysis for our usual generic $\nbyn{2}$~matrix.
 Here is its action on the unit circle.
 \begin{sagecommandline}
-sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
-sage: q.set_axes_range(-3, 3, -5, 5) 
+sage: q.set_axes_range(-2, 2, -4, 5) 
 sage: q.save("graphics/eigen100a.pdf")
 sage: p = plot_circle_action(1,2,3,4) 
-sage: p.set_axes_range(-3, 3, -5, 5) 
+sage: p.set_axes_range(-2, 2, -4, 5) 
 sage: p.save("graphics/eigen100b.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 q = plot_circle_action(1,0,0,1) 
-q.set_axes_range(-3, 3, -5, 5) 
-q.save("graphics/eigen100a.pdf")
+q.set_axes_range(-2, 2, -4, 5) 
+q.save("graphics/eigen100a.pdf", ticks_integer=True)
 p = plot_circle_action(1,2,3,4) 
-p.set_axes_range(-3, 3, -5, 5) 
-p.save("graphics/eigen100b.pdf")
+p.set_axes_range(-2, 2, -4, 5) 
+p.save("graphics/eigen100b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/eigen100a.pdf}}
@@ -172,7 +170,6 @@ vector.
 % p = scatter_plot(angles, marker='.', ticks=ticks)
 % p.save("graphics/eigen101.pdf", figsize=2.5, tick_formatter=pi)
 \begin{sagecommandline}
-sage: load("plot_action.sage")  
 sage: p = plot_color_angles(1,2,3,4)
 sage: p.set_axes_range(0,pi,-1*pi,pi)
 sage: p.save("graphics/eigen101.pdf", tick_formatter=[pi,pi])
@@ -189,19 +186,31 @@ p.save("graphics/eigen101.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{equation*}
 This graph has two interesting points, where $y=0$ and where 
 $y=\pi$.
-In both places the vector is not turned at all, only resized.
-In the second case
+In both places the vector is resized but not turned.
+In the second case, where the vector is turned by an angle of~$\pi$,
 the input vector is on the
 same line through the origin as the output,
-but it gets rescaled by a negative number.
+but the transformation rescales it by a negative number.
 
 A vectors that is not turned by a transformation~$t$ but instead
 is purely resized 
-is an \textit{eigenvector} for~$t$ and the amount by which it is 
-resized is the \textit{eigenvalue} for that vector.
+is an `eigenvector' for~$t$ and the amount by which it is 
+resized is the `eigenvalue'.
 
 For an eigenvalue~$\lambda$, the set of vectors associated with
-it is an \textit{eigenspace}.
+that rescaling factor is an `eigenspace'.
+\Sage{} will compute the eigenspaces for a matrix.\footnote{%
+  Whether we are taking multiplication 
+  by vectors to come from the 
+  right~$M\vec{v}$ or from the left, $\vec{v}\,M$, 
+  a matrix has the same eigenvalues.  
+  But the eigenvectors may be different. 
+  The \protect\Sage{} operation \protect\inlinecode{eigenvectors_right} 
+  covers the 
+  $M\vec{v}=\lambda\vec{v}$ case and  
+  \protect\inlinecode{eigenvectors_left}
+  covers the other.}
+
 \begin{sagecommandline}
 sage: M = matrix(RDF, [[1, 2], [3, 4]])
 sage: evs = M.eigenvectors_right()
@@ -209,27 +218,17 @@ sage: evs
 sage: evs[0] 
 sage: evs[1]
 \end{sagecommandline}
-\noindent
-A matrix has the same eigenvalues whether we are taking multiplication 
-by vectors to come from the 
-right~$M\vec{v}$ or from the left, $\vec{v}M$.  
-But the eigenvectors will be different in general. 
-The \Sage{} operation \inlinecode{eigenvectors_right} covers the 
-$M\vec{v}=\lambda\vec{v}$ case, and naturally \inlinecode{eigenvectors_left}
-covers the other.
-
-When computing the eigenvectors and eigenvalues, \Sage{} gives a list
-with two elements.
-The first element, \inlinecode{evs[0]}, 
-says that the set of vectors with a basis consisting of the single unit
-vector with endpoint approximately $(-0.91, 0.42)$  is an
-eigenspace associated with the eigenvalue approximately equal to $-0.37$
+That shows a list with two elements, one for each eigenvalue.
+The first, \inlinecode{evs[0]}, 
+has to do with the eigenvalue $\lambda_1\approx -0.37$ and
+says that the associated eigenspace has a basis consisting of the single unit
+vector with endpoint approximately $(-0.91, 0.42)$
 (we ignore the trailing~$1$ here).
 The second element, \inlinecode{evs[1]}, 
-says that \Sage{} has found a second eigenspace
-whose a basis consisting of the single vector with endpoint around
-$(-0.57, -0.82)$ that is associated with the
-eigenvalue that is about~$5.37$. 
+is for~$\lambda_2\approx 5.37$
+and says that its eigenspace
+has a basis consisting of the single vector with endpoint around
+$(-0.57, -0.82)$. 
 
 \Sage{} will tell us which of those vectors is which on the graph 
 labeled~($**$).
