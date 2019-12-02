@@ -15,7 +15,8 @@ We have seen one kind of variable in giving commands like these.
 sage: x = 3
 sage: 7*x
 \end{sagecommandline}
-Here $x$ is the name of a named location in the computer's memory
+As discussed in the prior chapter,
+$x$ is the name of a location in the computer's memory
 that we use to store and retrieve values.
 
 Variables in equations are something different; in the equation
@@ -26,7 +27,7 @@ variable.
 \begin{lstlisting}
 sage: y
 \end{lstlisting}
-You get an exception with a final line that says
+You get an exception whose final line says
 \inlinecode{NameError: name 'y' is not defined}.
 To instead use $y$ as a symbolic variable you must first
 warn the system.
@@ -87,9 +88,9 @@ easier to read.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
 sage: M
-sage: M[1,2]
 sage: M.nrows()
 sage: M.ncols()
+sage: M[1,2]
 \end{sagecommandline}
 \Sage{} lists are zero-indexed, as with \python{} lists, 
 so \inlinecode{M[1,2]} asks
@@ -197,12 +198,10 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime.echelon_form()                                            
 \end{sagecommandline}
 
-The operations \inlinecode{swap_rows},
-\inlinecode{rescale_rows}, and \inlinecode{add_multiple_of_row},
-as well as the operation \inlinecode{echelon_form} for that matter,
-work in-place, changing the matrix $M^\prime$.
+The operations above
+work in-place, changing the matrix~$M^\prime$.
 \Sage{} has related commands that leave the starting matrix unchanged
-but return a changed matrix.
+but return the changed matrix.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[0, 1, -1], [1, -2, 0], [0 ,-1, 4]])
 sage: v = vector(QQ, [0, 1, -2])
@@ -268,10 +267,10 @@ the rows of~$M$ and also with the relationships among the rows of the vector.
 The relationship among the rows of the matrix~$M$
 is that the third row is the sum of the first two, and that the fourth
 row is the difference of the first two.
-As to the vectors, in the first case the vector's rows have the same 
+As to the vectors, in the first case the vector's entries have the same 
 relationship\Dash the third entry of the vector is the sum of the first 
 and the fourth entry is the difference of the first two\Dash  
-while in the second case the vector's rows do not have that relationship.
+while in the second case the vector's entries do not have that relationship.
 
 The easy way to ensure that a zero row in the matrix 
 on the left is associated with a zero
