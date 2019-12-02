@@ -104,7 +104,7 @@ Besides integers, and also rational numbers,
   built into your computer's hardware that
   models the real numbers.
   In the example the distinction leaks through
-  since the decimal for $2/3$ is not perfectly accurate.
+  since the decimal for $0.3$ is not perfectly accurate.
   For that matter, \protect\python's integers aren't the integers  
   from grade school since there is a largest one 
   (try giving \python{} the 
@@ -112,11 +112,11 @@ Besides integers, and also rational numbers,
   \protect\inlinecode{sys.maxint}). 
   While all of this is fascinating\protect\Dash
   see \protect\cite{PythonTeam19a} and \protect\cite{Goldberg91}\protect\Dash
-  we shall often ignore these issues, just to keep the focus on 
+  we shall ignore these issues, just to keep the focus on 
   linear algebra.}
 \begin{pythonconsole}
-2/3
-5.774 * 3
+1/5
+0.1 + 0.2
 (3+2j) - (1-4j)
 \end{pythonconsole}
 As engineers do, \python{} uses the letter~$j$ for the square
@@ -374,21 +374,21 @@ if line:
     print(" ".join(line))
 
 \end{pythonconsole}
-Here we see some new string operations.
+\python{} has lot of string operations.
 The \inlinecode{quote.split()} divides the string into separate words while
 \inlinecode{" ".join(line)} makes a string of the words in the list 
-\inlinecode{line} by putting spaces between them.
+\inlinecode{line} by putting a space between them.
 The final \inlinecode{if line:} ejects what's left of the line
 when the quote is finished.
 
 A \inlinecode{for} loop is designed to execute a certain
 number of times.
 If you have a loop that will run an uncertain number of times then
-you can use \inlinecode{while}.\footnote{The 
-\protect\textit{Collatz conjecture} is 
-that this loop will 
-terminate for any starting~$n$.
-No one knows if the conjecture is true.}
+you can use \inlinecode{while}.\footnote{%
+  The Collatz conjecture is 
+  that this loop will 
+  terminate for any starting~$n$.
+  No one knows if the conjecture is true.}
 \begin{pythonconsole}
 n, i = 12, 0
 while (n != 1):
@@ -427,7 +427,7 @@ a
 You can make your own functions.
 This implements the quadratic formula.\footnote{%
   This code is naive, for instance in that it does not address the
-  potenital floating point issues.}
+  potential floating point issues.}
 \begin{pythonconsole}
 def quad_formula(a, b, c):
     """Find roots of a quadratic 
@@ -659,7 +659,7 @@ be aware of the comprehensive reference \citep{SageTeam19ref}.
 \Sage's command line is like \python's but adapted to 
 mathematical work.
 First start \Sage,
-for instance, enter \inlinecode{sage} into a command line window.
+for instance by entering \inlinecode{sage} into a command line window.
 You get some initial text and a prompt.
 \begin{lstlisting}[style=python]
 sage:  
