@@ -125,7 +125,7 @@
 }
 
 \pagestyle{followingpage}
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername:\ #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \AtBeginDocument{\thispagestyle{firstpage}}
 
 

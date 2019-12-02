@@ -263,7 +263,7 @@ sage: M = matrix(RDF, [[1, 2], [3, 4]])
 sage: evs = M.eigenvectors_right()
 sage: v = vector(RDF, evs[0][1][0])
 sage: angle_v = atan2(v[1], v[0]) 
-sage: n(angle_v/pi) 
+sage: (angle_v/pi).n(digits=4) 
 \end{sagecommandline}
 (Remember that the \inlinecode{n()} function gives the numerical value of
 the argument.)

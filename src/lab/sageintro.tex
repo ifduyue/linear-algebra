@@ -1,6 +1,6 @@
 \chapter{\python{} and \Sage{}}
 
-\Sage{} is based on the computer language \python{} so we'll start with that.
+\Sage{} is based on \python{} so we'll start with that.
 \python{} is a popular language\footnote{Written by a fan of
 Monty Python.} 
 with a simple style and powerful libraries.
@@ -79,7 +79,7 @@ x = 'a'
 x
 \end{pythonconsole}
 
-You can set multiple values simultaneously.
+You can do multiple things on a single line.
 \begin{pythonconsole}
 first_day, last_day = 0, 365
 first_day
@@ -90,36 +90,38 @@ those values to the variables on the left.
 
 If you do something not allowed then 
 \python{} complains, signaling its unhappiness by 
-raising an exception and giving an error 
+raising an exception and in the final line giving an error 
 message.
 \begin{pythonconsole}
 'a' + 1
 \end{pythonconsole}
 % In an error message, often the bottom line is the most useful.
 
-Besides integers, we can get real numbers 
-and even complex numbers.\footnote{These operations
-are done with floating points, a system 
-built into your computer's hardware that
-models the real numbers.
-In the example the distinction leaks through
-since the decimal for $2/3$ is not perfectly accurate.
-For that matter, \protect\python's integers aren't the integers that you studied
-in grade school since there is a largest one (try giving \python{} the 
-command \protect\inlinecode{import sys} followed by 
-\protect\inlinecode{sys.maxint}). 
-While all of this stuff is fascinating\protect\Dash
-see \protect\cite{PythonTeam19a} and \protect\cite{Goldberg91}\protect\Dash
-we shall often ignore the issue of representation and just call these 
-integers, reals, and complex numbers.}
+Besides integers, and also rational numbers, 
+\python{} gives you real numbers and complex numbers.\footnote{%
+  These operations
+  are done with floating points, a system 
+  built into your computer's hardware that
+  models the real numbers.
+  In the example the distinction leaks through
+  since the decimal for $2/3$ is not perfectly accurate.
+  For that matter, \protect\python's integers aren't the integers  
+  from grade school since there is a largest one 
+  (try giving \python{} the 
+  command \protect\inlinecode{import sys} followed by 
+  \protect\inlinecode{sys.maxint}). 
+  While all of this is fascinating\protect\Dash
+  see \protect\cite{PythonTeam19a} and \protect\cite{Goldberg91}\protect\Dash
+  we shall often ignore these issues, just to keep the focus on 
+  linear algebra.}
 \begin{pythonconsole}
 2/3
 5.774 * 3
 (3+2j) - (1-4j)
 \end{pythonconsole}
-As engineers do, \python{} uses~$j$ for the square
-root of~$-1$, not~$i$ as is traditional in Mathematics.\footnote{%
-  Although \protect\Sage{} lets you use $i$.}
+As engineers do, \python{} uses the letter~$j$ for the square
+root of~$-1$, not~$i$ as is traditional in Mathematics.
+(Although \protect\Sage{} lets you use~$i$.)
 
 Variables can also represent truth values.
 \begin{pythonconsole}
@@ -132,28 +134,28 @@ or \inlinecode{False}, not
 \inlinecode{true}
 or \inlinecode{false}.
  
-Above we saw a couple of strings consisting of text between single quotes.
-(They just had a single character, \inlinecode{a},
+Above we saw a couple of strings consisting of text between quotes.
+(They just had a single character, \inlinecode{'a'},
 but \python{} doesn't worry about the difference between a character
 and a length one string.)
 You can use either single quotes or double quotes, as long as you use
 the same at both ends of the string. 
 Here \inlinecode{x} and \inlinecode{y}
-are double-quoted, which makes sense because each contains a 
-single quote used as an apostrophe. 
+are double-quoted, which makes sense because each contains
+an apostrophe. 
 \begin{pythonconsole}
 x = "I'm Popeye the sailor man"
 y = "I yam what I yam and that's all what I yam"
 x + ', ' + y + '.'
 \end{pythonconsole}
-The last of those three shows that the \inlinecode{+} operator 
+The last one shows that~\inlinecode{+} 
 concatenates strings. 
-% and also shows that you can mix single-quote strings
-%with double-quoted ones.
+% and also shows that you can mix single-quoted strings
+% with double-quoted ones.
 
 To get a newline you can use use slash-n, \inlinecode{\\n}, 
 inside a double-quoted string.
-If you need a lot of newlines so the slash-n would be a burden, then
+If you need a lot of newlines so the slash-n would be a burden then
 you can put explicit line breaks inside a string marked by triple quotes.
 \begin{pythonconsole}
 a = """THE ROAD TO WISDOM
@@ -209,7 +211,7 @@ len(a)
 \end{pythonconsole}
 Get an element from a list by specifying its index, its place in the list,
 inside square brackets.
-Lists are zero-based indexed, that is, the initial element of the
+Lists indices are zero-based, that is, the initial element of the
 list is numbered~$0$.
 Count from the back by using negative indices.
 \begin{pythonconsole}
@@ -285,9 +287,9 @@ delta
 Here, \python{} sets \inlinecode{delta} to  $1$ if $x$
 equals $0$, otherwise \python{} sets \inlinecode{delta} to~$0$. 
 
-Notice that after \inlinecode{delta = 0} you must enter 
+After \inlinecode{delta = 0} you must enter 
 a blank line so that \python{} knows there is nothing more in that block.
-Notice also that double equals, \inlinecode{==}, means ``is equal to.'' 
+Notice also that double equals, \inlinecode{==}, means `is equal to'. 
 % (We cannot use just a single equals because, as we have already seen, 
 % \inlinecode{x = 0} 
 % means ``$x$ is assigned the value~$0$.'') 
