@@ -1,7 +1,7 @@
 \chapter{Gauss's Method}
 
 \Sage{} can solve linear systems in a number of ways.
-It can use a general system solver, and
+It can use a general system solver and
 it can also use solvers specialized for linear systems.
 We'll see both. 
 
@@ -19,7 +19,7 @@ As discussed in the prior chapter,
 $x$ is the name of a location in the computer's memory
 that we use to store and retrieve values.
 
-Variables in equations are something different; in the equation
+Variables in equations are different; in the equation
 $C=2\pi\cdot r$ the two variables do not have fixed values, nor
 are they tied to memory locations. 
 To illustrate the difference enter an unassigned 
@@ -178,24 +178,9 @@ sage: M_prime
 Now by-hand back substitution gives the solution, or we can 
 use \Sage's \inlinecode{solve}.
 \begin{sagecommandline}
-sage: M = matrix(QQ, [[0, 2, 1], [2, 0, 4], [2 ,-1/2, 3]])
-sage: v = vector(QQ, [2, 1, -1/2])                        
-sage: M_prime = M.augment(v, subdivide=True)
-sage: M_prime.echelon_form()              
 sage: var('x,y,z')
 sage: eqns=[-3/4*z == -1, 2*y+z == 2, x+2*z == 1/2]
 sage: solve(eqns, x, y, z)
-\end{sagecommandline}
-
-Of course, performing the sequence of row operations
-is mechanical, that is, we follow an algorithm to do Gauss's Method. 
-\Sage{} computes the echelon form of a 
-matrix in one command.
-\begin{sagecommandline}
-sage: M = matrix(QQ, [[0, 2, 1], [2, 0, 4], [2 ,-1/2, 3]])
-sage: v = vector(QQ, [2, 1, -1/2])                        
-sage: M_prime = M.augment(v, subdivide=True)              
-sage: M_prime.echelon_form()                                            
 \end{sagecommandline}
 
 The operations above
@@ -220,7 +205,9 @@ and \inlinecode{with_added_multiple_of_row}.
 
 
 \subsection{Nonsingular and singular systems}
-\Sage{} will give reduced row echelon form.
+The steps that we went through to reduce the matrix are mechanical.
+That is, we should be able to automate going from a matrix to its
+reduced row echelon form.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1/2, 1, -1], [1, -2, 0], [2 ,-1, 1]])
 sage: v = vector(QQ, [0, 1, -2])
@@ -228,10 +215,12 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime.rref()
 \end{sagecommandline}
 So we have gotten the answer without \Sage's \inlinecode{solve}.
+One advantage of using a method specialized
+to linear systems it is faster and it can also be less prone to floating point
+issues.
 
-In that example the matrix~$M$ on the left is nonsingular, because it is 
-square and because Gauss's Method reduces it to an 
-echelon form where every
+In that example the matrix~$M$ is nonsingular, because it is 
+square and because when it is in echelon form every
 column has a leading variable.
 The next example starts with a
 square matrix that is singular. 
@@ -264,8 +253,8 @@ sage: M_prime.rref()
 The difference between the cases
 has to do with the relationships among  
 the rows of~$M$ and also with the relationships among the rows of the vector.
-The relationship among the rows of the matrix~$M$
-is that the third row is the sum of the first two, and that the fourth
+In the matrix
+the third row is the sum of the first two, and the fourth
 row is the difference of the first two.
 As to the vectors, in the first case the vector's entries have the same 
 relationship\Dash the third entry of the vector is the sum of the first 
@@ -301,17 +290,20 @@ sage: M_prime.nonpivots()
 
 
 \subsection{Parametrization}
-Above we used \inlinecode{solve} on a system with a unique solution.
-But \inlinecode{solve} will also give the solution set of a system
+Above we used \Sage's general purpose \inlinecode{solve} routine.
+We described that it may not be the best way to find the solution
+of a linear system because specialized tools are likely to be faster and
+may be more accurate. 
+But \inlinecode{solve} does come in handy to give the solution set of a system
 with infinitely many solutions, by parametrizing.
 
-To illustrate, you can get
+To illustrate, we set up
 a system with infinitely many solutions.
 Start with a matrix of coefficients
 where the top two rows add to the bottom row
 and adjoin a vector with the same row relationship. 
-Simplify it.
-Then transcribe to a system of equations and apply \inlinecode{solve}.
+Simplify it with Gauss's method.
+Transcribe the result to a system of equations and apply \inlinecode{solve}.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 1, 1], [1, 2, 3], [2 , 3, 4]])    
 sage: v = vector(QQ, [1, 0, 1])                            
@@ -341,8 +333,8 @@ The source file of the script is below.
 The significance of ``by hand'' is that the script
 assumes that the matrices are small and have rational number entries.
 That means we don't have to worry about floating point issues.
-In short, this is a toy example.
-It is fine for homework but is not ready for applications.
+In short, this is a toy example that is 
+fine for homework but is not ready for applications.
 
 
 \subsection{Loading and running}
@@ -376,7 +368,7 @@ sage: gauss_method(M_prime)
 [    0     0     0|32/17]
 \end{lstlisting}
 
-Besides \inlinecode{gauss_method} the file also contains a 
+Besides \inlinecode{gauss_method}\!, the file also contains a 
 \inlinecode{gauss_jordan} function
 to go all the way to reduced echelon form.
 \begin{lstlisting}
@@ -422,8 +414,9 @@ These are naive implementations of Gauss's Method and
 Gauss-Jordan reduction.
 They use \python~2's \inlinecode{print} function, which
 does not use parentheses, 
-because at this moment \Sage{} relies on \python~2.
-Support for \python~3 is coming any day.
+because at the moment of this writing, 
+the stable \Sage{} version relies on \python~2.
+(Support for \python~3 is in prerelease.)
 
 \lstinputlisting{gauss_method.sage}
 \endinput
