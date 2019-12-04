@@ -3,7 +3,8 @@
 \Sage{} can operate with vector spaces, for example by finding a basis for
 a space.
 
-In this chapter vector spaces take scalars from the reals numbers $\Re$.
+In the book's chapater on vector spaces, the scalars come
+from the set of real numbers, $\Re$.
 \Sage{} lets you choose from two models of the real numbers.
 One is \Sagecmd{RDF}, the computer's built-in floating point
 model of real numbers.
@@ -40,8 +41,8 @@ sage: W = V.span([v1])
 sage: W
 \end{sagecommandline}
 
-You can ask \Sage{} questions about this subspace; for instance, you can 
-test for membership. 
+You can ask \Sage{} questions about this subspace, such as 
+testing for membership. 
 \begin{sagecommandline}
 sage: v3 = vector(RDF, [2, 2, -6, 0])
 sage: v3 in W
@@ -83,8 +84,8 @@ sage: W = V.span([v1, v2])
 sage: W.basis()
 \end{sagecommandline}
 Notice that the basis that \Sage{} gives  
-back is not the same as the set of two linearly
-independent vectors $\set{\vec{v}_1, \vec{v}_2}$.
+back is not the same as the set
+of two vectors $\set{\vec{v}_1, \vec{v}_2}$ that we gave it.
 To get the new basis, \Sage{} takes the vectors from the spanning set 
 as the rows of a matrix,
 brings that matrix to reduced echelon form, and reports the nonzero 
@@ -115,6 +116,7 @@ sage: v2 = vector(RDF, [-2, 0, 1])
 sage: W = V.span([v1, v2])       
 sage: W.basis()
 \end{sagecommandline}
+
 If you add a vector~$\vec{v}_3$ to the spanning set that is linearly
 independent of $\vec{v}_1$ and~$\vec{v}_2$ 
 then it generates a three dimensional subspace of $\Re^3$, 
@@ -124,9 +126,14 @@ sage: v3 = vector(RDF, [2, 3, 0])
 sage: W_prime = V.span([v1, v2, v3])
 sage: W_prime.basis()
 \end{sagecommandline}
-If, on the other hand, you add to the spanning set a vector~$\vec{v}_3$ 
+If instead you add to the spanning set $\set{\vec{v}_1,\vec{v}_2}$ 
+a third vector~$\vec{v}_3$ 
 that is linearly dependent on the other two then
-it doesn't change the subspace.
+it doesn't change the span.
+That is, in this case the subspace spanned by the first two
+$\spanof{\set{\vec{v}_1,\vec{v}_2}}$
+equals the span of all three
+$\spanof{\set{\vec{v}_1,\vec{v}_2,\vec{v}_3}}$.
 \begin{sagecommandline}
 sage: W = V.span([v1, v2])       
 sage: W.basis()
@@ -160,27 +167,20 @@ sage: W12 = V.span([v1, v2])
 sage: v3 = vector(RDF, [2, 1, 0, 0])
 sage: W13 = V.span([v1, v3])  
 \end{sagecommandline}
-We could test that the two spaces $W_{1,2}$ and $W_{1,3}$ 
-are equal by using set membership.
+% We could test that the two spaces $W_{1,2}$ and $W_{1,3}$ 
+% are equal by using set membership.
 If both vectors used to make the spanning set of $W_{1,2}$ are 
 members of  $W_{1,3}$ then  $W_{1,2}\subseteq W_{1,3}$.
-And, if the vectors used to make the spanning set of  $W_{1,3}$ are 
-members of  $W_{1,2}$ then we have inclusion in the other direction and 
-the two spaces are equal.
+If in addition the vectors used to make the spanning set of  $W_{1,3}$ are 
+members of  $W_{1,2}$ then the two spaces are equal.
 \begin{sagecommandline}
-sage: V = VectorSpace(RDF,4)
-sage: v1, v2 = vector(RDF, [1, 0, 0, 0]), vector(RDF, [1, 1, 0, 0])
-sage: W12 = V.span([v1, v2])
-sage: v3 = vector(RDF, [2, 1, 0, 0])
-sage: W13 = V.span([v1, v3])  
 sage: v2 in W13
 sage: v3 in W12
 \end{sagecommandline}
 Since both $\vec{v}_1,\vec{v}_3\in W_{1,2}$ and 
 $\vec{v}_1,\vec{v}_2\in W_{1,3}$, the two subspaces are equal.
 
-However, the more straightforward way to test equality is to just ask \Sage{}
-directly.
+However, the more straightforward way to test equality is to just ask.
 \begin{sagecommandline}
 sage: W12 == W13
 \end{sagecommandline}
@@ -196,7 +196,7 @@ sage: W12 == W14
 sage: W12 != W14
 \end{sagecommandline}
 
-This illustrates a point about algorithms.
+There is a point here about algorithms.
 \Sage{} could check for equality of two spans in a number of ways.
 One way is to check whether every member of the first spanning set is in the
 second space, and whether every member of the second spanning set is in the 
@@ -269,7 +269,7 @@ sage: W5 = W12 + W3
 sage: W5
 sage: W5 == V
 \end{sagecommandline}
-(The text covers this in an optional section.)
+(The text covers the sum of subspaces in an optional section.)
 
 
 
@@ -279,9 +279,12 @@ sage: W5 == V
 \section{Other spaces}
 
 The book has vector spaces that aren't a subspace of some $\Re^n$.
-There are more sophisticated things that you can do but
+To work with them, there are more sophisticated things that you can do but
 one straightforward thing is 
-using a real space that is just like the desired one.
+using a real space that is just like the desired one.\footnote{%
+  The textbook's 
+  third chapter, Maps Between Spaces, makes 
+  ``just like'' precise.}
 Consider this subspace of 
 $\polyspace_2$.
 \begin{equation*}
@@ -289,10 +292,7 @@ $\polyspace_2$.
    =\set{ (a_1+a_0)x^2+a_1x+a_0 \suchthat a_1,a_0\in\Re}
 \end{equation*}
 It is just like
-this subspace of $\Re^3$.\footnote{%
-  The textbook's 
-  third chapter, Maps Between Spaces, makes 
-  ``just like'' precise.}
+this subspace of $\Re^3$.
 \begin{equation*}
   \set{\colvec{a_1+a_0 \\ a_1 \\ a_0}\suchthat a_1,a_0\in\Re}
   =\set{\colvec{1 \\ 1 \\ 0}a_1+\colvec{1 \\ 0 \\ 1}a_0\suchthat a_1,a_0\in\Re}
@@ -305,7 +305,8 @@ sage: W = V.span([v1, v2])
 sage: W.basis()
 \end{sagecommandline}
 
-Similarly you can represent this space of $\nbyn{2}$ matrices
+Similarly you can use \Sage{} to 
+perform computation for this space of $\nbyn{2}$ matrices
 \begin{equation*}
   \set{\begin{mat}
          a  &b \\
