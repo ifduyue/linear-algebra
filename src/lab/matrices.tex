@@ -315,7 +315,7 @@ For the by-hand linear systems in the text, we find exact solutions.
 But in applications we use floating points and so the computation
 may lose precision because of numerical issues.
 
-Some systems are more subject to this than others.
+Some systems are more subject to precision loss than others.
 The suceptibility of a system's matrix of coefficients to this problem
 is measured by its \textit{condition number}.
 This is a positive real number that
@@ -343,52 +343,53 @@ how much is the solution affected by some error in the right side we are
 asking
 how much is $\vec{delta v}$ affected in this system by $\vec{\delta d}$?
 
-Define the \textit{$2$-norm} of a vector be 
-its length.
-(There are many norms; this one is the most common.)
-\begin{equation*}
-  \norm{\vec{v}}=\sqrt{v_1^2+\cdots+v_n^2}
-\end{equation*}
+Define the \textit{$2$-norm} of a vector to be 
+its length,
+  $\norm{\vec{v}}=\sqrt{v_1^2+\cdots+v_n^2}$
+(there are many norms; this is the most common).
 \begin{sagecommandline}
 sage: v = vector(RDF, [1, 2, 3])
 sage: v.norm(2)
 \end{sagecommandline}
-To define the condition number of~$A$, 
-consider the input vector that $A$ stretches
-the most, the vector $\vec{v}_{\text{max}}$
+There is some input vector that $A$ stretches
+the most, a vector $\vec{v}_{\text{max}}$
 where the number $M=\norm{A\vec{v}_{\text{max}}}/\norm{\vec{v}_{\text{max}}}$ 
-is the largest.\footnote{%
-  We discuss this factor more in the next chapter.}
-Also consider the vector that it makes the shortest, the 
+is the largest.
+There is some vector that $A$ shrinks the most, the 
 input vector $\vec{v}_{\text{min}}$ 
 where the number
 $m=\norm{A\vec{v}_{\text{min}}}/\norm{\vec{v}_{\text{min}}}$ is a minimum 
-(for $\vec{v}_{\text{min}}\neq\zero$).
+(for $\vec{v}_{\text{min}}\neq\zero$).\footnote{%
+  We discuss these factors more in the next chapter.}
 The condition number is ratio of the two, 
 $\kappa(A)=M/m$, with the exception 
 that a singular matrix maps some nonzero vectors to zero and
 so has $m=0$; in this case we define $\kappa(A)=\infty$.
 
-We have $\norm{\vec{d}}\leq M\norm{\vec{v}}$ by the definition of~$M$, and
-$\norm{\vec{\delta d}}\geq m\norm{\vec{\delta v}}$ 
-by the definition of~$m$.
+The definition of~$M$ gives $\norm{\vec{d}}\leq M\norm{\vec{v}}$ and
+the definition of~$m$ gives $\norm{\vec{\delta d}}\geq m\norm{\vec{\delta v}}$.
 Thus the relative change in the 
 system's computed solution
 and the relative change in the system's right side
 compare in this way. 
 \begin{equation*}
   \frac{\norm{\vec{\delta v}}}{\norm{\vec{v}}}
-   \leq \kappa(A)\frac{\norm{\vec{\delta d}}}{\norm{\vec{d}}}
+   \leq \kappa(A)\cdot \frac{\norm{\vec{\delta d}}}{\norm{\vec{d}}}
 \end{equation*}
-That is, the condition number is a the worst-case factor by which the
+That is, the condition number is the worst-case factor by which the
 relative error is magnified. 
 Changes in the right side can result in changes 
 that in the computed solution that are $\kappa(A)$ times as large.
-
 \begin{sagecommandline}
 sage: A = random_matrix(RDF, 3, min=0, max=100)
 sage: A
-sage: kappa = A.condition(2)
+sage: A.condition(2)
+\end{sagecommandline}
+Matrices that are nearly singular have a higher condition number than
+those that are far from singular.
+\begin{sagecommandline}
+sage: A = matrix(RDF, 3, [[1, 2, 3], [4,5,6], [7,8,9.001]])
+sage: A.condition(2)
 \end{sagecommandline}
 
 
