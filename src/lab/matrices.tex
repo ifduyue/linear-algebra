@@ -315,7 +315,7 @@ For the by-hand linear systems in the text, we find exact solutions.
 But in applications we use floating points and so the computation
 may lose precision because of numerical issues.
 
-Some systems are more subject to precision loss than others.
+Some systems are more subject to this loss than others.
 The suceptibility of a system's matrix of coefficients to this problem
 is measured by its \textit{condition number}.
 This is a positive real number that
@@ -326,27 +326,26 @@ estimates worst-case loss of precision.\footnote{%
   So a condition number is large if its base~$10$ logarithm 
   is greater than or equal to the number of significant digits 
   of the matrix entries.} 
-If a system has a condition number that is too large then we say
+If the condition number is too large then we say
 that the system is `ill-conditioned',
 otherwise we say it is `well-conditioned'.
 
-The idea is to start with a linear system 
-$A\vec{v}=\vec{d}$.
-We want to know how much an inaccuracy in~$\vec{d}$, perhaps some
+We start with a linear system 
+$A\vec{v}=\vec{d}$
+and ask much an inaccuracy in~$\vec{d}$, perhaps some
 floating point issue or perhaps some measurement limit on the vector's entries, 
-can affect the solution.
+can affect the solution~$\vec{v}$.
 That is, we are considering
-$A(\vec{v}+\vec{\delta v})=\vec{d}+\vec{\delta d}$.
-and asking for the relationship between $\delta d$ and $\delta v$
-Linearity gives $A\vec{\delta v}=\vec{\delta d}$, so in asking 
-how much is the solution affected by some error in the right side we are
-asking
-how much is $\vec{delta v}$ affected in this system by $\vec{\delta d}$?
+$A(\vec{v}+\vec{\Delta v})=\vec{d}+\vec{\Delta d}$
+and asking for the relationship between $\vec{\Delta d}$ and $\vec{\Delta v}$.
+Linearity gives $A\vec{\Delta v}=\vec{\Delta d}$ so we are
+asking:~how much is $\vec{\Delta v}$ affected by $\vec{\Delta d}$, via
+the mediation of the matrix~$A$?
 
 Define the \textit{$2$-norm} of a vector to be 
 its length,
   $\norm{\vec{v}}=\sqrt{v_1^2+\cdots+v_n^2}$
-(there are many norms; this is the most common).
+(there are many norms but this is the most common).
 \begin{sagecommandline}
 sage: v = vector(RDF, [1, 2, 3])
 sage: v.norm(2)
@@ -354,32 +353,32 @@ sage: v.norm(2)
 There is some input vector that $A$ stretches
 the most, a vector $\vec{v}_{\text{max}}$
 where the number $M=\norm{A\vec{v}_{\text{max}}}/\norm{\vec{v}_{\text{max}}}$ 
-is the largest.
-There is some vector that $A$ shrinks the most, the 
-input vector $\vec{v}_{\text{min}}$ 
+is maximal.
+There is also a vector that $A$ shrinks the most, a
+vector $\vec{v}_{\text{min}}$ 
 where the number
 $m=\norm{A\vec{v}_{\text{min}}}/\norm{\vec{v}_{\text{min}}}$ is a minimum 
-(for $\vec{v}_{\text{min}}\neq\zero$).\footnote{%
+(supposing that $\vec{v}_{\text{min}}\neq\zero$).\footnote{%
   We discuss these factors more in the next chapter.}
-The condition number is ratio of the two, 
-$\kappa(A)=M/m$, with the exception 
-that a singular matrix maps some nonzero vectors to zero and
-so has $m=0$; in this case we define $\kappa(A)=\infty$.
+The condition number is the ratio of the two, 
+$\kappa(A)=M/m$, except 
+that because a singular matrix maps some nonzero vectors to zero and
+so has $m=0$, in this case we set $\kappa(A)=\infty$.
 
 The definition of~$M$ gives $\norm{\vec{d}}\leq M\norm{\vec{v}}$ and
-the definition of~$m$ gives $\norm{\vec{\delta d}}\geq m\norm{\vec{\delta v}}$.
+the definition of~$m$ gives $\norm{\vec{\Delta d}}\geq m\norm{\vec{\Delta v}}$.
 Thus the relative change in the 
 system's computed solution
 and the relative change in the system's right side
 compare in this way. 
 \begin{equation*}
-  \frac{\norm{\vec{\delta v}}}{\norm{\vec{v}}}
-   \leq \kappa(A)\cdot \frac{\norm{\vec{\delta d}}}{\norm{\vec{d}}}
+  \frac{\norm{\vec{\Delta v}}}{\norm{\vec{v}}}
+   \leq \kappa(A)\cdot \frac{\norm{\vec{\Delta d}}}{\norm{\vec{d}}}
 \end{equation*}
 That is, the condition number is the worst-case factor by which the
 relative error is magnified. 
 Changes in the right side can result in changes 
-that in the computed solution that are $\kappa(A)$ times as large.
+in the computed solution that are $\kappa(A)$ times as large.
 \begin{sagecommandline}
 sage: A = random_matrix(RDF, 3, min=0, max=100)
 sage: A
@@ -388,7 +387,7 @@ sage: A.condition(2)
 Matrices that are nearly singular have a higher condition number than
 those that are far from singular.
 \begin{sagecommandline}
-sage: A = matrix(RDF, 3, [[1, 2, 3], [4,5,6], [7,8,9.001]])
+sage: A = matrix(RDF, 3, [[1, 2, 3], [4, 5, 6], [7, 8, 9.001]])
 sage: A.condition(2)
 \end{sagecommandline}
 
@@ -529,7 +528,14 @@ increase by much more than a factor of four: $3.4/0.053\approx 64.15$.
 And going from a problem size of~$10$ to a size of~$100$ 
 increases the time taken by a factor of $0.419/0.000\,548\approx 764.60$. 
 
-Get a graph by giving \Sage{} the data as a list of pairs.
+Get a graph by giving \Sage{} the data as a list of pairs.\footnote{% 
+  The graphics in this manual are generated using 
+  more drawing options than appear in the output block.
+  For instance, the scatter plot here came from
+  \protect\inlinecode{g = scatter_plot(d, markersize=10, facecolor='#b9b9ff')}
+  and was saved in a file with
+  \protect\inlinecode{g.save("graphics/mat001.pdf", figsize=[2.25,1.5], axes_pad=0.05, fontsize=7)}.
+  We shall omit much of this decoration code as clutter.}
 \begin{sagecommandline}
 sage: d = [(3, 0.000055), (10, 0.000548), (25, 0.00679),  
 ....:      (50, 0.053), (75, 0.177), (100, 0.419), 
@@ -543,14 +549,7 @@ g.save("graphics/mat001.pdf", figsize=[2.25,1.5], axes_pad=0.05, fontsize=7)
 \end{sagesilent}
 (If you enter \inlinecode{scatter_plot(d)} at the prompt, that is, 
 without saving it as~$g$, then \Sage{} will pop up a window with the
-graphic.)\footnote{% 
-  The graphics in this manual are generated using 
-  more drawing options than appear in the output block.
-  For instance, the scatter plot here came from
-  \protect\inlinecode{g = scatter_plot(d, markersize=10, facecolor='#b9b9ff')}
-  and was saved in a file with
-  \protect\inlinecode{g.save("graphics/mat001.pdf", figsize=[2.25,1.5], axes_pad=0.05, fontsize=7)}.
-  We shall omit much of this decoration code as clutter.}
+graphic.)
 \begin{center}
   \includegraphics{graphics/mat001.pdf}
 \end{center}
@@ -559,7 +558,9 @@ is not constant
 since the data clearly does not lie on a line.
 
 Here is some more data.
-The times are so big that the timing took so long that
+A caution if you are trying this yourself:~to generate this data, 
+\inlinecode{timeit}
+took so long that
 the computer had to be left to run overnight.
 \begin{lstlisting}
 sage: for size in [500, 750, 1000]:                             
@@ -574,15 +575,15 @@ size= 750
 size= 1000
 5 loops, best of 3: 406 s per loop
 \end{lstlisting}
-% Again the table is a neater way to present the data.
-% \begin{center}
-%   \begin{tabular}{r|r@{.}l}
-%     \textit{size}     &\multicolumn{2}{c}{\textit{seconds}}  \\  \hline
-%     $500$       &$51$ &$4$ \\
-%     $750$       &$172$ &   \\
-%     $1000$      &$406$ &   
-%   \end{tabular}
-% \end{center}
+Again the table is a neater way to present the data.
+\begin{center}
+  \begin{tabular}{r|r@{.}l}
+    \textit{size}     &\multicolumn{2}{c}{\textit{seconds}}  \\  \hline
+    $500$       &$51$ &$4$ \\
+    $750$       &$172$ &   \\
+    $1000$      &$406$ &   
+  \end{tabular}
+\end{center}
 Get a graph by tacking the new data onto the existing data.
 \begin{sagecommandline}
 sage: d = [(3, 0.000055), (10, 0.000548), (25, 0.00679),  
@@ -610,18 +611,17 @@ g.save("graphics/mat002.pdf", figsize=[2.25,2.25], axes_pad=0.05, fontsize=7)
   \includegraphics{graphics/mat002.pdf}
 \end{center}
 Note that the two graphs above have different scales;
-if the graph at the bottom had the same vertical scale as the one at the top
-then its data would extend off the top of the page.
+if the graph on this page had the same vertical scale as the one on the prior
+page its data would extend far off the top of the paper.
 
 So a practical limit to the size of a problem that we can solve with
 the matrix inverse operation comes from the fact that the graph above is
 not a line.
 The time required grows much faster than the size.
-It just gets too large. 
 
 A major effort in Computer Science is to find fast algorithms to 
 do practical tasks.
-Many people have worked on tasks in Linear Algebra in particular,
+Many people are working on tasks in Linear Algebra in particular,
 such as finding the inverse of a matrix, because
 they are so common in applications.
 
