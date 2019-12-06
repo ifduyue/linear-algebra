@@ -2,8 +2,8 @@
 
 In the chapter on 
 Singular Value Decomposition we considered the factor by which 
-transformations resize vectors, and found that
-the maximum resizing factors are the singular values.
+transformations resize vectors and found
+the maximum resizing factors, the singular values.
 In this chapter we return to plotting the image of
 the unit circle to consider another geometric effect,
 the amount by which vectors are rotated.
@@ -14,7 +14,10 @@ Recall that a linear map has the same effect on
 all vectors that lie on the same line through the origin.
 So we can see its
 action by plotting what it does to one point on each such line,
-using the routine \inlinecode{plot_circle_action}.
+using the routine \inlinecode{plot_circle_action}.\footnote{%
+  As in earlier chapters, these plots are drawn using some options that
+  are not shown.
+  For the full call see this manual's source.}
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: q = plot_circle_action(1,0,0,1) 
@@ -37,7 +40,7 @@ p.save("graphics/eigen000b.pdf", ticks_integer=True)
   \vcenteredhbox{\includegraphics{graphics/eigen000a.pdf}}
   \qquad\mapsunder{\big (\begin{smallmatrix} 2 &0 \\ 2 &2 \end{smallmatrix}\big )}\qquad
   \vcenteredhbox{\includegraphics{graphics/eigen000b.pdf}}
-  \tag{$*$}
+  % \tag{$*$}
 \end{equation*}
 On the left, proceeding counterclockwise, 
 the curve begins with red at $(x,y)=(1,0)$.
@@ -72,22 +75,22 @@ is to both resize and rotate.
 sage: v = vector(RR, [1,0])
 sage: M = matrix(RR, [[2, 0], [2, 2]])
 sage: w = M*v
-sage: w.norm(), v.norm() 
+sage: v.norm(), w.norm()  
 sage: angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
 sage: angle_in_rads 
 \end{sagecommandline}
-But on
-other vectors this same map will resize and rotate by other
+However, with
+other vectors this map will resize and rotate by other
 amounts.
-That is, the action of a linear map is not uniform;
+That is, the action is not uniform;
 as we move across the upper half circle from $(1,0)$ to $(-1,0)$
 the effect of the map varies.
 Here is the effect of the transformation on the point
-one sixth of the way around, $(\cos(\pi/6),\sin(\pi/6))$.
+$(\cos(\pi/6),\sin(\pi/6))$.
 \begin{sagecommandline}
 sage: v = vector(RR, [cos(pi/6),sin(pi/6)])
 sage: w = M*v
-sage: w.norm(), v.norm() 
+sage: v.norm(), w.norm()  
 sage: angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
 sage: angle_in_rads 
 sage: load("plot_action.sage")  
@@ -98,7 +101,7 @@ sage: p.save("graphics/eigen001a.pdf", ticks=([1,2],[1,2]))
 \begin{sagesilent}
 v = vector(RR, [cos(pi/6),sin(pi/6)])
 w = M*v
-w.norm(), v.norm() 
+v.norm(), w.norm() 
 angle_in_rads = arccos(w*v/(w.norm()*v.norm())) 
 angle_in_rads 
 load("plot_action.sage")  
@@ -113,24 +116,18 @@ input~$(\cos(\pi/6),\sin(\pi/6))$.
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/eigen001a.pdf}}
 \end{equation*}
-The orange output is not as long and is not rotated from the input as much.
+The orange output 
+is not rotated from the input as much (it is also slightly longer).
 
 \Sage{} will compute for us the rotations of the vectors.
 At the end of this chapter is the source for a routine 
 \inlinecode{plot_color_angles} that
-applies the transformation to vectors in the 
-half circle, 
-computes the angle by which that
-vector is rotated, and draws a graph. 
-That graph colors the input and output vectors,
+inputs the entries of a transformation and applies that map
+to vectors in the half circle, 
+computes the angles by which those
+vectors are rotated, and draws a graph. 
+That graph colors the output vectors,
 making a visual match.
-% was:
-% angles = find_angles(2,2,0,2,12)
-% angles[0:2]
-% ticks = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])
-% p = scatter_plot(angles, marker='.', ticks=ticks)
-% p.set_axes_range(0, pi, 0, pi) 
-% p.save("graphics/eigen002.pdf", figsize=2.5, tick_formatter=pi)
 \begin{sagecommandline}
 sage: p = plot_color_angles(2,0,2,2)
 sage: p.set_axes_range(0,pi,0,pi)
@@ -142,12 +139,11 @@ p = plot_color_angles(2,0,2,2)
 p.set_axes_range(0,pi,0,pi)
 p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{sagesilent}
-% ? won't show axes labels
+The transformation for this graph is the one shown at this
+chapter's start, on page~\pageref{gr:firstgraphic}.
 \begin{center}
   \vcenteredhbox{\includegraphics{graphics/eigen003.pdf}}
 \end{center}
-This graph this chapter's first graphic, the input/output one labeled~($*$)
-on page~\pageref{gr:firstgraphic}.
 Its most interesting point is where the output angle is $0$,
 at the input angle of~$\pi/2$.
 This is a input vector that the transformation does not turn at all\Dash 
@@ -204,31 +200,31 @@ p.save("graphics/eigen101.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/eigen101.pdf}}
-  \tag{$**$}
+  \tag{$*$}
 \end{equation*}
 This graph has two interesting points, where $y=0$ and where 
 $y=\pi$.
 In both places the vector is resized but not turned.
 In the second case, where the vector is turned by an angle of~$\pi$,
 the input vector is on the
-same line through the origin as the output,
+same line through the origin as the output
 but the transformation rescales it by a negative number.
 
 A vectors that is not turned by a transformation~$t$ but instead
 is purely resized 
-is an `eigenvector' for~$t$ and the amount by which it is 
-resized is the `eigenvalue'.
+is an eigenvector for~$t$ and the amount by which it is 
+resized is the associated eigenvalue.
 
 For an eigenvalue~$\lambda$, the set of vectors associated with
-that rescaling factor is an `eigenspace'.
-\Sage{} will compute the eigenspaces for a matrix.\footnote{%
+that rescaling factor is an eigenspace.
+\Sage{} will compute all of the the eigenspaces that a matrix has.\footnote{%
   Whether we are taking multiplication 
   by vectors to come from the 
   right~$M\vec{v}$ or from the left, $\vec{v}\,M$, 
   a matrix has the same eigenvalues.  
   But the eigenvectors may be different. 
   The \protect\Sage{} operation \protect\inlinecode{eigenvectors_right} 
-  covers the 
+  covers the book's standard
   $M\vec{v}=\lambda\vec{v}$ case and  
   \protect\inlinecode{eigenvectors_left}
   covers the other.}
@@ -257,7 +253,7 @@ has a basis consisting of the single vector with endpoint around
 $(-0.42, -0.91)$. 
 
 \Sage{} will tell us which of those vectors is which on the graph 
-labeled~($**$).
+labeled~($*$).
 \begin{sagecommandline}
 sage: M = matrix(RDF, [[1, 2], [3, 4]])
 sage: evs = M.eigenvectors_right()
@@ -269,7 +265,7 @@ sage: (angle_v/pi).n(digits=4)
 the argument.)
 So the angle is something like $(4/5)\pi$, and thus
 the eigenspace listed first is the one associated with the right-hand
-of the two interesting points in ($**$), the vector that is turned by an angle
+of the two interesting points in ($*$), the vector that is turned by an angle
 of $\pi$.
 That dovetails with the observation that the eigenvalue is a negative number 
 because both say that the transformation's action in passing from the
@@ -342,13 +338,8 @@ p.save("graphics/eigen200b.pdf", figsize=2.5)
   \quad\mapsunder{\big (\begin{smallmatrix} \cos(\pi/3) &-\sin(\pi/3) \\ \sin(\pi/3) &\cos(\pi/3) \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/eigen200b.pdf}}
 \end{equation*}
-Because this map turns every input vector by $\pi/3$~radians,
-here is the input/ouput angle graph.
-% was:
-% angles = find_angles(1,2,3,4,50)
-% ticks = ([0,pi/4,pi/2,3*pi/4,pi], [0,pi/2,pi])
-% p = scatter_plot(angles, marker='.', ticks=ticks)
-% p.save("graphics/eigen101.pdf", figsize=2.5, tick_formatter=pi)
+This map turns every input vector by $\pi/3$~radians so
+its input/output angle graph has no interesting points.
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: p = plot_color_angles(cos(pi/3),-sin(pi/3),sin(pi/3),cos(pi/3))
@@ -471,16 +462,19 @@ sage: M =  matrix(QQ, [[4, -2], [1, 1]])
 sage: M.is_diagonalizable()
 \end{sagecommandline}
 \noindent
-To diagonalize the matrix put it in Jordan form.
+To diagonalize the matrix, put it in Jordan form.
 (Even if you haven't covered this matrix form, the command is simple.)
 \begin{sagecommandline}
 sage: M =  matrix(QQ, [[2, -2, 2], [0, 1, 1], [-4, 8, 3]])  
 sage: M.jordan_form()
 \end{sagecommandline}
 Note the \inlinecode{-+-+-} lines that break the matrix into its component
-blocks, both horizontally and vertically.
+horizontal blocks.
+Likewise, there are vertical lines.
 
-\Sage{} will also find a transformation matrix.
+\Sage{} will also find the transformation matrix, the nonsingular~$P$ 
+that can convert between the given matrix~$M$ and the matrix~$D$ 
+of the desired form, with $M=PDP^{-1}$.
 \begin{sagecommandline}[d,0,1]
 sage: M =  matrix(QQ, [[2, -2, 2], [0, 1, 1], [-4, 8, 3]])  
 sage: JF, P = M.jordan_form(transformation=True)
@@ -490,22 +484,25 @@ sage: P^(-1)
 sage: P*JF*P^(-1)
 \end{sagecommandline}
 
-Even a non-diagonalizable matrix can be put in Jordan form.
-\begin{sagecommandline}
-sage: M =  matrix(QQ, [[2, -1], [1, 4]])  
-sage: M.jordan_form()
-\end{sagecommandline}
+% Even a non-diagonalizable matrix can be put in Jordan form.
+% \begin{sagecommandline}
+% sage: M =  matrix(QQ, [[2, -1], [1, 4]])  
+% sage: M.jordan_form()
+% \end{sagecommandline}
 
 
 
 \section{Source of plot\_color\_angles}
 This routine gathers graphic instances and returns the plot of that list.
+The default is to plot a thousand points.
 \lstinputlisting[firstline=252, lastline=262]{plot_action.sage}
 
 \section{Source of color\_angles\_list}
 This finds the angles for the effect of the transformation on the vectors,
 and draws a scatter plot of those points.
 It draws them in the color of the input vector.
+The \inlinecode{TICKS} constant gives the places where the 
+axes are labeled.
 \lstinputlisting[firstline=230, lastline=250]{plot_action.sage}
 
 \section{Source of find\_angles}
