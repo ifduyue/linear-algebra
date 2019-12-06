@@ -46,15 +46,16 @@ We used the oddball names,
 \inlinecode{t_symbolic}, \inlinecode{s_symbolic}, etc.,
 because these are not functions in that we have not described a domain
 and codomain; rather they are prototypes for functions.  
-We can use a prototype 
+We can use one
 to produce a linear function $\map{t}{\Re^2}{\Re^3}$.
 \begin{sagecommandline} 
 sage: a, b = var('a, b')   
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
 sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic)
 \end{sagecommandline}
-Note that \Sage{} uses the term 
+\Sage{} uses the term 
 `linear transformation' for any linear map,
+which is its common usage,
 while the book uses it only that for maps where the domain and codomain
 are equal.
 
@@ -112,21 +113,23 @@ sage: t
 That's a different matrix.
 What's happening?
 
-Remember that the point of a matrix representation is to
-use the representation of $t$ and $\vec{v}$ to compute
-the representation of $t(\vec{v})$.
-The book has
+Remember that the point of representations is to
+use the matrix representation of~$t$ and the vector representation of~$\vec{v}$ 
+to compute
+the vector representation of~$t(\vec{v})$.
+The book writes
 \begin{equation*}
   \rep{t}{B,D}\,\rep{\vec{v}}{B}=\rep{t(\vec{v})}{D}
 \end{equation*}
-with the column vector on the right of the matrix.
-On the other hand, \Sage{} by default has the vector on the left.
-The translation is that, compared to the book's~$T\vec{v}$,
-\Sage{}'s default is:~$\trans{\vec{v}}\;\trans{T}$.
-That's why above \Sage{}'s matrix is the transpose of the book's matrix.
+with the vector on the right of the matrix.
+But \Sage{} by default takes 
+the representation vector on the left.
+Obviously the difference is cosmetic; 
+the translation is that, compared to the book's~$T\vec{v}$,
+\Sage{}'s default is~$\trans{\vec{v}}\;\trans{T}$.
+That's why \Sage{}'s matrix is the transpose of the book's matrix.
 
-Obviously the difference is cosmetic.
-To fit the book's convention we can do two 
+To have \Sage{} work with  the book's convention we will do two 
 things:~define the map with the
 option \inlinecode{side='right'}, and show its
 matrix with the same option.
@@ -141,9 +144,9 @@ sage: t.matrix(side='right')
   
 
 %========================================
-\section{Defining}
-We can define a linear map in a number of ways.
-Here we will describe two of them.
+\section{Defining a linear map}
+We will describe two ways to 
+define a linear map.
 
 \subsection{Symbolically}
 We've already introduced defining a map by formula.
@@ -191,7 +194,7 @@ Note that these findings fit with the theorem that
 the dimension of the null space plus the dimension of the 
 range space equals the dimension of the domain.
 
-For contrast consider this function.
+For another example, consider this function.
 \begin{sagecommandline}
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]
 sage: t_symbolic
@@ -211,7 +214,7 @@ sage: t.kernel()
 \end{sagecommandline}
 
 Before looking at this map's range space, 
-we know that the dimension of that range must be~$1$, 
+we know that the dimension of that range must be~$1$ 
 because the dimensions of the null space and
 range space add to the dimension of the domain.
 \Sage{} confirms.
@@ -246,7 +249,8 @@ To get the representation fitting the text, ask for it explicitly.
 sage: m.matrix(side='right')
 \end{sagecommandline}
 
-When defined in this way, the transformation acts as expected.
+When defined in this way, \Sage{} takes the linear map to be the one
+represented by the matrix with respect to the standard basis.
 \begin{sagecommandline}
 sage: m = linear_transformation(M, side='right')
 sage: v = vector(QQ, [7, 8])
@@ -259,8 +263,8 @@ by the two-element vector would give an error message
 complaining that the vector is not in the map's 
 $3$-dimensional domain.)
 
-Although these maps are defined in two ways, 
-\Sage{} can tell whether they are the same.
+Although the maps below are defined in two ways, 
+\Sage{} can mix them together.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
 sage: m = linear_transformation(M, side='right')
