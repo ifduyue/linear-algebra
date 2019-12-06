@@ -1,4 +1,7 @@
+# img_squeeze.sage
 # Compress the image
+# 2012-Dec-04 JH
+# 2019-Nov-25 JH
 from PIL import Image
 
 def img_squeeze(fn_in, fn_out, percent):

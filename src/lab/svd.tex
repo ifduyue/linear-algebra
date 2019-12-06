@@ -1,8 +1,9 @@
 \chapter{Singular Value Decomposition}
 \label{chap:SingularValueDecomposition}
 
-We will picture the action of a linear map,
-specifically, the action of a linear transformation $\map{h}{\Re^2}{\Re^2}$.
+We will picture the action of linear maps.
+Specifically, we will draw 
+the action of linear transformations $\map{h}{\Re^2}{\Re^2}$.
 That will connect with an important way to factor matrices, and lead to
 an interesting application.
 
@@ -44,19 +45,18 @@ effect, etc.
   \qquad
   \colvec{r \\ 2r}\mapsunder{t}\colvec{5r \\ 11r}
 \end{equation*}
-We will use this observation to illustrate the action of 
+We can use this observation to show the action of 
 linear transformations of the plane, $\map{t}{\Re^2}{\Re^2}$
-(we look at the plane just because the pictures are 
-easy to draw). 
+(we choose the plane simply because the pictures are 
+easy to draw and to understand). 
 
 The $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship says that
 a linear map has the same effect on all vectors in a line through the
 origin.
 So to picture a transformation's action we will fix 
 one nonzero vector~$\vec{v}$ from each line through the origin,
-and show where the transformation takes each such 
-vector, $t(\vec{v})$.
-The natural set containing one point from each plane line through the origin 
+and show where the transformation $t(\vec{v})$ takes it.
+The natural set containing one point from each line through the origin 
 is the upper half of the unit circle, shown here
 (the colors are explained below).
 % \begin{sagecommandline}
@@ -78,7 +78,8 @@ p.save("graphics/svd000.pdf")
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
-The point $(1,0)$ is included in that set but
+The point $(1,0)$ is included in that set, as the representative of
+the $x$~axis, but
 $(-1,0)$ is not, which is why that point has an open circle.
 
 The first illustration is for a simple transformation.
@@ -90,16 +91,19 @@ on the upper half circle.
 The code below inputs the file \inlinecode{plot_action.sage}
 to get access to the routine
 \inlinecode{plot_circle_action(a,b,c,d)}. 
-This finds the output curve by multipling points on 
-the input upper half unit circle by this matrix
+This divides the input upper half circle into a number of curved segments,
+the red one, the orange one, etc., then it 
+multiplies the points on those curved segments 
+by this matrix
 \begin{equation*}
   \begin{mat}
     a &b \\
     c &d
   \end{mat}
 \end{equation*}
-and then connecting those output dots to get the output curve.
-The source code of \inlinecode{plot_action.sage} is 
+and finally it connects those output segments to get an output curve, where 
+the output segments are colored red, orange, etc.
+The listing of the full source of \inlinecode{plot_action.sage} is 
 at the end of this chapter.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
@@ -148,9 +152,9 @@ that triples the $y$~component and also multiplies the
 $x$~component by $-1$.\footnote{%
   As in other chapters, some of the graphics are drawn using 
   some options that are not shown.
-  In this case, the \protect\inlinecode{p.save(...)} has
+  In this case, the two \protect\inlinecode{p.save(...)} commands have
   the \protect\inlinecode{ticks\_integer=True} option.
-  This just reduces clutter that isn't linear algebra.}
+  Not showing these options just reduces clutter that isn't linear algebra.}
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 2, -1.25, 3.25) 
@@ -183,7 +187,7 @@ passes from violet to red.
 This transformation changes the orientation,
 or `sense', of the curve. 
 
-This is rotation, clockwise by $\pi/4$~radians.
+This is rotation by $\pi/4$~radians, clockwise.
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{\cos(-\pi/4)-\sin(-\pi/4) \\ \sin(-\pi/4)+\cos(-\pi/4)}
 \end{equation*}
@@ -202,12 +206,12 @@ sage: p.save("graphics/svd003b.pdf")
 \end{equation*}
 
 The next transformation is a shear.\footnote{%
-  In general, a shear is when 
-  two parts of a body  
-  slide relatively to each other, in a direction parallel to their 
+  The definition from physics or engineering is that a shear is the motion of 
+  two parts of a body where they slide   
+  relative to each other in a direction parallel to their 
   plane of contact.  
-  Thus, when you write on a paper the flakes of
-  graphite shear off the pencil.}
+  Thus, when you write with a pencil the flakes of
+  graphite shear off on the paper.}
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
 \end{equation*}
@@ -239,8 +243,9 @@ p.save("graphics/svd004b.pdf", ticks_integer=True)
 \end{equation*}
 
 Next is a shear
-where the output's 
-second component is affected by the input's distance from 
+where it is the output's 
+second component that is is affected,
+here by the input's distance from 
 the $x$-axis.
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x \\ (1/2)x+y}
@@ -296,14 +301,14 @@ sage: p.save("graphics/svd006b.pdf")
 
 
 \section{SVD}
-In the above pictures the image of the unit circle is always an ellipse.
-Recall that in $\Re^2$ an ellipse has a \textit{major axis}, 
-the longer one, and a 
-\textit{minor axis}.\footnote{If the two axes have the same length,
-as in the output of the rotation map, 
-then the ellipse is a circle.
-If one axis has length zero then the ellipse is a line segment 
-and if both have length zero then it is a point.}
+In those pictures the image of the unit circle is an ellipse.
+Recall that in $\Re^2$ an ellipse has a major axis, 
+the longer one, and a minor axis.\footnote{%
+  If the two axes have the same length,
+  as in the output of the rotation map, 
+  then the ellipse is a circle.
+  If one axis has length zero then the ellipse is a line segment 
+  and if both have length zero then it is a point.}
 Write $\sigma_1$ for the length of the semi-major axis, 
 the distance from the center to the furthest-away point on the ellipse,
 and write $\sigma_2$ for the length of the semi-minor axis.
@@ -314,7 +319,7 @@ sage: plot.options['aspect_ratio'] = 1
 sage: sigma_1=3
 sage: sigma_2=1
 sage: E = ellipse((0,0), sigma_1, sigma_2)
-sage: E.save("graphics/svd100.pdf",figsize=3)
+sage: E.save("graphics/svd100.pdf")
 \end{sagecommandline}
 \begin{sagesilent}
 plot.options['axes_pad'] = 0.5
@@ -325,24 +330,24 @@ sigma_1=3
 sigma_2=1
 E = ellipse((0,0), sigma_1, sigma_2)
 # E.save("graphics/svd100.pdf", axes_pad=0.075, dpi=1200, fontsize=7, ticks=([-3,-2,-1,1,2,3],[-1,1]), figsize=1.5)
-E.save("graphics/svd100.pdf", axes_pad=0.075, figsize=3)
+E.save("graphics/svd100.pdf", ticks_integer=True, axes_pad=0.075, figsize=3)
 \end{sagesilent}
 \begin{center}
   \includegraphics{graphics/svd100.pdf}
 \end{center}
-The two axes are orthogonal.
-In the above, the major axis lies along the $x$-axis while the
-minor axis lies along the $y$-axis.
+The two are orthogonal.
+Above, the major axis is on the $x$-axis while the
+minor is on the $y$-axis.
 
 Under any linear map $\map{t}{\Re^n}{\Re^m}$ the 
 unit sphere maps to a hyperellipse.
 This is a version of the \textit{Singular Value Decomposition} of
 matrices:
-for any linear map $\map{t}{\Re^m}{\Re^n}$ there are bases
-$B=\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_m}$ for the domain and
-$D=\sequence{\vec{\delta}_1,\ldots,\vec{\delta}_n}$ for the codomain
-such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i$, where the
-scalars $\sigma_i$ are 'singular values'.
+for any linear map $\map{t}{\Re^n}{\Re^m}$ there are bases
+$B=\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$ for the domain and
+$D=\sequence{\vec{\delta}_1,\ldots,\vec{\delta}_m}$ for the codomain
+such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i$ (for $i\leq n$), where the
+scalars $\sigma_i$ are called \textit{singular values}.
 The next section sketches a proof
 but we first illustrate this result by using an example matrix.
 \Sage{} will find the two bases $B$ and~$D$ and will picture how the 
@@ -457,16 +462,11 @@ while $t(\vec{\beta}_2)$ is about $0.4$ times~$\vec{\delta}_2$.
   \end{picture}
   \tag*{\raisebox{2.5in}{($**$)}}
 \end{equation*}
-Note also that the two bases are \textit{orthonormal}\Dash in
-the pictures, the unit circles illustrate
-that the bases are comprised of unit vectors and further,
-the two members of each basis are orthogonal.
-
-Compare this diagram to the one before it, 
-labeled~($*$).
-Note that~($**$)'s
-long red vector is a
-semi-major axis while its short red vector is a 
+The two bases are orthonormal,
+comprised of unit vectors that are orthogonal.
+Note also, by comparing with the diagram above labeled~($*$), that
+long red vector is the
+semi-major axis while its short red vector is the  
 semi-minor axis.
 
 
@@ -476,7 +476,13 @@ semi-minor axis.
 Consider an~$\nbyn{n}$ matrix~$T$ that is nonsingular.
 Let $\map{t}{\Re^n}{\Re^n}$ be the
 nonsingular transformation represented by
-$T$ with respect to the standard bases.\footnote{%
+$T$ with respect to the standard bases.
+We will argue that there are scalars $\sigma_0$, \ldots~$\sigma_n$
+and bases
+$B=\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$ and
+$D=\sequence{\vec{\delta}_1,\ldots,\vec{\delta}_n}$ for the 
+domain and codomain
+such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i.$\footnote{%
   This argument, 
   from \protect\cite{BlankKrikorianSpring89},
   is a sketch because it uses results that a reader may have seen only 
@@ -549,14 +555,15 @@ We can express those geometric ideas in an algebraic form
 (for a proof see \cite{TrefethenBau97}).
 
 The \textit{singular value decomposition} of an $\nbym{m}{n}$ matrix~$A$
-is a factorization $A=U\Sigma \trans{V}$.
+is a factorization, $A=U\Sigma \trans{V}$\!.
 The $\nbym{m}{n}$ matrix $\Sigma$ 
-is all zeroes except for diagonal entries, the `singular values', 
+is all zeroes except for diagonal entries, the singular values, 
 $\sigma_1\geq \sigma_2 \geq \cdots \geq \sigma_r> 0$ where $r$ is the
 rank of~$A$.
 The $\nbyn{m}$ matrix~$U$ and the $\nbyn{n}$ matrix~$V$ are unitary, meaning
-that their columns form an orthogonal basis of unit vectors, the left and 
-right `singular vectors' for~$A$, respectively. 
+that their columns form an orthogonal basis of unit vectors, called 
+the left and 
+right singular vectors for~$A$. 
 \begin{sagecommandline}
 sage: M = matrix(RDF, [[0, 1, 2], [3, 4, 5]])
 sage: U,Sigma,V = M.SVD()
@@ -733,7 +740,7 @@ Suppose that the matrix is $\nbyn{n}$.
 To work with it\Dash for example, 
 to store it in a computer's memory or to transmit it over the Internet\Dash 
 we must work with $n^2$-many floating points.
-For instance, if $n=500$ then it has $50^2=250\,000$~floats.
+For instance, if $n=500$ then it has $500^2=250\,000$~floats.
 If we express the matrix as a sum then
 each term requires 
 $n$~numbers for $\vec{u}_i$, another~$n$ for~$\vec{v}_i$, and one
@@ -743,9 +750,9 @@ about twice the size of the original matrix,
 which is a lot of data.
 
 But the sum form does have an advantage.
-If we keep only some of the terms, say the first $50$ of them, 
-then we get a big savings:~$50\cdot (2\cdot 50+1)=50\,050$ floats 
-is about $20\%$ of the size of the full matrix.
+If we keep only a few of the terms, say the first $50$ of them, 
+then we get a big savings:~$50\cdot (2\cdot 50+1)=5\,050$ floats,  
+which is about $2\%$ of the storage size of the full matrix.
 
 In short, if you have data as a matrix then you can hope to compress it
 with the summation formula by dropping terms with smaller $\sigma$'s.  
@@ -754,11 +761,10 @@ retaining some of the singular values.
 
 To illustrate that you can succeed in retaining at least some aspects of data
 we will do image compression.
-This is \textit{The Great Wave off Kanagawa} by Hokusai, ca~1830
+This is \textit{The Great Wave off Kanagawa} by Hokusai, ca~1830,
 \cite{wiki:GreatWave}.\footnote{%
-  The image file,
-  generously made available by The Art Institute of Chicago, 
-  is $1497\times 922$.}
+  The image file is
+  generously made freely available by The Art Institute of Chicago.}
 It depicts an rogue wave threatening three boats off 
 what is today Yokohama, with Mount Fuji in the background. 
 \begin{center}
@@ -769,33 +775,12 @@ The image compression code we will use is in \inlinecode{img_squeeze.sage},
 listed at the end of the chapter.
 It breaks the picture into three matrices, for the red data, the 
 green data, and the blue data.
-% It gives us some insight into what we are omitting with  
-% a peek at the eight largest singular
-% values in the red matrix:
-%   $192773.40$,
-%   $26258.04$,
-%   $20055.53$,
-%   $16881.59$,
-%   $13394.80$,
-%   $12875.31$,
-%   $11064.42$, and
-%   $10250.95$.
-% It also gives the eight smallest:
-%   $11.22$,
-%   $10.80$,
-%   $9.00$,
-%   $8.26$,
-%   $8.08$,
-%   $7.29$,
-%   $6.55$, and
-%   $5.88$.
 We want to see how badly the image degrades for various cutoffs.
 The code below sets the cutoff at $10$\%,
 so it sums terms associated
 with the first $92$ singular values.
-It gives us some insight into what we are omitting with  
-a peek at the eight largest singular
-values in the red matrix.
+It gives us some insight into the size of those values
+with a peek at the eight largest ones for the red matrix.
 \begin{lstlisting}
 sage: load("img_squeeze.sage")                                 
 sage: img_squeeze("pix/greatwave.png", "pix/greatwave_squeezed.png", 0.10)
@@ -820,13 +805,13 @@ sigma_RD 92 =2240.98
   $7.29$,
   $6.55$, and
   $5.88$.)
-Below is the result.
+Below is the compressed result.
 \begin{center}
   \includegraphics[width=.95\textwidth]{pix/greatwave_squeezed.png}
 \end{center}
 This picture shows loss.
 The colors are not as good, the edges are not sharp, and there are 
-artifacts, including horizontal line across the writing on the 
+artifacts, including vertical lines extending from the writing in the 
 upper left.
 Basically, Fiji has gotten a little fuzzy.
 But certainly the image is entirely recognizable\Dash not bad for omiting
@@ -837,15 +822,15 @@ adds to the storage and transmission requirements by about $2n$ floats.
 % The starting image requires $n^2$ floats so we save space is 
 % choose a cutoff value less than $0.50$.
 The above cutoff of $0.10$ needs 
-only $20\%$ of the storage
-and transmission requirements of the original image,
+only two percent of the storage
+and transmission requirements of the original image's full matrix,
 although its quality may not be acceptable.
 That is, selecting a cutoff parameter is an engineering decision where
 on a fidelity versus resource-consumption continuum 
 you choose a value appropriate for your application.
  
-Experimenting shows that setting
-the cutoff parameter to $0.20$ can make the output image hard to tell
+Setting
+the cutoff parameter to~$0.20$ can make the output image hard to tell
 from the original.
 Below is the picture of Suzy 
 from this manual's cover.
@@ -904,13 +889,13 @@ is not part of the graph.
 
 \section{Source of img\_squeeze.sage}
 We use the Python Image Library for reading and writing the graphic.
-\lstinputlisting[firstline=2,lastline=2]{img_squeeze.sage}
+\lstinputlisting[firstline=5,lastline=5]{img_squeeze.sage}
 The function
 \inlinecode{img_squeeze}
 takes three arguments:~the names of the two files, and
 the cutoff real number between $0$ and~$1$ the gives the percentage 
 of the singular values to retain in the sum.
-\lstinputlisting[firstline=4,lastline=8]{img_squeeze.sage}
+\lstinputlisting[firstline=7,lastline=11]{img_squeeze.sage}
 
 This function first brings the input data to a format where each
 pixel is a triple 
@@ -921,31 +906,25 @@ three Python arrays \inlinecode{rd}, \inlinecode{gr},
 and \inlinecode{bl}, which then initialize the 
 three \Sage{} matrices \inlinecode{RD},
 \inlinecode{GR}, and~\inlinecode{BL}.
-\lstinputlisting[firstline=9,lastline=25]{img_squeeze.sage}
+\lstinputlisting[firstline=12,lastline=28]{img_squeeze.sage}
 
 The next step finds the Singular Value Decomposition of those three.
 Out of curiosity, we have a look at the eight largest singular
 values in the red matrix, the singular value where we make the cutoff,
 and the eight smallest.
-\lstinputlisting[firstline=26,lastline=38]{img_squeeze.sage}
+\lstinputlisting[firstline=29,lastline=40]{img_squeeze.sage}
 
 Finally, for each matrix we compute the sum
 $\sigma_1\cdot\vec{u}_1\trans{\vec{v}}_1+\sigma_2\cdot\vec{u}_2\trans{\vec{v}}_2
    +\cdots$
 up through the cutoff index.
-\lstinputlisting[firstline=39,lastline=58]{img_squeeze.sage}
-% The code asks for the transpose of the
-% \protect\inlinecode{U_RD.column(i)}, etc., which may seem to be a mistake.
-% Remember that \protect\Sage{} favors rows for vectors, so this is how we
-% make the $\vec{u}$ vector a column, while $\vec{v}$ is already a row.
-% Because of this operation on the vector, the first time you run this
-% code in a \protect\Sage{} session you may get a depreciation warning.
+\lstinputlisting[firstline=41,lastline=60]{img_squeeze.sage}
 
 To finish, we put the data in the PNG format and save it to 
 disk.
-\lstinputlisting[firstline=59,lastline=67]{img_squeeze.sage}
+\lstinputlisting[firstline=61,lastline=69]{img_squeeze.sage}
 This part of the routine takes a long time, in part because
-the code is written to be easy to read rather than to be fast to run.
+the code is intended to be easy to read rather than fast to run.
 
 \endinput
 
