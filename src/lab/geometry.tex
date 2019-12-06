@@ -1,10 +1,11 @@
 \chapter{Geometry of Linear Maps}
 
 To illustrate the geometric effect of linear transformations 
-we will picture how they transform the unit square.
-We will show transformations of the plane,~$\Re^2$,
-because they fit on the paper, but the principles extend to 
-higher-dimensional spaces.
+we will picture their actions 
+of plane transformations on the unit square.
+We show the plane 
+because it fits on the paper but the principles extend to 
+higher-dimensional spaces~$\Re^n$.
 
 
 
@@ -12,7 +13,7 @@ higher-dimensional spaces.
 %========================================
 \section{Lines map to lines}
 The prior chapter points out that 
-the condition $h(r\vec{v})=r\cdot h(\vec{v})$ in the definition
+the condition $h(r\cdot \vec{v})=r\cdot h(\vec{v})$ in the definition
 of linear map means that
 these maps send lines through the origin to lines through the origin.
 What about lines not through the origin?
@@ -107,20 +108,21 @@ t_ell = t_ell+d
 t_ell.set_axes_range(-4, 4, -4, 4)
 t_ell.save("graphics/geo000b.pdf", fontsize=7)
 \end{sagesilent}
+Here are the input and output plots.\footnote{%
+  As with plots from earlier chapters, we've left out some of the code to 
+  set the font size, etc.
+  For the full call see this manual's source.
+  Also, the limits on the parameter~$s$ of $10$ and~$-10$ are arbitrary, just
+  chosen to be large enough that the line segment covers the entire 
+  domain and codomain intervals shown, from $-4$ to~$4$.}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo000a.pdf}}
   \quad\mapsvia{\makebox[1.5em][c]{\scriptsize $t$}}\quad
   \vcenteredhbox{\includegraphics{graphics/geo000b.pdf}}
 \end{equation*}
-(As with plots from earlier chapters, we've left out some of the code to 
-set the font size, etc.
-For the full call see this manual's source.
-Also, the limits on the parameter~$s$ of $10$ and~$-10$ are arbitrary, just
-chosen to be large enough that the line segment covers the entire 
-domain and codomain intervals shown, from $-4$ to~$4$.)
 One example of a rotation is that the vector that ends at $(0,2)$ 
 is rotated to the vector that ends at $(-1,\sqrt{3})$.
-Those vectors are shown as red dots.
+The endpoints of those vectors are shown as red dots.
 
 
 
@@ -158,8 +160,8 @@ p.save("graphics/geo100.pdf")
 The \inlinecode{plot_square_action(a,b,c,d)} routine applies to 
 that unit square the 
 transformation represented with respect to the standard basis by the 
-matrix with entries $a$, $b$, $c$, and~$d$.
-(The source code is at the end of the chapter.)
+matrix with entries $a$, $b$, $c$, and~$d$;
+the source code listing is at the end of the chapter.
 \begin{equation*}
   \begin{mat}
     a &b \\
@@ -198,18 +200,16 @@ It transforms the input square into an output parallelogram.
 The colors show another effect of the transformations, beyond shape-changing.
 Taking the colors in their natural order of red, orange, 
 green, and blue,
-the the domain square has a counterclockwise orientation. 
-But the codomain's
-figure is clockwise. 
+the domain square has a counterclockwise orientation. 
+But the codomain's figure is clockwise. 
 So the colors illustrate that this transformation 
 reverses orientation.
 
-We can develop an understanding of complex behavior by 
-building upon an understanding of simple behavior.
-This transformation doubles the $x$~components of all 
-vectors.\footnote{%
-  As in other chapters, some of the graphics are drawn using 
-  some fiddly options that are not shown.
+We can hope to understand complex behavior by 
+building up from an understanding of simple behavior.
+So we start with the transformation that doubles $x$~components.\footnote{%
+  As in other chapters, some of the plots are drawn using 
+  some fiddly graphics options that are not shown.
   In this case, the \protect\inlinecode{p.save(...)} has
   the \protect\inlinecode{ticks\_integer=True} option.}
 \begin{sagecommandline}
@@ -246,7 +246,7 @@ That example illustrates that the behavior associated with diagonal matrices
 is simple.
 For instance, tripling the $x$~coordinate gives you a similar shape with
 three times the area of the starting one.
-What about if you take $-1$~times the $x$-coordinate?
+What if you take $-1$~times the $x$-coordinate?
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
@@ -273,7 +273,7 @@ p.save("graphics/geo103b.pdf", ticks_integer=True)
 \end{equation*}
 It changes the orientation.
 
-We say that the above shape has an \textit{oriented area}
+We say that the shape on the left above has an \textit{oriented area}
 of $-1$.
 The motivation for taking the area with a sign 
 is continuity:~imagine starting with the right-hand figure 
@@ -335,16 +335,21 @@ p = plot_square_action(-2,0,0,-3)
 p.set_axes_range(-3, 2, -4, 2) 
 p.save("graphics/geo105b.pdf", ticks_integer=True)
 \end{sagesilent}
+The before and after plots
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo105a.pdf}}
   \quad\mapsvia{\big (\begin{smallmatrix} -2 &0 \\ 0 &-3 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo105b.pdf}}
 \end{equation*}
-The colors are the same as the original shape's counterclockwise
+show that on the right 
+the colors come in the same order as they did in the
+original shape's counterclockwise
 red, orange, green, and then blue.
-Thus the new shape has an oriented area of~$6$.
+That is, reversing orientation twice brings you back to the original 
+orientation.
+The new shape has an oriented area of~$6$.
 
-We next show the effect of putting in off-diagonal entries.
+Next consider the effect of putting off-diagonal entries in the matrix.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
@@ -368,23 +373,30 @@ p.save("graphics/geo106b.pdf", ticks_integer=True)
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 0 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo106b.pdf}}
 \end{equation*}
-This transformation is a 'shear'.
-The line segment sides of the original square 
-map to line segments, but the sides are not at right angles.
+This transformation is a \textit{shear}.
+The output sides are not at right angles, although still opposite sides are
+parallel.
 The action
 \begin{equation*}
-  \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
+  \begin{mat}
+    1  &2  \\
+    0  &1
+  \end{mat}
+  \colvec{x \\ y}
+  = \colvec{x+2y \\ y}
 \end{equation*}
 means that 
 a starting vector with a $y$~component of~$1$ gets shifted right by~$2$ while
-a starting vector with a $y$~component of~$2$ is shifted right by~$4$, so
+a starting vector with a $y$~component of~$2$ is shifted right by~$4$, etc.
+That is,
 vectors are shifted depending on how far they are above or below the
 $x$-axis.
-This transformation preserves orientation and the output shape has a base of~$1$
-with a height of~$1$, so its oriented area is~$1$.
+The output shape has a base of~$1$
+with a height of~$1$, and the orientation is preserved, 
+so its oriented area is~$1$.
 
 Putting a nonzero value in the other off-diagonal entry of the matrix,
-the upper right, has the same effect except that it shears parallel
+the lower left, has the same effect except that it shears parallel
 to the $y$-axis.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
@@ -399,17 +411,17 @@ sage: p.save("graphics/geo107b.pdf")
 load("plot_action.sage")
 q = plot_square_action(1,0,0,1) 
 q.set_axes_range(-1, 3, -3, 2) 
-q.save("graphics/geo107a.pdf")
+q.save("graphics/geo107a.pdf", ticks_integer=True)
 p = plot_square_action(1,0,-2,1) 
 p.set_axes_range(-1, 3, -3, 2) 
-p.save("graphics/geo107b.pdf")
+p.save("graphics/geo107b.pdf", ticks_integer=True)
 \end{sagesilent}
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/geo107a.pdf}}
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &0 \\ -2 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo107b.pdf}}
 \end{equation*}
-The action
+The action above
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x \\ -2x+y}
 \end{equation*}
@@ -438,7 +450,14 @@ One advantage of starting these before/after pictures with a unit
 square is that then the oriented area of the output shape equals the
 determinant of the matrix. 
 
-For instance, this matrix is singular, so it has determinant~$0$.
+For instance, the matrix
+\begin{equation*}
+\begin{mat}
+  1 &2 \\
+  2 &4
+\end{mat}
+\end{equation*}
+is singular so it has determinant~$0$.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_square_action(1,0,0,1) 
@@ -462,21 +481,21 @@ p.save("graphics/geo200b.pdf")
   \quad\mapsvia{\big (\begin{smallmatrix} 1 &2 \\ 2 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/geo200b.pdf}}
 \end{equation*}
-The output shape has zero content.
+The output shape has an area of zero.
 
 
 
 
 
 
-\section{Turing's factorization PA=LDU}
+\section{Turing's factorization, PA=LDU}
 We will now see how the action of any matrix can be decomposed into 
 the actions shown above.
 This will give us a complete geometric description of any linear map,
 that is, you can understand the effect of any transformation by 
 breaking down into a sequence of steps that are simple.
 
-Recall that you can do the row operations of Gauss's Method with
+Recall that we can do the row operations of Gauss's Method with
 matrix multiplication.
 For instance, multiplication from the left by this matrix has the effect of the
 row operation $2\rho_1+\rho_2$.
@@ -499,9 +518,15 @@ row operation $2\rho_1+\rho_2$.
   \end{mat}
 \end{equation*}
 
-Ss described in the book, the  
+As described in the book, the  
 elementary reduction matrices
-come in three types $M_i(k)$, $P_{i,j}$, and~$C_{i,j}(k)$, and
+come in the three types.
+For a matrix~$H$, do row scaling~\( k\rho_i \) 
+with \( M_i(k)\,H \), 
+swap rows \( \rho_i\leftrightarrow\rho_j \) with \( P_{i,j}\,H \), 
+and add a multiple of one row to another
+\( k\rho_i+\rho_j \) with \( C_{i,j}(k)\,H \). 
+These three
 arise from applying a row operation to an identity matrix.
 \begin{center}
 $I\grstep{k\rho_i}M_i(k)$ where \( k\neq 0 \)
@@ -510,18 +535,13 @@ $I\grstep{k\rho_i}M_i(k)$ where \( k\neq 0 \)
 \qquad
 \( I\grstep{k\rho_i+\rho_j}C_{i,j}(k) \) where \( i\neq j \)
 \end{center}
-For a matrix~$H$ you can do row scaling~\( k\rho_i \) 
-with \( M_i(k)\,H \), 
-you can swap rows \( \rho_i\leftrightarrow\rho_j \) with \( P_{i,j}\,H \), 
-and you can add a multiple of one row to another
-\( k\rho_i+\rho_j \) with \( C_{i,j}(k)\,H \). 
-The prior paragraph used the $\nbyn{3}$
+For instance, the prior paragraph used the $\nbyn{3}$
 matrix $C_{1,2}(2)$.
 (We will focus on transformations so we will take all of these
 matrices to be same-sized and square.)
 
-You can continue the Gauss's Method started in the matrix equation above.
-Use $C_{2,3}(-1)$ to perform $-\rho_2+\rho_3$,
+Continuing the Gauss's Method reduction started in the matrix equation above,
+use $C_{2,3}(-1)$ to perform $-\rho_2+\rho_3$,
 producing echelon form.
 \begin{equation*}
   \begin{mat}
@@ -545,27 +565,24 @@ producing echelon form.
     0 &3  &0 \\
     0 &0  &2
   \end{mat}
-  \tag{$*$}
+  % \tag{$*$}
 \end{equation*}
-% As in this example, matrix multiplication by these elementary matrices 
-% suffices to do Gauss's Method and produce echelon form.
 
 Observe that if the starting matrix is such that
 you don't need any row swapping then 
 you can stick with the operations~\( k\rho_i+\rho_j \) where 
 $j>i$. 
 The elementary
-matrices that perform those operations are `lower triangular'
+matrices that perform those operations are called lower triangular
 since all of their nonzero entries are in the lower left.
 (Matrices with all of their nonzero entries in the upper right are 
-`upper triangular'.)
+called upper triangular.)
 % Thus the factorization so far is into a product of lower triangular elementary
 % matrices and an echelon form matrix.
 
-You can go further.
-Use a diagonal matrix to make the 
+We can go further.
+Next use a diagonal matrix to make the 
 leading entries of the nonzero rows of the echelon form matrix into~$1$'s.
-Here is that additional step performed on the above equation.
 \begin{equation*}
   \begin{mat}
     1/3 &0   &0 \\
@@ -595,11 +612,10 @@ Here is that additional step performed on the above equation.
   \end{mat}
   \tag{$*$}
 \end{equation*}
- 
-You can use multiplication by elementary matrices to go all the way to a 
+Finally, use column operations
+to go all the way to a 
 block partial identity
 matrix.
-The idea is to use column operations.
 Here is right-multiplication on the right-hand side of~($*$) to 
 add $-1/3$ times the first column to the second column.
 \begin{equation*}
@@ -621,7 +637,7 @@ add $-1/3$ times the first column to the second column.
   \end{mat}
 \end{equation*}
 Then adding $-4/3$~times the first column to the third column
-leave an identity matrix.
+leaves an identity matrix.
 \begin{equation*}
   \begin{mat}
     3 &1  &4 \\ 
@@ -641,12 +657,15 @@ leave an identity matrix.
   \end{mat}
    \tag{$**$}
 \end{equation*}
-Thus, if you start with a matrix $A$ that does not require any row swaps then 
+
+In summary, 
+if you start with a matrix $A$ that does not require any row swaps then 
 you get this matrix equation.
 \begin{equation*}
-  L_1L_2\cdots L_k\cdot A\cdot U_1U_2\cdot U_r = D
+  D_0\cdot L_s\cdots L_2 L_1\cdot A\cdot U_1U_2\cdots U_r = I
 \end{equation*}
-Here $D$ is a partial identity matrix, 
+Here $I$ is a partial identity matrix, 
+$D_0$ is a diagonal matrix,
 the $L_i$ are lower-triangular row combination matrices,
 and the $U_j$ are upper-triangular column combination matrices. 
 
@@ -656,29 +675,33 @@ is undone with $-2\rho_1+\rho_2$),
 Thus each of those lower triangular matrices
 has an inverse.
 Likewise, each upper-triangular matrix has an inverse.
-That means we can do the algebra to move things to the left side of the 
-equation.
+That means we can do the algebra to move everything but~$A$ 
+to the left side of the equation.
 Therefore, 
 if you don't need any swaps in a Gauss-Jordan reduction of a matrix~$A$ 
-then you get a factorization of the starting matrix.
+then you get a factorization of the starting matrix
 \begin{equation*} 
-  A = L_k^{-1}\cdots L_1^{-1}\cdot D\cdot U_r^{-1}\cdots U_1^{-1}
+  A = L_1^{-1}\cdots L_s^{-1}\cdot D\cdot U_r^{-1}\cdots U_1^{-1}
 \end{equation*}
+where $D$ is the product of $D_0^{-1}$ and the partial identity~$I$, 
+which is clearly a diagonal matrix.
 
-To fix the swap issue you can pre-swap:
-before factoring the starting matrix, first swap its rows
+To fix the swap issue you can pre-swap:~before 
+factoring the starting matrix, first swap its rows
 with a permutation matrix~$P$.
 \begin{equation*}
-  P\cdot A = L_k^{-1}\cdots L_1^{-1}\cdot D\cdot U_r^{-1}\cdots U_1^{-1}
+  P\cdot A = L_s^{-1}\cdots L_1^{-1}\cdot D\cdot U_r^{-1}\cdots U_1^{-1}
   \tag{$*{*}*$}
 \end{equation*}
 
-The coup de gras is:~the product of lower triangular matrices is 
-lower triangular,
-and the product of upper triangular matrices is 
-upper triangular,
-so you can combine all the $L$'s and all the $U$'s in~($*{*}*$), 
-to get that $PA=LDU$.
+Now for the coup de gras.
+The inverse of a lower triangular matrix is a lower triangular matrix
+and the product of lower triangular matrices is 
+lower triangular, so you can combine all the $L_i^{-1}$'s in~($*{*}*$) 
+into one lower triangular~$L$.
+Likewise, you can combine all the $U_i^{-1}$'s into a single 
+upper triangular~$U$.
+Thus, any matrix factors as $PA=LDU$.
 
 We illustrate with the generic $\nbyn{2}$ transformation of $\Re^2$ represented 
 with respect to the standard basis in this way.
@@ -883,10 +906,11 @@ Each row swap toggles the orientation, from counterclockwise to clockwise or
 from clockwise to counterclockwise.
 Thus
 if the permutation matrix requires an odd number of swaps 
-then it changes the orientation 
+then it changes the orientation, 
 but with an even number of swaps it leaves the orientation the same.)
 
-Now we look at the cumulative effect: the actions of $U$, then~$DU$, then~$LDU$.
+We finish our study of $LDU\,\vec{v}$ by considering the cumulative effect.
+Consider in order the actions of $U$, then~$DU$, and then~$LDU$.
 For example, here is the cumulative effect of the maps on the 
 unit square's upper right corner.
 \begin{equation*}
@@ -968,7 +992,7 @@ First is \inlinecode{ZORDER}, which determines the order in which
 \Sage{} plots things, and here we want the unit square to be plotted
 after the axes (so its colors will be visible).
 The second is that the way line segments butt against each other is ugly 
-so we cover the butt with a dot.
+so we cover that with a dot.
 \lstinputlisting[firstline=53,lastline=90]{plot_action.sage}
 
 
