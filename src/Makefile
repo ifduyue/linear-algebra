@@ -50,7 +50,7 @@ ASYMPTOTE_CMD := $(TEXINPUTS) $(ASYMPTOTE_DIR) asy -nosafe -vv
 
 
 .PHONY : all
-all : book.pdf slides lab
+all : book.pdf slides lab answers
 
 # .PHONY : book
 # book : book.pdf
@@ -172,6 +172,17 @@ bib : bib/bib.tex
 bib/bib.tex :
 
 
+# =============== answers =====================
+
+.PHONY : answers
+answers: jhanswer.pdf
+
+jhanswer.pdf : book.pdf cover pref gr vs map det jc appen bib
+	$(LATEX_CMD) jhanswer.tex
+
+
+
+
 # =============== Slides =====================
 
 # Slides come in groups of three.  For instance, slides/one_i.pdf is the
@@ -186,7 +197,7 @@ define compile-slides
   $(LATEX_CMD) $(notdir $(basename $@))_handout
 endef
 
-slides : slides_one slides_two slides_three slides_four slides_five zip_slides
+slides : slides_one slides_two slides_three slides_four slides_five # zip_slides
 
 # Slides for Chapter One
 .PHONY : slides_one
@@ -338,8 +349,8 @@ slides_five : slides_five_asy \
   slides/five/five_ii.pdf # \
 #   slides/five/five_ii_a.pdf 
 
-# .PHONY : slides_five_asy
-# slides_five_asy :
+.PHONY : slides_five_asy
+slides_five_asy :
 
 # slides/five/asy/%.pdf : slides/five/asy/%.asy
 # 	cd $(dir $@);\
