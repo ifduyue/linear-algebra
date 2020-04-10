@@ -3490,4 +3490,128 @@ endfig;
 
 
 
+%  Translation
+beginfig(67);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+  
+  path rect;
+  pair sft;
+  
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  sft = (1.5w,0.5v);
+  z0=(0w,0v) shifted sft;
+  z1=(1w,0v) shifted sft;
+  z2=(1w,2v) shifted sft;
+  z3=(0w,2v) shifted sft; 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+
+
+% ----------- Rescaling -----------
+%   Sequence of rescalings
+beginfig(68);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+  numeric scalefactor;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  scalefactor=1.1;
+  z0= (0w,0v) scaled scalefactor;
+  z1= (1w,0v) scaled scalefactor;
+  z2= (1w,2v) scaled scalefactor;
+  z3= (0w,2v) scaled scalefactor; 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+beginfig(69);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+  numeric scalefactor;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  scalefactor=(1.1)**2;
+  z0= (0w,0v) scaled scalefactor;
+  z1= (1w,0v) scaled scalefactor;
+  z2= (1w,2v) scaled scalefactor;
+  z3= (0w,2v) scaled scalefactor; 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+beginfig(70);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+  numeric scalefactor;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  scalefactor=1.1**3;
+  z0= (0w,0v) scaled scalefactor;
+  z1= (1w,0v) scaled scalefactor;
+  z2= (1w,2v) scaled scalefactor;
+  z3= (0w,2v) scaled scalefactor; 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+
 end

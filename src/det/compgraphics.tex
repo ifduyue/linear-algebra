@@ -56,8 +56,8 @@ a movie theater screen.
 \begin{center} 
   \vcenteredhbox{\includegraphics{det/mp/ch4.60}}
 \end{center}
-Now the projector associates vectors in three-space with
-vectors in the screen plane.
+This associates vectors in three-space on the grey line with 
+$p$~in the screen plane.
 \begin{equation*}
   \tilde{p}=\colvec{a \\ b \\ c} 
   \mapsto 
@@ -66,7 +66,8 @@ vectors in the screen plane.
 
 We can adapt the things we have already seen about matrices to perform 
 the transformations.
-Rotation is an example.
+Rotation\index{rotation} 
+is an example.
 This matrix rotates in the plane~$z=1$ about the origin by the angle~$\theta$.
 \begin{equation*}
   \begin{mat}
@@ -123,7 +124,8 @@ the matrix.
 So there is no harm in working with homogeneous coordinates.
 But what is the advantage?
 
-The computer graphic operation of translation, of sliding things from
+The computer graphic operation of translation,\index{translation} 
+of sliding things from
 one place to another, is not a linear transformation because it does
 not leave the origin fixed.
 But if we work with homogeneous coordinates then we can use matrices.
@@ -156,10 +158,10 @@ We are at a moment where the
 camera is panning and rotating at the same time.
 Every single point in the scene needs to be both translated and rotated.
 Rather than have the computer perform two operations to each point,
-we can just multiply the two matrices just once and
+we can multiply the two matrices and
 then the computer only applies one operation to each point; it multiplies
-by that point the resulting matrix.
-That is a tremendous speedup.
+that point by the resulting matrix.
+That is a tremendous speedup and simplification.
 
 We will list some examples of the effects that we can get.
 We have already talked about rotation. 
@@ -168,6 +170,12 @@ Here is the picture of rotation by twenty degrees.
   \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
   \quad$\mapsto$\quad
   \vcenteredhbox{\includegraphics{det/mp/ch4.62}}
+\end{center}
+And here is a translation with $t_x=1.5$ and~$t_y=0.5$.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad$\mapsto$\quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.67}}
 \end{center}
 
 Next is scaling.
@@ -195,8 +203,17 @@ and in the $y$-direction by~$t=0.75$.
 \end{center}
 
 If we take $s=t$ then the entire shape is rescaled.
-For instance, if we string together frames with $s=t=1.05$ then in
+For instance, if we string together frames with $s=t=1.10$ then in
 the movie it will seem that the object is getting closer to us.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.68}}
+  \quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.69}}
+  \quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.70}}
+\end{center}
 
 We can reflect the object.
 This reflects about the line $y=x$.
@@ -240,7 +257,7 @@ The dashed line below is $y=-x$.
 \end{center}
 
 More complex transformations are possible.
-This is a shear.
+This is a \definend{shear}.\index{shear}
 \begin{equation*}
   \begin{mat}
     1   &1  &0  \\
@@ -282,18 +299,20 @@ slide back.
     0   &1  &-2  \\
     0   &0  &1  
   \end{mat}
+  \tag{*}
 \end{equation*}
-(Observe that, as always, the action done first is described by the matrix
+(As always, the action done first is described by the matrix
 on the right.
 That is, the matrix on the right describes sliding all points in the plane
-of interest by $2$, 
+of interest by $-2$, 
 the matrix in the middle reflects about $y=-x$, 
 and the matrix on the left slides all points back.)
 
-Even more complex actions.
+There are even more complex effects possible with matrices.
 These are the matrices for the
-general affine transformation, and the
-general projective transformation.
+\definend{general affine transformation},\index{affine transformation} 
+and the
+\definend{general projective transformation}.\index{projective transformation}
 \begin{equation*}
   \begin{mat}
     d   &e  &f  \\
@@ -307,7 +326,7 @@ general projective transformation.
     j   &k  &1  
   \end{mat}
 \end{equation*}
-Description of their geometric effect is beyond our scope.
+However, description of their geometric effect is beyond our scope.
 
 
 
@@ -315,307 +334,152 @@ Description of their geometric effect is beyond our scope.
 % ========================================
 \begin{exercises}
   \item 
-    What is the equation of this point?
+    Calculate the product in ($*$)
+    \begin{answer}
+      Straightforward calculation gives this for the product.
+      \begin{equation*}
+        \begin{mat}
+          1   &0  &0  \\
+          0   &1  &2  \\
+          0   &0  &1  
+        \end{mat}
+        \begin{mat}
+          0   &-1  &0  \\
+          -1  &0   &0  \\
+          0   &0   &1  
+        \end{mat}
+        \begin{mat}
+          1   &0  &0  \\
+          0   &1  &-2  \\
+          0   &0  &1  
+        \end{mat}
+        =
+        \begin{mat}
+         0 &-1 &2 \\
+        -1 &0  &2 \\
+         0 &0  &1
+        \end{mat}
+      \end{equation*}
+    \end{answer}
+% sage: M0 = matrix(QQ, [[1,0,0], [0,1,2], [0,0,1]])
+% sage: M0
+% [1 0 0]
+% [0 1 2]
+% [0 0 1]
+% sage: M1 = matrix(QQ, [[0,-1,0], [-1,0,0], [0,0,1]])
+% sage: M2 = matrix(QQ, [[0,-1,0], [-1,0,0], [0,0,1]])
+% sage: M2 = matrix(QQ, [[1,0,0], [0,1,-2], [0,0,1]])
+% sage: M0*M1*M2
+% [ 0 -1  2]
+% [-1  0  2]
+% [ 0  0  1]
+  \item Find the matrix that reflects about the line $y=2x$.
+    \begin{answer}
+      Working in $\R^2$, let the matrix be $M$.
+      We get these two.
+      \begin{equation*}
+        \colvec{1 \\ 2}\mapsto \colvec{1 \\ 2}
+        \qquad
+        \colvec{-2 \\ 1}\mapsto \colvec{2 \\ -1}
+      \end{equation*}
+      (For the second one, the starting vector is on the line through the 
+      origin that is perpendicular to $y=2x$.)
+      We have this.
+      \begin{equation*}
+        M
+        \begin{mat}
+          1  &-2  \\
+          2  &1
+        \end{mat}
+        =
+        \begin{mat}
+          1  &2  \\
+          2  &-1
+        \end{mat}
+      \end{equation*}
+      We have this.
+      \begin{equation*}
+        M =
+            \begin{mat}
+              1  2  \\
+              2  &-1
+            \end{mat}
+            \begin{mat}
+              1  &-2  \\
+              2  &1     
+            \end{mat}^{-1}
+          =
+            \begin{mat}
+              -3/5  &4/5 \\
+              4/5   &3/5
+            \end{mat}
+      \end{equation*}
+      So for homogeneous coordinates the matrix is this.
+      \begin{equation*}
+      \begin{mat}
+        -3/5  &4/5  &0  \\
+         4/5  &3/5  &0  \\
+           0  &0    &1
+      \end{mat}
+      \end{equation*}
+    \end{answer}
+  \item Find the matrix that reflects about the line $y=2x-4$.
+    \begin{answer}
+      Move all points over by $4$, reflect about the line $y=2x$ using the
+      prior exercise, and them move them back. 
+      \begin{equation*}
+      \begin{mat}
+        1  &0  &0  \\
+        0  &1  &-4 \\
+        0  &0  &1
+      \end{mat}
+      \begin{mat}
+        -3/5  &4/5  &0  \\
+         4/5  &3/5  &0  \\
+           0  &0    &1
+      \end{mat}
+      \begin{mat}
+        1  &0  &0  \\
+        0  &1  &4 \\
+        0  &0  &1
+      \end{mat}
+      =
+      \begin{mat}
+        -3/5  &4/5  &16/5  \\
+         4/5  &3/5  &-8/5 \\
+           0  &0    &1
+      \end{mat}
+      \end{equation*}
+    \end{answer}
+% sage: M0 = matrix(QQ, [[1,0,0], [0,1,-4], [0,0,1]])
+% sage: M1 = matrix(QQ, [[-3/5,4/5,0], [4/5,3/5,0], [0,0,1]])
+% sage: M2 = matrix(QQ, [[1,0,0], [0,1,4], [0,0,1]])
+% sage: M0*M1*M2
+% [-3/5  4/5 16/5]
+% [ 4/5  3/5 -8/5]
+% [   0    0    1]
+  \item 
+    Rotation and translation are rigid operations.
+    What is the matrix for a rotation followed by a translation?
+    \begin{answer}
     \begin{equation*}
-       \colvec[r]{1 \\ 0 \\ 0}
+      \begin{mat}
+        1  &0  &t_x  \\
+        0  &1  &t_y  \\
+        0  &0  &1
+      \end{mat}
+      \begin{mat}
+        \cos\theta &-\sin\theta  &0 \\
+        \sin\theta &\cos\theta   &0 \\
+        0          &0            &1
+      \end{mat}
+      =
+      \begin{mat}
+        \cos\theta  &-\sin\theta  &t_x  \\
+        \sin\theta  &\cos\theta   &t_y  \\
+        0           &0            &1
+      \end{mat}
     \end{equation*}
-    \begin{answer}
-      From the dot product
-      \begin{equation*}
-        0=\colvec[r]{1 \\ 0 \\ 0}\dotprod\rowvec{L_1 &L_2 &L_3}
-         =L_1
-      \end{equation*}
-      we get that the equation is $L_1=0$.
-    \end{answer}
-  \item 
-    \begin{exparts}
-      \partsitem Find the line incident on these points in the 
-         projective plane.
-         \begin{equation*}
-           \colvec[r]{1 \\ 2 \\ 3},\,\colvec[r]{4 \\ 5 \\ 6}
-         \end{equation*}
-      \partsitem Find the point incident on both of 
-         these projective lines. 
-         \begin{equation*}
-           \rowvec{1 &2 &3},\,\rowvec{4 &5 &6}
-         \end{equation*} 
-    \end{exparts}
-    \begin{answer}
-      \begin{exparts}
-        \partsitem This determinant
-          \begin{equation*}
-            0=\begin{vmat}
-              1  &4  &x \\
-              2  &5  &y \\
-              3  &6  &z
-            \end{vmat}
-            =-3x+6y-3z
-          \end{equation*}
-          shows that the line is $L=\rowvec{-3 &6 &-3}$.
-        \partsitem $\colvec[r]{-3 \\ 6 \\ -3}$
-      \end{exparts}
-    \end{answer}
-  \item
-    Find the formula for the line incident on two projective points.
-    Find the formula for the point incident on two projective lines.
-    \begin{answer}
-      The line incident on 
-      \begin{equation*}
-        u=\colvec{u_1 \\ u_2 \\ u_3}
-        \qquad
-        v=\colvec{v_1 \\ v_2 \\ v_3}
-      \end{equation*}
-      comes from this determinant equation.
-      \begin{equation*}
-        0=\begin{vmat}
-          u_1  &v_1  &x  \\
-          u_2  &v_2  &y  \\
-          u_3  &v_3  &z
-        \end{vmat}
-        =(u_2v_3-u_3v_2)\cdot x 
-          + (u_3v_1-u_1v_3)\cdot y 
-          + (u_1v_2-u_2v_1)\cdot z
-      \end{equation*}
-      The equation for the point incident on two lines is the same. 
-    \end{answer}
-  \item \label{exer:IncidentIndReps}
-    Prove that the definition of incidence is independent of the choice of 
-    the representatives of $p$ and $L$.
-    That is, if $p_1$, $p_2$, $p_3$, and $q_1$, $q_2$, $q_3$ are two triples of
-    homogeneous coordinates for $p$, and 
-    $L_1$, $L_2$, $L_3$, and $M_1$, $M_2$, $M_3$ are two triples of 
-    homogeneous coordinates for $L$, prove that  
-    $p_1L_1+p_2L_2+p_3L_3=0$ if and only if 
-    $q_1M_1+q_2M_2+q_3M_3=0$. 
-    \begin{answer}
-      If $p_1$, $p_2$, $p_3$, and $q_1$, $q_2$, $q_3$ are two triples of
-      homogeneous coordinates for $p$ then the two column vectors
-      are in proportion, that is, lie on the same line through the
-      origin.
-      Similarly, the two row vectors are in proportion.
-      \begin{equation*}
-        k\cdot\colvec{p_1 \\ p_2 \\ p_3}
-          =\colvec{q_1 \\ q_2 \\ q_3}
-        \qquad
-        m\cdot\rowvec{L_1 &L_2 &L_3}
-          =\rowvec{M_1 &M_2 &M_3}
-      \end{equation*}
-      Then multiplying gives the answer
-      $(km)\cdot (p_1L_1+p_2L_2+p_3L_3)=q_1M_1+q_2M_2+q_3M_3=0$.
-    \end{answer}
-  \item 
-    Give a drawing to show that central projection does not preserve 
-    circles, that a circle may project to an ellipse.
-    Can a (non-circular) ellipse project to a circle?
-    %Must it (in the sense that for any ellipse there is a projection
-    %such that it would project to a circle)? 
-    \begin{answer}
-      The picture of the solar eclipse \Dash  unless 
-      the image plane is exactly perpendicular
-      to the line from the sun through the pinhole \Dash  shows the circle
-      of the sun projecting to an image that is an  ellipse.
-      (Another example is that in many pictures in this 
-      Topic, we've shown the circle that is the sphere's equator as an ellipse,
-      that is, a viewer of the drawing sees a circle as an ellipse.)
-      
-      The solar eclipse picture also shows the converse. 
-      If we picture the projection as going from left to right 
-      through the pinhole
-      then the ellipse $I$ projects through $P$ to a circle~$S$.
-    \end{answer}
-  \item \label{exer:CorrProjPlaneEucPl} 
-    Give the formula for the correspondence between the 
-    non-equatorial part of the antipodal modal
-    of the projective plane, and the plane $z=1$.
-    \begin{answer}
-      A spot on the unit sphere
-      \begin{equation*}
-        \colvec{p_1 \\ p_2 \\ p_3} 
-      \end{equation*}
-      is non-equatorial if and only if $p_3\neq 0$.
-      In that case it corresponds to this point on the $z=1$ plane
-      \begin{equation*}
-        \colvec{p_1/p_3 \\ p_2/p_3  \\ 1}
-      \end{equation*}
-      since that is intersection of the line containing the vector and the
-      plane. 
-    \end{answer}
-%  \item \label{exer:ELinesCorrPLines} 
-%    Consider the correspondence between the non-ideal points in
-%    the projective plane and the Euclidean plane.
-%    \begin{exparts}
-%      \item Show that any Euclidean line corresponds to a projective line.
-%      \item Show that parallel Euclidean lines correspond to projective
-%        lines that meet at an ideal point.
-%      \item Prove the converses of those two statements.
-%    \end{exparts}
-%  \item \label{exer:EuclidDesarg}
-%    Give a statement of Desargue's Theorem for Euclidean geometry.
-%  \item  \label{exer:DesarAntipPict}
-%    Draw a picture illustrating Desargue's Theorem on the antipodal model. 
-  \item 
-    (Pappus's Theorem)
-    Assume that $T_0$, $U_0$, and  $V_0$ are collinear and that 
-    $T_1$, $U_1$, and $V_1$ are collinear. 
-    Consider these three points:
-    (i)~the intersection $V_2$ of the lines $T_0U_1$ and $T_1U_0$,
-    (ii)~the intersection $U_2$ of the lines $T_0V_1$ and $T_1V_0$, and
-    (iii)~the intersection $T_2$ of $U_0V_1$ and $U_1V_0$. 
-    \begin{exparts}
-      \partsitem Draw a (Euclidean) picture.
-      \partsitem Apply the lemma used in Desargue's Theorem
-        to get simple homogeneous coordinate vectors for the 
-        $T$'s and $V_0$.
-      \partsitem Find the resulting homogeneous coordinate vectors
-        for $U$'s (these must each involve a parameter as, e.g., $U_0$ could
-        be anywhere on the $T_0V_0$ line).
-      \partsitem Find the resulting homogeneous coordinate vectors for 
-        $V_1$.
-        (\textit{Hint:}~it involves two parameters.)
-      \partsitem Find the resulting homogeneous coordinate vectors for 
-        $V_2$.
-        (It also involves two parameters.)
-      \partsitem Show that the product of the three parameters is $1$.
-      \partsitem Verify that $V_2$ is on the $T_2U_2$ line.
-    \end{exparts}
-    \begin{answer}
-      \begin{exparts}
-        \partsitem Other pictures are possible, but this is one.
-          \begin{center}
-            \includegraphics{det/mp/ch4.54}
-          \end{center}
-          The intersections 
-          $
-              T_0U_1\,\intersection T_1U_0=V_2
-          $, $
-              T_0V_1\,\intersection T_1V_0=U_2
-          $, and $
-              U_0V_1\,\intersection U_1V_0=T_2
-          $
-          are labeled so that on each line is a $T$, a $U$, and a $V$.
-        \partsitem The lemma used in Desargue's Theorem gives a 
-          basis $B$ with respect to which the points have these
-          homogeneous coordinate vectors.
-          \begin{equation*}
-            \rep{\vec{t}_0}{B}=\colvec[r]{1 \\ 0 \\ 0}
-            \quad
-            \rep{\vec{t}_1}{B}=\colvec[r]{0 \\ 1 \\ 0}
-            \quad
-            \rep{\vec{t}_2}{B}=\colvec[r]{0 \\ 0 \\ 1}
-            \quad
-            \rep{\vec{v}_0}{B}=\colvec[r]{1 \\ 1 \\ 1}
-          \end{equation*}
-        \partsitem
-          First, any $U_0$ on $T_0V_0$
-          \begin{equation*}
-            \rep{\vec{u}_0}{B}=a\colvec[r]{1 \\ 0 \\ 0}
-                               +b\colvec[r]{1 \\ 1 \\ 1}
-                              =\colvec{a+b \\ b \\ b}
-          \end{equation*}
-          has homogeneous coordinate vectors of this form
-          \begin{equation*}
-            \colvec{u_0 \\ 1 \\ 1}      
-          \end{equation*}
-          ($u_0$ is a parameter; it depends on where on the $T_0V_0$ line 
-          the point $U_0$ is, but any point on that line has
-          a homogeneous coordinate vector of this form for some $u_0\in\Re$).
-          Similarly, $U_2$ is on $T_1V_0$
-          \begin{equation*}
-            \rep{\vec{u}_2}{B}=c\colvec[r]{0 \\ 1 \\ 0}
-                                +d\colvec[r]{1 \\ 1 \\ 1}
-                              =\colvec{d \\ c+d \\ d}
-          \end{equation*}
-          and so has this homogeneous coordinate vector.
-          \begin{equation*}
-            \colvec{1 \\ u_2 \\ 1}
-          \end{equation*}
-          Also similarly, $U_1$ is incident on $T_2V_0$
-          \begin{equation*}
-            \rep{\vec{u}_1}{B}=e\colvec[r]{0 \\ 0 \\ 1}
-                                +f\colvec[r]{1 \\ 1 \\ 1}
-                              =\colvec{f \\ f \\ e+f}  
-          \end{equation*}
-          and has this homogeneous coordinate vector.
-          \begin{equation*}
-            \colvec{1 \\ 1 \\ u_1}
-          \end{equation*}
-        \partsitem
-          Because $V_1$ is $T_0U_2\,\intersection\,U_0T_2$ we have this.
-          \begin{equation*}
-            g\colvec[r]{1 \\ 0 \\ 0}+h\colvec{1 \\ u_2 \\ 1}
-            =i\colvec{u_0 \\ 1 \\ 1}+j\colvec[r]{0 \\ 0 \\ 1}
-            \qquad\Longrightarrow\qquad
-            \begin{aligned}
-              g+h  &= iu_0 \\
-              hu_2 &= i    \\
-              h    &= i+j
-            \end{aligned}
-          \end{equation*}
-          Substituting $hu_2$ for $i$ in the first equation 
-          \begin{equation*}
-            \colvec{hu_0u_2 \\ hu_2 \\ h}
-          \end{equation*}
-          shows that $V_1$ has this 
-          two-parameter homogeneous coordinate vector.
-          \begin{equation*}
-            \colvec{u_0u_2 \\ u_2 \\ 1}
-          \end{equation*}
-        \partsitem
-           Since $V_2$ is the intersection 
-           $T_0U_1\,\intersection\,T_1U_0$ 
-           \begin{equation*}
-             k\colvec[r]{1 \\ 0 \\ 0}+l\colvec{1 \\ 1 \\ u_1}
-              =m\colvec[r]{0 \\ 1 \\ 0}+n\colvec{u_0 \\ 1 \\ 1}
-            \qquad\Longrightarrow\qquad
-            \begin{aligned}
-              k+l  &= nu_0 \\
-              l    &= m+n    \\
-              lu_1 &= n
-            \end{aligned}
-           \end{equation*}
-           and substituting $lu_1$ for $n$ in the first equation 
-           \begin{equation*}
-             \colvec{lu_0u_1 \\ l \\ lu_1}
-           \end{equation*}
-           gives that 
-           $V_2$ has this two-parameter homogeneous coordinate vector.
-           \begin{equation*}
-             \colvec{u_0u_1 \\ 1 \\ u_1}
-           \end{equation*}
-        \partsitem
-           Because $V_1$ is on the $T_1U_1$ line its
-           homogeneous coordinate vector has the form
-           \begin{equation*}
-             p\colvec[r]{0 \\ 1 \\ 0}+q\colvec{1 \\ 1 \\ u_1}
-             =\colvec{q \\ p+q \\ qu_1}
-           \tag*{($*$)}\end{equation*}
-           but a previous part of this question established that $V_1$'s
-           homogeneous coordinate vectors have the form
-           \begin{equation*}
-            \colvec{u_0u_2 \\ u_2 \\ 1}             
-           \end{equation*}
-           and so this a homogeneous coordinate vector for $V_1$.
-           \begin{equation*}
-             \colvec{u_0u_1u_2 \\ u_1u_2 \\ u_1}             
-           \tag*{($**$)}\end{equation*}
-           By ($*$) and ($**$), there is a 
-           relationship among the three parameters:~$u_0u_1u_2=1$.
-         \partsitem  
-           The homogeneous coordinate vector of $V_2$ can be written
-           in this way.
-           \begin{equation*}
-             \colvec{u_0u_1u_2 \\ u_2 \\ u_1u_2}
-             =\colvec{1 \\ u_2 \\ u_1u_2}
-           \end{equation*}
-           Now, the $T_2U_2$ line consists of the points whose homogeneous 
-           coordinates have this form.
-           \begin{equation*}
-             r\colvec[r]{0 \\ 0 \\ 1}+s\colvec{1 \\ u_2 \\ 1}
-             =\colvec{s \\ su_2 \\ r+s}
-           \end{equation*}
-           Taking $s=1$ and $r=u_1u_2-1$ shows that the
-           homogeneous coordinate vectors of $V_2$ have this form.
-      \end{exparts}
     \end{answer}
 \end{exercises}
 \index{computer graphics|)}
