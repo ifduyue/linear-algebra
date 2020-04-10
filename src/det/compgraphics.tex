@@ -13,7 +13,7 @@ spot.
 
 In that topic we defined that
 for any nonzero vector $\vec{v}\in\Re^3$, the associated 
-\definend{point $v$ in the projective plane}\index{point!in projective plane} 
+\definend{point $p$ in the projective plane}\index{point!in projective plane} 
 is the set $\set{k\vec{v}\suchthat \text{$k\in\Re$ and $k\neq 0$}}$.
 This is the collection of nonzero vectors lying on the same line through the
 origin as $\vec{v}$.
@@ -31,7 +31,7 @@ Thus these each represent the same projective point.
 Each is a
 \definend{homogeneous coordinate vector}\index{coordinates!homogeneous}%
 \index{homogeneous coordinate vector}\index{vector!homogeneous coordinate}
-for the point~$\ell$. 
+for the point~$p$. 
 Two homogeneous coordinate vectors (which are by definition nonzero)
 \begin{equation*}
   \tilde{p}_1=\colvec{a_1 \\ b_1 \\ c_1}
@@ -48,12 +48,14 @@ This amounts to projecting onto the plane $z=1$.
   \vcenteredhbox{\includegraphics{det/mp/ch4.18}}
 \end{center}
 
-In this topic we will show how to use this to perform the actions that 
-we see in 
-computer graphics.
-For that we will take the prior picture and redraw it without the hemisphere,
+In this topic we will show how to use these ideas to perform the actions that 
+we see in computer graphics.
+For that we will take the prior picture and redraw it without the sphere,
 with a movie projector at the origin, and with plane $z=1$ looking like
 a movie theater screen.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.60}}
+\end{center}
 Now the projector associates vectors in three-space with
 vectors in the screen plane.
 \begin{equation*}
@@ -65,7 +67,7 @@ vectors in the screen plane.
 We can adapt the things we have already seen about matrices to perform 
 the transformations.
 Rotation is an example.
-This matrix rotates vectors in the plane~$z=1$.
+This matrix rotates in the plane~$z=1$ about the origin by the angle~$\theta$.
 \begin{equation*}
   \begin{mat}
     \cos\theta  &-\sin\theta  &0  \\
@@ -79,7 +81,7 @@ This matrix rotates vectors in the plane~$z=1$.
          1}
 \end{equation*}
 Notice that it works on any homogeneous coordinate vector;
-if we apply it 
+if we apply the matrix
 \begin{equation*}
   \begin{mat}
     \cos\theta  &-\sin\theta  &0  \\
@@ -92,7 +94,7 @@ if we apply it
          \sin\theta\cdot a +\cos\theta\cdot b  \\ 
          c}
 \end{equation*}
-and then move to the plane
+and then move to the $z=1$~plane
 \begin{equation*}
   \colvec{cos\theta\cdot a -\sin\theta\cdot b  \\  
          \sin\theta\cdot a +\cos\theta\cdot b  \\ 
@@ -102,7 +104,8 @@ and then move to the plane
          (\sin\theta\cdot a +\cos\theta\cdot b)/c  \\ 
          1}
 \end{equation*}
-we get the same result as if we had first moved to the plane and then applied
+then we get the same result as 
+if we had first moved to the plane and then applied
 the matrix.
 \begin{equation*}
   \begin{mat}
@@ -121,9 +124,9 @@ So there is no harm in working with homogeneous coordinates.
 But what is the advantage?
 
 The computer graphic operation of translation, of sliding things from
-one place to another is not a linear transformation, because it does
+one place to another, is not a linear transformation because it does
 not leave the origin fixed.
-But we can use matrices if we work with homogeneous coordinates.
+But if we work with homogeneous coordinates then we can use matrices.
 This matrix will translate points in the plane of interest by 
 $t_x$ in the $x$~direction and $t_y$ in the $y$~direction.
 \begin{equation*}
@@ -142,27 +145,35 @@ $t_x$ in the $x$~direction and $t_y$ in the $y$~direction.
           b/c+t_y  \\ 
           1}
 \end{equation*}
-That is, considered in the plane of interest this matrix slides
+That is, in the plane of interest this matrix slides
 $\binom{a/c}{b/c}$ to $\binom{a/c+t_x}{b/c+t_y}$.
 So the homogeneous coordinates allow us to use matrices.
 
-OK then, but what is the advantages of these matrices?
-Why are we putting in the extra coordinate?
+OK then, but what is the advantages of using these matrices?
+What does the extra coordinate get us?
 Suppose that we are making a movie with computer graphics.
 We are at a moment where the 
 camera is panning and rotating at the same time.
-Every single point in the scene needs to be both slid and rotated.
+Every single point in the scene needs to be both translated and rotated.
 Rather than have the computer perform two operations to each point,
-we can just once multiply the two matrices and
-then the computer only applies one operation; it multiplies
-by the resulting matrix.
+we can just multiply the two matrices just once and
+then the computer only applies one operation to each point; it multiplies
+by that point the resulting matrix.
+That is a tremendous speedup.
 
-We will list some examples of the effects that we can achieve.
-But covering all the possible cases is beyond our scope.
+We will list some examples of the effects that we can get.
+We have already talked about rotation. 
+Here is the picture of rotation by twenty degrees.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad$\mapsto$\quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.62}}
+\end{center}
 
-The first example is scaling.
-We can enlarge in the $x$-direction by a factor of~$s$, and in the
-$y$~direction by a factor of~$t$ with this matrix.
+Next is scaling.
+This matrix rescales things in the target plane 
+by a factor of~$s$  in the $x$-direction, 
+and  by a factor of~$t$ in the $y$~direction.
 \begin{equation*}
   \begin{mat}
     s  &0  &0  \\
@@ -175,9 +186,15 @@ $y$~direction by a factor of~$t$ with this matrix.
           t\cdot b/c \\ 
           1}
 \end{equation*}
-Here is the picture.
+In this picture we rescale in the $x$~direction by a factor of $s=2.5$
+and in the $y$-direction by~$t=0.75$.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad$\mapsto$\quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.63}}
+\end{center}
 
-If we take $s=t$ then we enlarge the entire shape.
+If we take $s=t$ then the entire shape is rescaled.
 For instance, if we string together frames with $s=t=1.05$ then in
 the movie it will seem that the object is getting closer to us.
 
@@ -195,6 +212,12 @@ This reflects about the line $y=x$.
           a/c \\ 
           1}
 \end{equation*}
+The dashed line here is $y=x$.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad$\mapsto$\quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.64}}
+\end{center}
 
 This reflects about $y=-x$.
 \begin{equation*}
@@ -209,7 +232,12 @@ This reflects about $y=-x$.
           -a/c \\ 
           1}
 \end{equation*}
-Here is the picture.
+The dashed line below is $y=-x$.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad$\mapsto$\quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.65}}
+\end{center}
 
 More complex transformations are possible.
 This is a shear.
@@ -225,10 +253,15 @@ This is a shear.
           b/c \\ 
           1}
 \end{equation*}
-Here is the picture.
+In this picture the $y$~components of points are unchanged,
+but the $x$~components have added to them the value of~$y$.
+\begin{center} 
+  \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
+  \quad$\mapsto$\quad
+  \vcenteredhbox{\includegraphics{det/mp/ch4.66}}
+\end{center}
 
-
-one advantage of having this all be matrices is that we can do 
+A major advantage of having this all be matrices is that we can do 
 complex things by combining simple things.
 To reflect about the line $y=-x+2$ we can find the three matrices
 to slide everything to the origin, then reflect about $y=-x$, and then 
@@ -258,10 +291,9 @@ the matrix in the middle reflects about $y=-x$,
 and the matrix on the left slides all points back.)
 
 Even more complex actions.
-matrices for 
-General affine
-and
-General projective.
+These are the matrices for the
+general affine transformation, and the
+general projective transformation.
 \begin{equation*}
   \begin{mat}
     d   &e  &f  \\
@@ -275,15 +307,7 @@ General projective.
     j   &k  &1  
   \end{mat}
 \end{equation*}
-Description is beyond our scope.
-
-
-
-
-
-
-
-
+Description of their geometric effect is beyond our scope.
 
 
 

@@ -3168,5 +3168,326 @@ endfig;
 
 
 
+% ========= For homogeneous coords topic =============
+
+beginfig(60) % projection by a movie projector to z=1
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+  u:=.18in; v:=u; w:=v; % was .2in
+  drawing_scale:=25pt;   % was 30pt
+  save lpn; lpn:=new_vect; vect_def(lpn,0,4,0); 
+
+  % Locate the observer and describe where he's looking
+  set_point(Obs,15,4,6);
+  Obs_phi:=90; Obs_dist:=10;
+  point_of_view_abs(lpn,Obs_phi);
+
+  % where to locate cneter of middle figure, and right-hand figure
+  save rt_mid, mid_mid, left_mid;  numeric rt_mid, mid_mid, left_mid; 
+    rt_mid = 15;  mid_mid = .7rt_mid;  left_mid = 0;
+
+  % % draw the line to be projected, in the middle
+  % % in contrast to the prior picture, it now forms part of the Source plane
+  % save s_ufront, s_lfront, s_lback, s_uback; % four corners of plane
+  % s_ufront:=new_vect; s_lfront:=new_vect; s_lback:=new_vect; s_uback:=new_vect;
+  % vect_def(s_ufront,2.5,mid_mid,2);  vect_def(s_lfront,2.5,mid_mid,-2);
+  %   vect_def(s_lback,-2.5,mid_mid,-2);  vect_def(s_uback,-2.5,mid_mid,2); 
+  % project_point(85,s_ufront);  project_point(86,s_lfront);
+  %   project_point(87,s_lback);  project_point(88,s_uback);
+  % free_vect(s_uback); free_vect(s_lback);
+  %   free_vect(s_lfront); free_vect(s_ufront);
+  % save src_plane; path src_plane;
+  % src_plane = z85--z86--z87--z88--cycle;
+  % pickup pencircle scaled line_width_light;
+  % draw src_plane;
+  % save l_back, l_front; % two ends of line
+  % l_back:=new_vect; l_front:=new_vect;
+  % vect_def(l_back,-2,mid_mid,-.5); vect_def(l_front,2,mid_mid,.25*2);
+  % project_point(80,l_back); project_point(81,l_front);
+  % free_vect(l_front); free_vect(l_back);
+  % save fig_mid; path fig_mid;
+  % fig_mid = z80--z81;
+  % pickup pencircle scaled line_width_light;
+  % draw fig_mid;
+
+  % show the plane on the right in proportion
+  save p_ufront, p_lfront, p_lback, p_uback; % four corners of plane
+  p_ufront:=new_vect; p_lfront:=new_vect; p_lback:=new_vect; p_uback:=new_vect;
+  vect_def(p_ufront,3,rt_mid,2);  vect_def(p_lfront,3,rt_mid,-2);
+    vect_def(p_lback,-3,rt_mid,-2);  vect_def(p_uback,-3,rt_mid,2); 
+  project_point(91,p_ufront);  project_point(92,p_lfront);
+    project_point(93,p_lback);  project_point(94,p_uback);
+  free_vect(p_uback); free_vect(p_lback);
+    free_vect(p_lfront); free_vect(p_ufront);
+  save fig_rt; path fig_rt;
+  fig_rt = z91--z92--z93--z94--cycle;
+  pickup pencircle scaled line_width_light;
+  draw fig_rt;
+
+  % % points on line and plane (pts a, b, c)
+  save x_lft, x_rgt, y_bot, y_top, target_pt; 
+  x_lft:=new_vect; x_rgt:=new_vect;
+    y_bot:=new_vect; y_top:=new_vect;
+    target_pt:=new_vect;
+  vect_def(x_lft,-1.0,rt_mid,0); vect_def(x_rgt,1.25,rt_mid,0);
+  % vect_def(mid_pta,0,mid_mid,0); vect_def(mid_ptb,1,mid_mid,.25*1);
+  %   vect_def(mid_ptc,2,mid_mid,.25*2);
+  vect_def(y_bot,0,rt_mid,-0.6); vect_def(y_top,0,rt_mid,0.8);
+  vect_def(target_pt,0.9,rt_mid,0.3);
+  % vect_def(rt_pta,0,rt_mid,0); vect_def(rt_ptb,.5,rt_mid,.25*.5);
+  %   vect_def(rt_ptc,1,rt_mid,.25);
+  project_point(70,x_lft); project_point(71,x_rgt);
+  % project_point(70,mid_pta); project_point(71,mid_ptb);
+  %   project_point(72,mid_ptc);
+  project_point(73,y_bot); project_point(74,y_top);
+  project_point(75,target_pt); 
+  % project_point(73,rt_pta); project_point(74,rt_ptb);
+  %   project_point(75,rt_ptc); 
+  %  free_vect(mid_ptc); free_vect(mid_ptb); free_vect(mid_pta);
+  free_vect(target_pt); 
+    free_vect(y_top); free_vect(y_bot);
+    free_vect(x_rgt); free_vect(x_lft);
+
+  % % make line on plane with similar triangles
+  % save proportion; numeric proportion;
+  % proportion = length(z73-(0,0))/length(z70-(0,0));
+  % z76 = proportion[(0,0),z71];
+  % z77 = proportion[(0,0),z72];
+  pickup pencircle scaled line_width_light;
+  draw (z70--z71);  % x-axis
+  draw (z73--z74);  % y-axis
+  % pickup pencircle scaled line_width_light;
+  % draw (1.8[z77,z73])--(1.3[z73,z77]);
+  % drawpoint(z70); drawpoint(z73);
+  
+  % make the movie projector
+  save proj_width, proj_hgt; numeric proj_width, proj_hgt;
+  proj_width = w; proj_hgt = 1.5v;
+  save reel; path reel; reel = fullcircle scaled .85proj_hgt;
+  save projector; path projector;
+  projector = (.3w,.2v)--(0w,.1v)--(0w,.5proj_hgt)--(-proj_width,.5proj_hgt)
+                --(-proj_width,-.5proj_hgt)--(0w,-.5proj_hgt)
+		--(0w,-.1v)--(.3w,-.2v);
+  pickup pencircle scaled line_width_light;
+  draw projector;
+  draw reel shifted (-1.2proj_width,.55proj_hgt);
+  draw reel shifted (-1.2proj_width,-.55proj_hgt);
+  save number_beams; numeric number_beams; number_beams = 7;
+  for i = 1 upto number_beams:
+    draw ((.5w,0v)--(1.5w+uniformdeviate .35w,0v)) rotated (((i-1)/(number_beams-1))[-25,25]) withcolor lightgray;
+  endfor  
+
+  % labels
+  x10 = 0w; y92-y10 = 10pt;
+  label(btex {\small \textit{projector, at $(0,0,0)$}} etex,z10);
+  % x11 = .5[x85,x87]; y11 = y10;
+  % label(btex {\small \textit{source $S$}} etex,z11);
+  x12 = .5[x91,x93]; y12 = y10;
+  label(btex {\small \textit{$z=1$}} etex,z12);
+
+  pickup pencircle scaled line_width_light;
+  draw((0.5w,0v)--z75) withcolor lightgray;
+  drawpoint(z75);
+  label(btex {\tiny $p=\colvec{x \\ y}$} etex,z75+(1u,0.4v));
+
+  %
+  free_vect(lpn);
+endfig;
+
+
+%  Rectangle used to illustrate actions
+beginfig(61);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+  
+  path rect;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  z0=(0w,0v);
+  z1=(1w,0v);
+  z2=(1w,2v);
+  z3=(0w,2v); 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+% ----------- Rotation -----------
+%   Unit square, after rotation 
+beginfig(62);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+  numeric theta;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  theta = 20;
+  z0=(0w,0v) rotated theta;
+  z1=(1w,0v) rotated theta;
+  z2=(1w,2v) rotated theta;
+  z3=(0w,2v) rotated theta; 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+% ----------- Rescaling -----------
+%   Rectangle after rescaling 
+beginfig(63);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+  numeric xscale;
+  numeric yscale;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  xscale=2.5;
+  yscale=0.75;
+  z0= ((0w,0v) xscaled xscale) yscaled yscale;
+  z1= ((1w,0v) xscaled xscale) yscaled yscale;
+  z2= ((1w,2v) xscaled xscale) yscaled yscale;
+  z3= ((0w,2v) xscaled xscale) yscaled yscale; 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+
+% ----------- Reflection -----------
+%   Rectangle after reflection about y=x
+beginfig(64);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % line y=x
+  pickup pencircle scaled line_width_light;
+  draw (-.3w,-.3v)--(3w,3v) dashed evenly;
+  % rectangle
+  z0= (0w,0v);
+  z1= (0v,1w);
+  z2= (2v,1w);
+  z3= (2v,0w); 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+% ..........................
+%   Rectangle after reflection about y=-x
+beginfig(65);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+
+  path rect;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % line y=x
+  pickup pencircle scaled line_width_light;
+  draw (-2w,2v)--(1w,-1v) dashed evenly;
+  % rectangle
+  z0= (0v,0w);
+  z1= (0v,-1w);
+  z2= (-2v,-1w);
+  z3= (-2v,0w); 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+
+% ----- Shear -----------------
+%  Rectangle after shearing
+beginfig(66);
+  numeric u;  %scaling factor
+  numeric v;  %vertical scaling factor
+  numeric w;  %horizontal scaling factor
+  
+  path rect;
+
+  u:=10pt; v:=u; w:=v;
+  
+  %axes
+  pickup pencircle scaled line_width_light;
+  linecap:=squared;
+  draw (-.5w,0v)--(3.5w,0v); %x-axis
+  draw (0w,-.5v)--(0w,2.5v); %y-axis
+     updown_ticks(3,(1w,0v),(1w,0v));    
+     sidetoside_ticks(2,(0w,1v),(0w,1v));
+
+  % rectangle
+  z0=(0w,0v);
+  z1=(1w,0v);
+  z2=(1w+2v,2v);
+  z3=(0w+2v,2v); 
+  pickup pensquare scaled line_width_dark;
+  rect = z0--z1--z2--z3--cycle;
+  draw rect;  
+endfig;
+
+
+
 
 end
