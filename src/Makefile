@@ -220,20 +220,20 @@ slides/one/asy/one_ii_plane.pdf : slides/one/asy/one_ii_plane.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/one/one_i.pdf : slides/one/one_i.tex
+slides/one/one_i.pdf : slides/one/one_i.tex gr/gr1.tex
 	$(compile-slides)
 
-slides/one/one_ii.pdf : slides/one/one_i.tex
+slides/one/one_ii.pdf : slides/one/one_i.tex gr/gr2.tex
 	$(compile-slides)
 
-slides/one/one_iii.pdf : slides/one/one_i.tex
+slides/one/one_iii.pdf : slides/one/one_i.tex gr/gr3.tex
 	$(compile-slides)
 
 
 # Slides for Chapter Two
+# I've folded slides/two/two_i_a.pdf into two_i.tex
 .PHONY : slides_two
 slides_two : slides_two_asy slides/two/two_i.pdf  \
-  # slides/two/two_i_a.pdf \
   slides/two/two_ii.pdf \
   slides/two/two_iii.pdf
 
@@ -248,12 +248,21 @@ slides_two_asy : slides/two/asy/p2_subspaces.pdf \
   slides/two/asy/two_i_spanplane.pdf \
   slides/two/asy/two_i_a_line.pdf
 
-slides/two/asy/%.pdf : slides/two/asy/%.asy
+slides/two/asy/%.pdf : slides/two/asy/%.asy 
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/two/%.pdf : slides/two/%.tex
+slides/two/two_i.pdf : slides/two/two_i.tex vs/vs1.tex
 	$(compile-slides)
+
+slides/two/two_ii.pdf : slides/two/two_ii.tex vs/vs2.tex
+	$(compile-slides)
+
+slides/two/two_iii.pdf : slides/two/two_iii.tex vs/vs3.tex
+	$(compile-slides)
+
+# slides/two/%.pdf : slides/two/%.tex gr/
+# 	$(compile-slides)
 
 
 # Slides for Chapter Three
@@ -310,8 +319,29 @@ slides/three/asy/%.pdf : slides/three/asy/%.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/three/%.pdf : slides/three/%.tex
+slides/three/three_i.pdf : slides/three/three_i.tex map/map1.tex
 	$(compile-slides)
+
+slides/three/three_ii.pdf : slides/three/three_ii.tex map/map2.tex
+	$(compile-slides)
+
+slides/three/three_ii_a.pdf : slides/three/three_ii_a.tex map/map2.tex
+	$(compile-slides)
+
+slides/three/three_iii.pdf : slides/three/three_iii.tex map/map3.tex
+	$(compile-slides)
+
+slides/three/three_iv.pdf : slides/three/three_iv.tex map/map4.tex
+	$(compile-slides)
+
+slides/three/three_v.pdf : slides/three/three_v.tex map/map5.tex
+	$(compile-slides)
+
+slides/three/three_vi.pdf : slides/three/three_vi.tex map/map6.tex
+	$(compile-slides)
+
+# slides/three/%.pdf : slides/three/%.tex
+# 	$(compile-slides)
 
 
 # Slides for Chapter Four
@@ -347,8 +377,17 @@ slides/four/asy/%.pdf : slides/four/asy/%.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/four/%.pdf : slides/four/%.tex
+slides/four/four_i.pdf : slides/four/four_i.tex det/det1.tex 
 	$(compile-slides)
+
+slides/four/four_ii.pdf : slides/four/four_ii.tex det/det2.tex 
+	$(compile-slides)
+
+slides/four/four_iii.pdf : slides/four/four_iii.tex det/det3.tex 
+	$(compile-slides)
+
+# slides/four/%.pdf : slides/four/%.tex
+# 	$(compile-slides)
 
 
 # Slides for Chapter Five
@@ -365,6 +404,15 @@ slides_five_asy :
 # 	cd $(dir $@);\
 #         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
+slides/five/five_i.pdf : slides/five/five_i.tex jc/jc1.tex
+	$(compile-slides)
+
+slides/five/five_ii.pdf : slides/five/five_ii.tex jc/jc2.tex
+	$(compile-slides)
+
+slides/five/five_ii_a.pdf : slides/five/five_ii_a.tex jc/jc2.tex
+	$(compile-slides)
+
 slides/five/%.pdf : slides/five/%.tex
 	$(compile-slides)
 
@@ -375,8 +423,3 @@ default :
 	@echo $(TEXINPUTS)
 
 
-
-
-# book.pdf: cover symlist pref gr vs map det jc appen bib
-
-# gr: gr1.tex gr2.tex gr3.tex cas.tex leontief.tex ppivot.tex network.tex

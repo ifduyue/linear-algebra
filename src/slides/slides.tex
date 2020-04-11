@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[tracking]{microtype}
+
+\usepackage[sc,osf]{mathpazo}   % With old-style figures and real smallcaps.
+\linespread{1.025}              % Palatino leads a little more leading
+
+% Euler for math and numbers
+\usepackage[euler-digits,small]{eulervm}
+\AtBeginDocument{\renewcommand{\hbar}{\hslash}}
+
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=false,         % show bookmarks bar?
+    unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Slides for Linear Algebra by Hefferon},    % title
+    pdfauthor={Jim Hefferon},     % author
+    pdfsubject={Slides for Linear Algebra by Hefferon}, % subject of the document
+    pdfcreator={Jim Hefferon},   % creator of the document
+    pdfproducer={pdflatex}, % producer of the document
+    pdfkeywords={Linear Algebra, Hefferon, Free textbook, slides}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,        % color of links to bibliography
+    filecolor=blue,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+\title{Beamer slides \\
+       for \\
+       \textit{Linear Algebra}}
+\author{Jim Hef{}feron}
+\date{2020-April-08}
+
+\pagestyle{empty}
+\begin{document}
+\maketitle\thispagestyle{empty}
+If you teach this class using a beamer, a video projector, then
+you may find useful the slides that I use for that.
+
+\begin{center}\small
+\begin{tabular}{l|l}
+  \multicolumn{1}{c}{\textit{File}}
+     &\multicolumn{1}{c}{\textit{Description}}  \\
+  \hline
+  \href{file:one/one_i.pdf}{one\_i.pdf}  &Chapter One, Section I  \\
+  \href{file:one/one_ii.pdf}{one\_ii.pdf}  &\quad Section II  \\
+  \href{file:one/one_iii.pdf}{one\_iii.pdf}  &\quad Section III  \\
+  \hline
+  \href{file:two/two_i.pdf}{two\_i.pdf}  &Chapter Two, Section I  \\
+  \href{file:two/two_ii.pdf}{two\_ii.pdf}  &\quad Section II  \\
+  \href{file:two/two_iii.pdf}{two\_iii.pdf}  &\quad Section III  \\
+  \hline
+  \href{file:three/three_i.pdf}{three\_i.pdf}  &Chapter Three, Section I  \\
+  \href{file:three/three_ii.pdf}{three\_ii.pdf}  &\quad Section II  \\
+  \href{file:three/three_ii_a.pdf}{three\_ii\_a.pdf}  &\quad Geometry of linear maps  \\
+  \href{file:three/three_iii.pdf}{three\_iii.pdf}  &\quad Section III  \\
+  \href{file:three/three_iv.pdf}{three\_iv.pdf}  &\quad Section IV  \\
+  \href{file:three/three_v.pdf}{three\_v.pdf}  &\quad Section V  \\
+  \href{file:three/three_vi.pdf}{three\_vi.pdf}  &\quad Section VI  \\
+  \hline
+  \href{file:four/four_i.pdf}{four\_i.pdf}  &Chapter Four, Section I  \\
+  \href{file:four/four_ii.pdf}{four\_ii.pdf}  &\quad Section II  \\
+  \href{file:four/four_iii.pdf}{four\_iii.pdf}  &\quad Section III  \\
+  \hline
+  \href{file:five/five_i.pdf}{five\_i.pdf}  &\quad Chapter Five, Section I  \\
+  \href{file:five/five_ii.pdf}{five\_ii.pdf}  &\quad Section II  \\
+  \href{file:five/five_ii_a.pdf}{five\_ii\_a.pdf}  &\quad Geometry of eigenvectors
+\end{tabular}
+\end{center}
+
+Two comments.
+First, these are compiled from the same source as the book so
+definitions, etc., should agree exactly.
+The numbers of theorems, etc., should also agree.
+However, here I give different examples, so that
+students see twice as many.
+
+Also, each slide deck comes in three varieties.
+For instance, in class I use \href{file:one/one_i.pdf}{one\_i.pdf}.
+That omits some proofs in favor of examples. 
+If you want all of
+the proofs then use \href{file:one/one_i_allproofs.pdf}{one\_i\_allproofs.pdf}.
+For printing or for making available on 
+a learning management system, you want to have just full pages, without
+the mid-slide pauses. 
+For this use 
+\href{file:one/one_i_handout.pdf}{one\_i\_handout.pdf}.
+\end{document}
