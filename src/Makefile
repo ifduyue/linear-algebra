@@ -46,6 +46,9 @@ METAPOST_CMD := $(TEXINPUTS) $(MPINPUTS) mpost
 #  -vv makes it talk more
 ASYMPTOTE_CMD := $(TEXINPUTS) $(ASYMPTOTE_DIR) asy -nosafe -vv
 
+# Makeindex command line.
+MAKEINDEX_CMD := makeindex -s sty/book.isty
+
 # vpath %.tex src cover pref gr vs map det jc appen bib
 
 
@@ -55,7 +58,7 @@ all : book.pdf slides lab answers
 # .PHONY : book
 # book : book.pdf
 
-book.pdf : book.tex cover pref gr vs map det jc appen bib
+book.pdf : book.tex cover pref gr vs map det jc appen bib makeindex
 	$(LATEX_CMD) book.tex
 
 # Cover and Preface
@@ -170,6 +173,12 @@ appen/mp/appen.1 : appen/mp/appen.mp
 bib : bib/bib.tex
 
 bib/bib.tex :
+
+.PHONY : makeindex
+makeindex : book.idx
+	$(MAKEINDEX_CMD) book 
+
+
 
 
 # =============== answers =====================
