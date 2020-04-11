@@ -153,28 +153,28 @@
 %  This command writes to the answer file something saying that 
 % a new section/topic has occurred, and its answers are about to come.
 \newcommand{\announcesectioninginanswerfile}{%
-  \Writetofile{\ans@fn}{\protect\subsection\protect{%
+  \Writetofile{\ans@fn}{\protect\subsection{%
      \Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}: 
      \sectioningname%
-     \protect}}
+     }}
   \ifsingleanswerfile\relax\else
-     \Writetofile{\otherans@fn}{\protect\section\protect{% 
+     \Writetofile{\otherans@fn}{\protect\section{% 
          \Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}: 
          \sectioningname
-         \protect}}
+         }}
   \fi}
 
 % the way it is done inside of chapters
 \newcommand{\sectioninginanswerfilechapterstyle}{%
-  \Writetofile{\ans@fn}{\protect\subsection\protect{% 
+  \Writetofile{\ans@fn}{\protect\subsection{% 
      \Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}:
      \sectioningname
-     \protect}}
+     }}
   \ifsingleanswerfile\relax\else
-     \Writetofile{\otherans@fn}{\protect\subsection\protect{%
+     \Writetofile{\otherans@fn}{\protect\subsection{%
          \Englishnumber{\value{chapter}}.\Roman{section}.\arabic{subsection}: 
          \sectioningname
-         \protect}}
+         }}
   \fi}
 % the way it is done inside of Topics
 % \newcommand{\sectioninginanswerfiletopicstyle}{%
@@ -189,13 +189,13 @@
 %                 \protect}}
 %   \fi} %
 \newcommand{\sectioninginanswerfiletopicstyle}{%
-  \Writetofile{\ans@fn}{\protect\topic\protect{%
+  \Writetofile{\ans@fn}{\protect\topic{%
                 \sectioningname
-                \protect}}
+                }}
   \ifsingleanswerfile\relax\else
-     \Writetofile{\otherans@fn}{\protect\topic\protect{%
+     \Writetofile{\otherans@fn}{\protect\topic{%
                 \sectioningname
-                \protect}}
+                }}
   \fi} %
 
 

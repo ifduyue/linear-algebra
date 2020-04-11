@@ -495,7 +495,9 @@
                          \addcontentsline{toc}{chapter}%
                                    {\protect\numberline{Chapter \thechapter:}#1}
                          % Announce the chapter also in the answers to exercises
-                         \Writetofile{\ans@fn}{\protect\chapter\protect{Chapter \Englishnumber{\value{chapter}}: #1\protect}}
+                         % Redundant with chapter marker: 
+                         % \Writetofile{\ans@fn}{\protect\chapter{Chapter \Englishnumber{\value{chapter}}: #1}}
+                         \Writetofile{\ans@fn}{\protect\chapter{#1}}
                        \else
                          \addcontentsline{toc}{chapter}{#1}%
                        \fi
@@ -715,7 +717,7 @@
 % I grab the name of the section below and gdef it to \sectioningname.
 \newcommand{\writesectiontoanswerfile}{%
       % \typeout{------ Name of this section: \nameofthissection ----------}
-      \Writetofile{\ans@fn}{\protect\section\protect{\nameofthissection\protect}}
+      \Writetofile{\ans@fn}{\protect\section {\nameofthissection\protect}}
       % \Writetofile{\ans@fn}{\protect\section*\protect{\protect}}%
 }
 
@@ -778,8 +780,12 @@
     % JH 2012-Oct-07 write name of book section to answer file
     \ifnum #2=1
       \gdef\nameofthissection{#8}
-      \Writetofile{\ans@fn}{\protect\section\protect{#8\protect}}
+      \Writetofile{\ans@fn}{\protect\section{Section \Roman{section}: #8}}
     \fi
+    % \ifnum #2=2
+    %   \gdef\nameofthissection{#8}
+    %   \Writetofile{\ans@fn}{\protect\subsection{PPP #8}}
+    % \fi
     % JH 2012-Mar-10 define sectioningname for answer file; it is actually the
     % subsection name and gets written to the answer file when \begin{exercises}
     % is called

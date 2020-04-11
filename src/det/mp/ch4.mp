@@ -3346,12 +3346,13 @@ beginfig(62);
      sidetoside_ticks(2,(0w,1v),(0w,1v));
 
   % rectangle
-  theta = 20;
+  theta = 0.5*(180/3.414159);  % half a radian
   z0=(0w,0v) rotated theta;
   z1=(1w,0v) rotated theta;
   z2=(1w,2v) rotated theta;
   z3=(0w,2v) rotated theta; 
-  pickup pensquare scaled line_width_dark;
+  % pickup pensquare scaled line_width_dark;
+  pickup pencircle scaled line_width_dark;  % looks too dark when rotated
   rect = z0--z1--z2--z3--cycle;
   draw rect;  
 endfig;
@@ -3482,7 +3483,8 @@ beginfig(66);
   z1=(1w,0v);
   z2=(1w+2v,2v);
   z3=(0w+2v,2v); 
-  pickup pensquare scaled line_width_dark;
+  % pickup pensquare scaled line_width_dark;
+  pickup pencircle scaled line_width_dark;  % looks dark on diags
   rect = z0--z1--z2--z3--cycle;
   draw rect;  
 endfig;

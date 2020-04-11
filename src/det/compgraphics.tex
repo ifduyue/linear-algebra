@@ -1,7 +1,7 @@
 % Chapter 4, Topic _Linear Algebra_ Jim Hefferon
 %  http://joshua.smcvt.edu/linearalgebra
 %  2020-Apr-08
-\topic{Computer graphics}
+\topic{Computer Graphics}
 \index{computer graphics|(}
 The prior topic on Projective Geometry gives this model of 
 how our eye, or a camera, sees the world.
@@ -165,7 +165,7 @@ That is a tremendous speedup and simplification.
 
 We will list some examples of the effects that we can get.
 We have already talked about rotation. 
-Here is the picture of rotation by twenty degrees.
+Here is the picture of rotation by a half radian.
 \begin{center} 
   \vcenteredhbox{\includegraphics{det/mp/ch4.61}}
   \quad$\mapsto$\quad
@@ -334,7 +334,7 @@ However, description of their geometric effect is beyond our scope.
 % ========================================
 \begin{exercises}
   \item 
-    Calculate the product in ($*$)
+    Calculate the product in ($*$).
     \begin{answer}
       Straightforward calculation gives this for the product.
       \begin{equation*}
@@ -397,11 +397,11 @@ However, description of their geometric effect is beyond our scope.
           2  &-1
         \end{mat}
       \end{equation*}
-      We have this.
+      Solving gives
       \begin{equation*}
         M =
             \begin{mat}
-              1  2  \\
+              1  &2  \\
               2  &-1
             \end{mat}
             \begin{mat}
@@ -414,7 +414,7 @@ However, description of their geometric effect is beyond our scope.
               4/5   &3/5
             \end{mat}
       \end{equation*}
-      So for homogeneous coordinates the matrix is this.
+      and so for homogeneous coordinates the matrix is this.
       \begin{equation*}
       \begin{mat}
         -3/5  &4/5  &0  \\
@@ -480,6 +480,30 @@ However, description of their geometric effect is beyond our scope.
         0           &0            &1
       \end{mat}
     \end{equation*}
+    \end{answer}
+  \item The homogeneous coordinates extend to manipulations of 
+    three dimensional space in the obvious way:~every coordinate
+    is a set of four-tall nonzero vectors that are related by
+    being scalar multiples of each other.
+    Give the matrix to do rotation about the $z$~axis, and the
+    matrix for rotation about the $y$~axis.
+    \begin{answer}
+    Here are the two $\nbyn{4}$ matrices.
+    \begin{equation*}
+      \begin{mat}
+        \cos\theta  &-\sin\theta  &0  &0  \\
+        \sin\theta  &\cos\theta   &0  &0  \\
+        0           &0            &0  &0  \\
+        0           &0            &0  &1  
+      \end{mat}
+      \qquad
+      \begin{mat}
+        \cos\theta  &0  &-\sin\theta  &0   \\
+        0           &0  &0            &0  \\
+        \sin\theta  &0  &\cos\theta   &0   \\
+        0           &0  &0            &1  
+      \end{mat}
+    \end{equation*}    
     \end{answer}
 \end{exercises}
 \index{computer graphics|)}
