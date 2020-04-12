@@ -40,11 +40,26 @@ defaultpen(p);
 // pen lightcolor  = rgb(226/255,  172/255,  111/255);
 // pen bgcolor  = rgb(201/255,  205/255,  187/255);
 // pen flourishcolor  = rgb(253/255, 228/255,   187/255)
-pen darkcolor = rgb(180/255, 190/255, 146/255); // green
-pen boldcolor     = rgb(191/255,  103/255,  91/255);
-pen lightcolor  = rgb(226/255,  172/255,  111/255);
-pen bgcolor  = rgb(201/255,  205/255,  187/255);
-pen flourishcolor  = rgb(253/255, 228/255,   187/255);
+// pen darkcolor = rgb(180/255, 190/255, 146/255); // green
+// pen boldcolor     = rgb(191/255,  103/255,  91/255);
+// pen lightcolor  = rgb(226/255,  172/255,  111/255);
+// pen bgcolor  = rgb(201/255,  205/255,  187/255);
+// pen flourishcolor  = rgb(253/255, 228/255,   187/255);
+
+// Version 4, 2020
+// Very Easter. From https://colorhunt.co; no identifying info, although free use
+// pen darkcolor     =  rgb(202,173,222); // hex(caadde);
+// pen boldcolor     = rgb(200,134,229); // hex(c886e5);
+// pen lightcolor    = rgb(246,236,191); //hex(f6ecbf);
+// pen bgcolor       = rgb(249,249,249); // hex(f9f9f9);
+// pen flourishcolor  = rgb(60,9,4); // hex();
+
+// From https://colorhunt.co; no identifying info, although free use
+pen darkcolor     = rgb(255,164,27); //hex(ffa41b); yz plane   
+pen boldcolor     = rgb(255,81,81); // hex(ff5151);  xy plane
+pen lightcolor    = rgb(152,24,214); // hex(9818d6);
+pen bgcolor       = rgb(237,237,237); // hex(ededed);
+pen flourishcolor  = rgb(60,9,4); // hex();
 
 real XLIMIT_POS=1;
 real XLIMIT_NEG=-1*XLIMIT_POS;
