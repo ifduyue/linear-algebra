@@ -10,18 +10,11 @@ settings.render=0;  // just draw it, not three-d shape
 size(72*3);  // 72 pts per inch
 
 currentprojection=perspective(4,6.5,5);
-currentlight=light(diffuse=gray(.6), ambient=yellow, specular=paleyellow,
-                   specularfactor=0.1, viewport=false,(4,6.5,10));
-
-material m_xz=
-  //       diffusepen, ambientpen, emissivepen,  specularpen
-  material(  grey,       yellow,     gray(0.3),        orange);
-material m_xy=
-  //       diffusepen, ambientpen, emissivepen,  specularpen
-  material(  gray(0.9),       yellow,     black,        orange);
-material m_yz=
-  //       diffusepen, ambientpen, emissivepen,  specularpen
-  material(  grey,       yellow,     black,        gray(0.1));
+// currentlight=light(diffuse=gray(.6), ambient=yellow, specular=paleyellow,
+//                    specularfactor=0.1, viewport=false,(4,6.5,10));
+currentlight = nolight;
+currentlight=light(diffuse=white, ambient=white, specular=white,
+                   specularfactor=0.0, viewport=false,(4,6.5,10));
 
 pen p=linewidth(0.4)+squarecap+miterjoin+black+opacity(0.2);
 defaultpen(p);
@@ -55,9 +48,18 @@ defaultpen(p);
 // pen flourishcolor  = rgb(60,9,4); // hex();
 
 // From https://colorhunt.co; no identifying info, although free use
-pen darkcolor     = rgb(255,164,27); //hex(ffa41b); yz plane   
-pen boldcolor     = rgb(255,81,81); // hex(ff5151);  xy plane
-pen lightcolor    = rgb(152,24,214); // hex(9818d6);
+// Purple and gold
+// pen darkcolor     = rgb(255,164,27); //hex(ffa41b); yz plane   
+// // pen boldcolor     = rgb(255,81,81); // hex(ff5151);  xy plane
+// pen boldcolor     = rgb(167,45,45); // hex(a21818);  xy plane
+// pen lightcolor    = rgb(152,24,214); // hex(9818d6); xz plane
+// pen bgcolor       = rgb(237,237,237); // hex(ededed);
+// pen flourishcolor  = rgb(60,9,4); // hex();
+
+// From https://www.color-hex.com/color-palette/90232 no identifying info
+pen darkcolor     = rgb(87,41,79); //hex(00adad); yz plane   
+pen boldcolor     = rgb(0,67,37); // hex(004303);  xy plane
+pen lightcolor    = rgb(174,56,56); // hex(e1b200); xz plane
 pen bgcolor       = rgb(237,237,237); // hex(ededed);
 pen flourishcolor  = rgb(60,9,4); // hex();
 
@@ -143,30 +145,43 @@ path3 yz=(0,YLIMIT_POS,ZLIMIT_POS)
   --(0,YLIMIT_POS,ZLIMIT_NEG)
   --cycle;
 
-// surface xyplane = surface(xy);
-// surface xzplane = surface(xz);
-// surface yzplane = surface(yz);
-// draw(xyplane,m_xy);
-// draw(xzplane,m_xz);
-// draw(yzplane,m_yz);
-// draw(xy);
-// draw(xz);
-// draw(yz);
-
 picture pic;
 size(pic,72*3);
 
+surface xyplane = surface(xy);
+surface xzplane = surface(xz);
+surface yzplane = surface(yz);
+
+
+material m_xz=
+  //       diffusepen, ambientpen, emissivepen,  specularpen
+  material(  grey,     lightcolor,     gray(0.3),        orange);
+material m_xy=
+  //       diffusepen, ambientpen, emissivepen,  specularpen
+  material(  gray(0.99), boldcolor,     black,        black);
+material m_yz=
+  //       diffusepen, ambientpen, emissivepen,  specularpen
+  material(  grey,     darkcolor,     black,        gray(0.1));
+
+
+draw(pic,xyplane,m_xy);
+draw(pic,xzplane,m_xz);
+draw(pic,yzplane,m_yz);
+draw(pic,xy);
+draw(pic,xz);
+draw(pic,yz);
+
+
 // Use asymptote "limited" hidden surface removal
-face[] faces;
+// face[] faces;
 
-// pen[] p={red,green,blue,black};
-// latticeshade(faces.push(floor_q1),floor_q1,new pen[][] {{INSIDE_SHADE,OUTSIDE_SHADE},{OUTSIDE_SHADE,OUTSIDE_SHADE}});
+// // pen[] p={red,green,blue,black};
+// // latticeshade(faces.push(floor_q1),floor_q1,new pen[][] {{INSIDE_SHADE,OUTSIDE_SHADE},{OUTSIDE_SHADE,OUTSIDE_SHADE}});
 
-filldraw(faces.push(xy),project(xy),fillpen=boldcolor,drawpen=p);
-filldraw(faces.push(xz),project(xz),fillpen=lightcolor,drawpen=p);
-filldraw(faces.push(yz),project(yz),fillpen=darkcolor,drawpen=p);
-add(pic,faces);
-// add(xscale3(4.0)*pic);
+// filldraw(faces.push(xy),project(xy),fillpen=boldcolor,drawpen=p);
+// filldraw(faces.push(xz),project(xz),fillpen=lightcolor,drawpen=p);
+// filldraw(faces.push(yz),project(yz),fillpen=darkcolor,drawpen=p);
+// add(pic,faces);
 
 // add(currentpicture,shadow_pic);
 add(currentpicture,pic);
