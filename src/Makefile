@@ -26,7 +26,11 @@ LATEX := pdflatex
 # LaTeX command line
 #  The command line used to invoke LaTeX.  Set the environment, then call
 # the program.
-LATEX_CMD := $(TEXINPUTS) $(LATEX) 
+ifdef hardcopy
+  LATEX_CMD := $(TEXINPUTS) $(LATEX) "\def\hardcopy{}\input{book}"
+else
+  LATEX_CMD := $(TEXINPUTS) $(LATEX) 
+endif
 
 # MetaPost environment variable
 # (SRC_DIR has an ending /)
@@ -66,9 +70,13 @@ book.pdf : book.tex cover pref gr vs map det jc appen bib makeindex
 cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
 
 .PHONY : cover_asy
-cover_asy : cover/asy/axes.pdf cover/asy/shadow.pdf
+cover_asy : cover/asy/axesgraphic.pdf cover/asy/shadow.pdf
 
-cover/asy/axes.pdf cover/asy/shadow.pdf : cover/asy/axes.asy 
+cover/asy/axesgraphic.pdf : cover/asy/axesgraphic.asy 
+	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
+        cd $(dir $@);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
+cover/asy/shadow.pdf : cover/asy/shadow.asy 
 	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
         cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
@@ -422,4 +430,8 @@ default :
 	@echo $(ASYMPTOTE_DIR)
 	@echo $(TEXINPUTS)
 
+help:
+	@echo "Compile the book."
+	@echo "  make   compiles the book, answers, slides, and lab (may need to run twice)"
+	@echo "  make hardcopy=1  same, but makes book to send to the printer"
 

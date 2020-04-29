@@ -4,11 +4,10 @@
 \usepackage{ragged2e}
 \usepackage{xcolor}
 \colorlet{coverdarkcolor}{black}
-% \definecolor{coverbgcolor}{RGB}{103,0,153}
-\definecolor{coverbgcolor}{RGB}{212,175,55}
-% \definecolor{coverboldcolor}{RGB}{255,78,78}
-\definecolor{coverboldcolor}{RGB}{0,67,37}
-% \colorlet{coverboldcolor}{\color[RGB]{255,78,78}}
+\definecolor{coverbgcolor}{RGB}{212,175,55}  % gold
+\definecolor{coverboldcolor}{RGB}{0,67,37}  % green
+% \definecolor{coverboldcolor}{RGB}{103,0,153}  % purple
+
 \usepackage[defaultsans]{lato}
 
 \usepackage{stackengine}
@@ -36,15 +35,15 @@
 \usepackage[papersize={16in,9.25in},margin=0in]{geometry}  
 
 % \newcommand{\spinetext}[1]{\color{black}\fontsize{40pt}{8pt}{\fontfamily{ugq}\selectfont #1}}
-\newcommand{\spinetext}[1]{\color{black}\fontsize{40pt}{8pt}{\fontfamily{ugq}\selectfont #1}}
+\newcommand{\spinetext}[1]{\color{black}\fontsize{38pt}{8pt}{\fontfamily{ugq}\selectfont #1}}
 % \newcommand{\spineauthortext}[2]{\color{coverdarkcolor}\fontsize{#2pt}{8pt}{\fontfamily{ugq}\selectfont{#1}}}
-\newcommand{\spineauthortext}[1]{\color{coverdarkcolor}\fontsize{25pt}{8pt}{\fontfamily{ugq}\selectfont{#1}}}
+\newcommand{\spineauthortext}[1]{\color{coverdarkcolor}\fontsize{23pt}{8pt}{\fontfamily{ugq}\selectfont{#1}}}
 \newcommand{\spine}{%
 \setlength{\unitlength}{1in}
 \begin{picture}(1,9.5)
   \setstackgap{S}{2.1ex}
   % \put(0.235,5.65){\Shortstack{{\spinetext{L}} {\spinetext{I}} {\spinetext{N}} {\spinetext{E}} {\spinetext{A}} {\spinetext{R}}}}
-  \put(0.18,8.5){\rotatebox[origin=lc]{-90}{\spinetext{Linear Algebra}\hspace{01.5in}\spineauthortext{Hefferon}}}
+  \put(0.18,8.5){\rotatebox[origin=lc]{-90}{\spinetext{Linear Algebra}\hspace{01.75in}\spineauthortext{Hefferon}}}
   % \put(0.35,2.5){\rotatebox[origin=lc]{-90}{\spineauthortext{Hefferon}}}
   \setstackgap{S}{0.9ex}
   % \put(0.3925,1.15){\Shortstack{{\spineauthortext{H}{14}} {\spineauthortext{E}{14}} {\spineauthortext{F}{14}} {\spineauthortext{F}{14}} {\spineauthortext{E}{14}} {\spineauthortext{R}{14}} {\spineauthortext{O}{14}} {\spineauthortext{N}{14}}}} % tried fake small caps by making the H be 14 pt, others be 11

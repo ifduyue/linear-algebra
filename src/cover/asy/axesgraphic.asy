@@ -26,7 +26,7 @@ defaultpen(p);
 pen darkcolor     = rgb(212,175,55); // yz plane
 pen boldcolor     = rgb(0,67,37); //  xy plane
 // pen lightcolor    = rgb(0,173,173); // xz plane  cyan
-pen lightcolor    = rgb(103,0,153); // xz plane
+pen lightcolor    = rgb(103,0,153); // xz plane  Purple #670099
 pen bgcolor       = rgb(237,237,237); // hex(ededed);
 pen flourishcolor  = rgb(60,9,4); // hex();
 

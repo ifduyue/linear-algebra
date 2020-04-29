@@ -1,0 +1,6 @@
+src/cover/asy/README
+2020-Apr-17 JH
+
+Here are the sources of the graphics for the cover.  They are Asymptote files.
+The axes are in axesgraphic.asy and the shadow is in shadow.asy.  Both
+are converted to PDF files and then used in cover.tex and covernew.tex.

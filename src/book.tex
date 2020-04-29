@@ -21,7 +21,7 @@
 % have to "rm *.aux" to get it to compile.
 \includeonly{
 cover/covernew,% 
-% \ifbool{hardcopybool}{titlepage}{symlist},
+\ifbool{hardcopybool}{cover/titlepage}{cover/covernew,cover/symlist},
 % cover/symlist, % comment this out for printed version
 % cover/titlepage, % uncomment for printed version
 pref/pref,%
@@ -43,9 +43,9 @@ bib/bib%
 \begin{document}
 \frontmatter
 \pagenumbering{roman}
-% \ifbool{hardcopybool}{\include{titlepage}}{\include{covernew}\include{symlist}\clearemptydoublepage}
-\include{cover/covernew}\include{cover/symlist}\clearemptydoublepage % comment out for printed version
-\include{cover/titlepage} % uncomment for printed version (also remember to change the color of hyperlinks in bookjhconcrete.sty)
+\ifbool{hardcopybool}{\include{cover/titlepage}}{\include{cover/covernew}\include{cover/symlist}\clearemptydoublepage}
+% \include{cover/covernew}\include{cover/symlist}\clearemptydoublepage % comment out for printed version
+% \include{cover/titlepage} % uncomment for printed version (also remember to change the color of hyperlinks in bookjhconcrete.sty)
 \pagestyle{bookfront} 
 \setcounter{page}{1}\thispagestyle{empty}\include{pref/pref} %
 \pagestyle{booktoc}\clearemptydoublepage\tableofcontents\bigskip\par\noindent${}^*\!$Starred subsections are optional.\clearemptydoublepage %
