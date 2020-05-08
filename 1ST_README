@@ -3,11 +3,11 @@ You are free to use this material, either under the GNU Free Documentation
 license or under a Creative Commons Share Alike license.
 
 Please note that you can buy a hardcopy of this book on Amazon, at a cost that
-is less than it would take for me to run it off from the PDF at a local copy 
-shop.  (Make sure that you are getting the latest date as there are old versions
-also for sale.  The newer version costs the same, and is better.)
+is less than it would take for you to run it off from the PDF at a local copy 
+shop.  (Make sure that you are getting edition 4 as there are old versions
+also for sale.  The newest edition costs the same, and is better.)
 
-For more information, see 1st_readme.pdf, or the web site
+For more information, see README.md, or the web site
   http://joshua.smcvt.edu/linearalgebra 
 .
 
@@ -23,6 +23,7 @@ COMPILING
 Why?
 
 Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
+If you use Windows then I'm sorry, I cannot help you.
 
 0) Install the Debian TeX Live (that is, the packages from the archive).
   (I'd rather go with TeX Live from tug.org but I had to get Sage and
@@ -76,22 +77,19 @@ Sigh.  OK.  Here is what I just did on a fresh Linux box (Ubuntu 14.04).
      sudo tex mathtools
 
 4) Now I can run the shell script that generates the book.  
-    cd ~/Documents/linear-algebra
-    ./make_book_for_web.sh
-(if it fails with something about ul9r8r then see the note in instruction 2). 
+    cd ~/Documents/linear-algebra/src
+    make
+    make 
 
 At the end, you'll have book.pdf and jhanswer.pdf.  Put them
 in the same directory.  You could have just skipped the compiling, you know.
 
-To compile the version that is published in paper, change lines 10 and 11 in
-bookjhconcrete.sty to be this.
-  \booltrue{hardcopybool}  % uncomment this to make a book for publishing 
-  % \boolfalse{hardcopybool}  % the default  
-Then run ./make_book_for_web.sh.  You might also want to run this.
-  pdflatex cover
+To compile the version that is published in paper, change to
+  cd ~/Documents/linear-algebra/src
+  make hardcopy=1
+  make hardcopy=1
 
-If you want projector slides, cd slides and run make_slides.sh.  This can take 
-some time, maybe ten minutes.
+Note that making the slides can take some time, maybe ten minutes.
 
-Jim
+Jim Hefferon
 jhefferon@smcvt.edu
