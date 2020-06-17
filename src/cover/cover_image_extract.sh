@@ -4,5 +4,5 @@
 gs -sDEVICE=png16m -dNOPAUSE -dBATCH -dSAFER \
        -dFirstPage=1 -dLastPage=1 \
        -r160 \
-       -sOutputFile=bookcover.png book.pdf
+       -sOutputFile=bookcover.png ../book.pdf
 

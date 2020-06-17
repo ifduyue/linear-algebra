@@ -53,7 +53,9 @@ ASYMPTOTE_CMD := $(TEXINPUTS) $(ASYMPTOTE_DIR) asy -nosafe -vv
 # Makeindex command line.
 MAKEINDEX_CMD := makeindex -s sty/book.isty
 
-# vpath %.tex src cover pref gr vs map det jc appen bib
+# Command for making a .zip file, for the slides.
+ZIP_CMD := zip
+
 
 
 .PHONY : all
@@ -67,7 +69,8 @@ book.pdf : book.tex cover pref gr vs map det jc appen bib makeindex
 
 # Cover and Preface
 .PHONY : cover
-cover : cover/covernew.tex cover/symlist.tex cover/titlepage.tex cover_asy
+cover : cover/cover.tex cover/symlist.tex cover/titlepage.tex cover_asy
+	$(LATEX_CMD) cover/cover.tex
 
 .PHONY : cover_asy
 cover_asy : cover/asy/axesgraphic.pdf cover/asy/shadow.pdf
@@ -80,6 +83,7 @@ cover/asy/shadow.pdf : cover/asy/shadow.asy
 	$(TEXINPUTS) $(ASYMPTOTE_DIR) \
         cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
+
 
 .PHONY : pref
 pref : pref/pref.tex
@@ -211,10 +215,14 @@ define compile-slides
   cd $(dir $@);\
   $(LATEX_CMD) $(notdir $(basename $@));\
   $(LATEX_CMD) $(notdir $(basename $@))_allproofs;\
-  $(LATEX_CMD) $(notdir $(basename $@))_handout
+  $(LATEX_CMD) $(notdir $(basename $@))_handout;\
+  cd ../..;\
+  $(ZIP_CMD) slides $@;\
+  $(ZIP_CMD) slides $(basename $@)_allproofs.pdf;\
+  $(ZIP_CMD) slides $(basename $@)_handout.pdf; 
 endef
 
-slides : slides_one slides_two slides_three slides_four slides_five # zip_slides
+slides : slides_one slides_two slides_three slides_four slides_five
 
 # Slides for Chapter One
 .PHONY : slides_one
@@ -277,7 +285,6 @@ slides/two/two_iii.pdf : slides/two/two_iii.tex vs/vs3.tex
 .PHONY : slides_three
 slides_three : slides_three_asy slides/three/three_i.pdf  \
   slides/three/three_ii.pdf \
-  # slides/three/three_ii_a.pdf \
   slides/three/three_iii.pdf \
   slides/three/three_iv.pdf \
   slides/three/three_v.pdf \
@@ -289,20 +296,8 @@ slides_three_asy : slides/three/asy/three_ii_3dproj1.pdf \
   slides/three/asy/three_ii_3dproj3.pdf \
   slides/three/asy/three_ii_dims.pdf \
   slides/three/asy/three_ii_inv_img00.pdf \
-  # slides/three/asy/three_ii_inv_img01.pdf \
-  # slides/three/asy/three_ii_inv_img02.pdf \
-  # slides/three/asy/three_ii_inv_img03.pdf \
-  # slides/three/asy/three_ii_inv_img04.pdf \
-  # slides/three/asy/three_ii_inv_img05.pdf \
-  # slides/three/asy/three_ii_inv_img06.pdf \
   slides/three/asy/three_ii_kernel.pdf \
   slides/three/asy/three_ii_proj_2d00.pdf \
-  # slides/three/asy/three_ii_proj_2d01.pdf \
-  # slides/three/asy/three_ii_proj_2d02.pdf \
-  # slides/three/asy/three_ii_proj_2d03.pdf \
-  # slides/three/asy/three_ii_proj_2d04.pdf \
-  # slides/three/asy/three_ii_proj_2d05.pdf \
-  # slides/three/asy/three_ii_proj_2d06.pdf \
   slides/three/asy/three_ii_rotate_basis.pdf \
   slides/three/asy/three_ii_rotate_prod_after.pdf \
   slides/three/asy/three_ii_rotate_prod_before.pdf \
@@ -314,6 +309,19 @@ slides_three_asy : slides/three/asy/three_ii_3dproj1.pdf \
   slides/three/asy/three_vi_3dgramschmidt0.pdf \
   slides/three/asy/three_vi_3dgramschmidt1.pdf \
   slides/three/asy/three_vi_3dprojtoline.pdf 
+
+  # slides/three/asy/three_ii_inv_img01.pdf \
+  # slides/three/asy/three_ii_inv_img02.pdf \
+  # slides/three/asy/three_ii_inv_img03.pdf \
+  # slides/three/asy/three_ii_inv_img04.pdf \
+  # slides/three/asy/three_ii_inv_img05.pdf \
+  # slides/three/asy/three_ii_inv_img06.pdf \
+  # slides/three/asy/three_ii_proj_2d01.pdf \
+  # slides/three/asy/three_ii_proj_2d02.pdf \
+  # slides/three/asy/three_ii_proj_2d03.pdf \
+  # slides/three/asy/three_ii_proj_2d04.pdf \
+  # slides/three/asy/three_ii_proj_2d05.pdf \
+  # slides/three/asy/three_ii_proj_2d06.pdf \
 
 slides/three/asy/three_ii_inv_img00.pdf : slides/three/asy/three_ii_inv_img.asy 
 	cd $(dir $<);\
@@ -364,6 +372,8 @@ slides_four_asy : slides/four/asy/four_ii_2dtransedsizea.pdf \
   slides/four/asy/four_ii_2dtransedsizeb.pdf \
   slides/four/asy/four_ii_negvolbox.pdf \
   slides/four/asy/four_ii_orientation_neg0.pdf \
+  slides/four/asy/four_ii_orientation.pdf \
+  slides/four/asy/four_ii_orientation_pos.pdf
   # slides/four/asy/four_ii_orientation_neg10.pdf \
   # slides/four/asy/four_ii_orientation_neg1.pdf \
   # slides/four/asy/four_ii_orientation_neg2.pdf \
@@ -374,8 +384,6 @@ slides_four_asy : slides/four/asy/four_ii_2dtransedsizea.pdf \
   # slides/four/asy/four_ii_orientation_neg7.pdf \
   # slides/four/asy/four_ii_orientation_neg8.pdf \
   # slides/four/asy/four_ii_orientation_neg9.pdf \
-  slides/four/asy/four_ii_orientation.pdf \
-  slides/four/asy/four_ii_orientation_pos.pdf
 
 slides/four/asy/four_ii_orientation_neg0.pdf : slides/four/asy/four_ii_orientation_neg.asy 
 	cd $(dir $<);\
@@ -402,8 +410,8 @@ slides/four/four_iii.pdf : slides/four/four_iii.tex det/det3.tex
 .PHONY : slides_five
 slides_five : slides_five_asy \
   slides/five/five_i.pdf \
-  slides/five/five_ii.pdf # \
-#   slides/five/five_ii_a.pdf 
+  slides/five/five_ii.pdf \
+  slides/five/five_ii_a.pdf 
 
 .PHONY : slides_five_asy
 slides_five_asy :
@@ -423,6 +431,9 @@ slides/five/five_ii_a.pdf : slides/five/five_ii_a.tex jc/jc2.tex
 
 slides/five/%.pdf : slides/five/%.tex
 	$(compile-slides)
+
+
+
 
 
 
