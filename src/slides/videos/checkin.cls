@@ -13,7 +13,6 @@
   \setbeamercovered{invisible}
   \setbeamertemplate{navigation symbols}{} 
 }
-% \addheadbox{filler}{\ }  % create extra space at top of slide 
 
 % ---- Lists ---- 
 \RequirePackage{enumitem}
