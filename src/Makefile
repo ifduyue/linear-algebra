@@ -236,13 +236,13 @@ slides/one/asy/one_ii_plane.pdf : slides/one/asy/one_ii_plane.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/one/one_i.pdf : slides/one/one_i.tex gr/gr1.tex
+slides/one/one_i.pdf : slides/one/one_i.tex slides/one/one_i_main.tex gr/gr1.tex
 	$(compile-slides)
 
-slides/one/one_ii.pdf : slides/one/one_i.tex gr/gr2.tex
+slides/one/one_ii.pdf : slides/one/one_ii.tex slides/one/one_ii_main.tex gr/gr2.tex
 	$(compile-slides)
 
-slides/one/one_iii.pdf : slides/one/one_i.tex gr/gr3.tex
+slides/one/one_iii.pdf : slides/one/one_iii.tex slides/one/one_iii_main.tex gr/gr3.tex
 	$(compile-slides)
 
 
@@ -268,13 +268,13 @@ slides/two/asy/%.pdf : slides/two/asy/%.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/two/two_i.pdf : slides/two/two_i.tex vs/vs1.tex
+slides/two/two_i.pdf : slides/two/two_i.tex slides/two/two_i_main.tex vs/vs1.tex
 	$(compile-slides)
 
-slides/two/two_ii.pdf : slides/two/two_ii.tex vs/vs2.tex
+slides/two/two_ii.pdf : slides/two/two_ii.tex slides/two/two_ii_main.tex vs/vs2.tex
 	$(compile-slides)
 
-slides/two/two_iii.pdf : slides/two/two_iii.tex vs/vs3.tex
+slides/two/two_iii.pdf : slides/two/two_iii.tex slides/two/two_iii_main.tex vs/vs3.tex
 	$(compile-slides)
 
 # slides/two/%.pdf : slides/two/%.tex gr/
@@ -335,25 +335,25 @@ slides/three/asy/%.pdf : slides/three/asy/%.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/three/three_i.pdf : slides/three/three_i.tex map/map1.tex
+slides/three/three_i.pdf : slides/three/three_i.tex slides/three/three_i_main.tex map/map1.tex
 	$(compile-slides)
 
-slides/three/three_ii.pdf : slides/three/three_ii.tex map/map2.tex
+slides/three/three_ii.pdf : slides/three/three_ii.tex slides/three/three_ii_main.tex map/map2.tex
 	$(compile-slides)
 
-slides/three/three_ii_a.pdf : slides/three/three_ii_a.tex map/map2.tex
+slides/three/three_ii_a.pdf : slides/three/three_ii_a.tex slides/three/three_iia_main.tex map/map2.tex
 	$(compile-slides)
 
-slides/three/three_iii.pdf : slides/three/three_iii.tex map/map3.tex
+slides/three/three_iii.pdf : slides/three/three_iii.tex slides/three/three_iii_main.tex map/map3.tex
 	$(compile-slides)
 
-slides/three/three_iv.pdf : slides/three/three_iv.tex map/map4.tex
+slides/three/three_iv.pdf : slides/three/three_iv.tex slides/three/three_iv_main.tex map/map4.tex
 	$(compile-slides)
 
-slides/three/three_v.pdf : slides/three/three_v.tex map/map5.tex
+slides/three/three_v.pdf : slides/three/three_v.tex slides/three/three_v_main.tex map/map5.tex
 	$(compile-slides)
 
-slides/three/three_vi.pdf : slides/three/three_vi.tex map/map6.tex
+slides/three/three_vi.pdf : slides/three/three_vi.tex slides/three/three_vi_main.tex map/map6.tex
 	$(compile-slides)
 
 # slides/three/%.pdf : slides/three/%.tex
@@ -393,13 +393,13 @@ slides/four/asy/%.pdf : slides/four/asy/%.asy
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/four/four_i.pdf : slides/four/four_i.tex det/det1.tex 
+slides/four/four_i.pdf : slides/four/four_i.tex slides/four/four_i_main.tex det/det1.tex 
 	$(compile-slides)
 
-slides/four/four_ii.pdf : slides/four/four_ii.tex det/det2.tex 
+slides/four/four_ii.pdf : slides/four/four_ii.tex slides/four/four_ii_main.tex det/det2.tex 
 	$(compile-slides)
 
-slides/four/four_iii.pdf : slides/four/four_iii.tex det/det3.tex 
+slides/four/four_iii.pdf : slides/four/four_iii.tex slides/four/four_iii_main.tex det/det3.tex 
 	$(compile-slides)
 
 # slides/four/%.pdf : slides/four/%.tex
@@ -420,13 +420,13 @@ slides_five_asy :
 # 	cd $(dir $@);\
 #         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
-slides/five/five_i.pdf : slides/five/five_i.tex jc/jc1.tex
+slides/five/five_i.pdf : slides/five/five_i.tex slides/five/five_i_main.tex jc/jc1.tex
 	$(compile-slides)
 
-slides/five/five_ii.pdf : slides/five/five_ii.tex jc/jc2.tex
+slides/five/five_ii.pdf : slides/five/five_ii.tex slides/five/five_ii_main.tex jc/jc2.tex
 	$(compile-slides)
 
-slides/five/five_ii_a.pdf : slides/five/five_ii_a.tex jc/jc2.tex
+slides/five/five_ii_a.pdf : slides/five/five_ii_a.tex slides/five/five_ii_a_main.tex jc/jc2.tex
 	$(compile-slides)
 
 slides/five/%.pdf : slides/five/%.tex
