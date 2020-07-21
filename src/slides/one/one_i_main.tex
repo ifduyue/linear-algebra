@@ -645,6 +645,19 @@ This system
    2x &-  &y   &- &2z &+ &w &= &5
   \end{linsys}
 \end{equation*}
+reduces in this way.
+\begin{equation*}
+    \begin{amat}[r]{4}
+      1  &2  &-1  &0  &2  \\
+      2  &-1 &-2  &1  &5  
+    \end{amat}
+  \grstep{-2\rho_1+\rho_2}
+  \begin{amat}[r]{4}
+      1  &2  &-1  &0  &2  \\
+      0  &-5 &0   &1  &1  
+    \end{amat}
+\end{equation*}
+It 
 has solutions of this form. 
 \begin{equation*}
      \colvec{x  \\  y  \\  z  \\  w}
@@ -653,9 +666,10 @@ has solutions of this form.
        +\colvec{1 \\ 0 \\ 1 \\ 0}z
        +\colvec{-2/5 \\ 1/5 \\ 0 \\ 1}w
    \qquad
-   z,w\in\Re
+   \text{for $z,w\in\Re$}
 \end{equation*}
-Taking $z=w=0$ shows that the first vector is a particular solution of the
+Note that taking $z=w=0$ 
+shows that the first vector is a particular solution of the
 system.
 % \pause
 % We will show that every solution has this form.
@@ -674,19 +688,12 @@ system.
 
 % ..........
 \begin{frame}
-\df[df:HomogeneousEquation]
-\ExecuteMetaData[\grdir gr1.tex]{df:HomogeneousEquation}
-
 \ex
-From the prior system 
-\begin{equation*}
-  \begin{linsys}{4}
-    x &+  &2y  &- &z  &  &  &= &2 \\
-   2x &-  &y   &- &2z &+ &w &= &5
-  \end{linsys}
-\end{equation*}
-we get this associated system
-of homogeneous equations.
+This system is like the prior one except that is has $0$'s on the right
+side.
+Because of that right side it has a particular solution that is 
+especially simple, namely the zero vector.
+We say this is the homogeneous system associated with the prior one.
 \begin{equation*}
   \begin{linsys}{4}
     x &+  &2y  &- &z  &  &  &= &0 \\
@@ -706,15 +713,43 @@ The same Gauss's Method steps reduce it to echelon form.
     \end{amat}
 \end{equation*}
 The vector description of the solution set
-is like the earlier one but the zero vector is a particular solution.
+is like the earlier one, but with the zero vector as a particular solution.
 \begin{equation*}
   \set{
        \colvec{1 \\ 0 \\ 1 \\ 0}z
        +\colvec{-2/5 \\ 1/5 \\ 0 \\ 1}w
       \suchthat z,w\in\Re}
 \end{equation*}
+\df[df:HomogeneousEquation]
+\ExecuteMetaData[\grdir gr1.tex]{df:HomogeneousEquation}
 \end{frame}
 
+
+\begin{frame}
+\frametitle{Homogeneous systems are systems, but \ldots{}}
+
+\ex This homogeneous system has infinitely many solutions.
+\begin{equation*}
+  \begin{linsys}{3}
+    x &+  &y  &+ &z  &= &0 \\
+      &   &   &- &2z &= &0 \\
+      &   &   &  &0  &= &0 \\
+  \end{linsys}
+\end{equation*}
+
+\ex This homogeneous system has a unique solution.
+\begin{equation*}
+  \begin{linsys}{3}
+   2x &-  &3y &  &   &= &0 \\
+      &   &y  &+ &z  &= &0 \\
+      &   &   &  &4z &= &0 \\
+  \end{linsys} 
+\end{equation*}
+
+\pause
+But, a homogeneous system cannot have no solutions.
+It must have that $x=0$, \ldots{} is a soution.  
+\end{frame}
 
 
 % ..........
@@ -734,10 +769,10 @@ consider this system of homogeneous equations.
   \end{linsys}
 \end{equation*}
 Using the bottom equation, express the leading variable $y$ in terms of the
-free variables 
+free variables, 
 $y=z-w$.
 Next substitute 
-$x+(z-w)+z+w=0$ and solve for the leading variable
+$x+(z-w)+z+w=0$ and solve for the leading variable,
 $x=-2z$.
 \pause
 Finish by describing the solution in vector notation.
@@ -747,7 +782,7 @@ Finish by describing the solution in vector notation.
      +w\colvec{0 \\ -1 \\ 0 \\ 1}
     \qquad z,w\in\Re
 \end{equation*}
-and recognize the two vectors as the lemma's
+Recognize the two vectors as the lemma's
 $\vec{\beta}_1$ and $\vec{\beta}_2$.
 \end{frame}
 

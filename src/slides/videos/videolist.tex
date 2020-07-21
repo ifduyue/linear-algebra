@@ -4,21 +4,44 @@
 
 \usepackage{enumitem}
 
+\usepackage{hyperref}
+\hypersetup{
+    bookmarks=false,         % show bookmarks bar?
+    unicode=true,           % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Videos for Linear Algebra by Jim Hefferon},    % title
+    pdfauthor={Jim Hefferon},     % author
+    pdfsubject={Linear Algebra},   % subject of the document
+    pdfcreator={LaTeX},   % creator of the document
+    pdfproducer={Jim Hefferon}, % producer of the document
+    pdfkeywords={linear algebra, free, text, video}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,        % color of links to bibliography
+    filecolor=blue,         % color of file links
+    urlcolor=blue        % color of external links
+}
 \begin{document}
 \begin{center}
-\begin{tabular}{|rrc|lc|}
+\begin{tabular}{|rrc|ll|}
   \multicolumn{1}{c}{\textit{Chapter}} 
   &\multicolumn{1}{c}{\textit{Section}} 
   &\multicolumn{1}{c}{\textit{Subsection}} 
   &\multicolumn{1}{c}{\textit{Title}} 
   &\multicolumn{1}{c}{\textit{Videos}} 
   \\ \hline
-  One &I   &1 &Solving Linear Systems             &2   \\
-      &    &2 &Describing the Solution Set        &2   \\
-      &    &3 &General = Particular + Homogeneous &2   \\
+      &    &  &Introduction          &\href{https://youtu.be/i-aS6VrDomg}{Full}   \\
+ \hline
+  One &I   &1 &Solving Linear Systems             &\href{https://youtu.be/4e6AsXVIsFc}{Part One}, \href{https://youtu.be/lhkdzfWfwp0}{Part Two}   \\
+      &    &2 &Describing the Solution Set        &\href{https://youtu.be/ExVBc05YQPg}{Part One}, \href{https://youtu.be/ZatFu5GVFbo}{Part Two}   \\
+      &    &3 &General = Particular + Homogeneous &\href{https://youtu.be/OcayHebo62Q}{Full}   \\
       \cline{4-5}
-      &II  &1  &Vectors in Space                  &1   \\
-      &    &2  &Length and Angle Measures         &1   \\
+      &II  &1  &Vectors in Space                  &\href{https://youtu.be/5UpMGlhtVf4}{Full}   \\
+      &    &2  &Length and Angle Measures         &\href{https://youtu.be/-vzdOIP-a5A}{Full}   \\
       \cline{4-5}
       &III &1  &Gauss-Jordan Reduction            &1   \\
       &    &2  &Linear Combination Lemma          &1   \\

@@ -1,12 +1,66 @@
 \documentclass{checkin}
 
 \begin{document}
-\begin{frame}\frametitle{Linear systems} 
-\begin{choices}
-\item \rightanswer{test}
-\item test 2
-\item test 3
-\end{choices}
+
+% =====================================
+% Before: One.II Vectors in Space
+\begin{frame}\frametitle{Solving linear systems}
+\begin{questions}
+\item These are in echelon form.
+How many solutions does each have? 
+\begin{align*}
+&\begin{linsys}{3}
+  x  &+  &2y  &-  &z  &=  &4 \\
+     &   &3y  &+  &z  &=  &-1 \\
+     &   &    &   &0  &=  &-1 
+\end{linsys}
+\qquad
+\begin{linsys}{3}
+  x  &\   &    &-  &z  &=  &0 \\
+     &    &3y  &   &   &=  &0 \\
+     &    &    &   &z  &=  &-1\\
+     &    &    &   &0  &=  &0\\
+\end{linsys}
+                                    \\
+&\begin{linsys}{3}
+  x  &-  &y    &   &   &=  &0 \\
+     &   & y  &+   &2z   &=  &0 \\
+     &   &    &   &0  &=  &0\\ 
+\end{linsys}
+\qquad
+\begin{linsys}{3}
+  2x &+   &2y &-  &2z &=  &9 \\
+     &   &y  &-   &z  &=  &5 \\
+     &   &    &   &0  &=  &8\\ 
+     &   &    &   &0  &=  &0\\ 
+\end{linsys}
+\end{align*}
+
+\pause
+\item Produce a three unknowns, three equations linear system that 
+has infinitely many solutions.
+Produce one with no solutions.
+Produce one with one solution.
+\end{questions}
 \end{frame}
+
+
+% Before: One.II Vectors in Space, part two
+\begin{frame}\frametitle{Vectors in space}
+\begin{questions}
+\item Geometrically, what is a linear equation such as 
+$x+2y+3z=4$ or $-x+2y-z=1$?
+
+\pause
+\item What are the possibilities for the intersection of two planes?
+
+\pause
+\item Three planes?
+\end{questions}
+\end{frame}
+
+
+
+
 
 \end{document}

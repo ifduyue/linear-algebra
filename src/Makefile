@@ -433,10 +433,31 @@ slides/five/%.pdf : slides/five/%.tex
 	$(compile-slides)
 
 
+# ================== Videos ============
+# Make a PDF file used for the videos
+define compile-video-file
+  cd $(dir $@);\
+  $(LATEX_CMD) $(notdir $(basename $@))
+endef
+
+.PHONY : videos
+videos : slides/videos/checkin.pdf\
+    slides/videos/titlescreen.pdf\
+    slides/videos/videolist.pdf
+
+slides/videos/checkin.pdf : slides/videos/checkin.tex
+	$(compile-video-file)
+
+slides/videos/titlescreen.pdf : slides/videos/titlescreen.tex cover/asy/axesgraphic.pdf 
+	$(compile-video-file)
+
+slides/videos/videolist.pdf : slides/videos/videolist.tex
+	$(compile-video-file)
 
 
 
 
+# ====================== Default ===============
 default :
 	@echo $(ASYMPTOTE_DIR)
 	@echo $(TEXINPUTS)
