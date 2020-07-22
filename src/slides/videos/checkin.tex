@@ -62,5 +62,131 @@ $x+2y+3z=4$ or $-x+2y-z=1$?
 
 
 
+% =====================================
+% Before: One.III Gauss-Jordan reduction
+\begin{frame}\frametitle{Geometry of a solution set}
+\begin{questions}
+\item This is the solution set of a linear system.
+Sketch it.
+\begin{equation*}
+  \set{\colvec{1 \\ 1 \\ 2}
+       +\colvec{1 \\ 2 \\ -1}t
+       +\colvec{0 \\ 2 \\ -1}s
+       \suchthat t,s\in\R}
+\end{equation*}
+\pause
+\item Find the particular solution vector for
+$t=-1$ and $s=1$.
+Sketch it.
+\pause
+\item 
+Sketch this.
+\begin{equation*}
+  \set{\colvec{0 \\ 1 \\ 2}
+       +\colvec{1 \\ 2 \\ -1}t
+       +\colvec{0 \\ 2 \\ -1}s
+       \suchthat t,s\in\R}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+\begin{frame}\frametitle{Row equivalent matrices}
+\begin{questions}
+\item Produce two matrices that are row equivalent.
+\item Produce two that are not row equivalent.
+\end{questions}
+\end{frame}
+
+
+
+
+
+
+% =====================================
+% Before: Two.I.1 Vector spaces, 
+\begin{frame}\frametitle{Linear combinations}
+\begin{questions}
+\item This equation involves a linear combination of vectors.
+Solve it for $x$, $y$, and $z$.
+\begin{equation*}
+   \colvec{1 \\ 2 \\ 0}\cdot x
+       +\colvec{1 \\ 1 \\ -1}\cdot y
+       +\colvec{0 \\ 3 \\ 0}\cdot z
+       =\colvec{0 \\ 0 \\ 0}
+\end{equation*}
+\pause
+\item This involves a linear combination of matrices.
+Solve it.
+\begin{equation*}
+   x\cdot\begin{mat}
+     2  &1  \\
+     0  &-2
+   \end{mat}
+   +y\cdot\begin{mat}
+     1    &-1  \\
+     1/2  &0
+   \end{mat}
+   +z\cdot\begin{mat}
+     0    &0  \\
+     -1  &1
+   \end{mat}
+  =
+  \begin{mat}
+   0  &0 \\
+   0  &0
+  \end{mat}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+\begin{frame}\frametitle{Closure under linear combinations}
+\begin{questions}
+\item Consider this line through the origin in the plane.
+Pick two generic vectors and make an example linear combination. 
+\begin{equation*}
+  \set{\colvec{x \\ y} \suchthat y=2x}
+  =\set{\colvec{x \\ y} \suchthat 2x-y=0}
+\end{equation*}
+Check that the result is a member of the line.
+
+\pause
+\item This line does not go through the origin.
+Show that it is not closed under linear combinations. 
+\begin{equation*}
+  \set{\colvec{x \\ y} \suchthat 2x-y=1}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+
+
+
+
+
+% =====================================
+% Before: Two.I.2 Subspaces, 
+\begin{frame}\frametitle{Subsets}
+\begin{questions}
+\item This is a plane through the origin in $\R^3$.
+Pick two generic vectors and make an example linear combination.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}
+       \suchthat x+2y+3z=0}
+\end{equation*}
+Check that the result is a member of the plane.
+
+\item This is a line through the origin in $\R^3$,
+which is a subset of the plane.
+Pick two generic vectors and make an example linear combination.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}
+       \suchthat \text{$x+2y=0$ and $z=0$}}
+\end{equation*}
+Check that the result is a member of the line, and of the plane.
+\end{questions}
+\end{frame}
 
 \end{document}
