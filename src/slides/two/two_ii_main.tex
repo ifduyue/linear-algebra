@@ -183,9 +183,10 @@ and note that it has more than just the solution $c_1=c_2=c_3=0$.
   The span of this set is the $xy$-plane.
   \begin{equation*}
     P=\set{\colvec{2 \\ 0 \\ 0},
-           \colvec{0 \\ 2 \\ 0}}\subset\Re^3
+           \colvec{0 \\ 2 \\ 0}}\subseteq\Re^3
   \end{equation*}
-  If we expand the set by adding a vector $\set{\vec{p}_1,\vec{p}_2,\vec{q}}$ 
+  If we expand that by adding a vector
+  to get $\set{\vec{p}_1,\vec{p}_2,\vec{q}}$ 
   then there are two possibilities. 
   \begin{equation*}
     P_0=\set{\colvec{2 \\ 0 \\ 0},
@@ -196,10 +197,10 @@ and note that it has more than just the solution $c_1=c_2=c_3=0$.
                  \colvec{0 \\ 2 \\ 0},
                  \colvec{0 \\ 0 \\ -1}}
   \end{equation*}
-  If the new vector is already in the starting span $\vec{q}\in\spanof{P}$
-  then the span is unchanged $\spanof{P_0}=\spanof{P}$.
-  But if the new vector is outside the starting span $\vec{q}\notin\spanof{P}$
-  then the span grows $\spanof{P_1}\supsetneq\spanof{P}$.
+  If the new vector is already in the starting span, $\vec{q}\in\spanof{P}$,
+  then the span is unchanged, as with $\spanof{P_0}=\spanof{P}$.
+  But if the new vector is outside the starting span, $\vec{q}\notin\spanof{P}$,
+  then the span grows, as in $\spanof{P_1}\supsetneq\spanof{P}$.
 }
 \end{frame}
 
@@ -415,6 +416,36 @@ An example of the lower left is that the set $S$ of all vectors in the
 space $\Re^2$ is linearly dependent but the subset $\hat{S}$ consisting of only the 
 unit vector on the $x$-axis is independent.
 By interchanging $\hat{S}$ with $S$ that's also an example of the upper right.
+\end{frame}
+
+
+
+\begin{frame}{Independence versus span}
+The box on the prior slide describes what happens if we start with a linearly
+independent set~$S$ and pass to a new one,~$\hat{S}$.
+If the new set is smaller, $\hat{S}\subset S$, then $\hat{S}$ is sure to be
+linearly independent.
+But if the new set is bigger, $S\subset \hat{S}$, then it may be linearly
+dependent.
+So, speaking informally, linearly independent sets like to have
+fewer elements.
+
+Contrast that with spanning sets.
+Suppose that we start with a spanning set~$S$ and pass to~$\hat{S}$.
+If the new set is bigger, $S\subset \hat{S}$, then it is sure to
+be a spanning set.
+But if the new set is smaller, $\hat{S}\subset S$, then possibly it
+no longer spans the space.
+So, again speaking informally, spanning sets like to have more elements.
+
+\ex This set spans~$\R^3$ and is linearly independent.
+\begin{equation*}
+  S=\set{\colvec{1 \\ 0 \\ 0},
+         \colvec{1 \\ 1 \\ 0},
+         \colvec{1 \\ 1 \\ 1}}
+\end{equation*}
+Omit any member and it no longer spans the space.
+Add any new vector to it and the result is linearly dependent.
 \end{frame}
 
 

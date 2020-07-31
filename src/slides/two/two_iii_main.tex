@@ -298,6 +298,37 @@ has $\rep{\vec{w}}{\stdbasis_n}=\vec{w}$.
 \end{frame}
 
 
+\begin{frame}{``Represents'' in what sense?}
+The word used in the definition applies because, as this result says,
+a relationship holds among
+a set of vectors if and only if it holds among the representatives.
+
+\lm[lem:LinearRelRepresented]
+\ExecuteMetaData[\vsdir vs3.tex]{lm:LinearRelRepresented}
+
+\ex
+Consider this basis for $\R^2$, and these members of the space.
+\begin{equation*}
+  B=\sequence{\colvec{1 \\ 1},\colvec{1 \\ -1}}
+  \qquad \vec{v}_1=\colvec{2 \\ 3}\quad
+   \vec{v}_2=\colvec{1 \\ 2}\quad
+   \vec{v}_3=\colvec{1 \\ 0}
+\end{equation*}
+Notice that $2\vec{v}_1-3\vec{v}_2-\vec{v}_3=\zero$.
+The calculation for these is routine.
+\begin{equation*}
+  \rep{\vec{v}_1}{B}=\colvec{5/2 \\ -1/2}\quad
+  \rep{\vec{v}_2}{B}=\colvec{3/2 \\ -1/2}\quad
+  \rep{\vec{v}_3}{B}=\colvec{1/2 \\ 1/2}
+\end{equation*}
+Also routine is the verification that 
+$2\cdot\rep{\vec{v}_1}{B}-3\cdot\rep{\vec{v}_2}{B}-\rep{\vec{v}_3}{B}$
+equals $\zero$. 
+\end{frame}
+
+
+
+
 
 
 \section{Dimension}
@@ -548,12 +579,11 @@ We will argue that it cannot have more.
 
 So suppose that
 $\vec{\delta}_1$, \ldots{}, $\vec{\delta}_{n+1}$ are distinct.
-The assumption that $D$ is linearly independent gives that
-the only relationship
-$a_1\vec{\delta}+1+\dots+a_{n+1}\vec{\delta}_{n+1}=\vec{0}$
-is the one where each $a_i$ is zero.
-We shall get a contradiction by finding that  
-there is a nontrivial relationships among these~$n+1$ vectors.
+We shall show that among these~$n+1$ vectors
+there is a nontrivial linear relationship, a
+$a_1\vec{\delta}_1+\dots+a_{n+1}\vec{\delta}_{n+1}=\vec{0}$
+where not all the  $a_i$ are zero.
+
 First represent them with respect to~$B$.
 \begin{equation*}
   \rep{\vec{\delta}_1}{B}=\colvec{c_{1,1} \\ \vdots \\ c_{n,1}}
@@ -573,9 +603,9 @@ if and only if the same relationship holds among the representations.
   a_{n+1}\colvec{c_{1,n+1} \\ \vdots \\ c_{n,n+1}}
   =\colvec{0 \\ \vdots \\ 0}  
 \end{equation*}
-Here the $c_{i,j}$ are fixed, since they are the coefficients in the 
+The $c_{i,j}$ are the coefficients in the 
 representations of the given vectors, while we are looking for the~$a_i$.
-Thus the above is a homogeneous linear system
+So this gives a homogeneous linear system.
 \begin{equation*}
   \begin{linsys}{3}
     c_{1,1}a_1 &+ &\cdots &+ &c_{1,n+1}a_{n+1} &= &0 \\ 
@@ -583,8 +613,10 @@ Thus the above is a homogeneous linear system
     c_{n,1}a_1 &+ &\cdots &+ &c_{n,n+1}a_{n+1} &= &0 
   \end{linsys}
 \end{equation*}
-with more unknowns, $n+1$, than equations.
-Such a system does not have only one solution, it has infinitely many solutions.
+It is homogeneous so it has at least one solution.
+But there are more unknowns, $n+1$, than equations.
+So it has infinitely many solutions.
+Therefore the set $D$ is linearly dependent.
 \qed
 \end{frame}
 
@@ -669,7 +701,8 @@ So $S$ is a vector space of dimension two.
 
 \pause\medskip
 \re
-This is an example of a result that assumes the vector spaces are
+This is an example of what we said earlier, that we will 
+take the vector spaces to be
 finite-dimensional without specifically saying so.
 \end{frame}
 

@@ -164,8 +164,6 @@ Show that it is not closed under linear combinations.
 
 
 
-
-
 % =====================================
 % Before: Two.I.2 Subspaces, 
 \begin{frame}\frametitle{Subsets}
@@ -188,5 +186,290 @@ Pick two generic vectors and make an example linear combination.
 Check that the result is a member of the line, and of the plane.
 \end{questions}
 \end{frame}
+
+
+\begin{frame}\frametitle{Parametrization}
+\begin{questions}
+\item This is a subset of the space  $\polyspace_2$ 
+of quadratic polynomials.
+Name three members and three non-members.
+Parametrize it.
+\begin{equation*}
+  \set{a+bx+cx^2
+       \suchthat b+2c=0}
+\end{equation*}
+
+\item 
+Parametrize this.
+\begin{equation*}
+  \set{a+bx+cx^2
+       \suchthat a-b-c=0}
+\end{equation*}
+Check that it is a subspace.
+\end{questions}
+\end{frame}
+
+
+
+% =====================================
+% Before: Two.II Linear Independence 
+\begin{frame}\frametitle{Spanning sets}
+\begin{questions}
+\item Pick three generic members $\vec{v}_1$, $\vec{v}_2$, and~$\vec{v}_3$ 
+of this subspace
+$\set{a+bx+cx^2
+       \suchthat b+2c=0}\subset\polyspace_2$.
+Express them as linear combinations of the members of this spanning set.
+\begin{equation*}
+  S=\set{1, -2x+x^2,3-4x+2x^2}
+\end{equation*}
+
+\item Observe that the third vector in~$S$ is a combination of the
+other two: $3-4x+2x^2=3\cdot(1)-2\cdot(-2x+x^2)$.
+Use that to express  $\vec{v}_1$, $\vec{v}_2$, and~$\vec{v}_3$ as 
+combinations of just the first two members of~$S$.
+\end{questions}
+\end{frame}
+
+
+\begin{frame}\frametitle{Linearly independent and dependent sets}
+\begin{questions}
+\item Show that the first is linearly dependent while the second is
+linearly independent.
+\begin{equation*}
+  \set{\colvec{1 \\ 3 \\ 0},
+       \colvec{1 \\ 2 \\ 0},
+       \colvec{1 \\ -1 \\ 0}}
+  \qquad
+  \set{\colvec{1 \\ 3 \\ 0},
+       \colvec{1 \\ 2 \\ 0},
+       \colvec{1 \\ -1 \\ 1}}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+
+
+% =====================================
+% Before: Two.III.1 Basis 
+\begin{frame}\frametitle{Linear independence and spanning sets}
+\begin{questions}
+\item Find a spanning set for this plane.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}\in\R^3
+       \suchthat x+2y-z=0}
+\end{equation*}
+
+\item Show that this spanning set is linearly independent.
+
+\item If we add this vector to the spanning set, is the result 
+linearly independent or linearly dependent?
+\begin{equation*}
+  \colvec{1 \\ 1 \\ 2}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Basis}
+\begin{questions}
+\item Show that this is a basis for the plane.
+\begin{equation*}
+  \sequence{\colvec{1 \\ 1},
+       \colvec{1 \\ -1}}
+\end{equation*}
+
+\item What linear combination of the basis elements makes this
+plane vector?
+\begin{equation*}
+  \colvec{3 \\ -2}
+\end{equation*}
+
+\item Show this is a basis 
+$\sequence{2-x,3+2x}\subseteq\polyspace_1$.
+What combination gives $-1-x$?
+\end{questions}
+\end{frame}
+
+
+
+% =====================================
+% Before: Two.III.2 Dimension
+
+\begin{frame}\frametitle{Representations}
+\begin{questions}
+\item This is a basis for the vector space of quadratic
+polynomials, $\polyspace_2$. 
+Represent $\vec{v}=1-2x-2x^2$
+with respect to it. 
+\begin{equation*}
+  B_1=\sequence{1,1+x,1+x^2}
+\end{equation*}
+
+\item Represent $\vec{v}$ with respect to this basis.
+\begin{equation*}
+  B_2=\sequence{1+x+x^2,1+x,1}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Dimension}
+Find the dimension of each space.
+\begin{questions}
+\item $\set{a+bx+cx^2\suchthat a-2b=0}$
+\item
+  $\set{\begin{mat}
+          a  &b  \\
+          c  &d
+        \end{mat} \suchthat \text{$a+2d=0$ and $b+c=0$}}$ 
+\end{questions}
+\end{frame}
+
+
+
+% =====================================
+% Before: Three.I.1 Isomorphism
+
+\begin{frame}\frametitle{Row space and column space}
+In this matrix the first row plus twice the third equals the second.
+\begin{equation*}
+  \begin{mat}
+    1  &0  &4  \\
+   -1  &4  &0  \\
+   -1  &2  &-2  \\
+  \end{mat}
+\end{equation*}
+\begin{questions}
+\item Find a basis for the row space.
+Give the row rank. 
+\item Find a basis for the column space.
+Give the column rank. 
+\end{questions}
+\end{frame}
+
+
+\begin{frame}\frametitle{Isomorphism}
+Show that $\R^2$ and $\polyspace_1$ are isomorphic via this function.
+\begin{equation*} 
+  \colvec{a \\ b}
+  \mapsunder{f}
+  (a-b)+(a+b)x
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}\frametitle{Automorphisms}
+Sketch these two vectors in the plane, along with the 
+parallelogram diagram giving their sum.
+\begin{equation*}
+  \vec{u}=\colvec{1  \\ 2}
+  \quad
+  \vec{v}=\colvec{3  \\ 1}
+\end{equation*}
+\begin{questions}
+\item Where $d_2$ is the plane automorphism that dilates by a 
+factor of~$2$, sketch $d_2(\vec{u})$, $d_2(\vec{v})$, and
+the parallelogram diagram giving their sum. 
+\item Where $t_{\pi/6}$ is the plane automorphism that rotates by
+$\pi/6$ radians, sketch $t_{\pi/6}(\vec{u})$, $t_{\pi/6}(\vec{v})$, and
+the parallelogram diagram giving their sum. 
+\item Where $f_{\ell}$ is the plane automorphism that flips about the
+line $y=x$, sketch $f_{\ell}(\vec{u})$, $f_{\ell}(\vec{v})$, and
+the parallelogram diagram giving their sum. 
+\end{questions}
+\end{frame}
+
+
+\begin{frame}\frametitle{Representation is an isomorphism}
+Consider the vector spaces $\polyspace_2$ and $\R^3$.
+Fix these bases.
+\begin{equation*}
+  B=\sequence{x^2,x^2+x,x^2+1}
+  \quad
+  D=\stdbasis_3=\sequence{\colvec{1 \\ 0 \\ 0},
+                          \colvec{0 \\ 1 \\ 0},
+                          \colvec{0 \\ 0 \\ 1} }
+\end{equation*}
+\begin{questions}
+\item The representation map $\map{\rep{}{B}}{\polyspace_2}{\R^3}$
+ associates the quadratic polynomial $-1-2+4x^2$ with what three-tall vector?
+\item What quadratic polynomial is associated with this?
+\begin{equation*}
+  \vec{w}=\colvec{-1 \\ -1 \\ 2}
+\end{equation*}
+\end{questions}
+\end{frame}
+
+
+
+
+
+
+% =====================================
+% Before: Three.II.1 Homomorphism
+
+\begin{frame}\frametitle{Homomorphism}
+Verify that each is a linear map.
+\begin{questions}
+\item $\map{h}{\polyspace_3}{\R^2}$
+\begin{equation*}
+  a+bx+cx^2+dx^3 \mapsto \colvec{a+d \\ c-2a}
+\end{equation*}
+
+\item $\map{g}{\matspace_{\nbyn{2}}}{\matspace_{\nbyn{2}}}$
+\begin{equation*}
+\begin{mat}
+  a &b  \\
+  c &d
+\end{mat}
+\mapsto
+\begin{mat}
+  a  &c \\
+  b  &d
+\end{mat}
+\end{equation*}  
+\end{questions}
+\end{frame}
+ 
+
+\begin{frame}\frametitle{Linearly extend}
+Let $V=\polyspace_2$ and $W=\R^2$.
+Fix the basis $B=\sequence{x+1,x,x^2}$ of~$V$.
+Define the function $\map{f}{V}{W}$ that linearly extends this.
+\begin{equation*}
+  x+1\mapsto\colvec{0 \\ 2}
+  \quad
+  x\mapsto\colvec{-1 \\ -1}
+  \quad
+  x^2\mapsto\colvec{1 \\ 1}
+\end{equation*}
+\begin{questions}
+\item Find $f(-x^2)$.
+\item Find $f(1+x+x^2)$.
+\item Find $f(5-x+2x^2)$.
+\end{questions}
+\end{frame}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
