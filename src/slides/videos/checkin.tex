@@ -434,23 +434,35 @@ Verify that each is a linear map.
 \end{equation*}  
 \end{questions}
 \end{frame}
+
  
 
-\begin{frame}\frametitle{Linearly extend}
-Let $V=\polyspace_2$ and $W=\R^2$.
-Fix the basis $B=\sequence{x+1,x,x^2}$ of~$V$.
-Define the function $\map{f}{V}{W}$ that linearly extends this.
-\begin{equation*}
-  x+1\mapsto\colvec{0 \\ 2}
-  \quad
-  x\mapsto\colvec{-1 \\ -1}
-  \quad
-  x^2\mapsto\colvec{1 \\ 1}
+\begin{frame}\frametitle{Inverse images of range elements}
+Consider this $\map{h}{\R^3}{\R}$.
+\begin{equation*} 
+  \colvec{x \\ y \\ z}\mapsto x-y-2z
 \end{equation*}
 \begin{questions}
-\item Find $f(-x^2)$.
-\item Find $f(1+x+x^2)$.
-\item Find $f(5-x+2x^2)$.
+\item Find $h^{-1}(1)$.
+\item Find $h^{-1}(-1)$.
+\item Find $h^{-1}(0)$.
+\item Pick a vector from $h^{-1}(1)$
+and a vector from $h^{-1}(-1)$. 
+Verify that they add to a vector from $h^{-1}(0)$.
+\end{questions}
+\end{frame}
+
+ 
+
+\begin{frame}\frametitle{Null space}
+Consider the derivative map $\map{d/dx}{\polyspace_3}{\polyspace_2}$.
+\begin{equation*} 
+  \frac{d}{dx}(\,a+bx+cx^2+dx^3\,)=b+2c\cdot x+3d\cdot x^2
+\end{equation*}
+\begin{questions}
+\item Find its null space.
+\item Find its nullity.
+\item Find its rank.
 \end{questions}
 \end{frame}
  
