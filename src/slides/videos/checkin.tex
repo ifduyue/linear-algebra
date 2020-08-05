@@ -454,6 +454,30 @@ Verify that they add to a vector from $h^{-1}(0)$.
 
  
 
+\begin{frame}\frametitle{Nullity plus rank is the dimension of the domain}
+Consider $\map{g}{\R^3}{\polyspace_2}$ and $\map{h}{\R}{\R^3}$.
+\begin{equation*} 
+  \colvec{a \\ b \\ c}\mapsunder{g}0+(a+2c)\cdot x+0x^2
+  \qquad
+  a\mapsunder{h}\colvec{a \\ 3a \\ 0}
+\end{equation*}
+\begin{questions}
+\item Find each null space.
+\item Find each range space.
+\end{questions}
+\end{frame}
+ 
+
+
+
+
+
+
+
+% =====================================
+% Before: Three.III  Computing Linear Maps
+
+
 \begin{frame}\frametitle{Null space}
 Consider the derivative map $\map{d/dx}{\polyspace_3}{\polyspace_2}$.
 \begin{equation*} 
@@ -465,7 +489,79 @@ Consider the derivative map $\map{d/dx}{\polyspace_3}{\polyspace_2}$.
 \item Find its rank.
 \end{questions}
 \end{frame}
+
+
+\begin{frame}\frametitle{Computing a linear map}
+Consider this map $\map{h}{\R^2}{\matspace_{\nbyn{2}}}$
+\begin{equation*} 
+  \colvec{x \\ y}
+  \mapsto
+  \begin{mat}
+    3x  &0 \\
+    0   &2x-y
+  \end{mat}
+\end{equation*}
+and bases.
+\begin{equation*}
+  B=\sequence{\colvec{1 \\ 1},
+              \colvec{1 \\ -1}}
+  \quad
+  D=\sequence{
+    \begin{mat}
+      1  &0  \\
+      0  &0
+    \end{mat},
+    \begin{mat}
+      0  &2  \\
+      0  &0
+    \end{mat},
+    \begin{mat}
+      0  &0  \\
+      3  &0
+    \end{mat},
+    \begin{mat}
+      0  &0  \\
+      0  &4
+    \end{mat}
+   }
+\end{equation*}
+\begin{questions}
+\item Represent the map with respect to the bases.
+\item Represent $\vec{v}=\colvec{5 \\ 3}$.
+\item Using those, compute the effect of the map on the vector
+\end{questions}
+\end{frame}
  
+
+
+
+\begin{frame}\frametitle{Matrix-vector multiplication}
+Perform, if possible, the matrix vector multiplication.
+\begin{questions}
+\item 
+$
+\begin{mat}
+  1  &3  \\
+  -1 &5
+\end{mat}\colvec{1 \\ 2}
+$
+\item 
+$
+\begin{mat}
+  1  &3  \\
+  -1 &5
+\end{mat}\colvec{1 \\ 2  \\ 0}
+$
+\item 
+$
+\begin{mat}
+  1  &3  \\
+  -1 &5
+\end{mat}\colvec{1}
+$
+\end{questions}
+\end{frame}
+
 
 
 
