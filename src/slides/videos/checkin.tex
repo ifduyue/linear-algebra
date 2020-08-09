@@ -567,6 +567,69 @@ $
 
 
 
+% =====================================
+% Before: Three.III  Computing Linear Maps
+
+
+\begin{frame}\frametitle{Computing map facts}
+Consider the map $\map{f}{\R^2}{\R^2}$ represented by
+\begin{equation*} 
+  \rep{f}{B,D}= 
+  \begin{mat}
+    2  &1 \\
+    -1 &3
+  \end{mat}
+\end{equation*}
+with respect to these bases.
+\begin{equation*}
+  B=\sequence{
+      \colvec{1 \\ 1},
+      \colvec{1  \\ -1}
+     }
+  \quad
+  D=\sequence{
+      \colvec{-1 \\ 0},
+      \colvec{2  \\ 1}
+     }
+\end{equation*}
+\begin{questions}
+\item Find its null space.
+\item Find its range space.
+\end{questions}
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Matrix addition and scalar multiplication}
+Consider $\map{h,g}{\polyspace_2}{\R^2}$
+\begin{equation*} 
+  h(a+bx+cx^2)=\colvec{b \\ a+c}
+  \qquad
+  g(a+bx+cx^2)=\colvec{a+b \\ -2c}
+\end{equation*}
+and these bases.
+\begin{equation*}
+  B=\sequence{1, 1+x, 1+x^2}
+  \qquad
+  D=\stdbasis_2=\sequence{
+      \colvec{1 \\ 0},
+      \colvec{0  \\ 1}
+     }
+\end{equation*}
+\begin{questions}
+\item Let $\vec{v}=3+2x+x^2$.
+  Find the action on $\vec{v}$ of the functions $h$, $g$, $4h$, 
+and $h+g$.
+\item Represent $h$ with respect to $B,D$.
+\item Represent $g$ with respect to $B,D$.
+\item Also represent $4h$ and $h+g$.
+\end{questions}
+\end{frame}
+
+
+
+
+
 
 
 
