@@ -780,5 +780,68 @@ $B_2=\sequence{x^2, x^2-x, x^2-x+1}$.
 
 
 
+\begin{frame}\frametitle{Change the representation of a map}
+Let $\map{h}{\R^2}{\R^2}$ be
+\begin{equation*}
+  \colvec{x \\ y}\mapsto\colvec{x-2y \\ 2x+3y}
+\end{equation*}
+and fix these bases.
+\begin{equation*}
+  B=\stdbasis_2,
+  D=\sequence{\colvec{1 \\ 0},\colvec{1 \\ 1}}
+  \quad
+  \hat{B}=\sequence{\colvec{1 \\ 1},\colvec{1 \\ -1}},
+  \hat{D}=\sequence{\colvec{2 \\ 0},\colvec{0 \\ 3}}
+\end{equation*}
+\begin{questions}
+\item Find $\rep{h}{B,D}$ 
+and
+ $\rep{h}{\hat{B},\hat{D}}$.
+\item Draw the change of basis arrow diagram.
+\item Compute the change of basis equation. 
+\end{questions}
+\end{frame}
+
+
+\begin{frame}{Matrix equivalence}
+Which of these are matrix-equivalent?
+\begin{questions}
+\item $
+  \begin{mat}
+    1 &3 \\
+    2 &4 
+  \end{mat}
+$
+\item $
+  \begin{mat}
+    1 &0 &3 \\
+    2 &1 &3 \\
+    3 &2 &6
+  \end{mat}
+$
+\item $
+  \begin{mat}
+    1 &0 &3 \\
+    2 &1 &3 \\
+    3 &1 &6
+  \end{mat}
+$
+\item $
+  \begin{mat}
+    4 &2 \\
+    2 &1
+  \end{mat}
+$
+\item $
+  \begin{mat}
+    3 &3 \\
+    1 &2
+  \end{mat}
+$
+\end{questions}
+\end{frame}
+
+
+
 
 \end{document}
