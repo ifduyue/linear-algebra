@@ -803,6 +803,14 @@ and
 \end{frame}
 
 
+
+
+
+
+% =====================================
+% Before: Three.VI Projection
+
+
 \begin{frame}{Matrix equivalence}
 Which of these are matrix-equivalent?
 \begin{questions}
@@ -842,6 +850,88 @@ $
 \end{frame}
 
 
+
+
+
+
+
+% =====================================
+% Before: Four.I Determinants
+
+\begin{frame}{Orthogonal Projection}
+From this basis for $\R^3$
+\begin{equation*}
+  B=\sequence{\colvec{1 \\ -1 \\ 0},
+              \colvec{2 \\ 0 \\ 1},
+              \colvec{3 \\ -1 \\ -1}
+              }
+\end{equation*}
+derive an orthonormal one.
+\end{frame}
+
+
+
+\begin{frame}{Determine nonsingularity}
+Recall these.
+\begin{equation*}
+  \begin{mat}
+    a &b \\
+    c &d
+  \end{mat}
+  \text{is nonsingular}
+  \quad\text{iff}\quad
+  ad-bc\neq 0
+\end{equation*}
+\begin{equation*}
+  \begin{mat}
+    a &b &c \\
+    d &e &f \\
+    g &h &i
+  \end{mat}
+  \text{is nonsingular}
+  \quad\text{iff}\quad
+  \begin{array}[t]{l} 
+  aei+bfg+cdh \\
+  \hspace*{1em}-hfa-idb-gec\neq 0
+  \end{array}
+\end{equation*}
+Determine if each is nonsingular with the formula.
+\begin{questions}
+\item 
+$
+\begin{mat}
+  2 &1 \\
+ -4 &-2
+\end{mat}
+$
+\item
+$
+\begin{mat}
+ 1 &3 &1 \\
+ 2 &0 &-1 \\
+ 0 &1 &3
+\end{mat}
+$
+\end{questions}
+\end{frame}
+
+
+\begin{frame}{Multilinearity}
+Fix this matrix.
+\begin{equation*}
+  A=
+  \begin{mat}
+    5 &-1 \\
+    3  &4
+  \end{mat}
+\end{equation*}
+\begin{questions}
+\item Use the formula to find $\deter{A}$.
+\item Use multilinearlity to expand $\deter{A}$ into four determinants
+  with lots of zeros.
+\item Compute the determinant of each of the four.
+\end{questions}
+\end{frame}
 
 
 \end{document}
