@@ -2,11 +2,12 @@
 \usefonttheme{professionalfonts}
 \usefonttheme{serif}
 \PassOptionsToPackage{pdfpagemode=FullScreen}{hyperref}
-\PassOptionsToPackage{usenames,dvipsnames}{color}
+\PassOptionsToPackage{usenames,dvipsnames}{xcolor} 
 % \DeclareGraphicsRule{*}{mps}{*}{}
 \usepackage{linalgjh}
 \usepackage{present}
 \usepackage{directories}  % Define \detdir, \detmpdir, etc.
+\usepackage{colortbl}  % Just in this one file, to color Laplace tables 
 \usepackage{xr}\externaldocument{\detdir det3} % read refs from .aux file
 \usepackage{catchfilebetweentags}
 \usepackage{etoolbox} % from http://tex.stackexchange.com/questions/40699/input-only-part-of-a-file-using-catchfilebetweentags-package
@@ -53,17 +54,21 @@
 % ..... Four.III.1 .....
 \section{Laplace's formula for the determinant}
 %..........
-\begin{frame}
-\ex[ex:ExpThreeFirstRow]
-\ExecuteMetaData[\detdir det3.tex]{LaplaceExample0}
-\end{frame}
-\begin{frame}
-\ExecuteMetaData[\detdir det3.tex]{LaplaceExample1}
-\end{frame}
-\begin{frame}
-\ExecuteMetaData[\detdir det3.tex]{LaplaceExample2}
+\begin{frame}{Introduction}
+\ExecuteMetaData[\detdir det3.tex]{dis:LaplaceIntro0}
 \pause
-\ExecuteMetaData[\detdir det3.tex]{LaplaceExample3}
+\ExecuteMetaData[\detdir det3.tex]{dis:LaplaceIntro1}
+\end{frame}
+
+\begin{frame}
+\ExecuteMetaData[\detdir det3.tex]{dis:LaplaceIntro2}
+\pause
+\ExecuteMetaData[\detdir det3.tex]{dis:LaplaceIntro3}
+\end{frame}
+
+
+\begin{frame}
+\ExecuteMetaData[\detdir det3.tex]{dis:LaplaceIntro4}
 \end{frame}
 
 
