@@ -19,7 +19,7 @@ And, there is a lab manual for computer work, using *Sage*. It introduces studen
 # Award
 
 This work is the recipient of the Mathematical Association of America's
-[2020 Solow Award](https://www.maa.org/programs/maa-awards/writing-awards/daniel-solow-authors-award), that recognizes its
+[2020 Solow Award](https://www.maa.org/programs/maa-awards/writing-awards/daniel-solow-authors-award), which recognizes its
 "impact on undergraduate education in mathematics."
 
 # License
@@ -27,6 +27,12 @@ This work is the recipient of the Mathematical Association of America's
 _Linear Algebra_ is Free. You can use it under the GNU Free Documentation license or  under a Creative Common Share Alike license, at your choice.
 
 This text has been available online for over twenty five years. It has been used in many hundreds of classrooms. It has also been widely used for self-study, both as a supplement to another text that a student has been assigned in a class and as a main text for independent learning.
+
+# Edition
+
+This is the fourth edition of the text.  I anticipate that this is the
+final edition, although I expect that there will be new printings to
+correct bugs.
 
 
 # Contributing

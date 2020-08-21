@@ -436,11 +436,11 @@ is $e_2$.
 \end{equation*}
 \end{frame}
 \begin{frame}
-Thinking of the matrix as representing a transformation of the plane,
+If we think of that matrix as representing a transformation of the plane,
 the transformation acts on those vectors in a particularly simple way, 
 by rescaling.
 
-Not every vector is simply rescaled.
+But note that not every vector is simply rescaled.
 \begin{equation*}
   \begin{mat}
     4  &0 \\
@@ -451,6 +451,7 @@ Not every vector is simply rescaled.
   \neq
   x\cdot\colvec{1 \\ 1}  
 \end{equation*}
+Those that are rescaled, the eigenvectors, are special.
 \end{frame}
 
 
@@ -511,7 +512,7 @@ Some computation gives the determinant and its factors.
 So the eigenvalues are $\lambda_1=5$, $\lambda_2=4$, and $\lambda_3=2$.
 
 \pause
-To find the eigenvectors associated with the eigenvalue of $5$ 
+To find the eigenvectors associated with the eigenvalue of $5$, 
 specialize equation~($*$) for $x=5$.
 \begin{equation*}
   \begin{mat}
@@ -530,7 +531,7 @@ eigenvectors.
 \end{equation*}
 \end{frame}
 \begin{frame}
-Similarly, to find the eigenvectors associated with the eigenvalue of~$4$ 
+Similarly, to find the eigenvectors associated with the eigenvalue of~$4$, 
 specialize equation~($*$) for $x=4$.
 \begin{equation*}
   \begin{mat}
@@ -929,25 +930,22 @@ Picking a vector from each of $V_3$ and~$V_2$ gives this linearly independent se
 % \section{Lines transform to lines}
 %..........
 \begin{frame}{Lines go to lines}
-Consider a real space transformation
-$\map{t}{\Re^n}{\Re^n}$.
-A defining property of linear maps is that 
+A defining property of a linear map $\map{t}{\Re^n}{\Re^n}$ is that 
 $t(r\cdot\vec{v})=r\cdot t(\vec{v})$.
 
-In a real space $\Re^n$ a line through the origin is a set 
-$\set{r\cdot \vec{v}\suchthat r\in\Re}$. 
-So $t$'s action 
+In a real space $\Re^n$\!, a line through the origin is a set 
+of multiples of some vector, $\set{r\cdot \vec{v}\suchthat r\in\Re}$. 
+So the action of a transformation $t$  
 \begin{equation*}
   r\cdot\vec{v}\mapsunder{t} r\cdot t(\vec{v})
 \end{equation*}
-is to send members of the line $\set{r\cdot \vec{v}\suchthat r\in\Re}$
-in the domain to members of the line
-$\set{s\cdot t(\vec{v})\suchthat s\in\Re}$
-in the codomain. 
-
+is that the image of the domain line $\set{r\cdot \vec{v}\suchthat r\in\Re}$
+is the codomain line
+$\set{s\cdot t(\vec{v})\suchthat s\in\Re}$. 
 Thus, lines through the origin 
 transform to lines through the origin.
-Further, the action of~$t$ is determined by its effect $t(\vec{v})$
+
+Further, the action of~$t$ is entirely determined by its effect $t(\vec{v})$
 on any
 nonzero vector element of the domain line.
 \end{frame}
@@ -979,7 +977,7 @@ effect on $3\vec{v}$, etc.
   \qquad
   \colvec{r \\ 2r}\mapsunder{t}\colvec{7r \\ 10r}
 \end{equation*}
-In short: the action of $t$ on any  nonzero $\vec{v}$
+Again: the action of $t$ on any  nonzero $\vec{v}$
 determines its action on any other vector $r\vec{v}$
 in the line $\spanof{\vec{v}}$.
 \end{frame}
@@ -987,26 +985,29 @@ in the line $\spanof{\vec{v}}$.
 
 \begin{frame}
   \frametitle{Pick one, any one}
-Every plane vector is in some line through the origin
-so to understand what $\map{t}{\Re^2}{\Re^2}$ does to 
-plane elements it suffices to 
+Every plane element is in some line through the origin.
+So to understand the action of $\map{t}{\Re^2}{\Re^2}$ on 
+plane elements we only need to
 understand what it does to lines through the origin. 
-By the prior slide, to understand what $t$ does to a line through the 
-origin it suffices to understand what it does to a single nonzero
-vector in that line.
+On the prior slide we've shown that 
+to understand what $t$ does to a line through the 
+origin we need only understand what it does to a 
+single nonzero vector in that line.
 
 \pause
-So one way to understand a transformation's action is to take
+Consequently, one way to understand the action of a 
+transformation is to fix
 a set containing one nonzero vector from each line through the origin,
-and describe where the transformation maps the elements of that set.
+and describe the transformation's action on that set.
 
+\pause
 A natural set with one nonzero element from each line through the
 origin is the upper half unit circle (we will explain the colors below).
 \begin{equation*}
   \set{\colvec{x \\ y}
-       =\colvec{\cos(t) \\ \sin(t)}
+       =\colvec{\cos(\Theta) \\ \sin(\Theta)}
          \suchthat 
-         0\leq t<\pi}
+         0\leq \Theta<\pi}
   \qquad
   \vcenteredhbox{\includegraphics[scale=0.75]{graphics/five_ii_a_unithalfcircle.pdf}}  
 \end{equation*}  
@@ -1057,10 +1058,10 @@ by about $0.48$~radians.
 \end{frame}
 
 \begin{frame}
-On the graph below the horizontal axis is the angle of 
-a vectors from the upper half unit circle,
-while the vertical axis is
-the angle through which that vector is rotated.  
+Here the horizontal axis is the angle of 
+vectors from the upper half unit circle.
+The vertical axis is
+the angle through which the transformation roatates that vector.  
 \begin{equation*}
   \colvec{x \\ y}\mapsto \colvec{2x \\ 2x+2y}
   \qquad
@@ -1071,10 +1072,13 @@ by some green vector.
 \end{frame}
 
 
-\begin{frame}{Definition}
-A vector that is rotated through an angle of $0$~radians or of $\pi$~radians,
-while being dialated by a nonzero factor, is an \alert{eigenvector}.
-The factor by which it is dilated is the \alert{eigenvalue}.    
+\begin{frame}{An alternative definition}
+A nonzero 
+vector that is rotated through an angle of $0$~radians or of $\pi$~radians
+is an \alert{eigenvector}.
+The factor by which it is dilated is its \alert{eigenvalue}.    
+(By definition, we take the angle of rotation to be in the range
+$[0\,\ldots\,2\pi)$.)
 \end{frame}
 
 
@@ -1110,7 +1114,11 @@ against the angle through which it is rotated.
   \qquad
   \vcenteredhbox{\includegraphics{graphics/five_ii_a_diagonal3.pdf}}
 \end{equation*}
-One vector gets zero rotation, the vector with $x=0$.
+One upper-half circle vector is rotated through an angle of $0$~radians,
+namely the vector $\vec{e}_2$.
+In addition there a vector that is rotated through an angle of 
+$\pi$~radians,
+namely the vector $\vec{e}_1$.
 \end{frame}
 
 

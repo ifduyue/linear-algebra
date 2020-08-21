@@ -1,6 +1,37 @@
 \documentclass{checkin}
 
 \begin{document}
+% =====================================
+% Introduction
+\begin{frame}\frametitle{Hello!}
+\begin{questions}
+\pause
+\item Here we will cover a standard undergraduate Linear Algebra course.
+\pause
+If you are studying on your own and can 
+use some tips to be more effective then I can 
+recommend a resource; for a link see this video's description.
+
+\pause
+\item The idea of this presentation is that for each
+topic you can first watch the video,
+then study the book, 
+and finally do the homeworks.
+
+\pause
+\item I can also recommend the Linear Algebra videos by 3Blue1Brown.
+
+\pause
+\item However, whatever resources you use: you
+can't just watch videos, you must do the homework.
+\textbf{If you
+have not done a lot of homework then you have not learned
+Linear Algebra.}
+\end{questions}
+\end{frame}
+
+
+
 
 % =====================================
 % Before: One.II Vectors in Space
@@ -1015,6 +1046,57 @@ and these bases
 \item find $\rep{\identity}{B,D}$ and its inverse
 \item and $\rep{t}{D,D}$.
 \end{questions} 
+\end{frame}
+
+
+\begin{frame}{Eigenvalues and bases}
+For this matrix
+\begin{equation*}
+  \begin{mat}
+    3 &0 &4 \\
+    0 &1 &1 \\
+    0 &0 &-2
+  \end{mat}
+\end{equation*}
+\begin{questions}
+\item find the eigenvalues
+\item for each, find an associated basis vector.
+\end{questions} 
+\end{frame}
+
+
+
+
+\begin{frame}{Eigenvalues and eigenvectors}
+For this matrix
+\begin{equation*}
+  \begin{mat}
+    1 &-3 &3 \\
+    3 &-5 &3 \\
+    6 &-6  &4
+  \end{mat}
+\end{equation*}
+\begin{questions}
+\item find the characteristic polynomial
+\item find the eigenvalues
+\item find the associated eigenspaces.
+\end{questions} 
+\end{frame}
+
+
+
+\begin{frame}{Eigenvalues and eigenvectors}
+For this transformation 
+$\map{t}{\R^2}{\R^2}$,
+\begin{equation*}
+  \colvec{x \\ y}
+  \mapsto
+  \colvec{-x \\ 2y}
+\end{equation*}
+\begin{questions}
+\item represent it with respect to $\stdbasis_2,\stdbasis_2$
+\item find the eigenvalues and eigenspaces of that matrix.
+\end{questions}
 \end{frame}
 
 
