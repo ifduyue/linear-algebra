@@ -134,7 +134,7 @@ For $\vec{v}\in S$,
 omitting that vector does not shrink the span
 $\spanof{S}=\spanof{S-\set{\vec{v}}}$
 if and only if it is dependent on other vectors in the 
-set~$\vec{v}\in\spanof{S}$. 
+set,~$\vec{v}\in\spanof{S}$. 
 %</cor:OmitVecNotShrinkSpanIffVecIsDep>
 \end{corollary}
 
@@ -181,7 +181,7 @@ although this way of writing one vector as a combination of the others
 \end{equation*}
 visually sets off \( \vec{s}_0 \), algebraically
 there is nothing special about that vector in that equation.
-For any \( \vec{s}_i \) with a coefficient $c_i$ that is non-$0$
+For any \( \vec{s}_i \) with a coefficient $c_i$ that is non-$0$,
 we can rewrite to isolate \( \vec{s}_i \).
 \begin{equation*}
    \vec{s}_i=(1/c_i)\vec{s}_0+\dots
@@ -214,7 +214,7 @@ is the trivial one, \( c_1=0,\dots,\,c_n=0 \)
 %<*pf:LDIffANonTrivLinRel>
 If \( S \) is linearly independent then no vector
 $\vec{s}_i$ 
-is a linear combination of other vectors from $S$
+is a linear combination of other vectors from $S$,
 so there is no linear relationship where some of the
 $\vec{s}\,$'s have nonzero coefficients.
 
@@ -325,7 +325,7 @@ The rows of this matrix
 form a linearly independent set.
 This is easy to check for this case but also 
 recall that Lemma~One.III.\ref{le:EchFormNoLinCombo}
-shows that the rows of any echelon form matrix form
+shows that the rows of any echelon form matrix make
 a linearly independent set.
 \end{example}
 
@@ -414,8 +414,8 @@ sum of the empty set and the empty set is a subset of~$S$.
 The definition of linear independence,
 \nearbydefinition{def:LinInd}, refers to a `set' of vectors.
 Sets are the most familiar kind of collection and
-in practice everyone refers to these collections as sets.
-But to be complete we will note that sets are not quite the right kind
+in practice everyone uses the word `set' in this context.
+But to be complete, we will note that sets are not quite the right kind
 of collection for this purpose.
 
 Recall that a set is a collection with two properties: 
@@ -447,7 +447,7 @@ Because duplicates collapse, that equals
 the set
 $\set{\rowvec{1 &1 &1}, \rowvec{1 &2 &3}}$, 
 which is linearly independent.
-That's a problem because Gauss's Method should preserve linear dependence.
+This is a problem because Gauss's Method should preserve linear dependence.
 
 That is, strictly speaking,
 we need a type of collection where duplicates do not collapse.
@@ -455,10 +455,10 @@ A collection where order does not matter and duplicates don't collapse
 is a \definend{multiset}.\index{sets!multiset}%
 \index{multiset}\index{linear independence!multiset}
 
-However, the standard terminology here is `set'
-and departing from a standard has its own pitfalls, so we will 
-use that word also. 
-Later we shall occasionally need to take combinations without
+However, while insisting on being completely correct has advantages,
+departing from the standard terminology of `set' would have pitfalls of its 
+own, so we will continue to use that word.
+Later, we shall occasionally need to take combinations without
 letting duplicates collapse and we shall do that without 
 further comment.
 \end{remark}
