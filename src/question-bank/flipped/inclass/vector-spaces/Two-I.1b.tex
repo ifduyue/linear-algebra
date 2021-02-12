@@ -1,0 +1,242 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Questions for Two.I.1 (part two)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+Consider this subset of the collection of all quadratic polynomials,
+$\polyspace_2$.
+\begin{equation*}
+  S=\set{px^2+qx+r\in\polyspace_2\suchthat p+q=0, r\in\R}
+\end{equation*}
+\begin{parts}
+\part
+List three elements and three non-elements.
+\begin{solution}
+Three elements are
+\begin{equation*}
+3\cdot x^2-3\cdot x+1
+\qquad
+-4x^2+4x+7
+\qquad
+0x^2+0x+0
+\end{equation*}
+Here are three non-elements.
+\begin{equation*}
+  3x^2+9x+3
+\qquad
+25x^2+2x-1
+\qquad
+17x^2+1x+2
+\end{equation*}
+\end{solution}
+\part
+Show that it is closed under addition
+(with the standard operation).
+\begin{solution}
+Let $\vec{v},\vec{w}\in S$.
+Then
+\begin{equation*}
+  \vec{v}=v_2\cdot x^2+v_1\cdot x+v_0
+\quad\text{and}\quad
+  \vec{w}=w_2\cdot x^2+w_1\cdot x+w_0
+\end{equation*}
+such that $v_1+v_1=0$ and $w_2+w_1=0$.
+Their sum
+\begin{align*}
+  \vec{v}+\vec{w}
+  &=(v_2\cdot x^2+v_1\cdot x+v_0)+(w_2\cdot x^2+w_1\cdot x+w_0)  \\
+  &=(v_2+w_2)\cdot x^2+(v_11+w_1)\cdot x+(v_0+w_0)
+\end{align*}
+satisfies that $(v_2+w_2)+(v_1+w_1)=(v_2+v_1)+(w_2+w_1)=0+0=0$.
+Thus $\vec{v}+\vec{w}\in S$.
+\end{solution}
+
+\part
+Show that it is closed under scalar multiplication.
+\begin{solution}
+Fix $\vec{v}\in S$.
+Then
+\begin{equation*}
+  \vec{v}=v_2\cdot x^2+v_1\cdot x+v_0
+\end{equation*}
+such that $v_1+v_1=0$.
+Let $r\in\R$.
+Then
+\begin{equation*}
+  r\vec{v}
+  =r\cdot(v_2x^2+v_1x+v_0)
+  =(rv_2)x^2+(rv_1)x+(rv_0)
+\end{equation*}
+satisfies that $(rv_2)+(rv_1)=r(v_2+v_1)=r\cdot 0=0$,
+and thus $r\vec{v}\in S$.
+\end{solution}
+
+\part
+Show that addition is commutative,
+\( \vec{v}+\vec{w}=\vec{w}+\vec{v} \).
+\begin{solution}
+Let $\vec{v},\vec{w}\in S$.
+Then
+\begin{align*}
+  \vec{v}+\vec{w}
+  &=(v_2x^2+v_1x+v_0)+(w_2x^2+w_1x+w_0)  \\
+  &=(v_2+w_2)\cdot x^2
+    +(v_1+w_1)\cdot x
+    +(v_0+w_0)
+\end{align*}
+while
+\begin{align*}
+  \vec{w}+\vec{v}
+  &=(w_2x^2+w_1x+w_0)+(v_2x^2+v_1x+v_0)  \\
+  &=(w_2+v_2)\cdot x^2
+    +(w_1+v_1)\cdot x
+    +(w_0+v_0)
+\end{align*}
+and the two are equal, because the coefficents of $x^2$ are equal, etc.
+(The coefficients are real numbers, and we know that
+real number addition commutes.
+For instance, $v_2+w_2=w_2+v_2$ because these are sums of real numbers.)
+\end{solution}
+
+\part 
+Show that addition is associative,
+\( (\vec{v}+\vec{w})+\vec{u}=\vec{v}+(\vec{w}+\vec{u}) \).
+\begin{solution}
+Let $\vec{v},\vec{w},\vec{u}\in S$.
+Then
+\begin{align*}
+  (\vec{v}+\vec{w})+\vec{u}
+  &=\bigl((v_2x^2+v_1x+v_0)+(w_2x^2+w_1x+w_0)\bigr)+(u_2x^2+u_1x+u_0)  \\
+  &=\bigl((v_2+w_2)+u_2\bigr)\cdot x^2
+    +\bigl((v_1+w_1)+u_1\bigr)\cdot x
+    +\bigl((v_0+w_0)+u_0\bigr)
+\end{align*}
+while
+\begin{align*}
+  \vec{v}+(\vec{w}+\vec{u})
+  &=(v_2x^2+v_1x+v_0)+\bigl((w_2x^2+w_1x+w_0)+(u_2x^2+u_1x+u_0)\bigr)  \\
+  &=\bigl(v_2+(w_2+u_2)\bigr)\cdot x^2
+    +\bigl(v_1+(w_1+u_1)\bigr)\cdot x
+    +\bigl(v_0+(w_0+u_0)\bigr)
+\end{align*}
+and the two are equal, because the coefficents of $x^2$ are equal, etc.
+(Note that the coefficients are real numbers, and we know that
+real number addition associates.)
+\end{solution}
+
+\part
+Show that there is a zero vector,
+\( \zero \), such that
+\( \vec{v}+\zero=\vec{v}\, \).
+\begin{solution}
+Consider $0\cdot x^2+0\cdot x+0$.
+Observe that it is a member of the set~$S$ because its coefficient of $x^2$
+plus its coefficient of~$x$ totals to~$0$.
+Observe also that
+\begin{equation*}
+  (0x^2+0x+0)+(v_2x^2+v_1x+v_0)=(0+v_2)x^2+(0+v_1)x+(0+v_0)
+    =v_2x^2+v_1x+v_0
+\end{equation*}
+so it acts as the identity element with respect to vector addition.
+\end{solution}
+
+\part
+Show that each vector has an additive inverse 
+\( \vec{w} \) such that \( \vec{w}+\vec{v}=\zero \).
+\begin{solution}
+Fix $\vec{v}\in S$;
+we will produce an additive inverse, a vector that adds to $\vec{v}$
+to give the zero element from the prior item.
+Where $\vec{v}=v_2x^2+v_1x+v_0$, consider the quadratic polynomial whose
+coefficients are the negatives, $\vec{w}=-v_2x^2-v_1x-v_0$.
+Obviously the two add to give $\vec{0}=0x^2+0x+0$.
+\end{solution}
+
+\part
+Show that scalar multiplication distributes over scalar addition,
+\( (r+s)\cdot\vec{v}=r\cdot\vec{v}+s\cdot\vec{v} \).
+\begin{solution}
+Fix a vector $\vec{v}\in S$ and two scalars $r,s\in\R$.
+Then
+\begin{equation*}
+  (r+s)\cdot\vec{v}=(r+s)\cdot (v_2x^2+v_1x+v_0)
+  =\bigl((r+s)v_2\bigr)\cdot x^2
+   +\bigl((r+s)v_1\bigr)\cdot x
+   +\bigl((r+s)v_0\bigr)
+\end{equation*}
+while
+\begin{align*}
+  r\cdot\vec{v}+s\cdot\vec{v}
+  &=\bigl((rv_2)x^2+(rv_1)x+(rv_0)\bigr)
+  +\bigl((sv_2)x^2+(sv_1)x+(sv_0)\bigr)                 \\
+  &=(rv_2+sv_2)\cdot x^2+(rv_1+sv_1)\cdot x+(rv_0+sv_0)
+\end{align*}
+and the two are equal quadratic polynomials, 
+since they have the same coefficent of~$x^2$, etc.
+\end{solution}
+
+\part
+Show that scalar multiplication distributes over vector addition,
+\( r\cdot(\vec{v}+\vec{w})=r\cdot\vec{v}+r\cdot\vec{w} \).
+\begin{solution}
+Let $r\in\R$ and $\vec{v},\vec{w}\in S$.
+Then
+\begin{align*}
+  r\cdot(\vec{v}+\vec{w})
+  &=r\cdot((v_2x^2+v_1x+v_0)+(w_2x^2+w_1x+w_0))      \\
+  &=r\cdot((v_2+w_2)x^2+(v_1+w_1)x+(v_0+w_0))        \\
+  &=(r\cdot(v_2+w_2))\cdot x^2
+   +(r\cdot(v_1+w_1))\cdot x
+   +(r\cdot(v_0+w_0))
+\end{align*}
+while
+\begin{align*}
+  r\cdot\vec{v}+r\cdot\vec{w}
+  &=r\cdot(v_2x^2+v_1x+v_0)+r\cdot(w_2x^2+w_1x+w_0)       \\
+  &=\bigl((rv_2)x^2+(rv_1)x+(rv_0)\bigr)
+    +\bigl((rw_2)x^2+(rw_1)x+(rw_0)\bigr)           \\
+  &=(rv_2+rw_2)\cdot x^2
+   +(rv_1+rw_1)\cdot x
+   +(rv_0+rw_0)
+\end{align*}
+and the two are equal.
+\end{solution}
+
+\part
+Show that ordinary multiplication of scalars associates with 
+scalar multiplication,
+\( (rs)\cdot\vec{v} =r\cdot(s\cdot\vec{v}) \).
+\begin{solution}
+Fix scalars $r,s\in\R$ and a vector $\vec{v}=v_2x^2+v_1x+v_0\in S$.
+Then we have this.
+\begin{multline*}
+   (rs)\cdot\vec{v}
+   =(rs)\cdot (v_2x^2+v_1x+v_0)
+   =(rsv_2) x^2+(rsv_1)x+(rsv_0)
+   \\
+   =r\cdot\bigl((sv_2) x^2+(sv_1)x+(sv_0)\bigr)
+   =r\cdot \bigl(s\cdot (v_2 x^2+v_1x+v_0)\bigr)
+\end{multline*}
+\end{solution}
+
+\part 
+Show that multiplication by~$1$ is the identity operation,
+\( 1\cdot\vec{v}=\vec{v} \).
+\begin{solution}
+Where $\vec{v}\in S$, we have
+$1\cdot\vec{v}=1\cdot(v_2x^2+v_1x+v_0)=(1v_2)\cdot x^2+(1v_1)\cdot x+(1v_0)
+=v_2x^2+v_1x+v_0=\vec{v}$.
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}

@@ -1,0 +1,151 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Questions for One.I.3\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+\begin{parts}
+\part
+What geometric shape is described by this set?
+\begin{equation*}
+  S=\set{\colvec{x \\ y}=\colvec{3 \\ 2}+\colvec{1 \\ 4}\cdot t\suchthat t\in\R}
+\end{equation*}
+\part
+Set $t=2$ to get another point in this set.
+\part 
+Use that point to get an alternate description for $S$
+(use the letter $\hat{t}$ for the parameter).
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part
+It is a one-parameter linear set, so it is a line.
+\part
+$\colvec{5 \\ 10}$
+\part
+Same slope, just starting at a different place.
+\begin{equation*}
+  S=\set{\colvec{x \\ y}=\colvec{5 \\ 10}+\colvec{1 \\ 4}\cdot \hat{t}
+         \suchthat \hat{t}\in\R}
+\end{equation*}
+\end{parts}
+\end{solution}
+
+\question
+\begin{parts}
+\part
+Use vector notation to describe set of points $(x,y)$ in the line $y=2x+1$.
+\part 
+The $y$-intercept is $(0,1)$.
+In the parametrization from the prior part, 
+set $x=1$ to find another point on the line.  
+Get another description of the same set by 
+replacing the $y$-intercept with this new point.
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part
+We have this.
+\begin{equation*}
+  L=\set{\colvec{x \\ y}=\colvec{0 \\ 1}+\colvec{1 \\ 2}\cdot x 
+       \suchthat x\in\R}
+\end{equation*}
+\part
+Taking $x=1$ gives $y=3$.
+\begin{equation*}
+  L=\set{\colvec{x \\ y}=\colvec{1 \\ 3}+\colvec{1 \\ 2}\cdot \hat{x} 
+       \suchthat \hat{x}\in\R}
+\end{equation*}
+\end{parts}
+\end{solution}
+
+\question
+Gauss's method on this system
+\begin{equation*}
+ \begin{linsys}{3}
+   x  &-  &2y &   &    &=   &3  \\
+      &   &2y &-  &3z  &=   &4  \\
+  2x  &-  &2y &-  &3z  &=   &10  \\
+ \end{linsys}
+\end{equation*}
+gives this solution set.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{7 \\ 2 \\ 0}+\colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+\begin{parts}
+\part Give the associated homogenous system.
+\part Describe its solution set using vector notation.
+\part Find the solution of the original system when $z=1$.
+\part Use it to give a different description of the solution set.
+\end{parts}
+\begin{solution}
+\begin{parts}
+% \part
+% Here is Gauss's method.
+% \begin{equation*}
+%   \begin{amat}{3}
+%     1  &-2  &0  &3  \\
+%     0  &2   &-3 &4  \\
+%     2  &-2  &-3 &10
+%   \end{amat}
+%   \grstep{-2\rho_1+\rho_3}
+%   \begin{amat}{3}
+%     1  &-2  &0  &3  \\
+%     0  &2   &-3 &4  \\
+%     2  &2   &-3 &4
+%   \end{amat}
+%   \grstep{-\rho_2+\rho_3}
+%   \begin{amat}{3}
+%     1  &-2  &0  &3  \\
+%     0  &2   &-3 &4  \\
+%     0  &0   &0  &0
+%   \end{amat}
+% \end{equation*}
+% Leading variables are $x$ and~$y$.
+% Free is~$z$.
+% To express $y$ in terms of~$z$ we get $2y=4+3z$,
+% which gives $y=2+(3/2)z$.
+% Then to express $x$ in terms of~$z$, substitute
+% $x-2(2+(3/2)z)=3$, giving 
+% $x=7+3z$.
+% \begin{equation*}
+%   \set{\colvec{x \\ y \\ z}=
+%          \colvec{7 \\ 2 \\ 0}+\colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+% \end{equation*}
+\part
+\begin{equation*}
+ \begin{linsys}{3}
+   x  &-  &2y &   &    &=   &0  \\
+      &   &2y &-  &3z  &=   &0  \\
+  2x  &-  &2y &-  &3z  &=   &0  \\
+ \end{linsys}
+\end{equation*}
+\part
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+\part
+\begin{equation*}
+  \colvec{7 \\ 2 \\ 0}+\colvec{3 \\ 3/2 \\ 1}\cdot 1=\colvec{10 \\ 5/2 \\ 1}
+\end{equation*}
+\part
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{10 \\ 5/2 \\ 1}+\colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+\end{parts}
+\end{solution}
+
+
+\end{questions}
+\end{document}

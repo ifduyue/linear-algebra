@@ -1,0 +1,109 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+
+
+\usepackage{../../../sty/conc}
+\usepackage{../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{First Handin\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+% \makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+\begin{center}
+  \fbox{\parbox{6.5in}{\it
+  When you are working on this material, you must work entirely on your 
+  own.
+  You may use the book or your notes.
+  But you may not work with other people, either in the class our outside of it,
+  or use other books or the Internet.
+  If you have any questions, email me.
+  }}
+  \end{center}
+
+
+\begin{questions}
+\question
+Find the solution set, using Gauss's method and matrix-vector notation.
+\begin{equation*}
+       \begin{linsys}{3}
+         2x  &+ &y  &  &  &=  &3  \\
+         3x  &- &2y &+ &z &=  &1  \\
+         7x  &  &   &+ &z &=  &7  
+       \end{linsys}
+\end{equation*}
+  \begin{solution}
+    \begin{equation*}
+      \grstep[-(7/2)\rho_1+\rho_3]{-(3/2)\rho_1+\rho_2}
+      \begin{amat}{3}
+        2 &1    &0 &3 \\
+        0 &-7/2 &1 &-7/2 \\
+        0 &-7/2 &1 &-7/2 
+      \end{amat}
+      \grstep{-\rho_2+\rho_3}
+      \begin{amat}{3}
+        2 &1    &0 &3 \\
+        0 &-7/2 &1 &-7/2 \\
+        0 &0    &0 &0 
+      \end{amat}
+    \end{equation*}
+    The parametrization is this.
+    \begin{equation*}
+      S=\set{\colvec{x \\ y \\ z}=
+             \colvec{1 \\ 1 \\ 0}+
+             \colvec{-1/7 \\ 2/7 \\ 1}z\suchthat z\in\Re}
+    \end{equation*}
+  \end{solution}
+% sage: v = vector(QQ, [3,1,7])
+% sage: M = matrix(QQ, [[2,1,0], [3,-2,1], [7,0,1] ])
+% sage: M_prime = M.augment(v, subdivide=True)
+% sage: gauss_method(M_prime)
+% [ 2  1  0| 3]
+% [ 3 -2  1| 1]
+% [ 7  0  1| 7]
+%  take -3/2 times row 1 plus row 2
+%  take -7/2 times row 1 plus row 3
+% [   2    1    0|   3]
+% [   0 -7/2    1|-7/2]
+% [   0 -7/2    1|-7/2]
+%  take -1 times row 2 plus row 3
+% [   2    1    0|   3]
+% [   0 -7/2    1|-7/2]
+% [   0    0    0|   0]
+% sage: var('x,y,z')
+% (x, y, z)
+% sage: solve(eqs, x, y, z)
+% [[x == -1/7*r1 + 1, y == 2/7*r1 + 1, z == r1]]
+
+
+\question
+  Do Gauss-Jordan reduction on this augmented matrix.
+  \begin{equation*}
+    \begin{amat}{4}
+      1 &3  &0 &1 &2 \\  
+      3 &-1 &0 &2 &-2 \\
+      2 &0  &2 &1 &0
+    \end{amat}
+  \end{equation*}
+  \begin{solution}[2in]
+    \begin{multline*}
+      \grstep[-2\rho_1+\rho_3]{-3\rho_1+\rho_2}
+      \begin{amat}{4}
+        1 &3   &0 &1  &2 \\  
+        0 &-10 &0 &-1 &-8 \\
+        0 &-6  &2 &-1 &-4     
+      \end{amat}                   \\
+      \grstep{-(3/5)\rho_2+\rho_3}
+      \grstep[(1/2)\rho_3]{-(1/10)\rho_2}
+      \grstep{-3\rho_2+\rho_1}
+      \begin{amat}{4}
+        1 &0 &0 &7/10 &-2/5 \\
+        0 &1 &0 &1/10 &4/5 \\
+        0 &0 &1 &-1/5 &2/5
+      \end{amat}
+    \end{multline*}
+\end{solution}
+
+\end{questions}
+\end{document}

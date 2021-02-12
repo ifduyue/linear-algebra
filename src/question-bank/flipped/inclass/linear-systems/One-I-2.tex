@@ -1,0 +1,210 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Questions for One.I.2\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+
+\question Describe of the solution set of each using vector notation.
+\begin{parts}
+\part
+\begin{equation*}
+ \begin{linsys}{3}
+   x  &+  &y  &-  &z  &=   &5  \\
+      &   &2y &+  &3z  &=  &9  \\
+      &   &   &   &0  &=  &0  \\
+ \end{linsys}
+\end{equation*}
+
+\part
+\begin{equation*}
+ \begin{linsys}{4}
+   2x  &-  &y  &+  &z  &+  &w  &=   &1  \\
+       &   &-y &   &   &+  &2w &=   &-1  \\
+       &   &   &   &   &   &0  &=   &0  \\
+ \end{linsys}
+\end{equation*}
+
+\end{parts}
+\begin{solution}
+\begin{parts}
+\item
+Leading are $x$ and~$y$.
+Free is $z$.
+The second equation gives $y=(9/2)-(3/2)z$.
+Substitution gives $x+((9/2)-(3/2)z)-z = 5$,
+leading to $x-(5/2)z=1/2$, so $x=(1/2)+(5/2)z$. 
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+          \colvec{1/2 \\ 9/2  \\  0}+\colvec{5/2 \\ -3/2 \\ 1}\cdot z\suchthat z\in\R}
+\end{equation*}
+It is a line through the origin.
+
+\part
+Leading are $x$ and~$y$.
+Free are $z$ and~$w$.
+Expressing the leading variables in terms of those that are free
+gives the second equation as $-y=-1-2w$, so $y=1+2w$.
+Substituting into the first equation yields 
+$2x-(1+2w)+z+w=1$, so $2x-w+z=2$, and we get $x=1-(1/2)z+(1/2)w$.
+\begin{equation*}
+  \set{\colvec{x  \\ y \\ z \\ w}=
+           \colvec{1 \\ 1 \\ 0 \\ 0}+\colvec{-1/2 \\ 0 \\ 1 \\ 0}\cdot z+ \colvec{1/2 \\ 2 \\ 0 \\ 1}\cdot w
+           \suchthat z,w\in\R}
+\end{equation*}
+This is a plane through the origin.
+\end{parts}
+\end{solution}
+
+
+\question Use Gauss's method to solve each system
+using matrix notation.
+Give the solution set description in vector notation.
+\begin{parts}
+\item
+\begin{equation*}
+ \begin{linsys}{3}
+   x  &-  &2y &   &    &=   &3  \\
+      &   &2y &-  &3z  &=   &4  \\
+  2x  &-  &2y &-  &3z  &=   &10  \\
+ \end{linsys}
+\end{equation*}
+
+\item
+\begin{equation*}
+ \begin{linsys}{4}
+    a  &-  &b  &-  &c  &   &   &=   &3  \\
+   -a  &+  &b  &+  &c  &-  &d  &=   &0  \\
+   2a  &-  &2b &+  &c  &-  &2d &=   &-1  \\
+ \end{linsys}
+\end{equation*}
+\end{parts}
+\begin{solution}
+\begin{parts}
+\item
+Here is Gauss's method.
+\begin{equation*}
+  \begin{amat}{3}
+    1  &-2  &0  &3  \\
+    0  &2   &-3 &4  \\
+    2  &-2  &-3 &10
+  \end{amat}
+  \grstep{-2\rho_1+\rho_3}
+  \begin{amat}{3}
+    1  &-2  &0  &3  \\
+    0  &2   &-3 &4  \\
+    2  &2   &-3 &4
+  \end{amat}
+  \grstep{-\rho_2+\rho_3}
+  \begin{amat}{3}
+    1  &-2  &0  &3  \\
+    0  &2   &-3 &4  \\
+    0  &0   &0  &0
+  \end{amat}
+\end{equation*}
+Leading variables are $x$ and~$y$.
+Free is~$z$.
+To express $y$ in terms of~$z$ we get $2y=4+3z$,
+which gives $y=2+(3/2)z$.
+Then to express $x$ in terms of~$z$, substitute
+$x-2(2+(3/2)z)=3$, giving 
+$x=7+3z$.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{7 \\ 2 \\ 0}+\colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+
+\part
+Gauss's method gives this.
+\begin{align*}
+  \begin{amat}{4}
+    1  &-1 &-1  &0  &3 \\
+   -1  &1  &1   &-1 &0 \\
+    2  &-2 &1   &-2 &1 \\ 
+  \end{amat}
+  &\grstep[-2\rho_1+\rho_3]{\rho_1+\rho_2}
+  \begin{amat}{4}
+    1  &-1 &-1  &0  &3 \\
+    0  &0  &0   &-1 &3 \\
+    0  &0  &3   &-2 &7 \\ 
+  \end{amat}                                   \\
+  &\grstep{\rho_2\leftrightarrow\rho_3}
+  \begin{amat}{4}
+    1  &-1 &-1  &0  &3 \\
+    0  &0  &3   &-2 &7 \\ 
+    0  &0  &0   &-1 &3 \\
+  \end{amat}
+\end{align*}
+Leading are $a$, $c$, and~$d$.
+Free is~$b$.
+Expressing $d$ in terms of~$b$ just gives $d=-3$.
+Substituting to express $c$ in terms of~$b$ gives 
+$3c-2(-3)=7$, and so $c=1/3$.
+Finally, to express $a$ in terms of~$b$, substitute
+$a-b-(1/3)=3$, and solve: $a=(10/3)+b$.
+\begin{equation*}
+  \set{\colvec{a \\ b \\ c \\ d}=
+         \colvec{10/3 \\ 0 \\ 1/3 \\ -3}+\colvec{1 \\ 1 \\ 0 \\ 0}\cdot b
+         \suchthat b\in\R}
+\end{equation*}
+\end{parts}
+\end{solution}
+
+
+\question
+The prior question shows that the solution set of 
+\begin{equation*}
+ \begin{linsys}{3}
+   x  &-  &2y &   &    &=   &3  \\
+      &   &2y &-  &3z  &=   &4  \\
+  2x  &-  &2y &-  &3z  &=   &10  \\
+ \end{linsys}
+\end{equation*}
+is this.
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{7 \\ 2 \\ 0}+\colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+\begin{parts}
+\part Give the associated homogenous system.
+\part Describe its solution set using vector notation.
+\part Find the solution of the original system when $z=1$.
+\part Use it to give a different description of the solution set.
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part
+\begin{equation*}
+ \begin{linsys}{3}
+   x  &-  &2y &   &    &=   &0  \\
+      &   &2y &-  &3z  &=   &0  \\
+  2x  &-  &2y &-  &3z  &=   &0  \\
+ \end{linsys}
+\end{equation*}
+\part
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+\part
+\begin{equation*}
+  \colvec{7 \\ 2 \\ 0}+\colvec{3 \\ 3/2 \\ 1}\cdot 1=\colvec{10 \\ 5/2 \\ 1}
+\end{equation*}
+\part
+\begin{equation*}
+  \set{\colvec{x \\ y \\ z}=
+         \colvec{10 \\ 5/2 \\ 1}+\colvec{3 \\ 3/2 \\ 1}\cdot z\suchthat z\in\R}.
+\end{equation*}
+\end{parts}
+\end{solution}
+
+
+\end{questions}
+\end{document}

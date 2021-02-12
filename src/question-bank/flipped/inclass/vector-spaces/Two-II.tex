@@ -1,0 +1,223 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Two.II\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+The first chapter informally describes that the
+bottom row in this matrix is ``redundant'' in a linear sense because
+twice the first row plus the second equals the third.
+\begin{equation*}
+\begin{mat}
+  1  &0  &2  &1  \\
+  0  &3  &1  &0  \\
+  2  &3  &5  &2
+\end{mat}
+\end{equation*}
+We now have the formal terminology:~this set
+is linearly dependent.
+\begin{equation*}
+  \set{
+       \rowvec{1 & 0 & 2 & 1},
+       \rowvec{0 & 3 & 1 & 0},
+       \rowvec{2 & 3 & 5 & 2}
+      }
+\end{equation*}
+Verify that by 
+determining whether there is a linear relationship among the row vectors, 
+whether there are coefficients for 
+$c_1\vec{v}_1+c_2\vec{v}_2+c_3\vec{v}_3=\vec{0}$
+other than the trivial ones, $c_1=c_2=c_3=0$.
+\begin{solution}
+From 
+\begin{equation*}
+       c_1\cdot\rowvec{1 & 0 & 2 & 1}
+       +c_2\cdot\rowvec{0 & 3 & 1 & 0}
+       +c_3\cdot\rowvec{2 & 3 & 5 & 2}
+       =\rowvec{0 &0 &0 &0}
+\end{equation*}
+the relationship among first entries, second entries, etc., gives this. 
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &  &      &+  &2c_3  &= &0 \\
+       &  &3c_2  &+  &3c_3  &= &0 \\
+ 2c_1  &+ &c_2   &+  &5c_3  &= &0 \\
+  c_1  &  &      &+  &2c_3  &= &0 \\
+\end{linsys}
+\end{equation*}
+Gauss's method does not give a unique solution, so the set is linearly
+dependent.
+\begin{equation*}
+  \begin{mat}
+  1  &0  &2  \\ 
+  0  &3  &3  \\ 
+  2  &1  &5  \\ 
+  1  &0  &2  \\ 
+\end{mat}
+\grstep[-1\rho_{1}+\rho_{4}]{-2\rho_{1}+\rho_{3}}
+\begin{mat}
+  1  &0  &2  \\ 
+  0  &3  &3  \\ 
+  0  &1  &1  \\ 
+  0  &0  &0  \\ 
+\end{mat}                                  
+\grstep{(-1/3)\rho_{2}+\rho_{3}}
+\begin{mat}
+  1  &0  &2  \\ 
+  0  &3  &3  \\ 
+  0  &0  &0  \\ 
+  0  &0  &0  \\ 
+\end{mat}
+\end{equation*}
+\end{solution}
+
+\question 
+Find whether this subset of $\polyspace_2$ 
+is linearly dependent or linearly independent.
+\begin{equation*}
+  \set{
+       x^2-x+1,\, 
+       3x+4,\,
+       2x^2-x
+      }
+\end{equation*}
+\begin{solution}
+Looking for a linear relationship
+\begin{equation*}
+       c_1(x^2-x+1) 
+       +c_2(3x+4)
+       +c_3(2x^2-x)
+       =0x^2+0x+0
+\end{equation*}
+leads to this linear system.
+\begin{equation*}
+\begin{linsys}{3}
+  c_1 &  &     &+  &2c_3  &=  &0  \\
+ -c_1 &+ &3c_2 &-  &c_3   &=  &0  \\
+  c_1 &+ &4c_2 &   &      &=  &0
+\end{linsys}
+\end{equation*}
+Gauss's method tells us that the only solution is the trivial one.
+% sage: M = matrix(QQ, [[1,0,2], [-1,3,-1], [1,4,0]])
+% sage: v = vector(QQ, [0,0,0])
+% sage: M_prime =M.augment(v, subdivide=True)
+% sage: M_prime
+% [ 1  0  2| 0]
+% [-1  3 -1| 0]
+% [ 1  4  0| 0]
+\begin{equation*}
+\begin{amat}{3}
+  1  &0  &2  &0  \\ 
+  -1  &3  &-1  &0  \\ 
+  1  &4  &0  &0  \\ 
+\end{amat}
+\grstep[-1\rho_{1}+\rho_{3}]{1\rho_{1}+\rho_{2}}
+\begin{amat}{3}
+  1  &0  &2  &0  \\ 
+  0  &3  &1  &0  \\ 
+  0  &4  &-2  &0  \\ 
+\end{amat}
+\grstep{(-4/3)\rho_{2}+\rho_{3}}
+\begin{amat}{3}
+  1  &0  &2  &0  \\ 
+  0  &3  &1  &0  \\ 
+  0  &0  &-10/3  &0  \\ 
+\end{amat}
+\end{equation*}
+So the set is linearly independent.
+\end{solution}
+
+\question
+Is this set linearly independent?
+\begin{equation*}
+  \set{
+    \begin{mat}
+      0 &4  \\
+      -2 &0  \\
+    \end{mat},
+    \begin{mat}
+      3 &1  \\
+      1 &0  \\
+    \end{mat},
+    \begin{mat}
+     1  &0  \\
+     1  &0  \\
+    \end{mat}
+  }
+\end{equation*}
+\begin{solution}
+Set up 
+\begin{equation*}
+    c_1\cdot\begin{mat}
+      0 &4  \\
+      -2 &0  \\
+    \end{mat}
+    +c_2\cdot\begin{mat}
+      3 &1  \\
+      1 &0  \\
+    \end{mat}
+    +c_3\cdot\begin{mat}
+     1  &0  \\
+     1  &0  \\
+    \end{mat}
+    =
+    \begin{mat}
+    0 &0 \\
+    0 &0
+    \end{mat}
+\end{equation*}
+to get this linear system.
+\begin{equation*}
+\begin{linsys}{4}
+        &  &3c_2  &+  &c_3  &=  &0  \\
+  4c_1  &+ &c_2   &   &     &=  &0  \\
+  -2c_1 &+ &c_2   &+  &c_3  &=  &0  \\
+        &  &      &   &0    &=  &0  \\
+\end{linsys}
+\end{equation*}
+% sage: M = matrix(QQ, [[0,3,1], [4,1,0], [-2,1,1], [0,0,0]])
+% sage: v = vector(QQ, [0,0,0,0])
+% sage: M_prime =M.augment(v, subdivide=True)
+Apply Gauss's method.
+\begin{align*}
+  \begin{amat}{3}
+  0  &3  &1  &0  \\ 
+  4  &1  &0  &0  \\ 
+  -2  &1  &1  &0  \\ 
+  0  &0  &0  &0  \\ 
+\end{amat}
+&\grstep{\rho_{1}\leftrightarrow \rho_{2}}
+\begin{amat}{3}
+  4  &1  &0  &0  \\ 
+  0  &3  &1  &0  \\ 
+  -2  &1  &1  &0  \\ 
+  0  &0  &0  &0  \\ 
+\end{amat}                                \\
+&\grstep{(1/2)\rho_{1}+\rho_{3}}
+\begin{amat}{3}
+  4  &1  &0  &0  \\ 
+  0  &3  &1  &0  \\ 
+  0  &3/2  &1  &0  \\ 
+  0  &0  &0  &0  \\ 
+\end{amat}                              \\
+&\grstep{(-1/2)\rho_{2}+\rho_{3}}
+\begin{amat}{3}
+  4  &1  &0  &0  \\ 
+  0  &3  &1  &0  \\ 
+  0  &0  &1/2  &0  \\ 
+  0  &0  &0  &0  \\ 
+\end{amat}
+\end{align*}
+There is a unique solution, so the set is linearly independent.
+\end{solution}
+
+\end{questions}
+\end{document}

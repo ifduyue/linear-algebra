@@ -1,0 +1,123 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Questions for Two.I.1\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+Consider this subset of $\R^3$.
+\begin{equation*}
+  S_1=\set{\colvec{x \\ y \\ z}\suchthat x-y-z=0}
+\end{equation*}
+\begin{parts}
+\part
+List three elements and three non-elements.
+\part
+Show that the set is closed under addition
+(with the standard operation).
+\part
+Show that it is closed under scalar multiplication.
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part Three elements are
+\begin{equation*}
+  \colvec{2 \\ 1 \\ 1}
+  \quad
+  \colvec{-1 \\ 0 \\ -1}
+  \quad
+  \colvec{5 \\ 5 \\ 0}
+\end{equation*}
+and here are three non-elements.
+\begin{equation*}
+  \colvec{2 \\ 1 \\ 0}
+  \quad
+  \colvec{-1 \\ 0 \\ 1}
+  \quad
+  \colvec{0 \\ 5 \\ 5}
+\end{equation*}
+\part 
+Fix $\vec{v},\vec{w}\in S$, that is,
+\begin{equation*}
+  \colvec{v}=\colvec{v_1 \\ v_2 \\ v_3}
+  \qquad
+  \colvec{w}=\colvec{w_1 \\ w_2 \\ w_3}
+\end{equation*}
+such that the first entry minus the second and minus the third is
+$v_1-v_2-v_3=0$ and $w_1-w_2-w_3=0$.
+Then their sum
+\begin{equation*}
+  \vec{v}+\vec{w}
+  =\colvec{v_1+w_1 \\ v_2+w_2 \\ v_3+w_3}
+\end{equation*}
+has the property that the first entry minus the second and minus the 
+third is 
+$(v_1+w_1)-(v_2+w_2)-(v_3+w_3)
+=(v_1-v_2-v_3)+(w_1-w_2-w_3)=0$.
+\end{parts}
+\end{solution}
+
+
+
+
+\question
+Consider this subset of $\R^3$.
+\begin{equation*}
+  S_2=\set{\colvec{x \\ y \\ z}\suchthat x-y-z=3}
+\end{equation*}
+\begin{parts}
+\part
+List three elements  and three non-elements.
+\part
+Show that it is not closed under addition.
+\part
+Show that it is not closed under scalar multiplication.
+\end{parts}
+
+
+
+\question
+Consider this subset of $\matspace_{\nbyn{2}}$.
+\begin{equation*}
+  S_3=\set{\begin{mat}
+         a  &b  \\
+         c  &0
+       \end{mat}\in\matspace_{\nbyn{2}}\suchthat a+2b+c=0}
+\end{equation*}
+\begin{parts}
+\part
+List three elements  and three non-elements.
+\part
+Show that it is closed under addition
+(with the standard operation).
+\part
+Show that it is closed under scalar multiplication.
+\end{parts}
+
+
+\question
+Consider this subset of $\polyspace_2$.
+\begin{equation*}
+  S_4=\set{px^2+qx+r\in\polyspace_2\suchthat p+q=0, r\in\R}
+\end{equation*}
+\begin{parts}
+\part
+List three elements and three non-elements.
+\part
+Show that it is closed under addition
+(with the standard operation).
+\part
+Show that it is closed under scalar multiplication.
+\end{parts}
+
+
+
+\end{questions}
+\end{document}
