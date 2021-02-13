@@ -455,6 +455,8 @@ slides/videos/videolist.pdf : slides/videos/videolist.tex
 	$(compile-video-file)
 
 
+# ================ Lab ==================
+# Go to the subdir and read INSTALL.
 
 
 # ====================== Default ===============

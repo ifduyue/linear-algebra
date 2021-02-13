@@ -31,7 +31,7 @@ these steps under Ubuntu Linux.  Obviously your mileage may vary.
 Here is the tricky part.  When you run "sudo pdflatex sagetex.ins" you get told
 to move the .sty to where LaTeX will find it, which is taken care of by the
 later "texhash" command.  But you also get told to move sagetex.py to
-where sag can find it.  I moved mine into the sage dir tree.
+where sage can find it.  I moved mine into the sage dir tree.
 
     sudo cp sagetex.py /usr/lib/sagemath/local/lib/python2.7/site-packages/sagetex.py
 
@@ -39,6 +39,9 @@ where sag can find it.  I moved mine into the sage dir tree.
 2) The script runlab.sh should compile the lab.  It sets up TEXINPUTS,
 calls xelatex, then runs the PythonTeX script, then runs the Sage python
 script, then runs xelatex again.
+
+Warning: there is a point where the compilation seems to stall (about
+page 70).  Don't lose heart, it is just thinking.
 
 3) But the first time you do not yet have all the figures, and the .sage
 commands, etc.  You will find yourself in a very boring cycle of runlab.sh,
