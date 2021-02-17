@@ -1,0 +1,180 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Two.III.1\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+For each space, find a basis.
+Verify that it is a basis.
+\begin{parts}
+\part  
+$S_1=\set{ax^2+bx+c\suchthat a-c=0}$
+\part
+$S_2=\set{\colvec{x \\ y \\ z}\suchthat \text{$x+2y=0$ and $x+y-z=0$}}$
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part
+We have $S_1=\set{cx^2+bx+c\suchthat b,c\in\R}$.
+That equals $\set{c\cdot(x^1+1)+b\cdot(x)\suchthat b,c\in\R}$.
+A spanning set is $\set{x^2+1,x}$.
+
+It is linearly independent
+because the relationship
+\begin{equation*}
+  c_0(x^2+1)+c_1(x)=0x^2+0x+0
+\end{equation*}
+gives that $c_0=c_1=0$.
+Thus it is a basis for $S_1$.
+
+\part
+The two restrictions give this linear system.
+\begin{equation*}
+\begin{linsys}{3}
+  x  &+  &2y  &    &   &=  &0  \\
+  x  &+  &y   &-   &z   &=  &0  
+\end{linsys}
+\grstep{-\rho_1+\rho_2}
+\begin{linsys}{3}
+  x  &+  &2y  &    &   &=  &0  \\
+     &   &-y  &-   &z  &=  &0  
+\end{linsys}
+\end{equation*}
+Leading are $x$ and~$y$.
+Free is~$z$.
+Expressing the leading variables in terms of the free variable gives this.
+\begin{equation*}
+  S_2=\set{\colvec{2z  \\ -z \\ z} \suchthat z\in\R}
+     =\set{\colvec{2  \\ -1 \\ 1}\cdot z \suchthat z\in\R}
+\end{equation*}
+So this is a spanning set.
+\begin{equation*}
+  \set{\colvec{2  \\ -1 \\ 1}}
+\end{equation*}
+
+To check that this set is a basis, we need only check that it is 
+linearly independent.
+A set with only one vector is linearly independent unless that single
+vector is the zero vector, which this one isn't.  
+So it is a basis.
+\end{parts}
+\end{solution}
+
+\question
+For the vector space
+\begin{equation*}
+  V=\set{ax^2+bx+c\suchthat a-c=0}
+\end{equation*}
+this set is a basis.
+\begin{equation*}
+  B=\set{x^2+1,x}
+\end{equation*}
+\begin{parts}
+\part Where $\vec{v}=3x^2+2x+3$, find $\rep{\vec{v}}{B}$.
+\part Find $\rep{-x^2+4x-1}{B}$.
+\end{parts}
+\begin{solution}
+\begin{parts}
+\part
+We find what coefficients there are in this relationship.
+\begin{equation*}
+  3x^2+2x+3=c_1\cdot(x+2+1)+c_2(x)
+\end{equation*}
+Obviously, $c_1=3$ and $c_2=2$ work here.
+\begin{equation*}
+  \rep{\vec{v}}{B}
+  =\colvec{3 \\ 2}
+\end{equation*}
+
+\part
+We find what coefficients there are in this relationship.
+\begin{equation*}
+  -x^2+4x-1=c_1\cdot(x+2+1)+c_2(x)
+\end{equation*}
+By eye, $c_1=-1$ and $c_2=4$.
+\begin{equation*}
+  \rep{\vec{v}}{B}
+  =\colvec{-1 \\ 4}
+\end{equation*}
+\end{parts}
+\end{solution}
+
+\question
+This is a basis for the $xy$~plane.
+\begin{equation*}
+  B=\set{
+    \colvec{1 \\ 3},
+    \colvec{2 \\ 0}
+  }
+\end{equation*}
+\begin{parts}
+\part
+Draw the plane, and plot the basis vectors.
+Also draw the line through each. 
+\part  
+Draw
+\begin{equation*}
+  \vec{v}_1=\colvec{3 \\ 6}
+\end{equation*}
+and find $\rep{\vec{v}_1}{B}$.
+Label $\vec{v}_1$ with the signs of the coefficients, such as ``$+,+$'' or ``$+,-$''.
+\begin{solution}
+From
+\begin{equation*}
+  \colvec{3 \\ 6}=c_1\colvec{1 \\ 3}+c_2\colvec{2 \\ 0}
+\end{equation*}
+we can see by eye that $c_1=2$ and $c_2=1/2$.
+\begin{center}
+  \includegraphics{asy/vs001.pdf}
+\end{center}
+\end{solution}
+\part
+Do the same for  
+\begin{equation*}
+  \vec{v}_2=\colvec{4 \\ -6}
+\end{equation*}
+\begin{solution}
+Again by eye, we have
+\begin{equation*}
+  \rep{\vec{v}_2}{B}=\colvec{-2 \\ 3}
+\end{equation*}
+\begin{center}
+  \includegraphics{asy/vs002.pdf}
+\end{center}
+\end{solution}
+\part 
+Repeat for 
+\begin{equation*}
+  \vec{v}_3=\colvec{-7 \\ -3}
+  \qquad
+  \vec{v}_4=\colvec{-1 \\ 9}
+\end{equation*}
+\begin{solution}
+We have
+\begin{equation*}
+  \rep{\vec{v}_3}{B}=\colvec{-1 \\ -3}
+  \qquad
+  \rep{\vec{v}_4}{B}=\colvec{3 \\ -2}
+\end{equation*}
+\begin{center}
+  \includegraphics{asy/vs003.pdf}
+  \qquad
+  \includegraphics{asy/vs004.pdf}
+\end{center}
+Overall, this basis forthe plane defines a coordinate system.
+\begin{center}
+  \includegraphics{asy/vs005.pdf}
+\end{center}
+\end{solution}
+\end{parts}
+\end{questions}
+\end{document}
