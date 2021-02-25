@@ -515,3 +515,97 @@ yaxis(pic,XZero,
       p=AXISPEN,
       Arrows(TeXHead,axis_arrow_size));
 shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
+
+
+
+// ====== Exchange Lemma ===========
+picture pic;
+int picnum = 6;
+size(pic,5cm);
+
+// limits
+real xmin=-5;  // 
+real xmax=5;
+real ymin=-5;
+real ymax=5;
+
+pair b1_endpoint = (2,1);
+pair b2_endpoint = (1,3);
+
+// lines
+// draw(pic,-(3.5)*b1_endpoint--(3.5)*b1_endpoint,FCNPEN);
+// draw(pic,-5*b2_endpoint--5*b2_endpoint,FCNPEN);
+
+// The basis vectors
+path b1 = (0,0)--b1_endpoint;
+draw(pic, b1, red, Arrow(DefaultHead,VECTORHEADSIZE));
+label(pic,"\small$\vec{\beta}_1$",b1_endpoint,E);
+path b2 = (0,0)--b2_endpoint;
+draw(pic, b2, red, Arrow(DefaultHead,VECTORHEADSIZE));
+label(pic,"\small$\vec{\beta}_2$",b2_endpoint,NE);
+
+// axes
+xaxis(pic,YZero,
+      xmin-0.75, xmax+0.75,
+      RightTicks(Label("$%2.0f$",TICLABELPEN), Step=500, step=1,
+		 beginlabel=false, endlabel=false,
+		 Size=axis_tick_size, size=0.5*axis_tick_size,
+		 extend=false, begin=false, NoZero),
+      p=AXISPEN,
+      Arrows(TeXHead,axis_arrow_size));
+yaxis(pic,XZero,
+      ymin-0.75, ymax+0.75,
+      LeftTicks(Label("$%2.0f$",TICLABELPEN), Step=500, step=1,
+		beginlabel=false, endlabel=false,
+		Size=axis_tick_size, size=0.5*axis_tick_size,
+		extend=false, begin=false, NoZero),
+      p=AXISPEN,
+      Arrows(TeXHead,axis_arrow_size));
+shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
+
+
+// .................. exchanged ...............
+picture pic;
+int picnum = 7;
+size(pic,5cm);
+
+// limits
+real xmin=-5;  // 
+real xmax=5;
+real ymin=-5;
+real ymax=5;
+
+pair b1_endpoint = (2,1);
+pair b2_endpoint = (2.1,1.3);
+
+// lines
+// draw(pic,-(3.5)*b1_endpoint--(3.5)*b1_endpoint,FCNPEN);
+// draw(pic,-5*b2_endpoint--5*b2_endpoint,FCNPEN);
+
+// The basis vectors
+path b1 = (0,0)--b1_endpoint;
+draw(pic, b1, red, Arrow(DefaultHead,VECTORHEADSIZE));
+label(pic,"\small$\vec{\delta}_1$",b1_endpoint,E);
+path b2 = (0,0)--b2_endpoint;
+draw(pic, b2, red, Arrow(DefaultHead,VECTORHEADSIZE));
+label(pic,"\small$\vec{\delta}_2$",b2_endpoint,NE);
+
+// axes
+xaxis(pic,YZero,
+      xmin-0.75, xmax+0.75,
+      RightTicks(Label("$%2.0f$",TICLABELPEN), Step=500, step=1,
+		 beginlabel=false, endlabel=false,
+		 Size=axis_tick_size, size=0.5*axis_tick_size,
+		 extend=false, begin=false, NoZero),
+      p=AXISPEN,
+      Arrows(TeXHead,axis_arrow_size));
+yaxis(pic,XZero,
+      ymin-0.75, ymax+0.75,
+      LeftTicks(Label("$%2.0f$",TICLABELPEN), Step=500, step=1,
+		beginlabel=false, endlabel=false,
+		Size=axis_tick_size, size=0.5*axis_tick_size,
+		extend=false, begin=false, NoZero),
+      p=AXISPEN,
+      Arrows(TeXHead,axis_arrow_size));
+shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
+

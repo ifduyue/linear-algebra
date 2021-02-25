@@ -1,5 +1,5 @@
-\documentclass[noanswers, nolegalese, 11pt]{examjh}
-% \documentclass[answers, nolegalese, 11pt]{examjh}
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
 
 \usepackage{../../../sty/conc}
 \usepackage{../../../sty/linalgjh}
@@ -46,24 +46,24 @@ The restrictions make a two-equation linear system.
 \begin{equation*}
 \begin{linsys}{3}
   2x  &  &  &+  &z  &=  &0  \\
-   x  &- &y &+  &z  &=  &0
+   x  &- &2y &+  &z  &=  &0
 \end{linsys}
 \grstep{-(1/2)\rho_1+\rho_2}
 \begin{linsys}{3}
-  2x  &  &  &+  &z       &=  &0  \\
-      &- &y &+  &(1/2)z  &=  &0
+  2x  &  &    &+  &z       &=  &0  \\
+      &  &-2y &+  &(1/2)z  &=  &0
 \end{linsys}
 \end{equation*}
 Parametrizing with the free variable~$z$ gives 
 $y=(1/2)z$ and $x=-(1/2)z$.
 \begin{align*}
   S_2
-  &=\set{\colvec{-(1/2)z \\ (1/2)z \\ z}\suchthat z\in\R}  \\
-  &=\set{\colvec{-1/2 \\ 1/2 \\ 1}\cdot z\suchthat z\in\R}  
+  &=\set{\colvec{-(1/2)z \\ (1/4)z \\ z}\suchthat z\in\R}  \\
+  &=\set{\colvec{-1/2 \\ 1/4 \\ 1}\cdot z\suchthat z\in\R}  
 \end{align*}
 This single-element set spans~$S_2$.
 \begin{equation*}
-  \set{\colvec{-1/2 \\ 1/2 \\ 1}}
+  \set{\colvec{-1/2 \\ 1/4 \\ 1}}
 \end{equation*}
 \end{solution}
 \end{parts}

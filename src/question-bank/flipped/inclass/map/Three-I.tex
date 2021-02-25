@@ -1,0 +1,252 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.I\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+A function $\map{f}{V}{W}$ is an association of inputs with outputs.
+We write $f(\vec{v})=\vec{w}$ or $\vec{v}\mapsto\vec{w}$.
+The key property is that for each input~$\vec{v}$ there is exactly one
+associate output~$\vec{w}$~--- that is, for each~$\vec{v}$
+there is an output~$\vec{w}$ and there is only one such output.
+We say that the function is \textit{well-defined}.
+To draw a function we sometimes use a bean diagram, with $V$ on the left
+and~$W$ on the right, and with arrows connecting inputs with outputs.
+\begin{center}
+  \vcenteredhbox{\includegraphics{asy/map000.pdf}}
+\end{center}
+
+
+A function is \textit{one-to-one} if for every output there is at most one
+associated input.
+A function is \textit{onto} if for every output there is at least one
+associated input.
+\begin{center}
+\begin{tabular}{r|cc}
+  \multicolumn{1}{r}{\ }
+  &\multicolumn{1}{c}{\textit{One-to-one}}
+  &\multicolumn{1}{c}{\textit{Not one-to-one}}    \\
+  \cline{2-3}\rule{0em}{6ex}
+  \textit{Onto} 
+    &\vcenteredhbox{\includegraphics{asy/map003.pdf}}
+    &\vcenteredhbox{\includegraphics{asy/map000.pdf}}  \\[1ex]
+  \rule{0em}{6ex}
+  \textit{Not onto} 
+    &\vcenteredhbox{\includegraphics{asy/map001.pdf}}
+    &\vcenteredhbox{\includegraphics{asy/map002.pdf}}  \\
+\end{tabular}
+\end{center}
+
+To show that a function is one-to-one, the simplest thing is to 
+assume that $f(\vec{v}_1)=f(\vec{v}_2)$
+and go on to show that therefore $\vec{v}_1=\vec{v}_2$.
+To show that a function is not one-to-one, 
+the simplest thing is to find two different inputs $\vec{v}_1$ and~$\vec{v}_2$
+that map to the same output $f(\vec{v}_1)=f(\vec{v}_2)$.
+
+To show that a function is onto, the simplest thing is to start
+with a~$\vec{w}$ and give a formula for an input~$\vec{v}$ that maps
+to it, that is, such that $f(\vec{v})=\vec{w}$.   
+To show that a function is not onto, the simplest thing is to produce 
+a~$\vec{w}$ for which there is no input~$\vec{v}$ that maps to it,
+that is, such that there is no $\vec{v}$ with $f(\vec{v})=\vec{w}$.   
+
+
+\begin{questions}
+\question
+For the function 
+$\map{f}{\matspace_{\nbyn{2}}}{\R^4}$
+giving this association
+\begin{equation*}
+  \begin{mat}
+    a  &b  \\
+    c  &d
+  \end{mat}
+  \mapsto
+  \colvec{a \\ b \\ c \\ d}
+\end{equation*}
+what column vector is associated with each
+matrix?
+\begin{parts}
+\part $
+\begin{mat}
+  5  &2  \\
+  1  &9
+\end{mat}$
+\begin{solution}
+$\colvec{5 \\ 2 \\ 1 \ 9}$
+\end{solution}
+
+\part $
+\begin{mat}
+  0  &-1/2  \\
+  0  &3
+\end{mat}$
+\begin{solution}
+$\colvec{0 \\ -1/2 \\ 0 \\ 3}$
+\end{solution}
+\end{parts}
+
+\question
+For the function 
+$\map{g}{\matspace_{\nbyn{2}}}{\R^4}$
+giving this association
+\begin{equation*}
+  \begin{mat}
+    a  &b  \\
+    c  &d
+  \end{mat}
+  \mapsto
+  \colvec{a \\ c \\ b-d \\ d-b}
+\end{equation*}
+what column vector is associated with each
+matrix?
+\begin{parts}
+\part $
+\begin{mat}
+  5  &2  \\
+  1  &9
+\end{mat}$
+\begin{solution}
+$\colvec{5 \\ 1 \\ -7 \\ 7}$
+\end{solution}
+
+\part $
+\begin{mat}
+  0  &-1/2  \\
+  0  &3
+\end{mat}$
+\begin{solution}
+$\colvec{0 \\ 0 \\ -7/2 \\ 7/2}$
+\end{solution}
+\end{parts}
+
+\question
+Let $\map{f}{\polyspace_2}{\R^2}$ be this.
+\begin{equation*}
+  f(c_2x^2+c_1x+c_0)=\colvec{-c_1 \\ 3c_0}
+\end{equation*}
+\begin{parts}
+\part Find $f(2x^2-4x+3)$.
+\begin{solution}
+  $\colvec{4 \\ 9}$
+\end{solution}
+
+\part Find $f(7)$.
+\begin{solution}
+  $\colvec{0 \\ 21}$
+\end{solution}
+\end{parts}
+
+\question
+Consider $\map{f}{\R^2}{\R^2}$ as here.
+\begin{equation*}
+  \colvec{a \\ b}\mapsto\colvec{a \\ a-b}
+\end{equation*}
+\begin{parts}
+\part Find $f(\vec{v})$ for this vector.
+\begin{equation*}
+  \vec{v}=\colvec{3 \\ 1}
+\end{equation*}
+
+\begin{solution}
+ $f(\colvec{3 \\ 1})=\colvec{3 \\ 2}$
+\end{solution}
+
+\part Show that $f$ is one-to-one.
+\begin{solution}
+Suppose that $f(\vec{v}_1)=f(\vec{v}_2)$.
+Then 
+\begin{equation*}
+  f(\colvec{a_1 \\ b_1})=f(\colvec{a_1 \\ b_1})
+\end{equation*}
+and so we have this.
+\begin{equation*}
+  \colvec{a_1 \\ a_1-b_1}=\colvec{a_2 \\ a_2-b_2}
+\end{equation*}
+The top entries give that $a_1=a_2$.
+The bottom entries give that $a_11-b_1=a_2-b_2$, and with the information
+that $a_1=a_2$, we have that $b_1=b_2$ also.
+Therefore $\vec{v}_1=\vec{v}_2$.
+\end{solution}
+\end{parts}
+
+
+\question
+Consider $\map{g}{\polyspace_2}{\polyspace_3}$ given by 
+$g(ax^2+bx+c)=(a+b)x^3-cx+b$.
+\begin{parts}
+\part Compute $g(9x^2+3x-4)$.
+\begin{solution}
+$g(9x^2+3x-4)=12x^3+4x+3$
+\end{solution}
+
+\part
+Show that $g$ is one-to-one.
+\begin{solution}
+Suppose that $g(\vec{v}_1)=g(\vec{v}_2)$.  
+Writing $\vec{v}_1=a_1x^2+b_1x+c_1$ and  $\vec{v}_2=a_2x^2+b_2x+c_2$
+we get this. 
+\begin{equation*}
+  (a_1+b_1)x^3-c_1x+b_1=(a_2+b_2)x^3-c_2x+b_2
+\end{equation*}
+Comparing the two constant terms gives that $b_1=b_2$.
+The linear terms give that $c_1=c_2$.
+The coefficients of~$x^3$ give $a_1+b_1=a_2+b_2$, and
+since $b_1=b_2$ we have $a_1=a_2$ also.
+Thus $\vec{v}_1=\vec{v}_2$.
+\end{solution}
+\end{parts}
+
+\question
+Define $\map{f}{\matspace_{\nbyn{2}}}{\R^2}$ as here.
+\begin{equation*}
+  f(
+  \begin{mat}
+    a  &b  \\
+    c  &d
+  \end{mat}
+  )
+  =
+  \colvec{a  \\ a+b}
+\end{equation*}
+\begin{parts}
+\part Find $f(\vec{v})$ for this input.
+\begin{equation*}
+  \vec{v}=
+  \begin{mat}
+    3  &2  \\
+    4  &5
+  \end{mat}
+\end{equation*}
+\begin{solution}
+  $\colvec{3 \\ 5}$
+\end{solution}
+
+\item Show that $f$ is not one-to-one.
+\begin{solution}
+Note that $f(\vec{v}_1)=f(\vec{v}_2)$ for these two.
+\begin{equation*}
+  \vec{v}_1=
+  \begin{mat}
+    3  &2  \\
+    4  &5
+  \end{mat}
+  \qquad
+  \vec{v}_2=
+  \begin{mat}
+    3  &2  \\
+    0  &0
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\end{parts}
+\end{questions}
+\end{document}
