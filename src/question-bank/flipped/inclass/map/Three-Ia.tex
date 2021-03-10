@@ -1,0 +1,223 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.I, part two\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+Verify that this map $\map{h}{\matspace_{\nbyn{2}}}{\R^4}$ is an isomorphism.
+\begin{equation*}
+\begin{mat}
+  a  &b  \\
+  c  &d
+\end{mat}
+\mapsto
+\colvec{a+b \\ a-b  \\ c \\ c+d}
+\end{equation*}
+\begin{solution}
+We must check (1) and~(2) from the definition.
+Each of these, in turn, involves checking two things.
+
+We first check that the map~$h$ is one-to-one.
+Assume $h(\vec{v}_1)=h(\vec{v}_2)$.
+\begin{align*}
+  h(
+  \begin{mat}
+    a_1  &b_1  \\
+    c_1  &d_1
+  \end{mat})
+  &=
+  h(
+  \begin{mat}
+    a_2  &b_2  \\
+    c_2  &d_2
+  \end{mat})                  \\
+  \colvec{a_1+b_1 \\ a_1-b_1  \\ c_1 \\ c_1+d_1}
+  &=
+  \colvec{a_2+b_2 \\ a_2-b_2  \\ c_2 \\ c_2+d_2}           
+  \tag{$*$}
+\end{align*}
+Comparing third entries gives that $c_1=c_2$, and then the fourth entries
+give that $d_1=d_2$.
+Comparing the first and second entries gives that $a_1+b_1=a_2+b_2$
+and $a_1-b_1=a_2-b_2$.
+Adding these together gives that $a_1=a_2$, and thus $b_1=b_2$.
+\textit{Remark:} a person can wonder what to do if the relationships 
+are too complicated to eyeball.
+Equation~($*$) gives this linear system,
+\begin{equation*}
+\begin{linsys}{8}
+  a_1  &+  &b_1  &  &    &  &    &-  &a_2  &-  &b_2  &   &    &  &    &=  &0 \\
+  a_1  &-  &b_1  &  &    &  &    &-  &a_2  &+  &b_2  &   &    &  &    &=  &0 \\
+       &   &     &  &c_1 &  &    &   &     &   &     &-  &c_2 &  &    &=  &0 \\
+       &   &     &  &c_1 &+ &d_1 &   &     &   &     &-  &c_2 &- &d_2  &=  &0 \\
+\end{linsys}
+\end{equation*}
+and Gauss's method
+\begin{align*}
+\begin{amat}{8}
+  1  &1  &0  &0  &-1  &-1  &0  &0  &0  \\ 
+  1  &-1  &0  &0  &-1  &1  &0  &0  &0  \\ 
+  0  &0  &1  &0  &0  &0  &-1  &0  &0  \\ 
+  0  &0  &1  &1  &0  &0  &-1  &-1  &0  \\ 
+\end{amat}
+&\grstep{-1\rho_{1}+\rho_{2}}
+\begin{amat}{8}
+  1  &1  &0  &0  &-1  &-1  &0  &0  &0  \\ 
+  0  &-2  &0  &0  &0  &2  &0  &0  &0  \\ 
+  0  &0  &1  &0  &0  &0  &-1  &0  &0  \\ 
+  0  &0  &1  &1  &0  &0  &-1  &-1  &0  \\ 
+\end{amat}                                     \\
+&\grstep{-1\rho_{3}+\rho_{4}}
+\begin{amat}{8}
+  1  &1  &0  &0  &-1  &-1  &0  &0  &0  \\ 
+  0  &-2  &0  &0  &0  &2  &0  &0  &0  \\ 
+  0  &0  &1  &0  &0  &0  &-1  &0  &0  \\ 
+  0  &0  &0  &1  &0  &0  &0  &-1  &0  \\ 
+\end{amat}
+\end{align*}
+gives that $d_1=d_2$, $c_1=c_2$, $b_1=b_2$ and $a_1=a_2$,
+and so $\vec{v}_1=\vec{v}_2$.
+
+To finish condition~(1), we will show that the function~$h$ is onto.
+For these, often a numerical example is a help.
+What input does it take to produce this output?
+\begin{equation*}
+\begin{mat}
+  a  &b  \\
+  c  &d
+\end{mat}
+\mapsto
+\colvec{a+b \\ a-b  \\ c \\ c+d}
+=
+\colvec{1  \\ 2 \\ 3 \\ 4}  
+\end{equation*}
+We need $c=3$, and $d=1$.
+We also need $a=3/2$ and $b=-1/2$.
+In general, to get this output
+\begin{equation*}
+\begin{mat}
+  a  &b  \\
+  c  &d
+\end{mat}
+\mapsto
+\colvec{a+b \\ a-b  \\ c \\ c+d}
+=
+\colvec{x  \\ y \\ z \\ w}  
+\end{equation*}
+we can use $c=z$ and $d=w-z$,
+and as well $a=(x+y)/2$ and $b=(x-y)/2$.
+
+Condition~(2) is more of a computation.
+We first show that this map respects addition.
+\begin{align*}
+  h(\vec{v}_1+\vec{v}_2)
+  &=  
+  h(\;\begin{mat}
+  a_1  &b_1  \\
+  c_1  &d_1
+  \end{mat}
+  +
+  \begin{mat}
+  a_1  &b_1  \\
+  c_1  &d_1
+  \end{mat}\;)                           \\
+  &=  
+  h(\begin{mat}
+  a_1+a_2  &b_1+b_2  \\
+  c_1+c_2  &d_1+d_2
+  \end{mat})                           \\
+  &=
+  \colvec{(a_1+a_2)+(b_1+b_2)  \\ (a_1+a_2)-(b_1+b_2) \\ c_1+c_2 \\ (c_1+c_2)+(d_1+d_2)}         \\
+  &=
+  \colvec{(a_1+b_1)+(a_2+b_2)  \\ (a_1-b_1)+(a_2-b_2) \\ c_1+c_2 \\ (c_1+d_1)+(c_2+d_2)}         \\
+  &=  
+  \colvec{a_1+b_1 \\ a_1-b_1  \\ c_1 \\ c_1+d_1}
+  +
+  \colvec{a_2+b_2 \\ a_2-b_2  \\ c_2 \\ c_2+d_2}          \\
+  &=
+  h(\begin{mat}
+  a_1  &b_1  \\
+  c_1  &d_1
+  \end{mat})
+  +
+  h(\begin{mat}
+  a_1  &b_1  \\
+  c_1  &d_1
+\end{mat})                           
+\end{align*}
+
+For the other half of condition~(2), we show that the function~$h$ preserves
+scalar multiplication.
+\begin{align*}
+  h(r\vec{v})
+  &=
+  h(
+    r\cdot\begin{mat}
+      a  &b  \\
+      c  &d
+    \end{mat})                      \\
+  &=
+  h(
+    \begin{mat}
+      ra  &rb  \\
+      rc  &rd
+    \end{mat})                  \\
+  &=
+  \colvec{ra+rb \\ ra-rb  \\ rc \\ rc+rd}          \\
+  &=
+  r\cdot\colvec{a+b \\ a-b  \\ c \\ c+d}          \\
+  &=
+  r\cdot h(\;
+    \begin{mat}
+      a  &b  \\
+      c  &d
+    \end{mat}\;)   
+\end{align*}
+\end{solution}
+
+\question
+Verify condition~(2) of the argument showing 
+that this map $\map{f}{\polyspace_2}{\polyspace_2}$ is an automorphism.
+\begin{equation*}
+  ax^2+bx+c \mapsto (a-c)x^2+(b-c)x+c
+\end{equation*}
+\begin{solution}
+We first show that $f$ preserves addition.
+\begin{align*}
+  f(\vec{v}_1+\vec{v}_2)
+  &=
+  f(\;(a_1x^2+b_1x+c_1)+(a_2x^2+b_2x+c_2)\;)           \\
+  &=
+  f(\;(a_1+a_2)x^2+(b_1+b_2)x+(c_1+c_2)\;)           \\
+  &=
+  (a_1+a_2-(c_1+c_2))x^2+(b_1+b_2-(c_1+c_2))x+(c_1+c_2)  \\
+  &=
+  \bigl((a_1-c_1)x^2+(b_1-c_1)x+c\bigr) +\bigl((a_2-c_2)x^2+(b_2-c_2)x+c_2\bigr) \\
+  &=
+  f(\vec{v}_1)+f(\vec{v}_2)
+\end{align*}
+We finish by showing that $f$ preserves scalar multiplication.
+\begin{align*}
+  f(r\cdot \vec{v})
+  &=
+  f(\;r\cdot(ax^2+bx+c)\;)        \\
+  &=
+  f(\;(ra)x^2+(rb)x+(rc)\;)        \\
+  &=
+  (ra-rc)x^2+(rb-rc)x+rc            \\
+  &=
+  r\cdot\bigl( (a-c)x^2+(b-c)x+c \bigr)            \\
+  &=r\cdot f(\vec{v})
+\end{align*}
+\end{solution}
+\end{questions}
+\end{document}

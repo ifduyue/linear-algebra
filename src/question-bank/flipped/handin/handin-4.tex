@@ -1,0 +1,102 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+
+\usepackage{../../../sty/conc}
+\usepackage{../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Handin 4\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+% \makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+\begin{center}
+  \fbox{\parbox{6.5in}{\it
+  When you are working on this material, you must work entirely on your 
+  own.
+  You may use the book or your notes.
+  But you may not work with other people, either in the class our outside of it,
+  or use other books or the Internet.
+  If you have any questions, email me.
+  }}
+  \end{center}
+
+
+\begin{questions}
+\question
+Show that $\map{h}{\polyspace_2}{\R^3}$
+\begin{equation*}
+  ax^2+bx+c \mapsto \colvec{a-b \\ b \\ a+c}
+\end{equation*}
+is an isomorphism.
+\begin{parts}
+\part Verify that it is one-to-one.
+\begin{solution}
+Assume that $h(\vec{v}_1)=h(\vec{v}_2)$, so that
+$h(a_1x^2+b_1x+c_1)=h(a_2x^2+b_2x+c_2)$.
+Then
+\begin{equation*}
+  \colvec{a_1-b_1 \\ b_1 \\ a_1+c_1}
+  =
+  \colvec{a_2-b_2 \\ b_2 \\ a_2+c_2}
+\end{equation*}
+and the middle entries show that $b_1=b_2$.
+With that, the top entries show that $a_1=a_2$, and then the bottom
+entries give $c_1=c_2$.
+The conclusion is that $\vec{v}_1=\vec{v}_2$, 
+and so $h$ is a one-to-one function.
+\end{solution}
+
+\part Verify that it is onto.
+\begin{solution}
+(\textit{Hint:} try this first with numbers, that is, try two particular
+members of $\R^3$ to see the pattern for the general case.)
+Fix a member of the codomain~$\R^3$.
+\begin{equation*}
+  \vec{w}=\colvec{p \\ q \\ r}\in\R^3
+\end{equation*}
+We must find $\vec{v}\in\polyspace_2$ so that $h(\vec{v})=\vec{w}$.
+Consider $ax^2+bx+c$ where $b=q$, where $a=p+q$, and where $c=r-(p+q)$.
+The verification that $\vec{v}$ is correct is this.
+\begin{equation*}
+  (p+q)x^2+qx+(r-(p+q))\mapsto \colvec{(p+q)-q \\ q \\ (p+q)+r-(p+q)}
+                               =\colvec{p \\ q \\ r}
+\end{equation*}
+\end{solution}
+
+\part Verify that it preserves vector addition and scalar multiplication.
+\begin{solution}
+This shows that it preserves addition.
+\begin{align*}
+  h(\vec{v}_1+\vec{v}_2)
+  &=
+  h(\;(a_1x^2+b_1x+c_1)+(a_2x^2+b_2x+c_2)\;)      \\
+  &=
+  h(\;(a_1+a_2)x^2+(b_1+b_2)x+(c_1+c_2)\;)      \\
+  &=
+  \colvec{(a_1+a_2)-(b_1+b_2) \\ b_1+b_2  \\ (a_1+a_2)+(c_1+c_2)}  \\
+  &=
+  \colvec{(a_1-b_1)+(a_2-b_2) \\ b_1+b_2  \\ (a_1+c_1)+(a_2+c_2)}  \\
+  &=
+  \colvec{a_1-b_1 \\ b_1 \\ a_1+c_1}+\colvec{a_2-b_2 \\ b_2 \\ a_2+c_2}  \\
+  &=
+  h(a_1x^2+b_1x+c_1)+h(a_2x^2+b_2x+c_2)  
+  =h(\vec{v}_1)+h(\vec{v}_2)
+\end{align*}
+And this is the similar calculation for preservation of scalar multiplication.
+\begin{align*}
+  h(r\cdot\vec{v})
+  &=
+  h(\;r\cdot(ax^2+bx+c)\;)           \\
+  &=
+  h(\;(ra)x^2+(rb)x+(rc)\;)           \\
+  &=
+  \colvec{ra-rb \\ rb \\ ra+rc}       \\
+  &=
+  r\cdot\colvec{a-b \\ b \\ a+c}       \\
+  &=r\cdot h(ax^2+bx+c)  =r\cdot h(\vec{v})
+\end{align*}
+\end{solution}
+\end{parts}
+\end{questions}
+\end{document}

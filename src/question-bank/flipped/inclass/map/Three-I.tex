@@ -10,7 +10,7 @@
 \makebox[\textwidth]{Worksheet for Three.I\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
 \makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
 
-A function $\map{f}{V}{W}$ is an association of inputs with outputs.
+A \textit{function} $\map{f}{V}{W}$ is an association of inputs with outputs.
 We write $f(\vec{v})=\vec{w}$ or $\vec{v}\mapsto\vec{w}$.
 The key property is that for each input~$\vec{v}$ there is exactly one
 associate output~$\vec{w}$~--- that is, for each~$\vec{v}$
@@ -71,8 +71,8 @@ giving this association
   \mapsto
   \colvec{a \\ b \\ c \\ d}
 \end{equation*}
-what column vector is associated with each
-matrix?
+what output column vector is associated with each
+input matrix?
 \begin{parts}
 \part $
 \begin{mat}
@@ -91,6 +91,15 @@ $\colvec{5 \\ 2 \\ 1 \ 9}$
 \begin{solution}
 $\colvec{0 \\ -1/2 \\ 0 \\ 3}$
 \end{solution}
+
+\part $
+\begin{mat}
+  x+y  &2z  \\
+  x-y  &y+z
+\end{mat}$
+\begin{solution}
+$\colvec{x+y \\ 2z \\ x-y \\ y+z}$
+\end{solution}
 \end{parts}
 
 \question
@@ -105,8 +114,8 @@ giving this association
   \mapsto
   \colvec{a \\ c \\ b-d \\ d-b}
 \end{equation*}
-what column vector is associated with each
-matrix?
+what output column vector is associated with each
+input matrix?
 \begin{parts}
 \part $
 \begin{mat}
@@ -124,6 +133,24 @@ $\colvec{5 \\ 1 \\ -7 \\ 7}$
 \end{mat}$
 \begin{solution}
 $\colvec{0 \\ 0 \\ -7/2 \\ 7/2}$
+\end{solution}
+
+\part $
+\begin{mat}
+  x+y  &2z  \\
+  x-y  &y+z
+\end{mat}$
+\begin{solution}
+$\colvec{x+y \\ x-y \\ z-y \\ y-z}$
+\end{solution}
+
+\part $
+\begin{mat}
+  a+2b  &b+d  \\
+  c+d   &a+2b+d
+\end{mat}$
+\begin{solution}
+$\colvec{a+2b \\ c+d \\ a-b \\ b-a}$
 \end{solution}
 \end{parts}
 
@@ -246,7 +273,114 @@ Note that $f(\vec{v}_1)=f(\vec{v}_2)$ for these two.
   \end{mat}
 \end{equation*}
 \end{solution}
-
 \end{parts}
+
+
+\question
+Consider $\map{f}{\R^2}{\R^2}$ as here.
+\begin{equation*}
+  \colvec{a \\ b}\mapsto\colvec{a \\ a-b}
+\end{equation*}
+\begin{parts}
+\part Find $f(\vec{v})$ for this vector.
+\begin{equation*}
+  \vec{v}=\colvec{-2 \\ -2}
+\end{equation*}
+% \begin{solution}
+% $\colvec{-2 \\ 0}$
+% \end{solution}
+
+\part
+What vector $\vec{v}$ has $f(\vec{v})=\vec{w}$?
+\begin{equation*}
+  \vec{w}=\colvec{5 \\ 1}
+\end{equation*}
+\begin{solution}
+\begin{equation*}
+  \vec{v}=\colvec{5 \\ 4}
+\end{equation*}
+\end{solution}
+
+\part
+What vector $\vec{v}$ has $f(\vec{v})=\vec{w}$?
+\begin{equation*}
+  \vec{w}=\colvec{3 \\ -1}
+\end{equation*}
+\begin{solution}
+\begin{equation*}
+  \vec{v}=\colvec{3 \\ 4}
+\end{equation*}
+\end{solution}
+
+\part
+Show that $f$ is onto.
+That is, given an output~$\vec{w}$, find a  
+$\vec{v}$ such that $f(\vec{v})=\vec{w}$.
+\begin{solution}
+Fix
+\begin{equation*}
+  \vec{w}=\colvec{c \\ d}
+\end{equation*}
+and note that if
+\begin{equation*}
+  \vec{v}=\colvec{c \\ c+d}
+\end{equation*}
+then $f(\vec{v})=\vec{w}$.
+\end{solution}
+\end{parts}
+
+\question
+Show that this function is onto.
+\begin{equation*}
+  f(\colvec{a \\ b})=\colvec{a + 2b \\ 3a + 4b}
+\end{equation*}
+\begin{solution}
+Fix an output.
+\begin{equation*}
+  \vec{w}=\colvec{c \\ d}
+\end{equation*}
+We need to find an input 
+\begin{equation*}
+ \vec{v}=\colvec{a \\ b}
+\end{equation*}
+so that this holds.
+\begin{equation*}
+  \colvec{a+2b \\ 3a+4b}=\colvec{c \\ d}
+\end{equation*}
+This is a linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  a  &+  &2b  &=  &c \\
+ 3a  &+  &4b  &=  &d
+\end{linsys}
+\grstep{-3\rho_1+\rho_2}
+\begin{linsys}{2}
+  a  &+  &2b  &=  &c \\
+     &   &-2b &=  &-3c+d
+\end{linsys}
+\end{equation*}
+We get $b=(3/2)c-(1/2)d$,
+and back substitution $a+2\cdot((3/2)c-(1/2)d)=c$ leads to
+$a=-2c+d$.
+In short, where
+\begin{equation*}
+ \vec{v}=\colvec{-2c+d \\ (3/2)c-(1/2)d}
+\end{equation*}
+then $f(\vec{v})=\vec{w}$.
+\end{solution}
+
+\question
+Show that this function is not onto.
+\begin{equation*}
+  g(ax^2+bx+c)=\colvec{a-b \\ 2a-2b}
+\end{equation*}
+\begin{solution}
+The output vectors all have the property that the second component is 
+twice the first.
+So this is not an output.
+\begin{equation*}
+  \colvec{1 \\ 3}
+\end{equation*}
+\end{solution}
 \end{questions}
 \end{document}

@@ -1,0 +1,164 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.I, part three\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+Isomorphisms are correspondences between bases.
+
+\begin{questions}
+\question
+Consider $\polyspace_2$.
+\begin{parts}
+\part 
+We could verify that 
+$B=\sequence{x^2+x, x^2, x^2+1}$ is a basis (but we won't, just in the
+interests of time).
+What is the dimension of $\polyspace_2$?
+\begin{solution}
+There are three members of the basis, so $V$ is $3$~dimenstional.
+\end{solution}
+
+\part
+Represent $3x^2+2x+1$ in terms of that basis.
+That is, find $c_1$, $c_2$, $c_3$ in this equation.
+\begin{equation*}
+  c_1(x^2+x)+c_2(x^2)+c_3(x^2+1)=3x^2+2x+1
+\end{equation*}
+\begin{solution}
+For the values of $c_1$, $c_2$, and~$c_3$ in this equation
+\begin{equation*}
+  c_1(x^2+x)+c_2(x^2)+c_3(x^2+1)=3x^2+2x+1
+\end{equation*}
+we get a linear system, where the first equation finds the 
+coefficient of~$x^2$ on both sides, etc.
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &+  &c_3  &=  &3  \\
+  c_1  &   &     &   &     &=  &2  \\
+       &   &     &   &c_3  &=  &1  \\
+\end{linsys}
+\end{equation*}
+By eye, we get $c_1=2$, $c_3=1$, and $c_2=0$.
+\begin{equation*}
+  \rep{3x^2+2x+1}{B}=\colvec{2 \\ 0 \\ 1}
+\end{equation*}
+\end{solution}
+
+\part
+Represent $ax^2+bx+c$ in terms of that basis.
+That is, find $c_1$, $c_2$, $c_3$ in this equation.
+\begin{equation*}
+  c_1(x^2+x)+c_2(x^2)+c_3(x^2+1)=ax^2+bx+c
+\end{equation*}
+\begin{solution}
+We are given $a$, $b$, and $c$. 
+We want the values of $c_1$, $c_2$, and~$c_3$ in this equation.
+\begin{equation*}
+  c_1(x^2+x)+c_2(x^2)+c_3(x^2+1)=ax^2+bx+c
+\end{equation*}
+As in the prior problem, get the linear system.
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &+  &c_3  &=  &a  \\
+  c_1  &   &     &   &     &=  &b  \\
+       &   &     &   &c_3  &=  &c  \\
+\end{linsys}
+\end{equation*}
+Also as in the prior problem, by eye we get $c_1=b$, $c_3=c$, and $c_2=a-b-c$.
+\begin{equation*}
+  b\cdot(x^2+x)+(a-b-c)\cdot(x^2)+c\cdot(x^2+1)=ax^2+bx+c
+\end{equation*}
+
+\end{solution}
+\end{parts}
+
+\question
+Consider this subspace of $\Re^4$.
+\begin{equation*}
+  W=\set{\colvec{p \\ q \\ r \\ s}\suchthat p-q+2s=0}
+\end{equation*}
+\begin{parts}
+\part
+Find a basis~$D$ for the space~$W$
+(because of time we won't verify that it is linearly independent).
+What is the dimension of~$W$?
+\begin{solution}
+We have this.
+\begin{align*}
+  \set{\colvec{p \\ q \\ r \\ s}\suchthat p-q+2s=0}
+  &=
+  \set{\colvec{q-2s \\ q \\ r \\ s}\suchthat q,r,s\in\R}       \\
+  &=
+  \set{q\cdot\colvec{1 \\ 1 \\ 0 \\ 0}
+       +r\cdot\colvec{0 \\ 0 \\ 1 \\ 0}
+       +s\cdot\colvec{-2 \\ 0 \\ 0 \\ 1}
+       \suchthat q,r,s\in\R}  
+\end{align*}
+So we take this to be the basis.
+\begin{equation*}
+  D=\sequence{\colvec{1 \\ 1 \\ 0 \\ 0},
+              \colvec{0 \\ 0 \\ 1 \\ 0},
+              \colvec{-2 \\ 0 \\ 0 \\ 1}
+             }
+\end{equation*}
+This basis has three elements, so $W$ is $3$~dimensional.
+\end{solution}
+\end{parts}
+
+\question
+The dimensions are the same so we can make an isomorphism 
+by making a correspondence between basis elements.
+$\map{f}{V}{W}$.
+\begin{parts}
+\part
+Associate the first member of~$B$, the polynomial $x^2+x$, with the
+second member of~$D$.
+Associate the polynomial $x^2$ with the
+third member of~$D$.
+Associate $x^2+1$ with the
+first member of~$D$.
+\begin{solution}
+\begin{equation*}
+  x^2+x\longleftrightarrow\colvec{0 \\ 0 \\ 1 \\ 0}
+  \qquad
+  x^2\longleftrightarrow\colvec{-2 \\ 0 \\ 0 \\ 1}
+  \qquad
+  x^2+1\longleftrightarrow\colvec{1 \\ 1 \\ 0 \\ 0}
+\end{equation*}
+\end{solution}
+
+\part
+Extend linearly, that is, give the formula for $f(ax^2+bx+c)$ by
+using the first question, 
+and that the function preserves addition and scalar multiplication.
+\begin{solution}
+\begin{align*}
+  f(ax^2+bx+c)
+  &=
+  f(\;b\cdot(x^2+x)+(a-b-c)\cdot(x^2)+c\cdot(x^2+1)\;)       \\
+  &=
+  f(\;b\cdot(x^2+x)\;)+f(\;(a-b-c)\cdot(x^2)\;)+f(\;c\cdot(x^2+1)\;)       \\
+  &=
+  b\cdot f(x^2+x)+(a-b-c)\cdot f(x^2)+c\cdot f(x^2+1)        \\
+  &=
+  b\cdot \colvec{0 \\ 0 \\ 1 \\ 0}
+  +(a-b-c)\cdot \colvec{-2 \\ 0 \\ 0 \\ 1}
+  +c\cdot\colvec{1 \\ 1 \\ 0 \\ 0}                  \\
+  &=
+  % \colvec{-2\cdot(a-b-c)+c \\ c \\ b \\ a-b-c}
+  % =
+  \colvec{-2a+2b+3c \\ c \\ b \\ a-b-c}
+\end{align*}
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}
