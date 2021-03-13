@@ -1,0 +1,235 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.II (part 2)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+
+\begin{questions}
+\question
+Consider the plane, $\R^2$, and its canonical basis.
+\begin{equation*}
+  \stdbasis_2=\sequence{\colvec{1 \\ 0}, \colvec{0 \\ 1}}
+\end{equation*}
+We can specify a linear map from $\R^2$ to itself, 
+that is, a linear transformation
+of~$\R^2$, by specifying its action on the basis vectors.
+\begin{equation*}
+  \colvec{1 \\ 0}\mapsunder{h}\colvec{1 \\ 1}
+  \qquad
+  \colvec{0 \\ 1}\mapsunder{h}\colvec{-2 \\ 3}
+\end{equation*}
+\begin{parts}
+\part Find the value of the function on this input.
+\begin{equation*}
+  h(\colvec{4 \\ 5})
+\end{equation*}
+\begin{solution}
+Expand the given vector in terms of the standard basis. 
+\begin{equation*}
+  h(\colvec{4 \\ 5})=h(\;4\cdot\colvec{1 \\ 0}+5\cdot\colvec{0 \\ 1}\;)
+\end{equation*}
+Apply that the map preserves addition
+\begin{equation*}
+  =h(4\cdot\colvec{1 \\ 0})+h(5\cdot\colvec{0 \\ 1})
+\end{equation*}
+and scalar multiplication.
+\begin{equation*}
+  =4\cdot h(\colvec{1 \\ 0})+5\cdot h(\colvec{0 \\ 1})
+\end{equation*}
+Finish by evaluating the map on the basis vectors.
+\begin{equation*}
+  =4\cdot \colvec{1 \\ 1}+5\cdot \colvec{-2 \\ 3}
+  =\colvec{-6 \\ 19}
+\end{equation*}
+\end{solution}
+
+\part Also find the output on this input.
+\begin{equation*}
+  h(\colvec{-7 \\ 0})
+\end{equation*}
+\begin{solution}
+Go through the same steps as in the prior part.
+\begin{align*}
+  h(\colvec{-7 \\ 0})
+  &=
+  h(\;-7\cdot\colvec{1 \\ 0}+0\cdot\colvec{0 \\ 1}\;)       \\
+  &=
+  h(-7\cdot\colvec{1 \\ 0})+h(0\cdot\colvec{0 \\ 1})       \\
+  &=
+  -7\cdot h(\colvec{1 \\ 0})+0\cdot h(\colvec{0 \\ 1})       \\
+  &=
+  -7\cdot \colvec{1 \\ 1}+0\cdot \colvec{-2 \\ 3}       \\
+  &=
+  \colvec{-7 \\ -7}       \\
+\end{align*}
+\end{solution}
+
+\part Find the general formula for this map.
+\begin{equation*}
+  h(\colvec{x \\ y})
+\end{equation*}
+\begin{solution}
+We have this.
+\begin{align*}
+  h(\colvec{x \\ y})
+  &=
+  h(\;x\cdot\colvec{1 \\ 0}+y\cdot\colvec{0 \\ 1}\;)       \\
+  &=
+  h(x\cdot\colvec{1 \\ 0})+h(y\cdot\colvec{0 \\ 1})       \\
+  &=
+  x\cdot h(\colvec{1 \\ 0})+y\cdot h(\colvec{0 \\ 1})       \\
+  &=
+  x\cdot \colvec{1 \\ 1}+y\cdot \colvec{-2 \\ 3}       \\
+  &=
+  \colvec{x-2y \\ x+3y}       \\
+\end{align*}
+\end{solution}
+\end{parts}
+
+
+
+\question
+Consider the vector space of quadratic polynomials.
+\begin{equation*}
+  \polyspace_2=\set{ax^2+bx+c \suchthat a,b,c\in\R}
+\end{equation*}
+This is a basis: $B=\set{x^2+1, x^2, 3x-1}$.
+Define the the transformation 
+$\map{f}{\polyspace_2}{\polyspace_2}$
+by starting with this action on the elements of the basis~$B$,
+and extending linearly.
+\begin{equation*}
+  x^2+1\mapsto 2x
+  \qquad
+  x^2\mapsto 2x
+  \qquad
+  3x-1\mapsto 3
+\end{equation*}
+\begin{parts}
+\part What is $f(4x^2-2x+5)$?
+\begin{solution}
+First get an expression for $4x^2-2x+5$ as a linear combination of basis 
+elements.
+This equation
+\begin{equation*}
+  4x^2-2x+5=c_1(x^2+1)+c_2(x^2)+c_3(3x-1)
+\end{equation*}
+gives this linear system.
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &     &=  &4  \\
+       &   &     &   &3c_3 &=  &-2  \\
+  c_1  &   &     &-  &c_3  &=  &5  \\
+\end{linsys}
+\end{equation*}
+We can solve it by eye, giving $c_3=-2/3$, then $c_1=13/3$, and then
+$c_2=-1/3$.  Restated, we have this.
+\begin{equation*}
+  \rep{4x^2-2x+5}{B}=\colvec{13/3 \\ -1/3 \\ -2/3}
+\end{equation*}
+Now proceed as in the prior question.
+\begin{align*}
+  f(4x^2-2x+5)
+  &=
+  f(\;\frac{13}{3}\cdot(x^2+1)+\frac{-1}{3}\cdot(x^2)+\frac{-2}{3}\cdot(3x-1) \;) \\
+  &=
+  f(\frac{13}{3}\cdot(x^2+1))+f(\frac{-1}{3}\cdot(x^2))+f(\frac{-2}{3}\cdot(3x-1)) \\
+  &=
+  \frac{13}{3}\cdot f(x^2+1)+\frac{-1}{3}\cdot f(x^2)+\frac{-2}{3}\cdot f(3x-1)  \\
+  &=
+  \frac{13}{3}\cdot (2x)+\frac{-1}{3}\cdot (2x)+\frac{-2}{3}\cdot (3)  \\
+  &=
+  8x-2
+\end{align*}
+\end{solution}
+
+\part $f(-3x+2)$?
+\begin{solution}
+First,
+\begin{equation*}
+  -3x+2=c_1(x^2+1)+c_2(x^2)+c_3(3x-1)
+\end{equation*}
+gives this.
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &     &=  &0  \\
+       &   &     &   &3c_3 &=  &-3  \\
+  c_1  &   &     &-  &c_3  &=  &2  \\
+\end{linsys}
+\end{equation*}
+We get $c_3=-1$, then $c_1=1$, and then
+$c_2=-1$. 
+\begin{equation*}
+  \rep{-3x+2}{B}=\colvec{1 \\ -1 \\ -1}
+\end{equation*}
+Now just apply linearity.
+\begin{align*}
+  f(-3x+2)
+  &=
+  f(\;1\cdot(x^2+1)-1\cdot(x^2)-1\cdot(3x-1) \;) \\
+  &=
+  f(1\cdot(x^2+1))+f(-1\cdot (x^2))+f(-1\cdot(3x-1)) \\
+  &=
+  f(x^2+1)-f(x^2)- f(3x-1)  \\
+  &=
+  (2x)- (2x)+- (3)  \\
+  &=
+  -3
+\end{align*}
+\end{solution}
+
+\part Next we find the formula for $f(ax^2+bx+c)$.
+First, represent $ax^2+bx+c$ with respect to the basis.
+\begin{solution}
+From
+\begin{equation*}
+  ax^2+bx+c=c_1(x^2+1)+c_2(x^2)+c_3(3x-1)
+\end{equation*}
+we get this.
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &     &=  &a  \\
+       &   &     &   &3c_3 &=  &b  \\
+  c_1  &   &     &-  &c_3  &=  &c  \\
+\end{linsys}
+\end{equation*}
+We get $c_3=b/3$, then $c_1=(b/3)+c$, and then
+$c_2=a-(b/3)-c$. 
+\begin{equation*}
+  \rep{-3x+1}{B}=\colvec{(b/3)+c \\ a-(b/3)-c \\ b/3}
+\end{equation*}
+\end{solution}
+
+\part Finish by applying linearity.
+\begin{solution}
+Using the prior part we have this.
+\begin{align*}
+  f(ax^2+bx+c)
+  &=
+  f(\;((b/3)+c)\cdot(x^2+1)+(a-(b/3)-c)\cdot(x^2)+(b/3)\cdot(3x-1) \;) \\
+  &=
+  ((b/3)+c)\cdot f(x^2+1)+(a-(b/3)-c)\cdot f(x^2)+(b/3)\cdot f(3x-1) \\
+  &=
+  ((b/3)+c)\cdot (2x)+(a-(b/3)-c)\cdot (2x)+(b/3)\cdot (3) \\
+  &=
+  2a\cdot x+b
+\end{align*}
+\end{solution}
+\part What name do you know this map by?
+\begin{solution}
+This is the derivative.
+\end{solution}
+
+\end{parts}
+
+
+\end{questions}
+\end{document}
