@@ -1,0 +1,236 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.III \hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+Fix the vector spaces $V=\polyspace_2$ and $W=\R^2$.
+Consider the map $\map{h}{V}{W}$, which is a homomorphism.
+\begin{equation*}
+  h(ax^2+bx+c)=\colvec{a+b \\ a+c}
+\end{equation*}
+Consider also the member of the domain $\vec{v}=3x^2+2x+1$.
+Note that this is its image. 
+\begin{equation*}
+  \vec{w}=h(\vec{v})=\colvec{5 \\ 4}
+\end{equation*}
+
+
+\begin{questions}
+\question
+Fix these bases
+\begin{equation*}
+  B_1=\sequence{x^2+x, x+1, x}
+  \qquad
+  D_1=\sequence{\colvec{1 \\ 1}, \colvec{1 \\ -1}}
+\end{equation*}
+\begin{parts}
+\part 
+Represent $\vec{v}$ with respect to the first basis, $\rep{\vec{v}}{B_1}$.
+\begin{solution}
+Solving this
+\begin{equation*}
+  3x^2+2x+1=c_1\cdot(x^2+x)+c_2\cdot(x+1)+c_3\cdot(x)
+\end{equation*}
+gives this.
+\begin{equation*}
+  \rep{\vec{v}}{B_1}=\colvec{3 \\ 1 \\ -2}
+\end{equation*}
+\end{solution}
+
+\part
+Determine where each member of $B_1$ is mapped by~$h$.
+\begin{solution}
+The basis vectors are mapped as here.
+\begin{align*}
+  x^2+x &\mapsto \colvec{1+1 \\ 1+0}=\colvec{2 \\ 1}  \\
+  x+1   &\mapsto \colvec{0+1 \\ 0+1}=\colvec{1 \\ 1}  \\
+  x     &\mapsto \colvec{1 \\ 0}  
+\end{align*}
+\end{solution}
+
+\part
+Represent each of those two-tall results with respect to~$D_1$.
+\begin{solution}
+First is the calculation for $\rep{h(\vec{\beta}_1)}{D_1}$.
+\begin{equation*}
+  \colvec{2 \\ 1}=c_1\colvec{1 \\ 1}+c_2\colvec{1 \\ -1}
+\end{equation*}
+We get this.
+\begin{equation*}
+  \rep{\colvec{2 \\ 1}}{D_1}=\colvec{3/2 \\ 1/2}
+\end{equation*}
+The second one is the calculation for $\rep{h(\vec{\beta}_2)}{D_1}$.
+\begin{equation*}
+  \colvec{1 \\ 1}=c_1\colvec{1 \\ 1}+c_2\colvec{1 \\ -1}
+\end{equation*}
+We get this.
+\begin{equation*}
+  \rep{\colvec{1 \\ 1}}{D_1}=\colvec{1 \\ 0}
+\end{equation*}
+Third is the calculation for $\rep{h(\vec{\beta}_3)}{D_1}$.
+\begin{equation*}
+  \colvec{1 \\ 0}=c_1\colvec{1 \\ 1}+c_2\colvec{1 \\ -1}
+\end{equation*}
+We get this.
+\begin{equation*}
+  \rep{\colvec{1 \\ 0}}{D_1}=\colvec{1/2 \\ 1/2}
+\end{equation*}
+\end{solution}
+
+
+\part
+Give the matrix representing $h$ with respect to the bases, $\rep{h}{B_1,D_1}$
+\begin{solution}
+Take the three column vectors from the prior item and make them
+the columns of a matrix, in order.
+\begin{equation*}
+  \rep{h}{B_1,D_1}=
+  \begin{mat}
+    3/2  &1  &1/2  \\
+    1/2  &0  &1/2
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Use the matrix vector product definition to compute 
+$\rep{h}{B_1,D_1}\cdot \rep{\vec{v}}{B_1}$.
+\begin{solution}
+This matrix-vector multiplictation
+\begin{equation*}
+  \begin{mat}
+    3/2  &1  &1/2  \\
+    1/2  &0  &1/2
+  \end{mat}
+  \cdot
+  \colvec{3 \\ 1 \\ -2}
+\end{equation*}
+gives this.
+\begin{equation*}
+  \colvec{(3/2)\cdot 3+1\cdot 1+(1/2)\cdot(-2) \\
+          (1/2)\cdot 3+0\cdot 1+(1/2)\cdot (-2)}
+  =
+  \colvec{9/2 \\ 1/2}
+\end{equation*}
+\end{solution}
+
+\part 
+Verify that the result is $\rep{h(\vec{v})}{D_1}$. 
+\begin{solution}
+Solving
+\begin{equation*}
+  \colvec{5 \\ 4}=c_1\colvec{1 \\ 1}+c_2\colvec{1 \\ -1}
+\end{equation*}
+does indeed give $c_1=9/2$ and $c_2=1/2$.
+\end{solution}
+\end{parts}
+
+
+\question
+Now fix these bases
+\begin{equation*}
+  B_2=\sequence{x^2+x+1, x+1, 1}
+  \qquad
+  D_2=\sequence{\colvec{1 \\ 1}, \colvec{0 \\ 1}}
+\end{equation*}
+\begin{parts}
+\part 
+Find $\rep{\vec{v}}{B_2}$ and $\rep{\vec{w}}{D_2}$.
+\begin{solution}
+For $\rep{\vec{v}}{B_2}$ we solve
+\begin{equation*}
+  c_1(x^2+x+1)+c_2(x+1)+c_3(1)=3x^2+2x+1
+\end{equation*}
+to get this.
+\begin{equation*}
+  \rep{\vec{v}}{B_2}=\colvec{3 \\ -1 \\ -1}
+\end{equation*}
+And for the other we solve
+\begin{equation*}
+  c_1\colvec{1 \\ 1}+c_2\colvec{0 \\ 1}=\colvec{5 \\ 4}
+\end{equation*}
+leading to this.
+\begin{equation*}
+  \rep{\vec{w}}{D_2}=
+  \colvec{5 \\ -1}
+\end{equation*}
+\end{solution}
+
+\part
+Determine where each member of $B_2$ is mapped by~$h$,
+and represent each of those two-tall results with respect to~$D_2$.
+\begin{solution}
+This is the action of the map on the basis vectors from $B_2$.
+\begin{align*}
+  x^2+x+1 &\mapsto \colvec{2 \\ 2}  \\
+      x+1 &\mapsto \colvec{1 \\ 1}  \\
+  x^2+x+1 &\mapsto \colvec{0 \\ 1}  \\
+\end{align*}
+Representing the first with respect to $D_2$ means solving 
+\begin{equation*}
+  \colvec{2 \\ 2}=c_1\colvec{1 \\ 1}+c_2\colvec{0 \\ 1}
+\end{equation*}
+which gives this.
+\begin{equation*}
+  \rep{h(\vec{\beta}_1)}{D_2}=\colvec{2 \\ 0}
+\end{equation*}
+Representing $h(\vec{\beta}_2)$ with respect to $D_2$ means solving 
+\begin{equation*}
+  \colvec{1 \\ 1}=c_1\colvec{1 \\ 1}+c_2\colvec{0 \\ 1}
+\end{equation*}
+which gives this.
+\begin{equation*}
+  \rep{h(x+1)}{D_2}=\colvec{1 \\ 0}
+\end{equation*}
+And, representing $h(\vec{\beta}_3)$ with respect to $D_2$ means solving 
+\begin{equation*}
+  \colvec{0 \\ 1}=c_1\colvec{1 \\ 1}+c_2\colvec{0 \\ 1}
+\end{equation*}
+yielding this.
+\begin{equation*}
+  \rep{h(1)}{D_2}=\colvec{0 \\ 1}
+\end{equation*}
+\end{solution}
+
+\part
+Give $\rep{h}{B_2,D_2}$.
+\begin{solution}
+Take the three column vectors from the prior answer, in order,
+and make them the columns of the matrix.
+\begin{equation*}
+  \rep{h}{B_2,D_2}=
+  \begin{mat}
+    2  &1 &0 \\
+    0  &0 &1
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Compute the matrix-vector product 
+$\rep{h}{B_2,D_2}\cdot \rep{\vec{v}}{B_2}$.
+Compare with $\rep{\vec{w}}{D_2}$. 
+\begin{solution}
+We have this.
+\begin{equation*}
+  \rep{h}{B_2,D_2}\cdot\rep{\vec{v}}{B_2}=
+  \begin{mat}
+    2  &1 &0 \\
+    0  &0 &1
+  \end{mat}
+  \cdot\colvec{3 \\ -1 \\ -1}
+  =
+  \colvec{5 \\ -1}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}

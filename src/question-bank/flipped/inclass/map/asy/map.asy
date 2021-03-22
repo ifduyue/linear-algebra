@@ -473,3 +473,35 @@ shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
 
 
 
+
+// ========== nullspace of rank plus nullity worksheet
+picture pic;
+int picnum = 13;
+size3(pic,150, 150, 150);
+
+real xmin=-10.5; real xmax=15.5;
+real ymin=-5.5; real ymax=15.5;
+real zmin=-5.5; real zmax=10.5;
+
+currentprojection=orthographic(20,6,5);
+currentlight=nolight;
+
+xaxis3(pic, "{\tiny $x$}",xmin,xmax,AXISPEN,
+       OutTicks(format="%",Step=5,step=1,Size=2,size=1));
+yaxis3(pic, "{\tiny $y$}",ymin,ymax,AXISPEN,
+       OutTicks(format="%",Step=5,step=1,Size=2,size=1));
+zaxis3(pic, "{\tiny $z$}",zmin,zmax,AXISPEN,
+       OutTicks(format="%",Step=5,step=1,Size=2,size=1));
+
+real k=5;
+path3 inv_image = (1,1,-1)*k--(-1,-1,1)*k;
+draw(pic, inv_image, MAINPEN+red, Arrows3(size=3.5));
+label(pic, "\tiny$\set{\colvec{-1 \\ -1 \\ 1}\cdot z\suchthat z \in\R}$", (-5,-5,5), 8*Y);
+// dotfactor=4;dot(pic,(6,6,0),ForestGreen);
+// label(pic, "\tiny$\colvec{b \\ a-b \\ 0}$", (6,6,0), 1.5*Y-1.75*Z);
+
+shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
+
+
+
+
