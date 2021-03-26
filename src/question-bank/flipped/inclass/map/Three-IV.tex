@@ -1,0 +1,296 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.IV\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+Fix the vector spaces $V=\R^2$, and $W=\R^2$, and $X=\R^2$.
+Fix this vector.
+\begin{equation*}
+  \vec{v}=\colvec{3 \\ 0}
+\end{equation*}
+Fix these bases.
+\begin{equation*}
+  B_V=\sequence{\colvec{1 \\ 1}, \colvec{1 \\ 0}}
+  \quad
+  B_W=\sequence{\colvec{1 \\ -1}, \colvec{2 \\ 0}}
+  \quad
+  B_X=\sequence{\colvec{0 \\  1}, \colvec{2 \\ 2}}
+\end{equation*}
+Also fix two linear maps.
+\begin{equation*}
+  f(\colvec{a \\ b}) = \colvec{a+b \\ 2b}
+  \qquad
+  h(\colvec{a \\ b}) = \colvec{a-b \\ a+b}
+\end{equation*}
+
+
+\begin{questions}
+\question
+We first represent the two maps with respect to the same pair of bases.
+\begin{parts}
+\part
+Find the matrix representing $f$: 
+$\rep{f}{B_V,B_W}$.
+\begin{solution}
+This is the action of the map on the input basis.
+\begin{equation*}
+  \colvec{1 \\ 1}\mapsunder{f}\colvec{2 \\ 2}
+  \qquad
+  \colvec{1 \\ 0}\mapsunder{f}\colvec{1 \\ 0}
+\end{equation*}
+We represent those results with respect to the output basis.
+\begin{align*}
+  \colvec{2 \\ 2}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{2 \\ 2}}{B_w}=\colvec{-2 \\ 2}       \\
+  \colvec{1 \\ 0}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{1 \\ 0}}{B_w}=\colvec{0 \\ 1/2}       
+\end{align*}
+Consequently, this is the matrix representing the map.
+\begin{equation*}
+  \rep{f}{B_V,B_w}=
+  \begin{mat}
+    -2  &0  \\
+     2  &1/2
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Find the matrix representing $h$, that is, 
+$\rep{h}{B_V,B_W}$.
+\begin{solution}
+Here is the action of the map on $B_V$.
+\begin{equation*}
+  \colvec{1 \\ 1}\mapsunder{h}\colvec{0 \\ 2}
+  \qquad
+  \colvec{1 \\ 0}\mapsunder{h}\colvec{1 \\ 1}
+\end{equation*}
+Represent those with respect to the output basis.
+\begin{align*}
+  \colvec{0 \\ 2}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{0 \\ 2}}{B_w}=\colvec{-2 \\ 1}       \\
+  \colvec{1 \\ 1}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{1 \\ 1}}{B_w}=\colvec{-1 \\ 1}       
+\end{align*}
+So this is the matrix representing the map.
+\begin{equation*}
+  \rep{h}{B_V,B_w}=
+  \begin{mat}
+    -2  &-1  \\
+     1  &1
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Find the column vector representing $\vec{v}$, $\rep{\vec{v}}{B_v}$.
+\begin{solution}
+Solve this equation.
+\begin{equation*}
+  \colvec{3 \\ 0}=c_1\colvec{1 \\ 1}+c_2\colvec{1 \\ 0}
+\end{equation*}
+This is the result.
+\begin{equation*}
+  \rep{\vec{v}}{B_V}
+  =
+  \colvec{0 \\ 3}
+\end{equation*}
+\end{solution}
+
+\part
+Use $\rep{f}{B_V,B_w}$ and $\rep{\vec{v}}{B_v}$ to find
+$\rep{f(\vec{v})}{B_w}$.
+\begin{solution}
+To get the result, find the matrix-vector product.
+\begin{align*}
+  \rep{f(\vec{v})}{B_W}
+    &=\rep{f}{B_v,B_W}\cdot\rep{\vec{v}}{B_V}  \\
+    &=
+      \begin{mat}
+      2  &0  \\
+      2   &1/2
+      \end{mat}
+      \colvec{0 \\ 3}              \\
+    &=\colvec{0 \\ 3/2}
+\end{align*}
+The point of matrix-vector multiplication is that it does the bookkeeping
+needed to represent the application of the map to the vector.
+Restated, the formula for $f$ gives this
+\begin{equation*}
+  f(\vec{v})=f(\colvec{3 \\ 0})=\colvec{3 \\ 0}
+\end{equation*}
+and from the representation $\rep{f(\vec{v})}{B_W}$ we get the same thing.
+\begin{equation*}
+  0\cdot\colvec{1 \\ 1}+(3/2)\cdot\colvec{2 \\ 0}=\colvec{3 \\ 0}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+
+
+\question
+Consider the map $\map{2f}{V}{W}$.
+\begin{parts}
+\part Define it.
+\begin{solution}
+Because the function $\map{f}{V}{W}$ is defined this way,
+\begin{equation*}
+  f(\colvec{a \\ b}) = \colvec{a+b \\ 2b}
+\end{equation*}
+the function $2f$, with the same domain and codomain, is defined this way,
+\begin{equation*}
+  2f\,(\colvec{a \\ b}) = \colvec{2a+2b \\ 4b}
+\end{equation*}
+\end{solution}
+
+\part Represent it: find $\rep{2f}{B_V,B_w}$.
+\begin{solution}
+Because the representation of $f$ that we computed above is this,
+\begin{equation*}
+  F=\rep{f}{B_V,B_w}=
+  \begin{mat}
+    -2  &0  \\
+     2  &1/2
+  \end{mat}
+\end{equation*}
+the representation of $2f$ given by the results in the book is this.
+\begin{equation*}
+  2F=\rep{2f}{B_V,B_w}=
+  \begin{mat}
+    -4  &0  \\
+     4  &1
+  \end{mat}
+\end{equation*}
+The point of the defintion of multiplying a matrix by a scalar is that
+it represents the function that you get by multiplyting by the scalar. 
+\end{solution}
+
+\part Apply it: find $\rep{2f\,(\vec{v})}{B_w}$.
+\begin{solution}
+As above, 
+the point of matrix-vector multiplication is that it does the bookkeeping
+needed to represent the application of the map to the vector.
+\begin{align*}
+  \rep{2f\,(\vec{v})}{B_W}
+    &=\rep{2f}{B_v,B_W}\cdot\rep{\vec{v}}{B_V}  \\
+    &=
+      \begin{mat}
+      4  &0  \\
+      4   &1
+      \end{mat}
+      \colvec{0 \\ 3}              \\
+    &=\colvec{0 \\ 3}
+\end{align*}
+\end{solution}
+\end{parts}
+
+\question
+Consider the map $\map{f+h}{V}{W}$.
+\begin{parts}
+\part Define it.
+\begin{solution}
+Because the function $\map{f}{V}{W}$ is defined this way,
+\begin{equation*}
+  f(\colvec{a \\ b}) = \colvec{a+b \\ 2b}
+\end{equation*}
+and the function $\map{h}{V}{W}$ is defined this way,
+\begin{equation*}
+  h(\colvec{a \\ b}) = \colvec{a-b \\ a+b}
+\end{equation*}
+the function $f+h$ is defined this way.
+\begin{equation*}
+  f+h\,(\colvec{a \\ b}) = \colvec{(a+b)+(a-b) \\ 2b+(a+b)}
+                        = \colvec{2a \\ a+3b}
+\end{equation*}
+\end{solution}
+
+\part Represent it: find $\rep{f+h}{B_V,B_w}$.
+\begin{solution}
+The representation of $f$ that we computed above is this.
+\begin{equation*}
+  F=\rep{f}{B_V,B_w}=
+  \begin{mat}
+    -2  &0  \\
+     2  &1/2
+  \end{mat}
+\end{equation*}
+The representation of $h$ that we computed above is this.
+\begin{equation*}
+  H=\rep{h}{B_V,B_w}=
+  \begin{mat}
+    -2  &-1  \\
+     1  &1
+  \end{mat}
+\end{equation*}
+The representation of $f+h$ is this.
+\begin{equation*}
+  F+H=\rep{f+h}{B_V,B_w}=
+  \begin{mat}
+    -2  &0  \\
+     2  &1/2
+  \end{mat}
+  +\begin{mat}
+    -2  &-1  \\
+     1  &1
+  \end{mat}
+  =
+  \begin{mat}
+    -4  &-1  \\
+     3  &3/2
+  \end{mat}
+\end{equation*}
+Briefly, we define the `$+$' operation between two matrices so that
+$F+H$ represents $f+h$.
+\end{solution}
+
+\part Apply it: find $\rep{f+h\,(\vec{v})}{B_w}$.
+\begin{solution}
+Matrix-vector multiplication is what does the bookkeeping
+needed to represent the application of the map to the vector.
+\begin{align*}
+  \rep{f+h\,(\vec{v})}{B_w} 
+  &=\rep{f+h}{B_V,B_w}\cdot\rep{\vec{v}}{B_V}     \\
+  &=
+  \begin{mat}
+    -4  &-1  \\
+     3  &3/2
+  \end{mat}
+  \colvec{0 \\ 3}             \\
+  &=\colvec{-3 \\ 9/2}
+\end{align*}
+\end{solution}
+\end{parts}
+
+\question
+The bases matter.
+\begin{parts}
+\part
+Find $\rep{h}{B_W,B_X}$
+\part Contrast it with
+$\rep{h}{B_V,B_w}$.
+\end{parts}
+
+\question
+Consider the map $\map{\composed{h}{f}}{V}{U}$.
+\begin{parts}
+\part Define it.
+\part Represent it: find $\rep{\composed{h}{f}}{B_V,B_U}$.
+\part Apply it: find $\rep{\composed{h}{f}\,(\vec{v})}{B_U}$.
+\end{parts}
+
+
+
+
+\end{questions}
+\end{document}

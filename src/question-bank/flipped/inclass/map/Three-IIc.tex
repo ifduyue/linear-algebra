@@ -1,5 +1,5 @@
-\documentclass[noanswers, nolegalese, 11pt]{examjh}
-% \documentclass[answers, nolegalese, 11pt]{examjh}
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
 \usepackage{../../../../sty/conc}
 \usepackage{../../../../sty/linalgjh}
 \usepackage{graphicx}
@@ -22,22 +22,110 @@ Consider the map $\map{h}{V}{W}$, which is a homomorphism.
 \begin{parts}
 \part
 Find the null space, $\nullspace{h}$.
+\begin{solution}
+We have
+\begin{equation*}
+h(\colvec{x \\ y \\ z})=\colvec{x+z \\ y+z}=\colvec{0 \\ 0}
+\end{equation*}
+which leads to $x+z=0$ and $y+z=0$.
+\begin{equation*}
+  \nullspace{h}
+  =\set{\colvec{-z \\ -z \\ z}\suchthat z\in\R}
+  =\set{\colvec{-1 \\ -1 \\ 1}\cdot z\suchthat z\in\R}
+\end{equation*}
+Here is a picture.
+\begin{center}
+  \includegraphics{asy/map013.pdf}
+\end{center}
+\end{solution}
+
 \part
 Give a basis $B_N$ for the null space.
+\begin{solution}
+\begin{equation*}
+  B_N=\sequence{\colvec{-1 \\ -1 \\ 1}}
+\end{equation*}
+\end{solution}
+
 \part
 Find the range space, $\rangespace{h}$
+\begin{solution}
+The range space is all of $W=\R^2$, 
+as we can see by restricting the inputs to $z=0$.
+\end{solution}
+
 \part
 Expand $B_N$, that is, add vectors to it, to make a basis for the domain, $B_V$.
+\begin{solution}
+There are infinitely many ways, but here is one.
+(I made these vectors, just plucked them out of the air, 
+but in such a way that the result is linearly independent.)
+\begin{equation*}
+  B_V=
+  \sequence{
+    \colvec{-1 \\ -1 \\ 1},
+    \colvec{1 \\ 0 \\ 1},
+    \colvec{1 \\ 1 \\ 0}
+    }
+\end{equation*}
+Checking that it is a basis is striaghtforward.
+Here is linear independence:
+\begin{equation*}
+    c_1\colvec{-1 \\ -1 \\ 1}
+    +c_2\colvec{1 \\ 0 \\ 1}
+    +c_3\colvec{1 \\ 1 \\ 0}
+    =\colvec{0 \\ 0 \\ 0}
+\end{equation*}
+leads to
+\begin{equation*}
+\begin{linsys}{3}
+  -c_1  &+  &c_2  &+  &c_3  &=  &0  \\
+  -c_1  &   &     &+  &c_3  &=  &0  \\
+   c_1  &+  &c_2  &   &     &=  &0  \\
+\end{linsys}
+\end{equation*}
+and Gauss's method gives that the only solution is the trivial one
+$c_1=0$, $c_2=0$, $c_3=0$.
+With that, because the domain $V=\R^3$ is $3$-dimensional, this linearly
+independent set with three members must be a basis.
+\end{solution}
+
 \part
 For all the members of $B_v$ that you've added, compute the image when
 you apply $h$.
+\begin{solution}
+\begin{equation*}
+  h(\colvec{1 \\ 0 \\ 1})=\colvec{2 \\ 1}
+  \qquad
+  h(\colvec{1 \\ 1 \\ 0})=\colvec{1 \\ 1}
+\end{equation*}
+\end{solution}
+
 \part
 Call the sequence of resulting vectors $B_R$.
 Check that it
-is a basis for the range, $W$.
+is a basis for the range, $W=\R^2$.
+\begin{solution}
+We have this.
+\begin{equation*}
+  B_R=
+  \sequence{\colvec{2 \\ 1},\colvec{1 \\ 1}}
+\end{equation*}
+It is linearly indepencdent since the second member is not a multiple of 
+the first.
+Because the range $W=\R^2$ is $2$-dimensional, this two-member linearly
+independent set must be a basis. 
+\end{solution}
+
 \part
 Conclude that (for this map)
 the nullity plus the rank equals the dimension of the domain.
+\begin{solution}
+The nullity is the dimension of the null space, $1$.
+The rank is the dimension of the range space, $2$.
+Together they add to the dimension of the domain, since
+$V=\R^3$ is $3$-dimensional/
+\end{solution}
 \end{parts}
 
 \end{questions}
