@@ -1,0 +1,139 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.IV (part 2)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+\begin{questions}
+\question
+Consider the plane~$\R^2$.
+Its canonical basis is this.
+\begin{equation*}
+  \stdbasis_2=\sequence{\vec{e}_1,\vec{e}_2}
+      =\sequence{\colvec{1 \\ 0},
+                  \colvec{0 \\ 1}}
+\end{equation*}
+\begin{parts}
+\part
+Draw a picture of the plane, and of $\vec{e}_1$ rotated through
+an angle of $\theta$ counterclockwise.
+\part
+Do the same for $\vec{e}_2$.
+\part 
+Represent the linear map of rotation through an angle of $\theta$
+counterclockwise, with respect to the standard bases 
+$\stdbasis_2,\stdbasis_2$. 
+\end{parts}
+
+
+\question
+Fix this matrix.
+\begin{equation*}
+M=
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\end{equation*}
+\begin{parts}
+\part
+Multiply $M$ from the left by these two.
+\begin{equation*}
+\begin{mat}
+  0  &0  &0  \\
+  0  &0  &1  \\
+  0  &0  &0  
+\end{mat}
+ \qquad
+\begin{mat}
+  0  &1  &0  \\
+  0  &0  &0
+\end{mat}
+\end{equation*}
+\part
+Multiply $M$ from the right by these two.
+\begin{equation*}
+\begin{mat}
+  0  &0  &0  \\
+  0  &0  &1  \\
+  0  &0  &0  
+\end{mat}
+\qquad
+\begin{mat}
+  0  &1    \\
+  0  &0    \\
+  0  &0
+\end{mat}
+ \qquad
+\end{equation*}
+\part
+Multiply it from the left by this permutation matrix.
+\begin{equation*}
+P=\begin{mat}
+  0  &1  &0  \\
+  0  &0  &1  \\
+  1  &0  &0  
+\end{mat}
+\end{equation*}
+\part Multiply $M$ from the right by the same matrix.
+\end{parts}
+
+\question
+Fix these two matrices.
+\begin{equation*}
+F=
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\qquad
+G=
+\begin{mat}
+  1  &0  &2  \\
+  0  &1  &3  \\
+  2  &-1  &0
+\end{mat}
+\end{equation*}
+\begin{parts}
+\part
+Compute $FG$.
+\part
+Compute these three.
+\begin{equation*}
+F\colvec{1 \\ 0 \\ 2}
+\qquad
+F\colvec{0 \\ 1 \\ -1}
+\qquad
+F\colvec{2 \\ 3 \\ 0}
+\end{equation*}
+\part
+Compute these three.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3  
+\end{mat}
+G
+\quad
+\begin{mat}
+  4  &5  &6  
+\end{mat}
+G
+\quad
+\begin{mat}
+  7  &8  &9  
+\end{mat}
+G
+\end{equation*}
+\end{parts}
+
+
+\end{questions}
+\end{document}

@@ -49,14 +49,14 @@ We represent those results with respect to the output basis.
 \begin{align*}
   \colvec{2 \\ 2}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
   &\quad\Longrightarrow\quad
-  \rep{\colvec{2 \\ 2}}{B_w}=\colvec{-2 \\ 2}       \\
+  \rep{\colvec{2 \\ 2}}{B_W}=\colvec{-2 \\ 2}       \\
   \colvec{1 \\ 0}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
   &\quad\Longrightarrow\quad
-  \rep{\colvec{1 \\ 0}}{B_w}=\colvec{0 \\ 1/2}       
+  \rep{\colvec{1 \\ 0}}{B_W}=\colvec{0 \\ 1/2}       
 \end{align*}
 Consequently, this is the matrix representing the map.
 \begin{equation*}
-  \rep{f}{B_V,B_w}=
+  F=\rep{f}{B_V,B_W}=
   \begin{mat}
     -2  &0  \\
      2  &1/2
@@ -78,14 +78,14 @@ Represent those with respect to the output basis.
 \begin{align*}
   \colvec{0 \\ 2}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
   &\quad\Longrightarrow\quad
-  \rep{\colvec{0 \\ 2}}{B_w}=\colvec{-2 \\ 1}       \\
+  \rep{\colvec{0 \\ 2}}{B_W}=\colvec{-2 \\ 1}       \\
   \colvec{1 \\ 1}=c_1\cdot \colvec{1 \\ -1}+c_2\colvec{2 \\ 0}
   &\quad\Longrightarrow\quad
-  \rep{\colvec{1 \\ 1}}{B_w}=\colvec{-1 \\ 1}       
+  \rep{\colvec{1 \\ 1}}{B_W}=\colvec{-1 \\ 1}       
 \end{align*}
 So this is the matrix representing the map.
 \begin{equation*}
-  \rep{h}{B_V,B_w}=
+  \rep{h}{B_V,B_W}=
   \begin{mat}
     -2  &-1  \\
      1  &1
@@ -109,8 +109,8 @@ This is the result.
 \end{solution}
 
 \part
-Use $\rep{f}{B_V,B_w}$ and $\rep{\vec{v}}{B_v}$ to find
-$\rep{f(\vec{v})}{B_w}$.
+Use $\rep{f}{B_V,B_W}$ and $\rep{\vec{v}}{B_v}$ to find
+$\rep{f(\vec{v})}{B_W}$.
 \begin{solution}
 To get the result, find the matrix-vector product.
 \begin{align*}
@@ -154,11 +154,11 @@ the function $2f$, with the same domain and codomain, is defined this way,
 \end{equation*}
 \end{solution}
 
-\part Represent it: find $\rep{2f}{B_V,B_w}$.
+\part Represent it: find $\rep{2f}{B_V,B_W}$.
 \begin{solution}
 Because the representation of $f$ that we computed above is this,
 \begin{equation*}
-  F=\rep{f}{B_V,B_w}=
+  F=\rep{f}{B_V,B_W}=
   \begin{mat}
     -2  &0  \\
      2  &1/2
@@ -166,7 +166,7 @@ Because the representation of $f$ that we computed above is this,
 \end{equation*}
 the representation of $2f$ given by the results in the book is this.
 \begin{equation*}
-  2F=\rep{2f}{B_V,B_w}=
+  2F=\rep{2f}{B_V,B_W}=
   \begin{mat}
     -4  &0  \\
      4  &1
@@ -176,7 +176,7 @@ The point of the defintion of multiplying a matrix by a scalar is that
 it represents the function that you get by multiplyting by the scalar. 
 \end{solution}
 
-\part Apply it: find $\rep{2f\,(\vec{v})}{B_w}$.
+\part Apply it: find $\rep{2f\,(\vec{v})}{B_W}$.
 \begin{solution}
 As above, 
 the point of matrix-vector multiplication is that it does the bookkeeping
@@ -215,11 +215,11 @@ the function $f+h$ is defined this way.
 \end{equation*}
 \end{solution}
 
-\part Represent it: find $\rep{f+h}{B_V,B_w}$.
+\part Represent it: find $\rep{f+h}{B_V,B_W}$.
 \begin{solution}
 The representation of $f$ that we computed above is this.
 \begin{equation*}
-  F=\rep{f}{B_V,B_w}=
+  F=\rep{f}{B_V,B_W}=
   \begin{mat}
     -2  &0  \\
      2  &1/2
@@ -227,7 +227,7 @@ The representation of $f$ that we computed above is this.
 \end{equation*}
 The representation of $h$ that we computed above is this.
 \begin{equation*}
-  H=\rep{h}{B_V,B_w}=
+  H=\rep{h}{B_V,B_W}=
   \begin{mat}
     -2  &-1  \\
      1  &1
@@ -235,7 +235,7 @@ The representation of $h$ that we computed above is this.
 \end{equation*}
 The representation of $f+h$ is this.
 \begin{equation*}
-  F+H=\rep{f+h}{B_V,B_w}=
+  F+H=\rep{f+h}{B_V,B_W}=
   \begin{mat}
     -2  &0  \\
      2  &1/2
@@ -254,13 +254,13 @@ Briefly, we define the `$+$' operation between two matrices so that
 $F+H$ represents $f+h$.
 \end{solution}
 
-\part Apply it: find $\rep{f+h\,(\vec{v})}{B_w}$.
+\part Apply it: find $\rep{f+h\,(\vec{v})}{B_W}$.
 \begin{solution}
 Matrix-vector multiplication is what does the bookkeeping
 needed to represent the application of the map to the vector.
 \begin{align*}
-  \rep{f+h\,(\vec{v})}{B_w} 
-  &=\rep{f+h}{B_V,B_w}\cdot\rep{\vec{v}}{B_V}     \\
+  \rep{f+h\,(\vec{v})}{B_W} 
+  &=\rep{f+h}{B_V,B_W}\cdot\rep{\vec{v}}{B_V}     \\
   &=
   \begin{mat}
     -4  &-1  \\
@@ -277,16 +277,124 @@ The bases matter.
 \begin{parts}
 \part
 Find $\rep{h}{B_W,B_X}$
+\begin{solution}
+This is the action of the map on $B_W$.
+\begin{equation*}
+  \colvec{1 \\ -1}\mapsunder{h}\colvec{2 \\ 0}
+  \qquad
+  \colvec{2 \\ 0}\mapsunder{h}\colvec{2 \\ 2}
+\end{equation*}
+Next, represent those with respect to the output basis.
+\begin{align*}
+  \colvec{2 \\ 0}=c_1\cdot \colvec{0 \\ 1}+c_2\colvec{2 \\ 2}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{2 \\ 0}}{B_X}=\colvec{-2 \\ 1}       \\
+  \colvec{2 \\ 2}=c_1\cdot \colvec{0 \\ 1}+c_2\colvec{2 \\ 2}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{2 \\ 2}}{B_X}=\colvec{0 \\ 1}       
+\end{align*}
+So this is the matrix representing the map.
+\begin{equation*}
+  \rep{h}{B_W,B_X}=
+  \begin{mat}
+    -2  &0  \\
+     1  &1
+  \end{mat}
+\end{equation*}
+\end{solution}
+
 \part Contrast it with
-$\rep{h}{B_V,B_w}$.
+$\rep{h}{B_V,B_W}$.
+\begin{solution}
+Earlier we found that 
+\begin{equation*}
+  \rep{h}{B_V,B_W}=
+  \begin{mat}
+    -2  &-1  \\
+     1  &1
+  \end{mat}
+\end{equation*}
+so the change in basis results in a change in the matrix representing the 
+map.
+\end{solution}
 \end{parts}
 
 \question
-Consider the map $\map{\composed{h}{f}}{V}{U}$.
+Consider the map $\map{\composed{h}{f}}{V}{X}$.
 \begin{parts}
 \part Define it.
-\part Represent it: find $\rep{\composed{h}{f}}{B_V,B_U}$.
-\part Apply it: find $\rep{\composed{h}{f}\,(\vec{v})}{B_U}$.
+\begin{solution}
+We have this for the action of $\composed{h}{f}$.
+\begin{equation*}
+\colvec{a \\ b}
+\mapsunder{f}
+\colvec{a+b \\ 2b}
+\mapsunder{h}
+\colvec{(a+b)-(2b)  \\ (a+b)+(2b)}=\colvec{a-b  \\ a+3b}
+\end{equation*}
+\end{solution}
+\part Represent it: find $\rep{\composed{h}{f}}{B_V,B_X}$.
+\begin{solution}
+This is the action of $\composed{h}{f}$ on the input basis.
+\begin{equation*}
+  \colvec{1 \\ 1}\mapsunder{h}\colvec{0 \\ 4}
+  \qquad
+  \colvec{1 \\ 0}\mapsunder{h}\colvec{1 \\ 1}
+\end{equation*}
+Next, represent those with respect to the output basis.
+\begin{align*}
+  \colvec{0 \\ 4}=c_1\cdot \colvec{0 \\ 1}+c_2\colvec{2 \\ 2}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{0 \\ 4}}{B_X}=\colvec{4 \\ 0}       \\
+  \colvec{1 \\ 1}=c_1\cdot \colvec{0 \\ 1}+c_2\colvec{2 \\ 2}
+  &\quad\Longrightarrow\quad
+  \rep{\colvec{1 \\ 1}}{B_X}=\colvec{0 \\ 1/2}       
+\end{align*}
+So this is the matrix representing the map.
+\begin{equation*}
+  \rep{h}{B_W,B_X}=
+  \begin{mat}
+     4  &0  \\
+     0  &1/2
+  \end{mat}
+\end{equation*}
+Note that this is the same as this matrix-matrix product.
+\begin{align*}
+  \rep{B_V,B_X}{\composed{h}{f}}
+  &=\rep{B_W,B_X}{h}\cdot\rep{B_V,B_W}{f}   \\
+  &=H\cdot F                \\
+  &=
+  \begin{mat}
+    -2  &0  \\
+     1  &1
+  \end{mat}
+  \begin{mat}
+    -2  &0  \\
+     2  &1/2
+  \end{mat}                     \\
+  &=
+  \begin{mat}
+     4  &0  \\
+     0  &1/2
+  \end{mat}
+\end{align*}
+\end{solution}
+
+\part Apply it: find $\rep{\composed{h}{f}\,(\vec{v})}{B_X}$.
+\begin{solution}
+We have this.
+\begin{equation*}
+  \rep{\composed{h}{f}\,(\vec{v})}{B_X}
+  =\rep{\composed{h}{f}}{B_V,B_X}\cdot\rep{\vec{v}}{B_V}
+  =
+  \begin{mat}
+     4  &0  \\
+     0  &1/2
+  \end{mat}
+  \colvec{0 \\ 3}
+  =\colvec{0 \\ 3/2}
+\end{equation*}
+\end{solution}
 \end{parts}
 
 
