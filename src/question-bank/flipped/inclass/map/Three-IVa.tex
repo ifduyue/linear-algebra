@@ -36,6 +36,45 @@ Multiply $M$ from the left by these two.
   0  &0  &0
 \end{mat}
 \end{equation*}
+\begin{solution}
+We have this
+\begin{equation*}
+\begin{mat}
+  0  &0  &0  \\
+  0  &0  &1  \\
+  0  &0  &0  
+\end{mat}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+=
+\begin{mat}
+  0  &0  &0  \\
+  7  &8  &9  \\
+  0  &0  &0
+\end{mat}
+\end{equation*}
+and also this.
+\begin{equation*}
+\begin{mat}
+  0  &1  &0  \\
+  0  &0  &0
+\end{mat}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+=
+\begin{mat}
+  4  &5  &6  \\
+  0  &0  &0
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Multiply $M$ from the right by these two.
 \begin{equation*}
@@ -50,8 +89,48 @@ Multiply $M$ from the right by these two.
   0  &0    \\
   0  &0
 \end{mat}
- \qquad
 \end{equation*}
+\begin{solution}
+The first is
+\begin{equation*}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\begin{mat}
+  0  &0  &0  \\
+  0  &0  &1  \\
+  0  &0  &0  
+\end{mat}
+=
+\begin{mat}
+  0  &0  &2  \\
+  0  &0  &5  \\
+  0  &0  &8
+\end{mat}
+\end{equation*}
+and the second is this.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\begin{mat}
+  0  &1    \\
+  0  &0    \\
+  0  &0
+\end{mat}
+=
+\begin{mat}
+  0  &1  \\
+  0  &4  \\
+  0  &7
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Multiply it from the left by this permutation matrix.
 \begin{equation*}
@@ -61,7 +140,49 @@ P=\begin{mat}
   1  &0  &0  
 \end{mat}
 \end{equation*}
+\begin{solution}
+\begin{equation*}
+PM=\begin{mat}
+  0  &1  &0  \\
+  0  &0  &1  \\
+  1  &0  &0  
+\end{mat}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+=
+\begin{mat}
+  4  &5  &6  \\
+  7  &8  &9  \\
+  1  &2  &3
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part Multiply $M$ from the right by the same matrix.
+\begin{solution}
+\begin{equation*}
+MP=
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\begin{mat}
+  0  &1  &0  \\
+  0  &0  &1  \\
+  1  &0  &0  
+\end{mat}
+=
+\begin{mat}
+  3  &1  &2  \\
+  6  &4  &5  \\
+  9  &7  &8
+\end{mat}
+\end{equation*}
+\end{solution}
 \end{parts}
 
 \question
@@ -84,6 +205,28 @@ G=
 \begin{parts}
 \part
 Compute $FG$.
+\begin{solution}
+\begin{equation*}
+FG=
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\begin{mat}
+  1  &0  &2  \\
+  0  &1  &3  \\
+  2  &-1  &0
+\end{mat}
+=
+\begin{mat}
+  7  &-1  &8  \\
+  16 &-1  &23 \\
+  25 &-1  &38
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Compute these three.
 \begin{equation*}
@@ -93,24 +236,60 @@ F\colvec{0 \\ 1 \\ -1}
 \qquad
 F\colvec{2 \\ 3 \\ 0}
 \end{equation*}
-\part
-Compute these three.
+\begin{solution}
+This is the first.
 \begin{equation*}
 \begin{mat}
-  1  &2  &3  
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
 \end{mat}
-G
-\quad
-\begin{mat}
-  4  &5  &6  
-\end{mat}
-G
-\quad
-\begin{mat}
-  7  &8  &9  
-\end{mat}
-G
+\colvec{1 \\ 0 \\ 2}
+=
+\colvec{7  \\ 16  \\ 25}
 \end{equation*}
+This is the second
+\begin{equation*}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\colvec{0 \\ 1 \\ -1}
+=
+\colvec{-1  \\ -1  \\ -1}
+\end{equation*}
+and the third.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3  \\
+  4  &5  &6  \\
+  7  &8  &9
+\end{mat}
+\colvec{2 \\ 3 \\ 0}
+=
+\colvec{8  \\ 23  \\ 38}
+\end{equation*}
+\end{solution}
+
+% \part
+% Compute these three.
+% \begin{equation*}
+% \begin{mat}
+%   1  &2  &3  
+% \end{mat}
+% G
+% \quad
+% \begin{mat}
+%   4  &5  &6  
+% \end{mat}
+% G
+% \quad
+% \begin{mat}
+%   7  &8  &9  
+% \end{mat}
+% G
+% \end{equation*}
 \end{parts}
 
 

@@ -13,11 +13,6 @@
 Fix these matrices.
 \begin{equation*}
   M=
-  % \begin{mat}
-  %   1  &2  &3  \\
-  %   4  &5  &6  \\
-  %   7  &8  &9
-  % \end{mat}
   \begin{mat}
     1  &2  &0  \\
     0  &4  &0  \\
@@ -58,6 +53,22 @@ We will perform Gauss-Jordan reduction on the matrix in two ways.
 \begin{parts}
 \part
 Perform the step $-3\rho_1+\rho_3$ on $M$ to get a matrix~$A$.
+\begin{solution}
+\begin{equation*}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+   3   &6  &1
+\end{mat}
+\grstep{-3\rho_1+\rho_3}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+    0  &0  &1
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Instead, multiply $M$ from the left by this matrix.
 \begin{equation*}
@@ -76,8 +87,47 @@ and performing $-3\rho_1+\rho_3$.
 % [1 2 0]
 % [0 4 0]
 % [0 0 1]
+\begin{solution}
+\begin{equation*}
+R_1M=
+\begin{mat}
+  1  &0  &0  \\
+  0  &1  &0  \\
+  -3 &0  &1  
+\end{mat}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+   3   &6  &1
+\end{mat}
+=
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+    0  &0  &1
+\end{mat}
+=A
+\end{equation*}
+\end{solution}
+ 
 \part 
 Next, perform the step $(1/4)\rho_2$ on~$A$ to get a matrix~$B$.
+\begin{solution}
+\begin{equation*}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+    0  &0  &1
+\end{mat}
+\grstep{(1/4)\rho_2}
+\begin{mat}
+    1  &2  &0  \\
+    0  &1  &0  \\
+    0  &0  &1
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Instead, multiply $A$ from the left by this matrix.
 \begin{equation*}
@@ -95,8 +145,47 @@ and performing $(1/4)\rho_2$.
 % [1 2 0]
 % [0 1 0]
 % [0 0 1]
+\begin{solution}
+\begin{equation*}
+R_2B=
+\begin{mat}
+  1  &0  &0  \\
+  0  &1/4  &0  \\
+  0 &0  &1
+\end{mat}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+    0  &0  &1
+\end{mat}
+=
+\begin{mat}
+    1  &2  &0  \\
+    0  &1  &0  \\
+    0  &0  &1
+\end{mat}
+=C
+\end{equation*}
+\end{solution}
+
 \part 
 Finally, perform the step $-2\rho_2+\rho_1$ on~$B$.
+\begin{solution}
+\begin{equation*}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+    0  &0  &1
+\end{mat}
+\grstep{-2\rho_2+\rho_1}
+\begin{mat}
+    1  &0  &0  \\
+    0  &1  &0  \\
+    0  &0  &1
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Instead, multiply $B$ from the left by this matrix.
 \begin{equation*}
@@ -114,6 +203,28 @@ R_3=\begin{mat}
 \end{equation*}
 Note that this matrix is the result of starting with~$I$ 
 and performing $-2\rho_2+\rho_1$.
+\begin{solution}
+\begin{equation*}
+R_3C=
+\begin{mat}
+  1  &-2 &0  \\
+  0  &1  &0  \\
+  0  &0  &1
+\end{mat}
+\begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+    0  &0  &1
+\end{mat}
+=
+\begin{mat}
+    1  &0  &0  \\
+    0  &1  &0  \\
+    0  &0  &1
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 So we have $R_3R_2R_1\cdot M=I$.
 Multiply $R_2R_1$, then find $R_3(R_2R_1)$.
@@ -121,6 +232,50 @@ Multiply $R_2R_1$, then find $R_3(R_2R_1)$.
 % [   1 -1/2    0]
 % [   0  1/4    0]
 % [  -3    0    1]
+
+\begin{solution}
+First (note that subscripts come in descending order).
+\begin{equation*}
+R_2R_1=
+\begin{mat}
+  1  &0  &0  \\
+  0  &1/4  &0  \\
+  0 &0  &1
+\end{mat}
+\begin{mat}
+  1  &0  &0  \\
+  0  &1  &0  \\
+  -3 &0  &1
+\end{mat}
+=
+\begin{mat}
+1  &0   &0  \\
+0  &1/4 &0  \\
+-3 &0   &1
+\end{mat}
+\end{equation*}
+and then here is the total.
+\begin{equation*}
+R_3\cdot (R_2R_1)=
+\begin{mat}
+1  &0   &0  \\
+0  &1/4 &0  \\
+-3 &0   &1
+\end{mat}
+\begin{mat}
+  1  &-2 &0  \\
+  0  &1  &0  \\
+  0  &0  &1
+\end{mat}
+=
+\begin{mat}
+1  &0  &0  \\
+0  &1  &0  \\
+0  &0  &1
+\end{mat}
+=I
+\end{equation*}
+\end{solution}
 \end{parts}
 
 \question
@@ -132,11 +287,58 @@ separating the two.
 \begin{parts}
 \part
 Perform $-3\rho_1+\rho_3$ on the combination.
+\begin{solution}
+\begin{equation*}
+  \left(\begin{array}{ccc|ccc}
+    1 &2 &0 &1 &0 &0  \\
+    0 &4 &0 &0 &1 &0  \\
+    3 &6 &1 &0 &0 &1  \\
+  \end{array}\right)
+  \grstep{-3\rho_1+\rho_3}
+  \left(\begin{array}{ccc|ccc}
+    1 &2 &0 &1 &0 &0  \\
+    0 &4 &0 &0 &1 &0  \\
+    0 &0 &1 &-3&0 &1  \\
+  \end{array}\right)
+\end{equation*}
+\end{solution}
+
 \part
 On the result, perform $(1/4)\rho_2$.
+\begin{solution}
+\begin{equation*}
+  \left(\begin{array}{ccc|ccc}
+    1 &2 &0 &1 &0 &0  \\
+    0 &4 &0 &0 &1 &0  \\
+    0 &0 &1 &-3&0 &1  \\
+  \end{array}\right)
+  \grstep{(1/4)\rho_2}
+  \left(\begin{array}{ccc|ccc}
+    1 &2 &0 &1 &0   &0  \\
+    0 &1 &0 &0 &1/4 &0  \\
+    0 &0 &1 &-3&0   &1  \\
+  \end{array}\right)
+\end{equation*}
+\end{solution}
+
 \part
 Finish by doing $-2\rho_2+\rho_1$.
 Compare the right hand side to $R_3R_2R_1$ from the prior question.
+\begin{solution}
+\begin{equation*}
+  \left(\begin{array}{ccc|ccc}
+    1 &2 &0 &1 &0   &0  \\
+    0 &1 &0 &0 &1/4 &0  \\
+    0 &0 &1 &-3&0   &1  \\
+  \end{array}\right)
+  \grstep{-2\rho_2+\rho_1}
+  \left(\begin{array}{ccc|ccc}
+    1 &0 &0 &1 &-1/2&0  \\
+    0 &1 &0 &0 &1/4 &0  \\
+    0 &0 &1 &-3&0   &1  \\
+  \end{array}\right)
+\end{equation*}
+\end{solution}
 % sage: M^(-1)
 % [   1 -1/2    0]
 % [   0  1/4    0]
