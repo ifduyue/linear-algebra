@@ -1,0 +1,147 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.IV (part 3)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+Fix these matrices.
+\begin{equation*}
+  M=
+  % \begin{mat}
+  %   1  &2  &3  \\
+  %   4  &5  &6  \\
+  %   7  &8  &9
+  % \end{mat}
+  \begin{mat}
+    1  &2  &0  \\
+    0  &4  &0  \\
+   3   &6  &1
+  \end{mat}
+ \qquad
+ I=
+ \begin{mat}
+ 1  &0  &0  \\
+ 0  &1  &0  \\
+ 0  &0  &1
+ \end{mat}
+\end{equation*}
+
+
+
+\begin{questions}
+% sage: M = matrix(QQ, [[1,2,0], [0,4,0], [3,6,1]])
+% sage: gauss_jordan(M)
+% [1 2 0]
+% [0 4 0]
+% [3 6 1]
+%  take -3 times row 1 plus row 3
+% [1 2 0]
+% [0 4 0]
+% [0 0 1]
+%  take 1/4 times row 2
+% [1 2 0]
+% [0 1 0]
+% [0 0 1]
+%  take -2 times row 2 plus row 1
+% [1 0 0]
+% [0 1 0]
+% [0 0 1]
+
+\question
+We will perform Gauss-Jordan reduction on the matrix in two ways.
+\begin{parts}
+\part
+Perform the step $-3\rho_1+\rho_3$ on $M$ to get a matrix~$A$.
+\part
+Instead, multiply $M$ from the left by this matrix.
+\begin{equation*}
+R_1=\begin{mat}
+  1  &0  &0  \\
+  0  &1  &0  \\
+  -3 &0  &1
+\end{mat}
+\end{equation*}
+Note that this matrix is the result of starting with~$I$ 
+and performing $-3\rho_1+\rho_3$.
+% sage: M = matrix(QQ, [[1,2,0], [0,4,0], [3,6,1]])
+% sage: R1 = matrix(QQ, [[1,0,0], [0,1,0], [-3,0,1]])
+% sage: A = R1*M
+% sage: A
+% [1 2 0]
+% [0 4 0]
+% [0 0 1]
+\part 
+Next, perform the step $(1/4)\rho_2$ on~$A$ to get a matrix~$B$.
+\part
+Instead, multiply $A$ from the left by this matrix.
+\begin{equation*}
+R_2=\begin{mat}
+  1  &0  &0  \\
+  0  &1/4  &0  \\
+  0 &0  &1
+\end{mat}
+\end{equation*}
+Note that this matrix is the result of starting with~$I$ 
+and performing $(1/4)\rho_2$.
+% sage: R2 = matrix(QQ, [[1,0,0], [0,1/4,0], [0,0,1]])
+% sage: B = R2*A
+% sage: B
+% [1 2 0]
+% [0 1 0]
+% [0 0 1]
+\part 
+Finally, perform the step $-2\rho_2+\rho_1$ on~$B$.
+\part
+Instead, multiply $B$ from the left by this matrix.
+\begin{equation*}
+R_3=\begin{mat}
+  1  &-2 &0  \\
+  0  &1  &0  \\
+  0  &0  &1
+\end{mat}
+% sage: R3 = matrix(QQ, [[1,-2,0], [0,1,0], [0,0,1]])
+% sage: C = R3*B
+% sage: C
+% [1 0 0]
+% [0 1 0]
+% [0 0 1]
+\end{equation*}
+Note that this matrix is the result of starting with~$I$ 
+and performing $-2\rho_2+\rho_1$.
+\part
+So we have $R_3R_2R_1\cdot M=I$.
+Multiply $R_2R_1$, then find $R_3(R_2R_1)$.
+% sage: R3*R2*R1
+% [   1 -1/2    0]
+% [   0  1/4    0]
+% [  -3    0    1]
+\end{parts}
+
+\question
+Combine the two matrices $M$ and $I$
+by writing the numbers from $M$, and next to those writing 
+the numbers from $I$, 
+with a vertical line 
+separating the two.
+\begin{parts}
+\part
+Perform $-3\rho_1+\rho_3$ on the combination.
+\part
+On the result, perform $(1/4)\rho_2$.
+\part
+Finish by doing $-2\rho_2+\rho_1$.
+Compare the right hand side to $R_3R_2R_1$ from the prior question.
+% sage: M^(-1)
+% [   1 -1/2    0]
+% [   0  1/4    0]
+% [  -3    0    1]
+\end{parts}
+
+\end{questions}
+\end{document}
