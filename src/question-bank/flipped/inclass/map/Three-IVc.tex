@@ -1,0 +1,200 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.IV (part 3)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+\question
+Find the inverse of this matrix.
+\begin{equation*}
+\begin{mat}
+  3  &-1  \\
+ -2  &2
+\end{mat}
+\end{equation*}
+\begin{solution}
+Using the formula
+\begin{equation*}
+\begin{mat}
+  a  &b  \\
+  c  &d  
+\end{mat}^{-1}
+=\frac{1}{ad-bc}
+\begin{mat}
+  d  -b  \\
+ -c  a
+\end{mat}
+\end{equation*}
+we get this.
+\begin{equation*}
+\begin{mat}
+  3  &-1  \\
+ -2  &2
+\end{mat}^{-1}
+=
+\begin{mat}
+  3/4  &-1/4 \\
+ -1/2  &1/2
+\end{mat}
+\end{equation*}
+\end{solution}
+Use it to solve these systems.
+\begin{parts}
+\part
+\begin{equation*}
+\begin{linsys}{3}
+  3x  &-  &y  &=  &5  \\
+ -2x  &+  &2y &=  &-1  
+\end{linsys}
+\end{equation*}
+\begin{solution}
+Multiply both sides of the matrix equation by the inverse.
+% sage: M = matrix(QQ, [[3,-1], [-2,2]])
+% sage: M.inverse()
+% [1/2 1/4]
+% [1/2 3/4]
+% sage: M.inverse() * vector(QQ, [5,-1])
+% (9/4, 7/4)
+\begin{align*}
+\begin{mat}
+  3/4  &-1/4 \\
+ -1/2  &1/2
+\end{mat}
+\begin{mat}
+  3  &-1  \\
+ -2  &2
+\end{mat}
+\colvec{x \\ y}
+&=
+\begin{mat}
+  3/4  &-1/4 \\
+ -1/2  &1/2
+\end{mat}
+\colvec{5 \\ -1}             \\
+\colvec{x \\ y}
+&=
+\colvec{9/4 \\ 7/4}
+\end{align*}
+\end{solution}
+\part
+\begin{equation*}
+\begin{linsys}{3}
+  3x  &-  &y  &=  &-4  \\
+ -2x  &+  &2y &=  &0  
+\end{linsys}
+\end{equation*}
+\begin{solution}
+\begin{align*}
+\begin{mat}
+  3/4  &-1/4 \\
+ -1/2  &1/2
+\end{mat}
+\begin{mat}
+  3  &-1  \\
+ -2  &2
+\end{mat}
+\colvec{x \\ y}
+&=
+\begin{mat}
+  3/4  &-1/4 \\
+ -1/2  &1/2
+\end{mat}
+\colvec{-4 \\ 0}             \\
+\colvec{x \\ y}
+&=
+\colvec{-2 \\ -2}
+\end{align*}
+\end{solution}
+\end{parts}
+
+\question
+Find the inverse of this matrix.
+\begin{equation*}
+\begin{mat}
+  2  &1  &-1  \\
+  0  &1  &1   \\
+  0  &2  &-1
+\end{mat}
+\end{equation*}
+Use it to solve this system.
+\begin{equation*}
+\begin{linsys}{3}
+  2x  &+  &y  &-  &z  &=  &1  \\
+      &   &y  &+  &z  &=  &1  \\
+      &   &2y &-  &z  &=  &1  
+\end{linsys}
+\end{equation*}
+\begin{solution}
+Here is the inverse.
+% sage: M = matrix(QQ, [[2,1,-1], [0,1,1], [0,2,-1]])
+% sage: M_prime = M.augment(identity_matrix(3), subdivide=True)
+% sage: gauss_jordan(M_prime, latex=True)
+\begin{align*}
+\left(\begin{array}{ccc|ccc}
+  2  &1  &-1  &1  &0  &0  \\ 
+  0  &1  &1  &0  &1  &0  \\ 
+  0  &2  &-1  &0  &0  &1  \\ 
+\end{array}\right)
+&\grstep{-2\rho_{2}+\rho_{3}}
+\left(\begin{array}{ccc|ccc}
+  2  &1  &-1  &1  &0  &0  \\ 
+  0  &1  &1  &0  &1  &0  \\ 
+  0  &0  &-3  &0  &-2  &1  \\ 
+\end{array}\right)                             \\
+&\grstep[(-1/3)\rho_{3}]{(1/2)\rho_{1}}
+\left(\begin{array}{ccc|ccc}
+  1  &1/2  &-1/2  &1/2  &0  &0  \\ 
+  0  &1  &1  &0  &1  &0  \\ 
+  0  &0  &1  &0  &2/3  &-1/3  \\ 
+\end{array}\right)                               \\
+&\grstep[-1\rho_{3}+\rho_{2}]{(1/2)\rho_{3}+\rho_{1}}
+\left(\begin{array}{ccc|ccc}
+  1  &1/2  &0  &1/2  &1/3  &-1/6  \\ 
+  0  &1  &0  &0  &1/3  &1/3  \\ 
+  0  &0  &1  &0  &2/3  &-1/3  \\ 
+\end{array}\right)                             \\
+&\grstep{(-1/2)\rho_{2}+\rho_{1}}
+\left(\begin{array}{ccc|ccc}
+  1  &0  &0  &1/2  &1/6  &-1/3  \\ 
+  0  &1  &0  &0  &1/3  &1/3  \\ 
+  0  &0  &1  &0  &2/3  &-1/3  \\ 
+\end{array}\right)
+\end{align*}
+To solve the system we have this.
+% sage: M.inverse()*vector(QQ, [1,1,1])
+% (1/3, 2/3, 1/3)
+\begin{align*}
+\begin{mat}
+1/2  &1/6  &-1/3  \\
+  0  &1/3  &1/3 \\
+  0  &2/3  &-1/3
+\end{mat}
+\begin{mat}
+  2  &1  &-1  \\
+  0  &1  &1   \\
+  0  &2  &-1
+\end{mat}
+\colvec{x \\ y \\ z}
+&=
+\begin{mat}
+1/2  &1/6  &-1/3  \\
+  0  &1/3  &1/3 \\
+  0  &2/3  &-1/3
+\end{mat}
+\colvec{1 \\ 1 \\ 1}                \\
+\colvec{x \\ y \\ z}
+&=
+\colvec{1/3  \\ 2/3  \\ 1/3}
+\end{align*}
+\end{solution}
+
+\end{questions}
+\end{document}
