@@ -1,0 +1,89 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+
+\usepackage{../../../sty/conc}
+\usepackage{../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Handin 7\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+% \makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+\begin{center}
+  \fbox{\parbox{6.5in}{\it
+  When you are working on this material, you must work entirely on your 
+  own.
+  You may use the book or your notes.
+  But you may not work with other people, either in the class our outside of it,
+  or use other books or the Internet.
+  If you have any questions, email me.
+  }}
+  \end{center}
+
+
+\begin{questions}
+\question
+Multiply the two matrices, or state ``not defined.''
+\begin{parts}
+\part
+\begin{equation*}
+\begin{mat}
+  4  &3  &1  \\
+  2  &0  &5
+\end{mat}
+\begin{mat}
+  -1  &4  &3 \\
+  0   &0   &5
+\end{mat}
+\end{equation*}
+\begin{solution}
+The product of a $\nbym{2}{3}$ matrix and a $\nbym{2}{3}$ matrix is not defined.
+\end{solution}
+
+\part
+\begin{equation*}
+\begin{mat}
+  4  &3  &1  \\
+  2  &0  &5
+\end{mat}
+\begin{mat}
+  -1  &0  \\
+  4   &0  \\
+  3   &5
+\end{mat}
+\end{equation*}
+\begin{solution}
+% sage: A = matrix(QQ, [[4,3,1], [2,0,5]])
+% sage: A
+% [4 3 1]
+% [2 0 5]
+% sage: B = matrix(QQ, [[-1,0], [4,0], [3,5]])
+% sage: B
+% [-1  0]
+% [ 4  0]
+% [ 3  5]
+% sage: A*B
+% [11  5]
+% [13 25]
+\begin{equation*}
+\begin{mat}
+  4  &3  &1  \\
+  2  &0  &5
+\end{mat}
+\begin{mat}
+  -1  &0  \\
+  4   &0  \\
+  3   &5
+\end{mat}
+=
+\begin{mat}
+11  &5  \\
+13  &25 
+\end{mat}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}

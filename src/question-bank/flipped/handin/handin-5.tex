@@ -1,0 +1,141 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+
+\usepackage{../../../sty/conc}
+\usepackage{../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Handin 5\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+% \makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+\begin{center}
+  \fbox{\parbox{6.5in}{\it
+  When you are working on this material, you must work entirely on your 
+  own.
+  You may use the book or your notes.
+  But you may not work with other people, either in the class our outside of it,
+  or use other books or the Internet.
+  If you have any questions, email me.
+  }}
+  \end{center}
+
+
+\begin{questions}
+\question
+Consider this map $\map{h}{\matspace_{\nbyn{2}}}{\polyspace_2}$.
+\begin{equation*}
+  \begin{mat}
+    a  &b  \\
+    c  &d
+  \end{mat}
+  \mapsto
+  (a+d)x^2+(b+c)x+(2a+2b)
+\end{equation*}
+\begin{parts}
+\item
+Verify that this is a linear map.
+\begin{solution}
+We can do the single check that it preserves linear combinations.
+\begin{align*}
+  h(n_1\vec{v}_1+n_2\vec{v_2})
+  &=h(
+    n_1\cdot\begin{mat}
+      a_1  &b_1  \\
+      c_1  &d_1
+    \end{mat}
+    +
+    n_2\cdot\begin{mat}
+      a_2  &b_2  \\
+      c_2  &d_2
+    \end{mat})                        \\
+  &=h(
+    n_1\cdot\begin{mat}
+      n_1a_1+n_2a_2  &n_1b_1+n_2b_2  \\
+      n_1c_1+n_2c_2  &n_1d_1+n_2d_2
+    \end{mat})                         \\
+  &=((n_1a_1+n_2a_2)+(n_1d_1+n_2d_2))\cdot x^2          
+   +((n_1b_1+n_2b_2)+(n_1c_1+n_2c_2))\cdot x    \\
+  &\qquad  +(2(n_1a_1+n_2a_2)+2(n_1b_1+n_2b_2))      \\
+  &=n_1\cdot\bigl((a_1+d_1)x^2+(b_1+c_1)x+(2a_1+2b_1)\bigr)    \\
+  &\qquad +n_2\cdot\bigl((a_2+d_2)x^2+(b_2+c_2)x+(2a_2+2b_2)\bigr)   \\
+  &=n_1\cdot h(\begin{mat}
+      a_1  &b_1  \\
+      c_1  &d_1
+    \end{mat})
+    +
+    n_2\cdot h(\begin{mat}
+      a_2  &b_2  \\
+      c_2  &d_2
+    \end{mat})                           \\
+  &=n_1h(\vec{v}_1)+n_2\cdot h(\vec{v}_2)
+\end{align*}
+
+\end{solution}
+
+\item
+Find the set $h^{-1}(3x^2+4x+8)$.
+\begin{solution}
+We have these three equations.
+\begin{equation*}
+\begin{linsys}{4}
+a  &   &   &   &   &+  &d  &=  &3 \\
+   &   &b  &+  &c  &   &   &=  &4 \\
+2a &+  &2b &   &   &   &   &=  &8 \\
+\end{linsys}
+\end{equation*}
+Gauss's method
+\begin{equation*}
+\begin{amat}{4}
+  1  &0  &0  &1  &3  \\ 
+  0  &1  &1  &0  &4  \\ 
+  2  &2  &0  &0  &8  \\ 
+\end{amat}
+\grstep{-2\rho_{1}+\rho_{3}}
+\begin{amat}{4}
+  1  &0  &0  &1  &3  \\ 
+  0  &1  &1  &0  &4  \\ 
+  0  &2  &0  &-2  &2  \\ 
+\end{amat}
+\grstep{-2\rho_{2}+\rho_{3}}
+\begin{amat}{4}
+  1  &0  &0  &1  &3  \\ 
+  0  &1  &1  &0  &4  \\ 
+  0  &0  &-2  &-2  &-6  \\ 
+\end{amat}
+\end{equation*}
+and back substitution give 
+$c=3-d$, $b=1+d$, and $a=3-d$.
+So the inverse image is this $1$-dimensional subset of $\matspace_{\nbyn{2}}$.
+% sage: M = matrix(QQ, [[1,0,0,1], [0,1,1,0], [2,2,0,0]])
+% sage: v = vector(QQ, [3,4,8])
+% sage: M_prime = M.augment(v, subdivide=True)
+% sage: gauss_method(M_prime, latex=True)
+\begin{equation*}
+  h^{-1}(3x^2+4x+8)
+  =
+  \set{
+    \begin{mat}
+      3-d  &1+d  \\
+      3-d  &d
+    \end{mat}
+    \suchthat d\in \R}
+  =
+  \set{
+    \begin{mat}
+      3  &1  \\
+      3  &0
+    \end{mat}
+    +
+    \begin{mat}
+      -1  &1  \\
+      -1  &1
+    \end{mat}\cdot d
+    \suchthat d\in \R}
+\end{equation*}
+\end{solution}
+
+\end{parts}
+\end{questions}
+\end{document}
