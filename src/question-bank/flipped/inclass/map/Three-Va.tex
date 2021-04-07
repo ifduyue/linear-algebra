@@ -1,0 +1,53 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.V (part 2)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+Let $V=\polyspace_2$ and consider these two bases.
+\begin{equation*}
+B=\sequence{1-x, 1+x+x^2, x^2}
+\quad
+\hat{B}=\sequence{1+x^2, 1+x, 1}
+\end{equation*}
+Let $W=\R^2$ and consider these two bases.
+\begin{equation*}
+D=\sequence{\colvec{2 \\ 1},\colvec{0 \\ 2}}
+\quad
+\hat{D}=\stdbasis_2=\sequence{\vec{e}_1=\colvec{1 \\ 0},\vec{e}_2=\colvec{0 \\ 1}}
+\end{equation*}
+Fix this linear map $\map{h}{V}{W}$
+\begin{equation*}
+  h(ax^2+bx+c)=\colvec{a+b \\ a+c}
+\end{equation*}
+You may want to refer to this diagram.
+\begin{equation*}
+  \begin{CD}
+    V_{\wrt{B}}                   @>h>H>        W_{\wrt{D}}       \\
+    @V{\text{\scriptsize$\identity$}} VV                @V{\text{\scriptsize$\identity$}} VV \\
+    V_{\wrt{\hat{B}}}             @>h>\hat{H}>  W_{\wrt{\hat{D}}}
+  \end{CD}
+\end{equation*}
+
+\begin{questions}
+\question
+\begin{parts}
+\part
+Find the change of basis matrix $Q=\rep{\identity}{\hat{B},B}$.
+\part
+Find the change of basis matrix $P=\rep{\identity}{D,\hat{D}}$.
+\part
+Find the representation $H=\rep{h}{B,D}$.
+\part
+Find the representation $\hat{H}=\rep{h}{\hat{B},\hat{D}}$.
+\part
+Compute $PHQ$
+\end{parts}
+\end{questions}
+\end{document}
