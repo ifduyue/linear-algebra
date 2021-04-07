@@ -40,14 +40,296 @@ You may want to refer to this diagram.
 \begin{parts}
 \part
 Find the change of basis matrix $Q=\rep{\identity}{\hat{B},B}$.
+\begin{solution}
+First observe that we are on the left side of the diagram.
+Notices also that we are going against the arrow drawn there, so we
+are representing the map that goes from the bottom left to the top left.
+
+To compute $Q=\rep{\identity}{\hat{B},B}$, as to compute the
+representation of any map, first compute the effect of the map
+on the starting basis.
+With the identity map this step is trivial.
+\begin{align*}
+  1+x^2  
+  &\mapsunder{\identity}  1+x^2  \\
+  1+x  
+  &\mapsunder{\identity}  1+x  \\
+  1  
+  &\mapsunder{\identity}  1
+\end{align*}
+The second step is to represent each output with respect to the 
+ending basis.
+So we must compute $\rep{1+x^2}{B}$ by finding the coefficients in
+\begin{equation*}
+  1+x^2=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+as in
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &1  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &1  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &     &   &c_3&=  &1/2  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{1+x^2}{B}=\colvec{1/2 \\ 1/2 \\ 1/2}
+\end{equation*}
+
+Similarly we compute
+$\rep{1+x^2}{B}$ by finding the coefficients in
+\begin{equation*}
+  1+x+x^2=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+as in
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &2  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &2  \\
+       &   &     &   &c_3&=  &-1  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{1+x}{B}=\colvec{0 \\ 1 \\ -1}
+\end{equation*}
+
+
+Finally, to find $\rep{1}{B}$ we do
+\begin{equation*}
+  1=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+and get
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &     &   &c_3&=  &-1/2  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{1}{B}=\colvec{1/2 \\ 1/2 \\ -1/2}
+\end{equation*}
+
+In short, we have this matrix.
+\begin{equation*}
+Q=\rep{\identity}{\hat{B},B}=
+\begin{mat}
+  1/2  &0  &1/2  \\
+  1/2  &1  &1/2  \\
+  1/2  &-1 &-1/2
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Find the change of basis matrix $P=\rep{\identity}{D,\hat{D}}$.
+\begin{solution}
+First compute the effect of the map on the starting basis.
+\begin{align*}
+  \colvec{2 \\ 1}  
+  &\mapsunder{\identity}  \colvec{2 \\ 1}  \\
+  \colvec{0 \\ 2}  
+  &\mapsunder{\identity}  \colvec{0 \\ 2}  \\
+\end{align*}
+Next represent each output with respect to the ending basis.
+For
+\begin{equation*}
+  \rep{\colvec{2 \\ 1}}{\hat{D}}
+\end{equation*}
+we must solve this equation.
+\begin{equation*}
+  \colvec{2 \\ 1} = c_1\cdot\colvec{1 \\ 0}+c_2\cdot\colvec{0 \\ 1}
+\end{equation*}
+Obviously this is the answer.
+\begin{equation*}
+  \rep{\colvec{2 \\ 1}}{\hat{D}}=\colvec{2 \\ 1}
+\end{equation*}
+Similarly, for
+\begin{equation*}
+  \rep{\colvec{0 \\ 2}}{\hat{D}}
+\end{equation*}
+solve this equation
+\begin{equation*}
+  \colvec{2 \\ 1} = c_1\cdot\colvec{1 \\ 0}+c_2\cdot\colvec{0 \\ 1}
+\end{equation*}
+and get this.
+\begin{equation*}
+  \rep{\colvec{0 \\ 2}}{\hat{D}}=\colvec{0 \\ 2}
+\end{equation*}
+This is the matrix.
+\begin{equation*}
+P=\rep{\identity}{D,\hat{D}}=
+\begin{mat}
+2 &0 \\
+1 &2 
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Find the representation $H=\rep{h}{B,D}$.
+\begin{solution}
+Here the effect of the map on the starting basis~$B$ is not trivial.
+\begin{align*}
+  1-x
+  &\mapsunder{h} \colvec{-1 \\ 1}  \\
+  1+x+x^2
+  &\mapsunder{h} \colvec{2 \\ 2}  \\
+  x^2
+  &\mapsunder{h} \colvec{1 \\ 1}  
+\end{align*}
+To represent the first output with respect to the ending basis, set up
+\begin{equation*}
+  \colvec{-1 \\ 1}=c_1\cdot\colvec{2 \\ 1}+c_2\cdot\colvec{0 \\ 2}
+\end{equation*}
+and conclude this.
+\begin{equation*}
+  \rep{\colvec{-1 \\ 1}}{D}=\colvec{-1/2 \\ 3/4}
+\end{equation*}
+
+To represent the second output, set up
+\begin{equation*}
+  \colvec{2 \\ 2}=c_1\cdot\colvec{2 \\ 1}+c_2\cdot\colvec{0 \\ 2}
+\end{equation*}
+and by eye conclude this.
+\begin{equation*}
+  \rep{\colvec{2 \\ 2}}{D}=\colvec{1 \\ 1/2}
+\end{equation*}
+
+Finally, for the third,
+\begin{equation*}
+  \colvec{1 \\ 1}=c_1\cdot\colvec{2 \\ 1}+c_2\cdot\colvec{0 \\ 2}
+\end{equation*}
+gives this.
+\begin{equation*}
+  \rep{\colvec{1 \\ 1}}{D}=\colvec{1/2 \\ 1/4}
+\end{equation*}
+
+In total we have this matrix.
+\begin{equation*}
+  H=\rep{h}{B,D}=
+  \begin{mat}
+  -1/2  &1   &1/2  \\
+  3/4   &1/2 &1/4
+  \end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Find the representation $\hat{H}=\rep{h}{\hat{B},\hat{D}}$.
+\begin{solution}
+This is the effect of the map on the starting basis.
+\begin{align*}
+  1+x^2
+  &\mapsunder{h} \colvec{1 \\ 2}  \\
+  1+x
+  &\mapsunder{h} \colvec{1 \\ 1}  \\
+  1
+  &\mapsunder{h} \colvec{0 \\ 1}  
+\end{align*}
+
+To represent the first with respect to the ending basis, set up
+\begin{equation*}
+\colvec{1 \\ 2}=c_1\colvec{1 \\ 0}+c_2\colvec{0 \\ 1}
+\end{equation*}
+and clearly the solution is this.
+\begin{equation*}
+\rep{\colvec{1 \\ 2}}{\hat{D}}=
+\colvec{1 \\ 2}
+\end{equation*}
+
+The second and third are much the same.
+\begin{equation*}
+\rep{\colvec{1 \\ 1}}{\hat{D}}=
+\colvec{1 \\ 1}
+\qquad
+\rep{\colvec{0 \\ 1}}{\hat{D}}=
+\colvec{0 \\ 1}
+\end{equation*}
+That leads to this matrix.
+\begin{equation*}
+  \hat{H}=\rep{h}{\hat{B},\hat{D}}
+  =
+  \begin{mat}
+    1  &1  &0  \\
+    2  &1  &1
+  \end{mat}
+\end{equation*}
+\end{solution}
+
 \part
 Compute $PHQ$
+\begin{solution}
+\begin{align*}
+\begin{mat}
+2 &0 \\
+1 &2 
+\end{mat}
+  \begin{mat}
+  -1/2  &1   &1/2  \\
+  3/4   &1/2 &1/4
+  \end{mat}
+\begin{mat}
+  1/2  &0  &1/2  \\
+  1/2  &1  &1/2  \\
+  1/2  &-1 &-1/2
+\end{mat}
+&=
+\begin{mat}
+ -1  &2  &1  \\
+  1  &2  &1
+\end{mat}
+\begin{mat}
+  1/2  &0  &1/2  \\
+  1/2  &1  &1/2  \\
+  1/2  &-1 &-1/2
+\end{mat}                    \\
+&=
+  \begin{mat}
+    1  &1  &0  \\
+    2  &1  &1
+  \end{mat}
+\end{align*}
+\end{solution}
+
 \end{parts}
 \end{questions}
 \end{document}
