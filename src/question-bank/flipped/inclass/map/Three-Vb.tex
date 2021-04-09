@@ -1,0 +1,446 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Three.V (part 3)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+Let $V=\polyspace_2$ and consider these two bases.
+\begin{equation*}
+B=\sequence{1-x, 1+x+x^2, x^2}
+\quad
+\hat{B}=\sequence{1+x^2, 1+x, 1}
+\end{equation*}
+Fix this linear transformation  $\map{h}{V}{W}$
+\begin{equation*}
+  h(ax^2+bx+c)=(a+b)x^2+cx-b
+\end{equation*}
+You may want to refer to this diagram.
+\begin{equation*}
+  \begin{CD}
+    V_{\wrt{B}}                   @>h>H>        V_{\wrt{B}}       \\
+    @V{\text{\scriptsize$\identity$}} VV                @V{\text{\scriptsize$\identity$}} VV \\
+    V_{\wrt{\hat{B}}}             @>h>\hat{H}>  V_{\wrt{\hat{B}}}
+  \end{CD}
+\end{equation*}
+
+\begin{questions}
+\question
+\begin{parts}
+\part
+Find the change of basis matrix on the left, 
+$P^{-1}=\rep{\identity}{\hat{B},B}$.
+\begin{solution}
+First observe that we are on the left side of the diagram.
+Notices also that we are going against the arrow drawn there, so we
+are representing the map that goes from the bottom left to the top left.
+Also observe that this question is unchanged from the prior worksheet.
+
+To compute $P^{-1}=\rep{\identity}{\hat{B},B}$, as to compute the
+representation of any map, first compute the effect of the map
+on the starting basis.
+With the identity map this step is trivial.
+\begin{align*}
+  1+x^2  
+  &\mapsunder{\identity}  1+x^2  \\
+  1+x  
+  &\mapsunder{\identity}  1+x  \\
+  1  
+  &\mapsunder{\identity}  1
+\end{align*}
+The second step is to represent each output with respect to the 
+ending basis.
+So we must compute $\rep{1+x^2}{B}$ by finding the coefficients in
+\begin{equation*}
+  1+x^2=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+as in
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &1  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &1  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &     &   &c_3&=  &1/2  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{1+x^2}{B}=\colvec{1/2 \\ 1/2 \\ 1/2}
+\end{equation*}
+
+Similarly we compute
+$\rep{1+x^2}{B}$ by finding the coefficients in
+\begin{equation*}
+  1+x+x^2=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+as in
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &2  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &2  \\
+       &   &     &   &c_3&=  &-1  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{1+x}{B}=\colvec{0 \\ 1 \\ -1}
+\end{equation*}
+
+
+Finally, to find $\rep{1}{B}$ we do
+\begin{equation*}
+  1=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+and get
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &0  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &1  \\
+       &   &     &   &c_3&=  &-1/2  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{1}{B}=\colvec{1/2 \\ 1/2 \\ -1/2}
+\end{equation*}
+
+In short, we have this matrix.
+\begin{equation*}
+P^{-1}=\rep{\identity}{\hat{B},B}=
+\begin{mat}
+  1/2  &0  &1/2  \\
+  1/2  &1  &1/2  \\
+  1/2  &-1 &-1/2
+\end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Find the change of basis matrix $P=\rep{\identity}{B,\hat{B}}$
+by determining the effect of the identity map on the vectors in the starting
+basis, and representing them with respect to the ending basis.
+\begin{solution}
+First compute the effect of the map on the starting basis.
+\begin{align*}
+  1-x  
+  &\mapsunder{\identity}  1-x  \\
+  1+x+x^2  
+  &\mapsunder{\identity}  1+x+x^2  \\
+  x^2  
+  &\mapsunder{\identity}  x^2  
+\end{align*}
+
+Next represent each output with respect to the ending basis.
+For the first, solve this equation.
+\begin{equation*}
+  1-x = c_1\cdot(1+x^2)+c_2\cdot(1+x)+c_3\cdot(1)
+\end{equation*}
+By eye, this is the answer.
+\begin{equation*}
+  \rep{1-x}{\hat{B}}=\colvec{0 \\ -1 \\ 2}
+\end{equation*}
+Similarly, for the second solve this equation.
+\begin{equation*}
+  1+x+x^2 = c_1\cdot(1+x^2)+c_2\cdot(1+x)+c_3\cdot(1)
+\end{equation*}
+By eye, this is the answer.
+\begin{equation*}
+  \rep{1+x+x^2}{\hat{B}}=\colvec{1 \\ 1 \\ -1}
+\end{equation*}
+Finally, 
+\begin{equation*}
+  x^2 = c_1\cdot(1+x^2)+c_2\cdot(1+x)+c_3\cdot(1)
+\end{equation*}
+gives this.
+\begin{equation*}
+  \rep{x^2}{\hat{B}}=\colvec{1 \\ 0 \\ -1}
+\end{equation*}
+This is the matrix representation.
+\begin{equation*}
+P=\rep{\identity}{B,\hat{B}}=
+\begin{mat}
+ 0 &1 &1 \\
+-1 &1 &0 \\
+ 2 &-1&-1 
+\end{mat}
+\end{equation*}
+\end{solution}
+
+\part Compute the same matrix by instead finding the inverse of $P^{-1}$.
+\begin{solution}
+\begin{align*}
+\left(\begin{array}{ccc|ccc}
+  1/2  &0  &1/2  &1  &0  &0  \\ 
+  1/2  &1  &1/2  &0  &1  &0  \\ 
+  1/2  &-1  &-1/2  &0  &0  &1  \\ 
+\end{array}\right)
+&\grstep[-1\rho_{1}+\rho_{3}]{-1\rho_{1}+\rho_{2}}
+\left(\begin{array}{ccc|ccc}
+  1/2  &0  &1/2  &1  &0  &0  \\ 
+  0  &1  &0  &-1  &1  &0  \\ 
+  0  &-1  &-1  &-1  &0  &1  \\ 
+\end{array}\right)                                 \\
+&\grstep{1\rho_{2}+\rho_{3}}
+\left(\begin{array}{ccc|ccc}
+  1/2  &0  &1/2  &1  &0  &0  \\ 
+  0  &1  &0  &-1  &1  &0  \\ 
+  0  &0  &-1  &-2  &1  &1  \\ 
+\end{array}\right)                                 \\
+&\grstep[-1\rho_{3}]{2\rho_{1}}
+\left(\begin{array}{ccc|ccc}
+  1  &0  &1  &2  &0  &0  \\ 
+  0  &1  &0  &-1  &1  &0  \\ 
+  0  &0  &1  &2  &-1  &-1  \\ 
+\end{array}\right)                               \\
+&\grstep{-1\rho_{3}+\rho_{1}}
+\left(\begin{array}{ccc|ccc}
+  1  &0  &0  &0  &1  &1  \\ 
+  0  &1  &0  &-1  &1  &0  \\ 
+  0  &0  &1  &2  &-1  &-1  \\ 
+\end{array}\right)
+\end{align*}
+\end{solution}
+
+\part
+Find the representation $H=\rep{h}{B,B}$.
+\begin{solution}
+Here the effect of the map on the starting basis~$B$ is not trivial.
+\begin{align*}
+  1-x
+  &\mapsunder{h} -x^2+x+1  \\
+  1+x+x^2
+  &\mapsunder{h} 2x^2+x-1  \\
+  x^2
+  &\mapsunder{h} x^2  
+\end{align*}
+
+To represent the first output with respect to~$B$, set up
+\begin{equation*}
+  -x^2+x+1=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+and solve
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+  -c_1 &+  &c_2  &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &-1  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &2  \\
+       &   &c_2  &+  &c_3&=  &-1  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &1  \\
+       &   &2c_2 &   &   &=  &2  \\
+       &   &     &   &c_3&=  &-2  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{-x^2+x+1}{B}=\colvec{0 \\ 1 \\ -2}
+\end{equation*}
+To represent the second output with respect to~$B$, 
+\begin{equation*}
+  2x^2+x-1=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+and solve
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &-1  \\
+  -c_1 &+  &c_2  &   &   &=  &1  \\
+       &   &c_2  &+  &c_3&=  &2  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &-1  \\
+       &   &2c_2 &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &2  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &-1  \\
+       &   &2c_2 &   &   &=  &0  \\
+       &   &     &   &c_3&=  &2  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{2x^2+x-1}{B}=\colvec{-1 \\ 0 \\ 2}
+\end{equation*}
+To represent the third, set up 
+\begin{equation*}
+  x^2=c_1\cdot(1-x)+c_2\cdot (1+x+x^2)+c_3\cdot(x^2)
+\end{equation*}
+and solve
+\begin{equation*}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &0  \\
+  -c_1 &+  &c_2  &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &1  \\
+\end{linsys}
+\grstep{\rho_1+\rho_2}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &0  \\
+       &   &2c_2 &   &   &=  &0  \\
+       &   &c_2  &+  &c_3&=  &1  \\
+\end{linsys}
+\grstep{(-1/2)\rho_2+\rho_3}
+\begin{linsys}{3}
+  c_1  &+  &c_2  &   &   &=  &0  \\
+       &   &2c_2 &   &   &=  &0  \\
+       &   &     &   &c_3&=  &1  \\
+\end{linsys}
+\end{equation*}
+giving this.
+\begin{equation*}
+  \rep{x^2}{B}=\colvec{0 \\ 0 \\ 1}
+\end{equation*}
+We have this matrix.
+\begin{equation*}
+  H=\rep{h}{B,B}=
+  \begin{mat}
+    0  &-1 &0  \\
+    1  &0  &0  \\
+   -2  &2  &1  \\
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Find the representation $\hat{H}=\rep{h}{\hat{B},\hat{B}}$.
+\begin{solution}
+This is the effect of the map on the starting basis.
+\begin{align*}
+  1+x^2
+  &\mapsunder{h} x^2+x  \\
+  1+x
+  &\mapsunder{h} x^2+x-1  \\
+  1
+  &\mapsunder{h} x  
+\end{align*}
+
+To represent the first with respect to~$\hat{B}$, set up
+\begin{equation*}
+x^2+x=c_1\cdot(1+x^2)+c_2\cdot(1+x)+c_3\cdot(1)
+\end{equation*}
+and the solution is this.
+\begin{equation*}
+\rep{x^2+x}{\hat{B}}=
+\colvec{1 \\ 1 \\ -2}
+\end{equation*}
+To represent the second with respect to~$\hat{B}$, set up
+\begin{equation*}
+x^2+x-1=c_1\cdot(1+x^2)+c_2\cdot(1+x)+c_3\cdot(1)
+\end{equation*}
+and the solution is this.
+\begin{equation*}
+\rep{x^2+x-1}{\hat{B}}=
+\colvec{1 \\ 1 \\ -3}
+\end{equation*}
+The third is 
+\begin{equation*}
+x=c_1\cdot(1+x^2)+c_2\cdot(1+x)+c_3\cdot(1)
+\end{equation*}
+and the solution is this.
+\begin{equation*}
+\rep{x^2+x-1}{\hat{B}}=
+\colvec{0 \\ 1 \\ -1}
+\end{equation*}
+
+That leads to this matrix.
+\begin{equation*}
+  \hat{H}=\rep{h}{\hat{B},\hat{B}}
+  =
+  \begin{mat}
+    1  &1  &0  \\
+    1  &1  &1  \\
+   -2  &-3 &-1
+  \end{mat}
+\end{equation*}
+\end{solution}
+
+\part
+Compute $PHP^{-1}$
+\begin{solution}
+\begin{align*}
+\begin{mat}
+ 0 &1 &1 \\
+-1 &1 &0 \\
+ 2 &-1&-1 
+\end{mat}
+  \begin{mat}
+    0  &-1 &0  \\
+    1  &0  &0  \\
+   -2  &2  &1  \\
+  \end{mat}
+\begin{mat}
+  1/2  &0  &1/2  \\
+  1/2  &1  &1/2  \\
+  1/2  &-1 &-1/2
+\end{mat}
+&=
+\begin{mat}
+  -1 &2  &1 \\
+  1  &1  &0 \\
+  1 &-4  &-1           
+\end{mat}
+\begin{mat}
+  1/2  &0  &1/2  \\
+  1/2  &1  &1/2  \\
+  1/2  &-1 &-1/2
+\end{mat}                     \\
+&=  
+  \begin{mat}
+    1  &1  &0  \\
+    1  &1  &1  \\
+   -2  &-3 &-1
+  \end{mat}
+\end{align*}
+\end{solution}
+
+\end{parts}
+\end{questions}
+\end{document}
