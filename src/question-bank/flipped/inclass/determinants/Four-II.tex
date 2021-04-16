@@ -1,5 +1,5 @@
-\documentclass[noanswers, nolegalese, 11pt]{examjh}
-% \documentclass[answers, nolegalese, 11pt]{examjh}
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
 \usepackage{../../../../sty/conc}
 \usepackage{../../../../sty/linalgjh}
 \usepackage{graphicx}
@@ -39,22 +39,84 @@ $\sequence{
   \colvec{3 \\ 2},
   \colvec{-1\\ 4}
 }$
+\begin{solution}
+Here is the box.
+\begin{center}
+  \includegraphics{asy/det000.pdf}
+\end{center}
+The size is the determinant.
+\begin{equation*}
+\begin{vmat}
+  3  &-1  \\
+  2  &4
+\end{vmat}=3\cdot 4-(-1)\cdot 2=14
+\end{equation*}
+The volume is the absolute value of the size, so $\text{volume}=14$,
+and the orientation is positive, `$+$'.
+Note the meaning of that orientation: to get from the first vector to the
+second requires going counterclockwise, as with the blue arrow.
+\end{solution}
+
 \part 
 $\sequence{
   \colvec{-1\\ 4},
   \colvec{3 \\ 2}
 }$
+\begin{solution}
+Here is the box, and the size.
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{asy/det001.pdf}}
+  \qquad
+\begin{vmat}
+  -1  &3  \\
+   4  &2
+\end{vmat}=-14
+\end{equation*}
+The volume is the absolute value of the size, so $\text{volume}=14$,
+and the orientation is negative, `$-$'.
+Here, to get from the first vector to the
+second, with the blue arrow, requires going clockwise.
+\end{solution}
+
 \part 
 $\sequence{
   \colvec{2\\ -1},
   \colvec{1 \\-3}
 }$
+\begin{solution}
+The box is different, and the size.
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{asy/det002.pdf}}
+  \qquad
+\begin{vmat}
+   2  &1  \\
+   -1  &-3
+\end{vmat}=-5
+\end{equation*}
+The volume is $\text{volume}=5$,
+and the orientation is negative, `$-$'.
+\end{solution}
+
 \part 
 $\sequence{
   \colvec{2 \\ 0 \\ 2},
   \colvec{0 \\ 3 \\ 1},
   \colvec{-1\\ 0 \\ 1}
 }$
+\begin{solution}
+Here is the box and the size.
+\begin{equation*}
+  \vcenteredhbox{\includegraphics{asy/det004.pdf}}
+  \qquad
+\begin{vmat}
+   2  &0  &-1  \\
+   0  &3  &0   \\
+   2  &1  &1
+\end{vmat}=12
+\end{equation*}
+The volume is $\text{volume}=12$
+and the orientation is positive, `$+$'.
+\end{solution}
 \end{parts}
 
 \question
@@ -79,46 +141,143 @@ on the two vectors in this sequence.
   \colvec{-1\\ 4}
 }
 \end{equation*}
+\begin{solution}
+We are doing the computation 
+$\rep{\vec{v}}{\stdbasis_2,\stdbasis_2}\cdot\rep{\vec{v}}{\stdbasis_2}=\rep{t(\vec{v})}{\stdbasis_2}$.
+\begin{equation*}
+\begin{mat}
+  1  &1  \\
+ -2  &0
+\end{mat}
+\colvec{3 \\ 2}
+=
+\colvec{5 \\ 6}
+\end{equation*}
+The other is similar.
+\begin{equation*}
+\begin{mat}
+  1  &1  \\
+ -2  &0
+\end{mat}
+\colvec{-1 \\ 4}
+=
+\colvec{3 \\ 2}
+\end{equation*}
+\end{solution}
+
 \part
 Do the same for this sequence.
 $\sequence{
   \colvec{2\\ -1},
   \colvec{1 \\-3}
 }$
+\begin{solution}
+\begin{equation*}
+\begin{mat}
+  1  &1  \\
+ -2  &0
+\end{mat}
+\colvec{2 \\ -1}
+=
+\colvec{1 \\ -4}
+\qquad
+\begin{mat}
+  1  &1  \\
+ -2  &0
+\end{mat}
+\colvec{1 \\ -3}
+=
+\colvec{-2 \\ -2}
+\end{equation*}
+\end{solution}
+
 \part
 For the results of the two prior parts, 
 compute the size of the box defined by $\sequence{\vec{w}_1,\vec{w}_2}$.
+\begin{solution}
+\begin{equation*}
+\begin{vmat}
+  5  &3  \\
+  -6 &2
+\end{vmat}=28
+\qquad
+\begin{vmat}
+  1  &-2  \\
+  -4 &-2
+\end{vmat}=-10
+\end{equation*}
+\end{solution}
+
 \part
 For those two cases,
 take the ratios $\text{size of the output box}/\text{size of input box}$.
+\begin{solution}
+We have this.
+\begin{center}
+\begin{tabular}{cc|cc}
+  \multicolumn{1}{c}{\textit{Input box}} 
+     &\textit{Size} &\textit{Output box} &\textit{Size} \\
+  \hline
+   $\sequence{
+     \colvec{3 \\ 2},
+     \colvec{-1 \\ 4}
+     }$
+   &$14$
+   &$\sequence{
+     \colvec{5 \\ -6},
+     \colvec{3 \\ 2}
+     }$
+   &$28$           \\
+   $\sequence{
+     \colvec{2 \\ -1},
+     \colvec{1 \\ -3}
+     }$
+   &$-5$
+   &$\sequence{
+     \colvec{1 \\ -4},
+     \colvec{-2 \\ -2}
+     }$
+   &$-10$           \\
+   
+\end{tabular}
+\end{center}
+Of course, they double.
+Note this.
+\begin{equation*}
+\begin{vmat}
+  1  &1  \\
+  -2 &0
+\end{vmat}=2
+\end{equation*}
+\end{solution}
 \end{parts}
 
-\question
-By what factor does each transformation change the size of
-boxes?
-\begin{parts}
-\part $\colvec{x \\ y}\mapsto\colvec{2x \\ 3y}$
-\begin{solution}
-Express the transformation with respect to the standard bases
-and find the determinant.
-\begin{equation*}
-\begin{vmat}
-  2  &0  \\
-  0  &3
-\end{vmat}=6
-\end{equation*}
-\end{solution}
-\part $\colvec{x \\ y \\ z}\mapsto\colvec{x-y \\ x+y+z \\ y-2z}$
-\begin{solution}
-\begin{equation*}
-\begin{vmat}
-1  &-1  &0  \\
-1  &1   &1  \\
-0  &1   &-2
-\end{vmat}=-5
-\end{equation*}
-\end{solution}
-\end{parts}
+% \question
+% By what factor does each transformation change the size of
+% boxes?
+% \begin{parts}
+% \part $\colvec{x \\ y}\mapsto\colvec{2x \\ 3y}$
+% \begin{solution}
+% Express the transformation with respect to the standard bases
+% and find the determinant.
+% \begin{equation*}
+% \begin{vmat}
+%   2  &0  \\
+%   0  &3
+% \end{vmat}=6
+% \end{equation*}
+% \end{solution}
+% \part $\colvec{x \\ y \\ z}\mapsto\colvec{x-y \\ x+y+z \\ y-2z}$
+% \begin{solution}
+% \begin{equation*}
+% \begin{vmat}
+% 1  &-1  &0  \\
+% 1  &1   &1  \\
+% 0  &1   &-2
+% \end{vmat}=-5
+% \end{equation*}
+% \end{solution}
+% \end{parts}
 
 
 \end{questions}
