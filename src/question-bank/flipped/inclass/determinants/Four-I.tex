@@ -1,0 +1,274 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Four.I\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+The determinant of a $\nbyn{2}$ matrix is
+\begin{equation*}
+\begin{vmat}
+  a  &b  \\
+  c  &d
+\end{vmat}
+=ad-bc
+\end{equation*}
+and this is the determinant of a $\nbyn{3}$ matrix.
+\begin{equation*}
+     \begin{vmat}
+           a  &b  &c  \\
+           d  &e  &f  \\
+           g  &h  &i
+     \end{vmat}
+  =
+    aei+bfg+cdh-hfa-idb-gec
+\end{equation*}
+
+\begin{questions}
+\question
+\begin{parts}
+\part
+Perform Gauss's method on the matrix, 
+decide if it is nonsingular,
+and then compute the determinant.
+\begin{equation*}
+\begin{mat}
+  1  &3  \\
+  2  &4
+\end{mat}
+\end{equation*}
+\begin{solution}
+Here is Gauss's method.
+\begin{equation*}
+\begin{mat}
+  1  &3  \\
+  2  &4
+\end{mat}
+\grstep{-2\rho_1+\rho_2}
+\begin{mat}
+  1  &3  \\
+  0  &-2
+\end{mat}
+\end{equation*}
+Because there are no zero rows, the starting matrix is nonsingular.
+Here is the determinant. 
+\begin{equation*}
+\begin{vmat}
+  1  &3  \\
+  2  &4
+\end{vmat}
+=1\cdot 4-3\cdot 2=4-6=-2
+\end{equation*}
+\end{solution}
+
+\part
+Do the same to this matrix.
+\begin{equation*}
+\begin{mat}
+  1  &3  \\
+  2  &6
+\end{mat}
+\end{equation*}
+\begin{solution}
+Here is Gauss's method.
+\begin{equation*}
+\begin{mat}
+  1  &3  \\
+  2  &6
+\end{mat}
+\grstep{-2\rho_1+\rho_2}
+\begin{mat}
+  1  &3  \\
+  0  &0
+\end{mat}
+\end{equation*}
+Because the is a zero row, the starting matrix is singular.
+Here is the determinant. 
+\begin{equation*}
+\begin{vmat}
+  1  &3  \\
+  2  &6
+\end{vmat}
+=1\cdot 6-3\cdot 2=0
+\end{equation*}
+\end{solution}
+
+\part
+Perform Gauss's method on the matrix, 
+decide if it is nonsingular,
+and then compute the determinant.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &9
+\end{mat}
+\end{equation*}
+\begin{solution}
+Gauss's method is straightforward.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &9
+\end{mat}
+\grstep[-7\rho_1+\rho_3]{-4\rho_1+\rho_2}
+\begin{mat}
+  1  &2  &3 \\
+  0  &-3 &-6 \\
+  0  &-6 &-12
+\end{mat}
+\grstep{-2\rho_2+\rho_3}
+\begin{mat}
+  1  &2  &3 \\
+  0  &-3 &-6 \\
+  0  &0  &0
+\end{mat}
+\end{equation*}
+There are zero rows so the starting matrix is singular.
+Here is the determinant. 
+\begin{equation*}
+\begin{vmat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &9
+\end{vmat}
+=1\cdot 5\cdot 9+2\cdot 6\cdot 7 + 3\cdot 4 \cdot 8
+-7\cdot 5\cdot 3-8\cdot 6\cdot 1-9\cdot 4\cdot 2=0
+\end{equation*}
+\end{solution}
+
+\part
+Do the same to this matrix.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &10
+\end{mat}
+\end{equation*}
+\begin{solution}
+Gauss's method is much the same as in the prior answer.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &10
+\end{mat}
+\grstep[-7\rho_1+\rho_3]{-4\rho_1+\rho_2}
+\begin{mat}
+  1  &2  &3 \\
+  0  &-3 &-6 \\
+  0  &-6 &-11
+\end{mat}
+\grstep{-2\rho_2+\rho_3}
+\begin{mat}
+  1  &2  &3 \\
+  0  &-3 &-6 \\
+  0  &0  &1
+\end{mat}
+\end{equation*}
+There are zero rows so the starting matrix is singular.
+Here is the determinant. 
+\begin{equation*}
+\begin{vmat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &10
+\end{vmat}
+=1\cdot 5\cdot 10+2\cdot 6\cdot 7 + 3\cdot 4 \cdot 8
+-7\cdot 5\cdot 3-8\cdot 6\cdot 1-10\cdot 4\cdot 2=-3
+\end{equation*}
+\end{solution}
+\end{parts}
+
+\question
+Find the determinant of each matrix by reducing it to echelon form, 
+keeping track of any row swaps,
+and then
+multiplying down the diagonal.
+\begin{parts}
+\part
+\begin{equation*}
+\begin{mat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &9
+\end{mat}
+\end{equation*}
+\begin{solution}
+Gauss's method is straightforward.
+\begin{equation*}
+\begin{mat}
+  1  &2  &3 \\
+  4  &5  &6 \\
+  7  &8  &9
+\end{mat}
+\grstep[-7\rho_1+\rho_3]{-4\rho_1+\rho_2}
+\begin{mat}
+  1  &2  &3 \\
+  0  &-3 &-6 \\
+  0  &-6 &-12
+\end{mat}
+\grstep{-2\rho_2+\rho_3}
+\begin{mat}
+  1  &2  &3 \\
+  0  &-3 &-6 \\
+  0  &0  &0
+\end{mat}
+\end{equation*}
+Multiplying down the diagonal gives $0$.
+\end{solution}
+
+\part
+\begin{equation*}
+\begin{mat}
+  1  &0  &2  &-1 \\
+  0  &2  &-1 &0  \\
+  2  &1  &0  &2  \\
+  -1 &2  &0  &0  
+\end{mat}
+\end{equation*}
+\begin{solution}
+Gauss's method is straightforward.
+\begin{align*}
+\begin{mat}
+  1  &0  &2  &-1 \\
+  0  &2  &-1 &0  \\
+  2  &1  &0  &2  \\
+  -1 &2  &0  &0  
+\end{mat}
+&\grstep[\rho_1+\rho_4]{-2\rho_1+\rho_3}
+\begin{mat}
+  1  &0  &2  &-1 \\
+  0  &2  &-1 &0  \\
+  0  &1  &-4 &4  \\
+  0  &2  &2  &-1  
+\end{mat}                                     \\
+&\grstep[-\rho_2+\rho_4]{-(1/2)\rho_2+\rho_3}
+\begin{mat}
+  1  &0  &2  &-1 \\
+  0  &2  &-1 &0  \\
+  0  &0  &-7/2  &4  \\
+  0  &0  &3  &-1  
+\end{mat}                                    \\
+&\grstep{(6/7)\rho_3+\rho_4}
+\begin{mat}
+  1  &0  &2  &-1 \\
+  0  &2  &-1 &0  \\
+  0  &0  &-7/2  &4  \\
+  0  &0  &0  &17/7  
+\end{mat}
+\end{align*}
+Multiplying down the diagonal gives $-17$.
+\end{solution}
+
+\end{parts}
+
+\end{questions}
+\end{document}
