@@ -1,0 +1,108 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+
+\usepackage{../../../sty/conc}
+\usepackage{../../../sty/linalgjh}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Handin 9\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+% \makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+\begin{center}
+  \fbox{\parbox{6.5in}{\it
+  When you are working on this material, you must work entirely on your 
+  own.
+  You may use the book or your notes.
+  But you may not work with other people, either in the class our outside of it,
+  or use other books or the Internet.
+  If you have any questions, email me.
+  }}
+  \end{center}
+
+
+\begin{questions}
+\question
+Use Gauss's method (keeping track of row swaps, if any) 
+to find the determinant of each matrix.
+Is it nonsingular?
+\begin{parts}
+\part
+$
+\begin{mat}
+  2  &1  &0  &0  \\
+  0  &3  &0  &-1  \\
+  0  &1  &1  &0  \\
+  2  &-1  &0  &2  \\
+\end{mat}
+$
+\begin{solution}
+% sage: load("gauss_method.sage")
+% sage: M = matrix(QQ, [[2,1,0,0], [0,3,0,-1], [0,1,1,0], [2,-1,0,2]])
+% sage: gauss_method(M, latex=True)
+\begin{equation*}
+\begin{mat}
+  2  &1  &0  &0  \\ 
+  0  &3  &0  &-1  \\ 
+  0  &1  &1  &0  \\ 
+  2  &-1  &0  &2  \\ 
+\end{mat}
+\grstep{-1\rho_{1}+\rho_{4}}
+\begin{mat}
+  2  &1  &0  &0  \\ 
+  0  &3  &0  &-1  \\ 
+  0  &1  &1  &0  \\ 
+  0  &-2  &0  &2  \\ 
+\end{mat}
+\grstep[(2/3)\rho_{2}+\rho_{4}]{(-1/3)\rho_{2}+\rho_{3}}
+\begin{mat}
+  2  &1  &0  &0  \\ 
+  0  &3  &0  &-1  \\ 
+  0  &0  &1  &1/3  \\ 
+  0  &0  &0  &4/3  \\ 
+\end{mat}
+\end{equation*}
+Multiplying down the diagonal gives $8$.
+Yes, the starting matrix is nonsingular.
+\end{solution}
+
+\part
+$
+\begin{mat}
+  1  &0  &1  &0  \\
+  0  &3  &0  &-1  \\
+  0  &1  &4  &1  \\
+ -1  &6  &-1  &-2  \\
+\end{mat}
+$
+\begin{solution}
+\begin{equation*}
+\begin{mat}
+  1  &0  &1  &0  \\ 
+  0  &3  &0  &-1  \\ 
+  0  &1  &4  &1  \\ 
+  -1  &6  &-1  &-2  \\ 
+\end{mat}
+\grstep{1\rho_{1}+\rho_{4}}
+\begin{mat}
+  1  &0  &1  &0  \\ 
+  0  &3  &0  &-1  \\ 
+  0  &1  &4  &1  \\ 
+  0  &6  &0  &-2  \\ 
+\end{mat}
+\grstep[-2\rho_{2}+\rho_{4}]{(-1/3)\rho_{2}+\rho_{3}}
+\begin{mat}
+  1  &0  &1  &0  \\ 
+  0  &3  &0  &-1  \\ 
+  0  &0  &4  &4/3  \\ 
+  0  &0  &0  &0  \\ 
+\end{mat}
+\end{equation*}
+Multiplying down the diagonal gives~$0$.
+The starting matrix is singular.
+\end{solution}
+
+\end{parts}
+\end{questions}
+\end{document}
