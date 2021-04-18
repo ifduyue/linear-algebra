@@ -24,28 +24,219 @@
 
 \begin{questions}
 \question
-Use Gauss's method (keeping track of row swaps, if any) 
-to find the determinant of each matrix.
-Is it nonsingular?
+Consider the vector space $V=\matspace_{\nbyn{2}}$
+as well as this basis
+\begin{equation*}
+B=\sequence{
+\begin{mat}
+ 1  &0  \\
+ 0  &1
+\end{mat},
+\begin{mat}
+ 1  &1  \\
+ 0  &0
+\end{mat},
+\begin{mat}
+ 1  &0  \\
+ 1  &0
+\end{mat},
+\begin{mat}
+ 0  &0  \\
+ 0  &1
+\end{mat}
+}
+\end{equation*}
+and this one.
+\begin{equation*}
+D=\sequence{
+\begin{mat}
+ 1  &0  \\
+ 0  &0
+\end{mat},
+\begin{mat}
+ 1  &2  \\
+ 0  &0
+\end{mat},
+\begin{mat}
+ 1  &2  \\
+ 2  &0
+\end{mat},
+\begin{mat}
+ 1  &2  \\
+ 2  &1
+\end{mat}
+}
+\end{equation*}
+
 \begin{parts}
 \part
-$
+Find the change of basis matrix for converting representations with
+respect to~$B$ into representations with respect to~$D$.
+\begin{solution}
+First determine the effect of the identity map on each vector from~$B$.
+\begin{align*}
 \begin{mat}
-  2  &1  &0  &0  \\
-  0  &3  &0  &-1  \\
-  0  &1  &1  &0  \\
-  2  &-1  &0  &2  \\
+ 1  &0  \\
+ 0  &1
 \end{mat}
-$
+  &\mapsunder{\identity}\begin{mat}
+ 1  &0  \\
+ 0  &1
+\end{mat}  \\
+\begin{mat}
+ 1  &1  \\
+ 0  &0
+\end{mat}
+  &\mapsunder{\identity} \begin{mat}
+ 1  &1  \\
+ 0  &0
+\end{mat} \\
+\begin{mat}
+ 1  &0  \\
+ 1  &0
+\end{mat}
+  &\mapsunder{\identity} \begin{mat}
+ 1  &0  \\
+ 1  &0
+\end{mat} \\
+\begin{mat}
+ 0  &0  \\
+ 0  &1
+\end{mat}
+  &\mapsunder{\identity} \begin{mat}
+ 0  &0  \\
+ 0  &1
+\end{mat}  
+\end{align*}
+Then find the representation of each of those with respect to~$D$.
+For instance here is the setup for the first.
+\begin{equation*}
+\begin{mat}
+ 1  &0  \\
+ 0  &1
+\end{mat}
+=c_1\cdot \begin{mat}
+ 1  &0  \\
+ 0  &0
+\end{mat}
++c_2\cdot \begin{mat}
+ 1  &2  \\
+ 0  &0
+\end{mat}
++c_3\cdot \begin{mat}
+ 1  &2  \\
+ 2  &0
+\end{mat}
++c_4\cdot \begin{mat}
+ 1  &2  \\
+ 2  &1
+\end{mat}
+\end{equation*}
+The representation is this.
+\begin{equation*}
+\rep{\begin{mat}
+ 1  &0  \\
+ 0  &1
+\end{mat}}{D}
+=\colvec{1 \\ 0 \\ -1 \\ 1}
+\end{equation*}
+The other three are similar.
+\begin{equation*}
+\rep{\begin{mat}
+ 1  &1  \\
+ 0  &0
+\end{mat}}{D}
+=\colvec{1/2 \\ 1/2 \\ 0 \\ 0}
+\qquad
+\rep{\begin{mat}
+ 1  &0  \\
+ 1  &0
+\end{mat}}{D}
+=\colvec{1 \\ -1/2 \\ 1/2 \\ 0}
+\qquad
+\rep{\begin{mat}
+ 0  &0  \\
+ 0  &1
+\end{mat}}{D}
+=\colvec{0 \\ 0 \\ -1 \\ 1}
+\end{equation*}
+Put them together to get the matrix.
+\begin{equation*}
+\rep{\identity}{B,D}=
+\begin{mat}
+ 1  &1/2 &1    &0  \\
+ 0  &1/2 &-1/2 &0  \\
+-1  &0   &1/2  &-1 \\
+ 1  &0   &0    &1
+\end{mat}
+\end{equation*}
+\end{solution}
+
 \part
-$
-\begin{mat}
-  1  &0  &1  &0  \\
-  0  &3  &0  &-1  \\
-  0  &1  &4  &1  \\
- -1  &6  &-1  &-2  \\
+Represent this vector with respect to~$B$.
+\begin{equation*}
+  \vec{v}=
+  \begin{mat}
+    1  &2  \\
+    3  &4
+  \end{mat}
+\end{equation*}
+\begin{solution}
+Solve
+\begin{equation*}
+  \begin{mat}
+    1  &2  \\
+    3  &4
+  \end{mat}
+  =c_1\cdot \begin{mat}
+ 1  &0  \\
+ 0  &1
 \end{mat}
-$
++c_2\cdot \begin{mat}
+ 1  &1  \\
+ 0  &0
+\end{mat}
++c_3\cdot \begin{mat}
+ 1  &0  \\
+ 1  &0
+\end{mat}
++c_4\cdot \begin{mat}
+ 0  &0  \\
+ 0  &1
+\end{mat}
+\end{equation*}
+By eye, $c_2=2$ and $c_3=3$, and $c_1=-4$, and $c_4=8$.
+\begin{equation*}
+\rep{\begin{mat}
+    1  &2  \\
+    3  &4
+  \end{mat}}{B}
+=\colvec{-4 \\ 2 \\ 3 \\ 8}
+\end{equation*}
+\end{solution}
+
+\part
+Use the change of basis matrix to convert it to a representation with 
+respect to~$D$.
+\begin{solution}
+Do the matrix-vector multiplication.
+\begin{equation*}
+\begin{mat}
+ 1  &1/2 &1    &0  \\
+ 0  &1/2 &-1/2 &0  \\
+-1  &0   &1/2  &-1 \\
+ 1  &0   &0    &1
+\end{mat}
+\colvec{-4 \\ 2 \\ 3 \\ 8}
+=
+\colvec{0 \\ -1/2 \\ -5/2 \\ 4}
+=\rep{\begin{mat}
+    1  &2  \\
+    3  &4
+  \end{mat}}{D}
+\end{equation*}
+
+\end{solution}
 \end{parts}
 \end{questions}
 \end{document}
