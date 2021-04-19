@@ -1,5 +1,5 @@
-\documentclass[noanswers, nolegalese, 11pt]{examjh}
-% \documentclass[answers, nolegalese, 11pt]{examjh}
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
 \usepackage{../../../../sty/conc}
 \usepackage{../../../../sty/linalgjh}
 \usepackage{graphicx}
@@ -67,32 +67,192 @@ row.
 \end{solution}
 
 \part Expand along the second row.
+\begin{solution}
+\begin{align*}
+\begin{vmat}
+  1  &0  &3  \\
+  4  &2  &6  \\
+  8  &7  &9
+\end{vmat}
+&=-4\cdot 
+\begin{vmat}
+  0  &3  \\
+  7  &9 
+\end{vmat}
++2\cdot
+\begin{vmat}
+  1  &3  \\
+  8  &9       
+\end{vmat}
+-6\cdot
+\begin{vmat}
+  1  &0  \\
+  8  &7      
+\end{vmat}          \\
+&=
+-4\cdot (0\cdot 9-3\cdot 7)
++2\cdot (1\cdot 9-3\cdot 8)
+-6\cdot (1\cdot 7-0\cdot 8)      \\
+&=-4\cdot (-21)
++2\cdot (-15)
+-6\cdot (7)
+=12
+\end{align*}
+\end{solution}
+
 \part Expand down the second column.
+\begin{solution}
+\begin{align*}
+\begin{vmat}
+  1  &0  &3  \\
+  4  &2  &6  \\
+  8  &7  &9
+\end{vmat}
+&=-0\cdot 
+\begin{vmat}
+  4  &6  \\
+  8  &9 
+\end{vmat}
++2\cdot
+\begin{vmat}
+  1  &3  \\
+  8  &9       
+\end{vmat}
+-7\cdot
+\begin{vmat}
+  1  &3  \\
+  4  &6      
+\end{vmat}          \\
+&=-0\cdot (-12)
++2\cdot (-15)
+-7\cdot (-6)
+=12
+\end{align*}
+\end{solution}
 \end{parts}
 
 
 \question
 For these polynomials, 
 find the roots and their multiplicities.
-Use $\C$ where needed.
+Use the complex numbers, $\C$, where needed.
 \begin{parts}
 \part $p_1(x)=(x-5)(x-2)(x+3)$
+\begin{solution}
+\begin{center}
+\begin{tabular}{r|ccc}
+  \textit{Root}         &$5$ &$2$ &$-3$ \\
+   \cline{2-4}
+  \textit{Multiplicity} &$1$ &$1$ &$1$ 
+\end{tabular}
+\end{center}
+\end{solution}
+
 \part $p_2(x)=9\cdot (x-5)(x+4)$
+\begin{solution}
+\begin{center}
+\begin{tabular}{r|cc}
+  \textit{Root}         &$5$ &$-4$  \\
+   \cline{2-3}
+  \textit{Multiplicity} &$1$ &$1$  
+\end{tabular}
+\end{center}
+\end{solution}
+
 \part $p_3(x)=4\cdot (x-(2/3))(x+3)^2$
+\begin{solution}
+\begin{center}
+\begin{tabular}{r|cc}
+  \textit{Root}         &$2/3$ &$-3$  \\
+   \cline{2-3}
+  \textit{Multiplicity} &$1$ &$2$ 
+\end{tabular}
+\end{center}
+\end{solution}
+
 \part $p_4(x)=x^2-7x+10$
+\begin{solution}
+It factors as $(x-5)(x-2)$.
+\begin{center}
+\begin{tabular}{r|cc}
+  \textit{Root}         &$2$ &$5$  \\
+   \cline{2-3}
+  \textit{Multiplicity} &$1$ &$1$ 
+\end{tabular}
+\end{center}
+\end{solution}
+
 \part $p_5(x)=x^2+6x+9$
+\begin{solution}
+It factors into $(x+3)^2$
+\begin{center}
+\begin{tabular}{r|c}
+  \textit{Root}         &$-3$  \\
+   \cline{2-2}
+  \textit{Multiplicity} &$2$  
+\end{tabular}
+\end{center}
+\end{solution}
+
 \part $p_6(x)=3x^2+x+1$
+\begin{solution}
+The quadratic formula gives two roots.
+\begin{center}
+\begin{tabular}{r|cc}
+  \textit{Root}         &$\frac{-1+\sqrt{-11}}{6}$ &$\frac{-1-\sqrt{-11}}{6}$  \\
+   \cline{2-3}
+  \textit{Multiplicity} &$1$ &$1$ 
+\end{tabular}
+\end{center}
+\end{solution}
+
 \end{parts}
 
 \question
 Perform the indicated action in $\C$.
 \begin{parts}
-\part $(2-i)(2+i)$
 \part $(3+i)(1+i)$
+\begin{solution}
+Start by multiplying as you would if $i$ were a variable, to get this.
+\begin{equation*}
+3\cdot 1+3\cdot i+1\cdot i+i\cdot i
+=3+4i+(-1)=2+4i
+\end{equation*}
+Finish by remembering that $i=\sqrt{-1}$, so $i\cdot i=-1$.
+\begin{equation*}
+3\cdot 1+3\cdot i+1\cdot i+i\cdot i
+=3+4i+(-1)=2+4i
+\end{equation*}
+\end{solution}
+
+\part $(2-i)(2+i)$
+\begin{solution}
+Again multiply as you would if $i$ were a variable.
+\begin{equation*}
+2\cdot 2+2\cdot i+2\cdot(-i)+i\cdot(-i)
+\end{equation*}
+Finish by using that $i\cdot i=-1$.
+\begin{equation*}
+=4+2i-2i-(-1)=5
+\end{equation*}
+\end{solution}
+
 \part $(2+i)^2(1-i)$
+\begin{solution}
+First combine the first two terms.
+\begin{equation*}
+(2+i)^2(1-i)=(4+2i+2i+i^2)(1-i)
+=(4+4i-1)(1-i)=(3+4i)(1-i)
+\end{equation*}
+Finish by combining the two.
+\begin{equation*}
+(3+4i)(1-i)
+=3-3i+4i-4i^2
+=3+i-4(-1)
+=7+i
+\end{equation*}
+\end{solution}
 \end{parts}
-
-
 
 
 \end{questions}
