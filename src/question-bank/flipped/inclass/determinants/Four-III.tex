@@ -1,0 +1,99 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Four.III\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+To find the roots of a quadratic polynomial, use the 
+quadratic formula.
+\begin{equation*}
+  p(x)=a\cdot x^2+b\cdot x +c
+  \qquad
+  \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\end{equation*}
+The \textit{multiplicity} of a root is the number of times it is repeated.
+
+\begin{questions}
+\question
+Consider this matrix.
+\begin{equation*}
+M=
+\begin{mat}
+  1  &0  &3  \\
+  4  &2  &6  \\
+  8  &7  &9
+\end{mat}
+\end{equation*}
+\begin{parts}
+\part Find the determinant by doing the Laplace expansion along the first
+row.
+\begin{solution}
+\begin{align*}
+\begin{vmat}
+  1  &0  &3  \\
+  4  &2  &6  \\
+  8  &7  &9
+\end{vmat}
+&=1\cdot 
+\begin{vmat}
+  2  &6  \\
+  7  &9 
+\end{vmat}
+-0\cdot
+\begin{vmat}
+  4  &6  \\
+  8  &9       
+\end{vmat}
++3\cdot
+\begin{vmat}
+  4 &2  \\
+  8  &7      
+\end{vmat}          \\
+&=
+1\cdot (18-42)
+-0\cdot (36-48)
++3\cdot (28-16)      \\
+&=1\cdot (-24)
+-0\cdot (-12)
++3\cdot (12)
+=12
+\end{align*}
+\end{solution}
+
+\part Expand along the second row.
+\part Expand down the second column.
+\end{parts}
+
+
+\question
+For these polynomials, 
+find the roots and their multiplicities.
+Use $\C$ where needed.
+\begin{parts}
+\part $p_1(x)=(x-5)(x-2)(x+3)$
+\part $p_2(x)=9\cdot (x-5)(x+4)$
+\part $p_3(x)=4\cdot (x-(2/3))(x+3)^2$
+\part $p_4(x)=x^2-7x+10$
+\part $p_5(x)=x^2+6x+9$
+\part $p_6(x)=3x^2+x+1$
+\end{parts}
+
+\question
+Perform the indicated action in $\C$.
+\begin{parts}
+\part $(2-i)(2+i)$
+\part $(3+i)(1+i)$
+\part $(2+i)^2(1-i)$
+\end{parts}
+
+
+
+
+\end{questions}
+\end{document}
