@@ -1,0 +1,325 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Five.II (part 2)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+
+\question
+This is an upper-triangular matrix.
+\begin{equation*}
+  T=
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+\end{equation*}
+We will diagonalize it.
+\begin{parts}
+\part Consider that the matrix represents a transformation
+$\map{t}{\C^2}{\C^2}$ with respect to the standard basis,
+$\stdbasis_2, \stdbasis_2$.
+\begin{equation*}
+  \stdbasis=
+  \sequence{
+   \colvec{1  \\  0},
+   \colvec{0  \\  1}
+   }  
+\end{equation*}
+Produce the appropriate commutative diagram, where the
+other basis is~$B$.
+\begin{solution}
+           \begin{equation*}
+             \begin{CD}
+               \C^2_{\wrt{\stdbasis_2}}                  @>t>T>  \C^2_{\wrt{\stdbasis_2}}       \\
+               @V\scriptstyle\identity VPV      @V\scriptstyle\identity VPV \\
+               \C^2_{\wrt{B}}                  @>t>\hat{T}>  \C^2_{\wrt{B}}
+             \end{CD}
+           \end{equation*}
+\end{solution}
+
+\part
+Set up the $\lambda$ rescaling equations 
+involving the vectors for the basis~$B$.
+\begin{solution}
+Let $B=\sequence{\vec{\beta}_1,\vec{\beta}_2}$.
+By Lemma 2.4 we have that on the basis~$B$ 
+the transformation rescales the basis vectors, that is,
+for some constants $\lambda_1,\lambda_2\in \C$ we have this.
+\begin{equation*}
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \vec{\beta}_1
+  =\lambda_1\vec{\beta}_1
+  \qquad
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \vec{\beta}_2
+  =\lambda_2\vec{\beta}_2
+\end{equation*}
+\end{solution}
+
+\part 
+Produce the resulting linear system.
+\begin{solution}
+We are looking for scalars $x\in\C$ so that this holds.
+\begin{equation*}
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  =x\cdot\colvec{b_1 \\ b_2}
+\end{equation*}
+for some pairs $b_1,b_2\in\C$.
+So: we want scalars~$x\in\C$ so that this system has  solution
+\begin{equation*}
+\begin{linsys}{2}
+  2b_1  &+  &b_2  &=  &x\cdot b_1  \\
+        &   &-3b_2&=  &x\cdot b_2  \\
+\end{linsys}
+\quad\Rightarrow\quad
+\begin{linsys}{2}
+  (2-x)b_1  &+  &b_2       &=  &0  \\
+            &   &(-3-x)b_2 &=  &0  \\
+\end{linsys}
+\end{equation*}
+for some $b_1,b_2\in\C$ that are not both zero (since the vector with 
+both entries zero can not be a member of any basis).
+\end{solution}
+
+\part
+Solve that linear system.
+\begin{solution}
+Start with 
+\begin{equation*}
+\begin{linsys}{2}
+  (2-x)b_1  &+  &b_2       &=  &0  \\
+            &   &(-3-x)b_2 &=  &0  \\
+\end{linsys}
+\end{equation*}
+and focus first on the bottom equation.
+Either $x=-3$ or $b_2=0$.
+
+Following up on the second case, 
+if $b_2=0$ then the first equation becomes $(2-x)b_1=0$.
+We can't have $b_1=0$ also, since we can't have that both $b$'s are zeros.
+So we get the other solution $x=2$.
+
+We write these as $\lambda_1=2$ and $\lambda_2=-3$.
+\end{solution}
+
+\part 
+Produce the vector in the resulting basis~$B$ associated with $\lambda_1=2$.
+\begin{solution}
+To get $\vec{\beta}_1$, the vector associated with $\lambda_1=2$, we have this.
+\begin{equation*}
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \vec{\beta}_1
+  =\lambda_1\vec{\beta}_1
+  \quad\Rightarrow
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  =2\cdot \vec{b_1 \\ b_2}
+\end{equation*}
+It gives a linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  2b_1  &+  &b_2   &=  &2b_1  \\
+        &   &-3b_2 &=  &2b_2
+\end{linsys}
+\end{equation*}
+We conclude that $b_2=0$ and $b_1$ is free.
+That is, the set of associated vector solutions is this.
+\begin{equation*}
+  V_2=\set{\colvec{b_1 \\ 0} \suchthat \text{$b_1\in\C$}}
+\end{equation*}
+For the frist basis vector $\vec{\beta}_1$ we can pick any nonzero member
+of that set.  
+This will do.
+\begin{equation*}
+  \vec{\beta}_1=\colvec{1 \\ 0}
+\end{equation*}
+\end{solution}
+
+\part 
+Also produce the vector in~$B$ associated with $\lambda_2=-3$.
+\begin{solution}
+To get $\vec{\beta}_2$, the vector associated with $\lambda_2=-3$, we have this.
+\begin{equation*}
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \vec{\beta}_2
+  =\lambda_2\vec{\beta}_2
+  \quad\Rightarrow
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  =-3\cdot\vec{b_1 \\ b_2}
+\end{equation*}
+It gives a linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  2b_1  &+  &b_2   &=  &-3b_1  \\
+        &   &-3b_2 &=  &-3b_2
+\end{linsys}
+\end{equation*}
+We conclude that $b_2$ is free.
+We take it as a parameter, rewrite the first equation as $5b_1+b_2=0$, and 
+the set of associated vector solutions is this.
+\begin{equation*}
+  V_{-3}=\set{\colvec{(-1/5)b_2 \\ b_2} \suchthat \text{$b_2\in\C$}}
+\end{equation*}
+For $\vec{\beta}_2$ we can pick any nonzero member.  
+This will do.
+\begin{equation*}
+  \vec{\beta}_2=\colvec{-1/5 \\ 1}
+\end{equation*}
+\end{solution}
+
+\part
+Exhibit the basis $B$.
+\begin{solution}
+\begin{equation*}
+  B=
+  \sequence{
+    \colvec{1 \\ 0},  
+    \colvec{-1/5 \\ 1}
+}
+\end{equation*}
+\end{solution}
+
+
+\part
+Check the change of basis.
+\begin{solution}
+Here is the diagram again.
+           \begin{equation*}
+             \begin{CD}
+               \C^2_{\wrt{\stdbasis_2}}                  @>t>T>  \C^2_{\wrt{\stdbasis_2}}       \\
+               @V\scriptstyle\identity VPV      @V\scriptstyle\identity VPV \\
+               \C^2_{\wrt{B}}                  @>t>\hat{T}>  \C^2_{\wrt{B}}
+             \end{CD}
+           \end{equation*}
+We know the matrices on the top and bottom.
+\begin{equation*}
+  T = 
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \qquad
+  \hat{T} = 
+  \begin{mat}
+    2  &  \\   
+    0  &-3
+  \end{mat}
+\end{equation*}
+The matrix on the right is $P=\rep{B,\stdbasis_2}{\identity}$.
+To find it we compute the action of the function on the starting
+basis
+\begin{align*}
+  \vec{\beta}_1=\colvec{1 \\ 0}
+  &\mapsunder{\identity}
+  \colvec{1 \\ 0}                   \\
+  \vec{\beta}_2=\colvec{-1/5 \\ 1}
+  &\mapsunder{\identity}
+  \colvec{-1/5 \\ 1}                   
+\end{align*}
+and represent each result with respect to the ending basis,
+\begin{equation*}
+  \rep{\colvec{1 \\ 0}}{\stdbasis_2}=\colvec{1 \\ 0}
+  \qquad
+  \rep{\colvec{-1/5 \\ 1}}{\stdbasis_2}=\colvec{-1/5 \\ 1}
+\end{equation*}
+to give this.
+\begin{equation*}
+  P=
+  \begin{mat}
+    1  &-1/5  \\
+    0  &1
+  \end{mat}
+\end{equation*}
+For the matrix on the left side $P^{-1}$, we use the formula for the 
+inverse of a $\nbyn{2}$ matrix.
+\begin{equation*}
+\begin{mat}
+  a  &b  \\
+  c  &d
+\end{mat}^{-1}
+=
+\frac{1}{ad-bc}\cdot
+\begin{mat}
+  d  &-b \\
+  -c &a
+\end{mat}
+\qquad
+P^{-1}
+=
+\frac{1}{1}\cdot
+\begin{mat}
+  1  &1/5 \\
+  0  &1
+\end{mat}
+\end{equation*}
+Finally, we get a diagonal matrix.
+\begin{equation*}
+  \hat{T}=
+  P^{-1}TP=
+\begin{mat}
+  1  &1/5 \\
+  0  &1
+\end{mat}
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+  \begin{mat}
+    1  &-1/5  \\
+    0  &1
+  \end{mat}
+=
+\begin{mat}
+  2  &0  \\
+  0  &-3
+\end{mat}
+\end{equation*}
+% sage: P = matrix(QQ, [[1,-1/5], [0,1]])
+% sage: P^(-1)
+% [  1 1/5]
+% [  0   1]
+% sage: T = matrix(QQ, [[2,1], [0,-3]])
+% sage: T
+% [ 2  1]
+% [ 0 -3]
+% sage: P^(-1) * T * P
+% [ 2  0]
+% [ 0 -3]
+\end{solution}
+\end{parts}
+
+
+\end{questions}
+\end{document}
