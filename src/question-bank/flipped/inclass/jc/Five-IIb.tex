@@ -1,0 +1,248 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Five.II (part 3)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+
+\question
+Recall from last time when we diagonalized this 
+upper-triangular matrix
+\begin{equation*}
+  T=
+  \begin{mat}
+    2  &1 \\   
+    0  &-3
+  \end{mat}
+\end{equation*}
+that our use of the lemma led to this linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  (2-x)b_1  &+  &b_2       &=  &0  \\
+            &   &(-3-x)b_2 &=  &0  \\
+\end{linsys}
+\end{equation*}
+\begin{parts}
+\item Take $x=-3$ and solve the linear system.
+The set of solutions forms a subspace.
+It is the \textit{eigenspace $V_{-3}$ associated with the eigenvalue 
+$\lambda=-3$}. 
+\begin{solution}
+\begin{equation*}
+\begin{linsys}{2}
+  2b_1  &+  &b_2   &=  &-3b_1  \\
+        &   &-3b_2 &=  &-3b_2
+\end{linsys}
+\end{equation*}
+We conclude that $b_2$ is free.
+We take it as a parameter, rewrite the first equation as $5b_1+b_2=0$, and 
+the set of associated vector solutions is this.
+\begin{equation*}
+  V_{-3}=\set{\colvec{(-1/5)b_2 \\ b_2} \suchthat \text{$b_2\in\C$}}
+\end{equation*}
+\end{solution}
+
+\item Take $x=2$ and solve the linear system to find $V_2$.
+\begin{solution}
+It gives a linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  2b_1  &+  &b_2   &=  &2b_1  \\
+        &   &-3b_2 &=  &2b_2
+\end{linsys}
+\end{equation*}
+We conclude that $b_2=0$ and $b_1$ is free.
+That is, the set of associated vector solutions is this.
+\begin{equation*}
+  V_2=\set{\colvec{b_1 \\ 0} \suchthat \text{$b_1\in\C$}}
+\end{equation*}
+\end{solution}
+
+\item $x=4$
+\begin{solution}
+Plugging $x=4$ into this system 
+\begin{equation*}
+\begin{linsys}{2}
+  (2-x)b_1  &+  &b_2       &=  &0  \\
+            &   &(-3-x)b_2 &=  &0  \\
+\end{linsys}
+\end{equation*}
+gives this matrix equation.
+\begin{equation*}
+\begin{mat}
+  -2  &1  \\
+  0   &-7 \\
+\end{mat}
+\colvec{b_1 \\ b_2}
+=\colvec{0 \\ 0}
+\end{equation*}
+The matrix is nonsingular, so there is a unique solution.
+Because the system is homogeneous, that solution is  this.
+\begin{equation*}
+\colvec{b_1 \\ b_2}
+=\colvec{0 \\ 0}
+\end{equation*}
+\end{solution}
+
+\item $x=0$
+\begin{solution}
+Plugging $x=0$ into 
+\begin{equation*}
+\begin{linsys}{2}
+  (2-x)b_1  &+  &b_2       &=  &0  \\
+            &   &(-3-x)b_2 &=  &0  \\
+\end{linsys}
+\end{equation*}
+gives this matrix equation.
+\begin{equation*}
+\begin{mat}
+  2  &1  \\
+  0   &7 \\
+\end{mat}
+\colvec{b_1 \\ b_2}
+=\colvec{0 \\ 0}
+\end{equation*}
+The matrix is nonsingular, so there is a unique solution.
+\begin{equation*}
+\colvec{b_1 \\ b_2}
+=\colvec{0 \\ 0}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+
+\question
+We will use the determinant function to solve $T\vec{v}=x\vec{v}$.
+\begin{equation*}
+\begin{mat}
+          13 &-4 \\
+          -4 &7
+        \end{mat}
+\end{equation*}
+\begin{parts}
+\item Set up the matrix equation and bring all variables to the left side.
+\begin{solution}
+This is the matrix equation.
+\begin{align*}
+  T\vec{v}
+  &=x\cdot \vec{v}        \\
+  \begin{mat}
+  13  &-4  \\
+  -4  &7
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  &=
+  x\cdot \colvec{b_1 \\ b_2}
+\end{align*}
+We get this linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  13b_1  &-  &4b_2  &=  &x\cdot b_1  \\
+  -4b_1  &+  &7b_2  &=  &x\cdot b_2  \\
+\end{linsys}
+\end{equation*}
+Bring all the variables to the left side.
+\begin{equation*}
+\begin{linsys}{2}
+  (13-x)b_1  &-  &4b_2      &=  &0  \\
+      -4b_1  &+  &(7-x)b_2  &=  &0  \\
+\end{linsys}
+\end{equation*}
+This is the result.
+\begin{align*}
+  \begin{mat}
+  13-x  &-4  \\
+   -4   &7-x
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  &=\colvec{0 \\ 0}      \\
+  (T-x\cdot I)\vec{v}&=\vec{0}
+\end{align*}
+\end{solution}
+
+\item Find the \textit{characteristic polynomial}, $\deter{T-xI}$.
+\begin{solution}
+Apply the $ad-bc$ determinant formular to get this.
+\begin{equation*}
+  \begin{mat}
+  13-x  &-4  \\
+   -4   &7-x
+  \end{mat}
+  =(13-x)(7-x)-(-4)(-4)
+  =x^2-20x+75=(x-5)(x-15)
+\end{equation*}
+\end{solution}
+
+\item The factors of the characteristic equation $\deter{T-xI}=0$
+are $5$
+and~$15$.
+Find the eigenspace associated with $\lambda_1=5$. 
+\begin{solution}
+Into this equation, plug $x=5$.
+\begin{equation*}
+  \begin{mat}
+  13-x  &-4  \\
+   -4   &7-x
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  =\colvec{0 \\ 0}      
+\end{equation*}
+We get a linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  8b_1  &-  &4b_2  &=  &0  \\
+  -4b_1 &+  &2b_2  &=  &0
+\end{linsys}
+\grstep{(1/2)\rho_1+\rho_2}
+\begin{linsys}{2}
+  8b_1  &-  &4b_2  &=  &0  \\
+            &0     &=  &0
+\end{linsys}
+\end{equation*}
+Leading is $b_1$ and free is $b_2$, so $b_1=(1/2)\cdot b_2$.
+\begin{equation*}
+           V_5=\set{\colvec{1/2 \\ 1}\cdot b_2\suchthat b_2\in\C}
+\end{equation*}
+\end{solution}
+
+\item
+Find the eigenspace associated with $\lambda_2=15$.
+\begin{solution}
+Into this equation, plug $x=15$.
+\begin{equation*}
+  \begin{mat}
+  13-x  &-4  \\
+   -4   &7-x
+  \end{mat}
+  \colvec{b_1 \\ b_2}
+  =\colvec{0 \\ 0}      
+\end{equation*}
+We get a linear system.
+\begin{equation*}
+\begin{linsys}{2}
+  -2b_1 &-  &4b_2  &=  &0  \\
+  -4b_1 &+  &-8b_2 &=  &0
+\end{linsys}
+\grstep{-2\rho_1+\rho_2}
+\begin{linsys}{2}
+  -2b_1  &-  &4b_2  &=  &0  \\
+             &0     &=  &0
+\end{linsys}
+\end{equation*}
+Leading is $b_1$ and free is $b_2$, so $b_1=-2\cdot b_2$.
+\begin{equation*}
+           V_{15}=\set{\colvec{-2 \\ 1}\cdot b_2\suchthat b_2\in\C}
+\end{equation*}
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}
