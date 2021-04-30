@@ -1,0 +1,152 @@
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Five.II (part 4)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+Consider this linear transformation $\map{t}{\R^2}{\R^2}$.
+\begin{equation*}
+  t(\colvec{x \\ y})=\colvec{3x+2y \\ 3x+8y}
+\end{equation*}
+We will illustrate that the eigenvalues are a feature of the
+map.
+
+\begin{questions}
+\question
+Fix the basis 
+\begin{equation*}
+  B=\sequence{
+         \colvec{1 \\ 0},
+         \colvec{1 \\ 1}
+      }
+\end{equation*}
+\begin{parts}
+\part Represent the map $t$ with respect to $B,B$.
+\begin{solution}
+This is the action of the map on the basis.
+\begin{align*}
+  \colvec{1  \\ 0}  &\mapsunder{t} \colvec{3 \\ 3}  \\
+  \colvec{1  \\ 1}  &\mapsunder{t} \colvec{5 \\ 11}  
+\end{align*}
+The representation of the first outcome with respect to~$B$ is this.
+\begin{equation*}
+\colvec{3 \\ 3}=0\cdot\colvec{1 \\ 0}
+                +3\cdot\colvec{1 \\ 1}
+\qquad
+\rep{\colvec{3 \\ 3}}{B}=\colvec{0 \\ 3}
+\end{equation*}
+The second outcome gives this.
+\begin{equation*}
+\colvec{5 \\ 11}=-6\cdot\colvec{1 \\ 0}
+                +11\cdot\colvec{1 \\ 1}
+\qquad
+\rep{\colvec{5 \\ 11}}{B}=\colvec{-6 \\ 11}
+\end{equation*}
+The matrix is this.
+\begin{equation*}
+\rep{t}{B,B}=
+\begin{mat}
+0   &-6  \\
+3   &11 
+\end{mat}
+\end{equation*}
+\end{solution}
+
+\part Use the matrix $\rep{t}{B,B}$ to compute the 
+characteristic equation.
+\begin{solution}
+We find $\deter{T-x\cdot I}$ as here.
+\begin{equation*}
+0=
+\begin{vmat}
+  0-x  &-6  \\
+  3    &11-x
+\end{vmat}
+=(-x)(11-x)+18
+=x^2-11x+18
+\end{equation*}
+\end{solution}
+
+\part Find the eigenvalues. 
+\begin{solution}
+The roots are
+\begin{equation*}
+0=x^2-11x+18
+=(x-2)(x-9)
+\end{equation*}
+$\lambda_1=2$ and $\lambda_2=9$.
+\end{solution}
+\end{parts}
+
+
+\question
+Fix this basis. 
+\begin{equation*}
+  D=\sequence{
+         \colvec{2 \\ 1},
+         \colvec{0 \\ 3}
+      }
+\end{equation*}
+\begin{parts}
+\part Represent the map $t$ with respect to $D,D$.
+\begin{solution}
+This is the action of the map on the basis.
+\begin{align*}
+  \colvec{2  \\ 1}  &\mapsunder{t} \colvec{8 \\ 14}  \\
+  \colvec{0  \\ 3}  &\mapsunder{t} \colvec{6 \\ 24}  
+\end{align*}
+The representation of the first with respect to~$D$ is this.
+\begin{equation*}
+\colvec{8 \\ 14}=4\cdot\colvec{2 \\ 1}
+                +(10/3)\cdot\colvec{0 \\ 3}
+\qquad
+\rep{\colvec{8 \\ 14}}{D}=\colvec{4 \\ 10/3}
+\end{equation*}
+The second outcome gives this.
+\begin{equation*}
+\colvec{6 \\ 24}=3\cdot\colvec{2 \\ 1}
+                +7\cdot\colvec{0 \\ 3}
+\qquad
+\rep{\colvec{6 \\ 24}}{D}=\colvec{3 \\ 7}
+\end{equation*}
+The matrix is this.
+\begin{equation*}
+\rep{t}{D,D}=
+\begin{mat}
+4      &3  \\
+10/3   &7 
+\end{mat}
+\end{equation*}
+\end{solution}
+
+\part Use the matrix $\rep{t}{D,D}$ to compute the 
+characteristic equation.
+\begin{solution}
+Here it is.
+\begin{equation*}
+0=\deter{T-x\cdot I}
+=\begin{vmat}
+  4-x   &3  \\
+  10/3  &7-x
+\end{vmat}
+=(4-x)(7-x)-10
+=x^2-11x+18
+\end{equation*}
+\end{solution}
+
+\part Find the eigenvalues. 
+\begin{solution}
+The characteristic equation $0=x^2-11x+18$ is the same so the roots
+are the same:~$\lambda_1=2$ and $\lambda_2=9$.
+\end{solution}
+
+\end{parts}
+
+\end{questions}
+\end{document}

@@ -1,0 +1,193 @@
+% \documentclass[noanswers, nolegalese, 11pt]{examjh}
+\documentclass[answers, nolegalese, 11pt]{examjh}
+\usepackage{../../../../sty/conc}
+\usepackage{../../../../sty/linalgjh}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0em}\setlength{\parskip}{0.5ex}
+\pagestyle{empty}
+\begin{document}\thispagestyle{empty}
+\makebox[\textwidth]{Worksheet for Five.II (part 3)\hfill  From \textit{Linear Algebra}, by Hef{}feron}\vspace{-1ex}
+\makebox[\textwidth]{\hbox{}\hrulefill\hbox{}}
+
+
+\begin{questions}
+
+\question
+    Consider this matrix.
+    \begin{equation*}
+      \begin{mat}[r]
+        1  &1  &1  \\
+        0  &0  &1  \\
+        0  &0  &1
+      \end{mat}
+    \end{equation*}
+\begin{parts}
+\part Find its characteristic polynomial.
+\begin{solution}
+      The characteristic equation is
+      \begin{equation*}
+        0=
+        \begin{vmatrix}
+          1-x  &1   &1   \\
+          0    &-x  &1   \\
+          0    &0   &1-x
+        \end{vmatrix}
+        =(1-x)^2(-x)
+      \end{equation*}
+\end{solution}
+
+\part Find its eigenvalues.
+\begin{solution}
+The eigenvalues are $\lambda_1=1$ (this is a repeated root
+      of the equation) and $\lambda_2=0$.
+\end{solution}
+
+\part Find the eigenvectors associated with the first eigenvalue.
+\begin{solution}
+      Consider this system.
+      \begin{equation*}
+        \begin{linsys}{3}
+          (1-x)\cdot b_1  &+  &b_2         &+  &b_3            &=  &0  \\
+                          &   &-x\cdot b_2 &+  &b_3            &=  &0  \\
+                          &   &            &   &(1-x)\cdot b_3 &= &0  
+        \end{linsys}
+      \end{equation*}
+      For $\lambda_1=1$ we get this system.
+      \begin{equation*}
+        \begin{linsys}{3}
+               0\cdot b_1  &+  &b_2         &+  &b_3            &=  &0  \\
+                          &   &-1\cdot b_2 &+  &b_3            &=  &0  \\
+                          &   &            &   &0\cdot b_3 &= &0  
+        \end{linsys}
+      \end{equation*}
+      The sum of the first two equations gives $2b_3=0$, and so $b_3=0$
+      With that, back substitution gives $b_2=0$.
+      The solution set is this eigenspace.
+      \begin{equation*}
+        V_{1}=\set{\colvec{b_1 \\ 0 \\ 0}\suchthat b_1\in\C}
+             =\set{\colvec{1 \\ 0 \\ 0}\cdot b_1\suchthat b_1\in\C}
+      \end{equation*}
+\end{solution}
+
+\part Find the eigenvectors associated with the second eigenvalue.
+\begin{solution}
+      Again consider this system.
+      \begin{equation*}
+        \begin{linsys}{3}
+          (1-x)\cdot b_1  &+  &b_2         &+  &b_3            &=  &0  \\
+                          &   &-x\cdot b_2 &+  &b_3            &=  &0  \\
+                          &   &            &   &(1-x)\cdot b_3 &= &0  
+        \end{linsys}
+      \end{equation*}
+      When $\lambda_2=0$ we have this.
+      \begin{equation*}
+        \begin{linsys}{3}
+                     b_1  &+  &b_2         &+  &b_3            &=  &0  \\
+                          &   &            &   &b_3            &=  &0  \\
+                          &   &            &   &b_3            &= &0  
+        \end{linsys}
+      \end{equation*}
+The solution set is this eigenspace.
+      \begin{equation*}
+        V_{0}=\set{\colvec{-b_2 \\ b_2 \\ 0}\suchthat b_2\in\C}
+             =\set{\colvec{-1 \\ 1 \\ 0}\cdot b_2\suchthat b_2\in\C}
+      \end{equation*}
+\end{solution}
+\end{parts}
+
+
+\question
+     Consider the
+     differentiation operator
+     \( \map{d/dx}{\polyspace_3}{\polyspace_3} \).
+From Calculus we know it is linear.
+\begin{equation*}
+  \frac{d}{dx}\,(f+g)=\frac{d}{dx}\,f+\frac{d}{dx}\, g
+  \qquad
+  \frac{d}{dx}\,r\cdot f
+  =r\cdot \frac{d}{dx}\,f
+\end{equation*}
+
+\begin{parts}
+\part Represent this map with respect to the natural basis
+$B=\sequence{1,x,x^2,x^3}$.
+\begin{solution}
+       The map's action is $1\mapsto 0$, $x\mapsto 1$, $x^2\mapsto 2x$,
+       and $x^3\mapsto 3x^2$. 
+       So its representation is easy to compute.
+       \begin{equation*}
+         T=\rep{d/dx}{B,B}=
+         \begin{mat}[r]
+           0  &1  &0  &0  \\
+           0  &0  &2  &0  \\
+           0  &0  &0  &3  \\
+           0  &0  &0  &0
+         \end{mat}_{B,B}
+       \end{equation*}
+\end{solution}
+
+\part Find its characteristic equation.
+\begin{solution}
+       The computation is easy because the matrix is already in echelon form.
+       \begin{equation*}
+         0=\deter{T-xI}=
+         \begin{vmatrix}
+           -x &1  &0  &0  \\
+           0  &-x &2  &0  \\
+           0  &0  &-x &3  \\
+           0  &0  &0  &-x          
+         \end{vmatrix}
+         =x^4
+       \end{equation*}
+\end{solution}
+
+\part List the eigenvalues.
+\begin{solution}
+The map has the single eigenvalue $\lambda=0$ (it is a repeated root
+of the characteristic equation).
+\end{solution}
+
+\part Find the associated eigenspaces.
+\begin{solution}
+       Solve this matrix equation.
+       \begin{equation*}
+         \begin{mat}[r]
+           0  &1  &0  &0  \\
+           0  &0  &2  &0  \\
+           0  &0  &0  &3  \\
+           0  &0  &0  &0
+         \end{mat}_{B,B}
+         \colvec{b_1 \\ b_2 \\ b_3 \\ b_4}_B
+         =0\cdot\colvec{b_1 \\ b_2 \\ b_3 \\ b_4}_B
+       \end{equation*}
+       We get this.
+       \begin{equation*}
+       \begin{linsys}{4}
+         0b_1 &+ &1\cdot b_2 &  &     &   &     &=  &0  \\       
+              &  &           &  &2\cdot b_3 &   &     &=  &0  \\       
+              &  &           &  &     &   &3\cdot b_4 &=  &0  \\       
+              &  &           &  &     &   &0    &=  &0        
+       \end{linsys}
+       \end{equation*}
+       The conclusion is that $b_2=b_3=b_4=0$, and $b_1$ is free.
+       This is the set of representatives.
+       \begin{equation*}
+         \set{\colvec{b_1 \\ 0 \\ 0 \\ 0}_B
+               \suchthat b_1\in\C}
+        \end{equation*}
+        And here is the eigenspace associated with the eigenvalue $\lambda=1$.
+       \begin{equation*}
+         V_0=\set{b_1+0\cdot x+0\cdot x^2+0\cdot x^3
+               \suchthat b_1\in\C}
+         =\set{b_1
+               \suchthat b_1\in\C}
+       \end{equation*}
+       Of course, we recognize from Calculus that the collection of constant
+       polynomials is indeed nulled out by the derivative operation.
+\end{solution}
+\end{parts}
+
+
+\end{questions}
+\end{document}
