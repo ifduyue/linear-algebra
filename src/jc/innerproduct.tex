@@ -1,8 +1,8 @@
 % Chapter 5, Topic _Linear Algebra_ Jim Hefferon
 %  https://hefferon.net/linearalgebra
 %  2021-Jul-28
-\topic{Inner Products}
-\index{Inner Products|(}
+\topic{Inner Product}
+\index{Inner Product|(}
 
 The first chapter covers the dot product operation. 
 It inputs a pair of vectors from some $\R^n$ and outputs a scalar.
@@ -11,8 +11,8 @@ It inputs a pair of vectors from some $\R^n$ and outputs a scalar.
   =-1\cdot 1+2\cdot 0+3\cdot 3
   =8
 \end{equation*}
-In that chapter we had not yet defined the term, but the
-dot product operation is linear because it respects addition
+In that chapter we had not yet defined the term `linear' but
+this operation because it respects addition
 \begin{equation*}
  (\vec{v}_1+\vec{v}_2)\dotprod\vec{w}=\vec{v}_1\dotprod\vec{w}
                                       +\vec{v}_2\dotprod\vec{w}
@@ -55,13 +55,55 @@ by multiplying the numerator and denominator by $3-4i$.
 The usefulness of the difference of squares formula
 suggests the definition that the \definend{conjugate} of a complex number~$z$
 is $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$.
+\begin{center}
+  \includegraphics{jc/asy/innerproduct000.pdf}
+\end{center}
+As shown, the \definend{argument} $\arg(z)$ is the angle 
+made with the real axis.
 
+We will define an extension of the dot product, an
+operation between vectors from~$\C^n$ called the \definend{inner product}.
+Instead of using a dot, the traditional notation is
+$\innerprod{\vec{v}}{\vec{w}}$.
 
-Complex number, complex length, complex conjugation, complex arg.
+First, we consider the obvious thing. 
+For instance, let
+$\vec{v}$ have two complex number components $v_1$ and~$v_2$,
+and likewise let $\vec{w}$ have $w_1,w_2\in\C$;
+we might try  
+$\innerprod{\vec{v}}{\vec{w}}=v_1\cdot w_1+v_2\cdot w_2$.
+This is again linear in both inputs but because of that 
+we lose that performing the operation on itself gives the length:~if
+$\innerprod{\vec{v}}{\vec{v}}$ is greater than or equal to~$0$ for all
+complex vectors
+then 
+$0\leq \innerprod{i\vec{v}}{i\vec{v}}
+  =i\innerprod{\vec{v}}{i\vec{v}}
+  =i^2\innerprod{\vec{v}}{\vec{v}}\leq 0$.
 
-Why the obvious extension won't work.
+Said another way, to make lengths work, 
+so that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2$, 
+we don't want
+$(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$. 
+Instead we want
+$(a_1+b_1i)(a_1-b_1i)+(a_2+b_2i)(a_2-b_2i)$.
 
-The length calculation suggests using the conjugation.
+Consequently, for $\vec{v},\vec{w}\in\C^n$, with $i$-th components $v_i$ 
+and $w_i$, we define the \definend{Hermitian inner product}
+as $\innerprod{v}{w}=v_1\compconj{w_1}+\cdots+v_n\compconj{w_n}$.
+
+It is linear in the first input,
+$\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
+ = \innerprod{\vec{v}_1}{\vec{w}}
+   +\innerprod{\vec{v}_2}{\vec{w}}$
+and $\innerprod{z\vec{v}}{\vec{w}}
+     =z\innerprod{\vec{v}}{\vec{w}}$.
+But it is \definend{conjugate linear} in the second,
+$\innerprod{\vec{v}}{\vec{w}_1+\vec{w}_2}
+ = \innerprod{\vec{v}}{\vec{w}_1}
+   +\innerprod{\vec{v}}{\vec{w}_2}$
+and $\innerprod{\vec{v}}{z\vec{w}}
+     =\compconj{z}\innerprod{\vec{v}}{\vec{w}}$.
 
 
 
@@ -78,6 +120,6 @@ The length calculation suggests using the conjugation.
 %     $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
 %   \end{answer}
 % \end{exercises}
-\index{Inner Products|)}
+\index{Inner Product|)}
 \endinput
 % \end{document}
