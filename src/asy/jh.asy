@@ -40,9 +40,10 @@ pen THINPEN=linecap(0)
 pen DASHPEN=linecap(0)
              +linewidth(MAINPEN_WIDTH)
              +linetype(new real[] {8,8});
-pen FCNPEN=linecap(0)
+pen FCNPEN_SOLID=linecap(0)
              +gray(0.3)
-             +linewidth(1.5pt)
+             +linewidth(1.5pt);
+pen FCNPEN=FCNPEN_SOLID
              +opacity(.5,"Normal");
 pen AXISPEN=linecap(0)
              +gray(0.3)

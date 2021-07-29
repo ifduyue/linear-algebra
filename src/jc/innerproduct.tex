@@ -1,0 +1,83 @@
+% Chapter 5, Topic _Linear Algebra_ Jim Hefferon
+%  https://hefferon.net/linearalgebra
+%  2021-Jul-28
+\topic{Inner Products}
+\index{Inner Products|(}
+
+The first chapter covers the dot product operation. 
+It inputs a pair of vectors from some $\R^n$ and outputs a scalar.
+\begin{equation*}
+  \colvec{-1 \\ 2 \\ 3}\dotprod\colvec{1 \\ 0 \\ 3}
+  =-1\cdot 1+2\cdot 0+3\cdot 3
+  =8
+\end{equation*}
+In that chapter we had not yet defined the term, but the
+dot product operation is linear because it respects addition
+\begin{equation*}
+ (\vec{v}_1+\vec{v}_2)\dotprod\vec{w}=\vec{v}_1\dotprod\vec{w}
+                                      +\vec{v}_2\dotprod\vec{w}
+\qquad
+ \vec{v}\dotprod(\vec{w}_1+\vec{w}_2)=\vec{v}\dotprod\vec{w}_1
+                                      +\vec{v}\dotprod\vec{w}_2
+\end{equation*}
+and scalar multiplication.
+\begin{equation*}
+ (r\vec{v})\dotprod\vec{w}=r(\vec{v}\dotprod\vec{w})
+  \qquad
+ \vec{v}\dotprod(r\vec{w})=r(\vec{v}\dotprod\vec{w})
+\end{equation*}
+Dot product is that it describes the geometry of
+the spaces:
+$  \vec{u}\dotprod\vec{v}=
+  \absval{\vec{u}\,}\,\absval{\vec{w}\,}
+  \cdot \arccos(\theta)$, and in particular, the length of a vector is 
+determined by $\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
+This Topic extends the operation to complex numbers, with the
+goal of understanding the transformations of complex spaces
+that preserve length, $\absval{t(\vec{v})}=\absval{\vec{v}}$.
+
+First we need more on complex numbers.
+This chapter's opening section covereded addition, scalar multiplication,
+subtraction, and multiplication.
+As to division, note first that the difference of squares formula
+gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$.
+Then, for instance, resolve the division in $(1+2i)/(3+4i)$
+by multiplying the numerator and denominator by $3-4i$.
+\begin{equation*}
+  \frac{1+2i}{3+4i}\cdot\frac{3-4i}{3-4i}
+  =
+  \frac{(1\cdot 3-2\cdot 4)+(1\cdot 4+2\cdot 3)i}{3^2+4^2}
+  =
+  \frac{-5+10i}{25}
+  =
+  \frac{-1}{5}+\frac{2}{5}\,i
+\end{equation*}
+The usefulness of the difference of squares formula
+suggests the definition that the \definend{conjugate} of a complex number~$z$
+is $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$.
+
+
+Complex number, complex length, complex conjugation, complex arg.
+
+Why the obvious extension won't work.
+
+The length calculation suggests using the conjugation.
+
+
+
+
+% \begin{exercises}
+% \item Use the formula for the cosine of a sum to give an even more
+%   general formula for simple harmonic motion.
+%   \begin{answer}
+%     The angle sum formula for the cosine function is
+%     $\cos(\alpha+\beta)=cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$.
+%     Expand $A\cos(\omega t+\phi)$ to $A\cdot[cos(\omega
+%     t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.  Then $\cos(\phi)$ and
+%     $\sin(\phi)$ do not vary with~$t$ so we get the general solution
+%     $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
+%   \end{answer}
+% \end{exercises}
+\index{Inner Products|)}
+\endinput
+% \end{document}

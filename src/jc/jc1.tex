@@ -95,8 +95,9 @@ Consider a polynomial\index{polynomial}
 $p(x)=c_nx^n+\dots+c_1x+c_0$ with 
 leading coefficient\index{polynomial!leading coefficient} 
 $c_n\neq 0$.
-The degree\index{polynomial!degree}\index{degree of a polynomial}
-of the polynomial is~$n$.
+We say that it is a 
+\definend{degree}~$n$\index{polynomial!degree}\index{degree of a polynomial}
+polynomial.
 If $n=0$ then $p$ is a 
 constant polynomial\index{polynomial!constant}\index{constant polynomial} 
 $p(x)=c_0$. 
@@ -255,6 +256,10 @@ complex numbers\index{complex numbers}
 (These are often pictured on a plane with $a$ plotted on the 
 horizontal axis and $b$ on the vertical; note that the distance
 of the point from the origin is $|a+bi|=\sqrt{a^2+b^2}$.)
+For a scalar $z\in\C$, where $z=a+bi$,
+and we call $a$ the \definend{real part} of~$z$,
+while $b$ is the \definend{imaginary part}.
+
 
 In \( \C \) all quadratics factor. 
 That is, in contrast with the reals, $\C$ has no irreducible quadratics.
@@ -299,10 +304,16 @@ The factorization is unique.
 
 \subsection{Complex Representations}
 %<*ComplexOperations>
-Recall the definitions of the complex number addition
+Recall the definitions of the complex number 
+addition,
 \begin{equation*}
    (a+bi)\,+\,(c+di)=(a+c)+(b+d)i                  
 \end{equation*}
+scalar multiplication,
+\begin{equation*}
+  r\cdot(a+bi)=(ra)+(rb)i
+\end{equation*}
+(and consequently subtraction is $(a+bi)-(c+di)=(a-c)+(b-d)i$),
 and multiplication.
 \begin{align*}
      (a+bi)(c+di) &=ac+adi+bci+bd(-1)  \\
@@ -322,7 +333,7 @@ for real vector spaces carry over unchanged to vector spaces with complex
 scalars.
 
 \begin{example}
-Matrix multiplication is the same, although the scalar arithmetic involves more
+Matrix multiplication is the same, although the arithmetic involves more
 bookkeeping.
 \begin{multline*}
   \begin{mat}
