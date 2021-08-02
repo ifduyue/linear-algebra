@@ -26,7 +26,7 @@ and scalar multiplication.
   \qquad
  \vec{v}\dotprod(r\vec{w})=r(\vec{v}\dotprod\vec{w})
 \end{equation*}
-Dot product is that it describes the geometry of
+Dot product describes the geometry of
 the spaces:
 $  \vec{u}\dotprod\vec{v}=
   \absval{\vec{u}\,}\,\absval{\vec{w}\,}
@@ -37,7 +37,7 @@ goal of understanding the transformations of complex spaces
 that preserve length, $\absval{t(\vec{v})}=\absval{\vec{v}}$.
 
 First we need more on complex numbers.
-This chapter's opening section covereded addition, scalar multiplication,
+This chapter's opening section covered addition, scalar multiplication,
 subtraction, and multiplication.
 As to division, note first that the difference of squares formula
 gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$.
@@ -52,9 +52,18 @@ by multiplying the numerator and denominator by $3-4i$.
   =
   \frac{-1}{5}+\frac{2}{5}\,i
 \end{equation*}
-The usefulness of the difference of squares formula
-suggests the definition that the \definend{conjugate} of a complex number~$z$
-is $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$.
+Obviously this works as long as the denominator is not zero.
+Because of the difference of squares formula,
+we define the \definend{conjugate} of a complex number~$z$
+to be $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$
+(of course, the length is defined as $\absval{a+bi}=\sqrt{a^2+b^2}$).
+Dividing both sides by $\absval{z}^2$ gives that  
+every nonzero complex number has a multiplicative inverse,
+$z^{-1}=\compconj{z}/\absval{z}^2$,
+and thus $\absval{z}=1$ if and only if $z^{-1}=\compconj{z}$.
+Observe that the complex number~$z$ is a real number if and only if 
+it equals its conjugate, that $\compconj{z_1+z_2}=\compconj{z_1}+\compconj{z_2}$
+and that $\compconj{z_1\cdot z_2}=\compconj{z_1}\cdot\compconj{z_2}$.
 \begin{center}
   \includegraphics{jc/asy/innerproduct000.pdf}
 \end{center}
@@ -63,63 +72,190 @@ made with the real axis.
 
 We will define an extension of the dot product, an
 operation between vectors from~$\C^n$ called the \definend{inner product}.
-Instead of using a dot, the traditional notation is
+Instead of using a dot, the traditional notation is \definend{inner product},
 $\innerprod{\vec{v}}{\vec{w}}$.
+That is, dot product is the special case of inner product for real spaces.
 
-First, we consider the obvious thing. 
-For instance, let
-$\vec{v}$ have two complex number components $v_1$ and~$v_2$,
-and likewise let $\vec{w}$ have $w_1,w_2\in\C$;
+There is an obvious thing to try.
+For instance, 
+where
+$\vec{v}$ and $\vec{w}$ each have two complex number components
+$v_1,v_2,w_1,w_2\in\C$,
 we might try  
 $\innerprod{\vec{v}}{\vec{w}}=v_1\cdot w_1+v_2\cdot w_2$.
-This is again linear in both inputs but because of that 
-we lose that performing the operation on itself gives the length:~if
-$\innerprod{\vec{v}}{\vec{v}}$ is greater than or equal to~$0$ for all
-complex vectors
-then 
-$0\leq \innerprod{i\vec{v}}{i\vec{v}}
-  =i\innerprod{\vec{v}}{i\vec{v}}
-  =i^2\innerprod{\vec{v}}{\vec{v}}\leq 0$.
-
-Said another way, to make lengths work, 
-so that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2$, 
-we don't want
+But this doesn't give us what we want.
+We are investigating lengths,
+so we need that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2$.
+Thus, we don't want the combination.
 $(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$. 
-Instead we want
+Instead, we want
 $(a_1+b_1i)(a_1-b_1i)+(a_2+b_2i)(a_2-b_2i)$.
-
 Consequently, for $\vec{v},\vec{w}\in\C^n$, with $i$-th components $v_i$ 
 and $w_i$, we define the \definend{Hermitian inner product}
 as $\innerprod{v}{w}=v_1\compconj{w_1}+\cdots+v_n\compconj{w_n}$.
 
-It is linear in the first input,
+This operation inputs two vectors and outputs a scalar.
+It is \definend{positive definite}, meaning that
+$\innerprod{\vec{v}}{\vec{v}}> 0$ for all $\vec{v}\in\C^n$ such that
+$\vec{v}\neq \zero$.
+It is also linear in the first input,
 $\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
  = \innerprod{\vec{v}_1}{\vec{w}}
    +\innerprod{\vec{v}_2}{\vec{w}}$
 and $\innerprod{z\vec{v}}{\vec{w}}
      =z\innerprod{\vec{v}}{\vec{w}}$.
-But it is \definend{conjugate linear} in the second,
+And, Hermitian inner product is \definend{conjugate symmetric},
+$\innerprod{\vec{w}}{\vec{v}}$ is the conjugate of 
+$\innerprod{\vec{v}}{\vec{w}}$.
+
+Any operation satisfying those three conditions is an 
+\definend{inner product}.
+Any vector space with a defined inner product operation is an
+\definend{inner product space}.
+Those three conditions together imply two more very useful ones,
+that $\innerprod{\vec{v}}{\vec{v}}\geq 0$ for all vectors,
+and that $\innerprod{\vec{v}}{\vec{v}}=0$ if and only if $\vec{v}=\zero$.
+
+Note that although Hermitian inner product is linear in the first input,
+it is not linear in the second, 
+it is \definend{conjugate linear}:
 $\innerprod{\vec{v}}{\vec{w}_1+\vec{w}_2}
  = \innerprod{\vec{v}}{\vec{w}_1}
    +\innerprod{\vec{v}}{\vec{w}_2}$
 and $\innerprod{\vec{v}}{z\vec{w}}
      =\compconj{z}\innerprod{\vec{v}}{\vec{w}}$.
+Observe also that the Hermitian inner product extends the dot product in that
+if we fall back to reals, taking the $b_1$'s to be zero, then
+we get $\vec{v}\dotprod\vec{w}$.
+
+Finally, we are interested in lengths, so consider the operation
+$\innerprod{\vec{v}}{\vec{v}}=\norm{\vec{v}}$.
+The exercises show that it satisfies that $\norm{\vec{v}}=0$ if and only if
+$\vec{v}=\zero$,
+that $\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
+the triangle inequality, that 
+$\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
+Together these three make this operation a \definend{norm} on the
+vector space~$\C^n$.
+
+With an inner product operation, and the associated norm, 
+even in spaces where there is no obvious geometry we can 
+interpret geometric ideas. 
+For instance we can say that
+vectors $\vec{v}$ and~$\vec{w}$ are orthogonal when 
+$\innerprod{\vec{v}}{\vec{w}}=0$.
+Similarly, the conditions on a norm allow us to think of it as a length.
+Thus, we can extend the Gram-Schmidt process
+to any inner product finite dimensional space.
+
+Given a matrix~$M$, its \definend{matrix conjugate}~$\compconj{M}$ is 
+the matrix whose entries are the conjugate of the entries of~$M$.
+This operation is linear, that is, 
+$\compconj{M+N}=\compconj{M}+\compconj{N}$ and 
+$\compconj{z\cdot M}=\compconj{z}\cdot\compconj{M}$.
+This operation also respects matrix multiplication, 
+$\compconj{M\cdot N}=\compconj{M}\cdot\compconj{N}$.  
+
+The \definend{conjugate transpose} or \definend{Hermitian transpose},
+$\conjtrans{M}$
+is the transpose of the conjugate.
+We can either conjugate and then transpose, or transpose and 
+then conjugate, so that
+$\conjtrans{M}=\compconj{(\trans{M})}=\trans{(\compconj{M})}$.
+
+A complex matrix~$U$ is \definend{unitary} if $U\cdot\conjtrans{U}=I$.
+We will show that a transformation preserves length if and only if its
+representation is unitary.
+
+First some results:
+(1)~the conjugate transpose operation is idempotent, 
+$\conjtrans{(\conjtrans{M})}=M$,
+(2)~it respects addition $conjtrans{M+N}=\conjtrans{M}+\conjtrans{N}$,
+and $\conjtrans(z\cdot M)=\compconj{z}\cdot\conjtrans{M}$,
+(3)~$\conjtrans{M\cdot N}=\conjtrans{N}\cdot\conjtrans{M}$,
+and the dot product of complex column vectors is 
+$\innerprod{\vec{v}}{\vec{w}}$ equals the 
+result of treating the two vectors as one-column matrices and 
+multiplying $\conjtrans{\vec{w}\,}\cdot \vec{v}$.
+
+The verifications are straightforward.
+For (1), recall that we can take a 
+conjugate transpose by doign conjugation and then transposition,
+or we can do them in the other order. 
+That gives this.
+\begin{equation*}
+\conjtrans{(\conjtrans{M})}
+  =\compconj{\trans{\big(\,\compconj{\trans{M}}\,\big)\!}}
+  =\compconj{\compconj{\trans{\trans{M}}}}
+  =\compconj{\compconj{M}}
+  =M
+\end{equation*}
+Number~(2) follows immediately from earlier work.
+For (3), recall how transpose interacts with matrix multipication,
+$\conjtrans{(MN)}
+=\compconj{\trans{(MN)}}
+=\compconj{\trans{N}\cdot\trans{M}}
+=\compconj{\trans{N}}\cdot\compconj{\trans{M}}
+=\conjtrans{N}\cdot\conjtrans{M}$. 
+Item~(4) is a common source of mistakes.
+\begin{equation*}
+  \innerprod{\vec{v}}{\vec{w}}
+  =\innerprod{\colvec{v_1 \\ \vdots \\ v_n}}{\colvec{w_1 \\ \vdots \\ w_n}}
+  =v_1\compconj{w_1}+\cdots +v_n\compconj{w_n}
+  =\rowvec{\compconj{w_1} &\cdots &\compconj{w_n}}\colvec{v_1 \\ \vdots \\ v_n}
+\end{equation*}
 
 
 
+\begin{exercises}
+\item
+Show that an attempted definition of $\innerprod{\vec{v}}{\vec{w}}$
+that is linear in both inputs
+loses that $\innerprod{\vec{v}}{\vec{v}}$ gives the length.
+\begin{answer}
+If
+$\innerprod{\vec{v}}{\vec{v}}$ is greater than or equal to~$0$ for all
+complex vectors,
+then 
+$0\leq \innerprod{i\vec{v}}{i\vec{v}}
+  =i\innerprod{\vec{v}}{i\vec{v}}
+  =i^2\innerprod{\vec{v}}{\vec{v}}\leq 0$.
+\end{answer}
 
-% \begin{exercises}
-% \item Use the formula for the cosine of a sum to give an even more
-%   general formula for simple harmonic motion.
-%   \begin{answer}
-%     The angle sum formula for the cosine function is
-%     $\cos(\alpha+\beta)=cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$.
-%     Expand $A\cos(\omega t+\phi)$ to $A\cdot[cos(\omega
-%     t)\cos(\phi)-\sin(\omega t)\sin(\phi)]$.  Then $\cos(\phi)$ and
-%     $\sin(\phi)$ do not vary with~$t$ so we get the general solution
-%     $x(t)=B\cos(\omega t)+C\sin(\omega t)$.
-%   \end{answer}
-% \end{exercises}
+\item Show that linearity of $\innerprod{\vec{v}}{\vec{w}}$ in the first
+input along with conjugate symmetry implies 
+\definend{sesquilinearity}:
+$\innerprod{\vec{v}}{z\vec{w}}=\compconj{z}\cdot \innerprod{\vec{v}}{\vec{w}}$.
+\begin{answer}
+$\innerprod{\vec{v}}{z\vec{w}}
+=\compconj{\innerprod{z\vec{w}}{\vec{v}}}
+=\compconj{z\cdot\innerprod{\vec{w}}{\vec{v}}}
+=\compconj{z}\cdot\compconj{\innerprod{\vec{w}}{\vec{v}}}
+=
+\compconj{z}\cdot \innerprod{\vec{v}}{\vec{w}}$
+\end{answer}
+
+\item Prove the Pythagorean Theorem,  
+that if $\vec{v}$ is orthogonal to~$\vec{w}$ then 
+$\norm{\vec{v}+\vec{w}}^2=\norm{\vec{v}}^2+\norm{\vec{w}}^2$.
+\begin{answer}
+$
+\norm{\vec{v}+\vec{w}}^2
+=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
+=\innerprod{\vec{v}}{\vec{v}}
+  +\innerprod{\vec{v}}{\vec{w}}
+  +\innerprod{\vec{w}}{\vec{v}}
+  +\innerprod{\vec{w}}{\vec{w}}
+=\norm{\vec{v}}
+  +\zero
+  +\zero
+  +\norm{\vec{w}}
+$
+\end{answer}
+
+
+
+\end{exercises}
 \index{Inner Product|)}
 \endinput
 % \end{document}

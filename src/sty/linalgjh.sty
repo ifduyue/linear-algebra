@@ -299,8 +299,9 @@
 \newcommand{\nbym}[2]{#1 \! \times \! #2 }       % Use in math mode.
 
 % complex numbers
-\newcommand{\compconj}[1]{\overline{#1}}
 \DeclarePairedDelimiterX{\innerprod}[2]{\langle}{\rangle}{#1, #2}
+\newcommand{\compconj}[1]{\overline{#1}}
+\newcommand{\conjtrans}[1]{{#1}^{\dagger}}
 
 % degrees
 \newcommand{\degs}[1]{#1^\circ\relax}
