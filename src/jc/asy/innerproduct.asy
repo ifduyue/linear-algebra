@@ -39,19 +39,22 @@ dotfactor=1.5; // http://asymptote.sourceforge.net/FAQ/section3.html
 
 pair z=(a,b);
 dot(pic, z, FCNPEN_SOLID, Fill(FCNPEN_SOLID));
-label(pic,"$z=a+bi$",z,E);
+label(pic,"$z=a+bi$",z,1.75*E);
 pair zconj=(a,-1*b);
 dot(pic, zconj, FCNPEN_SOLID, Fill(FCNPEN_SOLID));
-label(pic,"$\compconj{z}=a-bi$",zconj,E);
+label(pic,"$\compconj{z}=a-bi$",zconj,1.75*E);
 path zpath=(0,0)--z;
 path zconjpath=(0,0)--zconj;
 
 // draw the arc
-path c=arc((0,0), 1.5, 0, aTan(b/a), CCW);
-draw(pic,c);
-label(pic,"$\theta=\arg(z)$",point(c,0.5),E);
+path c=arc((0,0), 1.75, 0, aTan(b/a), CCW);
+draw(pic,c,Arrow(DefaultHead,4pt));
+label(pic,"$\theta=\arg(z)$",point(c,0.5),1.75*E);
 
-draw(pic, subpath(zpath,0,0.96));
+// line from origin to z
+pen zline_pen = linetype(new real[] {3,6});
+
+draw(pic, subpath(zpath,0.04,0.94), zline_pen);
 // draw(pic, zconjpath,FCNPEN_SOLID);
 
 // axes

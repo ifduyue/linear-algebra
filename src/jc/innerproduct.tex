@@ -11,8 +11,8 @@ It inputs a pair of vectors from some $\R^n$ and outputs a scalar.
   =-1\cdot 1+2\cdot 0+3\cdot 3
   =8
 \end{equation*}
-In that chapter we had not yet defined the term `linear' but
-this operation because it respects addition
+In that chapter we had not yet studied the term `linear' but
+this operation both respects addition
 \begin{equation*}
  (\vec{v}_1+\vec{v}_2)\dotprod\vec{w}=\vec{v}_1\dotprod\vec{w}
                                       +\vec{v}_2\dotprod\vec{w}
@@ -27,22 +27,20 @@ and scalar multiplication.
  \vec{v}\dotprod(r\vec{w})=r(\vec{v}\dotprod\vec{w})
 \end{equation*}
 Dot product describes the geometry of
-the spaces:
-$  \vec{u}\dotprod\vec{v}=
-  \absval{\vec{u}\,}\,\absval{\vec{w}\,}
-  \cdot \arccos(\theta)$, and in particular, the length of a vector is 
-determined by $\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
-This Topic extends the operation to complex numbers, with the
+$\Re^n$; for instance, the length of a vector is determined by  
+$\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
+We now extend this idea to complex vector spaces, with the
 goal of understanding the transformations of complex spaces
 that preserve length, $\absval{t(\vec{v})}=\absval{\vec{v}}$.
 
 First we need more on complex numbers.
 This chapter's opening section covered addition, scalar multiplication,
 subtraction, and multiplication.
-As to division, note first that the difference of squares formula
-gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$.
-Then, for instance, resolve the division in $(1+2i)/(3+4i)$
-by multiplying the numerator and denominator by $3-4i$.
+As to division,  consider $(1+2i)/(3+4i)$.
+The difference of squares formula
+gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$
+so we can resolve the quotient
+by multiplying both the numerator and denominator by $3-4i$.
 \begin{equation*}
   \frac{1+2i}{3+4i}\cdot\frac{3-4i}{3-4i}
   =
@@ -52,47 +50,46 @@ by multiplying the numerator and denominator by $3-4i$.
   =
   \frac{-1}{5}+\frac{2}{5}\,i
 \end{equation*}
-Obviously this works as long as the denominator is not zero.
-Because of the difference of squares formula,
+Because of this,
 we define the \definend{conjugate} of a complex number~$z$
 to be $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$
 (of course, the length is defined as $\absval{a+bi}=\sqrt{a^2+b^2}$).
 Dividing both sides by $\absval{z}^2$ gives that  
 every nonzero complex number has a multiplicative inverse,
-$z^{-1}=\compconj{z}/\absval{z}^2$,
-and thus $\absval{z}=1$ if and only if $z^{-1}=\compconj{z}$.
+$z^{-1}=\compconj{z}/\absval{z}^2$.
+% , and thus $\absval{z}=1$ if and only if $z^{-1}=\compconj{z}$.
 Observe that the complex number~$z$ is a real number if and only if 
 it equals its conjugate, that $\compconj{z_1+z_2}=\compconj{z_1}+\compconj{z_2}$
 and that $\compconj{z_1\cdot z_2}=\compconj{z_1}\cdot\compconj{z_2}$.
+This illustrates the conjugate.
 \begin{center}
   \includegraphics{jc/asy/innerproduct000.pdf}
 \end{center}
-As shown, the \definend{argument} $\arg(z)$ is the angle 
+It also shows that the \definend{argument}, $\arg(z)$, is the angle 
 made with the real axis.
 
 We will define an extension of the dot product, an
-operation between vectors from~$\C^n$ called the \definend{inner product}.
+operation between vectors from~$\C^n$.
 Instead of using a dot, the traditional notation is \definend{inner product},
 $\innerprod{\vec{v}}{\vec{w}}$.
-That is, dot product is the special case of inner product for real spaces.
 
-There is an obvious thing to try.
+The obvious thing to try is a linear combination of the components,
 For instance, 
 where
-$\vec{v}$ and $\vec{w}$ each have two complex number components
+$\vec{v}$ and $\vec{w}$ each have two complex components,
 $v_1,v_2,w_1,w_2\in\C$,
-we might try  
+we could try  
 $\innerprod{\vec{v}}{\vec{w}}=v_1\cdot w_1+v_2\cdot w_2$.
-But this doesn't give us what we want.
-We are investigating lengths,
+But 
+we are investigating lengths,
 so we need that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2$.
-Thus, we don't want the combination.
+Thus, we don't want the combination
 $(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$. 
 Instead, we want
 $(a_1+b_1i)(a_1-b_1i)+(a_2+b_2i)(a_2-b_2i)$.
 Consequently, for $\vec{v},\vec{w}\in\C^n$, with $i$-th components $v_i$ 
-and $w_i$, we define the \definend{Hermitian inner product}
-as $\innerprod{v}{w}=v_1\compconj{w_1}+\cdots+v_n\compconj{w_n}$.
+and $w_i$, we will consider the \definend{Hermitian inner product},
+$\innerprod{v}{w}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
 
 This operation inputs two vectors and outputs a scalar.
 It is \definend{positive definite}, meaning that
