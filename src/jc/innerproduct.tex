@@ -11,7 +11,7 @@ It inputs a pair of vectors from some $\R^n$ and outputs a scalar.
   =-1\cdot 1+2\cdot 0+3\cdot 3
   =8
 \end{equation*}
-In that chapter we had not yet studied the term `linear' but
+In that chapter we did not yet have the term `linear', but
 this operation both respects addition
 \begin{equation*}
  (\vec{v}_1+\vec{v}_2)\dotprod\vec{w}=\vec{v}_1\dotprod\vec{w}
@@ -27,20 +27,27 @@ and scalar multiplication.
  \vec{v}\dotprod(r\vec{w})=r(\vec{v}\dotprod\vec{w})
 \end{equation*}
 Dot product describes the geometry of
-$\Re^n$; for instance, the length of a vector is determined by  
+$\Re^n$; for instance, two vectors are perpendicular if and only if their
+dot product is zero, and the length of a vector is determined by  
 $\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
 We now extend this idea to complex vector spaces, with the
 goal of understanding the transformations of complex spaces
 that preserve length, $\absval{t(\vec{v})}=\absval{\vec{v}}$.
 
-First we need more on complex numbers.
-This chapter's opening section covered addition, scalar multiplication,
-subtraction, and multiplication.
+First we need more on complex numbers than we reviewed in this
+chapter's opening section.
+There, we described~$\C$ as 
+the collection of $z=a+bi$ where $a$ and~$b$ are real numbers,
+and where $i^2=-1$. 
+We also covered addition, scalar multiplication,
+subtraction, and multiplication, as well as length.
 As to division,  consider $(1+2i)/(3+4i)$.
 The difference of squares formula
-gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$
-so we can resolve the quotient
-by multiplying both the numerator and denominator by $3-4i$.
+gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$,
+which is a real number,
+so
+by multiplying the quotient's numerator and denominator by $3-4i$
+we get an expression of the form $a+bi$.
 \begin{equation*}
   \frac{1+2i}{3+4i}\cdot\frac{3-4i}{3-4i}
   =
@@ -50,100 +57,157 @@ by multiplying both the numerator and denominator by $3-4i$.
   =
   \frac{-1}{5}+\frac{2}{5}\,i
 \end{equation*}
-Because of this,
-we define the \definend{conjugate} of a complex number~$z$
-to be $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$
-(of course, the length is defined as $\absval{a+bi}=\sqrt{a^2+b^2}$).
-Dividing both sides by $\absval{z}^2$ gives that  
+Consequently, we define the \definend{conjugate} of a complex number~$z$
+to be $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$.
+Dividing both sides by $\absval{z}^2$ gives $z\compconj{z}/\absval{z}^2=1$
+and so  
 every nonzero complex number has a multiplicative inverse,
 $z^{-1}=\compconj{z}/\absval{z}^2$.
 % , and thus $\absval{z}=1$ if and only if $z^{-1}=\compconj{z}$.
-Observe that the complex number~$z$ is a real number if and only if 
-it equals its conjugate, that $\compconj{z_1+z_2}=\compconj{z_1}+\compconj{z_2}$
+Observe that a complex number is a real number if and only if 
+it equals its conjugate, 
+that $\compconj{z_1+z_2}=\compconj{z_1}+\compconj{z_2}$,
 and that $\compconj{z_1\cdot z_2}=\compconj{z_1}\cdot\compconj{z_2}$.
-This illustrates the conjugate.
+Plotting $z=a+bi$ on the 
+complex plane\index{complex plane} 
+illustrates the conjugate.
 \begin{center}
   \includegraphics{jc/asy/innerproduct000.pdf}
 \end{center}
-It also shows that the \definend{argument}, $\arg(z)$, is the angle 
-made with the real axis.
+It also shows the \definend{argument}, $\arg(z)$, the angle that
+$z$ makes with the real axis.
 
-We will define an extension of the dot product, an
-operation between vectors from~$\C^n$.
-Instead of using a dot, the traditional notation is \definend{inner product},
+We will extend the dot product to a new operation.
+Instead of a dot, the traditional mathematical notation is
 $\innerprod{\vec{v}}{\vec{w}}$.
 
-The obvious thing to try is a linear combination of the components,
-For instance, 
-where
-$\vec{v}$ and $\vec{w}$ each have two complex components,
-$v_1,v_2,w_1,w_2\in\C$,
-we could try  
-$\innerprod{\vec{v}}{\vec{w}}=v_1\cdot w_1+v_2\cdot w_2$.
-But 
-we are investigating lengths,
-so we need that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2$.
-Thus, we don't want the combination
-$(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$. 
-Instead, we want
+The obvious guess is to try defining $\innerprod{\vec{v}}{\vec{w}}$ 
+as the linear combination of the components, so that in the two-dimensional 
+case
+\begin{equation*}
+  \vec{v}=\colvec{a_{1,1}+b_{1,1}i \\ a_{2,1}+b_{2,1}i}
+  \qquad
+  \vec{w}=\colvec{a_{1,2}+b_{1,2}i \\ a_{2,2}+b_{2,2}i}
+\end{equation*}
+it would be 
+$(a_{1,1}+b_{1,1}i)\cdot(a_{1,2}+b_{1,2}i)+(a_{2,1}+b_{2,1}i)\cdot(a_{2,2}+b_{2,2}i)$.
+But that won't do.
+We are investigating lengths,
+so we want that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2\!$.
+Thus, we don't want that $\innerprod{\vec{v}}{\vec{v}}$ equals
+$(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$,
+instead we want something like
 $(a_1+b_1i)(a_1-b_1i)+(a_2+b_2i)(a_2-b_2i)$.
-Consequently, for $\vec{v},\vec{w}\in\C^n$, with $i$-th components $v_i$ 
-and $w_i$, we will consider the \definend{Hermitian inner product},
+Consequently, we want this in the two-dimensional case.
+\begin{equation*}
+  \innerprod{\vec{v}}{\vec{w}}
+  =(a_{1,1}+b_{1,1}i)\cdot(a_{1,2}-b_{1,2}i)\,+\,(a_{2,1}+b_{2,1}i)\cdot(a_{2,2}-b_{2,2}i)
+\end{equation*}
+This is the 
+\definend{Hermitian inner product}:\index{inner product!Hermitian}\index{Hermitian inner product}
+for $\vec{v},\vec{w}$ with $i$-th components $v_i$ 
+and $w_i$, define
 $\innerprod{v}{w}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
+Observe that this extends the dot product in that
+if we fall back to reals, taking the $b$'s be zero, then
+we get $\vec{v}\dotprod\vec{w}$.
 
-This operation inputs two vectors and outputs a scalar.
-It is \definend{positive definite}, meaning that
-$\innerprod{\vec{v}}{\vec{v}}> 0$ for all $\vec{v}\in\C^n$ such that
-$\vec{v}\neq \zero$.
-It is also linear in the first input,
+Here is an example.
+\begin{align*}
+  \innerprod{\colvec{1+2i \\ 3+4i}}{\colvec{5+6i \\ 7+8i}}
+  &=(1+2i)(5-6i)+(3+4i)(7-8i)                     \\[-2ex]
+  &=(17+4i)+(53+4i)=70+8i
+\end{align*}
+Note that this operation inputs two vectors but outputs a scalar.
+
+This operation is linear in the first input:~checking that
+$\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
+ = \innerprod{\vec{v}_1}{\vec{w}}
+   +\innerprod{\vec{v}_2}{\vec{w}}$
+and
+$\innerprod{z\cdot\vec{v}}{\vec{w}}
+     =z\cdot\innerprod{\vec{v}}{\vec{w}}$
+is straightforward.
+But it is not linear in the second because
+while
+$\innerprod{\vec{v}}{\vec{w}_1+\vec{w}_2}
+ = \innerprod{\vec{v}}{\vec{w}_1}
+   +\innerprod{\vec{v}}{\vec{w}_2}$
+holds, for scalar multiplication a conjugation appears,
+$\innerprod{\vec{v}}{z\cdot\vec{w}}
+     =\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}$.
+
+In general, there are many different possible extensions to dot product
+that lead to a sensible idea of length.
+An \definend{inner product} is an operation
+that inputs two vectors from a real or complex vector space 
+and that outputs a scalar, and that satisfies 
+three conditions:
+(1)~it is linear in the first input,
 $\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
  = \innerprod{\vec{v}_1}{\vec{w}}
    +\innerprod{\vec{v}_2}{\vec{w}}$
 and $\innerprod{z\vec{v}}{\vec{w}}
-     =z\innerprod{\vec{v}}{\vec{w}}$.
-And, Hermitian inner product is \definend{conjugate symmetric},
-$\innerprod{\vec{w}}{\vec{v}}$ is the conjugate of 
-$\innerprod{\vec{v}}{\vec{w}}$.
+     =z\innerprod{\vec{v}}{\vec{w}}$,
+(2)~it is \definend{positive definite}, meaning that
+$\innerprod{\vec{v}}{\vec{v}}> 0$ for all nonzero $\vec{v}$,
+and (3)~it is \definend{conjugate symmetric}, 
+$\innerprod{\vec{w}}{\vec{v}}=\compconj{\innerprod{\vec{v}}{\vec{w}}}$.
 
-Any operation satisfying those three conditions is an 
-\definend{inner product}.
-Any vector space with a defined inner product operation is an
+A vector space that has an inner product operation is an
 \definend{inner product space}.
-Those three conditions together imply two more very useful ones,
+(The three conditions together imply
 that $\innerprod{\vec{v}}{\vec{v}}\geq 0$ for all vectors,
-and that $\innerprod{\vec{v}}{\vec{v}}=0$ if and only if $\vec{v}=\zero$.
+with $\innerprod{\vec{v}}{\vec{v}}=0$ if and only if $\vec{v}=\zero$.)
 
-Note that although Hermitian inner product is linear in the first input,
-it is not linear in the second, 
-it is \definend{conjugate linear}:
-$\innerprod{\vec{v}}{\vec{w}_1+\vec{w}_2}
- = \innerprod{\vec{v}}{\vec{w}_1}
-   +\innerprod{\vec{v}}{\vec{w}_2}$
-and $\innerprod{\vec{v}}{z\vec{w}}
-     =\compconj{z}\innerprod{\vec{v}}{\vec{w}}$.
-Observe also that the Hermitian inner product extends the dot product in that
-if we fall back to reals, taking the $b_1$'s to be zero, then
-we get $\vec{v}\dotprod\vec{w}$.
+Hermitian inner product makes the two-dimensional vector space~$\C^2$ into 
+an inner product space (see the exercises).
+An example which looks quite different 
+is the vector space over the reals whose members are
+real valued functions that are continuous on the 
+closed interval $\closedinterval{0}{1}$.
+Let the inner product be this.
+\begin{equation*}
+  \innerprod{f}{g}=\int_{0}^1 f(t)\cdot g(t)\,dt
+\end{equation*}
+This definition satisfies
+condition~(1) by a Calculus result, that  
+$\int_{0}^1 (f_1(t)+f_2(t))\cdot g(t)\,dt$ equals 
+$\int_{0}^1 f(t)_1\cdot g(t)\,dt+\int_{0}^1 f(t)_2\cdot g(t)\,dt$,
+and a similar result holds for real scalar multiplication. 
+It satisfies condition~(3) because for real numbers conjugation has no effect,
+and $f(t)g(t)$ equals $g(t)f(t)$. 
+For condition~(2), if~$f$ is not the zero function then 
+the square $f(t)\cdot f(t)$ is greater than~$0$ for some~$\hat{t}$.
+By continuity then, the square is greater than zero for a whole subinterval
+around~$\hat{t}$,
+and so the area under the curve is greater than~$0$.
 
-Finally, we are interested in lengths, so consider the operation
+Our interest in inner product operations
+is that they give rise to a reasonable idea of length, 
+so consider the operation
 $\innerprod{\vec{v}}{\vec{v}}=\norm{\vec{v}}$.
-The exercises show that it satisfies that $\norm{\vec{v}}=0$ if and only if
+The exercises show that it satisfies that 
+(1)~$\norm{\vec{v}}=0$ if and only if
 $\vec{v}=\zero$,
-that $\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
-the triangle inequality, that 
+that (2)~$\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
+(3)~the triangle inequality, that 
 $\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
 Together these three make this operation a \definend{norm} on the
-vector space~$\C^n$.
+vector space (the vector space may have real or complex scalars).
 
-With an inner product operation, and the associated norm, 
-even in spaces where there is no obvious geometry we can 
-interpret geometric ideas. 
+With the inner product and norm operations, 
+even in spaces where there is no obvious geometry
+we can interpret geometric ideas. 
 For instance we can say that
 vectors $\vec{v}$ and~$\vec{w}$ are orthogonal when 
 $\innerprod{\vec{v}}{\vec{w}}=0$.
-Similarly, the conditions on a norm allow us to think of it as a length.
-Thus, we can extend the Gram-Schmidt process
+Similarly, we can extend the Gram-Schmidt process
 to any inner product finite dimensional space.
+
+That brings up back to our goal, to determine which transformations
+of the complex vector space~$\C^n$ preserve length.
+We make it an inner product space by using the Hermitian inner product.
 
 Given a matrix~$M$, its \definend{matrix conjugate}~$\compconj{M}$ is 
 the matrix whose entries are the conjugate of the entries of~$M$.
@@ -167,7 +231,7 @@ representation is unitary.
 First some results:
 (1)~the conjugate transpose operation is idempotent, 
 $\conjtrans{(\conjtrans{M})}=M$,
-(2)~it respects addition $conjtrans{M+N}=\conjtrans{M}+\conjtrans{N}$,
+(2)~it respects addition $\conjtrans{M+N}=\conjtrans{M}+\conjtrans{N}$,
 and $\conjtrans(z\cdot M)=\compconj{z}\cdot\conjtrans{M}$,
 (3)~$\conjtrans{M\cdot N}=\conjtrans{N}\cdot\conjtrans{M}$,
 and the dot product of complex column vectors is 
@@ -250,6 +314,9 @@ $
 $
 \end{answer}
 
+\item
+Show that Hermitian inner product on the two-dimensional vector space~$\C^2$ 
+satisfies these three conditions in the definition of inner product. 
 
 
 \end{exercises}

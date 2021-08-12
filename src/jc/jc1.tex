@@ -246,25 +246,50 @@ we know that \( q(x)=(x-3)(x+2) \).
 %<*ComplexNumbers>
 While \( x^2+1 \) has no real roots and so doesn't factor over the real
 numbers, if we imagine a root\Dash traditionally denoted \( i \), 
-so that \( i^2+1=0 \)\Dash then \( x^2+1 \) factors into a product of linears
+so that \( i^2+1=0 \)\Dash then \( x^2+1 \) factors into a product of linears,
 \( (x-i)(x+i) \).
 When we adjoin this root \( i \) to the reals and close the new system with
 respect to addition and multiplication
 then we have the 
-complex numbers\index{complex numbers}
+complex numbers,\index{complex numbers}
 \( \C=\set{a+bi\suchthat \text{$a,b\in\R$ and $i^2=-1$}} \).
-(These are often pictured on a plane with $a$ plotted on the 
-horizontal axis and $b$ on the vertical; note that the distance
-of the point from the origin is $|a+bi|=\sqrt{a^2+b^2}$.)
-For a scalar $z\in\C$, where $z=a+bi$,
-and we call $a$ the \definend{real part} of~$z$,
-while $b$ is the \definend{imaginary part}.
-
-
-In \( \C \) all quadratics factor. 
-That is, in contrast with the reals, $\C$ has no irreducible quadratics.
 %</ComplexNumbers>
-%Any quadratic polynomial factors over the complex numbers.
+
+For a scalar $z\in\C$, where $z=a+bi$,
+we call $a$ the \definend{real part} of~$z$,
+and~$b$ the \definend{imaginary part}.
+We often picture complex numbers on the 
+\definend{complex plane}\index{complex plane},
+with $a$ plotted on the \definend{real axis}\index{real axis}, 
+the horizontal axis, and $b$ plotted on the 
+\definend{imaginary axis},\index{imaginary axis}
+the vertical axis.
+Note that the distance of the point from the origin is 
+the length, $|a+bi|=\sqrt{a^2+b^2}$.
+
+%<*ComplexOperations>
+Recall the definitions of the complex number 
+addition and scalar multiplication
+\begin{equation*}
+   (a+bi)\,+\,(c+di)=(a+c)+(b+d)i                  
+  \qquad
+  r\cdot(a+bi)=(ra)+(rb)i
+\end{equation*}
+(and consequently subtraction is $(a+bi)-(c+di)=(a-c)+(b-d)i$).
+Recall also the definition of complex-complex multiplication.
+\begin{align*}
+     (a+bi)(c+di) &=ac+adi+bci+bd(-1)  \\
+                  &=(ac-bd)+(ad+bc)i
+\end{align*}
+%</ComplexOperations>
+
+\begin{example}
+For instance,
+% \( (1-2i)\,+\,(5+4i)=6+2i \) and
+\( (2-3i)(4-0.5i)=6.5-13i \).
+\end{example}
+
+Over the complex numbers, any quadratic polynomial factors into linears.
 \begin{equation*}
    ax^2+bx+c=
    a\cdot \big(x-\frac{-b+\sqrt{b^2-4ac}}{2a}\big)
@@ -282,6 +307,9 @@ into the product of two first degree polynomials.
    \big(x-(-\frac{1}{2}-\frac{\sqrt{3}}{2}i)\big)
 \end{equation*}
 \end{example}
+
+In \( \C \), in contrast with the reals, there are no irreducible quadratics.
+All polynomials factor completely into linears.
 
 \begin{theorem}[Fundamental Theorem of Algebra] \label{th:FundThmAlg}\index{Fundamental Theorem!of Algebra}
 \hspace*{0em plus2em}
@@ -302,39 +330,16 @@ The factorization is unique.
 
 
 
+
 \subsection{Complex Representations}
-%<*ComplexOperations>
-Recall the definitions of the complex number 
-addition,
-\begin{equation*}
-   (a+bi)\,+\,(c+di)=(a+c)+(b+d)i                  
-\end{equation*}
-scalar multiplication,
-\begin{equation*}
-  r\cdot(a+bi)=(ra)+(rb)i
-\end{equation*}
-(and consequently subtraction is $(a+bi)-(c+di)=(a-c)+(b-d)i$),
-and multiplication.
-\begin{align*}
-     (a+bi)(c+di) &=ac+adi+bci+bd(-1)  \\
-                  &=(ac-bd)+(ad+bc)i
-\end{align*}
-%</ComplexOperations>
-
-\begin{example}
-For instance,
-\( (1-2i)\,+\,(5+4i)=6+2i \) and
-\( (2-3i)(4-0.5i)=6.5-13i \).
-\end{example}
-
-With these rules, all of
+With the above definitions for the complex numbers, all of
 the operations that we've used
 for real vector spaces carry over unchanged to vector spaces with complex
 scalars.
 
 \begin{example}
-Matrix multiplication is the same, although the arithmetic involves more
-bookkeeping.
+Matrix multiplication is the same, although the computation can involve more
+arithmetic.
 \begin{multline*}
   \begin{mat}
      1+1i  &2-0i  \\
