@@ -24,8 +24,8 @@ import graph;
 real axis_arrow_size = 0.35mm;
 real axis_tick_size = 0.75mm;
 
-// ================= defn of a+bi, conj ===============
 
+// ================= defn of a+bi, conj ===============
 picture pic;
 int picnum = 0;
 size(pic,5cm);
@@ -69,6 +69,47 @@ yaxis(pic,
       gray(0.5),
       arrow=None);
 ytick(pic,"$b$",(0,b),size=-2pt);
+
+shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
+
+
+
+// ================= parallelogram diagram ===============
+picture pic;
+int picnum = 1;
+size(pic,4cm);
+// real scalefactor = 1000;
+// scale(pic,Linear(scalefactor),Linear(5000));
+
+real ARROW_SIZE = 4pt;   // MP's default is 4bp
+real ARROW_ANGLE = 20;  // from gr/mp/ch1.mp  (why half?) 
+
+dotfactor=1.5; // http://asymptote.sourceforge.net/FAQ/section3.html
+
+pair v=(6,0);
+pair w=(1,4);
+
+path parallelogram_bottom = (0,0)--v;
+path parallelogram_top = shift(w)*parallelogram_bottom;
+path parallelogram_left = (0,0)--w;
+path parallelogram_right = shift(v)*parallelogram_left;
+
+path main_diag = (0,0)--(v+w);
+path off_diag = w--v;
+
+draw(pic, Label("$\vec{v}$",Relative(0.65)), parallelogram_bottom,
+     Arrow(ARROW_SIZE, ARROW_ANGLE));
+draw(pic, parallelogram_top);
+draw(pic, Label("$\vec{w}$",Relative(0.65)), parallelogram_left, W,
+     Arrow(ARROW_SIZE, ARROW_ANGLE));
+draw(pic, parallelogram_right);
+draw(pic, Label("$\vec{v}+\vec{w}$",Relative(0.65)), main_diag, 2.25*N,
+     Arrow(ARROW_SIZE, ARROW_ANGLE));
+draw(pic, Label("$\vec{v}-\vec{w}$",Relative(0.7)), off_diag,
+     Arrow(ARROW_SIZE, ARROW_ANGLE));
+
+label(pic, "$\angle A$", w, 1.5*NW);
+label(pic, "$\angle B$", (0,0), 1.5*SW);
 
 shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
 

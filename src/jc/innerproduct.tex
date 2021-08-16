@@ -171,10 +171,11 @@ Let the inner product be this.
   \innerprod{f}{g}=\int_{0}^1 f(t)\cdot g(t)\,dt
 \end{equation*}
 This definition satisfies
-condition~(1) by a Calculus result, that  
+condition~(1) because  
 $\int_{0}^1 (f_1(t)+f_2(t))\cdot g(t)\,dt$ equals 
-$\int_{0}^1 f(t)_1\cdot g(t)\,dt+\int_{0}^1 f(t)_2\cdot g(t)\,dt$,
-and a similar result holds for real scalar multiplication. 
+$\int_{0}^1 f_1(t)g(t)\,dt+\int_{0}^1 f_2(t)g(t)\,dt$
+by a result from elementary Calculus,
+and a similar result holds for scalar multiplication. 
 It satisfies condition~(3) because for real numbers conjugation has no effect,
 and $f(t)g(t)$ equals $g(t)f(t)$. 
 For condition~(2), if~$f$ is not the zero function then 
@@ -184,21 +185,88 @@ around~$\hat{t}$,
 and so the area under the curve is greater than~$0$.
 
 Our interest in inner product operations
-is that they give rise to a reasonable idea of length, 
-so consider the operation
-$\innerprod{\vec{v}}{\vec{v}}=\norm{\vec{v}}$.
-The exercises show that it satisfies that 
+is that they give rise to a reasonable idea of length.
+Specifically, our generalization of length is the 
+\definend{norm} operation\index{norm}, 
+$\norm{\vec{v}}=\innerprod{\vec{v}}{\vec{v}}$.
+
+To show the association of inner products with length, we consider  
+the familiar parallelogram picture for the sum of two vectors in the plane.
+\begin{center}
+  \includegraphics{jc/asy/innerproduct001.pdf}
+\end{center}
+% Applied to the two labeled angles, the Law of Cosines gives 
+% $\absval{\vec{v}+\vec{w}}^2=\absval{\vec{v}}^2+\absval{\vec{w}}^2+2\absval{\vec{v}}\absval{\vec{w}}\cos(A)$
+% and
+% $\absval{\vec{v}-\vec{w}}^2=\absval{\vec{v}}^2+\absval{\vec{w}}^2+2\absval{\vec{v}}\absval{\vec{w}}\cos(B)$.
+% Recall from geometry that in a parallelogram, adjacent angles are supplementary.
+% This means that $\cos(B)=-\cos(A)$.
+% Therefore, adding the two equations gives  
+We will prove the 
+\definend{parallelogram identity},\index{parallelogram identity}
+$\absval{\vec{v}+\vec{w}}^2+\absval{\vec{v}-\vec{w}}^2=2\absval{\vec{v}}^2+2\absval{\vec{w}}^2$,
+which has the nice statement that in a parallelogram the sum of the squares 
+of the diagonals equals the sum of the squares of the sides.
+
+Although the drawing shows the plane, where we often use the dot product 
+notation, in line with this topic's subject we will use the inner product
+notation $\innerprod{\vec{v}}{\vec{w}}$.
+
+By definition,
+$
+  \norm{\vec{v}+\vec{w}}=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
+$.
+Expanding by using additivity of the first input gives 
+$\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
+=\innerprod{\vec{v}}{\vec{v}+\vec{w}}+\innerprod{\vec{w}}{\vec{v}+\vec{w}}$.
+Additivity also holds for the second input, so we get this.
+\begin{equation*}
+  \innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
+  =\innerprod{\vec{v}}{\vec{v}}
+   +\innerprod{\vec{v}}{\vec{w}}
+   +\innerprod{\vec{w}}{\vec{v}}
+   +\innerprod{\vec{w}}{\vec{w}}
+\end{equation*}
+The same expansion for $\innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}$
+gives this
+\begin{equation*}
+  \innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}
+  =\innerprod{\vec{v}}{\vec{v}}
+   -\innerprod{\vec{v}}{\vec{w}}
+   -\innerprod{\vec{w}}{\vec{v}}
+   +\innerprod{\vec{w}}{\vec{w}}
+\end{equation*}
+Adding the two gives the desired result. 
+
+The exercises show that it satisfies the three conditions that 
+we might expect of a measure of length: 
 (1)~$\norm{\vec{v}}=0$ if and only if
 $\vec{v}=\zero$,
-that (2)~$\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
-(3)~the triangle inequality, that 
+and (2)~$\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
+(3)~the triangle inequality, 
 $\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
 Together these three make this operation a \definend{norm} on the
 vector space (the vector space may have real or complex scalars).
 
+We pause to give more connection between these ideas and geometry.
+Here is the familiar parallelogram diagram for vector addition. 
+
+
+
+
+
 With the inner product and norm operations, 
 even in spaces where there is no obvious geometry
 we can interpret geometric ideas. 
+
+
+
+
+
+
+
+
+
 For instance we can say that
 vectors $\vec{v}$ and~$\vec{w}$ are orthogonal when 
 $\innerprod{\vec{v}}{\vec{w}}=0$.
