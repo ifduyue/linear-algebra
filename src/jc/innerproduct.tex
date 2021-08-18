@@ -137,33 +137,41 @@ holds, for scalar multiplication a conjugation appears,
 $\innerprod{\vec{v}}{z\cdot\vec{w}}
      =\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}$.
 
-In general, there are many different possible extensions to dot product
-that lead to a sensible idea of length.
+Many different extensions of dot product are possible but we are aiming for
+one that leads to a sensible generalization of the idea of length.
 An \definend{inner product} is an operation
 that inputs two vectors from a real or complex vector space 
-and that outputs a scalar, and that satisfies 
-three conditions:
-(1)~it is linear in the first input,
+and that outputs a scalar, and that
+satisfies three conditions.
+Condition~(1) is that it is linear in the first input, so that
 $\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
  = \innerprod{\vec{v}_1}{\vec{w}}
    +\innerprod{\vec{v}_2}{\vec{w}}$
 and $\innerprod{z\vec{v}}{\vec{w}}
-     =z\innerprod{\vec{v}}{\vec{w}}$,
-(2)~it is \definend{positive definite}, meaning that
-$\innerprod{\vec{v}}{\vec{v}}> 0$ for all nonzero $\vec{v}$,
-and (3)~it is \definend{conjugate symmetric}, 
+     =z\innerprod{\vec{v}}{\vec{w}}$.
+(Some presentations take inner product 
+to be linear in the second input; more on that
+at the end.)
+Condition~(2) is that
 $\innerprod{\vec{w}}{\vec{v}}=\compconj{\innerprod{\vec{v}}{\vec{w}}}$.
+% (this makes the operation  \definend{conjugate symmetric}).
+Observe that taking both vectors to be 
+$\vec{v}$ gives that $\innerprod{\vec{v}}{\vec{v}}$ equals its conjugate, and
+so is a real number.
+Condition~(3) says about that real number that
+$\innerprod{\vec{v}}{\vec{v}}\geq 0$ for all $\vec{v}$, with 
+$\innerprod{\vec{v}}{\vec{v}}= 0$ if and only if $\vec{v}=\zero$.
+% (this makes the operation \definend{positive definite}).
 
 A vector space that has an inner product operation is an
 \definend{inner product space}.
-(The three conditions together imply
-that $\innerprod{\vec{v}}{\vec{v}}\geq 0$ for all vectors,
-with $\innerprod{\vec{v}}{\vec{v}}=0$ if and only if $\vec{v}=\zero$.)
+The dot product operation turns any of the real vector spaces $\R^n$ into
+an inner product space. 
+Hermitian inner product makes any of the complex vector spaces~$\C^n$ into 
+an inner product space (verifications are in the exercises).
 
-Hermitian inner product makes the two-dimensional vector space~$\C^2$ into 
-an inner product space (see the exercises).
 An example which looks quite different 
-is the vector space over the reals whose members are
+is the real vector space whose members are
 real valued functions that are continuous on the 
 closed interval $\closedinterval{0}{1}$.
 Let the inner product be this.
@@ -184,14 +192,33 @@ By continuity then, the square is greater than zero for a whole subinterval
 around~$\hat{t}$,
 and so the area under the curve is greater than~$0$.
 
-Our interest in inner product operations
-is that they give rise to a reasonable idea of length.
-Specifically, our generalization of length is the 
-\definend{norm} operation\index{norm}, 
-$\norm{\vec{v}}=\innerprod{\vec{v}}{\vec{v}}$.
+What we want from the definition of inner product is 
+a reasonable generalization of length.
+Based on dot product, 
+for the extension of length it is natural to use 
+the  operation 
+$\norm{\vec{v}}=\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
+We will show that this operation satisfies 
+three conditions which we expect of a kind of length. 
+The first condition, that $\norm{\vec{v}}=0$ if and only if
+$\vec{v}=\zero$, we have already seen above.
+The second condition is that 
+$\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$.
+To verify, $\norm{z\vec{v}}=\sqrt{\innerprod{z\vec{v}}{z\vec{v}}}
+=\sqrt{z\compconj{z}\cdot\innerprod{\vec{v}}{\vec{v}}}
+=\absval{z}\cdot\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
+The third condition is the triangle inequality, that 
+$\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
 
-To show the association of inner products with length, we consider  
-the familiar parallelogram picture for the sum of two vectors in the plane.
+
+
+Together these three conditions make this operation 
+a \definend{norm}\index{norm} on the
+vector space (the vector space may have real or complex scalars).
+
+We pause to give more connection between inner products, norm, and geometry.
+Here is the familiar parallelogram diagram for the sum of two vectors,
+where besides showing $\vec{v}+\vec{w}$ we also have $\vec{v}-\vec{w}$. 
 \begin{center}
   \includegraphics{jc/asy/innerproduct001.pdf}
 \end{center}
@@ -204,52 +231,43 @@ the familiar parallelogram picture for the sum of two vectors in the plane.
 % Therefore, adding the two equations gives  
 We will prove the 
 \definend{parallelogram identity},\index{parallelogram identity}
-$\absval{\vec{v}+\vec{w}}^2+\absval{\vec{v}-\vec{w}}^2=2\absval{\vec{v}}^2+2\absval{\vec{w}}^2$,
-which has the nice statement that in a parallelogram the sum of the squares 
-of the diagonals equals the sum of the squares of the sides.
-
-Although the drawing shows the plane, where we often use the dot product 
-notation, in line with this topic's subject we will use the inner product
-notation $\innerprod{\vec{v}}{\vec{w}}$.
+$\absval{\vec{v}+\vec{w}}^2+\absval{\vec{v}-\vec{w}}^2=2\absval{\vec{v}}^2+2\absval{\vec{w}}^2$
+(this has the nice statement that in a parallelogram the sum of the squares 
+of the diagonals equals the sum of the squares of the sides).
+Although the drawing above shows the plane, where we usually use dot product 
+notation and write length as $\absval{\vec{v}}$, 
+here we will use the notation for inner product and norm.
 
 By definition,
 $
-  \norm{\vec{v}+\vec{w}}=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
+  \norm{\vec{v}+\vec{w}}^2=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
 $.
-Expanding by using additivity of the first input gives 
-$\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
-=\innerprod{\vec{v}}{\vec{v}+\vec{w}}+\innerprod{\vec{w}}{\vec{v}+\vec{w}}$.
-Additivity also holds for the second input, so we get this.
-\begin{equation*}
-  \innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
-  =\innerprod{\vec{v}}{\vec{v}}
+Expanding by using additivity of the first input and then the second gives 
+\begin{align*}
+  \norm{\vec{v}+\vec{w}}^2
+  &=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}           \\
+  &=\innerprod{\vec{v}}{\vec{v}+\vec{w}}+\innerprod{\vec{w}}{\vec{v}+\vec{w}} \\
+  &=\innerprod{\vec{v}}{\vec{v}}            
    +\innerprod{\vec{v}}{\vec{w}}
    +\innerprod{\vec{w}}{\vec{v}}
    +\innerprod{\vec{w}}{\vec{w}}
-\end{equation*}
-The same expansion for $\innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}$
-gives this
+  =\norm{\vec{v}}^2            
+   +\innerprod{\vec{v}}{\vec{w}}
+   +\innerprod{\vec{w}}{\vec{v}}
+   +\norm{\vec{w}}^2
+\end{align*}
+and same expansion for $\innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}$
+gives this.
 \begin{equation*}
-  \innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}
-  =\innerprod{\vec{v}}{\vec{v}}
+  \norm{\vec{v}-\vec{w}}^2
+  =\innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}
+  =\norm{\vec{v}}^2
    -\innerprod{\vec{v}}{\vec{w}}
    -\innerprod{\vec{w}}{\vec{v}}
-   +\innerprod{\vec{w}}{\vec{w}}
+   +\norm{\vec{w}}^2
 \end{equation*}
 Adding the two gives the desired result. 
 
-The exercises show that it satisfies the three conditions that 
-we might expect of a measure of length: 
-(1)~$\norm{\vec{v}}=0$ if and only if
-$\vec{v}=\zero$,
-and (2)~$\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
-(3)~the triangle inequality, 
-$\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
-Together these three make this operation a \definend{norm} on the
-vector space (the vector space may have real or complex scalars).
-
-We pause to give more connection between these ideas and geometry.
-Here is the familiar parallelogram diagram for vector addition. 
 
 
 
@@ -259,6 +277,8 @@ With the inner product and norm operations,
 even in spaces where there is no obvious geometry
 we can interpret geometric ideas. 
 
+We can take a \definend{metric} to be the operation
+$d(\vec{v},\vec{w})=\norm{\vec{v}-\vec{w}}$.
 
 
 
