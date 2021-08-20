@@ -97,19 +97,25 @@ path parallelogram_right = shift(v)*parallelogram_left;
 path main_diag = (0,0)--(v+w);
 path off_diag = w--v;
 
-draw(pic, Label("$\vec{v}$",Relative(0.65)), parallelogram_bottom,
+draw(pic, Label("$\vec{v}$",Relative(0.5)), parallelogram_bottom,
+     VECTORPEN,
      Arrow(ARROW_SIZE, ARROW_ANGLE));
-draw(pic, parallelogram_top);
-draw(pic, Label("$\vec{w}$",Relative(0.65)), parallelogram_left, W,
+draw(pic, parallelogram_top,
+     FCNPEN_SOLID+gray(0.5));
+draw(pic, Label("$\vec{w}$",Relative(0.5)), parallelogram_left, W,
+     VECTORPEN,
      Arrow(ARROW_SIZE, ARROW_ANGLE));
-draw(pic, parallelogram_right);
-draw(pic, Label("$\vec{v}+\vec{w}$",Relative(0.65)), main_diag, 2.25*N,
+draw(pic, parallelogram_right,
+     FCNPEN_SOLID+gray(0.5));
+draw(pic, Label("$\vec{v}+\vec{w}$",Relative(0.65)), main_diag, 2.5*N,
+     VECTORPEN,
      Arrow(ARROW_SIZE, ARROW_ANGLE));
-draw(pic, Label("$\vec{v}-\vec{w}$",Relative(0.7)), off_diag,
+draw(pic, Label("$\vec{v}-\vec{w}$",Relative(0.65)), off_diag, 1.75*E,
+     VECTORPEN,
      Arrow(ARROW_SIZE, ARROW_ANGLE));
 
-label(pic, "$\angle A$", w, 1.5*NW);
-label(pic, "$\angle B$", (0,0), 1.5*SW);
+// label(pic, "$\angle A$", w, 1.5*NW);
+// label(pic, "$\angle B$", (0,0), 1.5*SW);
 
 shipout(format(OUTPUT_FN,picnum),pic,format="pdf");
 

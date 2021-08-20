@@ -74,6 +74,8 @@ illustrates the conjugate.
 \begin{center}
   \includegraphics{jc/asy/innerproduct000.pdf}
 \end{center}
+This picture makes clear that $z+\compconj{z}=(a+bi)+(a-bi)$ equals
+$2a$, which we write as $2\RE{z}$.
 It also shows the \definend{argument}, $\arg(z)$, the angle that
 $z$ makes with the real axis.
 
@@ -137,8 +139,8 @@ holds, for scalar multiplication a conjugation appears,
 $\innerprod{\vec{v}}{z\cdot\vec{w}}
      =\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}$.
 
-Many different extensions of dot product are possible but we are aiming for
-one that leads to a sensible generalization of the idea of length.
+Many different extensions of dot product are possible but what we want is 
+a reasonable generalization of the idea of length.
 An \definend{inner product} is an operation
 that inputs two vectors from a real or complex vector space 
 and that outputs a scalar, and that
@@ -192,29 +194,103 @@ By continuity then, the square is greater than zero for a whole subinterval
 around~$\hat{t}$,
 and so the area under the curve is greater than~$0$.
 
-What we want from the definition of inner product is 
-a reasonable generalization of length.
-Based on dot product, 
-for the extension of length it is natural to use 
-the  operation 
+Motivated by dot product, we generalize length with the operation 
 $\norm{\vec{v}}=\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
-We will show that this operation satisfies 
-three conditions which we expect of a kind of length. 
-The first condition, that $\norm{\vec{v}}=0$ if and only if
-$\vec{v}=\zero$, we have already seen above.
-The second condition is that 
-$\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$.
-To verify, $\norm{z\vec{v}}=\sqrt{\innerprod{z\vec{v}}{z\vec{v}}}
-=\sqrt{z\compconj{z}\cdot\innerprod{\vec{v}}{\vec{v}}}
-=\absval{z}\cdot\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
-The third condition is the triangle inequality, that 
+We will show that this satisfies 
+three conditions which we expect of a kind of length: 
+(1)~every vector has a real-number length, $\norm{\vec{v}}\geq 0$, 
+and $\norm{\vec{v}}= 0$ if and only if $\vec{v}=\zero$, 
+(2)~doubling or tripling, etc., a vector will double or triple, etc., 
+its length, $\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and 
+(3)~the Triangle Inequality,\index{Triangle Inequality} 
 $\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
-
-
-
-Together these three conditions make this operation 
+Satisfying these makes this operation 
 a \definend{norm}\index{norm} on the
 vector space (the vector space may have real or complex scalars).
+
+We have seen above that the first condition is satisfied.
+To verify the second condition, 
+$\norm{z\vec{v}}=\sqrt{\innerprod{z\vec{v}}{z\vec{v}}}
+=\sqrt{z\compconj{z}\cdot\innerprod{\vec{v}}{\vec{v}}}
+=\sqrt{z\compconj{z}}\cdot\sqrt{\innerprod{\vec{v}}{\vec{v}}}
+=\absval{z}\cdot\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
+
+To verify the third condition we will again, as in the first
+chapter, relate it to the Cauchy-Schwartz inequality,
+$\innerprod{\vec{v}}{\vec{w}}\leq \norm{\vec{v}}\cdot\norm{\vec{w}}$.
+The proof in this context is an extension of, but more involved than, the 
+proof in the first chapter. 
+Consider the difference $\vec{v}-z\cdot\vec{w}$ as $z\in\C$ varies.
+This vector's norm is a nonnegative real,
+$0\leq \norm{\vec{v}-z\cdot\vec{w}}^2
+   =\innerprod{\vec{v}-z\vec{w}}{\vec{v}-z\vec{w}}$.
+Linearity gives
+$\innerprod{\vec{v}}{\vec{v}-z\vec{w}}
+  -z\cdot\innerprod{\vec{w}}{\vec{v}-z\vec{w}}$
+and then
+$\innerprod{\vec{v}}{\vec{v}}
+  -\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}
+  -z\cdot\innerprod{\vec{w}}{\vec{v}}
+  +z\compconj{z}\cdot\innerprod{\vec{w}}{\vec{w}}$.
+We have this.
+\begin{equation*}
+ 0
+  \leq\innerprod{\vec{v}}{\vec{v}}
+  -\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}
+  -z\cdot\compconj{\innerprod{\vec{v}}{\vec{w}}}
+  +z\compconj{z}\cdot\innerprod{\vec{w}}{\vec{w}}
+\end{equation*}
+
+Take 
+$z=\innerprod{\vec{v}}{\vec{w}}/\innerprod{\vec{w}}{\vec{w}}$
+(if $\vec{w}=\zero$ then the Cauchy-Schwartz inequality is trivial, so we
+ignore this case).
+Its denominator is a real number so
+$\compconj{z}=\compconj{\innerprod{\vec{v}}{\vec{w}}}/\innerprod{\vec{w}}{\vec{w}}$,
+and thus plugging it into the second term gives 
+$\compconj{\innerprod{\vec{v}}{\vec{w}}}\innerprod{\vec{v}}{\vec{w}}/\innerprod{\vec{w}}{\vec{w}}$.
+Plugging into the third term gives the same,
+as does plugging into the last term.
+Combining the three like terms gives this.
+\begin{equation*}
+ 0
+  \leq\innerprod{\vec{v}}{\vec{v}}
+  -\frac{\innerprod{\vec{v}}{\vec{w}}\compconj{\innerprod{\vec{v}}{\vec{w}}}}{\innerprod{\vec{w}}{\vec{w}}}
+  =\norm{\vec{v}}^2
+  -\frac{\absval{\innerprod{\vec{v}}{\vec{w}}}^2}{\norm{\vec{w}}^2}
+\end{equation*}
+Rearranging and clearing the denominator gives the desired 
+inequality.
+
+With that, we can prove the Triangle Inequality.
+Again, this extends the argument in the first chapter.
+\begin{align*}
+  \norm{\vec{v}+\vec{w}}^2
+  =\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}  
+  &=\innerprod{\vec{v}}{\vec{v}}
+    +\innerprod{\vec{v}}{\vec{w}}  
+    +\innerprod{\vec{w}}{\vec{v}}  
+    +\innerprod{\vec{w}}{\vec{w}}   \\ 
+  &=\norm{\vec{v}}^2
+    +\innerprod{\vec{v}}{\vec{w}}  
+    +\compconj{\innerprod{\vec{v}}{\vec{w}}}  
+    +\norm{\vec{w}}^2              \\   
+  &=\norm{\vec{v}}^2
+    +2\cdot\RE{\innerprod{\vec{v}}{\vec{w}}}  
+    +\norm{\vec{w}}^2      \\
+  &\leq\norm{\vec{v}}^2
+    +2\absval{\innerprod{\vec{v}}{\vec{w}}}  
+    +\norm{\vec{w}}^2     \\
+% \end{align*}
+\intertext{Now the Cauchy-Schwartz Inequality applies.}
+  &\leq\norm{\vec{v}}^2
+    +2\cdot\norm{\vec{v}}\cdot\norm{\vec{w}}
+    +\norm{\vec{w}}^2      
+  =(\norm{\vec{v}+\norm{\vec{w}}})^2         
+\end{align*}
+Taking the square root of both sides gives the result.
+
+
 
 We pause to give more connection between inner products, norm, and geometry.
 Here is the familiar parallelogram diagram for the sum of two vectors,
