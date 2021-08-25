@@ -30,18 +30,22 @@ Dot product describes the geometry of
 $\Re^n$; for instance, two vectors are perpendicular if and only if their
 dot product is zero, and the length of a vector is determined by  
 $\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
-We now extend this idea to complex vector spaces, with the
-goal of understanding the transformations of complex spaces
-that preserve length, $\absval{t(\vec{v})}=\absval{\vec{v}}$.
 
-First we need more on complex numbers than we reviewed in this
+Here we will extend the dot product and length operations 
+to other vector spaces. 
+Instead of a dot, the traditional mathematical notation is
+$\innerprod{\vec{v}}{\vec{w}}$.
+Our goal is to understand the transformations of complex vector spaces
+that preserve length, that satisfy $\absval{t(\vec{v})}=\absval{\vec{v}}$.
+
+We need more on complex numbers than we reviewed in this
 chapter's opening section.
 There, we described~$\C$ as 
 the collection of $z=a+bi$ where $a$ and~$b$ are real numbers,
 and where $i^2=-1$. 
 We also covered addition, scalar multiplication,
 subtraction, and multiplication, as well as length.
-As to division,  consider $(1+2i)/(3+4i)$.
+As for division,  consider $(1+2i)/(3+4i)$.
 The difference of squares formula
 gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$,
 which is a real number,
@@ -59,7 +63,7 @@ we get an expression of the form $a+bi$.
 \end{equation*}
 Consequently, we define the \definend{conjugate} of a complex number~$z$
 to be $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$.
-Dividing both sides by $\absval{z}^2$ gives $z\compconj{z}/\absval{z}^2=1$
+Then dividing by $\absval{z}^2$ gives $z\compconj{z}/\absval{z}^2=1$,
 and so  
 every nonzero complex number has a multiplicative inverse,
 $z^{-1}=\compconj{z}/\absval{z}^2$.
@@ -74,16 +78,23 @@ illustrates the conjugate.
 \begin{center}
   \includegraphics{jc/asy/innerproduct000.pdf}
 \end{center}
-This picture makes clear that $z+\compconj{z}=(a+bi)+(a-bi)$ equals
+This picture makes clear that 
+$z+\compconj{z}=(a+bi)+(a-bi)$ equals
 $2a$, which we write as $2\RE{z}$.
 It also shows the \definend{argument}, $\arg(z)$, the angle that
 $z$ makes with the real axis.
 
-We will extend the dot product to a new operation.
-Instead of a dot, the traditional mathematical notation is
-$\innerprod{\vec{v}}{\vec{w}}$.
+We have seen many examples of vector spaces that are far removed from
+just collections of column vectors.
+One example is a vector space of polynomials, where it is not immediately
+clear, given a member~$\vec{v}$,
+what would be a useful definition of its length, 
+$\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
+For some insight into the right direction, consider the complex
+vector spaces~$\C^n$.
 
-The obvious guess is to try defining $\innerprod{\vec{v}}{\vec{w}}$ 
+Based on dot product, the natural first guess is to try defining 
+$\innerprod{\vec{v}}{\vec{w}}$
 as the linear combination of the components, so that in the two-dimensional 
 case
 \begin{equation*}
@@ -91,7 +102,7 @@ case
   \qquad
   \vec{w}=\colvec{a_{1,2}+b_{1,2}i \\ a_{2,2}+b_{2,2}i}
 \end{equation*}
-it would be 
+the guess for $\innerprod{\vec{v}}{\vec{w}}$ is 
 $(a_{1,1}+b_{1,1}i)\cdot(a_{1,2}+b_{1,2}i)+(a_{2,1}+b_{2,1}i)\cdot(a_{2,2}+b_{2,2}i)$.
 But that won't do.
 We are investigating lengths,
@@ -100,33 +111,34 @@ Thus, we don't want that $\innerprod{\vec{v}}{\vec{v}}$ equals
 $(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$,
 instead we want something like
 $(a_1+b_1i)(a_1-b_1i)+(a_2+b_2i)(a_2-b_2i)$.
-Consequently, we want this in the two-dimensional case.
+Consequently, this our definition in the two-dimensional case.
 \begin{equation*}
   \innerprod{\vec{v}}{\vec{w}}
   =(a_{1,1}+b_{1,1}i)\cdot(a_{1,2}-b_{1,2}i)\,+\,(a_{2,1}+b_{2,1}i)\cdot(a_{2,2}-b_{2,2}i)
 \end{equation*}
-This is the 
-\definend{Hermitian inner product}:\index{inner product!Hermitian}\index{Hermitian inner product}
-for $\vec{v},\vec{w}$ with $i$-th components $v_i$ 
-and $w_i$, define
+The 
+\definend{Hermitian inner product} 
+is:\index{inner product!Hermitian}\index{Hermitian inner product}
+if two members  $\vec{v},\vec{w}$ of a complex vector space 
+have $i$-th components $v_i$ and $w_i$, then
 $\innerprod{v}{w}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
 Observe that this extends the dot product in that
 if we fall back to reals, taking the $b$'s be zero, then
 we get $\vec{v}\dotprod\vec{w}$.
 
+This operation inputs two vectors but outputs a scalar.
 Here is an example.
 \begin{align*}
   \innerprod{\colvec{1+2i \\ 3+4i}}{\colvec{5+6i \\ 7+8i}}
   &=(1+2i)(5-6i)+(3+4i)(7-8i)                     \\[-2ex]
   &=(17+4i)+(53+4i)=70+8i
 \end{align*}
-Note that this operation inputs two vectors but outputs a scalar.
 
-This operation is linear in the first input:~checking that
+Hermitian inner product is linear in the first input:~checking that
 $\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
  = \innerprod{\vec{v}_1}{\vec{w}}
    +\innerprod{\vec{v}_2}{\vec{w}}$
-and
+and that
 $\innerprod{z\cdot\vec{v}}{\vec{w}}
      =z\cdot\innerprod{\vec{v}}{\vec{w}}$
 is straightforward.
@@ -135,15 +147,18 @@ while
 $\innerprod{\vec{v}}{\vec{w}_1+\vec{w}_2}
  = \innerprod{\vec{v}}{\vec{w}_1}
    +\innerprod{\vec{v}}{\vec{w}_2}$
-holds, for scalar multiplication a conjugation appears,
+holds, for scalar multiplication a conjugation appears:
 $\innerprod{\vec{v}}{z\cdot\vec{w}}
      =\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}$.
 
-Many different extensions of dot product are possible but what we want is 
-a reasonable generalization of the idea of length.
-An \definend{inner product} is an operation
+Hermitian inner product is one way, in a particular set of vector spaces, 
+to extend dot product.
+There are lots of others, in lots of spaces.
+But we require that our extensions lead to a reasonable notion of length.
+For that,
+an \definend{inner product} is an operation
 that inputs two vectors from a real or complex vector space 
-and that outputs a scalar, and that
+and outputs a scalar, and that
 satisfies three conditions.
 Condition~(1) is that it is linear in the first input, so that
 $\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
@@ -186,34 +201,35 @@ $\int_{0}^1 (f_1(t)+f_2(t))\cdot g(t)\,dt$ equals
 $\int_{0}^1 f_1(t)g(t)\,dt+\int_{0}^1 f_2(t)g(t)\,dt$
 by a result from elementary Calculus,
 and a similar result holds for scalar multiplication. 
-It satisfies condition~(3) because for real numbers conjugation has no effect,
+It satisfies condition~(2) because for real numbers conjugation has no effect,
 and $f(t)g(t)$ equals $g(t)f(t)$. 
-For condition~(2), if~$f$ is not the zero function then 
+For condition~(3), if~$f$ is not the zero function then 
 the square $f(t)\cdot f(t)$ is greater than~$0$ for some~$\hat{t}$.
 By continuity then, the square is greater than zero for a whole subinterval
 around~$\hat{t}$,
 and so the area under the curve is greater than~$0$.
 
-Motivated by dot product, we generalize length with the operation 
-$\norm{\vec{v}}=\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
-We will show that this satisfies 
-three conditions which we expect of a kind of length: 
-(1)~every vector has a real-number length, $\norm{\vec{v}}\geq 0$, 
+% Smash the depth, not the height
+\def\smashdp#1{{\setbox0=\hbox{$#1$}\dp0=0pt \box0\relax}}
+We generalize length with the operation 
+$\norm{\vec{v}}=\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}$.
+We will show that this operation is a \definend{norm}\index{norm} 
+because it satisfies the
+three conditions that we expect of a kind of length: 
+(1)~the norm of every vector is a real-number, $\norm{\vec{v}}\geq 0$, 
 and $\norm{\vec{v}}= 0$ if and only if $\vec{v}=\zero$, 
-(2)~doubling or tripling, etc., a vector will double or triple, etc., 
-its length, $\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and 
+(2)~rescaling a vector will rescale 
+its norm, so that $\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and 
 (3)~the Triangle Inequality,\index{Triangle Inequality} 
 $\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
-Satisfying these makes this operation 
-a \definend{norm}\index{norm} on the
-vector space (the vector space may have real or complex scalars).
 
-We have seen above that the first condition is satisfied.
-To verify the second condition, 
-$\norm{z\vec{v}}=\sqrt{\innerprod{z\vec{v}}{z\vec{v}}}
-=\sqrt{z\compconj{z}\cdot\innerprod{\vec{v}}{\vec{v}}}
-=\sqrt{z\compconj{z}}\cdot\sqrt{\innerprod{\vec{v}}{\vec{v}}}
-=\absval{z}\cdot\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
+We already covered the first condition earlier.
+To verify the second, 
+$\norm{z\vec{v}}
+=\sqrt{\smashdp{\innerprod{z\vec{v}}{z\vec{v}}}}
+=\sqrt{\smashdp{z\compconj{z}\cdot\innerprod{\vec{v}}{\vec{v}}}}
+=\sqrt{z\compconj{z}}\cdot\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}
+=\absval{z}\cdot\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}$.
 
 To verify the third condition we will again, as in the first
 chapter, relate it to the Cauchy-Schwartz inequality,
@@ -282,19 +298,17 @@ Again, this extends the argument in the first chapter.
     +2\absval{\innerprod{\vec{v}}{\vec{w}}}  
     +\norm{\vec{w}}^2     \\
 % \end{align*}
-\intertext{Now the Cauchy-Schwartz Inequality applies.}
+\intertext{Apply Cauchy-Schwartz.}
   &\leq\norm{\vec{v}}^2
     +2\cdot\norm{\vec{v}}\cdot\norm{\vec{w}}
     +\norm{\vec{w}}^2      
-  =(\norm{\vec{v}+\norm{\vec{w}}})^2         
+  =(\norm{\vec{v}}+\norm{\vec{w}})^2         
 \end{align*}
 Taking the square root of both sides gives the result.
 
-
-
-We pause to give more connection between inner products, norm, and geometry.
+We pause to see one more connection between inner products, norm, and geometry.
 Here is the familiar parallelogram diagram for the sum of two vectors,
-where besides showing $\vec{v}+\vec{w}$ we also have $\vec{v}-\vec{w}$. 
+where besides $\vec{v}+\vec{w}$ we also show $\vec{v}-\vec{w}$. 
 \begin{center}
   \includegraphics{jc/asy/innerproduct001.pdf}
 \end{center}
@@ -306,19 +320,19 @@ where besides showing $\vec{v}+\vec{w}$ we also have $\vec{v}-\vec{w}$.
 % This means that $\cos(B)=-\cos(A)$.
 % Therefore, adding the two equations gives  
 We will prove the 
-\definend{parallelogram identity},\index{parallelogram identity}
+\definend{parallelogram identity}.\index{parallelogram identity}
 $\absval{\vec{v}+\vec{w}}^2+\absval{\vec{v}-\vec{w}}^2=2\absval{\vec{v}}^2+2\absval{\vec{w}}^2$
-(this has the nice statement that in a parallelogram the sum of the squares 
-of the diagonals equals the sum of the squares of the sides).
+(This has the nice statement that in a parallelogram the sum of the squares 
+of the diagonals equals the sum of the squares of the sides.)
 Although the drawing above shows the plane, where we usually use dot product 
 notation and write length as $\absval{\vec{v}}$, 
 here we will use the notation for inner product and norm.
 
-By definition,
+As above, expand
 $
   \norm{\vec{v}+\vec{w}}^2=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
 $.
-Expanding by using additivity of the first input and then the second gives 
+by using additivity of the first input and then the second. 
 \begin{align*}
   \norm{\vec{v}+\vec{w}}^2
   &=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}           \\
@@ -332,7 +346,7 @@ Expanding by using additivity of the first input and then the second gives
    +\innerprod{\vec{w}}{\vec{v}}
    +\norm{\vec{w}}^2
 \end{align*}
-and same expansion for $\innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}$
+The same expansion for $\innerprod{\vec{v}-\vec{w}}{\vec{v}-\vec{w}}$
 gives this.
 \begin{equation*}
   \norm{\vec{v}-\vec{w}}^2
@@ -344,51 +358,52 @@ gives this.
 \end{equation*}
 Adding the two gives the desired result. 
 
+A comment: we have defined a norm operation from the inner product, 
+as $\norm{\vec{v}}=\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}$,
+and have just finished showing that it then satisfies the
+parallelogram identity.
+It is also true that if a norm satisfies this identity then it
+arises from an inner product, 
+meaning that 
+$\innerprod{\vec{v}}{\vec{w}}
+  =(1/2)\cdot(\norm{\vec{v}+\vec{w}}^2-\norm{\vec{v}}^2-\norm{\vec{w}}^2)$,
+although proving this is beyond our scope.
 
-
-
-
-
-With the inner product and norm operations, 
+Now, with the inner product and norm operations, 
 even in spaces where there is no obvious geometry
 we can interpret geometric ideas. 
-
-We can take a \definend{metric} to be the operation
+An example is that can generalize distance to a
+\definend{metric}\index{metric} 
+operation
 $d(\vec{v},\vec{w})=\norm{\vec{v}-\vec{w}}$.
-
-
-
-
-
-
-
-
-For instance we can say that
+Another example is that we can say that
 vectors $\vec{v}$ and~$\vec{w}$ are orthogonal when 
-$\innerprod{\vec{v}}{\vec{w}}=0$.
-Similarly, we can extend the Gram-Schmidt process
-to any inner product finite dimensional space.
+$\innerprod{\vec{v}}{\vec{w}}=0$,
+and we can extend the Gram-Schmidt process
+to any finite dimensional inner product space.
 
-That brings up back to our goal, to determine which transformations
+We are now read for our goal, to characterize which transformations
 of the complex vector space~$\C^n$ preserve length.
-We make it an inner product space by using the Hermitian inner product.
+Make $\C^n$ an inner product space by using the Hermitian inner product.
 
-Given a matrix~$M$, its \definend{matrix conjugate}~$\compconj{M}$ is 
-the matrix whose entries are the conjugate of the entries of~$M$.
+Given a matrix~$M$, its 
+\definend{matrix conjugate}~$\compconj{M}$\index{matrix conjugate}\index{matrix!conjugate} 
+is the matrix whose entries are the conjugate of the entries of~$M$.
 This operation is linear, that is, 
 $\compconj{M+N}=\compconj{M}+\compconj{N}$ and 
 $\compconj{z\cdot M}=\compconj{z}\cdot\compconj{M}$.
 This operation also respects matrix multiplication, 
 $\compconj{M\cdot N}=\compconj{M}\cdot\compconj{N}$.  
 
-The \definend{conjugate transpose} or \definend{Hermitian transpose},
+The \definend{conjugate transpose}\index{conjugate transpose}\index{matrix!conjugate transpose}\index{transpose!conjugate} 
+or \definend{Hermitian transpose},\index{Hermitian transpose}\index{transpose!Hermitian}
 $\conjtrans{M}$
 is the transpose of the conjugate.
 We can either conjugate and then transpose, or transpose and 
 then conjugate, so that
 $\conjtrans{M}=\compconj{(\trans{M})}=\trans{(\compconj{M})}$.
-
-A complex matrix~$U$ is \definend{unitary} if $U\cdot\conjtrans{U}=I$.
+A complex matrix~$U$ is \definend{unitary}\index{unitary}\index{matrix!unitary} 
+if $U\cdot\conjtrans{U}$ equals the identity.
 We will show that a transformation preserves length if and only if its
 representation is unitary.
 
