@@ -306,6 +306,25 @@ Again, this extends the argument in the first chapter.
 \end{align*}
 Taking the square root of both sides gives the result.
 
+A familiar example of a norm in the vector space~$\R^n$ is the ordinary
+Euclidean length, $\norm{\vec{v}}=\sqrt{v_1^2+\cdots+v_n^2}$.
+Another example, on the real vector space of matrices
+$\matspace_{\nbym{n}{m}}$, is that $\norm{M}$ is the largest absolute value, 
+over all of the entries in the matrix.  
+Condition~(1) is clear, as is condition~(2).
+Condition~(3) is the ordinary Triangle Inequality for reals, that
+$\absval{a+b}\leq\absval{a}+\absval{b}$.
+
+Still another example of a norm operation 
+is on the vector space of continuous real-valued functions 
+on the closed interval $\closedinterval{0}{1}$.  
+\begin{equation*}
+  \norm{f}
+  =\int_{x=0}^1 \absval{f(x)}\,dx
+  \tag{$*$}
+\end{equation*}
+This satisfies the conditions to be a norm.
+
 We pause to see one more connection between inner products, norm, and geometry.
 Here is the familiar parallelogram diagram for the sum of two vectors,
 where besides $\vec{v}+\vec{w}$ we also show $\vec{v}-\vec{w}$. 
@@ -358,17 +377,6 @@ gives this.
 \end{equation*}
 Adding the two gives the desired result. 
 
-A comment: we have defined a norm operation from the inner product, 
-as $\norm{\vec{v}}=\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}$,
-and have just finished showing that it then satisfies the
-parallelogram identity.
-It is also true that if a norm satisfies this identity then it
-arises from an inner product, 
-meaning that 
-$\innerprod{\vec{v}}{\vec{w}}
-  =(1/2)\cdot(\norm{\vec{v}+\vec{w}}^2-\norm{\vec{v}}^2-\norm{\vec{w}}^2)$,
-although proving this is beyond our scope.
-
 Now, with the inner product and norm operations, 
 even in spaces where there is no obvious geometry
 we can interpret geometric ideas. 
@@ -382,68 +390,97 @@ $\innerprod{\vec{v}}{\vec{w}}=0$,
 and we can extend the Gram-Schmidt process
 to any finite dimensional inner product space.
 
-We are now read for our goal, to characterize which transformations
-of the complex vector space~$\C^n$ preserve length.
-Make $\C^n$ an inner product space by using the Hermitian inner product.
-
-Given a matrix~$M$, its 
-\definend{matrix conjugate}~$\compconj{M}$\index{matrix conjugate}\index{matrix!conjugate} 
-is the matrix whose entries are the conjugate of the entries of~$M$.
-This operation is linear, that is, 
-$\compconj{M+N}=\compconj{M}+\compconj{N}$ and 
-$\compconj{z\cdot M}=\compconj{z}\cdot\compconj{M}$.
-This operation also respects matrix multiplication, 
-$\compconj{M\cdot N}=\compconj{M}\cdot\compconj{N}$.  
-
-The \definend{conjugate transpose}\index{conjugate transpose}\index{matrix!conjugate transpose}\index{transpose!conjugate} 
-or \definend{Hermitian transpose},\index{Hermitian transpose}\index{transpose!Hermitian}
-$\conjtrans{M}$
-is the transpose of the conjugate.
-We can either conjugate and then transpose, or transpose and 
-then conjugate, so that
-$\conjtrans{M}=\compconj{(\trans{M})}=\trans{(\compconj{M})}$.
-A complex matrix~$U$ is \definend{unitary}\index{unitary}\index{matrix!unitary} 
-if $U\cdot\conjtrans{U}$ equals the identity.
-We will show that a transformation preserves length if and only if its
-representation is unitary.
-
-First some results:
-(1)~the conjugate transpose operation is idempotent, 
-$\conjtrans{(\conjtrans{M})}=M$,
-(2)~it respects addition $\conjtrans{M+N}=\conjtrans{M}+\conjtrans{N}$,
-and $\conjtrans(z\cdot M)=\compconj{z}\cdot\conjtrans{M}$,
-(3)~$\conjtrans{M\cdot N}=\conjtrans{N}\cdot\conjtrans{M}$,
-and the dot product of complex column vectors is 
-$\innerprod{\vec{v}}{\vec{w}}$ equals the 
-result of treating the two vectors as one-column matrices and 
-multiplying $\conjtrans{\vec{w}\,}\cdot \vec{v}$.
-
-The verifications are straightforward.
-For (1), recall that we can take a 
-conjugate transpose by doign conjugation and then transposition,
-or we can do them in the other order. 
-That gives this.
+A comment: we have shown how to define a norm operation from the inner product, 
+as $\norm{\vec{v}}=\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}$,
+and then derived the
+parallelogram identity.
+It is also true that if a norm satisfies this identity then it
+arises from an inner product, 
+meaning that 
+$\innerprod{\vec{v}}{\vec{w}}
+  =(1/2)\cdot(\norm{\vec{v}+\vec{w}}^2-\norm{\vec{v}}^2-\norm{\vec{w}}^2)$,
+although proving this is beyond our scope.
+An example of a norm that does not satisfy this identity is the one
+in ($*$) above.
+If we take $f(x)=1$ and $g(x)=2x$ then
 \begin{equation*}
-\conjtrans{(\conjtrans{M})}
-  =\compconj{\trans{\big(\,\compconj{\trans{M}}\,\big)\!}}
-  =\compconj{\compconj{\trans{\trans{M}}}}
-  =\compconj{\compconj{M}}
-  =M
+  \norm{f+g}=\int_0^1\absval{1+2x}\,dx=2
+  \qquad
+  \norm{f-g}=\int_0^1\absval{1-2x}\,dx=1/2
 \end{equation*}
-Number~(2) follows immediately from earlier work.
-For (3), recall how transpose interacts with matrix multipication,
-$\conjtrans{(MN)}
-=\compconj{\trans{(MN)}}
-=\compconj{\trans{N}\cdot\trans{M}}
-=\compconj{\trans{N}}\cdot\compconj{\trans{M}}
-=\conjtrans{N}\cdot\conjtrans{M}$. 
-Item~(4) is a common source of mistakes.
+and
 \begin{equation*}
-  \innerprod{\vec{v}}{\vec{w}}
-  =\innerprod{\colvec{v_1 \\ \vdots \\ v_n}}{\colvec{w_1 \\ \vdots \\ w_n}}
-  =v_1\compconj{w_1}+\cdots +v_n\compconj{w_n}
-  =\rowvec{\compconj{w_1} &\cdots &\compconj{w_n}}\colvec{v_1 \\ \vdots \\ v_n}
+  \norm{f}=\int_0^1\absval{1}\,dx=1
+  \qquad
+  \norm{g}=\int_0^1\absval{2x}\,dx=1
 \end{equation*}
+so 
+$\norm{f+g}^2+\norm{f-g}^2$ does not equal $2\norm{f}^2+2\norm{g}^2$.
+
+
+% We are now read for our goal, to characterize which transformations
+% of the complex vector space~$\C^n$ preserve length.
+% Make $\C^n$ an inner product space by using the Hermitian inner product.
+
+% Given a matrix~$M$, its 
+% \definend{matrix conjugate}~$\compconj{M}$\index{matrix conjugate}\index{matrix!conjugate} 
+% is the matrix whose entries are the conjugate of the entries of~$M$.
+% This operation is linear, that is, 
+% $\compconj{M+N}=\compconj{M}+\compconj{N}$ and 
+% $\compconj{z\cdot M}=\compconj{z}\cdot\compconj{M}$.
+% This operation also respects matrix multiplication, 
+% $\compconj{M\cdot N}=\compconj{M}\cdot\compconj{N}$.  
+
+% The \definend{conjugate transpose}\index{conjugate transpose}\index{matrix!conjugate transpose}\index{transpose!conjugate} 
+% or \definend{Hermitian transpose},\index{Hermitian transpose}\index{transpose!Hermitian}
+% $\conjtrans{M}$
+% is the transpose of the conjugate.
+% We can either conjugate and then transpose, or transpose and 
+% then conjugate, so that
+% $\conjtrans{M}=\compconj{(\trans{M})}=\trans{(\compconj{M})}$.
+% A complex matrix~$U$ is \definend{unitary}\index{unitary}\index{matrix!unitary} 
+% if $U\cdot\conjtrans{U}$ equals the identity.
+% We will show that a transformation preserves length if and only if its
+% representation is unitary.
+
+% We start with some small results.
+% First, the conjugate transpose operation is idempotent, 
+% $\conjtrans{(\conjtrans{M})}=M$,
+% Second, it respects addition, $\conjtrans{M+N}=\conjtrans{M}+\conjtrans{N}$,
+% and scalar multiplication, 
+% $\conjtrans{(z\cdot M)}=\compconj{z}\cdot\conjtrans{M}$.
+% Third, $\conjtrans{(M\cdot N)}=\conjtrans{N}\cdot\conjtrans{M}$,
+% and the dot product of complex column vectors is 
+% $\innerprod{\vec{v}}{\vec{w}}$ equals the 
+% result of treating the two vectors as one-column matrices and 
+% multiplying $\conjtrans{\vec{w}\,}\cdot \vec{v}$.
+
+% The verifications are straightforward.
+% For the first, recall that we can take a 
+% conjugate transpose by doing conjugation and then transposition,
+% or we can do them in the other order. 
+% That gives this.
+% \begin{equation*}
+% \conjtrans{(\conjtrans{M})}
+%   =\compconj{\trans{\big(\,\compconj{\trans{M}}\,\big)\!}}
+%   =\compconj{\compconj{\trans{\trans{M}}}}
+%   =\compconj{\compconj{M}}
+%   =M
+% \end{equation*}
+% The second result follows immediately from earlier work.
+% For the third, recall how transpose interacts with matrix multipication,
+% $\conjtrans{(MN)}
+% =\compconj{\trans{(MN)}}
+% =\compconj{\trans{N}\cdot\trans{M}}
+% =\compconj{\trans{N}}\cdot\compconj{\trans{M}}
+% =\conjtrans{N}\cdot\conjtrans{M}$. 
+% Item~(4) is a common source of mistakes.
+% \begin{equation*}
+%   \innerprod{\vec{v}}{\vec{w}}
+%   =\innerprod{\colvec{v_1 \\ \vdots \\ v_n}}{\colvec{w_1 \\ \vdots \\ w_n}}
+%   =v_1\compconj{w_1}+\cdots +v_n\compconj{w_n}
+%   =\rowvec{\compconj{w_1} &\cdots &\compconj{w_n}}\colvec{v_1 \\ \vdots \\ v_n}
+% \end{equation*}
 
 
 
