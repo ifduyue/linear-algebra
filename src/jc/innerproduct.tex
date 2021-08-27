@@ -122,12 +122,12 @@ Consequently, this our definition for $\C^2\!$.
 The 
 \definend{Hermitian inner product} 
 is:\index{inner product!Hermitian}\index{Hermitian inner product}
-if two members  $\vec{v},\vec{w}$ of a complex vector space 
-have $i$-th components $v_i$ and $w_i$, then
-$\innerprod{v}{w}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
-Observe that this extends the dot product in that
+where two members  $\vec{v},\vec{w}$ of~$\C^n$ 
+have components $v_0$, \ldots~$v_n$ and $w_0$, \ldots~$w_n$, then
+$\innerprod{\vec{v}}{\vec{w}}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
+Notice that this extends the dot product in the sense that
 if we fall back to reals, taking the $b$'s be zero, then
-we get $\vec{v}\dotprod\vec{w}$.
+it equals $\vec{v}\dotprod\vec{w}$.
 
 This operation inputs two vectors but outputs a scalar.
 Here is an example.
@@ -179,14 +179,12 @@ to be linear in the second input; more on this
 at the end of this Topic.)
 Condition~(2) is that
 $\innerprod{\vec{w}}{\vec{v}}=\compconj{\innerprod{\vec{v}}{\vec{w}}}$.
-% (this makes the operation  \definend{conjugate symmetric}).
-(Observe that as a consequence, 
+Observe that as a consequence, 
 $\innerprod{\vec{v}}{\vec{v}}$ equals its conjugate and
-so is a real number.)
+so is a real number.
 Condition~(3) says about that real number that
 $\innerprod{\vec{v}}{\vec{v}}\geq 0$ for all $\vec{v}$, with 
 $\innerprod{\vec{v}}{\vec{v}}= 0$ if and only if $\vec{v}=\zero$.
-% (this makes the operation \definend{positive definite}).
 
 A vector space that has an inner product operation is an
 \definend{inner product space}.
@@ -194,12 +192,13 @@ In the prior paragraph we used the $\innerprod{\vec{v}}{\vec{w}}$ notation
 for any inner product at all, while earlier we used it for the specific case of
 the Hermetian inner product.
 This duplication won't cause confusion because in an inner product space there
-is exactly one such operation, so there are not a number to tell apart.
+is exactly one such operation, so there are not several to tell apart.
 
 Each real vector space $\R^n$ is an an inner product space
 where the operation is the dot product. 
 Hermitian inner product makes any of the complex vector spaces~$\C^n$ into 
 an inner product space.
+Verifying both of these is an exercise.
 
 An example which looks quite different 
 is the real vector space whose members are
@@ -496,57 +495,162 @@ $\norm{f+g}^2+\norm{f-g}^2$ does not equal $2\norm{f}^2+2\norm{g}^2$.
 %   =\rowvec{\compconj{w_1} &\cdots &\compconj{w_n}}\colvec{v_1 \\ \vdots \\ v_n}
 % \end{equation*}
 
-
+We close with a remark about our definition of inner product.
+Some authors, particularly in physics, define the inner product 
+so that it is linear in the second argument instead of the first. 
+Where we write $\innerprod{\vec{v}}{\vec{w}}$, 
+those authors write $\langle y\ |\ x\rangle$. 
+This is 
+\definend{Dirac's bra-ket notation}\index{bra-ket notation}\index{inner product!compared with bra-ket} 
+and is standard in quantum mechanics.
 
 \begin{exercises}
-\item
-Show that an attempted definition of $\innerprod{\vec{v}}{\vec{w}}$
-that is linear in both inputs
-loses that $\innerprod{\vec{v}}{\vec{v}}$ gives the length.
+\item 
+Verify that $\R^n$ along with dot product is an inner product space.
 \begin{answer}
-If
-$\innerprod{\vec{v}}{\vec{v}}$ is greater than or equal to~$0$ for all
-complex vectors,
-then 
-$0\leq \innerprod{i\vec{v}}{i\vec{v}}
-  =i\innerprod{\vec{v}}{i\vec{v}}
-  =i^2\innerprod{\vec{v}}{\vec{v}}\leq 0$.
-\end{answer}
-
-\item Show that linearity of $\innerprod{\vec{v}}{\vec{w}}$ in the first
-input along with conjugate symmetry implies 
-\definend{sesquilinearity}:
-$\innerprod{\vec{v}}{z\vec{w}}=\compconj{z}\cdot \innerprod{\vec{v}}{\vec{w}}$.
-\begin{answer}
-$\innerprod{\vec{v}}{z\vec{w}}
-=\compconj{\innerprod{z\vec{w}}{\vec{v}}}
-=\compconj{z\cdot\innerprod{\vec{w}}{\vec{v}}}
-=\compconj{z}\cdot\compconj{\innerprod{\vec{w}}{\vec{v}}}
-=
-\compconj{z}\cdot \innerprod{\vec{v}}{\vec{w}}$
-\end{answer}
-
-\item Prove the Pythagorean Theorem,  
-that if $\vec{v}$ is orthogonal to~$\vec{w}$ then 
-$\norm{\vec{v}+\vec{w}}^2=\norm{\vec{v}}^2+\norm{\vec{w}}^2$.
-\begin{answer}
-$
-\norm{\vec{v}+\vec{w}}^2
-=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
-=\innerprod{\vec{v}}{\vec{v}}
-  +\innerprod{\vec{v}}{\vec{w}}
-  +\innerprod{\vec{w}}{\vec{v}}
-  +\innerprod{\vec{w}}{\vec{w}}
-=\norm{\vec{v}}
-  +\zero
-  +\zero
-  +\norm{\vec{w}}
-$
+The opening paragraph of this Topic notes that dot product is linear
+in both inputs, and so the first condition is satisfied.
+Condition~(2) concerns conjugation, 
+which has no effect on reals, and 
+so this condition is trivially satisfied. 
+Condition~(3) requires that the length (the ordinary Euclidean length
+in $n$-dimensional real space) be zero if and only if the vector is~$\zero$,
+which is also clear.
+(In any event, if the vector has components $v_1$, \ldots~$v_n$ then
+$v_1^2+\cdots v_n^2=0$ if and only if all the components are zero.) 
 \end{answer}
 
 \item
 Show that Hermitian inner product on the two-dimensional vector space~$\C^2$ 
 satisfies these three conditions in the definition of inner product. 
+\begin{answer}
+The development in the Topic body proves~(1) and~(2).
+For~(3), suppose that 
+two members  $\vec{v},\vec{w}$ of~$\C^n$
+have $i$-th components $v_i$ and $w_i$, so that
+$\innerprod{\vec{v}}{\vec{w}}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
+Then $\innerprod{\vec{v}}{\vec{v}}=v_1\compconj{v}_1+\cdots+v_n\compconj{v}_n$
+equals $\absval{\vec{v}_1}^2+\cdots \absval{\vec{v}_n}^2$, 
+which clearly equals~$0$ if and only if each component is~$0$.
+\end{answer}
+
+\item Show that this operation is an inner product on the 
+real vector space $\matspace_{\nbyn{2}}$.
+\begin{equation*}
+  \innerprod{
+    \begin{mat}
+    a  &b  \\
+    c  &d
+    \end{mat}
+    }{
+      \begin{mat}
+       e  &f  \\
+       g  &h
+      \end{mat}
+    }
+    =
+    ae+bf+cg+dh
+\end{equation*}
+\begin{answer}
+Condition~(1), linearity in the first argument, is easy.
+\begin{multline*}
+  \innerprod{
+    \begin{mat}
+    a_1  &b_1  \\
+    c_1  &d_1
+    \end{mat}
+    +
+    \begin{mat}
+    a_2  &b_2  \\
+    c_2  &d_2
+    \end{mat}
+    }{
+      \begin{mat}
+       e  &f  \\
+       g  &h
+      \end{mat}
+    }                                                  \\
+  \begin{split}
+    &=(a_1+a_2)e+(b_1+b_2)f+(c_1+c_2)g+(d_1+d_2)h   \\
+    &=(a_1e+b_1f+c_1g+d_1h)+(a_2e+b_2f+c_2g+d_2h)   \\
+    &=
+  \innerprod{
+    \begin{mat}
+    a_1  &b_1  \\
+    c_1  &d_1
+    \end{mat}
+    }{
+      \begin{mat}
+       e  &f  \\
+       g  &h
+      \end{mat}
+    }
+  +
+  \innerprod{
+    \begin{mat}
+    a_2  &b_2  \\
+    c_2  &d_2
+    \end{mat}
+    }{
+      \begin{mat}
+       e  &f  \\
+       g  &h
+      \end{mat}
+    }
+  \end{split}
+\end{multline*}
+Scalar multiplication is just as routine.
+Condition~(2) concerns conjugation, 
+which has no effect on reals and 
+so this condition is trivially satisfied. 
+For~(3), oo course $a^2+b^2+c^2+d^2\geq 0$, with equality if and only
+if each entry is zero.
+\end{answer}
+%
+\item
+Show that an attempted definition of $\innerprod{\vec{v}}{\vec{w}}$
+on $\C^n$ that is linear in both inputs
+loses that $\innerprod{\vec{v}}{\vec{v}}$ gives the length.
+\begin{answer}
+Suppose that
+$\innerprod{\vec{v}}{\vec{v}}$ is greater than or equal to~$0$ for all
+complex vectors~$\vec{v}$.
+Then linearity in both inputs gives
+$0\leq \innerprod{i\vec{v}}{i\vec{v}}
+  =i\innerprod{\vec{v}}{i\vec{v}}
+  =i^2\innerprod{\vec{v}}{\vec{v}}\leq 0$.
+\end{answer}
+
+% \item Show that linearity of $\innerprod{\vec{v}}{\vec{w}}$ in the first
+% input along with conjugate symmetry implies 
+% \definend{sesquilinearity}:
+% $\innerprod{\vec{v}}{z\vec{w}}=\compconj{z}\cdot \innerprod{\vec{v}}{\vec{w}}$.
+% \begin{answer}
+% $\innerprod{\vec{v}}{z\vec{w}}
+% =\compconj{\innerprod{z\vec{w}}{\vec{v}}}
+% =\compconj{z\cdot\innerprod{\vec{w}}{\vec{v}}}
+% =\compconj{z}\cdot\compconj{\innerprod{\vec{w}}{\vec{v}}}
+% =
+% \compconj{z}\cdot \innerprod{\vec{v}}{\vec{w}}$
+% \end{answer}
+
+% \item Prove the Pythagorean Theorem,  
+% that if $\vec{v}$ is orthogonal to~$\vec{w}$ then 
+% $\norm{\vec{v}+\vec{w}}^2=\norm{\vec{v}}^2+\norm{\vec{w}}^2$.
+% \begin{answer}
+% $
+% \norm{\vec{v}+\vec{w}}^2
+% =\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}
+% =\innerprod{\vec{v}}{\vec{v}}
+%   +\innerprod{\vec{v}}{\vec{w}}
+%   +\innerprod{\vec{w}}{\vec{v}}
+%   +\innerprod{\vec{w}}{\vec{w}}
+% =\norm{\vec{v}}
+%   +\zero
+%   +\zero
+%   +\norm{\vec{w}}
+% $
+% \end{answer}
 
 
 \end{exercises}
