@@ -26,19 +26,19 @@ and scalar multiplication.
   \qquad
  \vec{v}\dotprod(r\vec{w})=r(\vec{v}\dotprod\vec{w})
 \end{equation*}
-Dot product describes the geometry of
-$\Re^n$; for instance, two vectors are perpendicular if and only if their
+
+Dot product is interesting because it describes the geometry of
+$\Re^n$. 
+Examples are that two vectors are perpendicular if and only if their
 dot product is zero, and the length of a vector is determined by  
 $\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
-
-Here we will extend the dot product and length operations 
-to other vector spaces. 
+Here we will extend it, and with it the length operation, 
+to other vector spaces.
 Instead of a dot, the traditional mathematical notation is
 $\innerprod{\vec{v}}{\vec{w}}$.
-Our goal is to understand the transformations of complex vector spaces
-that preserve length, that satisfy $\absval{t(\vec{v})}=\absval{\vec{v}}$.
 
-We need more on complex numbers than we reviewed in this
+To motivate the extension, 
+we need more on complex numbers than we reviewed in this 
 chapter's opening section.
 There, we described~$\C$ as 
 the collection of $z=a+bi$ where $a$ and~$b$ are real numbers,
@@ -49,7 +49,7 @@ As for division,  consider $(1+2i)/(3+4i)$.
 The difference of squares formula
 gives $(a+bi)(a-bi)=a^2-(bi)^2=a^2-(-b^2)=a^2+b^2$,
 which is a real number,
-so
+so 
 by multiplying the quotient's numerator and denominator by $3-4i$
 we get an expression of the form $a+bi$.
 \begin{equation*}
@@ -80,17 +80,20 @@ illustrates the conjugate.
 \end{center}
 This picture makes clear that 
 $z+\compconj{z}=(a+bi)+(a-bi)$ equals
-$2a$, which we write as $2\RE{z}$.
-It also shows the \definend{argument}, $\arg(z)$, the angle that
-$z$ makes with the real axis.
+$2\cdot a$, which we write as $2\cdot\RE{z}$.
+(Read `$\RE{z}$' aloud as ``the real part of $z$.'')
+% It also shows the \definend{argument}, $\arg(z)$, the angle that
+% $z$ makes with the real axis.
 
-We have seen many examples of vector spaces that are far removed from
-just collections of column vectors.
-One example is a vector space of polynomials, where it is not immediately
-clear, given a member~$\vec{v}$,
-what would be a useful definition of its length, 
-$\sqrt{\innerprod{\vec{v}}{\vec{v}}}$.
-For some insight into the right direction, consider the complex
+We are ready to generalize the dot product and
+length operations.
+These are familiar in $\R^n$, but we have seen many examples of 
+vector spaces that are far removed from
+collections of real column vectors.
+One example is a vector space of polynomials, $\polyspace_n$, 
+where it is not clear, given a member,
+what would be a useful definition of its length.
+For some insight, consider the complex
 vector spaces~$\C^n$.
 
 Based on dot product, the natural first guess is to try defining 
@@ -111,7 +114,7 @@ Thus, we don't want that $\innerprod{\vec{v}}{\vec{v}}$ equals
 $(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$,
 instead we want something like
 $(a_1+b_1i)(a_1-b_1i)+(a_2+b_2i)(a_2-b_2i)$.
-Consequently, this our definition in the two-dimensional case.
+Consequently, this our definition for $\C^2\!$.
 \begin{equation*}
   \innerprod{\vec{v}}{\vec{w}}
   =(a_{1,1}+b_{1,1}i)\cdot(a_{1,2}-b_{1,2}i)\,+\,(a_{2,1}+b_{2,1}i)\cdot(a_{2,2}-b_{2,2}i)
@@ -150,31 +153,36 @@ $\innerprod{\vec{v}}{\vec{w}_1+\vec{w}_2}
 holds, for scalar multiplication a conjugation appears:
 $\innerprod{\vec{v}}{z\cdot\vec{w}}
      =\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}$.
+Of course, this difference is here because the second input is conjugated
+while the first is not.
+Another result of this asymmetry is that 
+$\innerprod{\vec{w}}{\vec{v}}\neq \innerprod{\vec{v}}{\vec{w}}$, rather
+$\innerprod{\vec{w}}{\vec{v}}=\compconj{\innerprod{\vec{v}}{\vec{w}}}$.
 
 Hermitian inner product is one way, in a particular set of vector spaces, 
 to extend dot product.
 There are lots of others, in lots of spaces.
-But we require that our extensions lead to a reasonable notion of length.
+But we want that our extensions lead to a reasonable notion of length.
 For that,
 an \definend{inner product} is an operation
 that inputs two vectors from a real or complex vector space 
 and outputs a scalar, and that
 satisfies three conditions.
-Condition~(1) is that it is linear in the first input, so that
+Condition~(1) is that it is linear in the first input, so
 $\innerprod{\vec{v}_1+\vec{v}_2}{\vec{w}}
  = \innerprod{\vec{v}_1}{\vec{w}}
    +\innerprod{\vec{v}_2}{\vec{w}}$
 and $\innerprod{z\vec{v}}{\vec{w}}
      =z\innerprod{\vec{v}}{\vec{w}}$.
 (Some presentations take inner product 
-to be linear in the second input; more on that
-at the end.)
+to be linear in the second input; more on this
+at the end of this Topic.)
 Condition~(2) is that
 $\innerprod{\vec{w}}{\vec{v}}=\compconj{\innerprod{\vec{v}}{\vec{w}}}$.
 % (this makes the operation  \definend{conjugate symmetric}).
-Observe that taking both vectors to be 
-$\vec{v}$ gives that $\innerprod{\vec{v}}{\vec{v}}$ equals its conjugate, and
-so is a real number.
+(Observe that as a consequence, 
+$\innerprod{\vec{v}}{\vec{v}}$ equals its conjugate and
+so is a real number.)
 Condition~(3) says about that real number that
 $\innerprod{\vec{v}}{\vec{v}}\geq 0$ for all $\vec{v}$, with 
 $\innerprod{\vec{v}}{\vec{v}}= 0$ if and only if $\vec{v}=\zero$.
@@ -182,10 +190,16 @@ $\innerprod{\vec{v}}{\vec{v}}= 0$ if and only if $\vec{v}=\zero$.
 
 A vector space that has an inner product operation is an
 \definend{inner product space}.
-The dot product operation turns any of the real vector spaces $\R^n$ into
-an inner product space. 
+In the prior paragraph we used the $\innerprod{\vec{v}}{\vec{w}}$ notation 
+for any inner product at all, while earlier we used it for the specific case of
+the Hermetian inner product.
+This duplication won't cause confusion because in an inner product space there
+is exactly one such operation, so there are not a number to tell apart.
+
+Each real vector space $\R^n$ is an an inner product space
+where the operation is the dot product. 
 Hermitian inner product makes any of the complex vector spaces~$\C^n$ into 
-an inner product space (verifications are in the exercises).
+an inner product space.
 
 An example which looks quite different 
 is the real vector space whose members are
@@ -223,7 +237,7 @@ its norm, so that $\norm{z\vec{v}}=\absval{z}\cdot\norm{\vec{v}}$, and
 (3)~the Triangle Inequality,\index{Triangle Inequality} 
 $\norm{\vec{v}+\vec{w}}\leq\norm{\vec{v}}+\norm{\vec{w}}$.
 
-We already covered the first condition earlier.
+We covered the first condition earlier.
 To verify the second, 
 $\norm{z\vec{v}}
 =\sqrt{\smashdp{\innerprod{z\vec{v}}{z\vec{v}}}}

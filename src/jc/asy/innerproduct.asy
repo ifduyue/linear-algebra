@@ -28,7 +28,7 @@ real axis_tick_size = 0.75mm;
 // ================= defn of a+bi, conj ===============
 picture pic;
 int picnum = 0;
-size(pic,5cm);
+size(pic,4cm);
 // real scalefactor = 1000;
 // scale(pic,Linear(scalefactor),Linear(5000));
 
@@ -43,23 +43,23 @@ label(pic,"$z=a+bi$",z,1.75*E);
 pair zconj=(a,-1*b);
 dot(pic, zconj, FCNPEN_SOLID, Fill(FCNPEN_SOLID));
 label(pic,"$\compconj{z}=a-bi$",zconj,1.75*E);
-path zpath=(0,0)--z;
-path zconjpath=(0,0)--zconj;
 
-// draw the arc
-path c=arc((0,0), 1.75, 0, aTan(b/a), CCW);
-draw(pic,c,Arrow(DefaultHead,4pt));
-label(pic,"$\theta=\arg(z)$",point(c,0.5),1.75*E);
+// path zpath=(0,0)--z;
+// path zconjpath=(0,0)--zconj;
+// // draw the arc
+// path c=arc((0,0), 1.75, 0, aTan(b/a), CCW);
+// draw(pic,c,Arrow(DefaultHead,4pt));
+// label(pic,"$\theta=\arg(z)$",point(c,0.5),1.75*E);
 
-// line from origin to z
-pen zline_pen = linetype(new real[] {3,6});
+// // line from origin to z
+// pen zline_pen = linetype(new real[] {3,6});
 
-draw(pic, subpath(zpath,0.04,0.94), zline_pen);
-// draw(pic, zconjpath,FCNPEN_SOLID);
+// draw(pic, subpath(zpath,0.04,0.94), zline_pen);
+// // draw(pic, zconjpath,FCNPEN_SOLID);
 
 // axes
 xaxis(pic,
-      xmin=-0.5,xmax=a+1.5,
+      xmin=-0.75,xmax=a+1.5,
       gray(0.5),
       arrow=None);
 xtick(pic,"$a$",(a,0),size=-2pt);
