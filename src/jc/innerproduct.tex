@@ -451,7 +451,7 @@ We close with a remark about our definition of inner product.
 Some authors, particularly in physics, define the inner product 
 so that it is linear in the second argument instead of the first. 
 Where we write $\innerprod{\vec{v}}{\vec{w}}$, 
-those authors write $\langle y\ |\ x\rangle$. 
+these authors write $\langle y\ |\ x\rangle$. 
 This is the
 \definend{bra-ket notation}\index{bra-ket notation}\index{inner product!compared with bra-ket} 
 that is standard in quantum mechanics.
@@ -555,9 +555,54 @@ Scalar multiplication is just as routine.
 Condition~(2) concerns conjugation, 
 which has no effect on reals and 
 so this condition is trivially satisfied. 
-For~(3), oo course $a^2+b^2+c^2+d^2\geq 0$, with equality if and only
+For~(3), of course $a^2+b^2+c^2+d^2\geq 0$, with equality if and only
 if each entry is zero.
 \end{answer}
+%
+\item Consider the real vector space of quadratic polynomials~$\polyspace_2$.
+Show that this is an inner product operation:
+$\innerprod{a_2x^2+a_1x+a_0}{b_2x^2+b_1x+b_0}=a_2b_2+a_1b_1+a_0b_0$. 
+Consider the resulting norm.
+What is $\norm{x^2-1}$?
+\begin{answer}
+Condition~(1) is that it is linear in the first input.
+Verifying that this operation respects addition is routine
+\begin{multline*}
+  \innerprod{(a_2x^2+a_1x+a_0)+(c_2x^2+c_1x+c_0)}{b_2x^2+b_1x+b_0}  \\
+  \begin{split}
+    &=(a_2+c_2)b_2+(a_1+c_1)b_1+(a_0+c_0)b_0             \\
+    &=(a_2b_2+a_1b_1+a_0b_0)+(c_2b_2+c_1b_1+c_0b_0)             \\
+    &=\innerprod{(a_2x^2+a_1x+a_0)}{b_2x^2+b_1x+b_0}      \\
+      &\qquad+\innerprod{(c_2x^2+c_1x+c_0)}{b_2x^2+b_1x+b_0}
+  \end{split}
+\end{multline*}
+as is verifying that it respects scalar multiplication.
+Because this is a real vector space, and conjugation has no effect on
+real number scalars, it satisfies condition~(2).
+For condition~(3), let $\vec{v}=a_2x^2+a_1x+a_0$.
+Then $\innerprod{\vec{v}}{\vec{v}}=a_2^2+a_1^2+a_0^2$ is clearly non-negative,
+and is equal to~$0$ if and only if $\vec{v}$ is the zero polynomial.
+
+As to the norm of $x^2-1$, we have this.
+\begin{equation*} 
+ \norm{x^2-1}=\sqrt{\innerprod{x^2-1}{x^2-1}}=\sqrt{1^2+0^2+(-1)^2}=\sqrt{2}
+\end{equation*}
+\end{answer}
+
+\item Verify that the set of real valued functions that are continuous on the 
+closed interval $\closedinterval{0}{1}$ is a vector space.
+\begin{answer}
+The ten conditions in the definition of a vector space
+are consequences of results from Calculus.
+For example, the first condition is closure under addition and we
+have that the sum of two continuous functions is a continuous function 
+in Calculus.
+(Although, often a student does not see a completely precise proof 
+until a later class.)
+Similarly, addition of two functions is commutative.
+Of course, the zero vector is the function $f(x)=0$, which is continuous.
+\end{answer}
+
 %
 \item
 Show that an attempted definition of $\innerprod{\vec{v}}{\vec{w}}$
