@@ -1,0 +1,53 @@
+README.opacity
+JH 2021-Sep-09
+
+Different versions of Ghostscript work or don't work with the opacity
+command.  See this for instance.
+  https://sourceforge.net/p/asymptote/discussion/409349/thread/6fd84befa5/?limit=25#59fd/2720
+So until the situation settles down, I'm going to just include the
+PDF's in the git archive, along with the source that creates them.  That
+necessitates mucking with the Makefile also, to not make those PDF's.
+
+This is a result of going to linear-algebra/src/slides and running
+  find . -name "*.asy" -exec grep opacity {} \; -print > opacity_search.out
+Note that some .asy files result in multiple .pdf files.
+
+draw(surface(parallelogram),rgb("fff0ca")+opacity(0.3),nolight);
+./four/asy/four_ii_orientation_neg.asy
+// draw(s,MAINPEN+paleyellow+opacity(0.9));  // only works on adobe renderer?
+./two/asy/two_i_a_line.asy
+draw(s,MAINPEN+paleyellow+opacity(0.7));  // only works on adobe renderer?
+./two/asy/two_i_spanplane.asy
+draw(s,MAINPEN+paleyellow+opacity(0.9));  // only works on adobe renderer?
+./two/asy/two_i_plane.asy
+draw(s,MAINPEN+paleyellow+opacity(0.9));  // only works on adobe renderer?
+./two/asy/two_i_a_plane.asy
+draw(s,MAINPEN+paleyellow+opacity(0.7));  // only works on adobe renderer?
+./one/asy/one_ii_plane.asy
+draw(p,inv_img_2,inverse_image_pen+dotline+red+opacity(0.3));
+draw(p,inv_img_3,inverse_image_pen+dotline+blue+opacity(0.3));
+draw(p,inv_img_5,inverse_image_pen+dotline+red+blue+opacity(0.3));
+fill(p,parallelogram,parallogram_pen+gray(.1)+opacity(0.1));
+./three/asy/three_ii_inv_img.asy
+// draw(s,MAINPEN+paleyellow+opacity(0.9),nolight);
+./three/asy/three_iii_cosets.asy
+draw(s,MAINPEN+paleyellow+opacity(0.9));  // only works on adobe renderer?
+./three/asy/three_i_plane.asy
+draw(s,MAINPEN+mediumred+opacity(0.9),nolight);
+draw(s_prime,MAINPEN+mediumblue+opacity(0.9),nolight);
+./three/asy/three_ii_kernel.asy
+
+So when the gs situation is fixed then I need to unwind these and uncomment the
+associated lines in linear-algebra/src/Makefile.
+
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/four/asy$ git add four_ii_orientation_neg*.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/two/asy$ git add two_i_a_line.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/two/asy$ git add two_i_spanplane.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/two/asy$ git add two_i_plane.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/two/asy$ git add two_i_a_plane.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/one/asy$ git add one_ii_plane.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/three/asy$ git add three_ii_inv_img*.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/three/asy$ git add three_i_plane.pdf
+ftpmaint@millstone:~/Documents/linear-algebra/src/slides/three/asy$ git add three_ii_kernel.pdf
+
+(The file /three/asy/three_iii_cosets.asy is not used.)

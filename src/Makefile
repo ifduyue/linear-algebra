@@ -1,6 +1,9 @@
 # Makefile
 # For Linear Algebra by Jim Hefferon joshua.smcvt.edu/linearalgebra
 # 2019-Oct-10 JH GPL 2
+# 2021-Sep-09 JH Because of Asymptote's interactions with bad ghostscript
+#    versions, I am temporarily adding some of the PDF's to the git, and
+#    commenting out the commands to make them.
 
 # SRC_DIR  Full path for src/
 #  From http://timmurphy.org/2015/09/27/how-to-get-a-makefile-directory-path/
@@ -64,8 +67,11 @@ all : book.pdf slides lab answers
 # .PHONY : book
 # book : book.pdf
 
-book.pdf : book.tex cover pref gr vs map det jc appen bib makeindex
+book.pdf : book.tex cover pref gr vs map det jc appen bib
 	$(LATEX_CMD) book.tex
+	$(MAKEINDEX_CMD) book
+	$(LATEX_CMD) book.tex
+
 
 # Cover and Preface
 .PHONY : cover
@@ -156,11 +162,15 @@ det/mp/ch4.1 : det/mp/ch4.mp
 jc : jc/*.tex jc_asy jc_mp
 
 .PHONY : jc_asy
-jc_asy : jc/asy/wilber.pdf
+jc_asy : jc/asy/wilber.pdf jc/asy/innerproduct000.pdf
 
 jc/asy/wilber.pdf : jc/asy/wilber.asy 
 	cd $(dir $@);\
         $(ASYMPTOTE_CMD)  $(notdir $(basename $@))
+
+jc/asy/innerproduct000.pdf : jc/asy/innerproduct.asy 
+	cd $(dir $@);\
+        $(ASYMPTOTE_CMD)  $(subst 000,,$(notdir $(basename $@))) # strip out 000
 
 .PHONY : jc_mp
 jc_mp : jc/mp/ch5.1
@@ -186,9 +196,9 @@ bib : bib/bib.tex
 
 bib/bib.tex :
 
-.PHONY : makeindex
-makeindex : book.idx
-	$(MAKEINDEX_CMD) book 
+# .PHONY : makeindex
+# makeindex : book.idx
+# 	$(MAKEINDEX_CMD) book 
 
 
 
@@ -233,8 +243,9 @@ slides_one : slides_one_asy slides/one/one_i.pdf slides/one/one_ii.pdf\
 slides_one_asy : slides/one/asy/one_ii_plane.pdf
 
 slides/one/asy/one_ii_plane.pdf : slides/one/asy/one_ii_plane.asy
-	cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+	echo "two/asy/two_i_a_plane.pdf is in git; see README.opacity"
+        # cd $(dir $@);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
 slides/one/one_i.pdf : slides/one/one_i.tex slides/one/one_i_main.tex gr/gr1.tex
 	$(compile-slides)
@@ -264,9 +275,54 @@ slides_two_asy : slides/two/asy/p2_subspaces.pdf \
   slides/two/asy/two_i_spanplane.pdf \
   slides/two/asy/two_i_a_line.pdf
 
-slides/two/asy/%.pdf : slides/two/asy/%.asy 
-	cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+# == start of section added for opacity problems
+
+# commented this out to do them one at a time
+# slides/two/asy/%.pdf : slides/two/asy/%.asy 
+# 	cd $(dir $@);\
+#         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/two/asy/p2_subspaces.pdf : slides/two/asy/p2_subspaces.asy
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/p2_subspaces_spans.pdf : slides/two/asy/p2_subspaces_spans.asy
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/r3_subspaces.pdf : slides/two/asy/r3_subspaces.asy
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/r3_subspaces_spans.pdf : slides/two/asy/r3_subspaces_spans.asy
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/two_i_a_line.pdf : slides/two/asy/two_i_a_line.asy
+	echo "two/asy/two_i_a_line.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/two_i_a_plane.pdf : slides/two/asy/two_i_a_plane.asy
+	echo "two/asy/two_i_a_plane.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/two_i_line_slope_two.pdf : slides/two/asy/two_i_line_slope_two.asy
+        cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/two_i_plane.pdf : slides/two/asy/two_i_plane.asy
+	echo "two/asy/two_i_plane.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/two/asy/two_i_spanplane.pdf : slides/two/asy/two_i_spanplane.asy
+	echo "two/asy/two_i_spanplane.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+# == end of section added for opacity problems
 
 slides/two/two_i.pdf : slides/two/two_i.tex slides/two/two_i_main.tex vs/vs1.tex
 	$(compile-slides)
@@ -309,7 +365,7 @@ slides_three_asy : slides/three/asy/three_ii_3dproj1.pdf \
   slides/three/asy/three_vi_3dgramschmidt0.pdf \
   slides/three/asy/three_vi_3dgramschmidt1.pdf \
   slides/three/asy/three_vi_3dprojtoline.pdf 
-
+  # redundant: 
   # slides/three/asy/three_ii_inv_img01.pdf \
   # slides/three/asy/three_ii_inv_img02.pdf \
   # slides/three/asy/three_ii_inv_img03.pdf \
@@ -323,17 +379,90 @@ slides_three_asy : slides/three/asy/three_ii_3dproj1.pdf \
   # slides/three/asy/three_ii_proj_2d05.pdf \
   # slides/three/asy/three_ii_proj_2d06.pdf \
 
-slides/three/asy/three_ii_inv_img00.pdf : slides/three/asy/three_ii_inv_img.asy 
-	cd $(dir $<);\
+
+# == start of section added for opacity problems
+
+# Commented out to do one at a time for opacity reasons
+# slides/three/asy/%.pdf : slides/three/asy/%.asy
+# 	cd $(dir $@);\
+#         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+slides/three/asy/three_ii_3dproj1.pdf : slides/three/asy/three_ii_3dproj1.asy 
+        cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_3dproj2.pdf : slides/three/asy/three_ii_3dproj2.asy 
+        cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_3dproj3.pdf : slides/three/asy/three_ii_3dproj3.asy 
+        cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_dims.pdf : slides/three/asy/three_ii_dims.asy 
+        cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_inv_img00.pdf : slides/three/asy/three_ii_inv_img.asy 
+	echo "three/asy/three_ii_inv_img*.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_kernel.pdf : slides/three/asy/three_ii_kernel.asy 
+	echo "three/asy/three_ii_kernel.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/three/asy/three_ii_proj_2d00.pdf : slides/three/asy/three_ii_proj_2d.asy 
 	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
-slides/three/asy/%.pdf : slides/three/asy/%.asy
-	cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+slides/three/asy/three_ii_rotate_basis.pdf : slides/three/asy/three_ii_rotate_basis.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_rotate_prod_after.pdf : slides/three/asy/three_ii_rotate_prod_after.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_rotate_prod_before.pdf : slides/three/asy/three_ii_rotate_prod_before.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_rotate_sum_after.pdf : slides/three/asy/three_ii_rotate_sum_after.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_ii_rotate_sum_before.pdf : slides/three/asy/three_ii_rotate_sum_before.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_i_line.pdf : slides/three/asy/three_i_line.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_i_plane.pdf : slides/three/asy/three_i_plane.asy 
+	echo "three/asy/three_i_plane.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_vi_2dmutuallyortho.pdf : slides/three/asy/three_vi_2dmutuallyortho.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_vi_3dgramschmidt0.pdf : slides/three/asy/three_vi_3dgramschmidt0.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_vi_3dgramschmidt1.pdf : slides/three/asy/three_vi_3dgramschmidt1.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/three/asy/three_vi_3dprojtoline.pdf : slides/three/asy/three_vi_3dprojtoline.asy 
+	cd $(dir $<);\
+        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+# == end of section added for opacity problems
 
 slides/three/three_i.pdf : slides/three/three_i.tex slides/three/three_i_main.tex map/map1.tex
 	$(compile-slides)
@@ -385,9 +514,10 @@ slides_four_asy : slides/four/asy/four_ii_2dtransedsizea.pdf \
   # slides/four/asy/four_ii_orientation_neg8.pdf \
   # slides/four/asy/four_ii_orientation_neg9.pdf \
 
-slides/four/asy/four_ii_orientation_neg0.pdf : slides/four/asy/four_ii_orientation_neg.asy 
-	cd $(dir $<);\
-        $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+slides/four/asy/four_ii_orientation_neg0.pdf : slides/four/asy/four_ii_orientation_neg.asy
+	echo "four_ii_orientation_neg0.pdf is in git; see README.opacity"
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/four/asy/%.pdf : slides/four/asy/%.asy
 	cd $(dir $@);\
