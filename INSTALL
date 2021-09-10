@@ -29,10 +29,23 @@ matter, if you have Linux then I will not help you either, sorry.
 I just did this in a terminal.
   sudo apt-get install texlive-full
 
+0.5) Change the ImageMagick policy.xml file.  I did
+  sudo emacs /etc/ImageMagic-6/policy.xml
+and found near the bottom a number of lines like this.
+  <!-- disable ghostscript format types -->
+  <policy domain="coder" rights="none" pattern="PS" />
+    ... total of six such policy lines ...
+  <policy domain="coder" rights="none" pattern="XPS" />
+I understand the story to be that old versions of GhostScript had a
+security flaw, and this sequence of lines turns off the described
+conversions to avoid that flaw.  But we want the described conversions,
+so comment them out by surrounding with <!-- and -->, as here.
+  <!-- <policy domain="coder" rights="none" pattern="PS" /> -->
+
 1) Get the linear-algebra archive.
   In your browser, visit https://gitlab.com/jim.hefferon/linear-algebra.  
   Download a .zip (it is the button between "Find file" and "Clone").
-  mv Downloads/linear-algebra-master.zip Documents
+  mv ~/Downloads/linear-algebra-master.zip ~/Documents
   cd ~/Documents
   unzip linear-algebra-master
   mv linear-algebra-master linear-algebra
@@ -50,11 +63,13 @@ expect that name.
 3) Now you can make the book.  
     cd ~/Documents/linear-algebra/src
     make
-(If it fails with a question mark prompt then probably you get out by
+(I had to install freeglut3.
+  sudo apt-get install freeglut3
+If something fails with a question mark prompt then probably you get out by
 typing `x' and <return>.) 
 
-At the end, you'll have book.pdf and jhanswer.pdf. You could have just
-skipped the compiling.
+At the end, you'll have book.pdf and jhanswer.pdf, along with the slides and
+the lab. You could have just skipped the compiling.
 
 To compile the version that is published in paper, change lines 10 and 11 in
 bookjhconcrete.sty to be this.

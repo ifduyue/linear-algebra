@@ -309,7 +309,7 @@ slides/two/asy/two_i_a_plane.pdf : slides/two/asy/two_i_a_plane.asy
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/two/asy/two_i_line_slope_two.pdf : slides/two/asy/two_i_line_slope_two.asy
-        cd $(dir $<);\
+	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/two/asy/two_i_plane.pdf : slides/two/asy/two_i_plane.asy
@@ -388,19 +388,19 @@ slides_three_asy : slides/three/asy/three_ii_3dproj1.pdf \
 #         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
 
 slides/three/asy/three_ii_3dproj1.pdf : slides/three/asy/three_ii_3dproj1.asy 
-        cd $(dir $<);\
+	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/three/asy/three_ii_3dproj2.pdf : slides/three/asy/three_ii_3dproj2.asy 
-        cd $(dir $<);\
+	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/three/asy/three_ii_3dproj3.pdf : slides/three/asy/three_ii_3dproj3.asy 
-        cd $(dir $<);\
+	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/three/asy/three_ii_dims.pdf : slides/three/asy/three_ii_dims.asy 
-        cd $(dir $<);\
+	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/three/asy/three_ii_inv_img00.pdf : slides/three/asy/three_ii_inv_img.asy 
@@ -413,7 +413,7 @@ slides/three/asy/three_ii_kernel.pdf : slides/three/asy/three_ii_kernel.asy
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
-slides/three/asy/three_ii_proj_2d00.pdf : slides/three/asy/three_ii_proj_2d.asy 
+slides/three/asy/three_ii_proj_2d00.pdf : slides/three/asy/three_ii_proj_2d.asy
 	cd $(dir $<);\
         $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
@@ -514,14 +514,40 @@ slides_four_asy : slides/four/asy/four_ii_2dtransedsizea.pdf \
   # slides/four/asy/four_ii_orientation_neg8.pdf \
   # slides/four/asy/four_ii_orientation_neg9.pdf \
 
+
+# == end of section added for opacity problems
+# Commented out to handle them one at a time because of opacity problems
+# slides/four/asy/%.pdf : slides/four/asy/%.asy
+# 	cd $(dir $@);\
+#         $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+
+
+slides/four/asy/four_ii_2dtransedsizea.pdf : slides/four/asy/four_ii_2dtransedsizea.asy
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/four/asy/four_ii_2dtransedsizeb.pdf : slides/four/asy/four_ii_2dtransedsizeb.asy
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/four/asy/four_ii_negvolbox.pdf : slides/four/asy/four_ii_negvolbox.asy
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+slides/four/asy/four_ii_orientation.pdf : slides/four/asy/four_ii_orientation.asy
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
 slides/four/asy/four_ii_orientation_neg0.pdf : slides/four/asy/four_ii_orientation_neg.asy
 	echo "four_ii_orientation_neg0.pdf is in git; see README.opacity"
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
-slides/four/asy/%.pdf : slides/four/asy/%.asy
-	cd $(dir $@);\
-        $(ASYMPTOTE_CMD) $(notdir $(basename $@))
+slides/four/asy/four_ii_orientation_pos.pdf : slides/four/asy/four_ii_orientation_pos.asy
+        # cd $(dir $<);\
+        # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
+
+# == end of section added for opacity problems
 
 slides/four/four_i.pdf : slides/four/four_i.tex slides/four/four_i_main.tex det/det1.tex 
 	$(compile-slides)

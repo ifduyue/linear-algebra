@@ -51,3 +51,7 @@ ftpmaint@millstone:~/Documents/linear-algebra/src/slides/three/asy$ git add thre
 ftpmaint@millstone:~/Documents/linear-algebra/src/slides/three/asy$ git add three_ii_kernel.pdf
 
 (The file /three/asy/three_iii_cosets.asy is not used.)
+
+In addition, I commented out the lines in src/asy/jh.asy where pens use
+opacity.  The pens are AXISPEN and FCNPEN.  So when the opacity situation
+settles down, need to uncomment those.

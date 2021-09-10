@@ -43,12 +43,12 @@ pen DASHPEN=linecap(0)
 pen FCNPEN_SOLID=linecap(0)
              +gray(0.3)
              +linewidth(1.5pt);
-pen FCNPEN=FCNPEN_SOLID
-             +opacity(.5,"Normal");
+pen FCNPEN=FCNPEN_SOLID; 
+             // comment out until opacity/GhostScript is solved +opacity(.5,"Normal");
 pen AXISPEN=linecap(0)
              +gray(0.3)
-             +linewidth(MAINPEN_WIDTH)
-             +opacity(.5,"Normal");
+  +linewidth(MAINPEN_WIDTH);
+             // comment out until opacity/GhostScript is solved +opacity(.5,"Normal");
 pen DXPEN=linecap(0)
              +red
              +linewidth(1pt);
