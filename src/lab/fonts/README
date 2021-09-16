@@ -11,3 +11,32 @@ Sage lowers asterisks, so I modified it to a new font ProggyCleanSage,
 by moving the asterisk up 350 units.  I also copied the micro symbol at
 code point 00B5 to the code point 03BC, greek small letter mu, because
 Sage mistakenly uses the latter.
+
+
+INSTALLING
+
+I put the relevant files in the system-wide local directory.
+
+  $ kpsewhich TEXMFLOCAL
+  /usr/local/share/texmf
+  $ cd /usr/local/share/texmf
+  $ sudo cp ~/Documents/linear-algebra/src/lab/fonts/ProggyCleanSageTree.zip .
+  $ sudo unzip ProggyCleanSageTree.zip
+
+I let the TeX system know the stuff is here.
+
+  $ sudo texhash
+  $ cd fonts/map/dvips/ProggyCleanSage
+  $ sudo updmap-sys --force --enable Map=ProggyCleanSage.map
+  $ sudo texhash
+
+Now try running a test file to see if it works.
+
+  \documentclass{article}
+  \usepackage{ProggyCleanSage}
+  \usepackage{lipsum}
+  \start{document}
+  \lipsum[1]
+
+  \textt{ABCDE}
+  \end{document}
