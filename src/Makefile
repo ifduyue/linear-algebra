@@ -523,18 +523,22 @@ slides_four_asy : slides/four/asy/four_ii_2dtransedsizea.pdf \
 
 
 slides/four/asy/four_ii_2dtransedsizea.pdf : slides/four/asy/four_ii_2dtransedsizea.asy
+	echo "four/asy/four_ii_2dtransedsizea.pdf is in git; see README.opacity"
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/four/asy/four_ii_2dtransedsizeb.pdf : slides/four/asy/four_ii_2dtransedsizeb.asy
+	echo "four/asy/four_ii_2dtransedsizeb.pdf is in git; see README.opacity"
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/four/asy/four_ii_negvolbox.pdf : slides/four/asy/four_ii_negvolbox.asy
+	echo "four/asy/four_ii_negvolbox.pdf is in git; see README.opacity"
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/four/asy/four_ii_orientation.pdf : slides/four/asy/four_ii_orientation.asy
+	echo "four/asy/four_ii_orientation.pdf is in git; see README.opacity"
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
@@ -544,6 +548,7 @@ slides/four/asy/four_ii_orientation_neg0.pdf : slides/four/asy/four_ii_orientati
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
 slides/four/asy/four_ii_orientation_pos.pdf : slides/four/asy/four_ii_orientation_pos.asy
+	echo "four/asy/four_ii_orientation_pos.pdf is in git; see README.opacity"
         # cd $(dir $<);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $<))
 
