@@ -1,0 +1,13 @@
+% Dash code stolen from tugboat.dtx.  Believe RF is the author.
+% License there says "You may freely use, modify and/or distribute this file."
+% 2021-Sep-13 JH
+\def\thinskip{\hskip 0.16667em\relax}
+\def\endash{--}
+\def\emdash{\endash-}
+\def\d@sh#1#2{\unskip#1\thinskip#2\thinskip\ignorespaces}
+\def\dash{\d@sh\nobreak\endash}
+\def\Dash{\d@sh\nobreak\emdash}
+\def\ldash{\d@sh\empty{\hbox{\endash}\nobreak}}
+\def\rdash{\d@sh\nobreak\endash}
+\def\Ldash{\d@sh\empty{\hbox{\emdash}\nobreak}}
+\def\Rdash{\d@sh\nobreak\emdash}

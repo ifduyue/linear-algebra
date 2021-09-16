@@ -1,6 +1,22 @@
 src/lab/INSTALL
 
 Notes on getting the lab to compile.  These are under Linux, with TeX Live.
+I have Ubuntu 20, and TeX Live 2021 (downloaded online, not installed
+using apt).
+
+0) Install the font used for listings.  The file ProggyClean.zip contains
+the font and style files.  To find the directory to install, run this.
+
+  $ kpsewhich --var-value TEXMFLOCAL
+  /usr/local/share/texmf
+
+Go there, and unzip the file.
+
+  $ cd /usr/local/share/texmf
+  $ sudo unzip ProggyClean.zip
+
+
+
 If you have Windows then you have to open the .sh file and see what is in there
 and run it in the terminal by hand.
 

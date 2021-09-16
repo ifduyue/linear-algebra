@@ -55,3 +55,9 @@ ftpmaint@millstone:~/Documents/linear-algebra/src/slides/three/asy$ git add thre
 In addition, I commented out the lines in src/asy/jh.asy where pens use
 opacity.  The pens are AXISPEN and FCNPEN.  So when the opacity situation
 settles down, need to uncomment those.
+
+(Comment John Bowman describes how you can use an asy flag to set the
+GhostScript interpreter that it uses, and then download a known-good
+interpreter to a not-in-the-path location, so that is an option.  But
+I still think that is too hard to expect of people who just want to
+add something to Linear Algebra, such as a Topic for their students.)

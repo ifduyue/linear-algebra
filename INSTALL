@@ -30,7 +30,7 @@ I just did this in a terminal.
   sudo apt-get install texlive-full
 
 0.5) Change the ImageMagick policy.xml file.  I did
-  sudo emacs /etc/ImageMagic-6/policy.xml
+  sudo emacs /etc/ImageMagick-6/policy.xml
 and found near the bottom a number of lines like this.
   <!-- disable ghostscript format types -->
   <policy domain="coder" rights="none" pattern="PS" />
@@ -52,13 +52,6 @@ so comment them out by surrounding with <!-- and -->, as here.
 
 Note that the subdirectory must be called linear-algebra.  The scripts
 expect that name.
-
-% 2) Install the luximono font.
-
-%   cd ~/Downloads
-%   wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts 
-%   sudo texlua install-getnonfreefonts
-%   sudo getnonfreefonts --sys --all
 
 3) Now you can make the book.  
     cd ~/Documents/linear-algebra/src
