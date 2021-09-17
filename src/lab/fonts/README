@@ -40,3 +40,14 @@ Now try running a test file to see if it works.
 
   \textt{ABCDE}
   \end{document}
+
+
+DEVELOPING
+
+As described above, I used FontForge to modify ProggyClean.  Then I
+changed the name of the font.  Then I generated the font.  This
+created ProggyCleanSage.ttf
+
+Next, I used
+  autoinst -encoding T1 -dryrun ProggyCleanSage
+to create autoinst_output that contains the desired file tree.

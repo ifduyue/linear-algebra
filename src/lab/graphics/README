@@ -1,0 +1,10 @@
+README
+
+This directory has the graphics for the lab.  They are produced by Sage
+as part of the runlab.sh script.
+
+The directory linear-algebra/src/lab/graphics must exist or the command
+
+  sage lab.sagetex.sage
+
+will fail.

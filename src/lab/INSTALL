@@ -74,26 +74,36 @@ Then I would run 'sudo texhash' to make the TeX system aware of sagetex.sty,
 and I would copy sagetex.py to /usr/lib/python3/dist-packages to make Sage
 aware of sagetex.py)
 
-2) The script runlab.sh should compile the lab.  It sets up TEXINPUTS,
-calls LaTeX, then runs the PythonTeX script, then runs the Sage python
-script, then runs LaTeX again.
-
-Warning: there is a point where the compilation seems to stall (about
-page 70).  Don't lose heart, it is just thinking.
-
-3) But the first time you do not yet have all the figures, and the .sage
-commands, etc.  You will find yourself in a very boring cycle of runlab.sh,
-followed by hitting x twice, followed by runlab.sh again.  Better is to
-follow these steps.
-
-  a) sage lab.sagetex.sage
-  b) cd asy
+2) There is one 3D graphic produced with Asymptote.
+     cd asy
      asy ellipsoid1
      cd ..
 
-and then this.
+3) Edit runlab.sh and adjust the paths.  This script sets up TEXINPUTS,
+calls LaTeX, then runs the PythonTeX script, then runs the Sage python
+script, then runs LaTeX again.
 
-  c) runlab.sh
+Try running it.
+  runlab.sh
+This script actually runs the doc twice.  The first time, you get a
+bunch of missing graphics files.  That's fine; Sage has not made them
+yet.  Enter "R" at the prompt.  The second time they will be there
+(if all goes well).
+
+a) Warning: there is a point where the compilation seems to stall (about
+page 75).  On my computer it is perhaps 15 seconds.  Don't lose heart,
+it is just thinking.
+
+b) If you get a LaTeX prompt of "?", you want to enter "R", or else
+pythontex will think its external file lab.pytxcode is out of format.
+
+c) If there is a snag, to speed up getting through the sage stuff, you
+can run this.
+
+  sage lab.sagetex.sage
+  
+d) For debugging of the script, this will capture the output.
+  ./runlab.sh 2>&1 | tee runlab.out
 
 
 
