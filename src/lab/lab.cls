@@ -71,29 +71,33 @@
 \fi
 \typeout{FontDir is \FontDir.}
 
-%\usepackage{beton,euler}  % eulervm gives an error Paragraph ended before \@tempb was complete. 
-\usepackage{ccfonts}
-\usepackage{euler}
-\usepackage{berasans}
+\usepackage{beton,euler}  % eulervm gives an error Paragraph ended before \@tempb was complete. 
+% \usepackage{ccfonts}
+% \usepackage{euler}
 \usepackage[T1]{fontenc}
-\usepackage{fontspec}
-  % \defaultfontfeatures{Ligatures=TeX} % causes " and ' to go away
-\setmainfont[Ligatures=TeX,  % CM-Super Concrete
-             % Path = /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/,
-             Path = /usr/share/texmf/fonts/type1/public/cm-super/,
-             ItalicFont = sfoti10.pfb,
-             SmallCapsFont = sfocc10]{sform10.pfb}  % Concrete
-% font for code listings
-\newfontface\listingsfont[Path=\FontDir,
-                          Scale=1]{ProggyClean.ttf}
-\newfontface\listingsinlinefont[Path=\FontDir,
-                                Scale=MatchLowercase]{ProggyClean.ttf} % shrink scale even more?
-\newfontface\sagelistingsfont[Path=\FontDir,
-                          Scale=1]{ProggyCleanSage.ttf}
-\newfontface\sagelistingsinlinefont[Path=\FontDir,
-                                Scale=MatchLowercase]{ProggyCleanSage.ttf}
+\usepackage{berasans}
+\usepackage{ProggyCleanSage}
+  \newcommand{\sagelistingsfont}{\tt}
+  \newcommand{\sagelistingsinlinefont}{\tt}
+  \newcommand{\listingsfont}{\tt}
+%% \usepackage{fontspec}
+%%   % \defaultfontfeatures{Ligatures=TeX} % causes " and ' to go away
+%% \setmainfont[Ligatures=TeX,  % CM-Super Concrete
+%%              % Path = /usr/local/texlive/2012/texmf-dist/fonts/type1/public/cm-super/,
+%%              Path = /usr/share/texmf/fonts/type1/public/cm-super/,
+%%              ItalicFont = sfoti10.pfb,
+%%              SmallCapsFont = sfocc10]{sform10.pfb}  % Concrete
+%% % font for code listings
+%% \newfontface\listingsfont[Path=\FontDir,
+%%                           Scale=1]{ProggyClean.ttf}
+%% \newfontface\listingsinlinefont[Path=\FontDir,
+%%                                 Scale=MatchLowercase]{ProggyClean.ttf} % shrink scale even more?
+%% \newfontface\sagelistingsfont[Path=\FontDir,
+%%                           Scale=1]{ProggyCleanSage.ttf}
+%% \newfontface\sagelistingsinlinefont[Path=\FontDir,
+%%                                 Scale=MatchLowercase]{ProggyCleanSage.ttf}
 
-\setmonofont[Scale=MatchLowercase]{Courier}  
+%% \setmonofont[Scale=MatchLowercase]{Courier}  
 
 
 
@@ -382,7 +386,7 @@
 % .log file from a prior run and find the name that fontspec gave the font
 % (a number is appended in case it is taken in with italics, ...).  Why
 % you can't say \listingsfont, I don't know.
-\fvset{fontfamily=ProggyClean.ttf(0),
+\fvset{% fontfamily=ProggyClean.ttf(0),
   % baselinestretch=0.5pt,
   bgcolor=pythoncolor} 
 % Change spacing above and below the verbatim envs.

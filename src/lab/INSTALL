@@ -4,7 +4,7 @@ Notes on getting the lab to compile.  These are under Linux, with TeX Live.
 I have Ubuntu 20, and TeX Live 2021 (downloaded online, not installed
 using apt).
 
-0) Install the font used for listings.  The file ProggyClean.zip contains
+0) Install the font used for listings.  The file ProggyCleanSage.zip contains
 the font and style files.  To find the directory to install, run this.
 
   $ kpsewhich --var-value TEXMFLOCAL
@@ -15,46 +15,68 @@ Go there, and unzip the file.
   $ cd /usr/local/share/texmf
   $ sudo unzip ProggyClean.zip
 
+Now you must register the .map file
 
+  $ cd fonts/map/dvips/ProggyCleanSage
+  $ sudo updmap-sys --force --enable Map=ProggyCleanSage.map
 
-If you have Windows then you have to open the .sh file and see what is in there
-and run it in the terminal by hand.
+Also install the font used for titles.  From
+  https://ctan.org/tex-archive/fotns/bera
+get bera.zip.  Again go to the local directory and unzip.
 
-1) The main problem is getting the console information from Sage.  Fortunately,
-a recent update to sagetex.sty has provided the means.  So, you must have
-the 2019 version.  Run sage from the command line, and then ask for the
-version number.
+  $ cd /usr/local/share/texmf
+  $ sudo unzip bera.zip
 
-  $ sage
-  sage: sagetex.__version__
-  '[2019/01/09 v3.2 embedding Sage into LaTeX documents]'
+Again you must register its .map file.
 
-If you don't have it already then it takes some installation.
+  $ cd fonts/map/dvips
+  $ sudo updmap-sys --force --enable Map=bera.map
 
-Get a sagetex.sty with a version of 3.2 (dated Jan 9, 2019) or later.
-Put it in your local TeX tree and compile it.  I followed
-these steps under Ubuntu Linux.  Obviously your mileage may vary.
+Now, put all that in the file name database.
 
-    cd /usr/local/share/texmf/tex/latex/
-    sudo mv /home/ftpmaint/Downloads/sagetex.zip .
-    --remove any old directory sagetex/--
-    sudo unzip sagetex
-    cd sagetex
-    sudo pdflatex sagetex.ins
-    sudo pdflatex sagetex.dtx
-    sudo texhash
+  $ sudo texhash
 
-Here is the tricky part.  When you run "sudo pdflatex sagetex.ins" you get told
-to move the .sty to where LaTeX will find it, which is taken care of by the
-later "texhash" command.  But you also get told to move sagetex.py to
-where sage can find it.  I moved mine into the sage dir tree.
+1) Next, Sage.  The main technical problem in the lab document is
+getting the console information from Sage.  Fortunately, a recent
+update to sagetex.sty has provided a means that is much better than I
+used in the past.  So, you must have at least the 2019 version.
 
-    sudo cp sagetex.py /usr/lib/sagemath/local/lib/python2.7/site-packages/sagetex.py
+I installed Sage using my distribution's package manager. (Note that
+on Ubuntu 20 you want to install "sagemath", not "sage" and not
+"sagemath-common".)  If I run this 
 
+  $ sage -version
+
+then it says Sage version 9.0 with a release of 2020-01-01.
+
+There are two relevant files.  There is sagetex.sty, which goes into
+the TeX directory tree, and there is sagetex.py, which goes into the
+Sage directory tree.  They need to be the same version.
+
+I checked sagetex.sty as here
+
+  $ kpsewhich sagetex.sty
+  /usr/share/texmf/tex/latex/sagetex/sagetex.sty
+  $ less /usr/share/texmf/tex/latex/sagetex/sagetex.sty
+
+(to get out of less, use 'q' to quit).  It shows a version date of
+2019/11/14 (v3.4).  I checked sagetex.py as here.
+
+  $ find /usr -name sagetex.py -print
+  /usr/lib/python3/dist-packages/sagetex.py
+  $ less /usr/lib/python3/dist-packages/sagetex.py
+
+It has the same date, 2019/11/14 v3.4.  So I am good.
+
+(If they did not agree, I would have gotten sagetex from CTAN, unzipped
+it into TEXMFLOCAL, and run 'pdflatex sagetex.ins' and 'pdflatex sagetex.dtx'.
+Then I would run 'sudo texhash' to make the TeX system aware of sagetex.sty,
+and I would copy sagetex.py to /usr/lib/python3/dist-packages to make Sage
+aware of sagetex.py)
 
 2) The script runlab.sh should compile the lab.  It sets up TEXINPUTS,
-calls xelatex, then runs the PythonTeX script, then runs the Sage python
-script, then runs xelatex again.
+calls LaTeX, then runs the PythonTeX script, then runs the Sage python
+script, then runs LaTeX again.
 
 Warning: there is a point where the compilation seems to stall (about
 page 70).  Don't lose heart, it is just thinking.
