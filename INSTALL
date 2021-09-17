@@ -61,8 +61,13 @@ expect that name.
 If something fails with a question mark prompt then probably you get out by
 typing `x' and <return>.) 
 
-At the end, you'll have book.pdf and jhanswer.pdf, along with the slides and
-the lab. You could have just skipped the compiling.
+At the end, you'll have book.pdf and jhanswer.pdf, along with the slides.
+
+4) The lab is separate, because it is more complex (it involves installing
+a couple of fonts) and not many people will want to do it.  See lab/INSTALL.
+
+
+You could have just skipped the compiling.
 
 To compile the version that is published in paper, change lines 10 and 11 in
 bookjhconcrete.sty to be this.
