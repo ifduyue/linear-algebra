@@ -14,7 +14,7 @@ It inputs a pair of vectors from some $\R^n$ and outputs a scalar.
   =8
 \end{equation*}
 In that chapter we did not yet have the term `linear', but
-this operation both respects addition
+this operation respects both addition
 \begin{equation*}
  (\vec{v}_1+\vec{v}_2)\dotprod\vec{w}=\vec{v}_1\dotprod\vec{w}
                                       +\vec{v}_2\dotprod\vec{w}
@@ -29,18 +29,19 @@ and scalar multiplication.
  \vec{v}\dotprod(r\vec{w})=r(\vec{v}\dotprod\vec{w})
 \end{equation*}
 
-Dot product is interesting because it describes the geometry of
-$\Re^n$. 
+One interesting thing about the dot product operation
+is that it describes the geometry of
+$\Re^n\!$. 
 Examples are that two vectors are perpendicular if and only if their
-dot product is zero, and the length of a vector is determined by  
-$\vec{v}\dotprod\vec{v}=\absval{\vec{v}}^2$.
+dot product is zero, and that the length of a vector is determined by  
+$\vec{v}\dotprod\vec{v}=\absval{\vec{v}\,}^2$.
 Here we will extend this operation, and with it lengths, 
 to other vector spaces.
 We will use the traditional mathematical notation for the extension, 
 which is not a dot but instead is
 $\innerprod{\vec{v}}{\vec{w}}$.
 
-To cover the motivatation, 
+To motivate the definition, 
 we need more on complex numbers than we reviewed in this 
 chapter's opening section.
 There, we described~$\C$ as 
@@ -58,15 +59,16 @@ gives an $a+bi$ expression.
 \begin{equation*}
   z=\frac{1+2i}{3+4i}\cdot\frac{3-4i}{3-4i}
   =
-  \frac{(1\cdot 3-2\cdot 4)+(1\cdot 4+2\cdot 3)i}{3^2+4^2}
+  \frac{(1\cdot 3+2\cdot 4)+(1\cdot (-4)+2\cdot 3)i}{3^2+4^2}
   =
-  \frac{-5+10i}{25}
+  \frac{11+2i}{25}
   =
-  \frac{-1}{5}+\frac{2}{5}\,i
+  \frac{11}{25}+\frac{2}{25}\,i
 \end{equation*}
-Define the \definend{conjugate} of a complex number~$z$
+With that computation in mind, we
+define the \definend{conjugate} of a complex number~$z$
 to be $\compconj{z}=\compconj{a+bi}=a-bi$, so that $z\compconj{z}=\absval{z}^2$.
-Then dividing by $\absval{z}^2$ gives $z\compconj{z}/\absval{z}^2=1$,
+Dividing that equation by $\absval{z}^2$ gives $z\compconj{z}/\absval{z}^2=1$
 and so  
 every nonzero complex number has a multiplicative inverse,
 $z^{-1}\!=\compconj{z}/\absval{z}^2$.
@@ -88,20 +90,19 @@ $2\cdot a$, which we write as $2\cdot\RE{z}$.
 % It also shows the \definend{argument}, $\arg(z)$, the angle that
 % $z$ makes with the real axis.
 
-We are ready to generalize the two operations. 
-We have seen many examples of 
-vector spaces that are far removed from
-the collections of real column vectors where the dot product and
-length operations are familiar, such as 
-a vector space of polynomials, $\polyspace_n$. 
-In this space it is not obvious
-what would be a useful or natural definition of the length of a member.
-For insight into the best way to proceed, consider the complex
-vector spaces~$\C^n$.
+We are ready to generalize the dot product and length operations. 
+Dot product and length are familiar in spaces that are collections of real column vectors but we have seen many examples of 
+vector spaces far removed from those, such as 
+the spaces of polynomials, $\polyspace_n$. 
+In such a space it is not obvious
+what would be a useful or natural definition of length.
+For some insight into what to do,
+consider the complex vector spaces~$\C^n$.
 
-With dot product in mind, the natural first guess here is to try defining 
+With dot product in real spaces in mind, 
+the natural first guess here is to try 
 $\innerprod{\vec{v}}{\vec{w}}$
-as the linear combination of the components, so that in the two-dimensional 
+as the linear combination of the components, so that in the~$\C^2$
 case
 \begin{equation*}
   \vec{v}=\colvec{a_{1,1}+b_{1,1}i \\ a_{2,1}+b_{2,1}i}
@@ -110,9 +111,9 @@ case
 \end{equation*}
 the guess for $\innerprod{\vec{v}}{\vec{w}}$ is 
 $(a_{1,1}+b_{1,1}i)\cdot(a_{1,2}+b_{1,2}i)+(a_{2,1}+b_{2,1}i)\cdot(a_{2,2}+b_{2,2}i)$.
-But that won't do.
+But this won't do.
 We are investigating lengths,
-so we want that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}}^2\!$,
+so we want that $\innerprod{\vec{v}}{\vec{v}}=\absval{\vec{v}\,}^2\!$,
 and thus we don't want that $\innerprod{\vec{v}}{\vec{v}}$ equals
 $(a_1+b_1i)(a_1+b_1i)+(a_2+b_2i)(a_2+b_2i)$.
 Instead we want something like
@@ -125,7 +126,7 @@ Consequently, we adopt this definition for $\C^2\!$.
 The 
 \definend{Hermitian inner product} 
 is:\index{inner product!Hermitian}\index{Hermitian inner product}
-where two members  $\vec{v},\vec{w}$ of~$\C^n$ 
+where vectors $\vec{v},\vec{w}\in\C^n$ 
 have components $v_0$, \ldots~$v_n$ and $w_0$, \ldots~$w_n$, then
 $\innerprod{\vec{v}}{\vec{w}}=v_1\compconj{w}_1+\cdots+v_n\compconj{w}_n$.
 Notice that this extends the dot product in the sense that
@@ -192,15 +193,14 @@ $\innerprod{\vec{v}}{\vec{v}}= 0$ if and only if $\vec{v}=\zero$.
 
 A vector space along with an inner product operation is an
 \definend{inner product space}.
-In the prior paragraph we used the $\innerprod{\vec{v}}{\vec{w}}$ notation 
+(In the prior paragraph we used the $\innerprod{\vec{v}}{\vec{w}}$ notation 
 for any inner product at all, while earlier we used it for the specific case of
 the Hermetian inner product.
 This duplication won't cause confusion because in an inner product space there
-is exactly one such operation, so there are not several to tell apart.
+is exactly one such operation, so there will never be several to tell apart.)
 
-Each real vector space $\R^n$ is an inner product space
-where the operation is the dot product. 
-Hermitian inner product makes any of the complex vector spaces~$\C^n$ into 
+Each real vector space $\R^n$ along with dot product is an inner product space. 
+Hermitian inner product makes any complex vector space~$\C^n$ into 
 an inner product space.
 The verification of each is in the exercises.
 
@@ -228,8 +228,8 @@ around~$\hat{t}$,
 and so the area under the curve is greater than~$0$.
 
 We next generalize the length operation.
-We shall justify an operation as a reasonable extension of length
-if inputs vectors and outputs real numbers and if it satisfies
+We shall consider an operation to be a reasonable extension of length
+if it inputs vectors and outputs real numbers and if it satisfies
 three conditions; any such operation
 we shall call a \definend{norm},\index{norm} and denote~$\norm{\vec{v}}$. 
 The first condition is that $\norm{\vec{v}}\geq 0$, 
@@ -282,8 +282,8 @@ $\norm{z\cdot\vec{v}}
 For the third condition we will again, as in the first
 chapter, relate it to the Cauchy-Schwartz Inequality,\index{Cauchy-Schwartz Inequality}
 $\absval{\innerprod{\vec{v}}{\vec{w}}}\leq \norm{\vec{v}}\cdot\norm{\vec{w}}$.
-The proof in this context is an extension of, but more involved than, the 
-proof in the first chapter. 
+The proof of the inequality here is an extension of, 
+but more involved than, the proof in the first chapter. 
 Consider the difference $\vec{v}-z\cdot\vec{w}$ as $z\in\C$ varies.
 This vector's norm is a nonnegative real,
 $0\leq \norm{\vec{v}-z\cdot\vec{w}}^2
@@ -296,7 +296,7 @@ $\innerprod{\vec{v}}{\vec{v}}
   -\compconj{z}\cdot\innerprod{\vec{v}}{\vec{w}}
   -z\cdot\innerprod{\vec{w}}{\vec{v}}
   +z\compconj{z}\cdot\innerprod{\vec{w}}{\vec{w}}$.
-We have this.
+We have this for all $z\in\C$.
 \begin{equation*}
  0
   \leq\innerprod{\vec{v}}{\vec{v}}
@@ -366,7 +366,7 @@ $\absval{\vec{v}+\vec{w}}^2+\absval{\vec{v}-\vec{w}}^2=2\absval{\vec{v}}^2+2\abs
 (This has the nice statement that in a parallelogram the sum of the squares 
 of the diagonals equals the sum of the squares of the sides.)
 Although the drawing above shows the plane, where we usually use dot product 
-notation and write length as $\absval{\vec{v}}$, 
+notation and write length as $\absval{\vec{v}\,}$, 
 here we will use the notation for inner product and norm.
 
 As above, expand
@@ -377,7 +377,7 @@ by using additivity of the first input and then the second.
 \begin{align*}
   \norm{\vec{v}+\vec{w}}^2
   &=\innerprod{\vec{v}+\vec{w}}{\vec{v}+\vec{w}}           \\
-  &=\innerprod{\vec{v}}{\vec{v}+\vec{w}}+\innerprod{\vec{w}}{\vec{v}+\vec{w}} \\
+   % &=\innerprod{\vec{v}}{\vec{v}+\vec{w}}+\innerprod{\vec{w}}{\vec{v}+\vec{w}} \\
   &=\innerprod{\vec{v}}{\vec{v}}            
    +\innerprod{\vec{v}}{\vec{w}}
    +\innerprod{\vec{w}}{\vec{v}}
@@ -420,8 +420,8 @@ arises from an inner product,
 meaning that 
 $\innerprod{\vec{v}}{\vec{w}}
   =(1/2)\cdot(\norm{\vec{v}+\vec{w}}^2-\norm{\vec{v}}^2-\norm{\vec{w}}^2)$.
-However, the proof is beyond our scope.
-We saw above an example of a norm that does not satisfy the parallelogram 
+(However, the proof is beyond our scope.)
+Earlier, we saw an example of a norm that does not satisfy the parallelogram 
 identity, 
 and so does not arise from an inner product.
 On the real vector space $\matspace_{\nbyn{2}}$, let the
