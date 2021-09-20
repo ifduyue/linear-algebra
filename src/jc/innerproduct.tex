@@ -415,15 +415,14 @@ to any finite dimensional inner product space.
 A technical comment:~we have defined a norm operation from the inner product, 
 as $\norm{\vec{v}}=\sqrt{\smashdp{\innerprod{\vec{v}}{\vec{v}}}}$,
 and then derived the parallelogram identity.
-It is also true that if a norm satisfies this identity then it
-arises from an inner product, 
-meaning that 
+Also true is that if a norm satisfies this identity then it
+arises from an inner product, as 
 $\innerprod{\vec{v}}{\vec{w}}
   =(1/2)\cdot(\norm{\vec{v}+\vec{w}}^2-\norm{\vec{v}}^2-\norm{\vec{w}}^2)$.
-(However, the proof is beyond our scope.)
-Earlier, we saw an example of a norm that does not satisfy the parallelogram 
-identity, 
-and so does not arise from an inner product.
+However, the proof is beyond our scope.
+
+A norm does not arise from an inner product can happen;
+we saw one above.
 On the real vector space $\matspace_{\nbyn{2}}$, let the
 norm of a matrix $\norm{M}$ be the largest absolute value of any entry.
 Consider these matrices.
@@ -451,7 +450,7 @@ We close with a remark about our definition of inner product.
 Some authors, particularly in physics, define the inner product 
 so that it is linear in the second argument instead of the first. 
 Where we write $\innerprod{\vec{v}}{\vec{w}}$, 
-these authors write $\langle y\ |\ x\rangle$. 
+these authors write $\langle y\, |\, x\rangle$. 
 This is the
 \definend{bra-ket notation}\index{bra-ket notation}\index{inner product!compared with bra-ket} 
 that is standard in quantum mechanics.
@@ -466,15 +465,14 @@ Condition~(2) concerns conjugation,
 which has no effect on reals, and 
 so this condition is trivially satisfied. 
 Condition~(3) requires that the length (the ordinary Euclidean length
-in $n$-dimensional real space) be zero if and only if the vector is~$\zero$,
-which is also clear.
-(In any event, if the vector has components $v_1$, \ldots~$v_n$ then
-$v_1^2+\cdots v_n^2=0$ if and only if all the components are zero.) 
+in $n$-dimensional real space) be zero if and only if the vector is~$\zero$.
+If the vector has components $v_1$, \ldots~$v_n$ then
+$v_1^2+\cdots v_n^2=0$ if and only if all the components are zero.
 \end{answer}
 
 \item
 Show that Hermitian inner product on the two-dimensional vector space~$\C^2$ 
-satisfies these three conditions in the definition of inner product. 
+satisfies the three conditions in the definition of inner product. 
 \begin{answer}
 The development in the Topic body proves~(1) and~(2).
 For~(3), suppose that 

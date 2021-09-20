@@ -83,12 +83,12 @@ cover_asy : cover/asy/axesgraphic.pdf cover/asy/shadow.pdf
 
 cover/asy/axesgraphic.pdf : cover/asy/axesgraphic.asy 
 	echo "axesgraphic.pdf is in git until PBR is working for me"
-	# $(TEXINPUTS) $(ASYMPTOTE_DIR) \
+        # $(TEXINPUTS) $(ASYMPTOTE_DIR) \
         # cd $(dir $@);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
 cover/asy/shadow.pdf : cover/asy/shadow.asy 
 	echo "shadow.pdf is in git until PBR is working for me"
-	# $(TEXINPUTS) $(ASYMPTOTE_DIR) \
+        # $(TEXINPUTS) $(ASYMPTOTE_DIR) \
         # cd $(dir $@);\
         # $(ASYMPTOTE_CMD) $(notdir $(basename $@)) 
 
