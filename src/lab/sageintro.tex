@@ -123,7 +123,7 @@ Variables can also represent truth values.
 yankees_stink = True
 yankees_stink
 \end{pythonconsole}
-You need the initial capital letter\Dash
+You need the initial capital letter:~it is
 \inlinecode{True}
 or \inlinecode{False}, not
 \inlinecode{true}
@@ -150,8 +150,8 @@ with double-quoted ones.
 
 To get a newline, you can use use slash-n, \inlinecode{\\n}, 
 inside a double-quoted string.
-If you need a lot of newlines so the slash-n would be an annoyance then
-you can put explicit line breaks inside a string marked by three double quotes.
+If you need a lot of newlines then
+put explicit line breaks inside a string marked by three double quotes.
 \begin{pythonconsole}
 a = """THE ROAD TO WISDOM
  
@@ -170,11 +170,11 @@ is \python's
 interpreter prompting you that what you have typed is not complete,
 that you've started a string but not yet finished it.
 
-A \python{} \textit{dictionary} is a finite function.
-That is, it is a finite
-set of ordered pairs $\langle\textit{key},\textit{value}\rangle$ subject 
-to the restriction that no key can appear twice.
-\python{} programmers often use a dictionary as a simple database.
+A \python{} \textit{dictionary} is a finite function,
+a finite
+set of pairs $\langle\textit{key},\textit{value}\rangle$,
+subject to the restriction that no key can appear twice.
+You can use a dictionary as a simple database.
 \begin{pythonconsole}
 english_words = {'one': 1, 'two': 2, 'three': 3}
 english_words['one']
@@ -273,7 +273,7 @@ apartment you should say \inlinecode{apartment_num = None}.
 statement execution, with a twist.
 The twist is that while many languages use braces or some other syntax to
 mark a block of code, \python{} uses indentation.
-Always indent with four spaces. (Don't use tabs.)
+Always indent with four spaces. % (Don't use tabs.)
 \begin{pythonconsole}
 x = 4
 if (x == 0):
@@ -292,14 +292,14 @@ Notice also that double equals, \inlinecode{==}, means `is equal to'.
 % (We cannot use just a single equals because, as we have already seen, 
 % \inlinecode{x = 0} 
 % means ``$x$ is assigned the value~$0$.'') 
-For `not equal' use\inlinecode{!=}. 
+For `not equal', use\inlinecode{!=}. 
 
 \python{} has two more variants on the \inlinecode{if} statement.
 It could have a single branch
 \begin{pythonconsole}
 x = 0
 if (x == 0):
-    print("Division by x not allowed.")
+    print("Division by x is not allowed.")
 
 \end{pythonconsole}
 or it could have more than two branches.
@@ -331,12 +331,12 @@ for i in range(1, 4):
     print(i, "cubed is", i**3)
 
 \end{pythonconsole}
-The highest number produced by \inlinecode{range} is one less than the 
-argument, so that the highest number
+The highest number produced by \inlinecode{range} is one less than its 
+input, so that the highest number
 given by \inlinecode{range(4)} or \inlinecode{range(1,4)} is $3$.
 This is convenient because it makes the 
-combination \inlinecode{range(4)+range(4,10)} give 
-the same list as \inlinecode{range(10)}.
+combination of two lists \inlinecode{range(4)+range(4,10)} give 
+the same as the single list \inlinecode{range(10)}.
 
 You can iterate over a list by working with element indices.
 \begin{pythonconsole}
@@ -377,8 +377,8 @@ if line:
 Above, the \inlinecode{quote.split()} divides the string into separate words while
 \inlinecode{" ".join(line)} makes a string by putting  space between the words in the list 
 \inlinecode{line}.
-Thus, the final \inlinecode{if line:} above ejects any leftover material
-when the quote is finished.
+Thus, the final \inlinecode{if line:} above ejects any material left over
+when the \inlinecode{for} loop is finished.
 
 A \inlinecode{for} loop is designed to execute a certain
 number of times.
@@ -396,7 +396,7 @@ while (n != 1):
     else:
         n = 3*n + 1
     i = i + 1
-    print("i=", i, "n=", n)
+    print("after", i, "steps, n=", n)
     
 \end{pythonconsole}
 The \inlinecode{//} operation divides the left integer by the right and then returns the floor.
@@ -528,9 +528,10 @@ You won't be writing your own classes here
 but you will be using ones from
 the libraries of code that others have written, including the
 code for \Sage, so you must know how to use 
-other peoples's classes. 
-For instance, for mathematical operations \python{} has a library, 
-sometimes called a module.
+other peoples's classes.
+A library, a collection of related data, functions, and classes, in this context
+is called a module.
+For instance, \python{} comes with a \inlinecode{math} module that you can use.
 \begin{pythonconsole}
 import math
 math.pi
@@ -544,6 +545,7 @@ Another module does random numbers.
 \begin{pythonconsole}
 import random
 print(random.randint(1,10))
+print(random.randint(0,100)/100)
 \end{pythonconsole}
 
 
@@ -551,23 +553,22 @@ print(random.randint(1,10))
 \subsection{Programs}
 The read-eval-print loop is great for small experiments but
 for code with more than a few lines, or for code that you want to
-keep, you 
-want to put your work in a separate file and run it as a standalone program.
+keep, you want to put your work in a separate file.
+Here we will sketch how to write a stand-alone program.
 
 To write the code, 
 don't use a word processor.
-Instead, a text editor has the correct features for 
-writing programs.
+Instead, a text editor has the correct features for this.
 Use one with support for \python{}, including
 automatic indentation and  
 syntax highlighting, where the editor colors your code to make it easier to
 read.
 There are many excellent editors; one is Emacs.\footnote{%
   It may come with your operating system or 
-  see \protect\url{http://www.gnu.org/software/emacs}.}
+  see \protect\url{www.gnu.org/software/emacs}.}
 
-Here is a first example of a stand-alone \python{} program.
-Start your editor, open a file called \path{month.py}, and enter these lines.
+Here is a first example of a \python{} program.
+Start your editor, open a new file called \path{month.py}, and enter these lines.
 (Notice that the first line describes the program in a comment.
 You may want to also name the author, the date, and the license for the code.
 In addition, the triple-quoted documentation string at the top of the file
@@ -589,8 +590,9 @@ output like \inlinecode{The month number is 10}.
 
 Next is a small game. 
 (It uses the \python{} function \inlinecode{input} that prompts the user
-and then collects their response.).
+and then collects their response.)
 \lstinputlisting{python/guessing_game.py}
+(The \inlinecode{int} converts the string from \inlinecode{input} to an integer.)
 Here is output from running this game.
 \begin{lstlisting}
 $ python3 guessing_game.py
@@ -610,8 +612,8 @@ Go to the directory containing \path{guessing_game.py} and start
 the \python{} interpreter.
 At the \inlinecode{>>>} prompt, enter \inlinecode{import guessing_game}.
 You will play through a round of the game (there is a way to avoid this
-but it doesn't matter here).
-You are now using \inlinecode{guessing_game} as a module.
+but we will ignore the point).
+You are now using \inlinecode{guessing_game.py} as a module.
 Type
 \inlinecode{help("guessing_game")}.
 You will see documentation on \inlinecode{guessing_game}, 
@@ -633,8 +635,7 @@ FUNCTIONS
 \python{} got this information from the documentation strings.
 \Sage's programmers follow this practice and so 
 you can use \inlinecode{help(...)} 
-whenever you need more information on one of 
-\Sage's routines.
+whenever you need more information on \Sage's routines.
 
 
 
@@ -645,7 +646,7 @@ whenever you need more information on one of
 Learning about \Sage's capabilities is the goal of much of this manual.
 But \Sage{} is built on \python{} and so a brief comparison here makes sense.
 See \citep{SageTeam19} for a more broad-based introduction, and 
-be aware of the comprehensive reference \citep{SageTeam19ref}.
+be aware of the reference \citep{SageTeam19ref}.
 
 
 
@@ -670,7 +671,7 @@ sage: 5 == 3+3
 sage: sin(pi/3)
 \end{sagecommandline}
 The second expression 
-shows that \Sage{} adds a convenient shortcut for exponentiation over
+shows that \Sage{} adds a convenient shortcut for exponentiation beyond
 \python's \inlinecode{2**3}.
 The final expression
 shows that \Sage{} sometimes returns exact results rather than an
@@ -681,8 +682,8 @@ sage: sin(pi/3).numerical_approx()
 sage: sin(pi/3).n()
 sage: n(sin(pi/3), digits=4)  
 \end{sagecommandline}
-The final one shows that there is an option to limit the number of digits
-shown.\footnote{%
+The final way shows that there is an option to limit the number of digits
+that you see.\footnote{%
   If you don't use the option then you see the number of digits matching 
   $53$ bits of precision, which is the standard for  
   floating point numbers.}
@@ -716,5 +717,5 @@ command, say
 (of course, you must have the Jupyter software
 installed).\footnote{%
   If your operating system doesn't offer it then you can 
-  visit \protect\url{https://jupyter.org}}
+  visit \protect\url{https://jupyter.org}.}
 \endinput
