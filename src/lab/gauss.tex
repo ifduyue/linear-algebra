@@ -1,14 +1,14 @@
 \chapter{Gauss's Method}
 
 \Sage{} can solve linear systems in a number of ways.
-It can use a general system solver and
+It can use a general system solver, and
 it can also use solvers specialized for linear systems.
 We'll see both. 
 
 
 
-\section{Systems}
-To enter a system of equations you must first enter single equations.
+\section{Systems of equations}
+To enter a system of equations, you must first enter single equations.
 So you must start with variables.
 We have seen one kind of variable in giving commands like these.
 \begin{sagecommandline}
@@ -16,44 +16,41 @@ sage: x = 3
 sage: 7*x
 \end{sagecommandline}
 As discussed in the prior chapter,
-$x$ is the name of a location in the computer's memory
+here $x$ is the name of a location in the computer's memory
 that we use to store and retrieve values.
 
 Variables in equations are different; in the equation
 $C=2\pi\cdot r$ the two variables do not have fixed values, nor
 are they tied to memory locations. 
-To illustrate the difference enter an unassigned 
-variable.
-\begin{lstlisting}
-sage: y
-\end{lstlisting}
-You get an exception whose final line says
+To illustrate the difference, type in an unassigned 
+variable such as \inlinecode{y}, and hit \keyboardkey{Enter}.
+You'll get an exception whose final line says
 \inlinecode{NameError: name 'y' is not defined}.
-To instead use $y$ as a symbolic variable you must first
-warn the system.
+
+To instead use $y$ as a symbolic variable, you must first
+declare it to the system.
 \begin{sagecommandline}
 sage: var('y')
 sage: y
 sage: 2*y
-sage: k = 3
-sage: 2*k
 \end{sagecommandline}
-\Sage{} takes $k$ as a location to hold
-values and so it evaluates \inlinecode{2*k}.
-But it does not evaluate \inlinecode{2*y} because $y$ is a symbolic variable.
+Earlier, \Sage{} took $x$ as a location to hold
+values and so it evaluated \inlinecode{7*x} (it got the value $21$).
+But \Sage{} does not evaluate \inlinecode{2*y} because
+you told it that $y$ is a symbolic variable.
 
 With that, a system of equations is a list.
 \begin{sagecommandline}
 sage: var('x,y,z')                                  
 sage: eqns = [x-y+2*z == 4, 2*x+2*y == 12, x-4*z==5]
 \end{sagecommandline}
-A couple of things to note here:~you 
+Two things to note here:~you 
 must write double equals \inlinecode{==} in equations instead of 
 the assignment operator \inlinecode{=}, 
 and you must write \inlinecode{2*x}
 instead of \inlinecode{2x}.
-Either mistake will trigger a  
-\inlinecode{SyntaxError: invalid syntax} message.
+Either mistake will trigger an error message saying  
+\inlinecode{SyntaxError: invalid syntax}.
 
 One way to solve this system is with \Sage's general-purpose solver.
 \begin{sagecommandline}
@@ -61,11 +58,11 @@ sage: var('x,y,z')
 sage: eqns = [x-y+2*z == 4, 2*x+2*y == 12, x-4*z==5]
 sage: solve(eqns, x, y, z)                            
 \end{sagecommandline}
-This solver is pretty smart.
-Here we put the parameter~\inlinecode{a} in the right side 
-and \Sage{} follows the
-command \inlinecode{solve(eqns, x, y, z)} to 
-solve for $x$, $y$, and~$z$ in terms of that parameter.
+That's pretty good but this solver is quite smart and can go beyond just numbers
+as answers.
+Next we put the parameter~\inlinecode{a} in the right side. 
+\Sage{}
+solves for $x$, $y$, and~$z$ in terms of that parameter.
 \begin{sagecommandline}
 sage: var('x,y,z,a')                                
 sage: eqns = [x-y+2*z == a, 2*x+2*y == 12, x-4*z==5]
@@ -92,8 +89,8 @@ sage: M.nrows()
 sage: M.ncols()
 sage: M[1,2]
 \end{sagecommandline}
-\Sage{} lists are zero-indexed, as with \python{} lists, 
-so \inlinecode{M[1,2]} asks
+As with \python{} lists, \Sage{} lists are zero-indexed.  
+So \inlinecode{M[1,2]} asks
 for the entry in the second row and third column. 
 
 Enter a vector in much the same way.
@@ -111,7 +108,6 @@ vector into a matrix.
 \begin{sagecommandline}
 sage: v = vector(QQ, [1,3,5])
 sage: v.row()
-sage: type(v.row())
 sage: v.column()
 \end{sagecommandline}
 
@@ -123,7 +119,7 @@ sage: M_prime = M.augment(v)
 sage: M_prime
 \end{sagecommandline}
 An optional argument makes 
-\Sage{} remember the distinction between the two parts 
+\Sage{} show a distinction between the two parts 
 of $M^\prime$.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2, 3], [4, 5, 6], [7 ,8, 9]])
@@ -135,10 +131,10 @@ sage: M_prime
 
 
 \subsection{Row operations}
-Computers are a big help with jobs that are tedious and error-prone.
-Row operations are both.
+%% Computers are a big help with jobs that are tedious and error-prone.
+%% Row operations are both.
 We can get \Sage{} to do the arithmetic of Gauss's Method.
-First enter an example matrix.
+%% First enter an example matrix.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[0, 2, 1], [2, 0, 4], [2 ,-1/2, 3]])
 sage: v = vector(QQ, [2, 1, -1/2])                        
@@ -146,8 +142,8 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime                                             
 \end{sagecommandline}
 Swap the top rows. 
-Remember that list indices start at zero
-so row~$0$ is the top row.
+Remember that list indices start at zero,
+so the top row is row~$0$.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[0, 2, 1], [2, 0, 4], [2 ,-1/2, 3]])
 sage: v = vector(QQ, [2, 1, -1/2])                        
@@ -155,28 +151,27 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime.swap_rows(0,1)
 sage: M_prime
 \end{sagecommandline}
-Rescale the top row by multiplying the entries by~$1/2$.
+Next, rescale the top row by multiplying the entries by~$1/2$.
 \begin{sagecommandline}
 sage: M_prime.rescale_row(0, 1/2)
 sage: M_prime
 \end{sagecommandline}
 Replace the bottom row with 
 the result of adding it to  
-the top row multipled by~$-2$.
+$-2$ times the top row.
 \begin{sagecommandline}
 sage: M_prime.add_multiple_of_row(2,0,-2)
 sage: M_prime
 \end{sagecommandline}
-One more row combination operation gives echelon form.
-Replace the bottom row with the result of adding it and
-the middle row multiplied by $1/4$.
+% One more row combination operation gives echelon form.
+Finally, replace the bottom row with the result of adding it and
+$1/4$ times the middle row.
 \begin{sagecommandline}
 sage: M_prime.add_multiple_of_row(2,1,1/4)
 sage: M_prime                             
 \end{sagecommandline}
-
-Now by-hand back substitution gives the solution, or we can 
-use \Sage's \inlinecode{solve}.
+Now, by-hand back substitution would give the solution,
+or we can use \Sage's \inlinecode{solve}.
 \begin{sagecommandline}
 sage: var('x,y,z')
 sage: eqns=[-3/4*z == -1, 2*y+z == 2, x+2*z == 1/2]
@@ -184,8 +179,9 @@ sage: solve(eqns, x, y, z)
 \end{sagecommandline}
 
 The operations above
-work in-place, changing the matrix~$M^\prime$.
-\Sage{} has related commands that leave the starting matrix unchanged
+work in-place.
+That is, they change the matrix~$M^\prime$.
+\Sage{} has related commands that leave the starting matrix unchanged,
 but return the changed matrix.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[0, 1, -1], [1, -2, 0], [0 ,-1, 4]])
@@ -196,7 +192,7 @@ sage: N = M_prime.with_swapped_rows(0,1)
 sage: M_prime
 sage: N      
 \end{sagecommandline}
-Here, $M^\prime$ is unchanged by the routine while $N$ is the returned 
+Here, $M^\prime$ is unchanged by the routine, while $N$ is the returned 
 changed matrix.
 The other two routines of this kind are \inlinecode{with_rescaled_rows} 
 and \inlinecode{with_added_multiple_of_row}.
@@ -215,14 +211,14 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime.rref()
 \end{sagecommandline}
 So we have gotten the answer without \Sage's \inlinecode{solve}.
-One advantage of using a method specialized
-to linear systems it is faster and it can also be less prone to floating point
+Advantages of using methods specialized
+to linear systems are that they are faster, and can also be less prone to floating point
 issues.
 
-In that example the matrix~$M$ is nonsingular, because it is 
-square and because when it is in echelon form every
+In that example, $M$ is nonsingular, because it is 
+square and because when it has been put into echelon form, every
 column has a leading variable.
-The next example starts with a
+The next example has a
 square matrix that is singular. 
 % Consequently, in the  
 % echelon form system there are columns on the left 
@@ -234,9 +230,9 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime
 sage: M_prime.rref()
 \end{sagecommandline}
-Recall that if a system has a square matrix of coefficients 
+Recall that if a linear system has a square matrix of coefficients 
 that is singular then there are two possibilities.
-The first is above:~in echelon form
+The first possibility is above, that in echelon form
 any row that is all zeros on the
 left has an entry on the right that is also zero.
 This system has infinitely many solutions.
@@ -250,9 +246,9 @@ sage: M_prime = M.augment(v, subdivide=True)
 sage: M_prime.rref()                        
 \end{sagecommandline}
 
-The difference between the cases
+The difference between the possibilities
 has to do with the relationships among  
-the rows of~$M$ and also with the relationships among the rows of the vector.
+the rows of~$M$ and also with the relationships among the entries of the vector.
 In the matrix
 the third row is the sum of the first two, and the fourth
 row is the difference of the first two.
@@ -291,19 +287,20 @@ sage: M_prime.nonpivots()
 
 \subsection{Parametrization}
 Above we used \Sage's general purpose \inlinecode{solve} routine.
-We described that it may not be the best way to find the solution
+It may not be the best way to find the solution
 of a linear system because specialized tools are likely to be faster and
 may be more accurate. 
 But \inlinecode{solve} does come in handy to give the solution set of a system
 with infinitely many solutions, by parametrizing.
 
-To illustrate, we set up
+To illustrate, below we arrange for 
 a system with infinitely many solutions.
-Start with a matrix of coefficients
+We start with a matrix of coefficients
 where the top two rows add to the bottom row
 and adjoin a vector with the same row relationship. 
-Simplify it with Gauss's method.
-Transcribe the result to a system of equations and apply \inlinecode{solve}.
+We next find the reduced row echelon form.
+Then we transcribe the result to a system of equations and apply \inlinecode{solve},
+in two different ways.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 1, 1], [1, 2, 3], [2 , 3, 4]])    
 sage: v = vector(QQ, [1, 0, 1])                            
@@ -349,11 +346,11 @@ Start \Sage{} in the directory containing the file \path{gauss_method.sage}.
 % \end{sagecommandline}
 % gauss_method.sage uses print which is not captured
 \begin{lstlisting}
-sage: M = matrix(QQ, [[1/2, 1, 4], [2, 4, -1], [1, 2, 0]])
-sage: v = vector(QQ, [-2, 5, 4])
-sage: M_prime = M.augment(v, subdivide=True)
-sage: load("gauss_method.sage")
-sage: gauss_method(M_prime)
+sage: load("gauss_method.sage")                                                 
+sage: M = matrix(QQ, [[1/2, 1, 4], [2, 4, -1], [1, 2, 0]])                      
+sage: v = vector(QQ, [-2, 5, 4])                                                
+sage: M_prime = M.augment(v, subdivide=True)                                    
+sage: gauss_method(M_prime)                                                     
 [1/2   1   4| -2]
 [  2   4  -1|  5]
 [  1   2   0|  4]
@@ -372,11 +369,11 @@ Besides \inlinecode{gauss_method}\!, the file also contains a
 \inlinecode{gauss_jordan} function
 to go all the way to reduced echelon form.
 \begin{lstlisting}
-sage: M = matrix(QQ, [[1/2, 1, 4], [2, 4, -1], [1, 2, 0]])
-sage: v = vector(QQ, [-2, 5, 4])
-sage: M_prime = M.augment(v, subdivide=True)
-sage: load("gauss_method.sage")
-sage: gauss_jordan(M_prime)
+sage: load("gauss_method.sage")                                                 
+sage: M = matrix(QQ, [[1/2, 1, 4], [2, 4, -1], [1, 2, 0]])                      
+sage: v = vector(QQ, [-2, 5, 4])                                                
+sage: M_prime = M.augment(v, subdivide=True)                                    
+sage: gauss_jordan(M_prime)                                                     
 [1/2   1   4| -2]
 [  2   4  -1|  5]
 [  1   2   0|  4]
@@ -412,11 +409,6 @@ sage: gauss_jordan(M_prime)
 
 These are naive implementations of Gauss's Method and 
 Gauss-Jordan reduction.
-They use \python~2's \inlinecode{print} function, which
-does not use parentheses, 
-because at the moment of this writing, 
-the stable \Sage{} version relies on \python~2.
-(Support for \python~3 is in prerelease.)
 
 \lstinputlisting{gauss_method.sage}
 \endinput

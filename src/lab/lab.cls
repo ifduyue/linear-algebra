@@ -192,8 +192,12 @@
 %---------------------------------------------
 % Modified slightly from ../bookconcretejh.sty
 % for clearing out (needs twoside document option).
+\let\origdoublepage\cleardoublepage
 \newcommand{\clearemptydoublepage}{%
-  \clearpage{\pagestyle{empty}\cleardoublepage}}
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+\let\cleardoublepage\clearemptydoublepage
 
 \def\@makechapterhead#1{\clearemptydoublepage
   % Grab the name of the chapter.  Has to go here, not in \chapter, since

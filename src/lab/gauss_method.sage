@@ -1,6 +1,7 @@
 # Show Gauss's method and Gauss-Jordan reduction steps. 
 # 2012-Apr-20  Jim Hefferon  Public Domain. 
 # 2019-Nov-09 JH  Minor reformatting
+# 2021-Sep-22 JH  Adjust for Python3
 
 # Naive Gaussian reduction
 def gauss_method(M,rescale_leading_entry=False):
@@ -14,7 +15,7 @@ def gauss_method(M,rescale_leading_entry=False):
     """
     num_rows=M.nrows()
     num_cols=M.ncols()
-    print M    
+    print(M)    
 
     col = 0   # all cols before this are already done
     for row in range(0,num_rows): 
@@ -22,9 +23,9 @@ def gauss_method(M,rescale_leading_entry=False):
         while (col < num_cols
                and M[row][col] == 0): 
             for i in M.nonzero_positions_in_column(col):
-	        if i > row:
-                    print " swap row", row+1, "with row", i+1
-		    M.swap_rows(row,i)
+                if i > row:
+                    print(" swap row", row+1, "with row", i+1)
+                    M.swap_rows(row,i)
                     print(M)
                     break     
             else:
@@ -36,18 +37,18 @@ def gauss_method(M,rescale_leading_entry=False):
         # Now we are guaranteed M[row][col] != 0
         if (rescale_leading_entry
            and M[row][col] != 1):
-            print " take", 1/M[row][col], "times row", row+1
+            print(" take", 1/M[row][col], "times row", row+1)
             M.rescale_row(row,1/M[row][col])
-	    print M 
+            print(M) 
         change_flag=False
         for changed_row in range(row+1,num_rows):
             if M[changed_row][col] != 0:
                 change_flag=True
                 factor=-1*M[changed_row][col]/M[row][col]
-                print " take", factor, "times row", row+1, "plus row", changed_row+1
+                print(" take", factor, "times row", row+1, "plus row", changed_row+1)
                 M.add_multiple_of_row(changed_row,row,factor)
         if change_flag:
-            print M
+            print(M)
         col +=1
 
 # Naive Gauss-Jordan reduction
@@ -66,10 +67,10 @@ def gauss_jordan(M):
         col=pivot_list[row]
         if M[row][col] != 1:
             change_flag=True
-            print " take",1/M[row][col],"times row",row+1
+            print(" take",1/M[row][col],"times row",row+1)
             M.rescale_row(row,1/M[row][col])
     if change_flag:
-        print M    
+        print(M)    
     # Pivot
     for row in range(len(pivot_list)-1,-1,-1):
         col=pivot_list[row]
@@ -78,11 +79,10 @@ def gauss_jordan(M):
             if M[changed_row,col] != 0:
                 change_flag=True
                 factor=-1*M[changed_row][col]/M[row][col]
-                print " take",factor,"times row",   \
-                      row+1,"plus row",changed_row+1 
+                print(" take",factor,"times row",row+1,"plus row",changed_row+1) 
                 M.add_multiple_of_row(changed_row,row,factor)
         if change_flag:
-            print M
+            print(M)
 
 
     
