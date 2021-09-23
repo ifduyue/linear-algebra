@@ -19,13 +19,13 @@ and are easier to read.
   =\colvec{a+2b \\ a+2b}
 \end{equation*}
 \begin{sagecommandline}
-sage: a, b = var('a, b')   
+sage: a, b = var('a, b')
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
 sage: t_symbolic       
 sage: t_symbolic(1,3)       
 \end{sagecommandline}
 
-\Sage{} can find a scalar multiple of a function or add two functions.
+\Sage{} can find a scalar multiple of a function, or add two functions.
 \begin{sagecommandline}
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
 sage: f_symbolic = 3 * t_symbolic
@@ -44,19 +44,19 @@ sage: s_symbolic * f_symbolic (1,2)
 
 We used the oddball names, 
 \inlinecode{t_symbolic}, \inlinecode{s_symbolic}, etc.,
-because these are not functions in that we have not described a domain
+because these are not functions in that we have not specified a domain
 and codomain; rather they are prototypes for functions.  
 We can use one
-to produce a linear function $\map{t}{\Re^2}{\Re^2}$.
+to produce a function, a linear function $\map{t}{\Re^2}{\Re^2}$.
 \begin{sagecommandline} 
 sage: a, b = var('a, b')   
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
 sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic)
 \end{sagecommandline}
 \Sage{} uses the term 
-`linear transformation' for any linear map,
-which is its common usage,
-while the book uses it only that for maps where the domain and codomain
+`linear transformation' for any linear map at all,
+which is a common usage,
+while the book restricts it to only maps where the domain and codomain
 are equal.
 
 With the transformation~$t$ we expect this
@@ -95,7 +95,7 @@ results with respect to~$D$.
   \text{\ gives\ }
   \rep{\colvec{2 \\ 2}}{D}=\colvec{2 \\ 2}
 \end{equation*}
-Thus the book gets this matrix
+Thus the book gets this matrix.
 \begin{equation*}
   % \hspace*{3em}
   \rep{t}{B,D}=
@@ -104,13 +104,12 @@ Thus the book gets this matrix
     1  &2
   \end{mat}
 \end{equation*}
-but \Sage{} shows a different one.
+However, \Sage{} shows a different one.
 \begin{sagecommandline}
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]         
 sage: t = linear_transformation(QQ^2, QQ^2, t_symbolic)  # see discussion of 'side' below
 sage: t
 \end{sagecommandline}
-That's a different matrix.
 What's happening?
 
 Remember that the point of representations is to
@@ -124,12 +123,12 @@ The book writes
 with the vector on the right of the matrix.
 But \Sage{} by default takes 
 the representation vector on the left.
-Obviously the difference is cosmetic; 
+Obviously the difference is cosmetic\Dash
 the translation is that, compared to the book's~$T\vec{v}$,
-\Sage{}'s default is~$\trans{\vec{v}}\;\trans{T}$.
-That's why \Sage{}'s matrix is the transpose of the book's matrix.
+\Sage{}'s default is~$\trans{\vec{v}}\,\trans{T}$\Dash
+and that's why \Sage{}'s matrix is the transpose of the book's matrix.
 
-To have \Sage{} work with  the book's convention we will do two 
+To have \Sage{} conform to the book's convention we will do two 
 things:~define the map with the
 option \inlinecode{side='right'}, and show its
 matrix with the same option.
@@ -181,20 +180,21 @@ sage: h.kernel()
 sage: h.image()                                        
 \end{sagecommandline}
 \Sage{} has found that 
-the null space $\nullspace{h}$ is the trivial subspace of the domain,
-$\set{\zero}$.
+the null space  is the trivial subspace of the domain,
+$\nullspace{h}=\set{\zero}$.
 This is a $0$-dimensional
 subspace so \Sage{} reports that its basis is empty.
-\Sage{} found that the range space $\rangespace{h}$ is $2$-dimensional. 
+\Sage{} found that the range space $\rangespace{h}$ is $2$-dimensional,
+and gives its  basis. 
 
 Because the null space is trivial, the map is one-to-one. 
 Because the range space is $2$-dimensional while 
 the codomain is $3$-dimensional, the map is not onto.
 Note that these findings fit with the theorem that
 the dimension of the null space plus the dimension of the 
-range space equals the dimension of the domain.
+range space, which are $0$ and~$2$, equals the dimension of the domain.
 
-For another example, consider this function.
+As another example, consider this function.
 \begin{sagecommandline}
 sage: t_symbolic(a, b) = [a+2*b, a+2*b]
 sage: t_symbolic
@@ -242,7 +242,7 @@ sage: m
 \end{sagecommandline}
 Although we defined the linear map~$m$ with
 \mbox{\inlinecode{side='right'},} 
-the matrix that \Sage{} shows by default is for 
+the matrix that \Sage{} would show by default is for 
 \inlinecode{side='left'}.
 To get the representation fitting the text, ask for it explicitly.
 \begin{sagecommandline}
@@ -257,9 +257,9 @@ sage: v = vector(QQ, [7, 8])
 sage: v
 sage: m(v)  
 \end{sagecommandline}
-(Leaving \inlinecode{side='right'} out of the definition of the
-linear map and then multiplying 
-by the two-element vector would give an error message
+(If you left \inlinecode{side='right'} out of the definition of the
+linear map and then multiplied 
+by the two-element vector then you would get an error message
 complaining that the vector is not in the map's 
 $3$-dimensional domain.)
 
@@ -272,7 +272,7 @@ sage: n_symbolic(a, b) = [a+2*b, 3*a+4*b, 5*a+6*b]
 sage: n = linear_transformation(QQ^2, QQ^3, n_symbolic, side='right')
 sage: m == n  
 \end{sagecommandline}
-And we can ask the same questions of linear maps created from
+And, you can ask the same questions of linear maps created from
 matrices that we asked of linear maps created from symbolic functions.
 \begin{sagecommandline}
 sage: M = matrix(QQ, [[1, 2], [3, 4], [5, 6]])
@@ -335,7 +335,7 @@ set of all linear transformations between them.
 This collection has some natural operations, including
 addition and scalar multiplication.
 Earlier we saw that \Sage{} can work with these operations as well
-as composition, and we now close by showing the effect they have
+as composition, and we close by showing the effect that they have
 on the representations.
 
 
@@ -376,13 +376,13 @@ sage: M = matrix(QQ, [[1, 2], [3, 4]])
 sage: m = linear_transformation(QQ^2, QQ^2, M, side='right')
 sage: N = matrix(QQ, [[5, -1], [0, 7]])
 sage: n = linear_transformation(QQ^2, QQ^2, N, side='right')
-sage: (m*n).matrix(side='right')
+sage: M*N
 \end{sagecommandline}
 
 As the book emphasizes, the point of matrix multiplication is that it
 represents linear map composition.
 \begin{sagecommandline}
-sage: M*N
+sage: (m*n).matrix(side='right')
 \end{sagecommandline}
 
 
