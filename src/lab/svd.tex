@@ -1,11 +1,9 @@
 \chapter{Singular Value Decomposition}
 \label{chap:SingularValueDecomposition}
 
-We will picture the action of linear maps.
-Specifically, we will draw 
-the action of linear transformations $\map{h}{\Re^2}{\Re^2}$.
-That will connect with an important way to factor matrices, and lead to
-an interesting application.
+We will picture how some linear transformations $\map{t}{\Re^2}{\Re^2}$ act
+(we use $\Re^2$ simply because the pictures are 
+easy to draw and to understand). 
 
 
 \section{Drawing the action}
@@ -16,13 +14,14 @@ $\set{r\cdot \vec{v}\suchthat r\in\Re}$ for some~$\vec{v}\in\Re^n$.
 Thus the scalar multiplication property  
 imposes a uniformity condition on a linear map:~its action on any 
 line through the origin is determined by its action
-on any nonzero vector in that line.
+on any one of the nonzero vectors in that line.
 
 For instance, consider the line~$y=2x$ in the plane
 \begin{equation*}
   \set{r\cdot\colvec{1 \\ 2}\suchthat r\in\Re}
 \end{equation*}
-and suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by this matrix.
+and consider the transformation $\map{t}{\Re^2}{\Re^2}$ that is
+represented by this matrix.
 \begin{equation*}
   \rep{t}{\stdbasis_2,\stdbasis_2}
   =
@@ -31,11 +30,13 @@ and suppose that $\map{t}{\Re^2}{\Re^2}$ is represented by this matrix.
     3 &4
   \end{mat}
 \end{equation*}
-Then the map $t$ has this effect on one of the line's vectors.
+If you pick a domain vector~$\vec{v}$ then computing the effect
+of the map~$t$ is easy.
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{5 \\ 11}
 \end{equation*}
-On $2\vec{v}$ the 
+The prior paragraph notes that 
+on $2\vec{v}$ the 
 map has twice the effect, on  $3\vec{v}$ it has three times the
 effect, etc.
 \begin{equation*}
@@ -45,26 +46,16 @@ effect, etc.
   \qquad
   \colvec{r \\ 2r}\mapsunder{t}\colvec{5r \\ 11r}
 \end{equation*}
-We can use this observation to show the action of 
-linear transformations of the plane, $\map{t}{\Re^2}{\Re^2}$
-(we choose the plane simply because the pictures are 
-easy to draw and to understand). 
 
-The $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship says that
-a linear map has the same effect on all vectors in a line through the
-origin.
-So to picture a transformation's action we will fix 
-one nonzero vector~$\vec{v}$ from each line through the origin,
-and show where the transformation $t(\vec{v})$ takes it.
+%% The $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship says that
+%% a linear map has the same effect on all vectors in a line through the
+%% origin.
+So, to show a map's action we will fix 
+one nonzero vector~$\vec{v}$ from each line through the origin
+and show where the transformation takes it.
 The natural set containing one point from each line through the origin 
 is the upper half of the unit circle, shown here
 (the colors are explained below).
-% \begin{sagecommandline}
-% sage: load("plot_action.sage")
-% sage: p = plot_circle_action(1,0,0,1) 
-% sage: p.set_axes_range(-1.5, 1.5, -0.5, 1.5) 
-% sage: p.save("graphics/svd000.pdf")
-% \end{sagecommandline}
 \begin{sagesilent}
 load("plot_action.sage")
 p = plot_circle_action(1,0,0,1) 
@@ -80,19 +71,17 @@ p.save("graphics/svd000.pdf")
 \end{equation*}
 The point $(1,0)$ is included in that set, as the representative of
 the $x$~axis, but
-$(-1,0)$ is not, which is why that point has an open circle.
+$(-1,0)$ is not, which is why $(-1,0)$ has an open circle.
 
-The first illustration is for a simple transformation.
+The first transformation that we will illustrate is simple.
 \begin{equation*}
-  \colvec{x \\ y} \mapsto \colvec{2x \\ y}
+  \colvec{x \\ y} \mapsunder{t} \colvec{2x \\ y}
 \end{equation*}
-\Sage{} can compute the effect of this transformation
-on the upper half circle. 
-The code below inputs the file \inlinecode{plot_action.sage}
-to get access to the routine
+The code below loads \inlinecode{plot_action.sage}
+to get access to
 \inlinecode{plot_circle_action(a,b,c,d)}. 
-This divides the input upper half circle into a number of curved segments,
-the red one, the orange one, etc., then it 
+This divides the input upper half circle into a number of parts,
+the red one, the orange one, etc., and then it 
 multiplies the points on those curved segments 
 by this matrix
 \begin{equation*}
@@ -101,10 +90,15 @@ by this matrix
     c &d
   \end{mat}
 \end{equation*}
-and finally it connects those output segments to get an output curve, where 
+(for this first transformation we take $a=1$, $b=0$, $c=0$, and $d=2$).
+Finally it connects those output segments to get an output curve, where 
 the output segments are colored red, orange, etc.
 The listing of the full source of \inlinecode{plot_action.sage} is 
 at the end of this chapter.
+
+To show before and after pictures, the code first plots the circle unchanged, that is,
+under the effect of the identity map, and then plots the result of applying
+the transformation.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
 sage: q = plot_circle_action(1,0,0,1) 
@@ -123,28 +117,19 @@ sage: p.save("graphics/svd001b.pdf")
 % p.set_axes_range(-2, 2, -1, 2) 
 % p.save("graphics/svd001b.pdf")
 % \end{sagesilent}
-Here is the before and after, the upper half circle 
-and the associated output.
-The colors show the association\Dash which of the 
-points on the left are mapped to which of the points 
+Here are the before and after pictures.
+The colors are there to show the association\Dash to show which 
+points on the left are mapped to which points 
 on the right.
 \begin{equation*}
   \vcenteredhbox{\includegraphics{graphics/svd001a.pdf}}
   \quad\mapsunder{\big (\begin{smallmatrix} 2 &0 \\ 0 &1 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd001b.pdf}}
 \end{equation*}
-\Sage{} drew the unit circle by plotting the action of the identity map.
-Then \Sage{} drew the effect of the transformation by plotting the
-action of this matrix.
-\begin{equation*}
-\begin{mat}
-  2  &0  \\
-  0  &1
-\end{mat}
-\end{equation*}
+The effect of this map is to stretch things in the $x$~direction by a factor of two.
 
-The next before and after picture shows
-the effect of the map
+We next show
+the action of the map
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{-x \\ 3y}
 \end{equation*}
@@ -179,7 +164,7 @@ p.save("graphics/svd002b.pdf", ticks_integer=True)
 \end{equation*}
 Tripling the $y$ component is easy to understand.
 As for taking the negative of the $x$ component, 
-this is where the colors have something to say.
+this is where the colors are especially useful.
 On the input circle, when you move counterclockwise, the colors go from 
 red to orange, to green, blue, indigo, and then violet.
 But the output does the opposite:~moving counterclockwise it
@@ -187,9 +172,9 @@ passes from violet to red.
 This transformation changes the orientation,
 or `sense', of the curve. 
 
-This is rotation by $\pi/4$~radians, clockwise.
+The next transformation is rotation by $\pi/4$~radians, clockwise.
 \begin{equation*}
-  \colvec{x \\ y} \mapsto \colvec{\cos(-\pi/4)-\sin(-\pi/4) \\ \sin(-\pi/4)+\cos(-\pi/4)}
+  \colvec{x \\ y} \mapsto \colvec{\cos(-\pi/4)x-\sin(-\pi/4)y \\ \sin(-\pi/4)x+\cos(-\pi/4)y}
 \end{equation*}
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
@@ -206,7 +191,7 @@ sage: p.save("graphics/svd003b.pdf")
 \end{equation*}
 
 The next transformation is a shear.\footnote{%
-  The definition from physics or engineering is that a shear is the motion of 
+  A shear is the motion of 
   two parts of a body where they slide   
   relative to each other in a direction parallel to their 
   plane of contact.  
@@ -215,9 +200,11 @@ The next transformation is a shear.\footnote{%
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
 \end{equation*}
-Here, the first component of the output is affected
-by the input's distance from the $y$-axis.
-Input vectors higher up in the picture have their first component affected more
+Focus on the output's first component.
+Because of the addition of $2y$, 
+input vectors with larger second components, that is, input vectors with $y$'s of
+large absolute value,
+have their first output component affected more
 than do input vectors near the $x$-axis.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
@@ -273,8 +260,7 @@ sage: p.save("graphics/svd005b.pdf")
   \vcenteredhbox{\includegraphics{graphics/svd005b.pdf}}
 \end{equation*}
 
-And here is a generic transformation.
-It changes orientation also.
+And here is a generic map.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 4, -3, 6) 
@@ -297,15 +283,16 @@ sage: p.save("graphics/svd006b.pdf")
   \quad\mapsunder{\big (\begin{smallmatrix} 1 &2 \\ 3 &4 \end{smallmatrix}\big )}\quad
   \vcenteredhbox{\includegraphics{graphics/svd006b.pdf}}
 \end{equation*}
+Besides rotating and shearing, it also changes orientation.
 
 
 
 \section{SVD}
-In those pictures the image of the unit circle is an ellipse.
+In those pictures the image of the half circle is a half ellipse, and
+consequently the image of the full unit circle is an ellipse.
 Recall that in $\Re^2$ an ellipse has a major axis, 
 the longer one, and a minor axis.\footnote{%
-  If the two axes have the same length,
-  as in the output of the rotation map, 
+  If the two axes have the same length, 
   then the ellipse is a circle.
   If one axis has length zero then the ellipse is a line segment 
   and if both have length zero then it is a point.}
@@ -335,19 +322,19 @@ E.save("graphics/svd100.pdf", ticks_integer=True, axes_pad=0.075, figsize=3)
 \begin{center}
   \includegraphics{graphics/svd100.pdf}
 \end{center}
-The two are orthogonal.
+The two axes are orthogonal.
 Above, the major axis is on the $x$-axis while the
 minor is on the $y$-axis.
 
-Under any linear map $\map{t}{\Re^n}{\Re^m}$ the 
+Under any linear map $\map{t}{\Re^n}{\Re^m}$, the 
 unit sphere maps to a hyperellipse.
 This is a version of the \textit{Singular Value Decomposition} of
-matrices:
-for any linear map $\map{t}{\Re^n}{\Re^m}$ there are bases
+matrices:~for
+any linear map $\map{t}{\Re^n}{\Re^m}$, there are bases
 $B=\sequence{\vec{\beta}_1,\ldots,\vec{\beta}_n}$ for the domain and
 $D=\sequence{\vec{\delta}_1,\ldots,\vec{\delta}_m}$ for the codomain
-such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i$ (for $i\leq n$), where the
-scalars $\sigma_i$ are called \textit{singular values}.
+such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i$, for $i\leq n$.
+The scalars $\sigma_i$ are called \textit{singular values}.
 The next section sketches a proof
 but we first illustrate this result by using an example matrix.
 \Sage{} will find the two bases $B$ and~$D$ and will picture how the 
@@ -355,7 +342,7 @@ vectors $\vec{\beta}_i$
 are mapped to the $\sigma_i\vec{\delta}_i$.
 
 So consider again the generic matrix.
-Here is its action again, shown
+Here is its action again, now shown
 on a full circle.
 \begin{sagecommandline}
 sage: load("plot_action.sage")
@@ -396,8 +383,9 @@ three matrices, $U\Sigma\trans{V}$.
 The basis vectors $\vec{\beta}_1$, $\vec{\beta}_2$, $\vec{\delta}_1$, 
 and~$\vec{\delta}_2$ are the columns of $U$ and~$V$. 
 The singular values are the diagonal entries of~$\Sigma$.
-\Sage{} will plot the effect of the transformation
-on the basis vectors for the domain so we can compare those with the
+
+We can get \Sage{} to plot the effect of the transformation
+on the basis vectors for the domain so that we can compare those with the
 basis vectors for the codomain.
 \begin{sagecommandline}
 sage: M = matrix(RDF, [[1, 2], [3, 4]])
@@ -437,12 +425,11 @@ Q = Q + plot(beta_2*M,width=3,color=image_color,arrowsize=s)
 Q = Q + plot(delta_2,width=1.4,color='blue',arrowsize=s)
 Q.save("graphics/svd102b.pdf",figsize=4.467, ticks_integer=True)
 \end{sagesilent}
-Below, the domain's 
-blue $\vec{\beta}$'s on the left map to the codomain's light red 
-$t(\vec{\beta})$'s on the right.
-Also on the right, in blue, are the $\vec{\delta}$'s.
-The diagonal entries of $\Sigma$ tell us about the
-red vectors:~$t(\vec{\beta}_1)$ is about $5.5$ times $\vec{\delta}_1$
+Below, on the left, the domain's basis are the blue $\vec{\beta}$'s.
+On the right, the codomain's basis are the blue $\vec{\delta}$'s.
+Also on the right, in light red, are the images of the $\vec{\beta}$'s.
+The diagonal entries of $\Sigma$ describe the relationships:~the
+red vector~$t(\vec{\beta}_1)$ is about $5.5$ times $\vec{\delta}_1$
 while $t(\vec{\beta}_2)$ is about $0.4$ times~$\vec{\delta}_2$.
 \begin{equation*}
   % \setlength{\fboxsep}{0in} % used to set box heights by eye; surrounded each picture env with a fbox
@@ -485,64 +472,71 @@ domain and codomain
 such that $t(\vec{\beta}_i)=\sigma_i\vec{\delta}_i.$\footnote{%
   This argument, 
   from \protect\cite{BlankKrikorianSpring89},
-  is a sketch because it uses results that a reader may have seen only 
-  seen only in a form not as strong as needed by the theorem, 
+  is a sketch because it uses results that many readers have 
+  seen in a form not as strong as needed for the full proof, 
   and because it relies on material from the book that is optional.
-  In addition, we'll consider only the case of a nonsingular matrix and map.
+  In addition, we'll consider only the case of a nonsingular matrix.
   This gives the main idea, which is the point of a sketch.}
 
 Recall Calculus~I's Extreme Value Theorem: for a continuous
-function~$f$, if a subset $D\subset \Re$ of the real line 
+function~$\map{f}{\Re}{\Re}$, if a subset $D\subset \Re$ of the domain 
 is closed and bounded then
 its image $f(D)=\set{f(d)\suchthat d\in D}$ 
 is also closed and bounded (see \cite{wiki:ExtremeValueThm}).
-A generalization of that result gives that because the unit sphere in $\Re^n$
+A generalization gives that because the unit sphere in $\Re^n$
 is closed and bounded then its image under~$t$ is closed and bounded.
 Although we won't prove this, the image is a hyperellipse
 so we will call it that. 
 
-Because this hyperellipse is closed and bounded it has a 
-point furthest from the origin (if it has more than one then just pick one).
-Let $\vec{w}$ be a vector extending from the origin to that furthest point.
-Let $\vec{v}$ be the member of the unit sphere that maps to $\vec{w}$.
-Let $P$ be the plane tangent to the sphere at the endpoint of $\vec{v}$.
+Because this hyperellipse is closed and bounded, it has a 
+point furthest from the origin (if there is more than one then just pick one).
+Let $\vec{w}$ be the vector extending from the origin to that furthest point.
+The nonsingular map~$t$ is invertible so there is one and only one
+member of the unit sphere $\vec{v}$ such that $f(\vec{v})=\vec{w}$.
+Let $P$ be the hyperplane tangent to the sphere at the endpoint of~$\vec{v}$.
 Let $Q$ be the image of $P$ under~$t$.
-Since $t$ is one-to-one, $Q$ touches the ellipsoid only at~$\vec{w}$.
+Since $t$ is one-to-one, $Q$ intersects its ellipsoid only at~$\vec{w}$
+(if it intersected in two places then the inverse image of those two would be
+two places on~$P$ that intersect the sphere).
 \begin{center}
   \includegraphics{asy/ellipsoid1.pdf}
 \end{center}
 
-As the illustration suggests, if we slide~$P$ along the 
-vector~$\vec{v}$ to
-the origin then the result is 
-the subspace of $\Re^n$ of vectors perpendicular
-to~$\vec{v}$.
+Consider sliding~$P$ along the vector~$\vec{v}$ to the origin.
+This makes clear that $P$ is the subspace of~$\Re^n$
+consisting of vectors perpendicular
+to~$\vec{v}$ (these elements of~$P$ have their
+entire bodies in the hyperplane, 
+unlike the pictured vector~$\vec{v}$, which just touches~$P$ with its endpoint).
 This subspace has dimension~$n-1$. 
 We will argue in the next paragraph 
 that similarly $Q$ contains only
 vectors perpendicular to~$\vec{w}$.
-With that we can complete an argument by induction:~we 
+With that, we can complete an argument by induction:~we 
 start constructing the 
 bases~$B$ and~$D$ by taking $\vec{\beta}_1$ to be~$\vec{v}$, taking
-$\sigma_1$ to be the length $\norm{\vec{w}}$, and taking
-$\vec{\delta}_1$ to be $\vec{w}/\norm{\vec{w}}$.
+$\sigma_1$ to be the length $\absval{\vec{w}}$, and taking
+$\vec{\delta}_1$ to be $\vec{w}/\absval{\vec{w}}$.
 Then induction proceeds by taking the restriction of $t$ to~$P$.
 
-Therefore consider~$Q$.
-The plane that touches the ellipsoid
+So consider~$Q$.
+Since~$t$ is nonsingular, $Q$ is an $n-1$~dimensional subspace of~$\Re^n$,
+a hyperplane.
+The hyperplane that touches the ellipsoid
 only at~$\vec{w}$ is unique since if there were another then its inverse image
 under $t$
-would be a second plane, besides~$P$, 
+would be a second hyperplane, besides~$P$, 
 that touches the sphere only at~$\vec{v}$, which is impossible (since it is a
 sphere).
-To see that $Q$ is perpendicular to~$\vec{w}$ consider a sphere in the codomain
-centered at the origin whose radius is the length, $\norm{\vec{w}}$.
+To see that $Q$ is perpendicular to~$\vec{w}$, consider a sphere in the codomain
+centered at the origin whose radius is the length~$\absval{\vec{w}}$.
 This sphere has a plane tangent at the endpoint of~$\vec{w}$ 
 that is perpendicular
 to $\vec{w}$.
 Because $\vec{w}$ ends at a point on the ellipsoid furthest from the origin,
-the ellipsoid is entirely contained in this sphere, so its tangent plane 
-touches the ellipsoid only at~$\vec{w}$.
+the ellipsoid is entirely contained in this sphere, so its tangent plane,
+that is, the tangent plane of the ellisoid,
+touches that ellipsoid only at~$\vec{w}$.
 Therefore
 this tangent plane is~$Q$. 
 That ends the argument.
@@ -582,98 +576,159 @@ issues.
 % sage: V  
 % \end{sagecommandline}
 
-The product $U\Sigma\trans{V}$ simplifies.
-For instance, 
-consider the case where all three matrices are $\nbyn{2}$.
-Write $\vec{u}_1$, $\vec{u}_2$ for the columns of~$U$
-and $\vec{v}_1$, $\vec{v_2}$ for the columns of~$V$,
-so that the rows of $\trans{V}$ are $\trans{\vec{v}}_1$ and
-$\trans{\vec{v}}_2$.
+We can simplify the product $U\Sigma\trans{V}$.
+Consider the case where all three matrices are $\nbyn{2}$.
+%% Write $\vec{u}_1$, $\vec{u}_2$ for the columns of~$U$
+%% and $\vec{v}_1$, $\vec{v_2}$ for the columns of~$V$,
+%% so that the rows of $\trans{V}$ are $\trans{\vec{v}}_1$ and
+%% $\trans{\vec{v}}_2$.
 \begin{align*}
-  U\Sigma \trans{V}
+  \begin{mat}
+      u_{1,1}  &u_{1,2}  \\
+      u_{2,1}  &u_{2,2}  
+  \end{mat}
+  \begin{mat}
+      \sigma_1  &0  \\
+      0             &\sigma_2 
+  \end{mat}
+  \begin{mat}
+      v_{1,1}  &v_{1,2}  \\
+      v_{2,1}  &v_{2,2}  
+  \end{mat}                    
   &=
   \begin{mat}
-    \vec{u}_1 &\vec{u}_2
+      u_{1,1}  &u_{1,2}  \\
+      u_{2,1}  &u_{2,2}  
   \end{mat}
+  \left[
+    \begin{mat}
+      \sigma_1  &0  \\
+      0             &0 
+    \end{mat}
+    +
+    \begin{mat}
+      0  &0  \\
+      0  &\sigma_2 
+    \end{mat}
+  \right]
   \begin{mat}
-    \sigma_1 &0 \\
-    0        &\sigma_2
-  \end{mat}
-  \begin{mat}
-    \trans{\vec{v}}_1 \\[.75ex]
-    \trans{\vec{v}}_2
-  \end{mat}             % \\[.5ex]
-  =
-  \begin{mat}
-    \vec{u}_1 &\vec{u}_2
-  \end{mat}
-  \,[
-  \begin{mat}
-    \sigma_1 &0 \\
-    0        &0
-  \end{mat}
-  +
-  \begin{mat}
-    0 &0 \\
-    0        &\sigma_2
-  \end{mat}
-  ]\,
-  \begin{mat}
-    \trans{\vec{v}}_1 \\[.75ex]
-    \trans{\vec{v}}_2
-  \end{mat}             \\[.5ex]
+      v_{1,1}  &v_{1,2}  \\
+      v_{2,1}  &v_{2,2}  
+  \end{mat}                                      \\
   &=
-  \begin{mat}
-    \vec{u}_1 &\vec{u}_2
+  \sigma_1\begin{mat}
+      u_{1,1}  &u_{1,2}  \\
+      u_{2,1}  &u_{2,2}  
   \end{mat}
+    \begin{mat}
+      1  &0  \\
+      0             &0 
+    \end{mat}
   \begin{mat}
-    \sigma_1 &0 \\
-    0        &0
+      v_{1,1}  &v_{1,2}  \\
+      v_{2,1}  &v_{2,2}  
+  \end{mat}                                       \\ 
+  &\qquad+
+  \sigma_2
+  \begin{mat}
+      u_{1,1}  &u_{1,2}  \\
+      u_{2,1}  &u_{2,2}  
   \end{mat}
+    \begin{mat}
+      0  &0  \\
+      0  &1 
+    \end{mat}
   \begin{mat}
-    \trans{\vec{v}}_1 \\[.75ex]
-    \trans{\vec{v}}_2
-  \end{mat}             
-  +
-  \begin{mat}
-    \vec{u}_1 &\vec{u}_2
-  \end{mat}
-  \begin{mat}
-    0        &0 \\
-    0        &\sigma_2
-  \end{mat}
-  \begin{mat}
-    \trans{\vec{v}}_1 \\[.75ex]
-    \trans{\vec{v}}_2
-  \end{mat}             \\[.5ex]
-  &=
-  \sigma_1\cdot
-  \begin{mat}
-    \vec{u}_1 &\vec{u}_2
-  \end{mat}
-  \begin{mat}
-    1 &0 \\
-    0 &0
-  \end{mat}
-  \begin{mat}
-    \trans{\vec{v}}_1 \\[.75ex]
-    \trans{\vec{v}}_2
-  \end{mat}             
-  +
-  \sigma_2\cdot 
-  \begin{mat}
-    \vec{u}_1 &\vec{u}_2
-  \end{mat}
-  \begin{mat}
-    0        &0 \\
-    0        &1
-  \end{mat}
-  \begin{mat}
-    \trans{\vec{v}}_1 \\[.75ex]
-    \trans{\vec{v}}_2
-  \end{mat}
-  \tag{$*{*}*$}
+      v_{1,1}  &v_{1,2}  \\
+      v_{2,1}  &v_{2,2}  
+  \end{mat}                    
 \end{align*}
+
+%% \begin{align*}
+%%   U\Sigma \trans{V}
+%%   &=
+%%   \begin{mat}
+%%     \vec{u}_1 &\vec{u}_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     \sigma_1 &0 \\
+%%     0        &\sigma_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     \trans{\vec{v}}_1 \\[.75ex]
+%%     \trans{\vec{v}}_2
+%%   \end{mat}             \\[.5ex]
+%%   &=
+%%   \begin{mat}
+%%     \vec{u}_1 &\vec{u}_2
+%%   \end{mat}
+%%   \,[
+%%   \begin{mat}
+%%     \sigma_1 &0 \\
+%%     0        &0
+%%   \end{mat}
+%%   +
+%%   \begin{mat}
+%%     0 &0 \\
+%%     0        &\sigma_2
+%%   \end{mat}
+%%   ]\,
+%%   \begin{mat}
+%%     \trans{\vec{v}}_1 \\[.75ex]
+%%     \trans{\vec{v}}_2
+%%   \end{mat}             \\[.5ex]
+%%   &=
+%%   \begin{mat}
+%%     \vec{u}_1 &\vec{u}_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     \sigma_1 &0 \\
+%%     0        &0
+%%   \end{mat}
+%%   \begin{mat}
+%%     \trans{\vec{v}}_1 \\[.75ex]
+%%     \trans{\vec{v}}_2
+%%   \end{mat}             
+%%   +
+%%   \begin{mat}
+%%     \vec{u}_1 &\vec{u}_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     0        &0 \\
+%%     0        &\sigma_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     \trans{\vec{v}}_1 \\[.75ex]
+%%     \trans{\vec{v}}_2
+%%   \end{mat}             \\[.5ex]
+%%   &=
+%%   \sigma_1\cdot
+%%   \begin{mat}
+%%     \vec{u}_1 &\vec{u}_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     1 &0 \\
+%%     0 &0
+%%   \end{mat}
+%%   \begin{mat}
+%%     \trans{\vec{v}}_1 \\[.75ex]
+%%     \trans{\vec{v}}_2
+%%   \end{mat}             
+%%   +
+%%   \sigma_2\cdot 
+%%   \begin{mat}
+%%     \vec{u}_1 &\vec{u}_2
+%%   \end{mat}
+%%   \begin{mat}
+%%     0        &0 \\
+%%     0        &1
+%%   \end{mat}
+%%   \begin{mat}
+%%     \trans{\vec{v}}_1 \\[.75ex]
+%%     \trans{\vec{v}}_2
+%%   \end{mat}
+%%   \tag{$*{*}*$}
+%% \end{align*}
 In the first term,
 right multiplication by the $1,1$~unit matrix picks out the first column of
 $U$, and left multiplication by the $1,1$~unit matrix picks out first row of
@@ -730,37 +785,39 @@ Cases other than~$\nbyn{2}$ work the same way.
 
 \section{Application: data compression}
 
-We can write any matrix as a sum
-$M=\sigma_1\cdot\vec{u}_1\trans{\vec{v}}_1
-   +\sigma_2\cdot\vec{u}_2\trans{\vec{v}}_2
-   +\cdots$
-where the vectors have unit size and the $\sigma_i$'s decrease in size.
-
-Suppose that the matrix is $\nbyn{n}$.
+Suppose that a matrix is $\nbyn{n}$.
 To work with it\Dash for example, 
 to store it in a computer's memory or to transmit it over the Internet\Dash 
 we must work with $n^2$-many floating points.
 For instance, if $n=500$ then it has $500^2=250\,000$~floats.
-If we express the matrix as a sum then
-each term requires 
-$n$~numbers for $\vec{u}_i$, another~$n$ for~$\vec{v}_i$, and one
-more for $\sigma_i$.
-If $n=500$ that's $500\cdot(2\cdot 500+1)=500\,500$~floats,
-about twice the size of the original matrix,
-which is a lot of data.
+That's a lot of data.
+We will show a way to reduce it. 
 
-But the sum form does have an advantage.
-If we keep only a few of the terms, say the first $50$ of them, 
+We've just seen how to write the matrix as a sum,
+$M=\sigma_1\cdot\vec{u}_1\trans{\vec{v}}_1
+   +\sigma_2\cdot\vec{u}_2\trans{\vec{v}}_2
+   +\cdots\,$,
+where the vectors have unit length and the scalars decrease, 
+$\sigma_1\geq \sigma_2\geq \cdots\, 0$.
+But that is not yet the savings, because
+each term in that sum requires 
+$n$~floating points for $\vec{u}_i$, another~$n$ for~$\vec{v}_i$, and one
+more for $\sigma_i$.
+So if $n=500$ that's $500\cdot(2\cdot 500+1)=500\,500$~floats,
+about twice the size of the original matrix.
+
+But the sum form does have an advantage, namely that the scalars decrease.
+If we throw out a lot of the terms and keep only a few with the largest $\sigma$'s,
+say the first $50$ of them, 
 then we get a big savings:~$50\cdot (2\cdot 50+1)=5\,050$ floats,  
 which is about $2\%$ of the storage size of the full matrix.
 
 In short, if you have data as a matrix then you can hope to compress it
-with the summation formula by dropping terms with smaller $\sigma$'s.  
-The question, though, is whether you lose too much information by only 
-retaining some of the singular values.
+by converting to the summation formula and dropping terms with small $\sigma$'s.  
+The question, though, is whether you lose too much information.
 
-To illustrate that you can succeed in retaining at least some aspects of data
-we will do image compression.
+The answer is that you can retain a lot.
+We will illustrate with image compression.
 This is \textit{The Great Wave off Kanagawa} by Hokusai, ca~1830,
 \cite{wiki:GreatWave}.\footnote{%
   The image file is
@@ -776,11 +833,12 @@ listed at the end of the chapter.
 It breaks the picture into three matrices, for the red data, the 
 green data, and the blue data.
 We want to see how badly the image degrades for various cutoffs.
-The code below sets the cutoff at $10$\%,
-so it sums terms associated
-with the first $92$ singular values.
-It gives us some insight into the size of those values
-with a peek at the eight largest ones for the red matrix.
+The code below sets the cutoff at retaining only the terms with
+the top $10$\% of singular values.
+For this image, that is $92$ singular values.
+The code gives us some insight into their size
+by printing the ones for the red matrix
+(but we've edited out most of them).
 \begin{lstlisting}
 sage: load("img_squeeze.sage")                                 
 sage: img_squeeze("pix/greatwave.png", "pix/greatwave_squeezed.png", 0.10)
@@ -796,7 +854,7 @@ sigma_RD 7 =10250.95
     :
 sigma_RD 92 =2240.98
 \end{lstlisting}
-(It also gives the eight smallest singular values:
+(For contrast, the eight smallest singular values are
   $11.22$,
   $10.80$,
   $9.00$,
@@ -815,7 +873,7 @@ artifacts, including vertical lines extending from the writing in the
 upper left.
 Basically, Fiji has gotten a little fuzzy.
 But certainly the image is entirely recognizable\Dash not bad for omiting
-$90$~percent of the information.
+$90$~percent of the summands.
 
 Every additional term in the summation
 adds to the storage and transmission requirements by about $2n$ floats.
@@ -873,9 +931,9 @@ Finally, the routine plots those graphics.
 \lstinputlisting[firstline=39,lastline=50]{plot_action.sage}
 
 The helper routine does the heavy lifting.
-There are two global values to set graphic values.
+There are two globals.
 The variable \inlinecode{CIRCLE_THICKNESS} sets the thickness of 
-the plotted curve, in points (a printer's unit, here $1/72$~inch).
+the plotted curve, in points (a printer's unit, $1/72$~inch).
 Similarly \inlinecode{DOT_SIZE} sets the size of the small empty circle.
 This routine produces a parametrized curve $(x(t),y(t))$ and uses \Sage's
 \inlinecode{parametric_plot} function to get the resulting graphic.
@@ -889,13 +947,13 @@ is not part of the graph.
 
 \section{Source of img\_squeeze.sage}
 We use the Python Image Library for reading and writing the graphic.
-\lstinputlisting[firstline=5,lastline=5]{img_squeeze.sage}
+\lstinputlisting[firstline=6,lastline=6]{img_squeeze.sage}
 The function
 \inlinecode{img_squeeze}
 takes three arguments:~the names of the two files, and
-the cutoff real number between $0$ and~$1$ the gives the percentage 
+the cutoff real number between $0$ and~$1$ that gives the percentage 
 of the singular values to retain in the sum.
-\lstinputlisting[firstline=7,lastline=11]{img_squeeze.sage}
+\lstinputlisting[firstline=8,lastline=12]{img_squeeze.sage}
 
 This function first brings the input data to a format where each
 pixel is a triple 
@@ -906,33 +964,26 @@ three Python arrays \inlinecode{rd}, \inlinecode{gr},
 and \inlinecode{bl}, which then initialize the 
 three \Sage{} matrices \inlinecode{RD},
 \inlinecode{GR}, and~\inlinecode{BL}.
-\lstinputlisting[firstline=12,lastline=28]{img_squeeze.sage}
+\lstinputlisting[firstline=13,lastline=29]{img_squeeze.sage}
 
 The next step finds the Singular Value Decomposition of those three.
 Out of curiosity, we have a look at the eight largest singular
 values in the red matrix, the singular value where we make the cutoff,
 and the eight smallest.
-\lstinputlisting[firstline=29,lastline=40]{img_squeeze.sage}
+\lstinputlisting[firstline=30,lastline=41]{img_squeeze.sage}
 
 Finally, for each matrix we compute the sum
 $\sigma_1\cdot\vec{u}_1\trans{\vec{v}}_1+\sigma_2\cdot\vec{u}_2\trans{\vec{v}}_2
-   +\cdots$
+   +\cdots\,$,
 up through the cutoff index.
-\lstinputlisting[firstline=41,lastline=60]{img_squeeze.sage}
+\lstinputlisting[firstline=42,lastline=61]{img_squeeze.sage}
 
 To finish, we put the data in the PNG format and save it to 
 disk.
-\lstinputlisting[firstline=61,lastline=69]{img_squeeze.sage}
-This part of the routine takes a long time, in part because
-the code is intended to be easy to read rather than fast to run.
+\lstinputlisting[firstline=62,lastline=70]{img_squeeze.sage}
+(This part of the routine takes a long time, a number of seconds, in part because
+the code is intended to be easy to read rather than fast to run.)
 
 \endinput
 
 
-TODO:
-1) mention Sage matrices are not mutable in matrix introduction.
-Is mutable discussed in Intro?
-
-2) vectors have to be forced to be row or col
-
-2) Need int() fcns?  copy() fcn?

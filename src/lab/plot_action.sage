@@ -218,7 +218,7 @@ def find_angles(a,b,c,d,num_pts,lower_limit=None,upper_limit=None):
         w = M*v
         try:
             dot = v[0]*w[0] + v[1]*w[1]  # dot product
-	    det = v[0]*w[1] - v[1]*w[0]  # determinant
+            det = v[0]*w[1] - v[1]*w[0]  # determinant
             angle = atan2(det, dot)      # atan2(y, x) or atan2(sin, cos)
         except:
             angle = None

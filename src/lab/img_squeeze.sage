@@ -2,6 +2,7 @@
 # Compress the image
 # 2012-Dec-04 JH
 # 2019-Nov-25 JH
+# 2021-Sep-28 JH  Convert to Python3
 from PIL import Image
 
 def img_squeeze(fn_in, fn_out, percent):
@@ -14,7 +15,7 @@ def img_squeeze(fn_in, fn_out, percent):
     rows, cols = img.size
     dim_bound = min(rows, cols)  # for non-square images
     cutoff = int(round(percent*dim_bound,0))
-    print "image has", rows, "rows and", cols, "columns"
+    print("image has", rows, "rows and", cols, "columns")
     # Gather data into three arrays, then give to Sage's matrix()
     rd, gr, bl = [], [], []
     for row in range(rows):
@@ -32,12 +33,12 @@ def img_squeeze(fn_in, fn_out, percent):
     U_BL,Sigma_BL,V_BL = BL.SVD()
     # Have a look
     for i in range(8):
-        print "sigma_RD",i, "=%0.2f" % Sigma_RD[i][i]
-    print "    :"  # vdots
-    print "sigma_RD",cutoff,"=%0.2f" % Sigma_RD[cutoff][cutoff]
-    print "    :"  # vdots
+        print("sigma_RD",i, "=%0.2f" % Sigma_RD[i][i])
+    print("    :")  # vdots
+    print("sigma_RD",cutoff,"=%0.2f" % Sigma_RD[cutoff][cutoff])
+    print("    :")  # vdots
     for i in range(dim_bound-8, dim_bound):
-        print " at bottom: sigma_RD", i, "=%0.2f" % Sigma_RD[i][i]
+        print(" at bottom: sigma_RD", i, "=%0.2f" % Sigma_RD[i][i])
     # Compute sigma_1 u_1 v_1^trans+ ..
     a=[]
     for i in range(rows):     
