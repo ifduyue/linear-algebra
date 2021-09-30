@@ -2,15 +2,16 @@
 \label{chap:SingularValueDecomposition}
 
 We will picture how some linear transformations $\map{t}{\Re^2}{\Re^2}$ act
-(we use $\Re^2$ simply because the pictures are 
-easy to draw and to understand). 
+(we use $\Re^2$ because the pictures are 
+easy).
+We will then extend the ideas to higher dimensions, and give a practical consequence.
 
 
 \section{Drawing the action}
 A defining property of linear maps is that 
 $h(r\cdot\vec{v})=r\cdot h(\vec{v})$.
 Recall that a line through the origin in $\Re^n$ has the form 
-$\set{r\cdot \vec{v}\suchthat r\in\Re}$ for some~$\vec{v}\in\Re^n$. 
+$\set{r\cdot \vec{v}\suchthat r\in\Re}$ for some~$\vec{v}\neq\zero$. 
 Thus the scalar multiplication property  
 imposes a uniformity condition on a linear map:~its action on any 
 line through the origin is determined by its action
@@ -31,7 +32,7 @@ represented by this matrix.
   \end{mat}
 \end{equation*}
 If you pick a domain vector~$\vec{v}$ then computing the effect
-of the map~$t$ is easy.
+of~$t$ is easy.
 \begin{equation*}
   \vec{v}=\colvec{1 \\ 2}\mapsunder{t}\colvec{5 \\ 11}
 \end{equation*}
@@ -50,11 +51,11 @@ effect, etc.
 %% The $t(r\cdot\vec{v})=r\cdot t(\vec{v})$ relationship says that
 %% a linear map has the same effect on all vectors in a line through the
 %% origin.
-So, to show a map's action we will fix 
+So, to picture a map's action on the whole plane, we will fix 
 one nonzero vector~$\vec{v}$ from each line through the origin
 and show where the transformation takes it.
 The natural set containing one point from each line through the origin 
-is the upper half of the unit circle, shown here
+is the upper half unit circle, shown here
 (the colors are explained below).
 \begin{sagesilent}
 load("plot_action.sage")
@@ -69,9 +70,10 @@ p.save("graphics/svd000.pdf")
   \qquad
   \vcenteredhbox{\includegraphics{graphics/svd000.pdf}}  
 \end{equation*}
-The point $(1,0)$ is included in that set, as the representative of
-the $x$~axis, but
-$(-1,0)$ is not, which is why $(-1,0)$ has an open circle.
+To have exactly one representative of
+the $x$~axis,
+the point $(1,0)$ is included in that set but
+$(-1,0)$ is not.
 
 The first transformation that we will illustrate is simple.
 \begin{equation*}
@@ -82,7 +84,7 @@ to get access to
 \inlinecode{plot_circle_action(a,b,c,d)}. 
 This divides the input upper half circle into a number of parts,
 the red one, the orange one, etc., and then it 
-multiplies the points on those curved segments 
+multiplies points on those curved segments 
 by this matrix
 \begin{equation*}
   \begin{mat}
@@ -174,7 +176,8 @@ or `sense', of the curve.
 
 The next transformation is rotation by $\pi/4$~radians, clockwise.
 \begin{equation*}
-  \colvec{x \\ y} \mapsto \colvec{\cos(-\pi/4)x-\sin(-\pi/4)y \\ \sin(-\pi/4)x+\cos(-\pi/4)y}
+  \colvec{x \\ y} \mapsto \colvec{\cos(-\pi/4)\cdot x-\sin(-\pi/4)\cdot y \\
+                                                   \sin(-\pi/4)\cdot x+\cos(-\pi/4)\cdot y}
 \end{equation*}
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
@@ -194,17 +197,16 @@ The next transformation is a shear.\footnote{%
   A shear is the motion of 
   two parts of a body where they slide   
   relative to each other in a direction parallel to their 
-  plane of contact.  
-  Thus, when you write with a pencil the flakes of
-  graphite shear off on the paper.}
+  plane of contact.
+  Make a stack of newpapers and lean against them.
+  The papers will slide parallel to each other, with the top
+  ones sliding the furthest.}
 \begin{equation*}
   \colvec{x \\ y} \mapsto \colvec{x+2y \\ y}
 \end{equation*}
-Focus on the output's first component.
-Because of the addition of $2y$, 
-input vectors with larger second components, that is, input vectors with $y$'s of
-large absolute value,
-have their first output component affected more
+Because of the first output component's $2y$, 
+input vectors with $y$'s of large absolute value
+have their first component affected more
 than do input vectors near the $x$-axis.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
@@ -289,7 +291,7 @@ Besides rotating and shearing, it also changes orientation.
 
 \section{SVD}
 In those pictures the image of the half circle is a half ellipse, and
-consequently the image of the full unit circle is an ellipse.
+consequently the image of the full circle is an ellipse.
 Recall that in $\Re^2$ an ellipse has a major axis, 
 the longer one, and a minor axis.\footnote{%
   If the two axes have the same length, 
@@ -502,15 +504,15 @@ two places on~$P$ that intersect the sphere).
   \includegraphics{asy/ellipsoid1.pdf}
 \end{center}
 
-Consider sliding~$P$ along the vector~$\vec{v}$ to the origin.
+Consider sliding~$P$ along the vector~$\vec{v}$, to the origin.
 This makes clear that $P$ is the subspace of~$\Re^n$
 consisting of vectors perpendicular
 to~$\vec{v}$ (these elements of~$P$ have their
-entire bodies in the hyperplane, 
+entire bodies in~$P$, 
 unlike the pictured vector~$\vec{v}$, which just touches~$P$ with its endpoint).
-This subspace has dimension~$n-1$. 
+This subspace has dimension~$n-1$, so it is a hyperplane. 
 We will argue in the next paragraph 
-that similarly $Q$ contains only
+that similarly $Q$ consists of
 vectors perpendicular to~$\vec{w}$.
 With that, we can complete an argument by induction:~we 
 start constructing the 
@@ -528,7 +530,8 @@ under $t$
 would be a second hyperplane, besides~$P$, 
 that touches the sphere only at~$\vec{v}$, which is impossible (since it is a
 sphere).
-To see that $Q$ is perpendicular to~$\vec{w}$, consider a sphere in the codomain
+To see that $Q$ is the subspace
+perpendicular to~$\vec{w}$, consider a sphere in the codomain
 centered at the origin whose radius is the length~$\absval{\vec{w}}$.
 This sphere has a plane tangent at the endpoint of~$\vec{w}$ 
 that is perpendicular
@@ -546,7 +549,7 @@ That ends the argument.
 \section{Matrix factorization}
 
 We can express those geometric ideas in an algebraic form
-(for a proof see \cite{TrefethenBau97}).
+(for a proof, see \cite{TrefethenBau97}).
 
 The \textit{singular value decomposition} of an $\nbym{m}{n}$ matrix~$A$
 is a factorization, $A=U\Sigma \trans{V}$\!.
@@ -644,91 +647,6 @@ Consider the case where all three matrices are $\nbyn{2}$.
   \end{mat}                    
 \end{align*}
 
-%% \begin{align*}
-%%   U\Sigma \trans{V}
-%%   &=
-%%   \begin{mat}
-%%     \vec{u}_1 &\vec{u}_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     \sigma_1 &0 \\
-%%     0        &\sigma_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     \trans{\vec{v}}_1 \\[.75ex]
-%%     \trans{\vec{v}}_2
-%%   \end{mat}             \\[.5ex]
-%%   &=
-%%   \begin{mat}
-%%     \vec{u}_1 &\vec{u}_2
-%%   \end{mat}
-%%   \,[
-%%   \begin{mat}
-%%     \sigma_1 &0 \\
-%%     0        &0
-%%   \end{mat}
-%%   +
-%%   \begin{mat}
-%%     0 &0 \\
-%%     0        &\sigma_2
-%%   \end{mat}
-%%   ]\,
-%%   \begin{mat}
-%%     \trans{\vec{v}}_1 \\[.75ex]
-%%     \trans{\vec{v}}_2
-%%   \end{mat}             \\[.5ex]
-%%   &=
-%%   \begin{mat}
-%%     \vec{u}_1 &\vec{u}_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     \sigma_1 &0 \\
-%%     0        &0
-%%   \end{mat}
-%%   \begin{mat}
-%%     \trans{\vec{v}}_1 \\[.75ex]
-%%     \trans{\vec{v}}_2
-%%   \end{mat}             
-%%   +
-%%   \begin{mat}
-%%     \vec{u}_1 &\vec{u}_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     0        &0 \\
-%%     0        &\sigma_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     \trans{\vec{v}}_1 \\[.75ex]
-%%     \trans{\vec{v}}_2
-%%   \end{mat}             \\[.5ex]
-%%   &=
-%%   \sigma_1\cdot
-%%   \begin{mat}
-%%     \vec{u}_1 &\vec{u}_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     1 &0 \\
-%%     0 &0
-%%   \end{mat}
-%%   \begin{mat}
-%%     \trans{\vec{v}}_1 \\[.75ex]
-%%     \trans{\vec{v}}_2
-%%   \end{mat}             
-%%   +
-%%   \sigma_2\cdot 
-%%   \begin{mat}
-%%     \vec{u}_1 &\vec{u}_2
-%%   \end{mat}
-%%   \begin{mat}
-%%     0        &0 \\
-%%     0        &1
-%%   \end{mat}
-%%   \begin{mat}
-%%     \trans{\vec{v}}_1 \\[.75ex]
-%%     \trans{\vec{v}}_2
-%%   \end{mat}
-%%   \tag{$*{*}*$}
-%% \end{align*}
 In the first term,
 right multiplication by the $1,1$~unit matrix picks out the first column of
 $U$, and left multiplication by the $1,1$~unit matrix picks out first row of
@@ -835,7 +753,7 @@ green data, and the blue data.
 We want to see how badly the image degrades for various cutoffs.
 The code below sets the cutoff at retaining only the terms with
 the top $10$\% of singular values.
-For this image, that is $92$ singular values.
+For this image, that is $92$ singular values retained.
 The code gives us some insight into their size
 by printing the ones for the red matrix
 (but we've edited out most of them).
@@ -871,7 +789,7 @@ This picture shows loss.
 The colors are not as good, the edges are not sharp, and there are 
 artifacts, including vertical lines extending from the writing in the 
 upper left.
-Basically, Fiji has gotten a little fuzzy.
+Basically, Fiji has gotten fuzzy.
 But certainly the image is entirely recognizable\Dash not bad for omiting
 $90$~percent of the summands.
 
@@ -927,16 +845,18 @@ to plot a full circle or just the top half circle.
 The driver routine computes the list of colors and 
 calls a helper \inlinecode{color_circle_list}, 
 given below, which returns a list of graphics.
-Finally, the routine plots those graphics.
+Finally, the routine plots those graphics
+(the \inlinecode{+=} adds the picture on the left to the one on the right).
 \lstinputlisting[firstline=39,lastline=50]{plot_action.sage}
 
 The helper routine does the heavy lifting.
 There are two globals.
 The variable \inlinecode{CIRCLE_THICKNESS} sets the thickness of 
-the plotted curve, in points (a printer's unit, $1/72$~inch).
-Similarly \inlinecode{DOT_SIZE} sets the size of the small empty circle.
+the pen that draws the plotted curve, in points (a printer's unit, which are $1/72$~inch).
+Similarly \inlinecode{DOT_SIZE} sets the size of the small empty circle
+(also in inches).
 This routine produces a parametrized curve $(x(t),y(t))$ and uses \Sage's
-\inlinecode{parametric_plot} function to get the resulting graphic.
+\inlinecode{parametric_plot} function to yield the resulting graphic.
 \lstinputlisting[firstline=5,lastline=36]{plot_action.sage}
 If this routine is plotting the upper half circle then it adds the
 small empty circle at the end to show that the image of $(-1,0)$
