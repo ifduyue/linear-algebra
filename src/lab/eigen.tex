@@ -1,7 +1,7 @@
 \chapter{Eigenvalues}
 
 In the chapter on 
-Singular Value Decomposition we considered the factor by which 
+Singular Value Decomposition, we considered the factor by which 
 transformations resize vectors and found
 the maximum resizing factors, the singular values.
 In this chapter we return to plotting the image of
@@ -17,7 +17,7 @@ action by plotting what it does to one point on each such line,
 using the routine \inlinecode{plot_circle_action}.\footnote{%
   As in earlier chapters, these plots are drawn using some options that
   are not shown.
-  For the full call see this manual's source.}
+  For the full list, see this manual's source.}
 \begin{sagecommandline}
 sage: load("plot_action.sage")  
 sage: q = plot_circle_action(1,0,0,1) 
@@ -139,16 +139,18 @@ p = plot_color_angles(2,0,2,2)
 p.set_axes_range(0,pi,0,pi)
 p.save("graphics/eigen003.pdf", figsize=3, tick_formatter=[pi,pi])
 \end{sagesilent}
-The transformation for this graph is the one shown at this
-chapter's start, on page~\pageref{gr:firstgraphic}.
+The transformation for this graph is the map represented by
+$\left(\begin{smallmatrix}  2 &0 \\ 2 &2\end{smallmatrix}\right)$
+with respect to the standard basis.
 \begin{center}
   \vcenteredhbox{\includegraphics{graphics/eigen003.pdf}}
 \end{center}
 Its most interesting point is where the output angle is $0$,
-at the input angle of~$\pi/2$.
+where the graph hits the horizontal axis
+This happens at the input angle~$\pi/2$.
 This is a input vector that the transformation does not turn at all\Dash 
 it is resized but not rotated.
-On the input/output graphic, it is
+On the input/output diagram on page~\pageref{gr:firstgraphic}, it is
 the green input vector lying on the $y$-axis, whose
 associated green output also lies on the $y$-axis.
 
@@ -157,7 +159,6 @@ associated green output also lies on the $y$-axis.
 
 \subsection{Generic matrix}
 We can do the same analysis for our usual generic $\nbyn{2}$~matrix.
-Here is its action on the unit circle.
 \begin{sagecommandline}
 sage: q = plot_circle_action(1,0,0,1) 
 sage: q.set_axes_range(-2, 2, -4, 5) 
@@ -202,25 +203,26 @@ p.save("graphics/eigen101.pdf", figsize=3, tick_formatter=[pi,pi])
   \vcenteredhbox{\includegraphics{graphics/eigen101.pdf}}
   \tag{$*$}
 \end{equation*}
-This graph has two interesting points, where $y=0$ and where 
-$y=\pi$.
-In both places the vector is resized but not turned.
-In the second case, where the vector is turned by an angle of~$\pi$,
+This graph has two interesting points:~where $y=0$, and where 
+$y=\pi$ (and $y=-\pi$).
+In both places, the vector is resized but not turned.
+In the second case, where the vector is turned by an angle of~$\pi$ (or $-\pi$),
 the input vector is on the
 same line through the origin as the output
 but the transformation rescales it by a negative number.
 
-A vectors that is not turned by a transformation~$t$ but instead
-is purely resized 
-is an eigenvector for~$t$ and the amount by which it is 
-resized is the associated eigenvalue.
-
+A vectors that is  purely resized by a transformation~$t$  
+is an \definend{eigenvector} for~$t$ (we disallow the zero vector as an
+eigenvector, as it is trivially resized
+by every transformation).
+The amount by which the eigenvector is 
+resized is the associated \definend{eigenvalue}.
 For an eigenvalue~$\lambda$, the set of vectors associated with
-that rescaling factor is an eigenspace.
-\Sage{} will compute all of the the eigenspaces that a matrix has.\footnote{%
+that rescaling factor is an \definend{eigenspace}.
+\Sage{} will compute the eigenspaces of a matrix.\footnote{%
   Whether we are taking multiplication 
   by vectors to come from the 
-  right~$M\vec{v}$ or from the left, $\vec{v}\,M$, 
+  right,~$M\vec{v}$, or from the left, $\vec{v}\,M$, 
   a matrix has the same eigenvalues.  
   But the eigenvectors may be different. 
   The \protect\Sage{} operation \protect\inlinecode{eigenvectors_right} 
@@ -244,8 +246,11 @@ That shows a list with two elements, one for each eigenvalue.
 The first, \inlinecode{evs[0]}, 
 has to do with the eigenvalue $\lambda_1\approx -0.37$ and
 says that the associated eigenspace has a basis consisting of the single unit
-vector with endpoint approximately $(-0.82, 0.57)$
-(we ignore the trailing~$1$ here).
+vector with endpoint approximately $(-0.82, 0.57)$.\footnote{%
+  The trailing~$1$ is the \protect\definend{geometric multiplicity} of this
+  eigenvalue,
+  the dimension of the nullspace of $t-\lambda_1\cdot\identity$.
+  We won't use this information.}
 The second element, \inlinecode{evs[1]}, 
 is for~$\lambda_2\approx 5.37$
 and says that its eigenspace
