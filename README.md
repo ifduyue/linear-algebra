@@ -38,7 +38,7 @@ This is the fourth edition of the text.  This is the final edition, although the
 I am always glad to hear from users, but particularly with bug reports. 
 Please email me using my contact information on [hefferon.net/linearalgebra](https://hefferon.net/linearalgebra).
 
-If you are working with the git repository, please note that I do not accept requests for project write access; if you have something specific that you want to do then please email me.
+If you are working with the git repository, please note that I do not accept requests for project write access.  I find that the pull workflow that works for writing software does not work so well for writing a book.  Please, if you have something specific that you want to do then email me.
 
 
 # Author

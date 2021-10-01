@@ -42,7 +42,7 @@
 \else
   \title{\LaTeX-ing \textit{Linear Algebra}}
   \author{Jim Hef{}feron}
-  \input{publicationdate}
+  \input{src/publicationdate}
 \fi
 
 \begin{document}
@@ -53,7 +53,7 @@
     \begin{picture}(0,0)(0,0)
       \put(0,40){\makebox[0pt]{\color{titlegray}\fontsize{100}{130}\usefont{OT1}{bigandbold}{m}{n}\selectfont\LaTeX-ing}}
       \put(68,0){\makebox[0pt]{\Huge\bsifamily Linear Algebra}}  
-      \put(0,-350){\makebox[0pt]{\large\scshape\begin{tabular}{c} Jim Hef{}feron \\[0.75ex] \input{publicationdate}\end{tabular}}}
+      \put(0,-350){\makebox[0pt]{\large\scshape\begin{tabular}{c} Jim Hef{}feron \\[0.75ex] \input{src/publicationdate}\end{tabular}}}
     \end{picture}
   \end{center}
   \clearpage\setcounter{page}{1}
@@ -61,9 +61,10 @@
   \maketitle
 \fi
 
-This document contains instructions for compiling the source
-to Jim Hef{}feron's
-undergraduate textbook \textit{Linear Algebra}.
+This document contains instructions for using the macros from 
+\textit{Linear Algebra}, 
+an undergraduate text by
+to Jim Hef{}feron.
 
 
 
@@ -74,25 +75,20 @@ covers the material that is usually done in a three or four
 hour a week, one semester US course:
 solving linear systems,
 vector spaces, linear maps, determinants, and eigenvalues and eigenvectors.
-The pedagogical approach of the book is to help a student make the
-transition from calculus to upper division mathematics.
-Therefore the presentation stresses careful motivation,
+
+The pedagogical approach is to help a student make the
+transition from Calculus to upper division mathematics.
+The presentation stresses careful motivation,
 many examples, clarity in the proofs, and 
 developmental exercise sets.
-The Preface contains a more detailed description.
+See the Preface for more detail.
 
-
-
-\subsection{Best When Viewed By \ldots}
-To have a look
-go to \url{http://joshua.smcvt.edu/linearalgebra}.
-The files there can be viewed with \textit{Acrobat Reader} 
-(or, that I know of, any PDF reader).
-
-Get both the book and the answers and put them in the same directory,
-so that 
+To have a look,
+go to \url{https://hefferon.net/linearalgebra}.
+Get both the book and the answers, and put them in the same directory.
+That way,  
 clicking on a question number takes you to its answer 
-and clicking on the answer 
+and clicking on the answer number
 takes you back to the question.
 
 
@@ -101,44 +97,24 @@ takes you back to the question.
 
 
 \subsection{It is Free}
-These materials are freely available, in both readable and source form.
+These materials are freely available, in both output and source form.
 
 First, you are free to download the book.
 If you are an
 instructor then you are also free to have students in your class 
-use paper or electronic copies as a course text,
-either as the main text or as an auxilliary text. 
+use paper or electronic copies. 
 This includes the freedom to print out copies and sell them
 from your bookstore.
-But note that hard copies are for sale from major distributers such as
-Amazon and the college bookstore distributer; the price is less than
-it used to cost to get our print shop to make comb-bound versions.
+But note that hard copies are for sale from major distributers; 
+see \url{https://hefferon.net/linearalgebra}.
 
 Besides being free to use the output form of the text, you are
 also free to use the source.
-Some examples of how this can be helpful are:
+For example, 
 an instructor can add a few favorite exercises 
 here and there, perhaps include a new Topic, adjust the development
 in a subsection, or even rewrite a portion entirely.
-Another example is: someone who finds an error, say in the answer to an
-exercise, can send me the correction (email me a section and subsection 
-number and a description, ideally and also a correction).
-
-I welcome contribution of work back to the project.
-I of course reserve the ability to not use some things but all
-the contributions that I do use are acknowledged in the file
-\texttt{Acknowledgements}.
-
-
-
-
-
-
-
-
-
-
-
+For this, some people may want to modify the source.
 
 
 
@@ -150,193 +126,59 @@ It is the
 standard system for writing mathematics.
 
 So you need a
-distribution of \TeX. 
+distribution of the software;
 I recommend \TeX{}Live, \texttt{http://www.tug.org/texlive}. 
 
-If you are unfamiliar with \TeX\ then
+If you are unfamiliar with \LaTeX{} then
 this might not be the right job on which to learn.
-It is not especially tough but you might want to start with a two page,
-or a ten page document.
 Just saying.
- 
-To get this document to come out, 
-these work for me under Linux:
-`\verb!pdflatex 1st_readme!'. 
-If that works~--- if you can view it under \textit{Acrobat Reader}~--- then 
-your setup is at least partially correct. 
-However, I must say that each \TeX\ distribution 
-has a slightly different approach and, I'm sorry, I can't help with that.
-You'll have to find that information in the distribution
-documentation.
-
-What good is this `How to Run It' file if it must be run?
-It builds character.
-Anyway, if you are having trouble even getting started, or only want a quick
-look, I've included the output material in the file \texttt{1st\_readme.pdf}. 
-
-If you are just starting working with \LaTeX{} then I recommend finding the 
+(If you are just starting working with \LaTeX{} then I recommend finding the 
 \textit{Short Guide to \LaTeX2e} at
 \url{http://www.ctan.org/}, which might be enough
-for you to get through making small changes in the materials.
+for you to get through making small changes in the materials.)
 
-The graphics here are in MetaPost.
-This should come with a \TeX{} distribution, but 
-you need to search for the manual and you may also want 
-\textit{The MetaFont Book} by Knuth
-(ISBN~0-201-13444-6).
-
+The graphics here are in MetaPost and Asymptote.
+These should come with a \TeX{} distribution.
 
 
 
 
 \subsection{Compiling from source}
 
-Unzip the contents of \verb!linear_algebra.zip!.
-This makes a new directory \textit{book}.
+For compilation instructions see the \verb!INSTALL! file.
+Basically, there is a \texttt{Makefile}, but in particular 
+you cannot just run \texttt{latex book}.
+If you hit a snag, I'm sorry, I am unlikely to be able to help.
 
-The book's source comes in a number of separate files.
-In addition to separate files for each section, such as 
-\texttt{gr1.tex} for the first section of the first chapter,
-here are some other key files.
+The book's source comes in a number of separate files, all of 
+which live below the \texttt{src} directory.
+The first chapter is in the subdirectory \texttt{src/gr}, and the files
+are called 
+\texttt{gr1.tex}, \texttt{gr2.tex}, etc.
+The topics have names that do not follow any particular pattern.
+The second chapter is in \texttt{src/vs}, 
+the third chapter is in \texttt{src/map},
+the fourth chapter is in \texttt{src/det}, 
+and the fifth chapter is in
+\texttt{src/jc}.
+Besides those, here are some more.
 \begin{center}
   \begin{tabular}{r|l}
     \textit{file name}  &\textit{what it is}  \\
     \hline
-    \texttt{book.tex}     &Main file \\
-    \texttt{bookjhconcrete.sty}   &Formatting instructions  \\
-    \texttt{linalgjh.sty} &Macros for Linear Algebra \\
-    \texttt{jhanswer.tex} &Main file for the answers \\
-    \texttt{cover.tex} &Make the front, back, and spine \\
+    \texttt{src/book.tex}     &Main file \\
+    \texttt{sty/bookjhconcrete.sty}   &Formatting instructions  \\
+    \texttt{src/sty/linalgjh.sty} &Macros for Linear Algebra \\
+    \texttt{src/sty/jhanswer.tex} &Main file for the answers \\
+    \texttt{src/cover/cover.tex} &Make the front, back, and spine \\
   \end{tabular}
 \end{center}
 
-After you get the files, you will have in your
-directory many \texttt{.tex} files, a few \texttt{.mp} files, and 
-a few other types such as \LaTeX\ style files \texttt{.sty}.
-The \texttt{.tex} files are for \LaTeX\ and the \texttt{.mp} files
-are for MetaPost for the graphics
-(a few graphics are in forms such as \texttt{.jpg}).
-There are also some graphic files for the Asymptote system, in the
-subdirectory \texttt{/asy}.
-
-
-\subsubsection{The easy way}
-If you are on a Unix-y machine, such as Linux, 
-try running \verb!./make_book_for_web.sh! from the command line.
-That's how I produce a version of the book.
-
-If you are not on a Unix machine then you have to read 
-\verb!make_book_for_web.sh! and mimic the steps.
-(really, it would be easier to learn Unix.)
-These steps will give a printable version.  
-\begin{center}
-  \begin{tabular}{ll}
-    \verb!mpost dotprod.mp!  &Make the dot product symbol.        \\ 
-    \verb!mpost ch1.mp! \ldots \verb!mpost ch5.mp!, \verb!mpost appen.mp!, \verb!mpost voting.mp!  &Make the line art. \\
-    \verb!pdflatex book!  &Produce the book and the future references       \\
-    \verb!makeindex -s book.isty -p odd book.idx!  &Alphabatize index.  \\ 
-    \verb!pdflatex book!  &Produce the final version of the book         \\
-    \verb!pdflatex jhanswer!  &Produce the answers               \\
-    \verb!pdflatex jhanswer!  &Resolve references from the first run  %       \\
-  \end{tabular}
-\end{center}
-
-If something fails, make sure you have the latest \TeX{} installation.
-Try it again.
-
-If you still have trouble, in case it helps I can tell you what I have that 
-works for me.
-I have the \TeX{}Live that comes with Ubuntu's package system.
-For line-by-line details, see the file \texttt{1ST\textunderscore{}README}.
 
 
 
 
-\subsubsection{When Good Systems Do Things That Are Bad}
-What can go wrong?   
-Almost anything.
-As Tom Wolfe quotes the early astronauts, ``It can blow at any seam.''
-Discouraging, isn't it?
-
-The MetaPost-ing can fail in a number of ways.
-First, you need the \textit{3D} material from CTAN.
-Second, you need all of the MetaPost material that I've generated
-(e.g., \textit{venn.mp} for Venn diagrams), although
-you'll have gotten that from me unless I've made a mistake.
-Third, typesetting the labels, etc., may result in MetaPost 
-giving you a \LaTeX\ error.
-The thing about this failure is that the error message 
-will say that the first label is bad.
-But it isn't the first label; it is likely somewhere much further
-down the file.
-To figure it out you must run 
-`\verb!pdflatex mpxerr.tex!' (this oddly-named file is where MetaPost writes
-the labeling lines for them to be automatically \LaTeX-ed).
-Then you'll get an error message that at least points to the correct line,
-and presumably a little staring at it will give you a clue.
-(I've wasted any number of hours looking at line one when the 
-problem was somewhere else entirely.)  
-
-\LaTeX-ing the book can then give you a wide variety of
-troubles.
-
-It is a big book, and I use a number of styles.
-If you are having trouble that seems to come from, say, \textit{color.sty},
-your first try is to go to CTAN and download the latest.
-In particular, I find that \textit{hyperref} has been a frequent
-changer over the course of time that I have been working on the
-text (understandably, obviously).
-
-If you are having trouble with a part, see what commenting it out does.
-Go into \textit{book.tex}, for instance and comment out that 
-part of the \verb!includeonly! material (watch your commas! if you
-say `\verb!,vs3%,!' instead of `\verb!,vs3,%!' then you may find 
-\LaTeX\ complaining about
-not finding \textit{vs3map1.tex} since \textit{map1} starts
-the next line).
-
-One area that can be annoying is that errors in the answer file do not
-tell you the line number in the original source file.
-Instead, they tell you the line number in the source file for the answers
-(probably \textit{bookans.tex}).
-That file was written when you \LaTeX-ed the book.
-So don't edit that file since your changes will disappear the next time
-you do the book again.
-Instead, you can look up that line in the answer's source,
-then look for that same line in the original source.
-Edit that one.
-Then \LaTeX\ the book again.
-Thank goodness for fast computers.
-(Getting the line numbers from the original source into \textit{bookans.tex} 
-somehow would be a fine project for someone.)
-
-One trouble that I've had comes when switching between 
-a \textit{hyperref}-ed and non-\textit{hyperref}-ed versions.
-\LaTeX\ complains about not liking the cross-reference file
-(something about ``fifthoffive'').
-My solution is to delete all the cross-reference files 
-(under Linux, \verb!rm -f *.aux *.toc!), 
-and then rerun the \LaTeX\ command line twice.
-Not very elegant, I know, and once I accidentally left out the 
-\verb!.! between the \verb!*! and the \verb!aux!, but I am over that now.
-
-
-
-
-
-% \subsubsection{Options}
-
-% I have a number of versions.  
-% If you like Knuth's Computer Modern Roman more than the Concrete/Euler 
-% combination that is the default then edit
-% \verb!bookjh.sty! to make the change.
-% Now run \verb!./make_book_for_web.sh!.
-
-
-
-
-
-\subsubsection{Slides}
+\subsection{Slides}
 
 I have some slides for a classroom projector.
 These are keyed to the text in a couple of ways.
@@ -344,74 +186,17 @@ These are keyed to the text in a couple of ways.
 First, they reference numbers for theorems, lemmas, etc.
 These references are generated automatically, meaning that I did not input
 them by hand, so in theory they are accurate.
-
 Second, I have changed almost all the examples from the text.
 This way students see twice as many.
-
 Third, the system is set so that the source of the statements of
 definitions, theorems, etc., is the text.
 Thus there is guaranteed, in theory, to be no discrepency with the 
 text. 
 
-You can generate slides by changing into the \verb!\slides! directory
-and running \verb!./make_slides.sh!.   
-Some of the graphics take a few minutes to run so you need to be patient.
-
-
-
-% I have set up a few options.
-
-% You can set the DVI driver from the command line with
-% `\verb!pdflatex "\def\dvidrv{pdftex}\input book"!' 
-% (the DVI driver matters to the \textit{graphics} package).
-% If you do not set this then the package \textit{dvidrv.sty} that I 
-% provided tries to guess it from your \textit{color.def} file, and failing
-% that uses \textit{dvips}.
-% To set your own default you can change the line in \textit{book.tex}
-% to read, say, `\verb!\usepackage[dvips]{dvidrv}!'.
-
-% Similarly, you can decide from the command line to have the output
-% file hyperlinked (by using the package \textit{hyperref}).
-% Say `\verb!pdflatex "\def\hrefout{yes}\input book"!'.
-% Anything other than `yes', even `Yes' or `y', will leave the file not
-% hyperlinked.
-
-% You can also use the pbsi font in a similar way:
-% `\verb!pdflatex "\def\pbsifont{yes}\input book"!'
-% will use the font on the cover page and on chapter pages
-% (you may need to download this font separately from a CTAN).
-
-% These options combine.
-% I use 
-% `\verb!pdflatex "\def\dvidrv{pdftex}\def\hrefout{yes}\input book"!' to 
-% produce output for \textit{Reader}.
-% %Some options take some tweaking;
-% %for instance, the DVI driver 
-% %\textit{dvips} will work if you ask for hyperlinking but you need
-% %to call it specially to get the best results:
-% %`\verb!dvips -Ppdf -G0 -obook.ps book!', I think, can be distilled
-% %to give a sound \texttt{.pdf} file.
-
-% All those options apply to the answer file, and one more.
-% When you \LaTeX\ the book you can either choose to have all the 
-% answers output to a single file 
-% (the default filename is \textit{bookans.tex}), 
-% or to have the recommended answers output to one file \textit{recans.tex} 
-% and the other answers output to another \textit{otherans.tex}.
-% The default is one big answer file.
-% To switch it, look for a line early in \textit{book.tex} that says
-% \verb!\usepackage[single,write]{bookans}! and change the 
-% `\verb!single!' to `\verb!double!'.
-% Then to read in the file of interest, invoke the answer file with,
-% for instance,
-% `\verb!latex "\def\ansfile{recans}\input jhanswer"!'.
-% The default here, matching the book's default, 
-% is to use the one big file \textit{bookans.tex}.  
-
-
-
-
-
+These are generated by the Makefile.
+One caution is that they use Asymptote for graphics, which can 
+give you trouble involving the Ghostscript version that you have.
+See \texttt{slides/README.opacity}.
 
 
 
@@ -427,16 +212,11 @@ use \verb!$\polyspace_3$!,
 avoiding students' confusion and also simplifying your day.  
 This section describes how to use those macros.
 
-First, the traditional disclaimer.
-In developing the book, I got to know a little bit about how to write
-\TeX\ and \LaTeX\ macros~--- but I didn't get to know a lot!
-If you can improve what is here, I'd welcome that contribution.
-
 
 \subsection{Linear algebra macros}
 The macros that seemed to me to be specific to typesetting the
 linear algebra material are in the file 
-\texttt{linalgjh.sty}.
+\texttt{src/sty/linalgjh.sty}.
 For instance, here are macros for displaying systems of linear equations,
 matrices, row and column vectors, special vector spaces, linear maps,
 etc.
@@ -450,7 +230,7 @@ In particular, displayed equations are shown with
 alignment structures like \verb|align| and matrix structures 
 are available.
 
-Another style that gets loaded is \textit{mathrsfs}, for the 
+Another style that the book loads is \textit{mathrsfs}, for the 
 Ralph Smith Formal Script fonts to make, for instance, the script R
 for the range space.
 
@@ -909,7 +689,7 @@ or how the exercises are laid out, are in the file
          me with a claim to being an instructor, but soon the silliness of that
          became too much to even hold a pretense.
          I'll just say that every twenty year old
-         on the planet who can come up in minutes 
+         on the planet can come up in minutes 
          with a download address for the answers to exercises for any
          popular math text.
          It is just a fact.)
