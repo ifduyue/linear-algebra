@@ -30,7 +30,7 @@ This text has been available online for over twenty five years. It has been used
 
 # Edition
 
-This is the fourth edition of the text.  This is the final edition, although there will be occasional new printings to correct bugs.
+This is the fourth edition of the text.  This is the final edition, although there will be new printings to correct bugs.
 
 
 # Contributing
