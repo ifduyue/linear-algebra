@@ -2,28 +2,41 @@ This is _Linear Algebra_ by Jim Hefferon.  The release date is 2021.
 You are free to use this material, either under the GNU Free Documentation
 license or under a Creative Commons Share Alike license.
 
-If you want a hard copy then you can buy one on Amazon at basically
-the cost of media; google "amazon hefferon". (Make sure that you are
-getting edition four. There are old versions for sale but the new
-version costs the same and is better.)
-
 For more information, see the web site.
   http://joshua.smcvt.edu/linearalgebra 
 
 
-INSTALL
+INSTALLING
 
 Put book.pdf and jhanswer.pdf in the same directory.  Point your pdf reader
-at book.pdf.
+at it.  I find that Acrobat Reader has some advantages (it shows opacity, for
+instance), but all PDF readers that I have tried did pretty well.
+
+Please note that you can buy a hardcopy of this book, for instance on Amazon,
+at a cost that is less than it would take for you to print your own copy.
+(Make sure that you are getting edition 4 as there are old versions
+also for sale.  The newest edition costs the same, and is better.)  The
+ISBN number of the latest printed version is at the book's home page.
+  https://hefferon.net/linearalgebra
 
 
-COMPILING
+
+COMPILING FROM SOURCE
 
 Why?
 
-Sigh.  This is what I did for Linux, Ubuntu 20.  If you have some
-other system such as Mac or Windows then I am unable to help, sorry.  For that
-matter, if you have Linux then I will not help you either, sorry.
+This is a very big project.  Running this:
+  $ find . -iname "*.tex" -or -iname "*.asy" -or -iname "*.sty" -iname "*.cls" -or -iname "*.mp" | xargs wc -l
+gives 201327 total.  There are a lot of things for you to get to go. Are
+you sure you want to compile from source?
+
+Sigh.  OK, first know that the compilation uses `make'; you cannot just
+run 'pdflatex book', it won't work.
+
+This is what I did for Linux, Ubuntu 20, in 2021-Sept.  I followed these
+steps from a fresh install.  If you have some  other system such as Mac
+or Windows then I am unable to help, sorry.  For that matter, if you have
+Linux then I will not help you either.  Sorry.
 
 0) Install TeX Live.  You can get it from https://tug.org/texlive/ but
 I just did this in a terminal.
@@ -50,32 +63,30 @@ so comment them out by surrounding with <!-- and -->, as here.
   unzip linear-algebra-master
   mv linear-algebra-master linear-algebra
 
-Note that the subdirectory must be called linear-algebra.  The scripts
-expect that name.
+Note that the subdirectory must be called linear-algebra, not
+linear-algebra-master.  The scripts expect that name.
 
 3) Now you can make the book.  
     cd ~/Documents/linear-algebra/src
     make
-(I had to install freeglut3.
+It can take some time.  It took my machine maybe ten or fifteen minutes.
+
+(To get Asymptote to work I had to install freeglut3.
   sudo apt-get install freeglut3
 If something fails with a question mark prompt then probably you get out by
 typing `x' and <return>.) 
 
 At the end, you'll have book.pdf and jhanswer.pdf, along with the slides.
 
-4) The lab is separate, because it is more complex (it involves installing
-a couple of fonts) and not many people will want to do it.  See lab/INSTALL.
+4) The lab is separate because it is more complex (it involves installing
+a couple of fonts) and not as many people will want to do it.  See
+lab/INSTALL.
 
-
-You could have just skipped the compiling.
-
-To compile the version that is published in paper, change lines 10 and 11 in
+(To compile the version that is published in paper, change lines 10 and 11 in
 bookjhconcrete.sty to be this.
   \booltrue{hardcopybool}  % uncomment this to make a book for publishing 
   % \boolfalse{hardcopybool}  % the default  
-Then run ./make_book_for_web.sh.  You might also want to run this.
-  pdflatex cover
-
+Then run make.)
 
 Jim
 jhefferon@smcvt.edu

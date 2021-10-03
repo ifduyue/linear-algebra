@@ -1,11 +1,3 @@
-This is _Linear Algebra_ by Jim Hefferon.  The release date is 2016.
-You are free to use this material, either under the GNU Free Documentation
-license or under a Creative Commons Share Alike license.
-
-Please note that you can buy a hardcopy of this book on Amazon, at a cost that
-is less than it would take for you to run it off from the PDF.
-(Make sure that you are getting edition 4 as there are old versions
-also for sale.  The newest edition costs the same, and is better.)
 
 For more information, see README.md, or the web site
   http://joshua.smcvt.edu/linearalgebra 
@@ -14,16 +6,11 @@ For more information, see README.md, or the web site
 
 INSTALL
 
-Put book.pdf and jhanswer.pdf in the same directory.  Point your pdf reader
-at it.  
 
 
 COMPILING
 
 Why?
-
-Sigh.  OK, first know that the compilation uses `make'; you cannot just
-run 'pdflatex book', it won't work.
 
 Here is what I just did on a fresh Linux box (Ubuntu 14.04).  If you
 are unfamiliar with the tools, or if you use Windows or Mac, or don't
