@@ -22,14 +22,14 @@ We now consider the other kind.
 
 Because a linear transformation $\map{t}{V}{V}$ has the same domain as
 codomain, we can
-compose $t$ with itself 
+compose $t$ with itself: 
 \( t^2=\composed{t}{t} \), 
 and \( t^3=\composed{t}{\composed{t}{t}} \), 
 etc.\appendrefs{function iteration}\spacefactor=1000 %
 \begin{center}
   \includegraphics{jc/mp/ch5.1}
 \end{center}
-Note that the superscript
+The superscript
 power notation $t^j$ for iterates of the transformations 
 fits with 
 the notation that we've used for their square matrix representations
@@ -129,7 +129,7 @@ and the null spaces form an ascending chain.
 \end{equation*}
 Further, there is a \( k>0 \) such that
 for powers less than $k$ the subsets are proper:~if
-if $j<k$ then $\rangespace{t^j}\supset\rangespace{t^{j+1}}$
+$j<k$ then $\rangespace{t^j}\supset\rangespace{t^{j+1}}$
 and 
 $\nullspace{t^j}\subset\nullspace{t^{j+1}}$,
 while 
@@ -162,12 +162,12 @@ in the chain the subsets containments are proper
 initially, and then from some power $k$ onward the range spaces are equal. 
 We first show that if any pair of adjacent range spaces in the
 chain are equal \( \rangespace{t^{k}}=\rangespace{t^{k+1}} \)
-then all subsequent ones are also equal
+then all later ones are also equal:
 \( \rangespace{t^{k+1}}=\rangespace{t^{k+2}} \), etc.
 This holds because
 \( \map{t}{\rangespace{t^{k+1}}}{\rangespace{t^{k+2}}} \)
 is the same map, with the same domain, as
-\( \map{t}{\rangespace{t^{k}}}{\rangespace{t^{k+1}}} \) and
+\( \map{t}{\rangespace{t^{k}}}{\rangespace{t^{k+1}}} \), and
 it therefore has the same range
 \( \rangespace{t^{k+1}}=\rangespace{t^{k+2}} \)
 (it holds for all higher powers by induction).
@@ -176,7 +176,7 @@ from that point onward it is stable.
 
 We end by showing that the chain must eventually stop decreasing. 
 Each range space is a subspace of the one before it.
-For it to be a proper subspace it must be of strictly lower dimension
+For it to be a proper subspace, it must be of strictly lower dimension
 (see \nearbyexercise{exer:PropSubspStrictLowerDimen}).
 These spaces are finite-dimensional and so the chain can fall for only
 finitely many steps.
@@ -819,14 +819,25 @@ is nilpotent, of index~$3$.
   \mapsunder{t}\colvec{z \\ 0 \\ 0}
   \mapsunder{t}\colvec{0 \\ 0 \\ 0}
 \end{equation*}
-This is a $t$-string
+This is a $t$-string.
 \begin{equation*}
   \sequence{\colvec{0 \\ 0 \\ 1},
             \colvec{0 \\ 1 \\ 0},
             \colvec{1 \\ 0 \\ 0}}
 \end{equation*}
-that is a $t$-string basis for the space~$\C^3$.
+Because that sequence is a basis, 
+it is a $t$-string basis for the space~$\C^3$.
 \end{example}
+
+Where the sequence of the prior example is  
+$\sequence{\vec{\beta}_1,
+             \vec{\beta}_2,
+             \vec{\beta}_3}$,
+another $t$-string is 
+$\sequence{\vec{\beta}_2,
+             \vec{\beta}_3}$.
+But of course the second sequence is not a basis for $\C^3$.
+In that sense, the $t$-strings in a $t$-string basis must be maximal.
 
 \begin{example}
 The linear map of differentiation \( \map{d/dx}{\polyspace_2}{\polyspace_2} \)

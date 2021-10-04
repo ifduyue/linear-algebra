@@ -1111,7 +1111,8 @@ a spanning set is minimal if and only if it is linearly independent.
       \partsitem \( f(x)=e^x \) and \( g(x)=\ln(x) \)
     \end{exparts}
     \begin{answer}
-      Let $Z$ be the zero function $Z(x)=0$, which is the additive identity in
+      Let $\map{Z}{\Re^+}{\Re}$ be the zero function $Z(x)=0$, 
+      which is the additive identity in
       the vector space under discussion.
       \begin{exparts}
         \partsitem This set is linearly independent.  
@@ -1126,14 +1127,14 @@ a spanning set is minimal if and only if it is linearly independent.
           with the unique solution \( c_1=0 \), \( c_2=0 \).
         \partsitem This set is linearly independent.  
           Consider \( c_1\cdot f(x)+c_2\cdot g(x)=Z(x) \) and 
-          plug in \( x=0 \) and \( x=\pi/2 \) to get 
+          plug in \( x=\pi \) and \( x=\pi/2 \) to get 
           \begin{equation*}
             \begin{linsys}{2}
-              c_1\cdot 1  &+  &c_2\cdot 0     &=  &0  \\
-              c_1\cdot 0  &+  &c_2\cdot 1     &=  &0
+              c_1\cdot (-1)  &+  &c_2\cdot 0     &=  &0  \\
+              c_1\cdot 0     &+  &c_2\cdot 1     &=  &0
             \end{linsys}
           \end{equation*}
-          which obviously gives that \( c_1=0 \), \( c_2=0 \).
+          which obviously gives \( c_1=0 \), \( c_2=0 \).
         \partsitem This set is also linearly independent.  
           Considering \( c_1\cdot f(x)+c_2\cdot g(x)=Z(x) \) and 
           plugging in \( x=1 \) and \( x=e \) 

@@ -244,3 +244,14 @@ General:
 
 2020-Sep-30
   Keon Moradi  Typo in vector entry.
+
+2021-Oct-04
+  John Hoggard  Slides not coming out in three versions.
+  Joseph O'Brien  Add comment in jc3 about maximality of strings in basis.
+  Christopher A Ibarra  Exercise answer error.
+  Tirthankar Mazumder  For lab, Python3 has no sys.maxint.
+  Rick Cleary  Correction to exercise wording, correction to another's answer.
+  Mervyn Brumbach  Correction to exercise wording, and to another's answer.
+  Carson Hesterman  Correction to exercise answer.
+  Chris Pil  Correction to exercise answer.
+  Clint Givens  Correction to exercise wording.  
