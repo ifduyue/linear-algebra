@@ -26,7 +26,7 @@ _Linear Algebra_ is the recipient of the Mathematical Association of America's
 
 _Linear Algebra_ is Free. You can use it under the GNU Free Documentation license or  under a Creative Common Share Alike license, at your choice.
 
-This text has been available online for over twenty five years. It has been used in many hundreds of classrooms. It can be used either as the main text or a supplement to another text.  It is also widely used for self-study.
+This text has been available online for over twenty five years. It has been used in many hundreds of classrooms. It can be used as the main text or as a supplement to another text.  It is also widely used for self-study.
 
 The text is written on LaTeX and associated systems.  The source is at [GitLab](https://gitlab.com/jim.hefferon/linear-algebra).
 

@@ -1,31 +1,43 @@
 slides/README
 
-These are classroom slides for use with Jim Hefferon's _Linear Algebra_.
+These are classroom slides for use with Jim Hefferon's _Linear
+Algebra_.  For instance, one/one_i.pdf covers Chapter One, Section I.
 
-They are coupled to the text.  For instance, one_i.pdf covers Chapter One,
-Section I.  Note that through some deep LaTeX magic the text of the theorems,
-lemmas, etc., are taken from the book's source.  So there is guaranteed to 
-be no inconsistency between, say, a definition in the book and the one in 
-these slides.  On the other hand, all the examples and computations are 
-different in the slides than in the book so students see twice as many of 
-these. 
-
-A few supplemental slides that cover a bit extra; these have a filename 
-with an "_a" extension.  For instance, three_ii_a.pdf elaborates on the 
-geometric action of transformations of the plane, with some pictures 
-that my students find helpful.
-
-There are also variants that that include all the proofs; for these the
-filenames end in "_allproofs".
-
-Personally, I use the versions that omit some proofs in favor of examples.
-I also use the supplemental slides.  I do these after the relevant section,
-except that I do five_ii_a.pdf before five_ii.pdf 
+They are coupled to the text.  The statement of the theorems, lemmas,
+etc., are taken from the book's source code.  So there is guaranteed
+to be no inconsistency between, say, a definition in the book and the
+one in these slides.  On the other hand, all the examples and
+computations are different in the slides than in the book, so students
+have extra examples, in case that helps.
 
 For the latest version of these files, including the LaTeX source and 
-other goodies, see http://joshua.smcvt.edu/linearalgebra.
+other goodies, see https://hefferon.net/linearalgebra.
+
+1) Each section's slides come in three versions.  As an example, take
+Chapter One, Section I.  Here are the three
+ a) one/one_i.pdf: the basic version. This is what I use in class.
+ a) one/one_i_allproofs.pdf: include all the proofs. version.  My basic
+     slides skip some proofs in favor of illustrative examples.
+ a) one/one_i_handout.pdf: the same as one/one_i.pdf, except that there
+ is just a single page for each slide.  That is, in the basic version,
+ some pages are revealed over two or three clicks. That is suppressed
+ in these slides.  Some instructors post this version on their intranet,
+ so if students print out some of all of the slides then they don't get
+ any repeated materials.
+ 
+2) Besides covering what is in the book, there are a few supplemental
+slides that cover a bit extra; these have a filename with an "_a" extension.
+For instance, three_ii_a.pdf elaborates on the geometric action of
+transformations of the plane, with some pictures that my students find
+helpful (some of this is from the lab manual).
+
+When I teach the class, I use the supplemental slides.  I do these after
+the relevant section, that is, three_ii_a.pdf after three_ii.pdf, 
+except that I do five_ii_a.pdf before five_ii.pdf.
 
 NOTES
+2021-Oct-04 JH  Revised for new printing.  Note README.opacity about the
+  issue getting Asymptote to process graphics with opacity.
 2016-Jun-05 JH  Revised for new book version.  Upgrade a subspace graphics
   to asymptote node version 5.0.
 2015-Jan-03 JH  Extensive revision, with many examples added.  Also included

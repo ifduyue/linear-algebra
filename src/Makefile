@@ -229,12 +229,14 @@ define compile-slides
   $(LATEX_CMD) $(notdir $(basename $@))_allproofs;\
   $(LATEX_CMD) $(notdir $(basename $@))_handout;\
   cd ../..;\
+  $(ZIP_CMD) slides slides/README;\
   $(ZIP_CMD) slides $@;\
   $(ZIP_CMD) slides $(basename $@)_allproofs.pdf;\
   $(ZIP_CMD) slides $(basename $@)_handout.pdf; 
 endef
 
-slides : slides_one slides_two slides_three slides_four slides_five
+slides : slides_one slides_two slides_three slides_four slides_five \
+  slides/README
 
 # Slides for Chapter One
 .PHONY : slides_one
