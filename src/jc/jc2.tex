@@ -3478,7 +3478,6 @@ Apply \nearbylemma{lm:DiagIffBasisOfEigens}.
 \end{proof}
 
 \begin{example} \label{ex:SummaryOfDiagonalizable}
-Here is a summary.
 In the prior example we showed that the matrix
 \begin{equation*}
      T=\begin{mat}[r]
@@ -3487,8 +3486,9 @@ In the prior example we showed that the matrix
        -4   &8    &3
      \end{mat}
 \end{equation*}
-is diagonalizable with $\lambda_1=1$, $\lambda_2=2$, and~$\lambda_3=3$
-and these are associated eigenvectors, which make up a basis~$B$.
+is diagonalizable with eigenvalues 
+$\lambda_1=1$, $\lambda_2=2$, and~$\lambda_3=3$.
+These are associated eigenvectors, which make up a basis~$B$.
 \begin{equation*}
        \vec{\beta}_1=\colvec[r]{2 \\ 1 \\ 0}\quad
        \vec{\beta}_2=\colvec[r]{9 \\ 4 \\ 4}\quad
@@ -3502,9 +3502,9 @@ The arrow diagram
     V_{\wrt{B}}                   @>t>D>        V_{\wrt{B}}       
   \end{CD}
 \end{equation*}
-gives this.
+gives this, where $P=\rep{\identity}{\stdbasis_3,B}$.
 \begin{align*}
-  D &= P^{-1}TP  \\
+  D &= PTP^{-1}  \\
   \begin{mat}
     1  &0  &0 \\
     0  &2  &0 \\
@@ -3527,33 +3527,70 @@ gives this.
       0  &4  &2
     \end{mat}
 \end{align*}
-The bottom line of the diagram has 
-$t(\vec{\beta}_1)=1\cdot\vec{\beta}_1$, etc.
-That is, the action on the basis is this.
-\begin{align*}
-  \vec{\beta}_1\mapsunder{t-1}\zero  \\
-  \vec{\beta}_2\mapsunder{t-2}\zero  \\
-  \vec{\beta}_3\mapsunder{t-3}\zero  \\
-\end{align*}
-Here is how the top line of the arrow diagram represents the 
-first of those three actions
-\begin{align*}
-  (T-1\cdot I)\vec{\beta}_1
-  &=\zero                    \\
+% sage: T = matrix(QQ, [[2,-2,2], [0,1,1], [-4,8,3]])
+% sage: T
+% [ 2 -2  2]
+% [ 0  1  1]
+% [-4  8  3]
+% sage: T.eigenvectors_right()
+% [(3, [
+%   (1, 1/2, 1)
+%   ], 1), (2, [
+%   (1, 4/9, 4/9)
+%   ], 1), (1, [
+%   (1, 1/2, 0)
+%   ], 1)]
+% sage: P_inv = matrix(QQ, [[2,9,2], [1,4,1], [0,4,2]])
+% sage: P_inv.inverse()
+% [  -2    5 -1/2]
+% [   1   -2    0]
+% [  -2    4  1/2]
+The bottom of the diagram has 
+$t(\vec{\beta}_1)=1\cdot\vec{\beta}_1$, 
+along with $t(\vec{\beta}_2)=2\cdot\vec{\beta}_2$, 
+and $t(\vec{\beta}_3)=3\cdot\vec{\beta}_3$.
+Rewriting gives that the map $t-1$ sends $\vec{\beta}_1$ to~$\zero$, 
+that $t-2$ sends $\vec{\beta}_2$ to~$\zero$,
+and that $(t-3)(\vec{\beta}_3)=\zero$.
+That is, the action on $B$ is this.
+\begin{equation*}
+  \vec{\beta}_1\mapsunder{t-1}\zero  \qquad
+  \vec{\beta}_2\mapsunder{t-2}\zero  \qquad
+  \vec{\beta}_3\mapsunder{t-3}\zero 
+\end{equation*}
+Turning to the representations in that arrow diagram, the top line says
+that the matrix $T-(1\cdot I)$, which represents $t-1$ with respect to 
+$\stdbasis_3,\stdbasis_3$, multiplied by the representation of 
+$\vec{\beta}_1$ with respect to~$\stdbasis_3$, will give zero.
+\begin{equation*}
   \begin{mat}
     1  &-2  &2  \\
     0  &0   &1  \\
    -4  &8   &2  \\
   \end{mat}
   \colvec{2 \\ 1 \\ 0}
-  &=
+  =
   \colvec{0  \\ 0 \\ 0}
-\end{align*}
-(of course, the representation of $\vec{\beta}_1$ with respect 
-to the standard basis is itself).
+\end{equation*}
+Similarly, the matrix $T-(2\cdot I)$, representing $t-2$ with respect to 
+$\stdbasis_3,\stdbasis_3$, when multiplied by the representation of 
+$\vec{\beta}_2$ with respect to~$\stdbasis_3$, gives zero.
+\begin{equation*}
+  \begin{mat}
+    0  &-2  &2  \\
+    0  &01   &1  \\
+   -4  &8   &1  \\
+  \end{mat}
+  \colvec{9 \\ 4 \\ 4}
+  =
+  \colvec{0  \\ 0 \\ 0}
+\end{equation*}
+And of course, the matrix $T-(3\cdot I)$ times
+the representation of 
+$\vec{\beta}_3$ with respect to~$\stdbasis_3$ also gives zero.
 \end{example}
 
-This section observes that some
+In summary, this section observes that some
 matrices are similar to a diagonal matrix. 
 The idea of eigenvalues arose as the entries of that diagonal matrix,
 although the definition applies more broadly than just to 
