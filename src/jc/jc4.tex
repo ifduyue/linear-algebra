@@ -304,7 +304,7 @@ unfactored versions gives the same map.
    \bigl(k\cdot\composed{(t-\lambda_1)}{(t-\lambda_2)}\bigr)\>(\vec{v})
    &=\bigl(k\cdot(t-\lambda_1)\bigr)\,(t(\vec{v})-\lambda_2\vec{v})    \\
    &=k\cdot\bigl(t(t(\vec{v}))-t(\lambda_2\vec{v})
-      -\lambda_1 t(\vec{v})-\lambda_1\lambda_2\vec{v}\bigr)    \\
+      -\lambda_1 t(\vec{v})+\lambda_1\lambda_2\vec{v}\bigr)    \\
    &=k\cdot \bigl(\composed{t}{t}\,(\vec{v})-(\lambda_1+\lambda_2)t(\vec{v})
           +\lambda_1\lambda_2\vec{v}\bigr)                    \\
    &=k\cdot(t^2-(\lambda_1+\lambda_2)t+\lambda_1\lambda_2)\>(\vec{v})
@@ -333,7 +333,7 @@ second term.
 The next result is that
 every root of the minimal polynomial is an eigenvalue and
 that every eigenvalue is a root of the minimal polynomial. 
-(That is, the resule says `$1\leq q_i$' and 
+(That is, the result says `$1\leq q_i$' and 
 not just `$0\leq q_i$'.)
 For that, recall that to find eigenvalues
 we solve $\deter{T-xI}=0$ and 
@@ -2950,7 +2950,7 @@ In the examples below, we won't address that.
 The examples to follow start with a matrix and calculate 
 a Jordan form matrix similar to it.
 Before those we will make one more point.
-For instance, in the first example belos we find that the eigenvalues are $2$ 
+For instance, in the first example below we find that the eigenvalues are $2$ 
 and~$6$. 
 To pick the basis elements related to~\( 2\) we find the null spaces of 
 $t-2$, \( (t-2)^2 \) and~\( (t-2)^3\). 
