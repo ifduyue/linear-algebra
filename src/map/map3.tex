@@ -3445,10 +3445,24 @@ And, we shall see how to find the matrix that represents a map's inverse.
             The first condition gives that the first member of $D$ plus twice
             the second equals $\vec{e}_1$, and so this basis will do.
             \begin{equation*}
-              D=\sequence{\colvec[r]{0 \\ -1 \\ 0},
-                          \colvec[r]{1/2 \\ 1/2 \\ 0},
-                          \colvec[r]{0 \\ 1 \\ 0}}
+              D=\sequence{\colvec{2 \\ 0 \\ 1},
+                          \colvec{-1/2 \\ 0 \\ -1/2},
+                          \colvec{0 \\ 1 \\ 0}}
             \end{equation*}
+% sage: load('gauss_method.sage')
+% sage: M = matrix(QQ, [[2,-1/2,0], [0,0,1], [1,-1/2,0]])
+% sage: gauss_method(M)
+% [   2 -1/2    0]
+% [   0    0    1]
+% [   1 -1/2    0]
+% (' take', -1/2, 'times row', 1, 'plus row', 3)
+% [   2 -1/2    0]
+% [   0    0    1]
+% [   0 -1/4    0]
+% (' swap row', 2, 'with row', 3)
+% [   2 -1/2    0]
+% [   0 -1/4    0]
+% [   0    0    1]
        \end{exparts} 
      \end{answer}
   \item 

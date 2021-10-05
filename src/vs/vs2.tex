@@ -125,20 +125,22 @@ Thus $\vec{w}\in\spanof{S}$.
 %</pf:AddVecSpanNoGrowIffVecInSpan1>
 \end{proof}
 
-The discussion at the section's opening involved removing vectors instead of
-adding them. 
+The discussion at the section's opening involved removing vectors, not adding
+them. 
 
 \begin{corollary}  \label{cor:OmitVecNotShrinkSpanIffVecIsDep}
 %<*cor:OmitVecNotShrinkSpanIffVecIsDep>
 For $\vec{v}\in S$,
 omitting that vector does not shrink the span
+if and only if that vector is dependent on other vectors in the 
+set. 
+That is, 
 $\spanof{S}=\spanof{S-\set{\vec{v}}}$
-if and only if it is dependent on other vectors in the 
-set,~$\vec{v}\in\spanof{S}$. 
+if and only if $\vec{v}\in\spanof{S-\set{\vec{v}}}$. 
 %</cor:OmitVecNotShrinkSpanIffVecIsDep>
 \end{corollary}
 
-The corollary says that to know whether removing a vector will decrease
+Thus, to know whether removing a vector will decrease
 the span, we need to know whether the vector is a linear combination
 of others in the set.
 
