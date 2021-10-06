@@ -3730,9 +3730,54 @@ number of free variables in an echelon form version of the system.
 %</le:HomoSltnSpanVecs>
 \end{lemma}
 
-We will make two points before the proof.
-The first is that the basic idea of the proof is straightforward.
-%<*ex:HomoSystemGivesSpanningSet>
+Before the proof, we will discuss a couple of points.
+The first is that the proof's idea is simple.
+Gauss's method starts with the bottom row, expressing its leading
+variable in terms of other variables in that row, which must be free.
+Then it has an iteration phase, where the solution for the next row up 
+uses the 
+equations from the prior rows to solve for the leading variable
+in terms of those that are free.
+So this is basically an argument by construction\Dash to show 
+that it is possible, we show how to do it.
+
+The prior paragraph suggests 
+the second point about the proof, its approach.
+Gauss's method moves up the system, using the equations
+from lower rows to do the next row. 
+This suggests a proof by
+mathematical induction.\index{mathematical induction}\index{proof techniques!induction}%
+\index{induction}%
+
+Induction is an important and non-obvious proof technique that will
+appear a number of times in this book.
+Our proofs by induction will come in two steps, a base step and
+an inductive step.
+In the base step, we verify that the statement is true for some first 
+instance, here that for the bottom equation we can  
+write the leading variable in terms of free variables.
+In the inductive step, we must establish an implication, 
+namely that if the statement
+is true for all prior cases then it follows 
+that the statement holds for the present case 
+also.
+Specifically, here the inductive hypothesis is that if for the
+lower-down rows we can express the leading variables 
+in terms of the free variables, then for the next row up
+we can express the leading variable in those terms also.
+
+Those two steps together prove the statement for all the rows 
+because by the base step it is true for the bottom equation, 
+and by the inductive step the fact that it is true for the bottom
+equation shows that 
+it is true for the next one up. 
+Then, another application of
+the inductive step implies that it is true for the third equation up,
+etc.\appendrefs{mathematical induction}%
+
+In the argument, the bookkeeping notation can seem dense 
+so a walk-through may help.
+%<*ex:HomoSystemGivesSpanningSet0>
 Consider this system of homogeneous equations in echelon form.
 \begin{equation*}
   \begin{linsys}{5}
@@ -3742,70 +3787,61 @@ Consider this system of homogeneous equations in echelon form.
   \end{linsys}
 \end{equation*}
 Start with the bottom equation. 
-Express its leading variable in terms of the free variables with $u=-v$.
-For the next row up,
-substitute for the leading variable~$u$ of the row below
-$y+z+(-v)-v=0$ and solve for this row's leading variable
-$y=-z+2v$.
-Iterate: on the next row up, substitute expressions found in lower rows
-$x+(-z+2v)+2z+(-v)+v=0$
+It has five variables: $x_1=x$, \ldots{}, $x_5=v$.
+The base step involves the bottom row, equation~$m=3$.
+We solve for its leading variable, $x_{\ell_3}=x_4=u$, using its
+leading term is $a_{m,\ell_m}x_m=a_{3,4}x_4=1\cdot u$
+(the `$\ell$' stands for ``leading''). 
+We get with $u=-v$.
+%</ex:HomoSystemGivesSpanningSet0>
+
+%<*ex:HomoSystemGivesSpanningSet1>
+We turn to the next row up.
+The variable~$t$ counts how many rows up from the bottom 
+the current row is, 
+so here $t$ equals~$1$.
+We start this row having so far expressed the leading variable 
+in terms of free variables for row $m=3$.
+This is row $m-t=3-1=2$.
+We proceed with Gauss's method as usual by substituting for $x_{\ell_3}=x_4=u$ 
+its expression in terms
+of free variables, $y+z+(-v)-v=0$, and solving for this row's leading variable
+$x_{\ell_{m-t}}=x_2=y$.
+
+Iterate by taking $t=2$.
+We have so far expressed the leading variable 
+in terms of free variables for rows $m=3$ and $m-1=2$.
+Now we are on row $m-t=3-2=1$.
+Substitute for the expression of $x_{\ell_3}=u$ and $x_{\ell_2}=y$ in terms
+of free variables, 
+$x+(-z+2v)+2z+(-v)+v=0$,
 and solve for the leading variable
-$x=-z-2v$.
-To finish, write the solution in vector notation
+$x_{\ell_1}=x=-z-2v$.
+%</ex:HomoSystemGivesSpanningSet2>
+
+%<*ex:HomoSystemGivesSpanningSet3>
+Then we are done because to finish, just write the solution in vector notation
 \begin{equation*}
   \colvec{x \\ y \\ z \\ u \\ v}
   =\colvec[r]{-1 \\ -1 \\ 1 \\ 0 \\ 0}z
    +\colvec[r]{-2 \\ 2 \\ 0 \\ -1 \\ 1}v 
   \qquad \text{for $z,v\in\Re$}
 \end{equation*}
-and recognize that the $\vec{\beta}_1$ and $\vec{\beta}_2$ 
-of the lemma are the 
-vectors associated with the free variables $z$ and~$v$.
-%</ex:HomoSystemGivesSpanningSet>
-
-The prior paragraph is an example, not a proof.
-But it does suggest
-the second point about the proof, its approach.
-The example moves row-by-row up the system, using the equations
-from lower rows to do the next row. 
-This points to doing the proof by
-mathematical induction.\appendrefs{mathematical induction}%
-\index{mathematical induction}\index{proof techniques!induction}%
-\index{induction}%
-
-Induction is an important and non-obvious proof technique that we shall
-use a number of times in this book.
-We will do proofs by induction in two steps, a base step and
-an inductive step.
-In the base step we verify that the statement is true for some first 
-instance, here that for the bottom equation we can  
-write the leading variable in terms of free variables.
-In the inductive step we must establish an implication, that if the statement
-is true for all prior cases then it follows for the present case also.
-Here we will establish that if for the
-bottom-most~\( t \) rows we can express the leading variables 
-in terms of the free variables, then for the \( t+1 \)-th
-row from the bottom
-we can also express the leading variable in terms of those that
-are free.
-
-Those two steps together prove the statement for all the rows 
-because by the base step it is true for the bottom equation, 
-and by the inductive step the fact that it is true for the bottom
-equation shows that 
-it is true for the next one up. 
-Then another application of
-the inductive step implies that it is true for the third equation up,
-etc.
+and recognize that $\vec{\beta}_1$ and $\vec{\beta}_2$ 
+of the lemma's statement are the 
+vectors associated with $z$ and~$v$.
+%</ex:HomoSystemGivesSpanningSet3>
 
 \begin{proof}
 %<*pf:HomoSltnSpanVecs0>
 Apply Gauss's Method to get to echelon form.
-There may be some \( 0=0 \) equations; 
-we ignore these 
+There may be some \( 0=0 \) equations; we ignore these 
 (if the
 system consists only of \( 0=0 \)~equations then the lemma is trivially true
 because there are no leading variables).
+% If there are any variables that appear only with with a coefficient of
+% $0$ then they are free, and will never lead a row, so we will
+% ignore that possibility.  
 But
 because the system is homogeneous there are no contradictory equations.
 
@@ -3819,31 +3855,29 @@ free variables.
 %</pf:HomoSltnSpanVecs0>
 
 %<*pf:HomoSltnSpanVecs1>
-For the base step consider the bottom-most equation
+For the base step, consider the bottom-most equation,
 \begin{equation*}
-  a_{m,\ell_m}x_{\ell_m}+a_{m,\ell_m+1}x_{\ell_m+1}+\cdots+a_{m,n}x_n=0
-   \tag{$*$}
+  a_{m,\ell_m}x_{\ell_m}+a_{m,\ell_{m+1}}x_{\ell_{m+1}}+\cdots+a_{m,n}x_n=0
+   % \tag{$*$}
 \end{equation*}
 where \( a_{m,\ell_m}\neq 0 \).
 %</pf:HomoSltnSpanVecs1>
-(Here `$\ell$' stands for ``leading'' 
-so that $x_{\ell_m}$ is the leading variable in row~$m$.) 
 %<*pf:HomoSltnSpanVecs2>
-This is the bottom row so 
+This is the bottom row, so 
 any variables % $x_{\ell_{m}+1}$, \ldots{} 
 after the
 leading one must be free. 
 Move these to the right hand side and divide by $a_{m,\ell_m}$
 \begin{equation*}
   x_{\ell_m}
-  =(-a_{m,\ell_m+1}/a_{m,\ell_m})x_{\ell_m+1}+\cdots+(-a_{m,n}/a_{m,\ell_m})x_n
+  =(-a_{m,\ell_{m+1}}/a_{m,\ell_m})x_{\ell_{m+1}}+\cdots+(-a_{m,n}/a_{m,\ell_m})x_n
 \end{equation*}
 to express the leading variable in terms of free variables.
 %</pf:HomoSltnSpanVecs2>
-(There is a tricky technical point here:~if in the bottom equation~($*$)
+(A technical point:~if in the bottom equation
 there are no variables to the right 
-of~$x_{l_m}$ then \( x_{\ell_m}=0 \).
-This satisfies the statement we are verifying because, 
+of~$x_{\ell_m}$ then \( x_{\ell_m}=0 \).
+This satisfies the statement that we are verifying because, 
 as alluded to at the start of this subsection, 
 it has \( x_{\ell_m} \) written 
 as a sum of a number of the free variables, namely as the sum of zero many, 
@@ -3851,33 +3885,29 @@ under the convention that
 a trivial sum totals to~$0$.)
 
 %<*pf:HomoSltnSpanVecs3>
-For the inductive step assume that the statement holds for the bottom-most
-$t$~rows, with $0\leq t<m-1$.
+For the inductive step, assume that the statement holds for the bottom-most
+$t$~rows, with $1\leq t<m$.
 That is, assume 
 that for the \( m \)-th equation,
 and the \text{\( (m-1) \)-th}
-equation, etc., up to and including the \text{\( (m-t) \)-th}~equation,
+equation, etc., up to and including the \mbox{\( m-(t-1) \)-th}~equation,
 we can
-express the leading variable in terms of free ones.
+express the leading variable in terms of free variables.
 We must verify that this then also holds for the next equation up, 
-the \( (m-(t+1)) \)-th equation.
-For that, take each variable that leads
-in a lower equation \( x_{\ell_m} \), \ldots, \( x_{\ell_{m-t}} \) 
-and substitute
-its expression in terms of free variables.
-We only need expressions for leading variables from lower equations
-because the system is in echelon form, so the
-leading variables in equations above this one do not appear in this equation.
+the \( (m-t) \)-th equation.
+For that, for each of 
+\( x_{\ell_m} \), \ldots, \( x_{\ell_{m-(t-1)}} \), 
+substitute its expression in terms of free variables.
 The result has a leading term of   
-$a_{m-(t+1),\ell_{m-(t+1)}}x_{\ell_{m-(t+1)}}$ with \( a_{m-(t+1),\ell_{m-(t+1)}}\neq 0 \),
+$a_{m-t,\ell_{m-t}}x_{\ell_{m-t}}$ with \( a_{m-t,\ell_{m-t}}\neq 0 \),
 and the rest of the left hand side
-is a linear combination of free variables.
+is a combination of free variables.
 Move the free variables to
 the right side and divide by
-\( a_{m-(t+1),\ell_{m-(t+1)}} \) to end with this equation's leading variable
-\( x_{\ell_{m-(t+1)}} \) in terms of free variables.
+\( a_{m-t,\ell_{m-t}} \) to end with
+\( x_{\ell_{m-t}} \) expressed in terms of free variables.
 
-We have done both the base step and the inductive step so by the
+We have done both the base step and the inductive step, so by the
 principle of mathematical induction the proposition is true.
 %</pf:HomoSltnSpanVecs3>
 \end{proof}

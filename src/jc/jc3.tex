@@ -1003,8 +1003,9 @@ and the length of the strings is determined by \( t \).
 \end{theorem}
 
 This illustrates the proof, which describes three kinds of
-basis vectors (shown in squares if they are in the 
-null space and in circles if they are not).
+basis vectors. 
+They are in squares if they are members of the 
+null space and in circles if they are not.
 \begin{equation*}
    \begin{strings}{ccccccccccccccccccc}
      \digitincirc{3}
@@ -1022,7 +1023,7 @@ null space and in circles if they are not).
          &\mapsto &\digitincirc{1} &\mapsto
          &\cdots &
          &\mapsto &\digitincirc{1}
-         &\mapsto &\digitinsq{1} &\mapsto &\zero  \\[.75ex]
+         &\mapsto &\digitinsq{1} &\mapsto &\zero  \\[1ex]
      \digitinsq{2} &\mapsto &\zero \\[.75ex]
          &\smash{\vdotswithin{\mapsto}}  \\
      \digitinsq{2} &\mapsto &\zero
@@ -1034,19 +1035,18 @@ Fix a vector space $V$.
 We will argue by induction on the index of nilpotency.
 If the map $\map{t}{V}{V}$
 has index of nilpotency~\( 1 \) then it is the zero map and any basis 
-is a string basis $\vec{\beta}_1\mapsto\zero$, \ldots, 
+is a string basis, $\vec{\beta}_1\mapsto\zero$, \ldots, 
 $\vec{\beta}_n\mapsto\zero$.
 
 For the inductive step, assume that the theorem holds for any transformation
 $\map{t}{V}{V}$
-with an index of nilpotency between $1$ and~\( k-1 \) (with $k>1$)
+with an index of nilpotency from $1$ up to and including~\( k-1 \) (with $k>1$),
 and consider the index~$k$ case.
 
-Observe that the restriction of $t$ to
-the range space
-\( \map{t}{\rangespace{t}}{\rangespace{t}} \) 
+What gets the induction going is the observaton 
+that the restriction of~$t$ to the range space~\( \rangespace{t} \) 
 is also nilpotent, of index \( k-1 \).
-Apply the inductive hypothesis to get a string basis for
+So apply the inductive hypothesis to get a string basis for
 \( \rangespace{t} \),
 where the number and length of the strings
 is determined by \( t \).
@@ -1056,56 +1056,61 @@ is determined by \( t \).
   \cat{\sequence{\vec{\beta}_2,\ldots,t^{h_2}(\vec{\beta}_2)}}}{\cdots}}{
   \sequence{\vec{\beta}_i,\ldots,t^{h_i}(\vec{\beta}_i)} }
 \end{equation*}
-(In the illustration above these are the vectors of kind~\( 1 \).)
+We write~$i$ for the number of strings.
+In the illustration above, these are the vectors of kind~\( 1 \).
 
-Note that taking the final nonzero vector in each 
-of these strings
+Taking the final vector in each string
 gives a basis
 \( C=\sequence{t^{h_1}(\vec{\beta}_1),\dots,t^{h_i}(\vec{\beta}_i)} \)
 for the intersection \( \rangespace{t}\intersection\nullspace{t} \).
 This is because a member of \( \rangespace{t} \) maps to zero if and only
-if it is a linear combination of those basis vectors that map
+if it is a linear combination of basis vectors that map
 to zero.
-(The illustration shows these as \( 1 \)'s in squares.)
+The illustration shows these as \( 1 \)'s in squares.
 
-Now extend \( C \) to a basis for all of \( \nullspace{t} \).
+Now extend \( C \) to a basis for the entire nullspace, \( \nullspace{t} \).
 \begin{equation*}
   \hat{C}=\cat{C}{\sequence{\vec{\xi}_1,\dots,\vec{\xi}_p}}
 \end{equation*}
-(In the illustration the $\vec{\xi}$'s are the vectors of kind~\( 2 \) 
-and so the set \( \hat{C} \) is the set of vectors in squares.)
-While the vectors \( \vec{\xi} \) we choose aren't uniquely
+While the \( \vec{\xi} \)'s aren't uniquely
 determined by $t$, what is uniquely determined is the number
-of them: it is the dimension of
+of them:~it is the dimension of
 \( \nullspace{t} \) minus the dimension of
 \( \rangespace{t}\intersection\nullspace{t} \).
+In the illustration, the $\vec{\xi}$'s are the vectors of kind~\( 2 \), 
+and so \( \hat{C} \) is the set of vectors in squares.
 
-Finally, \( \cat{B}{\hat{C}} \)
-is a basis for \( \rangespace{t}+\nullspace{t} \)
-because any sum of something in the range space with something in the null space
+Finally, \( \cat{B}{\sequence{\vec{\xi}_1,\dots,\vec{\xi}_p}} \)
+is a basis for \( \rangespace{t}+\nullspace{t} \).
+This is because a sum of 
+something in the range space with something in the null space
 can be represented using elements of \( B \) for the range space 
-part and elements of \( \hat{C} \) for the part from the null space.
+part along with $\xi$'s for any part from 
+\( \nullspace{t}-\rangespace{t} \).
 Note that
 \begin{align*}
   \dim\big(\rangespace{t}+\nullspace{t}\big)
   &=
   \dim (\rangespace{t})+\dim (\nullspace{t})
-    -\dim(\rangespace{t}\intersection\nullspace{t})  \\
+    -\dim\big(\rangespace{t}\intersection\nullspace{t}\big)  \\
   &=
   \rank (t)+\nullity (t)-i          \\
   &=
   \dim (V)-i
 \end{align*}
-and so we can extend \( \cat{B}{\hat{C}} \) to a basis for all of 
-\( V \) by the addition of \( i \) more vectors, provided that
-they are not linearly dependent on what we have already.
-Recall that each of \( \vec{\beta}_1,\dots,\vec{\beta}_i \) is
-in \( \rangespace{t} \), and extend \( \cat{B}{\hat{C}} \) with vectors
-\( \vec{v}_1,\dots,\vec{v}_i \) such that
+and so we can extend the basis 
+\( \cat{B}{\sequence{\vec{\xi}_1,\dots,\vec{\xi}_p}} \) 
+to a $t$-string basis for the entirety of 
+\( V \) with the addition of~\( i \) more vectors.
+To produce those, 
+recall that each of \( \vec{\beta}_1,\dots,\vec{\beta}_i \) is
+in the range space, \( \rangespace{t} \), 
+and so use vectors
+\( \vec{v}_1,\dots,\vec{v}_i\in V \) such that
 \( t(\vec{v}_1)=\vec{\beta}_1,\dots,t(\vec{v}_i)=\vec{\beta}_i \).
-(In the illustration these are the \( 3 \)'s.)
 The check that this extension preserves linear independence is
 \nearbyexercise{exer:NilMapWillHaveStrBas}.
+In the illustration, \( \vec{v}_1,\dots,\vec{v}_i \) are the \( 3 \)'s.
 \end{proof}
 
 \begin{corollary} \label{cor:NilpotentMatCanonForm}

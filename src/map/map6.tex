@@ -511,35 +511,49 @@ The ship will never be in range.
     \( \vec{v}\dotprod\vec{s}\, \) divided by the length of the vector
     \( \vec{s}\, \).
     \begin{answer}
-      The proof is simply a calculation.
+      The proof is a calculation.
+      Recall that for any vector $\vec{u}$, the length
+      is determined by $\absval{\vec{u}}^2=\vec{u}\dotprod\vec{u}$.
+      So this is the square of the length.
       \begin{equation*}
-        \norm{\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
-              \cdot\vec{s}\, }
+        \absval{\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+              \cdot\vec{s}\,}^2
         =
-        \absval{\frac{\vec{v}\dotprod\vec{s}}{
-                      \vec{s}\dotprod\vec{s}}}\cdot \norm{\vec{s}\, }
+        \bigl(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+           \cdot \vec{s}\bigr)
+        \dotprod
+        \bigl(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+           \cdot \vec{s}\bigr)
         =
-        \frac{\absval{\vec{v}\dotprod\vec{s}\,}}{
-                      \norm{\vec{s}\,}^2}\cdot\norm{\vec{s}\,}
+        \bigl(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}\bigr)^2
+        \cdot(\vec{s}\dotprod\vec{s})
         =
-        \frac{\absval{\vec{v}\dotprod\vec{s}\,}}{\norm{\vec{s}\,}}
+        \frac{(\vec{v}\dotprod\vec{s})^2}{(\vec{s}\dotprod\vec{s})^2}
+        \cdot(\vec{s}\dotprod\vec{s})
+        =
+        \frac{(\vec{v}\dotprod\vec{s})^2}{\absval{\vec{s}}^2}
       \end{equation*} 
     \end{answer}
   \item
     Find the formula for the distance from a point to a line.
     \begin{answer}
       Because the projection of \( \vec{v} \) into the line spanned by
-      \( \vec{s} \) is
+      \( \vec{s} \) is this,
       \begin{equation*}
         \frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}\cdot\vec{s}
       \end{equation*}
-      the distance squared from the point to the line is this
-      (we write a vector dotted with itself $\vec{w}\dotprod\vec{w}$
-      as $\vec{w}^2$).
+      the distance squared from the point to the line is this.
       \begin{align*}
-        \norm{\vec{v}-
+        \absval{\vec{v}-
                 \frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
                 \cdot\vec{s}\, }^2
+        &=\big( \vec{v}-
+                \frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+                \cdot\vec{s} \big)
+          \dotprod
+          \big( \vec{v}-
+                \frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+                \cdot\vec{s} \big)                                  \\
         &=\vec{v}\dotprod\vec{v}
         -\vec{v}\dotprod(
               \frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}\cdot\vec{s}
@@ -548,13 +562,16 @@ The ship will never be in range.
               \frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
                \cdot\vec{s}\,
          )\dotprod\vec{v}
-        +(\frac{\vec{v}\dotprod\vec{s}}{
-                \vec{s}\dotprod\vec{s}}\cdot\vec{s}\,)^2     \\   
+        +\big(\frac{\vec{v}\dotprod\vec{s}}{
+                \vec{s}\dotprod\vec{s}}\cdot\vec{s}\,\big)
+          \dotprod
+          \big(\frac{\vec{v}\dotprod\vec{s}}{
+                \vec{s}\dotprod\vec{s}}\cdot\vec{s}\,\big)     \\   
         &=\vec{v}\dotprod\vec{v}
-        -2\cdot(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}})
+        -2\cdot\big(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}\big)
            \cdot\vec{v}\dotprod\vec{s}
-        +(\frac{\vec{v}\dotprod\vec{s}}{
-                \vec{s}\dotprod\vec{s}})\cdot\vec{s}\dotprod\vec{s}  \\
+        +\big(\frac{\vec{v}\dotprod\vec{s}}{
+                \vec{s}\dotprod\vec{s}}\big)^2\cdot(\vec{s}\dotprod\vec{s})  \\
         &=\frac{(\vec{v}\dotprod\vec{v}\,)\cdot(\vec{s}\dotprod\vec{s}\,)
                  -2\cdot(\vec{v}\dotprod\vec{s}\,)^2
                  +(\vec{v}\dotprod\vec{s}\,)^2}{%
@@ -611,24 +628,37 @@ The ship will never be in range.
     Prove that the orthogonal projection of a vector into a line has length
     less than or equal to that of the vector.
     \begin{answer}
-      The Cauchy-Schwarz inequality 
-      $\absval{\vec{v}\dotprod\vec{s}\,}
-         \leq\norm{\vec{v}\,}\cdot\norm{\vec{s}\,}$ 
-      gives that this fraction
+      For any vector $\vec{u}$, the length squared is given by 
+      $\absval{\vec{u}}^2=\vec{u}\dotprod\vec{u}$.
+      So this is the square of the projection's length.
       \begin{equation*}
-        \norm{\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
-              \cdot\vec{s}\, }
-        =\absval{\frac{\vec{v}\dotprod\vec{s}}{
-                       \vec{s}\dotprod\vec{s}}}
-         \cdot\norm{\vec{s}\, }
+        \absval{\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+              \cdot\vec{s}\,}^2
         =
-        \frac{\absval{\vec{v}\dotprod\vec{s}\,}}{
-              \norm{\vec{s}\,}^2}\cdot\norm{\vec{s}\,}
+        \bigl(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+           \cdot \vec{s}\,\bigr)
+        \dotprod
+        \bigl(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}
+           \cdot \vec{s}\,\bigr)
         =
-        \frac{\absval{\vec{v}\dotprod\vec{s}\,}}{\norm{\vec{s}\,}}
-      \end{equation*}
-      when divided by \( \norm{\vec{v}\,} \) is less than or equal to one.
-      That is, \( \norm{\vec{v}\,} \) is larger than or equal to the fraction.
+        \bigl(\frac{\vec{v}\dotprod\vec{s}}{\vec{s}\dotprod\vec{s}}\bigr)^2
+        \cdot(\vec{s}\dotprod\vec{s})
+        =
+        \frac{(\vec{v}\dotprod\vec{s})^2}{(\vec{s}\dotprod\vec{s})^2}
+        \cdot(\vec{s}\dotprod\vec{s})
+        =
+        \frac{(\vec{v}\dotprod\vec{s})^2}{\absval{\vec{s}\,}^2}
+      \end{equation*} 
+      Thus the length is $\absval{\vec{v}\dotprod\vec{s}}/\absval{\vec{s}\,}$,
+      the absolute value of $\vec{v}\dotprod\vec{s}$ divided by the 
+      length of~$\vec{s}$.
+      The Cauchy-Schwarz inequality, 
+      $\absval{\vec{v}\dotprod\vec{s}\,}
+         \leq\absval{\vec{v}\,}\cdot\absval{\vec{s}\,}$, 
+      gives that 
+      $\absval{\vec{v}\dotprod\vec{s}}/\absval{\vec{s}\,}\leq
+        \absval{\vec{v}\,}\cdot\absval{\vec{s}\,}/\absval{\vec{s}\,}
+        =\absval{\vec{v}\,}$.
     \end{answer}
   \recommended \item  \label{exer:LineProjFormIndOfVec}
     Show that the definition of orthogonal projection into a line 
@@ -1817,29 +1847,29 @@ some computations.
       \partsitem 
         Find the coefficient $c_1$ for the projection of $\vec{v}$ into
         the span of the vector in $B_1$.
-        Check that $\norm{\vec{v}\,}^2\geq \absval{c_1}^2$.
+        Check that $\absval{\vec{v}\,}^2\geq \absval{c_1}^2$.
       \partsitem 
         Find the  coefficients $c_1$ and $c_2$ for the projection of $\vec{v}$
         into the spans of the two vectors in $B_2$.
-        Check that $\norm{\vec{v}\,}^2\geq \absval{c_1}^2+\absval{c_2}^2$.
+        Check that $\absval{\vec{v}\,}^2\geq \absval{c_1}^2+\absval{c_2}^2$.
       \partsitem Find $c_1$, $c_2$, and $c_3$ associated with the vectors in 
         $B_3$, and $c_1$, $c_2$, $c_3$, and $c_4$ for the vectors in $B_4$. 
         Check that 
-        $\norm{\vec{v}\,}^2\geq \absval{c_1}^2+\dots+\absval{c_3}^2$ and
+        $\absval{\vec{v}\,}^2\geq \absval{c_1}^2+\dots+\absval{c_3}^2$ and
         that
-        $\norm{\vec{v}\,}^2\geq \absval{c_1}^2+\dots+\absval{c_4}^2$.
+        $\absval{\vec{v}\,}^2\geq \absval{c_1}^2+\dots+\absval{c_4}^2$.
     \end{exparts}
     Show that this holds in general:~where 
     $\set{\vec{\kappa}_1,\ldots,\vec{\kappa}_k}$
     is an orthonormal set and $c_i$ is coefficient of
     the projection of a vector $\vec{v}$ from the space
     then 
-    $\norm{\vec{v}\,}^2\geq \absval{c_1}^2+\dots+\absval{c_k}^2$.
-    \textit{Hint}.~~One way is to look at the inequality 
-      $0\leq\norm{\vec{v}-(c_1\vec{\kappa}_1+\dots+c_k\vec{\kappa}_k)}^2$
+    $\absval{\vec{v}\,}^2\geq \absval{c_1}^2+\dots+\absval{c_k}^2$.
+    \textit{Hint}. One way is to look at the inequality 
+      $0\leq\absval{\vec{v}-(c_1\vec{\kappa}_1+\dots+c_k\vec{\kappa}_k)}^2$
       and expand the $c$'s.
     \begin{answer}
-      First, $\norm{\vec{v}\,}^2=4^2+3^2+2^2+1^2=50$.
+      First, $\absval{\vec{v}\,}^2=4^2+3^2+2^2+1^2=50$.
       \begin{exparts*}
         \partsitem $c_1=4$
         \partsitem $c_1=4$, $c_2=3$
@@ -1849,7 +1879,7 @@ some computations.
       because the completely general case is messier but no more enlightening.
       We follow the hint
       (recall that for any vector $\vec{w}$ we have 
-      $\norm{\vec{w}\,}^2=\vec{w}\dotprod\vec{w}$).
+      $\absval{\vec{w}\,}^2=\vec{w}\dotprod\vec{w}$).
       \begin{align*}
         0
          &\leq

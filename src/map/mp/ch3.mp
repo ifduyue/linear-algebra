@@ -1724,7 +1724,7 @@ beginfig(35) % projection picture like stick figure's; for Gram-Schmidt
   draw z0--z2 withcolor white;
   pickup pencircle scaled line_width_dark; % vector projected to
   drawarrow z0--z2 cutafter bpath cps;
-    label.bot(btex \makebox[0ex][l]{\small $\proj{\vec{p}}{\spanof{\vec{s}}}$} etex,z2);
+    label.bot(btex \makebox[0ex][l]{\small $\proj{\vec{v}}{\spanof{\vec{s}}}$} etex,z2);
 
   z5=z1 rotated 55;
   z6=whatever[z0,z5]; y6=ypart(point 0 of yaxis); % endpoint of line
@@ -1749,7 +1749,7 @@ beginfig(35) % projection picture like stick figure's; for Gram-Schmidt
   %draw perppath dashed withdots scaled .5;
   pickup pencircle scaled line_width_dark; % 
   drawarrow z2--z10 cutbefore bpath cps cutafter bpath v; 
-  label.rt(btex {\small $\vec{v}-\proj{\vec{p}}{\spanof{\vec{s}}}$} etex,.618[z2,z10]);
+  label.rt(btex {\small $\vec{v}-\proj{\vec{v}}{\spanof{\vec{s}}}$} etex,.618[z2,z10]);
 endfig;
 
 
