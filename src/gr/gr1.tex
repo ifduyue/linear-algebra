@@ -3732,13 +3732,17 @@ number of free variables in an echelon form version of the system.
 
 Before the proof, we will discuss a couple of points.
 The first is that the proof's idea is simple.
+It boils down to showing that we can use Gauss's method to express 
+the leading variables in terms of the free variables
+(more on this in the example below preceding the proof).
+But that is straightforward: 
 Gauss's method starts with the bottom row, expressing its leading
 variable in terms of other variables in that row, which must be free.
 Then it has an iteration phase, where the solution for the next row up 
 uses the 
 equations from the prior rows to solve for the leading variable
 in terms of those that are free.
-So this is basically an argument by construction\Dash to show 
+So this basically is a construction\Dash to show 
 that it is possible, we show how to do it.
 
 The prior paragraph suggests 
@@ -3754,8 +3758,8 @@ appear a number of times in this book.
 Our proofs by induction will come in two steps, a base step and
 an inductive step.
 In the base step, we verify that the statement is true for some first 
-instance, here that for the bottom equation we can  
-write the leading variable in terms of free variables.
+instance, here that for an echelon form linear system we can write 
+the bottom equation's leading variable in terms of free variables.
 In the inductive step, we must establish an implication, 
 namely that if the statement
 is true for all prior cases then it follows 
@@ -3857,7 +3861,7 @@ free variables.
 %<*pf:HomoSltnSpanVecs1>
 For the base step, consider the bottom-most equation,
 \begin{equation*}
-  a_{m,\ell_m}x_{\ell_m}+a_{m,\ell_{m+1}}x_{\ell_{m+1}}+\cdots+a_{m,n}x_n=0
+  a_{m,\ell_m}x_{\ell_m}+a_{m,1+\ell_{m}}x_{1+\ell_{m}}+\cdots+a_{m,n}x_n=0
    % \tag{$*$}
 \end{equation*}
 where \( a_{m,\ell_m}\neq 0 \).
@@ -3870,7 +3874,7 @@ leading one must be free.
 Move these to the right hand side and divide by $a_{m,\ell_m}$
 \begin{equation*}
   x_{\ell_m}
-  =(-a_{m,\ell_{m+1}}/a_{m,\ell_m})x_{\ell_{m+1}}+\cdots+(-a_{m,n}/a_{m,\ell_m})x_n
+  =(-a_{m,1+\ell_{m}}/a_{m,\ell_m})x_{1+\ell_{m}}+\cdots+(-a_{m,n}/a_{m,\ell_m})x_n
 \end{equation*}
 to express the leading variable in terms of free variables.
 %</pf:HomoSltnSpanVecs2>
@@ -3885,17 +3889,21 @@ under the convention that
 a trivial sum totals to~$0$.)
 
 %<*pf:HomoSltnSpanVecs3>
-For the inductive step, assume that the statement holds for the bottom-most
-$t$~rows, with $1\leq t<m$.
-That is, assume 
+For the inductive step, assume that assume 
 that for the \( m \)-th equation,
 and the \text{\( (m-1) \)-th}
 equation, etc., up to and including the \mbox{\( m-(t-1) \)-th}~equation,
 we can
-express the leading variable in terms of free variables.
-We must verify that this then also holds for the next equation up, 
+express the leading variable of that equation in terms of free variables. 
+That is,
+assume that the statement (that we can
+express the leading variable of the row in terms of the free variables)
+holds for the bottom-most $t-1$~rows, with $1\leq t<m$.
+We must verify that the statement 
+therefore also holds for the next equation up, 
 the \( (m-t) \)-th equation.
-For that, for each of 
+
+For each of 
 \( x_{\ell_m} \), \ldots, \( x_{\ell_{m-(t-1)}} \), 
 substitute its expression in terms of free variables.
 The result has a leading term of   
@@ -3904,7 +3912,7 @@ and the rest of the left hand side
 is a combination of free variables.
 Move the free variables to
 the right side and divide by
-\( a_{m-t,\ell_{m-t}} \) to end with
+\( a_{m-t,\ell_{m-t}} \), to end with
 \( x_{\ell_{m-t}} \) expressed in terms of free variables.
 
 We have done both the base step and the inductive step, so by the
