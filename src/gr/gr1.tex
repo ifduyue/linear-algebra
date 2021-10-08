@@ -3730,28 +3730,72 @@ number of free variables in an echelon form version of the system.
 %</le:HomoSltnSpanVecs>
 \end{lemma}
 
-Before the proof, we will discuss a couple of points.
-The first is that the proof's idea is simple.
-It boils down to showing that we can use Gauss's method to express 
-the leading variables in terms of the free variables
-(more on this in the example below preceding the proof).
-But that is straightforward: 
-Gauss's method starts with the bottom row, expressing its leading
-variable in terms of other variables in that row, which must be free.
-Then it has an iteration phase, where the solution for the next row up 
-uses the 
-equations from the prior rows to solve for the leading variable
-in terms of those that are free.
-So this basically is a construction\Dash to show 
-that it is possible, we show how to do it.
+Before the proof, we discuss a couple of points about it.
+First, the proof verifies that, given a homogeneous system in echelon form,
+we can use back substitution to express 
+all of the leading variables in terms of the free variables.
+To see why this suffices to establish the lemma, we give an example
+(we will also use this walk-through as a chance to 
+illustrate the proof's notation).
 
-The prior paragraph suggests 
-the second point about the proof, its approach.
-Gauss's method moves up the system, using the equations
-from lower rows to do the next row. 
-This suggests a proof by
-mathematical induction.\index{mathematical induction}\index{proof techniques!induction}%
-\index{induction}%
+%<*ex:HomoSystemGivesSpanningSet0>
+Consider this system of homogeneous equations in echelon form.
+\begin{equation*}
+  \begin{linsys}{5}
+     x  &+  &y   &+  &2z  &+  &u  &+  &v  &=  &0  \\
+        &   &y   &+  &z  &+  &u  &-  &v  &=  &0  \\
+        &   &    &   &   &   &u  &+  &v  &=  &0  
+  \end{linsys}
+\end{equation*}
+It has five variables: $x_1=x$, \ldots{}, $x_5=v$.
+To do back substitution, we start with the bottom row, equation~$m=3$.
+We solve for its leading variable, $x_{\ell_3}=x_4=u$, using its
+leading term $a_{m,\ell_m}x_m=a_{3,4}x_4=1\cdot u$
+(the notation's `$\ell$' stands for ``leading''). 
+We get $u=-v$.
+%</ex:HomoSystemGivesSpanningSet0>
+
+Now back substitution enters its iteration phase.
+%<*ex:HomoSystemGivesSpanningSet1>
+We will use the variable~$t$ to count how many rows up from the bottom 
+the current row is, so we take $t=1$ and
+look at row $m-t=3-1=2$.
+We come to this row having so far expressed the leading variable 
+in terms of free variables for row~$3$.
+We substitute for $x_{\ell_3}=x_4=u$ 
+its expression in terms
+of free variables, getting $y+z+(-v)-v=0$.
+Then solving for this row's leading variable gives
+$x_{\ell_{m-t}}=x_2=y=-z+2v$.
+
+Next is the row that is $t=2$ up from the bottom, row $m-t=1$.
+We have so far expressed the leading variable 
+in terms of free variables for rows $3$ and~$2$.
+Substitute for $x_{\ell_3}=u$ and $x_{\ell_2}=y$, giving 
+$x+(-z+2v)+2z+(-v)+v=0$.
+Then solve for the leading variable in terms of the free variables
+as $x_{\ell_1}=x=-z-2v$.
+%</ex:HomoSystemGivesSpanningSet2>
+
+%<*ex:HomoSystemGivesSpanningSet3>
+The point of this example is that now we are done. 
+Just write the solution in vector notation
+\begin{equation*}
+  \colvec{x \\ y \\ z \\ u \\ v}
+  =\colvec{-1 \\ -1 \\ 1 \\ 0 \\ 0}z
+   +\colvec{-2 \\ 2 \\ 0 \\ -1 \\ 1}v 
+  \qquad \text{where $z,v\in\Re$}
+\end{equation*}
+to recognize that $\vec{\beta}_1$ and $\vec{\beta}_2$ 
+of the lemma's statement are the 
+vectors associated with the free variables $z$ and~$v$.
+%</ex:HomoSystemGivesSpanningSet3>
+
+The second point about the proof follows from that example also.
+Back substitution moves up the system, using the conclusions
+from lower rows to do the next row.
+This suggests the proof strategy of mathematical 
+induction.\index{mathematical induction}\index{proof techniques!induction}\index{induction}%
 
 Induction is an important and non-obvious proof technique that will
 appear a number of times in this book.
@@ -3778,63 +3822,6 @@ it is true for the next one up.
 Then, another application of
 the inductive step implies that it is true for the third equation up,
 etc.\appendrefs{mathematical induction}%
-
-In the argument, the bookkeeping notation can seem dense 
-so a walk-through may help.
-%<*ex:HomoSystemGivesSpanningSet0>
-Consider this system of homogeneous equations in echelon form.
-\begin{equation*}
-  \begin{linsys}{5}
-     x  &+  &y   &+  &2z  &+  &u  &+  &v  &=  &0  \\
-        &   &y   &+  &z  &+  &u  &-  &v  &=  &0  \\
-        &   &    &   &   &   &u  &+  &v  &=  &0  
-  \end{linsys}
-\end{equation*}
-Start with the bottom equation. 
-It has five variables: $x_1=x$, \ldots{}, $x_5=v$.
-The base step involves the bottom row, equation~$m=3$.
-We solve for its leading variable, $x_{\ell_3}=x_4=u$, using its
-leading term is $a_{m,\ell_m}x_m=a_{3,4}x_4=1\cdot u$
-(the `$\ell$' stands for ``leading''). 
-We get with $u=-v$.
-%</ex:HomoSystemGivesSpanningSet0>
-
-%<*ex:HomoSystemGivesSpanningSet1>
-We turn to the next row up.
-The variable~$t$ counts how many rows up from the bottom 
-the current row is, 
-so here $t$ equals~$1$.
-We start this row having so far expressed the leading variable 
-in terms of free variables for row $m=3$.
-This is row $m-t=3-1=2$.
-We proceed with Gauss's method as usual by substituting for $x_{\ell_3}=x_4=u$ 
-its expression in terms
-of free variables, $y+z+(-v)-v=0$, and solving for this row's leading variable
-$x_{\ell_{m-t}}=x_2=y$.
-
-Iterate by taking $t=2$.
-We have so far expressed the leading variable 
-in terms of free variables for rows $m=3$ and $m-1=2$.
-Now we are on row $m-t=3-2=1$.
-Substitute for the expression of $x_{\ell_3}=u$ and $x_{\ell_2}=y$ in terms
-of free variables, 
-$x+(-z+2v)+2z+(-v)+v=0$,
-and solve for the leading variable
-$x_{\ell_1}=x=-z-2v$.
-%</ex:HomoSystemGivesSpanningSet2>
-
-%<*ex:HomoSystemGivesSpanningSet3>
-Then we are done because to finish, just write the solution in vector notation
-\begin{equation*}
-  \colvec{x \\ y \\ z \\ u \\ v}
-  =\colvec[r]{-1 \\ -1 \\ 1 \\ 0 \\ 0}z
-   +\colvec[r]{-2 \\ 2 \\ 0 \\ -1 \\ 1}v 
-  \qquad \text{for $z,v\in\Re$}
-\end{equation*}
-and recognize that $\vec{\beta}_1$ and $\vec{\beta}_2$ 
-of the lemma's statement are the 
-vectors associated with $z$ and~$v$.
-%</ex:HomoSystemGivesSpanningSet3>
 
 \begin{proof}
 %<*pf:HomoSltnSpanVecs0>
@@ -3896,9 +3883,9 @@ equation, etc., up to and including the \mbox{\( m-(t-1) \)-th}~equation,
 we can
 express the leading variable of that equation in terms of free variables. 
 That is,
-assume that the statement (that we can
-express the leading variable of the row in terms of the free variables)
-holds for the bottom-most $t-1$~rows, with $1\leq t<m$.
+assume that the statement that we can
+express the leading variable of the row in terms of the free variables
+holds for the bottom-most $t$~rows, with $1\leq t<m$.
 We must verify that the statement 
 therefore also holds for the next equation up, 
 the \( (m-t) \)-th equation.
@@ -5054,13 +5041,15 @@ of Gauss's Method itself in the rest of this chapter.
     \begin{answer}
       First the proof.
 
-      Gauss's Method will use only rationals (e.g.,
+      If the system has all rational coefficients then
+      Gauss's Method with back substitution will use only rationals (e.g.,
       \( -(m/n)\rho_i+\rho_j \)).
       Thus we can express the solution set using only rational numbers as
       the components of each vector.
-      Now the particular solution is all rational.
+      Therefore, the particular solution is all rational.
 
-      There are infinitely many rational vector solutions if and only if the
+      As to the question about infinitely many, 
+      there are infinitely many rational vector solutions if and only if the
       associated homogeneous system has infinitely many 
       real vector solutions.
       That's because setting any parameters to be rationals will produce an
@@ -5068,25 +5057,6 @@ of Gauss's Method itself in the rest of this chapter.
    \end{answer}
 \end{exercises}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%\typeout{Comparing Set Descriptions ommitted}
 \endinput
 
 
