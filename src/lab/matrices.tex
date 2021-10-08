@@ -426,8 +426,9 @@ sage: A
 sage: A.is_singular()
 False
 sage: timeit('A.inverse()')
-625 loops, best of 3: 62.7 μs per loop
+625 loops, best of 3: 62.7 micro-s per loop
 \end{lstlisting}
+% was: 625 loops, best of 3: 62.7 μs per loop
 \Sage's \inlinecode{timeit} tells you how long
 an operation takes.
 It does not report just the time that the CPU
@@ -455,12 +456,19 @@ you could try finding the inverse of a random matrix.
 % \end{sagecommandline}
 \begin{lstlisting}
 sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
-625 loops, best of 3: 86 μs per loop
+625 loops, best of 3: 86 micro-s per loop
 sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
-625 loops, best of 3: 85.8 μs per loop
+625 loops, best of 3: 85.8 micro-s per loop
 sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
-625 loops, best of 3: 86.6 μs per loop
+625 loops, best of 3: 86.6 micro-s per loop
 \end{lstlisting}
+% was: 
+%% sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
+%% 625 loops, best of 3: 86 μs per loop
+%% sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
+%% 625 loops, best of 3: 85.8 μs per loop
+%% sage: timeit('random_matrix(RDF, 3, min=-1, max=1).inverse()')
+%% 625 loops, best of 3: 86.6 μs per loop
 
 One issue with this performance data is that
 we can't tell
@@ -476,9 +484,9 @@ sage: for size in [3, 10, 25, 50, 75, 100, 150, 200]:
 ....:     timeit('M.inverse()')
 ....:     
 size = 3
-625 loops, best of 3: 55 μs per loop
+625 loops, best of 3: 55 micro-s per loop
 size = 10
-625 loops, best of 3: 548 μs per loop
+625 loops, best of 3: 548 micro-s per loop
 size = 25
 125 loops, best of 3: 6.79 ms per loop
 size = 50
@@ -492,6 +500,23 @@ size = 150
 size = 200
 5 loops, best of 3: 3.4 s per loop
 \end{lstlisting}
+% was:
+%% size = 3
+%% 625 loops, best of 3: 55 μs per loop
+%% size = 10
+%% 625 loops, best of 3: 548 μs per loop
+%% size = 25
+%% 125 loops, best of 3: 6.79 ms per loop
+%% size = 50
+%% 5 loops, best of 3: 53 ms per loop
+%% size = 75
+%% 5 loops, best of 3: 177 ms per loop
+%% size = 100
+%% 5 loops, best of 3: 419 ms per loop
+%% size = 150
+%% 5 loops, best of 3: 1.41 s per loop
+%% size = 200
+%% 5 loops, best of 3: 3.4 s per loop
 Some of those times are in microseconds, some are in milliseconds, and some
 are in seconds.
 A microsecond is one-millionth of a second,
