@@ -2501,15 +2501,19 @@ and the class of matrices row equivalent to this
               b  &0
             \end{mat}
           \end{equation*}
-          where \( a,b\in\Re \) are nonzero.
-        \partsitem They have this form for nonzero \( a,b\in\Re \).
+          where at least one of \( a,b\in\Re \) is nonzero.
+        \partsitem They have this form 
           \begin{equation*}
             \begin{mat}
-             1a  &2a \\
-             1b  &2b
+             a  &2a \\
+             b  &2b
             \end{mat}
           \end{equation*}
-        \partsitem They have the form
+          where at least one of \( a,b\in\Re \) is nonzero.
+        \partsitem The given matrix is nonsingular.
+          So the row equivalence class consists of all nonsinglar $\nbyn{2}$
+          matrices.
+          (To give a formula, they have the form
           \begin{equation*}
             \begin{mat}
               a  &b  \\
@@ -2517,7 +2521,8 @@ and the class of matrices row equivalent to this
             \end{mat}
           \end{equation*}
           for \( a,b,c,d\in\Re \)) where \( ad-bc\neq 0 \).
-          (This is the formula that determines when a \( \nbyn{2} \) matrix
+          We will see in Chapter Four that this formula 
+          determines when a \( \nbyn{2} \) matrix
           is nonsingular.)
       \end{exparts}  
     \end{answer}
