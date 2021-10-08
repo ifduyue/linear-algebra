@@ -2,6 +2,7 @@
 # 2012-Apr-20  Jim Hefferon  Public Domain. 
 # 2019-Nov-09 JH  Minor reformatting
 # 2020-Feb-05 JH  Add LaTeX output
+# 2021-Oct-08 JH  Special case so in "1\rho_3+\rho_4" it omits the "1"
 
 # Typical usage:
 # sage: P = matrix(QQ, [[3, 0, 2], [2,2,0], [1,4,-2]])
@@ -40,16 +41,26 @@ def convert_triple_for_grstep(t):
     then the reduction step is a rescaling.
     """
     (factor, used_row, changed_row) = t
-    if factor is None:
+    if factor is None:  # swap rows
         return "\\rho_{%d}\leftrightarrow \\rho_{%d}" % (used_row,changed_row)
-    elif used_row is None:
+    elif used_row is None:  # rescaling
         if factor in ZZ:
-            return "%d\\rho_{%d}" % (factor, changed_row)
+	    if factor == 1:  # should not ever happen
+                return "\\rho_{%d}" % (changed_row,)
+            elif factor == -1:
+                return "-\\rho_{%d}" % (changed_row, )
+            else:
+                return "%d\\rho_{%d}" % (factor, changed_row)
 	else:
             return "(%s)\\rho_{%d}" % (str(factor), changed_row)
     else:
         if factor in ZZ:
-            return "%d\\rho_{%d}+\\rho_{%d}" % (factor, used_row, changed_row)
+	    if factor == 1:
+                return "\\rho_{%d}+\\rho_{%d}" % (used_row, changed_row)
+            elif factor == -1:
+                return "-\\rho_{%d}+\\rho_{%d}" % (used_row, changed_row)
+            else:
+                return "%d\\rho_{%d}+\\rho_{%d}" % (factor, used_row, changed_row)
 	else:
             return "(%s)\\rho_{%d}+\\rho_{%d}" % (str(factor), used_row, changed_row)
 
