@@ -1,0 +1,3 @@
+Collect together all .pdf files, excluding all others like this.
+
+ftpmaint@millstone:~/Documents/linear-algebra/src/question-bank$ find flipped -type f -name '*.pdf' -exec zip flipped.zip {} \;
