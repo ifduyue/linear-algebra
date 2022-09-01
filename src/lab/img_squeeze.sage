@@ -40,6 +40,7 @@ def img_squeeze(fn_in, fn_out, percent):
     for i in range(dim_bound-8, dim_bound):
         print(" at bottom: sigma_RD", i, "=%0.2f" % Sigma_RD[i][i])
     # Compute sigma_1 u_1 v_1^trans+ ..
+    print "Compute sigma_1 u_1 v_1^trans+ .."
     a=[]
     for i in range(rows):     
         a.append([])
@@ -47,6 +48,8 @@ def img_squeeze(fn_in, fn_out, percent):
             a[i].append(0)
     A_RD, A_GR, A_BL = matrix(RDF, a), matrix(RDF, a), matrix(RDF, a)
     for i in range(cutoff):
+    	if (i % 10 == 0):
+	   print("  i=",i,"out of",cutoff)
         sigma_i = Sigma_RD[i][i]
         u_i = matrix(RDF, U_RD.column(i).column())
         v_i = matrix(RDF, V_RD.column(i).column().transpose())
@@ -60,8 +63,11 @@ def img_squeeze(fn_in, fn_out, percent):
         v_i = matrix(RDF, V_BL.column(i).column().transpose())
         A_BL = copy(A_BL) + sigma_i*u_i*v_i
     # Make a new image
+    print("Making a new image file")
     img_squoze = Image.new("RGB", img.size)
     for row in range(rows):
+    	if (row % 10 == 0):
+	   print("  row=",row,"out of",rows)
         for col in range(cols):
             p = (int(A_RD[row][col]), 
                  int(A_GR[row][col]), 
