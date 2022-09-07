@@ -62,6 +62,57 @@
 % \pause
 % \ExecuteMetaData[\vsdir vs1.tex]{df:VectorSpace2}
 % \end{frame}
+\begin{frame}{Introduction}
+We have seen that $\text{General}=\text{Particular}+\text{Homogeneous}$.
+A particular solution is just a single vector.
+But the homogeneous part is potentially more interesting because it may contain
+infinitely many vectors.
+In this section we will s focus on two properties of such sets.
+
+Here is a typical one, a plane through the origin in $\R^3$.
+\begin{equation*}
+  S=\set{\colvec{x \\ y \\ z}\suchthat x+2y+3z=0}
+  =\set{\colvec{-2 \\ 1 \\ 0}y+\colvec{-3 \\ 0 \\ 1}z \suchthat y,z\in\R}
+\end{equation*}
+Take some vectors from that set, such as these.
+\begin{equation*}
+  \colvec{1 \\ 0 \\ -1/3}\;
+  \colvec{2 \\ 1 \\ -4/3}\;
+  \colvec{-3 \\ 0 \\ 1}
+\end{equation*}
+Observe that if we add any two members of~$S$,  
+\begin{equation*}
+  \colvec{1 \\ 0 \\ -1/3}
+  +\colvec{2 \\ 1 \\ -4/3}
+  =\colvec{3 \\ 1 \\ -5/3}
+  \quad\text{or}\quad
+  \colvec{2 \\ 1 \\ -4/3}
+  +\colvec{-3 \\ 0 \\ 1}
+  =\colvec{-1 \\ 1 \\ -1/3}
+\end{equation*}
+then the result is another element of~$S$
+\end{frame}
+
+\begin{frame}
+Similarly, if we rescale any member of~$S$,
+\begin{equation*}
+  3\cdot\colvec{1 \\ 0 \\ -1/3}=\colvec{3 \\ 0 \\ -1}
+  \quad\text{or}\quad
+  -12\cdot\colvec{2 \\ 1 \\ -4/3}=\colvec{-24 \\ -12 \\ -16}
+\end{equation*}
+then the result is another member of~$S$.
+
+In general, we can take any linear combination of members of~$S$
+\begin{equation*}
+  9\colvec{1 \\ 0 \\ -1/3}\;
+  -2\colvec{2 \\ 1 \\ -4/3}\;
+  +\colvec{-3 \\ 0 \\ 1}
+  =\colvec{2 \\ -2 \\ 2/3}
+\end{equation*}
+and the result is a member of~$S$.
+
+We will study collections with these properties.
+\end{frame}
 
 
 
