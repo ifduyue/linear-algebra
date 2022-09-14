@@ -1,5 +1,5 @@
-% \documentclass[noanswers, nolegalese, 11pt]{examjh}
-\documentclass[answers, nolegalese, 11pt]{examjh}
+\documentclass[noanswers, nolegalese, 11pt]{examjh}
+% \documentclass[answers, nolegalese, 11pt]{examjh}
 
 
 \usepackage{../../../sty/conc}
@@ -24,6 +24,35 @@
 
 
 \begin{questions}
+
+\question
+  Do Gauss-Jordan reduction on this augmented matrix.
+  \begin{equation*}
+    \begin{amat}{4}
+      1 &3  &0 &1 &2 \\  
+      3 &-1 &0 &2 &-2 \\
+      2 &0  &2 &1 &0
+    \end{amat}
+  \end{equation*}
+  \begin{solution}[2in]
+    \begin{multline*}
+      \grstep[-2\rho_1+\rho_3]{-3\rho_1+\rho_2}
+      \begin{amat}{4}
+        1 &3   &0 &1  &2 \\  
+        0 &-10 &0 &-1 &-8 \\
+        0 &-6  &2 &-1 &-4     
+      \end{amat}                   \\
+      \grstep{-(3/5)\rho_2+\rho_3}
+      \grstep[(1/2)\rho_3]{-(1/10)\rho_2}
+      \grstep{-3\rho_2+\rho_1}
+      \begin{amat}{4}
+        1 &0 &0 &7/10 &-2/5 \\
+        0 &1 &0 &1/10 &4/5 \\
+        0 &0 &1 &-1/5 &2/5
+      \end{amat}
+    \end{multline*}
+\end{solution}
+
 \question
 Find the solution set, using Gauss's method and matrix-vector notation.
 \begin{equation*}
@@ -77,33 +106,6 @@ Find the solution set, using Gauss's method and matrix-vector notation.
 % [[x == -1/7*r1 + 1, y == 2/7*r1 + 1, z == r1]]
 
 
-\question
-  Do Gauss-Jordan reduction on this augmented matrix.
-  \begin{equation*}
-    \begin{amat}{4}
-      1 &3  &0 &1 &2 \\  
-      3 &-1 &0 &2 &-2 \\
-      2 &0  &2 &1 &0
-    \end{amat}
-  \end{equation*}
-  \begin{solution}[2in]
-    \begin{multline*}
-      \grstep[-2\rho_1+\rho_3]{-3\rho_1+\rho_2}
-      \begin{amat}{4}
-        1 &3   &0 &1  &2 \\  
-        0 &-10 &0 &-1 &-8 \\
-        0 &-6  &2 &-1 &-4     
-      \end{amat}                   \\
-      \grstep{-(3/5)\rho_2+\rho_3}
-      \grstep[(1/2)\rho_3]{-(1/10)\rho_2}
-      \grstep{-3\rho_2+\rho_1}
-      \begin{amat}{4}
-        1 &0 &0 &7/10 &-2/5 \\
-        0 &1 &0 &1/10 &4/5 \\
-        0 &0 &1 &-1/5 &2/5
-      \end{amat}
-    \end{multline*}
-\end{solution}
-
+  
 \end{questions}
 \end{document}
