@@ -33,7 +33,7 @@ you sure you want to compile from source?
 Sigh.  OK, first know that the compilation uses `make'; you cannot just
 run 'pdflatex book', it won't work.
 
-This is what I did for Linux, Ubuntu 20, in 2021-Sept.  I followed these
+This is what I did for Linux, Ubuntu 22, in 2022-Oct.  I followed these
 steps from a fresh install.  If you have some  other system such as Mac
 or Windows then I am unable to help, sorry.  For that matter, if you have
 Linux then I will not help you either.  Sorry.
