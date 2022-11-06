@@ -1,24 +1,39 @@
 % Chapter 3, Section 1 _Linear Algebra_ Jim Hefferon
 %  http://joshua.smcvt.edu/linearalgebra
 %  2001-Jun-11
-\chapter{Maps Between Spaces}
+\chapter{Maps Between Spaces}% 
+% Without this hack, it prints \nobreak
+\ \vspace{-10ex}
 
-\section{Isomorphisms}
 \index{isomorphism|(}
-In the examples following the definition of a vector space
-we expressed the intuition that some spaces are ``the same'' as others.
-For instance, the space of two-tall column vectors and
-the space of two-wide row vectors
-are not equal because their 
-elements\Dash column vectors and row vectors\Dash are 
-not equal, but we feel 
-that these spaces differ only in how their elements appear.
+\section{Isomorphisms} %
+In the examples after the definition of a vector space
+we expressed the intuition that some spaces are essentially the same as others.
+For instance, 
+% the space of two-tall column vectors and
+% the space of two-wide row vectors
+% are not equal because their 
+% elements\Dash column vectors and row vectors\Dash are 
+% not equal, 
+we may perceive that the space of two-by-two matrices and 
+the space of four tall vectors
+\begin{equation*}
+  \matspace_{\nbyn{2}}=\set{
+    \begin{pmatrix}
+      a &b \\
+      c &d
+    \end{pmatrix}\suchthat a,b,c,d\in\R}
+  \qquad
+  \R^4=\set{\colvec{a \\ b \\ c \\ d}\suchthat a,b,c,d\in\R}
+\end{equation*}
+are not equal because their elements are not the same, but that they 
+differ only cosmetically.
 We will now make this precise.
 
-This section illustrates a common phase of a mathematical investigation.
+This illustrates a common phase of a mathematical investigation.
 With the help of some examples we've gotten an idea.
 We will next give a formal definition and then
-we will produce some results backing our contention 
+produce some results backing our contention 
 that the definition captures the idea.
 We've seen this happen already, 
 for instance in the first section of the Vector Space chapter.
@@ -30,7 +45,7 @@ we followed it with some supporting results.
 That wasn't an end point, 
 instead it led to new insights such as the idea of a basis.
 Here also, after producing a definition and supporting it,
-we will get two surprises (pleasant ones).
+we will get two pleasant surprises.
 First, we will find that 
 the definition applies to some unforeseen, and interesting, cases.
 Second, the study of the definition will lead to new ideas.

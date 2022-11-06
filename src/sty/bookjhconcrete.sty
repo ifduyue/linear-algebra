@@ -425,7 +425,7 @@
 \usepackage[titles]{tocloft}
 \tocloftpagestyle{booktoc}
 \cftpagenumbersoff{chapter}
-\setlength{\cftchapnumwidth}{8em} % was 7, 2022-Oct-14
+\setlength{\cftchapnumwidth}{7em} 
 % \renewcommand*\l@chapter[2]{%
 %   \ifnum \c@tocdepth >\m@ne
 %     \addpenalty{-\@highpenalty}%
@@ -533,7 +533,7 @@
     \vskip 0\p@ \fi %was 20\p@
     \interlinepenalty\@M
     \Huge \bfseries \usefont{T1}{fvs}{b}{n}\Huge\textcolor{black}{#1}\par\nobreak
-    \vspace{40pt plus 5pt minus 3pt}
+    \vspace{40pt plus 15pt minus 3pt}
     % \vskip 50\p@  % was 30\p@
   }}
 
@@ -724,7 +724,7 @@
 \renewcommand{\section}{%
      \@startsection%
      {section}{1}{0em}{-14ex plus1ex minus2ex}{1em}%
-     {\usefont{T1}{fvs}{b}{n}\Large}}
+     {\usefont{T1}{fvs}{b}{n}\Large}}% 
 % changed from this 2013 Sep 16 
 % \renewcommand{\section}{%
 %      \@startsection%

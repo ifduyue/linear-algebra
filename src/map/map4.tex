@@ -2631,35 +2631,6 @@ then that row of the result is a combination.
 
 \par\noindent Right-multiplication acts in the same way, but with columns.
 
-\begin{example}
-Consider the columns of the product of two $\nbyn{2}$~matrices.
-\begin{equation*}
-  \begin{mat}
-    g_{1,1}  &g_{1,2}    \\
-    g_{2,1}  &g_{2,2}    
-  \end{mat}
-  \begin{mat}
-    h_{1,1}  &h_{1,2}    \\
-    h_{2,1}  &h_{2,2}    
-  \end{mat}   
-  =
-  \begin{mat}
-    g_{1,1}h_{1,1}+g_{1,2}h_{2,1}  &g_{1,1}h_{1,2}+g_{1,2}h_{2,2} \\
-    g_{2,1}h_{1,1}+g_{2,2}h_{2,1}  &g_{2,1}h_{1,2}+g_{2,2}h_{2,2} 
-  \end{mat}
-\end{equation*}
-Each column is the result of multiplying $G$ 
-by the corresponding column of $H$.
-\begin{equation*}
-  G\colvec{h_{1,1} \\ h_{2,1}}  
-  =
-  \colvec{g_{1,1}h_{1,1}+g_{1,2}h_{2,1} \\ g_{2,1}h_{1,1}+g_{2,2}h_{2,1}}
-  \quad
-  G\colvec{h_{1,2}  \\ h_{2,2}}    
-  =\colvec{g_{1,1}h_{1,2}+g_{1,2}h_{2,2} \\ g_{2,1}h_{1,2}+g_{2,2}h_{2,2}} 
-\end{equation*}
-\end{example}
-
 
 \begin{lemma} \label{lm:ColsAndRowsInMatrixMult}
 %<*lm:ColsAndRowsInMatrixMult>
@@ -2697,7 +2668,7 @@ and the rows of $GH$ are formed by taking the rows of $G$ times $H$
          \rule{0pt}{2.5ex}\cdots\; \vec{g}_r\cdot H \;\cdots
        \end{pmat}
     \end{equation*}
-(ignoring the extra parentheses).
+% (ignoring the extra parentheses).
 %</lm:ColsAndRowsInMatrixMult>
 \end{lemma}
 
@@ -2705,7 +2676,8 @@ and the rows of $GH$ are formed by taking the rows of $G$ times $H$
 %<*pf:ColsAndRowsInMatrixMult>
 We will check that in a product of $\nbyn{2}$ matrices, 
 the rows of the product equal the
-product of the rows of~$G$ with the entire matrix~$H$.
+product of the rows of~$G$ with the entire matrix~$H$; other
+cases worh the same way.
 \begin{align*}
   \begin{mat}
     g_{1,1}  &g_{1,2}    \\
@@ -2725,9 +2697,38 @@ product of the rows of~$G$ with the entire matrix~$H$.
     \rowvec{g_{2,1}h_{1,1}+g_{2,2}h_{2,1}  &g_{2,1}h_{1,2}+g_{2,2}h_{2,2}} 
   \end{mat}
 \end{align*}
-We leave the more general check as an exercise.
+(We ignore the extra parentheses.)
 %</pf:ColsAndRowsInMatrixMult>
 \end{proof}
+
+\begin{example}
+Consider the columns of the product of two $\nbyn{2}$~matrices.
+\begin{equation*}
+  \begin{mat}
+    g_{1,1}  &g_{1,2}    \\
+    g_{2,1}  &g_{2,2}    
+  \end{mat}
+  \begin{mat}
+    h_{1,1}  &h_{1,2}    \\
+    h_{2,1}  &h_{2,2}    
+  \end{mat}   
+  =
+  \begin{mat}
+    g_{1,1}h_{1,1}+g_{1,2}h_{2,1}  &g_{1,1}h_{1,2}+g_{1,2}h_{2,2} \\
+    g_{2,1}h_{1,1}+g_{2,2}h_{2,1}  &g_{2,1}h_{1,2}+g_{2,2}h_{2,2} 
+  \end{mat}
+\end{equation*}
+Each column is the result of multiplying $G$ 
+by the corresponding column of $H$.
+\begin{equation*}
+  G\colvec{h_{1,1} \\ h_{2,1}}  
+  =
+  \colvec{g_{1,1}h_{1,1}+g_{1,2}h_{2,1} \\ g_{2,1}h_{1,1}+g_{2,2}h_{2,1}}
+  \quad
+  G\colvec{h_{1,2}  \\ h_{2,2}}    
+  =\colvec{g_{1,1}h_{1,2}+g_{1,2}h_{2,2} \\ g_{2,1}h_{1,2}+g_{2,2}h_{2,2}} 
+\end{equation*}
+\end{example}
 
 An application of those observations is that there is a matrix
 that just copies out the rows and columns.

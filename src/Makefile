@@ -28,7 +28,7 @@ LATEX := pdflatex
 
 # LaTeX command line
 #  The command line used to invoke LaTeX.  Set the environment, then call
-# the program.
+# the program.  Trigger hardcopy with "make hardcopy=1"
 ifdef hardcopy
   LATEX_CMD := $(TEXINPUTS) $(LATEX) "\def\hardcopy{}\input{book}"
 else
