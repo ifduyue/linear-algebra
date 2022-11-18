@@ -63,10 +63,10 @@ The constant of proportionality, $m$, is the \definend{mass}
 of the object.
 Combining Hooke's Law with Newton's 
 gives the differential equation expressing the 
-mass's motion $m\cdot d^2\,x(t)/dt=-k\cdot x(t)$.
+mass's motion $m\cdot d^2\,x(t)/dt^2=-k\cdot x(t)$.
 We prefer the form with the variables all on one side.
 \begin{equation*}
-  m\cdot \frac{d^2\,x(t)}{dt}+k\cdot x(t)=0
+  m\cdot \frac{d^2\,x(t)}{dt^2}+k\cdot x(t)=0
   \tag{$*$}
 \end{equation*}
 
@@ -78,7 +78,7 @@ the graph should look like this.
 \end{center}
 Of course, this looks like a cosine graph and we recognize 
 that the differential equation of motion~($*$) is satisfied by
-$x(t)=\cos \omega t$, where $\omega=\sqrt{m/k}$,
+$x(t)=\cos \omega t$, where $\omega=\sqrt{k/m}$,
 since $dx/dt=\omega\cdot \sin \omega t$
 and $d^2x/dt^2=-\omega^2\cdot \cos \omega t$.
 Here, $\omega$ is the \definend{angular frequency}.
@@ -169,7 +169,7 @@ Without those terms these describe simple harmonic functions,
 and we write~$\omega_x^2$ for~$k/m$, and $\omega_\theta^2$ for $\kappa/I$.
 We have argued above that to observe the stand-still behavior we should 
 adjust the device so that the periods are the same $\omega_x^2=\omega_\theta^2$. 
-Write~$\omega_0$ for that number.
+Write~$\omega_0^2$ for that number.
 
 Now consider the coupled motions $x(t)$ and~$\theta(t)$.
 By the same principle, to observe the stand-still behavior we want them in 
@@ -204,16 +204,16 @@ and plug into the equations of motion~($**$).
       &=0  \\
   I\cdot(-A_2\omega^2\cos(\omega t+\phi))
       +\kappa\cdot (A_2\cos(\omega t+\phi))
-      +\frac{\epsilon}{2}\cdot (A_1\cos(\omega t+\phi))  
+      +\frac{\epsilon}{2}\cdot (A_1\cos(\omega t+\phi))
       &=0  
 \end{align*}
-Factor out $\cos(\omega t+\phi)$ and divide through by~$m$.
+Factor out $\cos(\omega t+\phi)$ and divide through by~$m$ and~$I$ respectively.
 \begin{align*}
   \big(\frac{k}{m}-\omega^2\big)\cdot A_1 
       +\frac{\epsilon}{2m}\cdot A_2 
       &=0  \\
   \big(\frac{\kappa}{I}-\omega^2\big)\cdot A_2
-      +\frac{\epsilon}{2m}\cdot A_1  
+      +\frac{\epsilon}{2I}\cdot A_1
       &=0  
 \end{align*}
 We are assuming that $k/m=\omega_{x}^2$ and
