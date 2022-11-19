@@ -2072,20 +2072,20 @@ some computations.
         \vec{\kappa}_{i+1}
          &=
         \vec{\beta}_{i+1}
-          -\proj{\beta_{i+1}}{\spanof{\vec{\kappa}_1}}
-          -\proj{\beta_{i+1}}{\spanof{\vec{\kappa}_2}}
+          -\proj{\vec{\beta}_{i+1}}{\spanof{\vec{\kappa}_1}}
+          -\proj{\vec{\beta}_{i+1}}{\spanof{\vec{\kappa}_2}}
           -\dots
-          -\proj{\beta_{i+1}}{\spanof{\vec{\kappa}_i}}  \\
+          -\proj{\vec{\beta}_{i+1}}{\spanof{\vec{\kappa}_i}}  \\
          &=
         \vec{\beta}_{i+1}
-          -\frac{\beta_{i+1}\dotprod\vec{\kappa}_1}{%
+          -\frac{\vec{\beta}_{i+1}\dotprod\vec{\kappa}_1}{%
                   \vec{\kappa}_1\dotprod\vec{\kappa}_1}
               \cdot\vec{\kappa}_1
-          -\frac{\beta_{i+1}\dotprod\vec{\kappa}_2}{%
+          -\frac{\vec{\beta}_{i+1}\dotprod\vec{\kappa}_2}{%
                   \vec{\kappa}_2\dotprod\vec{\kappa}_2}
               \cdot\vec{\kappa}_2
           -\dots
-          -\frac{\beta_{i+1}\dotprod\vec{\kappa}_i}{%
+          -\frac{\vec{\beta}_{i+1}\dotprod\vec{\kappa}_i}{%
                   \vec{\kappa}_i\dotprod\vec{\kappa}_i}
               \cdot\vec{\kappa}_i
        \end{align*}
